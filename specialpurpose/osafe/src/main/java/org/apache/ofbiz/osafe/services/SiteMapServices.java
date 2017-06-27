@@ -163,7 +163,7 @@ public class SiteMapServices {
                     categoryTrail = (List<String>) workingCategoryMap.get("categoryTrail");
                     categoryLevel = categoryTrail.size() - 1;
                     
-                    List<GenericValue> productCategoryMembers = workingCategory.getRelatedCache("ProductCategoryMember");
+                    List<GenericValue> productCategoryMembers = workingCategory.getRelated("ProductCategoryMember", null, null, true);
                     // Remove any expired
                     productCategoryMembers = EntityUtil.filterByDate(productCategoryMembers, true);
                     for (GenericValue productCategoryMember : productCategoryMembers) 
@@ -299,7 +299,7 @@ public class SiteMapServices {
             	
                 workingCategory = (GenericValue) workingCategoryMap.get("ProductCategory");
                 
-                List<GenericValue> productCategoryMembers = workingCategory.getRelatedCache("ProductCategoryMember");
+                List<GenericValue> productCategoryMembers = workingCategory.getRelated("ProductCategoryMember", null, null, true);
                 // Remove any expired
                 productCategoryMembers = EntityUtil.filterByDate(productCategoryMembers, true);
                 

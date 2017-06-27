@@ -424,7 +424,7 @@ public class TxtMessageServices {
                     paramMap.put("ORDER_SHIP_TOTAL",orderShippingTotal);
                     paramMap.put("ORDER_TAX_TOTAL",orderTaxTotal);
                     paramMap.put("ORDER_TOTAL",orderGrandTotal);
-                    List<GenericValue> orderAttributes = orderHeader.getRelatedCache("OrderAttribute");
+                    List<GenericValue> orderAttributes = orderHeader.getRelated("OrderAttribute", null, null, true);
                     if (UtilValidate.isNotEmpty(orderAttributes))
                     {
                         Iterator orderAttributeIter = orderAttributes.iterator();
@@ -465,14 +465,14 @@ public class TxtMessageServices {
                         paramMap.put("GENDER",person.getString("gender"));
                         paramMap.put("SUFFIX",person.getString("suffix"));
                     }
-                    List<GenericValue> userLogins=gvParty.getRelatedCache("UserLogin");
+                    List<GenericValue> userLogins= gvParty.getRelated("UserLogin", null, null, true);
                     GenericValue userLogin = EntityUtil.getFirst(userLogins);
                     if (UtilValidate.isNotEmpty(userLogin)) 
                     {
                         paramMap.put("USER_LOGIN_ID",userLogin.getString("userLoginId"));
                         paramMap.put("LOGIN_EMAIL",userLogin.getString("userLoginId"));
                     }
-                    List<GenericValue> partyAttributes = gvParty.getRelatedCache("PartyAttribute");
+                    List<GenericValue> partyAttributes = gvParty.getRelated("PartyAttribute", null, null, true);
                     if (UtilValidate.isNotEmpty(partyAttributes))
                     {
                         Iterator partyAttributeIter = partyAttributes.iterator();
@@ -537,7 +537,7 @@ public class TxtMessageServices {
         {
             try 
             {
-                List<GenericValue> partyAttributes = party.getRelatedCache("PartyAttribute");
+                List<GenericValue> partyAttributes = party.getRelated("PartyAttribute", null, null, true);
                 partyAttributes = EntityUtil.filterByAnd(partyAttributes, UtilMisc.toMap("attrName", "PARTY_TEXT_PREFERENCE"));
                 if (UtilValidate.isNotEmpty(partyAttributes)) 
                 {
@@ -561,7 +561,7 @@ public class TxtMessageServices {
         String toCell = "";
         try
         {
-            List<GenericValue> partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+            List<GenericValue> partyContactMechPurpose = party.getRelated("PartyContactMechPurpose", null, null, true);
             List<GenericValue> partyPurposeMobilePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_MOBILE"));
             partyPurposeMobilePhones = EntityUtil.getRelated("PartyContactMech", partyPurposeMobilePhones);
             partyPurposeMobilePhones = EntityUtil.filterByDate(partyPurposeMobilePhones,true);

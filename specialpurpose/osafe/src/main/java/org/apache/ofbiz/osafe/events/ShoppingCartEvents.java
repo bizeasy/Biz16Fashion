@@ -180,7 +180,7 @@ public class ShoppingCartEvents {
             			/* Add All Product Feature Appls to the Cart Types (STANDARD_FEATURE, DISTINGUISHING_FEATURE)
             			 * 
             			 */
-                		List<GenericValue> lProductFeatureAndAppl = product.getRelatedCache("ProductFeatureAndAppl");
+                		List<GenericValue> lProductFeatureAndAppl = product.getRelated("ProductFeatureAndAppl", null, null, true);
                 		lProductFeatureAndAppl = EntityUtil.filterByDate(lProductFeatureAndAppl);
                 		for(GenericValue productFeatureAndAppl : lProductFeatureAndAppl)
             	    	{

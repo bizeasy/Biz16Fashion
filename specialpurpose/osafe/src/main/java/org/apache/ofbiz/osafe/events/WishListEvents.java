@@ -500,7 +500,7 @@ public class WishListEvents {
         try {
             shoppingList = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListId", shoppingListId).queryOne();
             if (shoppingList != null) {
-                shoppingListItems = shoppingList.getRelatedCache("ShoppingListItem");
+                shoppingListItems = shoppingList.getRelated("ShoppingListItem", null, null, true);
                 if (shoppingListItems == null) {
                     shoppingListItems = new LinkedList();
                 }

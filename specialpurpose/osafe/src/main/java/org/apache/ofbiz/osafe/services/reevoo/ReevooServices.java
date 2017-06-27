@@ -65,7 +65,7 @@ public class ReevooServices {
                 if ("CATALOG_CATEGORY".equals(workingCategory.getString("productCategoryTypeId"))) {
 
                     // For each category get all products
-                    List<GenericValue> productCategoryMembers = workingCategory.getRelatedCache("ProductCategoryMember");
+                    List<GenericValue> productCategoryMembers = workingCategory.getRelated("ProductCategoryMember", null, null, true);
                     productCategoryMembers = EntityUtil.orderBy(productCategoryMembers,UtilMisc.toList("sequenceNum"));
 
                     // Remove any expired
