@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Map;
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.WeakHashMap;
 
 import javax.servlet.http.HttpServletRequest;
