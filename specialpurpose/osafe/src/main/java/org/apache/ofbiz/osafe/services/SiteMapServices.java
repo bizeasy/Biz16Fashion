@@ -42,6 +42,7 @@ import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.category.CategoryContentWrapper;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.product.ProductWorker;
@@ -192,8 +193,8 @@ public class SiteMapServices {
                                     createSiteMapNode(url, detailImageUrl, usedUrlList);
                                     if (UtilValidate.isNotEmpty(SITEMAP_VARIANT_FEATURES))
                                     {
-                                       List<GenericValue> lProductFeatureAndAppl = delegator.findByAndCache("ProductFeatureAndAppl",UtilMisc.toMap("productId", product.getString("productId"),"productFeatureTypeId",SITEMAP_VARIANT_FEATURES.toUpperCase(),"productFeatureApplTypeId","SELECTABLE_FEATURE"));
-                                        lProductFeatureAndAppl = EntityUtil.filterByDate(lProductFeatureAndAppl);
+                                       List<GenericValue> lProductFeatureAndAppl = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", product.getString("productId"),"productFeatureTypeId",SITEMAP_VARIANT_FEATURES.toUpperCase(),"productFeatureApplTypeId","SELECTABLE_FEATURE").cache().queryList();
+                                       lProductFeatureAndAppl = EntityUtil.filterByDate(lProductFeatureAndAppl);
                                         if (UtilValidate.isNotEmpty(lProductFeatureAndAppl))
                                         {
                                             for (GenericValue productFeatureAndAppl : lProductFeatureAndAppl)
@@ -214,7 +215,7 @@ public class SiteMapServices {
             
             //Added static page url in sitemap
             List<GenericValue> xContentXrefs = null;
-            xContentXrefs = delegator.findByAndCache("XContentXref", UtilMisc.toMap("contentTypeId", "BF_STATIC_PAGE","productStoreId", productStoreId), null);
+            xContentXrefs = EntityQuery.use(delegator).from("XContentXref").where("contentTypeId", "BF_STATIC_PAGE","productStoreId", productStoreId).cache().queryList();
             if (UtilValidate.isNotEmpty(xContentXrefs))
             {
                 for (GenericValue xContentXref : xContentXrefs)
@@ -368,7 +369,7 @@ public class SiteMapServices {
                                     createFriendlyMapNode(url, productContentWrapper, categoryContentWrapper,null,null, null);
                                     if (UtilValidate.isNotEmpty(SITEMAP_VARIANT_FEATURES))
                                     {
-                                       List<GenericValue> lProductFeatureAndAppl = delegator.findByAndCache("ProductFeatureAndAppl",UtilMisc.toMap("productId", product.getString("productId"),"productFeatureTypeId",SITEMAP_VARIANT_FEATURES.toUpperCase(),"productFeatureApplTypeId","SELECTABLE_FEATURE"));
+                                       List<GenericValue> lProductFeatureAndAppl = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", product.getString("productId"),"productFeatureTypeId",SITEMAP_VARIANT_FEATURES.toUpperCase(),"productFeatureApplTypeId","SELECTABLE_FEATURE").cache().queryList();
                                         lProductFeatureAndAppl = EntityUtil.filterByDate(lProductFeatureAndAppl);
                                         if (UtilValidate.isNotEmpty(lProductFeatureAndAppl))
                                         {
@@ -390,7 +391,7 @@ public class SiteMapServices {
 
             //Added static page url in sitemap
             List<GenericValue> xContentXrefs = null;
-            xContentXrefs = delegator.findByAndCache("XContentXref", UtilMisc.toMap("contentTypeId", "BF_STATIC_PAGE","productStoreId", productStoreId), null);
+            xContentXrefs = EntityQuery.use(delegator).from("XContentXref").where("contentTypeId", "BF_STATIC_PAGE","productStoreId", productStoreId).cache().queryList();
             if (UtilValidate.isNotEmpty(xContentXrefs))
             {
                 for (GenericValue xContentXref : xContentXrefs)

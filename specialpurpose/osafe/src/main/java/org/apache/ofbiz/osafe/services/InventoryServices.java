@@ -42,7 +42,7 @@ public class InventoryServices {
     	Map<String, Object> ineventoryLevelMap = new HashMap<String, Object>();
     	
 		try {
-			List<GenericValue> inventoryProductAttributes =  delegator.findByAndCache("ProductAttribute", UtilMisc.toMap("productId",productId));
+			List<GenericValue> inventoryProductAttributes =  EntityQuery.use(delegator).from("ProductAttribute").where("productId", productId).cache().queryList();
 			ineventoryLevelMap = getProductInventoryLevel(inventoryProductAttributes,request);
 			
 		} catch (GenericEntityException ge) {
@@ -167,7 +167,7 @@ public class InventoryServices {
     	    BigDecimal newInventoryWarehouseLevel = BigDecimal.ZERO;
     	    
     		try {
-    			List<GenericValue> inventoryProductAttributes =  delegator.findByAndCache("ProductAttribute", UtilMisc.toMap("productId",productId));
+    			List<GenericValue> inventoryProductAttributes = EntityQuery.use(delegator).from("ProductAttribute").where("productId", productId).cache().queryList();
     			if(UtilValidate.isNotEmpty(inventoryProductAttributes)) {
     			    List<GenericValue> totalInventoryProductAttributes = EntityUtil.filterByAnd(inventoryProductAttributes, UtilMisc.toMap("attrName", "BF_INVENTORY_TOT"));
     			    totalInventoryProductAttribute = EntityUtil.getFirst(totalInventoryProductAttributes);

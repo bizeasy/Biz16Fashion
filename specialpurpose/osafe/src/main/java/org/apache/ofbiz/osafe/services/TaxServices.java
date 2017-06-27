@@ -264,7 +264,7 @@ public class TaxServices {
         }
         Set<String> geoIdSetTemp = new HashSet<String>();
         for (String curGeoId: geoIdSet) {
-            List<GenericValue> geoAssocList = delegator.findByAndCache("GeoAssoc", UtilMisc.toMap("geoIdTo", curGeoId, "geoAssocTypeId", "REGIONS"));
+            List<GenericValue> geoAssocList = EntityQuery.use(delegator).from("GeoAssoc").where("geoIdTo", curGeoId, "geoAssocTypeId", "REGIONS").cache().queryList();
             for (GenericValue geoAssoc: geoAssocList) {
                 geoIdSetTemp.add(geoAssoc.getString("geoId"));
             }

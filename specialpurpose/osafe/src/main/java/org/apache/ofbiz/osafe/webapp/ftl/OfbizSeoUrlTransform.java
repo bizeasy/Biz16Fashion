@@ -32,7 +32,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
-
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.osafe.control.SeoUrlHelper;
 
 import freemarker.core.Environment;
@@ -137,7 +137,7 @@ public class OfbizSeoUrlTransform implements TemplateTransformModel {
         {
             try 
             {
-                List<GenericValue> productCategoryMembers = EntityUtil.filterByDate(delegator.findByAndCache("ProductCategoryMember", UtilMisc.toMap("productCategoryId", productCategoryId)), true);
+                List<GenericValue> productCategoryMembers = EntityUtil.filterByDate(EntityQuery.use(delegator).from("ProductCategoryMember").where("productCategoryId", productCategoryId).cache().queryList(), true);
                 if (UtilValidate.isNotEmpty(productCategoryMembers))
                 {
                     count = productCategoryMembers.size();
@@ -180,7 +180,7 @@ public class OfbizSeoUrlTransform implements TemplateTransformModel {
             {
                 try
                 {
-                    GenericValue category = EntityUtil.getFirst(EntityUtil.filterByDate(delegator.findByAndCache("ProductCategoryMember", UtilMisc.toMap("productId", productId)), true));
+                    GenericValue category = EntityUtil.getFirst(EntityUtil.filterByDate(EntityQuery.use(delegator).from("ProductCategoryMember").where("productId", productId).cache().queryList(), true));
                     if (UtilValidate.isNotEmpty(category))
                     {
                         productCategoryId = category.getString("productCategoryId");

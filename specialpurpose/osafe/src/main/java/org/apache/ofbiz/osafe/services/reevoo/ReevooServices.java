@@ -26,6 +26,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.category.CategoryWorker;
 import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.GenericServiceException;
@@ -105,7 +106,7 @@ public class ReevooServices {
         List<GenericValue> rollups = null;
 
         try {
-            rollups = delegator.findByAndCache("ProductCategoryRollup", UtilMisc.toMap("parentProductCategoryId", parentId), UtilMisc.toList("sequenceNum"));
+            rollups = EntityQuery.use(delegator).from("ProductCategoryRollup").where("parentProductCategoryId", parentId).cache().queryList();
             if (limitView) {
                 rollups = EntityUtil.filterByDate(rollups, true);
             }
@@ -168,7 +169,7 @@ public class ReevooServices {
         List<GenericValue> rollups = null;
 
         try {
-            rollups = delegator.findByAndCache("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", productCategoryId), UtilMisc.toList("sequenceNum"));
+            rollups = EntityQuery.use(delegator).from("ProductCategoryRollup").where("productCategoryId", productCategoryId).cache().queryList();
             rollups = EntityUtil.filterByDate(rollups, true);
         } catch (GenericEntityException e) {
             Debug.logWarning(e.getMessage(), module);

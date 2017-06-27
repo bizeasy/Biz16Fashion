@@ -16,6 +16,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 public class FacetValueSequenceComparator implements Comparator {
     private static final String module = FacetValueSequenceComparator.class.getName();
@@ -126,7 +127,7 @@ public class FacetValueSequenceComparator implements Comparator {
         String[] orderedValues = null;
         if (UtilValidate.isNotEmpty(this.productFeatureGroupId)) {
             try {
-                List<GenericValue> productFeatureGroupAppls = delegator.findByAndCache("ProductFeatureGroupAppl", UtilMisc.toMap("productFeatureGroupId", this.productFeatureGroupId));
+                List<GenericValue> productFeatureGroupAppls = EntityQuery.use(delegator).from("ProductFeatureGroupAppl").where("productFeatureGroupId", this.productFeatureGroupId).cache().queryList();
                 productFeatureGroupAppls = EntityUtil.filterByDate(productFeatureGroupAppls);
                 productFeatureGroupAppls = EntityUtil.orderBy(productFeatureGroupAppls, UtilMisc.toList("sequenceNum"));
                 List<GenericValue> productFeatures = new LinkedList<GenericValue>();

@@ -616,7 +616,7 @@ public class Util {
                 }
                 if (UtilValidate.isNotEmpty(storeId))
                 {
-                    List lProductStoreParam = delegator.findByAndCache("XProductStoreParm", UtilMisc.toMap("productStoreId", storeId));
+                    List lProductStoreParam = EntityQuery.use(delegator).from("XProductStoreParm").where("productStoreId", storeId).cache().queryList();
                     if (UtilValidate.isNotEmpty(lProductStoreParam))
                     {
                           Iterator parmIter = lProductStoreParam.iterator();
@@ -1149,7 +1149,7 @@ public class Util {
         if(UtilValidate.isNotEmpty(productId) && UtilValidate.isNotEmpty(productPriceTypeId))
         {
             try {
-                productPriceList = delegator.findByAndCache("ProductPrice", UtilMisc.toMap("productId", productId, "productPriceTypeId", productPriceTypeId,"productPricePurposeId", productPricePurposeId), UtilMisc.toList("-fromDate"));
+                productPriceList = EntityQuery.use(delegator).from("ProductPrice").where("productId", productId, "productPriceTypeId", productPriceTypeId,"productPricePurposeId", productPricePurposeId).cache().queryList();
                 if(UtilValidate.isNotEmpty(productPriceList))
                 {
                     productPriceListFiltered = EntityUtil.filterByDate(productPriceList);
