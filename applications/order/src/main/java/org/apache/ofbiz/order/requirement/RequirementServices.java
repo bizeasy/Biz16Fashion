@@ -20,6 +20,7 @@ package org.apache.ofbiz.order.requirement;
 
 import java.util.*;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
