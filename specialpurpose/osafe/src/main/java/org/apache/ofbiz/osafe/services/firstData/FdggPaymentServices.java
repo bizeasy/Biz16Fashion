@@ -133,7 +133,7 @@ public class FdggPaymentServices {
         try 
         {
         	//Put the credit card and address associated with the card into context for the build Transaction methods
-            creditCard = delegator.getRelatedOne("CreditCard",orderPaymentPreference);
+            creditCard = orderPaymentPreference.getRelatedOne("CreditCard", false);
             context.put("creditCard", creditCard);
             if (UtilValidate.isNotEmpty(creditCard.getString("contactMechId"))) 
             {
@@ -215,7 +215,7 @@ public class FdggPaymentServices {
         try 
         {
         	//Put the credit card and address associated with the card into context for the build Transaction methods
-            creditCard = delegator.getRelatedOne("CreditCard",orderPaymentPreference);
+            creditCard = orderPaymentPreference.getRelatedOne("CreditCard", false);
             context.put("creditCard", creditCard);
             if (UtilValidate.isNotEmpty(creditCard.getString("contactMechId"))) 
             {
@@ -303,7 +303,7 @@ public class FdggPaymentServices {
         try 
         {
         	//Put the credit card and address associated with the card into context for the build Transaction methods
-            creditCard = delegator.getRelatedOne("CreditCard",orderPaymentPreference);
+            creditCard = orderPaymentPreference.getRelatedOne("CreditCard", false);
             context.put("creditCard", creditCard);
             if (UtilValidate.isNotEmpty(creditCard.getString("contactMechId"))) 
             {
@@ -385,7 +385,7 @@ public class FdggPaymentServices {
         try 
         {
         	//Put the credit card and address associated with the card into context for the build Transaction methods
-            creditCard = delegator.getRelatedOne("CreditCard",orderPaymentPreference);
+            creditCard = orderPaymentPreference.getRelatedOne("CreditCard", false);
             context.put("creditCard", creditCard);
             if (UtilValidate.isNotEmpty(creditCard.getString("contactMechId"))) 
             {
