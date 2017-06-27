@@ -3,6 +3,7 @@ package org.apache.ofbiz.osafe.solr;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
 
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.LinkedList;
 
 public class StringUtils {
     public static <T> String classToXMLName(Class<T> klass) {
