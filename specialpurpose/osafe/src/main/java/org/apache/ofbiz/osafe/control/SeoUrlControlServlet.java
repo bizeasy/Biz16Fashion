@@ -50,6 +50,7 @@ import org.apache.ofbiz.webapp.control.RequestHandlerExceptionAllowExternalReque
 import org.apache.ofbiz.webapp.stats.ServerHitBin;
 import org.apache.ofbiz.webapp.stats.VisitHandler;
 
+import org.apache.ofbiz.base.util.UtilCodec.HtmlEncoder;
 import freemarker.ext.servlet.ServletContextHashModel;
 
 /**
@@ -270,7 +271,9 @@ public class SeoUrlControlServlet extends ControlServlet
                 if (Debug.verboseOn()) Debug.logVerbose(throwable, module);
             } else {
                 Debug.logError(throwable, "Error in request handler: ", module);
-                StringUtil.HtmlEncoder encoder = new StringUtil.HtmlEncoder();
+                //StringUtil.HtmlEncoder encoder = new StringUtil.HtmlEncoder();
+                HtmlEncoder encoder = new HtmlEncoder();
+                
                 request.setAttribute("_ERROR_MESSAGE_", encoder.encode(throwable.toString()));
                 errorPage = requestHandler.getDefaultErrorPage(request);
             }
@@ -279,7 +282,8 @@ public class SeoUrlControlServlet extends ControlServlet
               Debug.logInfo("Going to external page: " + request.getPathInfo(), module);
         } catch (Exception e) {
             Debug.logError(e, "Error in request handler: ", module);
-            StringUtil.HtmlEncoder encoder = new StringUtil.HtmlEncoder();
+            //StringUtil.HtmlEncoder encoder = new StringUtil.HtmlEncoder();
+            HtmlEncoder encoder = new HtmlEncoder();
             request.setAttribute("_ERROR_MESSAGE_", encoder.encode(e.toString()));
             errorPage = requestHandler.getDefaultErrorPage(request);
         }
