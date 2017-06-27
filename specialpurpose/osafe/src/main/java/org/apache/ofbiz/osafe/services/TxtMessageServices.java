@@ -23,6 +23,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.LocalDispatcher;
@@ -335,13 +336,13 @@ public class TxtMessageServices {
             {
                 productStoreId = getProductStoreIdFromOrder(dctx, context);
             }
-            GenericValue content = delegator.findByPrimaryKeyCache("Content", UtilMisc.toMap("contentId", contentId));
+            GenericValue content = EntityQuery.use(delegator).from("Content").where(UtilMisc.toMap("contentId", contentId)).cache().queryOne();
             
             GenericValue party = null;
             boolean isPartyTextPreferenceTrue = false;
             if(UtilValidate.isNotEmpty(partyId))
             {
-                party = delegator.findByPrimaryKeyCache("Party", UtilMisc.toMap("partyId", partyId));
+                party = EntityQuery.use(delegator).from("Party").where(UtilMisc.toMap("partyId", partyId)).cache().queryOne();
                 isPartyTextPreferenceTrue = getPartyTextPreference(party);
             }
             if(UtilValidate.isEmpty(toCell) && UtilValidate.isNotEmpty(party))
@@ -449,7 +450,7 @@ public class TxtMessageServices {
             if (UtilValidate.isNotEmpty(partyId)) 
             {
                 GenericValue gvParty = null;
-                gvParty = delegator.findByPrimaryKeyCache("Party", UtilMisc.toMap("partyId", partyId));
+                gvParty = EntityQuery.use(delegator).from("Party").where(UtilMisc.toMap("partyId", partyId)).cache().queryOne();
                 
                 if (UtilValidate.isNotEmpty(gvParty)) 
                 {
@@ -584,11 +585,11 @@ public class TxtMessageServices {
                         if(UtilValidate.isNotEmpty(countryGeoId))
                         {
                             
-                            GenericValue geo = delegator.findByPrimaryKeyCache("Geo", UtilMisc.toMap("geoId", countryGeoId));
+                            GenericValue geo = EntityQuery.use(delegator).from("Geo").where(UtilMisc.toMap("geoId", countryGeoId)).cache().queryOne();
                             String geoCode =  geo.getString("geoCode");
                             if(UtilValidate.isNotEmpty(geoCode))
                             {
-                                GenericValue countryTeleCodeGv = delegator.findByPrimaryKeyCache("CountryTeleCode", UtilMisc.toMap("countryCode", geoCode));
+                                GenericValue countryTeleCodeGv = EntityQuery.use(delegator).from("CountryTeleCode").where(UtilMisc.toMap("countryCode", geoCode)).cache().queryOne();
                                 if(UtilValidate.isNotEmpty(countryTeleCodeGv))
                                 {
                                     countryTeleCode = countryTeleCodeGv.getString("teleCode");

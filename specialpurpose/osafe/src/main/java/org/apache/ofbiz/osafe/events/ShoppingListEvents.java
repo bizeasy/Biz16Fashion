@@ -32,6 +32,7 @@ import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
 import org.apache.ofbiz.service.ServiceUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 /**
  * Shopping cart events.
@@ -87,7 +88,7 @@ public class ShoppingListEvents
         {
         	if (UtilValidate.isEmpty(userLogin) && UtilValidate.isNotEmpty(visitorId))
         	{
-                GenericValue adminLogin = delegator.findByPrimaryKeyCache("UserLogin",UtilMisc.toMap("userLoginId","admin"));
+                GenericValue adminLogin = EntityQuery.use(delegator).from("UserLogin").where(UtilMisc.toMap("userLoginId", "admin")).cache().queryOne();
             	if (UtilValidate.isNotEmpty(adminLogin))
             	{
             		userLogin=adminLogin;

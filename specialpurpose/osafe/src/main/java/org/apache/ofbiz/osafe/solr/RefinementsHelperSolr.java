@@ -36,6 +36,7 @@ import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
@@ -1518,7 +1519,7 @@ public class RefinementsHelperSolr {
                 {
                     SolrIndexDocument solrIndexDocument = (SolrIndexDocument)itr.next();
                     String productId = solrIndexDocument.getProductId();
-                    GenericValue product = delegator.findByPrimaryKeyCache("Product", UtilMisc.toMap("productId", productId));
+                    GenericValue product = EntityQuery.use(delegator).from("Product").where(UtilMisc.toMap("productId", productId)).cache().queryOne();
                     if (cart.isSalesOrder()) 
                     {
                     	Map priceContext = new HashMap<>();

@@ -77,6 +77,8 @@ import org.apache.ofbiz.base.util.GeneralException;
 
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.osafe.services.TaxServices;
+import org.apache.ofbiz.entity.util.EntityQuery;
+
 
 /**
  * Events used for processing checkout and orders.
@@ -117,7 +119,8 @@ public class CheckOutEvents {
              * A bit of a hack here to get the admin user since to capture payments and complete the order requires a user who has
              * the proper security permissions
              */
-            GenericValue sysLogin = delegator.findByPrimaryKeyCache("UserLogin", UtilMisc.toMap("userLoginId", "admin"));
+            GenericValue sysLogin = EntityQuery.use(delegator).from("UserLogin").where(UtilMisc.toMap("userLoginId", "admin")).cache().queryOne();
+
             
             List<GenericValue> lOrderPaymentPreference = delegator.findByAnd("OrderPaymentPreference", UtilMisc.toMap("orderId", orderId, "statusId", "PAYMENT_AUTHORIZED"));
             if (UtilValidate.isNotEmpty(lOrderPaymentPreference)) 
@@ -203,7 +206,7 @@ public class CheckOutEvents {
         {
         	if (UtilValidate.isEmpty(userLogin))
         	{
-        		userLogin = delegator.findByPrimaryKeyCache("UserLogin", UtilMisc.toMap("userLoginId", "admin"));
+        		userLogin = EntityQuery.use(delegator).from("UserLogin").where(UtilMisc.toMap("userLoginId", "admin")).cache().queryOne();
         		
         	}
         	for (Iterator<?> item = sc.iterator(); item.hasNext();) 
@@ -283,7 +286,7 @@ public class CheckOutEvents {
                 
             	if (UtilValidate.isEmpty(userLogin))
             	{
-            		userLogin = delegator.findByPrimaryKeyCache("UserLogin", UtilMisc.toMap("userLoginId", "admin"));
+            		userLogin = EntityQuery.use(delegator).from("UserLogin").where(UtilMisc.toMap("userLoginId", "admin")).cache().queryOne();
             		
             	}
                 

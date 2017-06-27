@@ -22,6 +22,7 @@ import org.apache.ofbiz.entity.DelegatorFactory;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.order.OrderServices;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.product.ProductWorker;
@@ -151,7 +152,7 @@ public class InventoryServices {
     	String inventoryMethod = Util.getProductStoreParm(productStoreId, "INVENTORY_METHOD");
     	GenericValue userLogin = null;
 		try {
-			userLogin = delegator.findByPrimaryKeyCache("UserLogin",UtilMisc.toMap("userLoginId", "system"));
+			userLogin = EntityQuery.use(delegator).from("UserLogin").where(UtilMisc.toMap("userLoginId", "system")).cache().queryOne();
 		} catch (GenericEntityException e1) {
 			e1.printStackTrace();
 		}

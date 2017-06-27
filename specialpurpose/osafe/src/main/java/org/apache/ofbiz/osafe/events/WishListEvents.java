@@ -30,6 +30,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartHelper;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
@@ -647,7 +648,7 @@ public class WishListEvents {
                 {
                     String shoppingListItemSeqId = (String) paramMap.get(parameterName);
                     Map findMap = UtilMisc.toMap("shoppingListId", shoppingListId, "shoppingListItemSeqId", shoppingListItemSeqId);
-                    GenericValue shoppingListItem = delegator.findByPrimaryKeyCache("ShoppingListItem", findMap);
+                    GenericValue shoppingListItem = EntityQuery.use(delegator).from("ShoppingListItem").where(findMap).cache().queryOne();
                     if (shoppingListItem == null)
                     {
                     	return "error";
@@ -787,7 +788,7 @@ public class WishListEvents {
                 {
                     String shoppingListItemSeqId = parameterName.substring(parameterName.lastIndexOf('_') + 1);
                     Map findMap = UtilMisc.toMap("shoppingListId", shoppingListId, "shoppingListItemSeqId", shoppingListItemSeqId);
-                    GenericValue shoppingListItem = delegator.findByPrimaryKeyCache("ShoppingListItem", findMap);
+                    GenericValue shoppingListItem = EntityQuery.use(delegator).from("ShoppingListItem").where(findMap).cache().queryOne();
                     if (shoppingListItem == null)
                     {
                     	return "error";

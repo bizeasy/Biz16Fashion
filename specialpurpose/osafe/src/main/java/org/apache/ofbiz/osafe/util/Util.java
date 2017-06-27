@@ -43,6 +43,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.DelegatorFactory;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.service.ServiceUtil;
 import org.w3c.tidy.Tidy;
@@ -471,7 +472,7 @@ public class Util {
         {
             Debug.logInfo("geoId: " + geoId, module);
 
-            geo = delegator.findByPrimaryKeyCache("Geo", UtilMisc.toMap("geoId", geoId.toUpperCase()));
+            geo = EntityQuery.use(delegator).from("Geo").where(UtilMisc.toMap("geoId", geoId.toUpperCase())).cache().queryOne();
             Debug.logInfo("Found a geo entity " + geo, module);
             if (UtilValidate.isNotEmpty(geo)) 
             {
@@ -606,7 +607,7 @@ public class Util {
             
                 if (UtilValidate.isEmpty(productStoreId))
                 {
-                    GenericValue webSite = delegator.findByPrimaryKeyCache("WebSite", UtilMisc.toMap("webSiteId", webSiteId));
+                    GenericValue webSite = EntityQuery.use(delegator).from("WebSite").where(tilMisc.toMap("webSiteId", webSiteId)).cache().queryOne();
                     storeId=webSite.getString("productStoreId");
                 }
                 else

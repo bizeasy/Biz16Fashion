@@ -1222,11 +1222,11 @@ public class SolrEvents
         {
             if ("GENERAL_LOCATION".equals(address.get("contactMechPurposeTypeId")))
             {
-                generalAddress = delegator.findByPrimaryKeyCache("PostalAddress", UtilMisc.toMap("contactMechId", address.getString("contactMechId")));
+                generalAddress = EntityQuery.use(delegator).from("PostalAddress").where(UtilMisc.toMap("contactMechId", address.getString("contactMechId"))).cache().queryOne();
             }
             else if ("SHIP_ORIG_LOCATION".equals(address.get("contactMechPurposeTypeId")))
             {
-                originAddress = delegator.findByPrimaryKeyCache("PostalAddress", UtilMisc.toMap("contactMechId", address.getString("contactMechId")));
+                originAddress = EntityQuery.use(delegator).from("PostalAddress").where(UtilMisc.toMap("contactMechId", address.getString("contactMechId"))).cache().queryOne();
 
             }
         }
@@ -1245,7 +1245,7 @@ public class SolrEvents
         if (UtilValidate.isNotEmpty(postalAddress.getString("countryGeoId")) && UtilValidate.isNotEmpty(postalAddress.getString("postalCode")))
         {
             // first try the shortcut with the geoId convention for "{countryGeoId}-{postalCode}"
-            GenericValue geo = delegator.findByPrimaryKeyCache("Geo", UtilMisc.toMap("geoId", postalAddress.getString("countryGeoId") + "-" + postalAddress.getString("postalCode")));
+            GenericValue geo = EntityQuery.use(delegator).from("Geo").where( UtilMisc.toMap("geoId", postalAddress.getString("countryGeoId") + "-" + postalAddress.getString("postalCode"))).cache().queryOne();
             if (geo != null) 
             {
                 // save the value to the postalAddress for quicker future reference

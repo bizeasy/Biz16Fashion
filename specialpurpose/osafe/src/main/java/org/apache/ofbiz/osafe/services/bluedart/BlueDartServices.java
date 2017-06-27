@@ -12,6 +12,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.DelegatorFactory;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
@@ -33,7 +34,7 @@ public class BlueDartServices
     		GenericValue blueDartPrepaid = null;
 			try 
 			{
-				blueDartPrepaid = delegator.findByPrimaryKeyCache("BlueDartPrepaid", UtilMisc.toMap("pincode",pincode));
+				blueDartPrepaid = EntityQuery.use(delegator).from("BlueDartPrepaid").where(UtilMisc.toMap("pincode",pincode)).cache().queryOne();
 			} 
 			catch (GenericEntityException e) 
 			{
@@ -62,7 +63,7 @@ public class BlueDartServices
 		    GenericValue blueDartCodpin = null;
 		    try 
 		    {
-		    	blueDartCodpin = delegator.findByPrimaryKeyCache("BlueDartCodpin", UtilMisc.toMap("pincode",pincode));
+		    	blueDartCodpin = EntityQuery.use(delegator).from("BlueDartCodpin").where(UtilMisc.toMap("pincode",pincode)).cache().queryOne();
 		    }  
 		    catch (GenericEntityException e) 
 		    {
