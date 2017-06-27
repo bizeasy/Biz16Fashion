@@ -507,7 +507,7 @@ public class RefinementsHelperSolr {
             while (priceRange > 0) 
             {
             	String priceRangeMap =  "price:[" + (rangeLowVal) + " " + rangeHighVal + "]";
-                int productCount = getProductCountsInRange(resultsDoc, rangeLowVal, rangeHighVal).get(priceRangeMap);
+                int productCount = (int) getProductCountsInRange(resultsDoc, rangeLowVal, rangeHighVal).get(priceRangeMap);
                 // if facetMultiSelectTrue is true then show the count even product count is zero
                 if (productCount > 0 || facetMultiSelectTrue)
                 {
@@ -518,7 +518,7 @@ public class RefinementsHelperSolr {
                     while (tempPriceRange > 0 && !facetMultiSelectTrue) 
                     {
                     	String priceRangeQueryTemp = "price:[" + (tempRangeLowVal) + " " + tempRangeHighVal + "]";
-                    	int productCounttemp = getProductCountsInRange(resultsDoc, tempRangeLowVal, tempRangeHighVal).get(priceRangeQueryTemp);
+                    	int productCounttemp = (int) getProductCountsInRange(resultsDoc, tempRangeLowVal, tempRangeHighVal).get(priceRangeQueryTemp);
                         if (productCounttemp > 0)
                         {
                             break;

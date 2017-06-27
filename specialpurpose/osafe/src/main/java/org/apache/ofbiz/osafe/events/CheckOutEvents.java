@@ -584,7 +584,7 @@ public class CheckOutEvents {
 							taxedPartyContactMechPurpose = EntityUtil.filterByDate(taxedPartyContactMechPurpose,true);
 
 							List<GenericValue> taxedPartyGeneralLocations = EntityUtil.filterByAnd(taxedPartyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"));
-							taxedPartyGeneralLocations = taxedPartyGeneralLocations.getRelated("PartyContactMech", null, null, true);
+							taxedPartyGeneralLocations = (EntityUtil.getFirst(taxedPartyGeneralLocations)).getRelated("PartyContactMech", null, null, true);
 							taxedPartyGeneralLocations = EntityUtil.filterByDate(taxedPartyGeneralLocations,true);
 							taxedPartyGeneralLocations = EntityUtil.orderBy(taxedPartyGeneralLocations, UtilMisc.toList("fromDate DESC"));
 							if(UtilValidate.isNotEmpty(taxedPartyGeneralLocations))

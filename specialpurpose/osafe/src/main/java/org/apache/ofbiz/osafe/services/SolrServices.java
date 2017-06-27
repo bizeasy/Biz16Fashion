@@ -1703,7 +1703,7 @@ public class SolrServices {
 
          if (documentList == null) 
          {
-             documentList = new LinkedList<String>();
+             documentList = new LinkedList<ProductDocument>();
          }
          result.put("documentListCount", documentList.size());
 

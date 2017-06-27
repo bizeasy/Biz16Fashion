@@ -600,7 +600,7 @@ public class OsafeManageMerge {
         {
             if (isNotEmpty(xmlDocument))
             {
-                List<? extends Node> nodeList = new LinkedList<? extends Node>();
+                List<? extends Node> nodeList = new LinkedList<>();
                 if (isNotEmpty(activChildName))
                 {
                     nodeList = UtilXml.childElementList(xmlDocument.getDocumentElement(), activChildName);
