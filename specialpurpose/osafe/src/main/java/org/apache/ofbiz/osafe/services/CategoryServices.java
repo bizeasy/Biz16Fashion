@@ -92,7 +92,7 @@ public class CategoryServices extends HttpServlet {
             }
             else
             {
-            	rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("parentProductCategoryId", parentId), UtilMisc.toList("sequenceNum"));
+            	rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("parentProductCategoryId", parentId), UtilMisc.toList("sequenceNum"), false);
             	
             }
             if (limitView) {

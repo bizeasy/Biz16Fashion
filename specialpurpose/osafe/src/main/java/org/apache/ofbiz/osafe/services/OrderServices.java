@@ -35,7 +35,7 @@ public class OrderServices {
         try {
 
             List<GenericValue> clientOrders = null;
-            clientOrders = delegator.findByAnd("OrderHeader", UtilMisc.toMap("statusId", "ORDER_APPROVED"));
+            clientOrders = delegator.findByAnd("OrderHeader", UtilMisc.toMap("statusId", "ORDER_APPROVED"), null, false);
 
             for (GenericValue order : clientOrders) {
                 String orderId = order.getString("orderId");

@@ -147,7 +147,7 @@ public class ShoppingListServices {
                                 String autoCapture =Util.getProductStoreParm(delegator,listCart.getProductStoreId(), "CHECKOUT_CC_CAPTURE_FLAG");
                                 if (!(UtilValidate.isNotEmpty(autoCapture) && "FALSE".equals(autoCapture.toUpperCase())))
                                 {
-                                    List lOrderPaymentPreference = delegator.findByAnd("OrderPaymentPreference", UtilMisc.toMap("orderId", orderId, "statusId", "PAYMENT_AUTHORIZED"));
+                                    List lOrderPaymentPreference = delegator.findByAnd("OrderPaymentPreference", UtilMisc.toMap("orderId", orderId, "statusId", "PAYMENT_AUTHORIZED"), null, false);
                                     if (UtilValidate.isNotEmpty(lOrderPaymentPreference)) 
                                     {
                                         /*
@@ -269,7 +269,7 @@ public class ShoppingListServices {
             String currencyUom = shoppingList.getString("currencyUom");
             String webSiteId = null;
             try {
-                List <GenericValue>lWebsites = delegator.findByAnd("WebSite", UtilMisc.toMap("productStoreId", productStoreId));
+                List <GenericValue>lWebsites = delegator.findByAnd("WebSite", UtilMisc.toMap("productStoreId", productStoreId), null, false);
                 if (UtilValidate.isNotEmpty(lWebsites)) 
                 {
                 	GenericValue webSite = EntityUtil.getFirst(lWebsites);

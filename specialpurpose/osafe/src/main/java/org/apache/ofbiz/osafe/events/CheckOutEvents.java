@@ -123,7 +123,7 @@ public class CheckOutEvents {
             GenericValue sysLogin = EntityQuery.use(delegator).from("UserLogin").where(UtilMisc.toMap("userLoginId", "admin")).cache().queryOne();
 
             
-            List<GenericValue> lOrderPaymentPreference = delegator.findByAnd("OrderPaymentPreference", UtilMisc.toMap("orderId", orderId, "statusId", "PAYMENT_AUTHORIZED"));
+            List<GenericValue> lOrderPaymentPreference = delegator.findByAnd("OrderPaymentPreference", UtilMisc.toMap("orderId", orderId, "statusId", "PAYMENT_AUTHORIZED"), null, false);
             if (UtilValidate.isNotEmpty(lOrderPaymentPreference)) 
             {
                 /*

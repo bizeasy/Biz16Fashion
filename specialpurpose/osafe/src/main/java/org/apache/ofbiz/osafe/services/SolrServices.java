@@ -505,7 +505,7 @@ public class SolrServices {
                                     
                                    List<GenericValue> rollups = null;
 
-                                   rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", productCategoryMember.getString("productCategoryId")), UtilMisc.toList("sequenceNum"));
+                                   rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", productCategoryMember.getString("productCategoryId")), UtilMisc.toList("sequenceNum"), false);
                                    rollups = EntityUtil.filterByDate(rollups);
                                    
                                     GenericValue gvTopMostCategory = null;
@@ -726,7 +726,7 @@ public class SolrServices {
 
         try 
         {
-            rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("parentProductCategoryId", parentId), UtilMisc.toList("sequenceNum"));
+            rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("parentProductCategoryId", parentId), UtilMisc.toList("sequenceNum"), false);
             if (limitView) 
             {
                 rollups = EntityUtil.filterByDate(rollups, true);
@@ -804,7 +804,7 @@ public class SolrServices {
 
         try 
         {
-            rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", productCategoryId), UtilMisc.toList("sequenceNum"));
+            rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", productCategoryId), UtilMisc.toList("sequenceNum"), false);
             rollups = EntityUtil.filterByDate(rollups, true);
         } 
         catch (GenericEntityException e) 
@@ -895,7 +895,7 @@ public class SolrServices {
                     // ##################################################
                     if (parentFieldNode!= null && parentCopyFieldNode!= null) 
                     {
-                        List<GenericValue>  productFeatureTypeIdList=delegator.findByAnd("ProductFeatureType", UtilMisc.toMap());
+                        List<GenericValue>  productFeatureTypeIdList=delegator.findByAnd("ProductFeatureType", UtilMisc.toMap(), null, false);
                         for (GenericValue productFeatureType: productFeatureTypeIdList) 
                         {
                             addFeatureElementCount++;
@@ -1503,7 +1503,7 @@ public class SolrServices {
 		
         List<GenericValue> rollups = null;
 
-        rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", productCategoryMember.getString("productCategoryId")), UtilMisc.toList("sequenceNum"));
+        rollups = delegator.findByAnd("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", productCategoryMember.getString("productCategoryId")), UtilMisc.toList("sequenceNum"), false);
         rollups = EntityUtil.filterByDate(rollups);
                            
 		GenericValue gvTopMostCategory = null;

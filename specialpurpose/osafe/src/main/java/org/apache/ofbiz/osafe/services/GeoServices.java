@@ -48,7 +48,7 @@ public class GeoServices {
             conditions.put("roleTypeId", "STORE_LOCATION");
         }
         try {
-            List<GenericValue> partyRoleList = delegator.findByAnd("PartyRole", conditions);
+            List<GenericValue> partyRoleList = delegator.findByAnd("PartyRole", conditions, null, false);
             for (GenericValue partyRole : partyRoleList) {
                 try {
                     GenericValue party = partyRole.getRelatedOne("Party", true);

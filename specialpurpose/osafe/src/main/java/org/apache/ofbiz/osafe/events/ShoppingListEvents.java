@@ -63,7 +63,7 @@ public class ShoppingListEvents
         if (UtilValidate.isNotEmpty(visitorId) ) 
         {
 	        Map findMap = UtilMisc.toMap("visitorId", visitorId, "productStoreId", productStoreId, "shoppingListTypeId", "SLT_SPEC_PURP", "listName", PERSISTANT_LIST_NAME);
-	        List existingLists = delegator.findByAnd("ShoppingList", findMap);
+	        List existingLists = delegator.findByAnd("ShoppingList", findMap, null, false);
 	        Debug.logInfo("Finding existing auto-save shopping list with:  \nfindMap: " + findMap + "\nlists: " + existingLists, module);
 	
 	        if ( UtilValidate.isNotEmpty(existingLists)) 
@@ -75,7 +75,7 @@ public class ShoppingListEvents
         else if (UtilValidate.isNotEmpty(partyId))
         {
 	        Map findMap = UtilMisc.toMap("partyId", partyId, "productStoreId", productStoreId, "shoppingListTypeId", "SLT_SPEC_PURP", "listName", PERSISTANT_LIST_NAME);
-	        List existingLists = delegator.findByAnd("ShoppingList", findMap);
+	        List existingLists = delegator.findByAnd("ShoppingList", findMap, null, false);
 	        Debug.logInfo("Finding existing auto-save shopping list with:  \nfindMap: " + findMap + "\nlists: " + existingLists, module);
 	
 	        if (UtilValidate.isNotEmpty(existingLists)) 
@@ -210,7 +210,7 @@ public class ShoppingListEvents
                {
             	   if (cartItems.size() == 0)
             	   {
-                       List<GenericValue> lShopItems = delegator.findByAnd("ShoppingListItem", UtilMisc.toMap("shoppingListId", autoSaveListId));
+                       List<GenericValue> lShopItems = delegator.findByAnd("ShoppingListItem", UtilMisc.toMap("shoppingListId", autoSaveListId), null, false);
                        if (lShopItems.size() > 0)
                        {
                           delegator.removeByAnd("ShoppingListItem", UtilMisc.toMap("shoppingListId", autoSaveListId));
@@ -327,7 +327,7 @@ public class ShoppingListEvents
             GenericValue shoppingList = null;
             try 
             {
-                shoppingList = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListId", shoppingListId).queryOne();
+                shoppingList = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListId", autoSaveListId).queryOne();
             } 
             catch (GenericEntityException e) 
             {
@@ -438,7 +438,7 @@ public class ShoppingListEvents
                     java.sql.Timestamp lastLoad = cart.getLastListRestore();
                     if (lastLoad == null)
                     {
-                        List lShopItems = delegator.findByAnd("ShoppingListItem", UtilMisc.toMap("shoppingListId", autoSaveListId));
+                        List lShopItems = delegator.findByAnd("ShoppingListItem", UtilMisc.toMap("shoppingListId", autoSaveListId), null, false);
                         if (lShopItems.size() > 0)
                         {
                             org.apache.ofbiz.order.shoppinglist.ShoppingListEvents.addListToCart(delegator, dispatcher, cart, CatalogWorker.getCurrentCatalogId(request), autoSaveListId, false, false, true);

@@ -764,7 +764,7 @@ public class ShoppingCartEvents {
         //REMOVE EXISTING ORDER_ITEM_ATTRIBUTES
         List<GenericValue> orderItemAttributes = new LinkedList<GenericValue>();
 		try {
-			orderItemAttributes = delegator.findByAnd("OrderItemAttribute", UtilMisc.toMap("orderId", orderId, "orderItemSeqId", orderItemSeqId));
+			orderItemAttributes = delegator.findByAnd("OrderItemAttribute", UtilMisc.toMap("orderId", orderId, "orderItemSeqId", orderItemSeqId), null, false);
 		} catch (GenericEntityException e1) {
 			e1.printStackTrace();
 		}
@@ -1949,7 +1949,7 @@ public class ShoppingCartEvents {
             
             List<GenericValue> fileExtension = new LinkedList<GenericValue>();
             try {
-                fileExtension = delegator.findByAnd("FileExtension", UtilMisc.toMap("mimeTypeId", contentType));
+                fileExtension = delegator.findByAnd("FileExtension", UtilMisc.toMap("mimeTypeId", contentType), null, false);
             } catch (GenericEntityException e) {
                 Debug.logError(e, module);
                 return ServiceUtil.returnError(e.getMessage());
