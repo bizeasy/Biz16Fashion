@@ -34,7 +34,6 @@ import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import org.apache.axis2.transport.http.HttpTransportProperties;
 import org.apache.ofbiz.accounting.payment.PaymentGatewayServices;
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.base.util.GeneralException;

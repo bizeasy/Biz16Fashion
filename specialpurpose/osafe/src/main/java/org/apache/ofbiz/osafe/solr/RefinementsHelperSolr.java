@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 
 
 
-import org.apache.commons.collections.primitives.adapters.CollectionByteCollection;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.solr.client.solrj.SolrQuery;
