@@ -48,6 +48,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.category.CategoryWorker;
 
 /**
@@ -86,7 +87,7 @@ public class CategoryServices extends HttpServlet {
         try {
             if (useCache)
             {
-            	rollups = delegator.findByAndCache("ProductCategoryRollup", UtilMisc.toMap("parentProductCategoryId", parentId), UtilMisc.toList("sequenceNum"));
+            	rollups = EntityQuery.use(delegator).from("ProductCategoryRollup").where("parentProductCategoryId", parentId).cache().queryList();
             }
             else
             {

@@ -15,6 +15,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart;
 import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.LocalDispatcher;
@@ -231,7 +232,7 @@ public class StoreCreditServices
         GenericValue gv = null;
         try
         {
-            List<GenericValue> finAccounts = delegator.findByAndCache("FinAccountAndRole", UtilMisc.toMap("partyId", partyId, "roleTypeId", "OWNER", "statusId", "FNACT_ACTIVE"));
+            List<GenericValue> finAccounts = EntityQuery.use(delegator).from("FinAccountAndRole").where("partyId", partyId, "roleTypeId", "OWNER", "statusId", "FNACT_ACTIVE").cache().queryList();
             finAccounts = EntityUtil.filterByDate(finAccounts);
             gv =  EntityUtil.getFirst(finAccounts);
         }

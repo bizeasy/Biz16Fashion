@@ -12,6 +12,7 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.ContactHelper;
 import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.LocalDispatcher;
@@ -91,7 +92,7 @@ public class GeoServices {
                         osafeGeo = OsafeGeo.fromAddress(address.toString(),productStoreId);
                     }
 
-                    List<GenericValue> partyGeoPointList = delegator.findByAndCache("PartyGeoPoint", UtilMisc.toMap("partyId", partyId));
+                    List<GenericValue> partyGeoPointList = EntityQuery.use(delegator).from("PartyGeoPoint").where("partyId", partyId).cache().queryList();
                     partyGeoPointList = EntityUtil.filterByDate(partyGeoPointList, true);
                     if (UtilValidate.isNotEmpty(partyGeoPointList) && osafeGeo.isNotEmpty()) {
                         GenericValue partyGeoPoint  = EntityUtil.getFirst((List<GenericValue>) partyGeoPointList);

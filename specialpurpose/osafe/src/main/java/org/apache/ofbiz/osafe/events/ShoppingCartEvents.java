@@ -47,6 +47,7 @@ import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.shoppingcart.CartItemModifyException;
 import org.apache.ofbiz.order.shoppingcart.CheckOutHelper;
 import org.apache.ofbiz.order.shoppingcart.ItemNotFoundException;
@@ -181,7 +182,7 @@ public class ShoppingCartEvents {
             			/* Add All Product Feature Appls to the Cart Types (STANDARD_FEATURE, DISTINGUISHING_FEATURE)
             			 * 
             			 */
-                		List<GenericValue> lProductFeatureAndAppl = product.getRelatedCache("ProductFeatureAndAppl");
+                		List<GenericValue> lProductFeatureAndAppl = product.getRelated("ProductFeatureAndAppl", null, null, true);
                 		lProductFeatureAndAppl = EntityUtil.filterByDate(lProductFeatureAndAppl);
                 		for(GenericValue productFeatureAndAppl : lProductFeatureAndAppl)
             	    	{
@@ -1611,8 +1612,7 @@ public class ShoppingCartEvents {
                     try 
                     {
                         
-                        Map findMap = UtilMisc.toMap("visitorId", sVisitorId, "productStoreId", cart.getProductStoreId(), "shoppingListTypeId", "SLT_SPEC_PURP", "listName", org.apache.ofbiz.order.shoppinglist.ShoppingListEvents.PERSISTANT_LIST_NAME);
-                        List existingLists = delegator.findByAndCache("ShoppingList", findMap);
+                        List existingLists = EntityQuery.use(delegator).from("ShoppingList").where("visitorId", sVisitorId, "productStoreId", cart.getProductStoreId(), "shoppingListTypeId", "SLT_SPEC_PURP", "listName", org.apache.ofbiz.order.shoppinglist.ShoppingListEvents.PERSISTANT_LIST_NAME).cache().queryList();
                         GenericValue list = null;
                         if (existingLists != null && !existingLists.isEmpty()) 
                         {

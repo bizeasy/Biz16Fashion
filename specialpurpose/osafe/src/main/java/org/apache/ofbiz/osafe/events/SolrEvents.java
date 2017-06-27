@@ -51,6 +51,7 @@ import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 
@@ -139,7 +140,7 @@ public class SolrEvents
             Map<String, String> facetGroupFacetSorts = new HashMap<String, String>();
 
             //Build product Store Parms
-            List<GenericValue> productStoreParms = delegator.findByAndCache("XProductStoreParm",UtilMisc.toMap("productStoreId",productStoreId));
+            List<GenericValue> productStoreParms = EntityQuery.use(delegator).from("XProductStoreParm").where("productStoreId", productStoreId).cache().queryList();
             if (UtilValidate.isNotEmpty(productStoreParms))
             {
                 for (int i=0;i < productStoreParms.size();i++)
@@ -422,7 +423,7 @@ public class SolrEvents
 
                 if (UtilValidate.isNotEmpty(productCategoryId)) 
                 {
-                    productCategoryRollups = EntityUtil.filterByDate(delegator.findByAndCache("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", productCategoryId), UtilMisc.toList("sequenceNum")));
+                    productCategoryRollups = EntityQuery.use(delegator).from("ProductCategoryRollup").where("productCategoryId", productCategoryId).cache().queryList();
                     if(UtilValidate.isNotEmpty(productCategoryRollups)) 
                     {
                         parentProductCategoryIds = EntityUtil.getFieldListFromEntityList(productCategoryRollups, "parentProductCategoryId", true);
@@ -999,7 +1000,7 @@ public class SolrEvents
         try 
         {
             //Get the all facility which are associated with productStoreId
-            facilities = delegator.findByAndCache("Facility", UtilMisc.toMap("productStoreId", productStoreId));
+            facilities = EntityQuery.use(delegator).from("Facility").where("productStoreId", productStoreId).cache().queryList();
         } 
         catch (GenericEntityException e) 
         {
@@ -1254,8 +1255,7 @@ public class SolrEvents
             }
 
             // no shortcut, try the longcut to see if there is something with a geoCode associated to the countryGeoId
-            List<GenericValue> geoAssocAndGeoToList = delegator.findByAndCache("GeoAssocAndGeoTo",
-                    UtilMisc.toMap("geoIdFrom", postalAddress.getString("countryGeoId"), "geoCode", postalAddress.getString("postalCode"), "geoAssocTypeId", "REGIONS"));
+            List<GenericValue> geoAssocAndGeoToList = EntityQuery.use(delegator).from("GeoAssocAndGeoTo").where("geoIdFrom", postalAddress.getString("countryGeoId"), "geoCode", postalAddress.getString("postalCode"), "geoAssocTypeId", "REGIONS").cache().queryList();
             GenericValue geoAssocAndGeoTo = EntityUtil.getFirst(geoAssocAndGeoToList);
             if (geoAssocAndGeoTo != null) 
             {
@@ -1278,7 +1278,7 @@ public class SolrEvents
         Set<String> geoIdSetTemp = new HashSet<String>();
         for (String curGeoId: geoIdSet) 
         {
-            List<GenericValue> geoAssocList = delegator.findByAndCache("GeoAssoc", UtilMisc.toMap("geoIdTo", curGeoId, "geoAssocTypeId", "REGIONS"));
+            List<GenericValue> geoAssocList = EntityQuery.use(delegator).from("GeoAssoc").where("geoIdTo", curGeoId, "geoAssocTypeId", "REGIONS").cache().queryList();
             for (GenericValue geoAssoc: geoAssocList) 
             {
                 geoIdSetTemp.add(geoAssoc.getString("geoId"));
@@ -1318,7 +1318,7 @@ public class SolrEvents
             
             List resultShoppingListSearch = new LinkedList<>();
             //Build product Store Parms
-            List<GenericValue> productStoreParms = delegator.findByAndCache("XProductStoreParm",UtilMisc.toMap("productStoreId",productStoreId));
+            List<GenericValue> productStoreParms = EntityQuery.use(delegator).from("XProductStoreParm").where("productStoreId", productStoreId).cache().queryList();
             if (UtilValidate.isNotEmpty(productStoreParms))
             {
                 for (int i=0;i < productStoreParms.size();i++)
@@ -1634,7 +1634,7 @@ public class SolrEvents
             try 
             {
                 List orderBy = UtilMisc.toList("sequenceNum");
-                productFeatureCatGrpApplList = delegator.findByAndCache("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", productCategoryId), orderBy);
+                productFeatureCatGrpApplList = EntityQuery.use(delegator).from("ProductFeatureCatGrpAppl").where("productCategoryId", productCategoryId).cache().queryList();
                 List<GenericValue> filteredProductFeatureCatGrpApplList = EntityUtil.filterByCondition(productFeatureCatGrpApplList, EntityCondition.makeCondition("productFeatureGroupId", EntityOperator.IN, UtilMisc.toList("FACET_GROUP_CATEGORY", "FACET_GROUP_PRICE", "FACET_GROUP_RATINGS")));
                 if(UtilValidate.isEmpty(filteredProductFeatureCatGrpApplList))
                 {

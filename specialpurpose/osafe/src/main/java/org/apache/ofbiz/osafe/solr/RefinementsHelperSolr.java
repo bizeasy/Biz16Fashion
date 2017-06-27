@@ -1280,7 +1280,7 @@ public class RefinementsHelperSolr {
         Long sequenceNum = Long.valueOf(0);
         try 
         {
-            List<GenericValue> productCategoryRollups = delegator.findByAndCache("ProductCategoryRollup", UtilMisc.toMap("productCategoryId", key));
+            List<GenericValue> productCategoryRollups = EntityQuery.use(delegator).from("ProductCategoryRollup").where("productCategoryId", key).cache().queryList();
             productCategoryRollups = EntityUtil.filterByDate(productCategoryRollups);
             if (UtilValidate.isNotEmpty(productCategoryRollups)) 
             {
@@ -1480,7 +1480,7 @@ public class RefinementsHelperSolr {
 			List<GenericValue> partyIdConds = new LinkedList<GenericValue>();
 			try 
 			{
-				partyIdConds = delegator.findByAndCache("ProductPriceCond", UtilMisc.toMap("inputParamEnumId", "PRIP_PARTY_ID", "condValue", partyId));
+				partyIdConds = EntityQuery.use(delegator).from("ProductPriceCond").where("inputParamEnumId", "PRIP_PARTY_ID", "condValue", partyId).cache().queryList();
 			} 
 			catch (GenericEntityException e1) 
 			{

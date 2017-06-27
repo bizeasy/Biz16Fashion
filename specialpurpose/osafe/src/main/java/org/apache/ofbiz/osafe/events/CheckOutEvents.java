@@ -579,11 +579,11 @@ public class CheckOutEvents {
 						GenericValue taxedParty = delegator.findOne("Party", UtilMisc.toMap("partyId", taxedStoreId), true);
 						if (UtilValidate.isNotEmpty(taxedParty))
 						{
-							List<GenericValue> taxedPartyContactMechPurpose = taxedParty.getRelatedCache("PartyContactMechPurpose");
+							List<GenericValue> taxedPartyContactMechPurpose = taxedParty.getRelated("PartyContactMechPurpose", null, null, true);
 							taxedPartyContactMechPurpose = EntityUtil.filterByDate(taxedPartyContactMechPurpose,true);
 
 							List<GenericValue> taxedPartyGeneralLocations = EntityUtil.filterByAnd(taxedPartyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"));
-							taxedPartyGeneralLocations = EntityUtil.getRelatedCache("PartyContactMech", taxedPartyGeneralLocations);
+							taxedPartyGeneralLocations = taxedPartyGeneralLocations.getRelated("PartyContactMech", null, null, true);
 							taxedPartyGeneralLocations = EntityUtil.filterByDate(taxedPartyGeneralLocations,true);
 							taxedPartyGeneralLocations = EntityUtil.orderBy(taxedPartyGeneralLocations, UtilMisc.toList("fromDate DESC"));
 							if(UtilValidate.isNotEmpty(taxedPartyGeneralLocations))

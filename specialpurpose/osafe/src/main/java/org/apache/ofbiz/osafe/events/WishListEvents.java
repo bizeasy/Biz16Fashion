@@ -465,9 +465,8 @@ public class WishListEvents {
         String partyId = userLogin.getString("partyId");
         String productStoreId = ProductStoreWorker.getProductStoreId(request);
 
-        Map findMap = UtilMisc.toMap("partyId", partyId, "productStoreId", productStoreId, "shoppingListTypeId", "SLT_BF_WISH_LIST", "listName", PERSISTANT_LIST_NAME);
         try {
-	        List<GenericValue> existingLists = delegator.findByAndCache("ShoppingList", findMap);
+	        List<GenericValue> existingLists = EntityQuery.use(delegator).from("ShoppingList").where("partyId", partyId, "productStoreId", productStoreId, "shoppingListTypeId", "SLT_BF_WISH_LIST", "listName", PERSISTANT_LIST_NAME).cache().queryList();
 	        GenericValue list = null;
 	        if (existingLists != null && !existingLists.isEmpty()) {
 	            list = EntityUtil.getFirst(existingLists);
@@ -500,7 +499,7 @@ public class WishListEvents {
         try {
             shoppingList = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListId", shoppingListId).queryOne();
             if (shoppingList != null) {
-                shoppingListItems = shoppingList.getRelatedCache("ShoppingListItem");
+                shoppingListItems = shoppingList.getRelated("ShoppingListItem", null, null, true);
                 if (shoppingListItems == null) {
                     shoppingListItems = new LinkedList();
                 }

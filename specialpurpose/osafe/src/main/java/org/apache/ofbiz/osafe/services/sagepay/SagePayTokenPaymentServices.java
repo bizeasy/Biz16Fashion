@@ -562,7 +562,7 @@ public class SagePayTokenPaymentServices {
         Debug.logInfo("SagePay Token - ccRefund captureTransaction : " + captureTransaction, module);
         GenericValue creditCard = null;
         try {
-            creditCard = delegator.getRelatedOne("CreditCard", orderPaymentPreference);
+            creditCard = captureTransaction.getRelatedOne("CreditCard", orderPaymentPreference);
         } catch (GenericEntityException e) {
             Debug.logError(e, "Error getting CreditCard for OrderPaymentPreference : " + orderPaymentPreference, module);
             return ServiceUtil.returnError("Unable to obtain cc information from payment preference");
