@@ -224,7 +224,7 @@ public class SolrServices {
                                     	if(UtilValidate.isNotEmpty(manufacturerParty))
                                     	{
                                     		PartyContentWrapper partyContentWrapper = new PartyContentWrapper(dispatcher, manufacturerParty, locale, "text/html");
-                                    		productDocument.setManufacturerName(partyContentWrapper.get("PROFILE_NAME").toString());
+                                    		productDocument.setManufacturerName(partyContentWrapper.get("PROFILE_NAME", "string").toString());
                                     	}
                                     }
                                     
@@ -1233,7 +1233,7 @@ public class SolrServices {
 			if(UtilValidate.isNotEmpty(manufacturerParty))
 			{
 				PartyContentWrapper partyContentWrapper = new PartyContentWrapper(dispatcher, manufacturerParty, locale, "text/html");
-				productDocument.setManufacturerName(partyContentWrapper.get("PROFILE_NAME").toString());
+				productDocument.setManufacturerName(partyContentWrapper.get("PROFILE_NAME", "string").toString());
 			}
 		}
 		

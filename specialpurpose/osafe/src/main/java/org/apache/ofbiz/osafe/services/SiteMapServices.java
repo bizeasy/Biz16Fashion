@@ -509,25 +509,25 @@ public class SiteMapServices {
 
         	if (parentCategoryContentWrapper !=null)
         	{
-        		if (UtilValidate.isNotEmpty(parentCategoryContentWrapper.get("SEO_PAGE_URL")))
+        		if (UtilValidate.isNotEmpty(parentCategoryContentWrapper.get("SEO_PAGE_URL", "string")))
         		{
-        			parentCategoryName = parentCategoryContentWrapper.get("SEO_PAGE_URL").toString();
+        			parentCategoryName = parentCategoryContentWrapper.get("SEO_PAGE_URL", "string").toString();
         		}
-        		if (UtilValidate.isEmpty(parentCategoryName) && UtilValidate.isNotEmpty(parentCategoryContentWrapper.get("CATEGORY_NAME")))
+        		if (UtilValidate.isEmpty(parentCategoryName) && UtilValidate.isNotEmpty(parentCategoryContentWrapper.get("CATEGORY_NAME", "string")))
         		{
-        			parentCategoryName = parentCategoryContentWrapper.get("CATEGORY_NAME").toString();
+        			parentCategoryName = parentCategoryContentWrapper.get("CATEGORY_NAME", "string").toString();
         		}
         	}
 
         	if (categoryContentWrapper !=null)
         	{
-        		if (UtilValidate.isNotEmpty(categoryContentWrapper.get("SEO_PAGE_URL")))
+        		if (UtilValidate.isNotEmpty(categoryContentWrapper.get("SEO_PAGE_URL", "string")))
         		{
-        			categoryName = categoryContentWrapper.get("SEO_PAGE_URL").toString();
+        			categoryName = categoryContentWrapper.get("SEO_PAGE_URL", "string").toString();
         		}
-        		if (UtilValidate.isEmpty(categoryName) && UtilValidate.isNotEmpty(categoryContentWrapper.get("CATEGORY_NAME")))
+        		if (UtilValidate.isEmpty(categoryName) && UtilValidate.isNotEmpty(categoryContentWrapper.get("CATEGORY_NAME", "string")))
         		{
-        			categoryName = categoryContentWrapper.get("CATEGORY_NAME").toString();
+        			categoryName = categoryContentWrapper.get("CATEGORY_NAME", "string").toString();
         		}
         	}
         	
