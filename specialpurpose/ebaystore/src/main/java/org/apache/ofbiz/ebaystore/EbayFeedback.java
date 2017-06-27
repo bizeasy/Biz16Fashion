@@ -26,6 +26,7 @@ import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityQuery;
 
 import java.util.*;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import org.apache.ofbiz.service.DispatchContext;

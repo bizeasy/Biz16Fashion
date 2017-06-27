@@ -3,6 +3,7 @@ package org.apache.ofbiz.osafe.solr;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 

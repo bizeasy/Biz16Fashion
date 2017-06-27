@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import javax.xml.parsers.ParserConfigurationException;
