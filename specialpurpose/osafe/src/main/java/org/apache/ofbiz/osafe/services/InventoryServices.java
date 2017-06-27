@@ -281,13 +281,13 @@ public class InventoryServices {
      			    if ((inventoryLevel.doubleValue() < inventoryOutOfStockTo.doubleValue()) || (inventoryLevel.doubleValue() == inventoryOutOfStockTo.doubleValue()) || (orderedQty.doubleValue() > inventoryLevel.doubleValue()))
     			    {
                         GenericValue product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
-                    	String productName = ProductContentWrapper.getProductContentAsText(product, "PRODUCT_NAME", locale, dispatcher);
+                    	String productName = ProductContentWrapper.getProductContentAsText(product, "PRODUCT_NAME", locale, dispatcher, "string");
                     	if(UtilValidate.isEmpty(productName))
                     	{
                     		GenericValue virtualProduct = ProductWorker.getParentProduct(productId, delegator);
                     		if(UtilValidate.isNotEmpty(virtualProduct))
                         	{
-                    			productName = ProductContentWrapper.getProductContentAsText(virtualProduct, "PRODUCT_NAME", locale, dispatcher);
+                    			productName = ProductContentWrapper.getProductContentAsText(virtualProduct, "PRODUCT_NAME", locale, dispatcher, "string");
                         	}
                     	}
                     	MessageString tmpMessage=null;

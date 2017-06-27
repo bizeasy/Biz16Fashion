@@ -186,9 +186,9 @@ public class SiteMapServices {
                                     url = makeCatalogUrl(product.getString("productId"),productCategoryId, null, null, null,null);
                                     productContentWrapper = new ProductContentWrapper(dispatcher, product, locale, "text/html");
                                     String detailImageUrl = "";
-                                    if (UtilValidate.isNotEmpty(productContentWrapper.get("DETAIL_IMAGE_URL")))
+                                    if (UtilValidate.isNotEmpty(productContentWrapper.get("DETAIL_IMAGE_URL", "url")))
                                     {
-                                        detailImageUrl = productContentWrapper.get("DETAIL_IMAGE_URL").toString();
+                                        detailImageUrl = productContentWrapper.get("DETAIL_IMAGE_URL", "url").toString();
                                     }
                                     createSiteMapNode(url, detailImageUrl, usedUrlList);
                                     if (UtilValidate.isNotEmpty(SITEMAP_VARIANT_FEATURES))
@@ -497,13 +497,13 @@ public class SiteMapServices {
             
         	if (productContentWrapper != null)
         	{
-        		if (UtilValidate.isNotEmpty(productContentWrapper.get("SEO_PAGE_URL")))
+        		if (UtilValidate.isNotEmpty(productContentWrapper.get("SEO_PAGE_URL", "url")))
         		{
-        			productName = productContentWrapper.get("SEO_PAGE_URL").toString();
+        			productName = productContentWrapper.get("SEO_PAGE_URL", "url").toString();
         		}
-        		if (UtilValidate.isEmpty(productName) && UtilValidate.isNotEmpty(productContentWrapper.get("PRODUCT_NAME")))
+        		if (UtilValidate.isEmpty(productName) && UtilValidate.isNotEmpty(productContentWrapper.get("PRODUCT_NAME", "string")))
         		{
-        			productName = productContentWrapper.get("PRODUCT_NAME").toString();
+        			productName = productContentWrapper.get("PRODUCT_NAME", "string").toString();
         		}
         	}
 

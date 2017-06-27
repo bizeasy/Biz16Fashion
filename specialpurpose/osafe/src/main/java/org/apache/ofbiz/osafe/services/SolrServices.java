@@ -207,7 +207,7 @@ public class SolrServices {
                                     productDocument.setId(productDocumentId);
                                     productDocument.setProductId(productId);
                                     productDocument.setRowType(SolrConstants.ROW_TYPE_PRODUCT);
-                                    productDocument.setName(productContentWrapper.get("PRODUCT_NAME").toString());
+                                    productDocument.setName(productContentWrapper.get("PRODUCT_NAME", "string").toString());
                                     productDocument.setInternalName(product.getString("internalName"));
                                     
                                     GenericValue goodIdentification = EntityQuery.use(delegator).from("GoodIdentification").where("productId", productId, "goodIdentificationTypeId", "MANUFACTURER_ID_NO").queryOne();
@@ -287,28 +287,28 @@ public class SolrServices {
                                     	productDocument.setCategoryDescription(categoryDescription.toString());
                                     }
                                     // LONG_DESCRIPTION
-                                    String longDescription = ProductContentWrapper.getProductContentAsText(product, "LONG_DESCRIPTION", locale, dispatcher);
+                                    String longDescription = ProductContentWrapper.getProductContentAsText(product, "LONG_DESCRIPTION", locale, dispatcher, "string");
                                     if (UtilValidate.isNotEmpty(longDescription)) 
                                     {
                                         productDocument.setDescription(longDescription);
                                     }
 
                                     // SMALL_IMAGE_URL
-                                    imageUrl = productContentWrapper.get("SMALL_IMAGE_URL");
+                                    imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url");
                                     if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
                                     {
                                         productDocument.setProductImageSmallUrl(imageUrl.toString());
                                     }
 
                                     // SMALL_IMAGE_ALT
-                                    imageUrl = productContentWrapper.get("SMALL_IMAGE_ALT");
+                                    imageUrl = productContentWrapper.get("SMALL_IMAGE_ALT", "url");
                                     if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
                                     {
                                         productDocument.setProductImageSmallAlt(imageUrl.toString());
                                     }
 
                                     // SMALL_IMAGE_ALT_URL
-                                    imageUrl = productContentWrapper.get("SMALL_IMAGE_ALT_URL");
+                                    imageUrl = productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url");
                                     if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
                                     {
                                     	if (UtilValidate.isNotEmpty(imageUrl.toString()))
@@ -317,14 +317,14 @@ public class SolrServices {
                                     	}
                                     }
                                     // MEDIUM_IMAGE_URL
-                                    imageUrl = productContentWrapper.get("MEDIUM_IMAGE_URL");
+                                    imageUrl = productContentWrapper.get("MEDIUM_IMAGE_URL", "url");
                                     if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
                                     {
                                         productDocument.setProductImageMediumUrl(imageUrl.toString());
                                     }
 
                                     // LARGE_IMAGE_URL
-                                    imageUrl = productContentWrapper.get("LARGE_IMAGE_URL");
+                                    imageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url");
                                     if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
                                     {
                                         productDocument.setProductImageLargeUrl(imageUrl.toString());
@@ -1216,7 +1216,7 @@ public class SolrServices {
 		productDocument.setId(productDocumentId);
 		productDocument.setProductId(productId);
 		productDocument.setRowType(SolrConstants.ROW_TYPE_PRODUCT);
-		productDocument.setName(productContentWrapper.get("PRODUCT_NAME").toString());
+		productDocument.setName(productContentWrapper.get("PRODUCT_NAME", "string").toString());
 		productDocument.setInternalName(product.getString("internalName"));
 		
 		GenericValue goodIdentification = EntityQuery.use(delegator).from("GoodIdentification").where("productId", productId, "goodIdentificationTypeId", "MANUFACTURER_ID_NO").queryOne();
@@ -1299,28 +1299,28 @@ public class SolrServices {
 			productDocument.setCategoryDescription(categoryDescription.toString());
 		}
 		// LONG_DESCRIPTION
-		String longDescription = ProductContentWrapper.getProductContentAsText(product, "LONG_DESCRIPTION", locale, dispatcher);
+		String longDescription = ProductContentWrapper.getProductContentAsText(product, "LONG_DESCRIPTION", locale, dispatcher, "string");
 		if (UtilValidate.isNotEmpty(longDescription)) 
 		{
 		    productDocument.setDescription(longDescription);
 		}
 
 		// SMALL_IMAGE_URL
-		imageUrl = productContentWrapper.get("SMALL_IMAGE_URL");
+		imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url");
 		if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
 		{
 		    productDocument.setProductImageSmallUrl(imageUrl.toString());
 		}
 
 		// SMALL_IMAGE_ALT
-		imageUrl = productContentWrapper.get("SMALL_IMAGE_ALT");
+		imageUrl = productContentWrapper.get("SMALL_IMAGE_ALT", "url");
 		if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
 		{
 		    productDocument.setProductImageSmallAlt(imageUrl.toString());
 		}
 
 		// SMALL_IMAGE_ALT_URL
-		imageUrl = productContentWrapper.get("SMALL_IMAGE_ALT_URL");
+		imageUrl = productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url");
 		if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
 		{
 			if (UtilValidate.isNotEmpty(imageUrl.toString()))
@@ -1329,14 +1329,14 @@ public class SolrServices {
 			}
 		}
 		// MEDIUM_IMAGE_URL
-		imageUrl = productContentWrapper.get("MEDIUM_IMAGE_URL");
+		imageUrl = productContentWrapper.get("MEDIUM_IMAGE_URL", "url");
 		if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
 		{
 		    productDocument.setProductImageMediumUrl(imageUrl.toString());
 		}
 
 		// LARGE_IMAGE_URL
-		imageUrl = productContentWrapper.get("LARGE_IMAGE_URL");
+		imageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url");
 		if (UtilValidate.isNotEmpty(imageUrl) && !"null".equalsIgnoreCase(imageUrl.toString())) 
 		{
 		    productDocument.setProductImageLargeUrl(imageUrl.toString());
