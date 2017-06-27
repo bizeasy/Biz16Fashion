@@ -280,7 +280,7 @@ public class InventoryServices {
                 	BigDecimal inventoryWarehouseLevel = (BigDecimal) inventoryLevelMap.get("inventoryWarehouseLevel");
      			    if ((inventoryLevel.doubleValue() < inventoryOutOfStockTo.doubleValue()) || (inventoryLevel.doubleValue() == inventoryOutOfStockTo.doubleValue()) || (orderedQty.doubleValue() > inventoryLevel.doubleValue()))
     			    {
-                        GenericValue product = delegator.findByPrimaryKey("Product", UtilMisc.toMap("productId", productId));
+                        GenericValue product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
                     	String productName = ProductContentWrapper.getProductContentAsText(product, "PRODUCT_NAME", locale, dispatcher);
                     	if(UtilValidate.isEmpty(productName))
                     	{

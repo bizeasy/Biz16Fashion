@@ -279,7 +279,7 @@ public class CheckOutEvents {
         	if (UtilValidate.isNotEmpty(orderId))
         	{
                 GenericValue orderHeader = null;
-                orderHeader = delegator.findByPrimaryKey("OrderHeader", UtilMisc.toMap("orderId", orderId));
+                orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
                 OrderReadHelper orh = new OrderReadHelper(orderHeader);
                 GenericValue paymentPref = EntityUtil.getFirst(orh.getPaymentPreferences());
                 GenericValue shipGroup = EntityUtil.getFirst(orh.getOrderItemShipGroups());
@@ -320,7 +320,7 @@ public class CheckOutEvents {
                         try 
                         {
                             shoppingListItemResp = dispatcher.runSync("createShoppingListItem", shoppingListItemCtx);
-                            GenericValue shoppingListItem = delegator.findByPrimaryKey("ShoppingListItem", UtilMisc.toMap("shoppingListId", shoppingListId,"shoppingListItemSeqId", (String) shoppingListItemResp.get("shoppingListItemSeqId")));
+                            GenericValue shoppingListItem = EntityQuery.use(delegator).from("ShoppingListItem").where("shoppingListId", shoppingListId,"shoppingListItemSeqId", (String) shoppingListItemResp.get("shoppingListItemSeqId")).queryOne();
                             shoppingListItem.set("modifiedPrice", sci.getRecurringDisplayPrice());
                             shoppingListItem.store();
                         } 
@@ -402,7 +402,7 @@ public class CheckOutEvents {
     		GenericValue orderHeader = null;
     		try
     		{
-    			orderHeader = delegator.findByPrimaryKey("OrderHeader", UtilMisc.toMap("orderId", orderId));
+    			orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
 	    	} 
     		catch (Exception e) 
 	    	{

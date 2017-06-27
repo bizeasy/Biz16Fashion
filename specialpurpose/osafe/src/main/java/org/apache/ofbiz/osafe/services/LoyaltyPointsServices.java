@@ -169,7 +169,7 @@ public class LoyaltyPointsServices {
     		GenericValue orderHeader = null;
     		try
     		{
-    			orderHeader = delegator.findByPrimaryKey("OrderHeader", UtilMisc.toMap("orderId", orderId));
+    			orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
 	    	} 
     		catch (Exception e) 
 	    	{

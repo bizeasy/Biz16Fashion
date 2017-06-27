@@ -50,6 +50,7 @@ import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.transaction.GenericTransactionException;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.content.PartyContentWrapper;
 import org.apache.ofbiz.product.category.CategoryContentWrapper;
 import org.apache.ofbiz.product.category.CategoryWorker;
@@ -207,7 +208,7 @@ public class SolrServices {
                                     productDocument.setName(productContentWrapper.get("PRODUCT_NAME").toString());
                                     productDocument.setInternalName(product.getString("internalName"));
                                     
-                                    GenericValue goodIdentification = delegator.findByPrimaryKey("GoodIdentification", UtilMisc.toMap("productId", productId, "goodIdentificationTypeId", "MANUFACTURER_ID_NO"));
+                                    GenericValue goodIdentification = EntityQuery.use(delegator).from("GoodIdentification").where("productId", productId, "goodIdentificationTypeId", "MANUFACTURER_ID_NO").queryOne();
                                     if(UtilValidate.isNotEmpty(goodIdentification))
                                     {
                                     	productDocument.setManufacturerIdNo(goodIdentification.getString("idValue"));
@@ -216,7 +217,7 @@ public class SolrServices {
                                     String manufacturerPartyId = product.getString("manufacturerPartyId");
                                     if(UtilValidate.isNotEmpty(manufacturerPartyId))
                                     {
-                                    	GenericValue manufacturerParty = delegator.findByPrimaryKey("Party", UtilMisc.toMap("partyId", manufacturerPartyId));
+                                    	GenericValue manufacturerParty = EntityQuery.use(delegator).from("Party").where("partyId", manufacturerPartyId).queryOne();
                                     	if(UtilValidate.isNotEmpty(manufacturerParty))
                                     	{
                                     		PartyContentWrapper partyContentWrapper = new PartyContentWrapper(dispatcher, manufacturerParty, locale, "text/html");
@@ -1087,7 +1088,7 @@ public class SolrServices {
             GenericValue product = null;
             if(UtilValidate.isNotEmpty(productId))
             {
-            	product = delegator.findByPrimaryKey("Product", UtilMisc.toMap("productId", productId));
+            	product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
             }
             
             String productDocumentId = null;
@@ -1216,7 +1217,7 @@ public class SolrServices {
 		productDocument.setName(productContentWrapper.get("PRODUCT_NAME").toString());
 		productDocument.setInternalName(product.getString("internalName"));
 		
-		GenericValue goodIdentification = delegator.findByPrimaryKey("GoodIdentification", UtilMisc.toMap("productId", productId, "goodIdentificationTypeId", "MANUFACTURER_ID_NO"));
+		GenericValue goodIdentification = EntityQuery.use(delegator).from("GoodIdentification").where("productId", productId, "goodIdentificationTypeId", "MANUFACTURER_ID_NO").queryOne();
 		if(UtilValidate.isNotEmpty(goodIdentification))
 		{
 			productDocument.setManufacturerIdNo(goodIdentification.getString("idValue"));
@@ -1225,7 +1226,7 @@ public class SolrServices {
 		String manufacturerPartyId = product.getString("manufacturerPartyId");
 		if(UtilValidate.isNotEmpty(manufacturerPartyId))
 		{
-			GenericValue manufacturerParty = delegator.findByPrimaryKey("Party", UtilMisc.toMap("partyId", manufacturerPartyId));
+			GenericValue manufacturerParty = EntityQuery.use(delegator).from("Party").where("partyId", manufacturerPartyId).queryOne();
 			if(UtilValidate.isNotEmpty(manufacturerParty))
 			{
 				PartyContentWrapper partyContentWrapper = new PartyContentWrapper(dispatcher, manufacturerParty, locale, "text/html");
@@ -1570,7 +1571,7 @@ public class SolrServices {
             GenericValue product = null;
             if(UtilValidate.isNotEmpty(productId))
             {
-            	product = delegator.findByPrimaryKey("Product", UtilMisc.toMap("productId", productId));
+            	product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
             }
             
             String productDocumentId = null;

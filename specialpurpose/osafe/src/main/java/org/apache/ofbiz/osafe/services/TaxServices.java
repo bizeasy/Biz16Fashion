@@ -48,6 +48,7 @@ import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartItem;
@@ -99,7 +100,7 @@ public class TaxServices {
         {
             try 
             {
-                productStore = delegator.findByPrimaryKey("ProductStore", UtilMisc.toMap("productStoreId", productStoreId));
+                productStore = EntityQuery.use(delegator).from("ProductStore").where("productStoreId", productStoreId).queryOne();
                 if (UtilValidate.isEmpty(productStore) && UtilValidate.isEmpty(payToPartyId)) 
                 {
                 	String errMsg="Could not find payToPartyId [" + payToPartyId + "] or ProductStore [" + productStoreId + "] for tax calculation";
@@ -206,7 +207,7 @@ public class TaxServices {
                         String taxAuthPartyId = taxAuthorityRateProduct.getString("taxAuthPartyId");
 
                         // get glAccountId from TaxAuthorityGlAccount entity using the payToPartyId as the organizationPartyId
-                        GenericValue taxAuthorityGlAccount = delegator.findByPrimaryKey("TaxAuthorityGlAccount", UtilMisc.toMap("taxAuthPartyId", taxAuthPartyId, "taxAuthGeoId", taxAuthGeoId, "organizationPartyId", payToPartyId));
+                        GenericValue taxAuthorityGlAccount = EntityQuery.use(delegator).from("TaxAuthorityGlAccount").where("taxAuthPartyId", taxAuthPartyId, "taxAuthGeoId", taxAuthGeoId, "organizationPartyId", payToPartyId).queryOne();
                         String taxAuthGlAccountId = null;
                         if (taxAuthorityGlAccount != null) 
                         {

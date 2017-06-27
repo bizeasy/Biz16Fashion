@@ -400,7 +400,7 @@ public class TxtMessageServices {
             if (UtilValidate.isNotEmpty(orderId)) 
             {
                 GenericValue orderHeader = null;
-                orderHeader = delegator.findByPrimaryKey("OrderHeader", UtilMisc.toMap("orderId", orderId));
+                orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
                 
                 if (UtilValidate.isNotEmpty(orderHeader)) 
                 {
@@ -510,7 +510,7 @@ public class TxtMessageServices {
         {
             if(UtilValidate.isEmpty(partyId) && UtilValidate.isNotEmpty(orderId))
             {
-                GenericValue orderHeader = delegator.findByPrimaryKey("OrderHeader", UtilMisc.toMap("orderId", orderId));
+                GenericValue orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
                 OrderReadHelper orderReadHelper = null;
                 if(UtilValidate.isNotEmpty(orderHeader)) 
                 {
@@ -631,7 +631,7 @@ public class TxtMessageServices {
                 GenericValue orderHeader = null;
                 try 
                 {
-                    orderHeader = delegator.findByPrimaryKey("OrderHeader", UtilMisc.toMap("orderId", orderId));
+                    orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
                     productStoreId=(String)orderHeader.get("productStoreId");
                 }
                 catch (GenericEntityException e) 

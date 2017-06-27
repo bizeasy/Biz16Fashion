@@ -424,7 +424,7 @@ public class WishListEvents {
         {
         	GenericValue product = null;
             try {
-                product = delegator.findByPrimaryKey("Product", UtilMisc.toMap("productId", productId));
+                product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
             } catch (GenericEntityException e) {
                 Debug.logWarning(e.getMessage(), module);
             }
@@ -498,7 +498,7 @@ public class WishListEvents {
         GenericValue shoppingList = null;
         List shoppingListItems = null;
         try {
-            shoppingList = delegator.findByPrimaryKey("ShoppingList", UtilMisc.toMap("shoppingListId", shoppingListId));
+            shoppingList = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListId", shoppingListId).queryOne();
             if (shoppingList != null) {
                 shoppingListItems = shoppingList.getRelatedCache("ShoppingListItem");
                 if (shoppingListItems == null) {
@@ -662,7 +662,7 @@ public class WishListEvents {
                     productId = shoppingListItem.getString("productId");
                     try
                     {
-                        product = delegator.findByPrimaryKey("Product", UtilMisc.toMap("productId", productId));
+                        product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
                     	productName = ProductContentWrapper.getProductContentAsText(product, "PRODUCT_NAME", locale, dispatcher);
                     	if(UtilValidate.isEmpty(productName))
                     	{
@@ -804,7 +804,7 @@ public class WishListEvents {
                     productId = shoppingListItem.getString("productId");
                     try
                     {
-                        product = delegator.findByPrimaryKey("Product", UtilMisc.toMap("productId", productId));
+                        product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
                     	productName = ProductContentWrapper.getProductContentAsText(product, "PRODUCT_NAME", locale, dispatcher);
                     	if(UtilValidate.isEmpty(productName))
                     	{

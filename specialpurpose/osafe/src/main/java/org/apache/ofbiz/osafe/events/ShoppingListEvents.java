@@ -24,6 +24,7 @@ import org.apache.ofbiz.entity.GenericDelegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartItem;
@@ -204,7 +205,7 @@ public class ShoppingListEvents
         {
            try 
            {
-               GenericValue adminLogin = delegator.findByPrimaryKey("UserLogin",UtilMisc.toMap("userLoginId","admin"));
+               GenericValue adminLogin = EntityQuery.use(delegator).from("UserLogin").where("userLoginId", "admin").queryOne();
                if (UtilValidate.isNotEmpty(adminLogin))
                {
             	   if (cartItems.size() == 0)
@@ -326,7 +327,7 @@ public class ShoppingListEvents
             GenericValue shoppingList = null;
             try 
             {
-                shoppingList = delegator.findByPrimaryKey("ShoppingList", UtilMisc.toMap("shoppingListId", autoSaveListId));
+                shoppingList = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListId", shoppingListId).queryOne();
             } 
             catch (GenericEntityException e) 
             {
@@ -355,7 +356,7 @@ public class ShoppingListEvents
             String prodCatalogId = CatalogWorker.getCurrentCatalogId(request);
             try 
             {
-            	GenericValue shoppingList = delegator.findByPrimaryKey("ShoppingList", UtilMisc.toMap("shoppingListId", autoSaveListId));
+            	GenericValue shoppingList = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListId", autoSaveListId).queryOne();
                 List shoppingListItems = null;
                 if( UtilValidate.isNotEmpty(shoppingList))
                 {
@@ -477,7 +478,7 @@ public class ShoppingListEvents
                 String sAutoSaveListId = sc.getAutoSaveListId();
                 if (UtilValidate.isNotEmpty(sAutoSaveListId))
                 {
-                    GenericValue gvShopList = delegator.findByPrimaryKey("ShoppingList",UtilMisc.toMap("shoppingListId", sAutoSaveListId ));
+                    GenericValue gvShopList = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListId", sAutoSaveListId).queryOne();
                     if (UtilValidate.isNotEmpty(gvShopList))
                     {
                         gvShopList.set("partyId", userLogin.getString("partyId"));

@@ -789,7 +789,7 @@ public class ShoppingCartEvents {
         if(UtilValidate.isNotEmpty(orderItemSeqId) && UtilValidate.isNotEmpty(orderItemSeqId))
         {
         	try {
-				orderItemShipGroupAssoc = delegator.findByPrimaryKey("OrderItemShipGroupAssoc", UtilMisc.toMap("orderId", orderId, "orderItemSeqId", orderItemSeqId, "shipGroupSeqId", shipGroupSeqId));
+				orderItemShipGroupAssoc = EntityQuery.use(delegator).from("OrderItemShipGroupAssoc").where("orderId", orderId, "orderItemSeqId", orderItemSeqId, "shipGroupSeqId", shipGroupSeqId).queryOne();
 			} catch (GenericEntityException e) {
 				e.printStackTrace();
 			}
@@ -937,7 +937,7 @@ public class ShoppingCartEvents {
     		
         	GenericValue product = null;
             try {
-                product = delegator.findByPrimaryKey("Product", UtilMisc.toMap("productId", productId));
+                product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
             } catch (GenericEntityException e) {
                 Debug.logWarning(e.getMessage(), module);
             }
