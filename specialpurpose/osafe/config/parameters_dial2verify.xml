@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    To add HTML to a message escape all angle brackets < > in tags with  &lt; = < &gt = >
+    Then where you use the message in ftl use the following ${StringUtil.wrapString([message])}
+--><resource xmlns:xsi="http://www.w3.org/01/XMLSchema-instance">
+
+    <property key="SEND_SMS_AND_EMAIL_AFTER_ORDER_PLACEMENT">
+        <value xml:lang="en">15</value>
+        <description>The number of minutes after the order created time, the data should be submitted to IVR.</description>
+    </property>
+    <property key="TXT_MESSAGE_USER_ID">
+        <value xml:lang="en">9966111960</value>
+        <description>The user name of the SMS Gateway Account.</description>
+    </property>
+    <property key="TXT_MESSAGE_PASSWORD">
+        <value xml:lang="en">3451</value>
+        <description>The user password of the SMS Gateway Account.</description>
+    </property>
+    <property key="TXT_MESSAGE_API_ID">
+        <value xml:lang="en">RA$06E1BD29-17984-11E4-B2C7-94DE80A5CEAB</value>
+        <description>The SMS Gateway API Id.</description>
+    </property>
+  <property key="TXT_MESSAGE_API_URL">
+        <value xml:lang="en">http://api.dial2verify.com/SMS/SEND/</value>
+        <description>The Request URL to access the SMS Gateway via API.</description>
+    </property>
+    <property key="TXT_MESSAGE_SENDER_ID">
+        <value xml:lang="en">LATEST</value>
+        <description>The message sender ID .</description>
+    </property>
+    <property key="TXT_MESSAGE">
+
+        <value xml:lang="en">. Your OrderId is </value>
+        <description>The message to the customer</description>
+    </property>
+  <property key="TXT_MESSAGE_MISSED_CALL">
+        <value xml:lang="en">Thank you for placing an order @ Latestone.com. If you can pay cash and take the delivery of product, give a Free Missed Call to </value>
+
+        <description>The message for the Missed Call </description>
+    </property>
+     <property key="TXT_MESSAGE_CONFIRMATION">
+        <value xml:lang="en">Thank you for placing an order @ latestone.com</value>
+        <description>The message for the Missed Call </description>
+    </property>
+     <property key="TXT_MESSAGE_MISSED_NO1">
+        <value xml:lang="en">04039594929</value>
+        <description>The message for the Missed Call </description>
+    </property>
+     <property key="TXT_MESSAGE_MISSED_NO2">
+        <value xml:lang="en">07939593929</value>
+        <description>The message for the Missed Call </description>
+    </property>
+     <property key="TXT_MESSAGE_MISSED_NO3">
+        <value xml:lang="en">08039514131</value>
+        <description>The message for the Missed Call </description>
+    </property>
+    <property key="TXT_MESSAGE_MISSED_NO4">
+        <value xml:lang="en">04039594959</value>
+        <description>The message for the Missed Call </description>
+    </property>
+    <property key="TXT_MESSAGE_MISSED_NO5">
+        <value xml:lang="en">08039591918</value>
+        <description>The message for the Missed Call </description>
+    </property>
+    <property key="LAST_TXT_MESSAGE1">
+        <value xml:lang="en">We tried to reach you by SMS-Email-Phone to confirm order# </value>
+        <description>Last SMS to customer part-1</description>
+    </property>
+     <property key="LAST_TXT_MESSAGE2">
+        <value xml:lang="en"> @ latestone.com please give missed call @ </value>
+        <description>Last SMS to customer part-2</description>
+    </property>
+     <property key="LAST_TXT_MESSAGE3">
+        <value xml:lang="en"> to approve your order.</value>
+        <description>Last SMS to customer part-3</description>
+    </property>
+    <property key="ORDER_APPROVAL_ENABLE_TIME_IN_MINUTES">
+        <value xml:lang="en">960</value>
+        <description>This is time in minutes after which we will display order approval button to customer support from order placement</description>
+    </property>
+    <property key="ABANDONED_SMS_TEXT">
+        <value xml:lang="en">Dear customer, Your order is incomplete. LIMITED quantity left in stock! Grab it Now! Click Here </value>
+        <description>Sms text for abandoned orders</description>
+    </property>
+    <property key="PDP_URL">
+        <value xml:lang="en">www.latestone.com/eCommerceProductDetail?productId=</value>
+        <description>website PDP url</description>
+    </property>
+    <property key="GOOGLE_URL_SHORTENER_API">
+        <value xml:lang="en">https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAx8Aom8xd3a2smQFZTmWNTlV5bg2mMQeM</value>
+        <description>Google request url for url shortening</description>
+    </property>
+    <property key="MINUTES_LAG">
+        <value xml:lang="en">1440</value>
+        <description>The number of minutes after the abandoned order created time, the message will be sent to customer.</description>
+    </property>
+    <property key="ABANDONED_SMS_SERVICE_NAME">
+        <value xml:lang="en">sendSmsToAbandonedOrders</value>
+        <description>Name of the service which sends SMS to abandoned orders</description>
+    </property>
+     <property key="ABANDONED_SMS_SERVICE_START_TIME">
+        <value xml:lang="en">8</value>
+        <description>Abandoned SMS service start time</description>
+    </property>
+     <property key="ABANDONED_SMS_SERVICE_END_TIME">
+        <value xml:lang="en">21</value>
+        <description>Abandoned SMS service end time</description>
+    </property>
+     <property key="ABANDONED_SMS_SERVICE_FREQUENCY">
+        <value xml:lang="en">3</value>
+        <description>Abandoned SMS service frequency, i.e; RecurrenceRule constant</description>
+    </property>
+     <property key="ABANDONED_SMS_SERVICE_INTERVAL">
+        <value xml:lang="en">4</value>
+        <description>Abandoned SMS service interval</description>
+    </property>
+    <property key="ABANDONED_SMS_SERVICE_COUNT">
+        <value xml:lang="en">4</value>
+        <description>Abandoned SMS service count, i.e; no. of times service should run</description>
+    </property>
+    <property key="OTP_SEND_PARAM1">
+        <value xml:lang="en">http://2factor.in/API/V1/6bcad07a-71b9-11e6-a584-00163ef91450/SMS/</value>
+        <description>OTP api to send OTP</description>
+    </property>
+    <property key="OTP_SEND_PARAM2">
+        <value xml:lang="en">/AUTOGEN/LATESTONE</value>
+        <description>OTP api to send OTP</description>
+    </property>
+    <property key="OTP_VALIDATE_PARAM">
+        <value xml:lang="en">http://2factor.in/API/V1/6bcad07a-71b9-11e6-a584-00163ef91450/SMS/VERIFY/</value>
+        <description>OTP api to validate OTP</description>
+    </property>
+</resource>
