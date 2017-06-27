@@ -609,7 +609,7 @@ public class Util {
             
                 if (UtilValidate.isEmpty(productStoreId))
                 {
-                    GenericValue webSite = EntityQuery.use(delegator).from("WebSite").where(tilMisc.toMap("webSiteId", webSiteId)).cache().queryOne();
+                    GenericValue webSite = EntityQuery.use(delegator).from("WebSite").where(UtilMisc.toMap("webSiteId", webSiteId)).cache().queryOne();
                     storeId=webSite.getString("productStoreId");
                 }
                 else
