@@ -168,7 +168,7 @@ public class SiteMapServices {
                     productCategoryMembers = EntityUtil.filterByDate(productCategoryMembers, true);
                     for (GenericValue productCategoryMember : productCategoryMembers) 
                     {
-                        GenericValue product = productCategoryMember.getRelatedOneCache("Product");
+                        GenericValue product = productCategoryMember.getRelatedOne("Product", true);
                         if (UtilValidate.isNotEmpty(product)) 
                         {
                             String isVariant = product.getString("isVariant");
@@ -219,7 +219,7 @@ public class SiteMapServices {
             {
                 for (GenericValue xContentXref : xContentXrefs)
                 {
-                    GenericValue content = xContentXref.getRelatedOneCache("Content");
+                    GenericValue content = xContentXref.getRelatedOne("Content", true);
                     if (UtilValidate.isNotEmpty(content) && "CTNT_PUBLISHED".equals(content.getString("statusId")))
                     {
                         url = makeCatalogUrl(null, null, null, null, xContentXref.getString("bfContentId"),null);
@@ -349,7 +349,7 @@ public class SiteMapServices {
                     
                     for (GenericValue productCategoryMember : productCategoryMembers) 
                     {
-                        GenericValue product = productCategoryMember.getRelatedOneCache("Product");
+                        GenericValue product = productCategoryMember.getRelatedOne("Product", true);
                         if (UtilValidate.isNotEmpty(product)) 
                         {
                             String isVariant = product.getString("isVariant");
@@ -395,7 +395,7 @@ public class SiteMapServices {
             {
                 for (GenericValue xContentXref : xContentXrefs)
                 {
-                    GenericValue content = xContentXref.getRelatedOneCache("Content");
+                    GenericValue content = xContentXref.getRelatedOne("Content", true);
                     if (UtilValidate.isNotEmpty(content) && "CTNT_PUBLISHED".equals(content.getString("statusId")))
                     {
                         String seoUrlValue = content.getString("contentName");

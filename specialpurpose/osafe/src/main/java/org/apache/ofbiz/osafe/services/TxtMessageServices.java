@@ -455,7 +455,7 @@ public class TxtMessageServices {
                 if (UtilValidate.isNotEmpty(gvParty)) 
                 {
                     GenericValue person = null;
-                    person = gvParty.getRelatedOneCache("Person");
+                    person = gvParty.getRelatedOne("Person", true);
                     if (UtilValidate.isNotEmpty(person)) 
                     {
                         paramMap.put("PARTY_ID",partyId);
@@ -569,7 +569,7 @@ public class TxtMessageServices {
             if (UtilValidate.isNotEmpty(partyPurposeMobilePhones)) 
             {
                 GenericValue partyPurposePhone = EntityUtil.getFirst(partyPurposeMobilePhones);
-                GenericValue telecomNumber = partyPurposePhone.getRelatedOneCache("TelecomNumber");
+                GenericValue telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber", true);
                 String countryTeleCode = telecomNumber.getString("countryCode");
                 if(UtilValidate.isEmpty(countryTeleCode))
                 {
@@ -580,7 +580,7 @@ public class TxtMessageServices {
                     if (UtilValidate.isNotEmpty(partyPurposeGeneralLocations)) 
                     {
                         GenericValue partyPurposeGeneralLocation = EntityUtil.getFirst(partyPurposeGeneralLocations);
-                        GenericValue postalAddress = partyPurposeGeneralLocation.getRelatedOneCache("PostalAddress");
+                        GenericValue postalAddress = partyPurposeGeneralLocation.getRelatedOne("PostalAddress", true);
                         String countryGeoId = postalAddress.getString("countryGeoId");
                         if(UtilValidate.isNotEmpty(countryGeoId))
                         {

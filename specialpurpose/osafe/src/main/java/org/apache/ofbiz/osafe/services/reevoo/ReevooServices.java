@@ -69,7 +69,7 @@ public class ReevooServices {
                     // Remove any expired
                     productCategoryMembers = EntityUtil.filterByDate(productCategoryMembers, true);
                     for (GenericValue productCategoryMember : productCategoryMembers) {
-                        GenericValue product = productCategoryMember.getRelatedOneCache("Product");
+                        GenericValue product = productCategoryMember.getRelatedOne("Product", true);
                         if (UtilValidate.isNotEmpty(product)) {
                             String isVariant = product.getString("isVariant");
                             if (UtilValidate.isEmpty(isVariant)) {
@@ -119,7 +119,7 @@ public class ReevooServices {
                 Map<String, Object> cvMap = new HashMap<String, Object>();
 
                 try {
-                    cv = parent.getRelatedOneCache("CurrentProductCategory");
+                    cv = parent.getRelatedOne("CurrentProductCategory", true);
                 } catch (GenericEntityException e) {
                     Debug.logWarning(e.getMessage(), module);
                 }
@@ -181,7 +181,7 @@ public class ReevooServices {
                     GenericValue topMostParentRollup = getTopMostParentProductCategory(delegator, parentProductCategoryId, browseRootProductCategoryId);
                     if (UtilValidate.isNotEmpty(topMostParentRollup)) {
                         try {
-                            gvTopMost = topMostParentRollup.getRelatedOneCache("CurrentProductCategory");
+                            gvTopMost = topMostParentRollup.getRelatedOne("CurrentProductCategory", true);
                         } catch (GenericEntityException e) {
                             Debug.logWarning(e.getMessage(), module);
                         }

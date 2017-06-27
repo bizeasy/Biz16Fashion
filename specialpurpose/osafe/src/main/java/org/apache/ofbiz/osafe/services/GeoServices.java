@@ -49,7 +49,7 @@ public class GeoServices {
             List<GenericValue> partyRoleList = delegator.findByAnd("PartyRole", conditions);
             for (GenericValue partyRole : partyRoleList) {
                 try {
-                    GenericValue party = partyRole.getRelatedOneCache("Party");
+                    GenericValue party = partyRole.getRelatedOne("Party", true);
                     partyId = party.getString("partyId");
 
                     Collection<GenericValue> contactMechList = null;
@@ -61,7 +61,7 @@ public class GeoServices {
                     }
                     if (UtilValidate.isNotEmpty(contactMechList)) {
                         GenericValue contactMech  = EntityUtil.getFirst((List<GenericValue>) contactMechList);
-                        GenericValue postalAddress  = contactMech.getRelatedOneCache("PostalAddress");
+                        GenericValue postalAddress  = contactMech.getRelatedOne("PostalAddress", true);
                         StringBuilder  address = new StringBuilder();
                         if (UtilValidate.isNotEmpty(postalAddress.getString("address1"))) {
                             address.append(postalAddress.getString("address1")+ ", ");
@@ -95,7 +95,7 @@ public class GeoServices {
                     partyGeoPointList = EntityUtil.filterByDate(partyGeoPointList, true);
                     if (UtilValidate.isNotEmpty(partyGeoPointList) && osafeGeo.isNotEmpty()) {
                         GenericValue partyGeoPoint  = EntityUtil.getFirst((List<GenericValue>) partyGeoPointList);
-                        GenericValue geoPoint  = partyGeoPoint.getRelatedOneCache("GeoPoint");
+                        GenericValue geoPoint  = partyGeoPoint.getRelatedOne("GeoPoint", true);
                         OsafeGeo preOsafeGeo = new OsafeGeo(geoPoint.getString("latitude"), geoPoint.getString("longitude"));
                         if (preOsafeGeo.isEmpty() || !preOsafeGeo.equals(osafeGeo)) {
                             Map updateGeoPointParams = UtilMisc.toMap("geoPointId", geoPoint.getString("geoPointId"),

@@ -510,7 +510,7 @@ public class WishListEvents {
                     String productId = shoppingListItem.getString("productId");
                     if (productId != null) {
                         java.sql.Timestamp nowTimestamp = UtilDateTime.nowTimestamp();
-                        GenericValue product = shoppingListItem.getRelatedOneCache("Product");
+                        GenericValue product = shoppingListItem.getRelatedOne("Product", true);
                         if (product.getTimestamp("introductionDate") != null && nowTimestamp.after(product.getTimestamp("introductionDate"))) {
                             if (product.getTimestamp("salesDiscontinuationDate") != null && nowTimestamp.after(product.getTimestamp("salesDiscontinuationDate"))) {
                         		shoppingListItem.remove();

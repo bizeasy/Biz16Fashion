@@ -108,7 +108,7 @@ public class CategoryServices extends HttpServlet {
                 try {
                     if (useCache)
                     {
-                    	cv = parent.getRelatedOneCache("CurrentProductCategory");
+                    	cv = parent.getRelatedOne("CurrentProductCategory", true);
                     }
                     else
                     {

@@ -135,7 +135,7 @@ public class FacetValueSequenceComparator implements Comparator {
                 // Build a list of descriptions in order
                 if (UtilValidate.isNotEmpty(productFeatureGroupAppls)) {
                     for (GenericValue productFeatureGroupAppl : productFeatureGroupAppls) {
-                        productFeature = productFeatureGroupAppl.getRelatedOneCache("ProductFeature");
+                        productFeature = productFeatureGroupAppl.getRelatedOne("ProductFeature", true);
                         if (UtilValidate.isNotEmpty(productFeature)) {
                             productFeatures.add(productFeature);
                         }

@@ -69,7 +69,7 @@ public final class ProductUtil {
                 // if (product.get("sku") != null) dispatchContext.put("sku", product.get("sku"));
                 if (product.get("internalName") != null)
                     dispatchContext.put("internalName", product.get("internalName"));
-                // GenericValue manu = product.getRelatedOneCache("Manufacturer");
+                // GenericValue manu = product.getRelatedOne("Manufacturer", true);
                 // if (product.get("manu") != null) dispatchContext.put("manu", "");
                 String smallImage = (String) product.get("smallImageUrl");
                 if (smallImage != null)
