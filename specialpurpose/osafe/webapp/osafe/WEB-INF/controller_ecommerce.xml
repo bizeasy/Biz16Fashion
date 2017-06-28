@@ -555,7 +555,7 @@
 
     <!-- Dialog screens -->
     <request-map uri="eCommercePlpQuickLook">
-        <!-- event type="groovy" path="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductScroller.groovy"/>  -->
+        <!-- event type="groovy" path="component://osafe/groovyScripts/common/eCommerceProductScroller.groovy"/>  -->
         <response name="success" type="view" value="eCommercePlpQuickLook"/>
         <response name="error" type="view" value="eCommercePlpQuickLook"/>
     </request-map>
@@ -625,7 +625,7 @@
     
     <request-map uri="eCommerceProductDetail">
         <security https="false" auth="false"/>
-        <event type="groovy" path="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductScroller.groovy"/>
+        <event type="groovy" path="component://osafe/groovyScripts/common/eCommerceProductScroller.groovy"/>
         <response name="success" type="view" value="eCommerceProductDetail"/>
         <response name="error" type="view" value="eCommerceProductDetail"/>
     </request-map>
@@ -3175,7 +3175,7 @@
     
     <request-map uri="eCommerceOrderComplete">
       <security https="true" auth="false"/>
-      <event type="groovy" path="component://osafe/webapp/osafe/WEB-INF/actions/common/getOrderConfirm.groovy"/>
+      <event type="groovy" path="component://osafe/groovyScripts/common/getOrderConfirm.groovy"/>
       <response name="orderHistory" type="request" value="eCommerceOrderHistory"/>
       <response name="orderConfirm" type="view" value="eCommerceOrderComplete"/>
     </request-map>

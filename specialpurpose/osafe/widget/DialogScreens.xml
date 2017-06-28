@@ -122,7 +122,7 @@
                 <set field="dialogPurpose" value="pincodeChecker_"/>
                 <set field="dialogBoxTitle" value="${uiLabelMap.DeliveryAndCoDAvailabilityTitle}"/>
                 <set field="dialogBoxFormAction" value="pincodeSearch"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePinCodeChecker.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommercePinCodeChecker.groovy" />
             </actions>
             <widgets>
                 <container id="js_pincodeCheckContainer">
@@ -230,8 +230,8 @@
                 <property-map resource="OsafeProperties" map-name="OSafeConfig" global="true" />
                 <set field="uiSequenceScreen" value="Quicklook"/>
                 <set field="activeZoomParam" value="QUICKLOOK_IMG_ZOOM_ACTIVE_FLAG" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/setup/EcommerceSetup.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductDetail.groovy" />
+                <script location="component://osafe/groovyScripts/setup/EcommerceSetup.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceProductDetail.groovy" />
                 <set field="dialogPurpose" value="plpQuicklook_" global="true"/>
                 <set field="jqueryIdPrefix" value="quicklook_"/>
                 <set field="showHeadingTertiaryInformation" value="Y" />
@@ -307,7 +307,7 @@
                 <set field="CancelStoreSelectInfo" value="${uiLabelMap.CancelStoreSelectInfo}"/>
                 <set field="dialogPurpose" value="storePickup_"/>
                 <set field="dialogBoxTitle" value=""/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceStoreLocator.groovy"/>
+                <script location="component://osafe/groovyScripts/common/eCommerceStoreLocator.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -354,7 +354,7 @@
                 <set field="cancelButtonDescription" value="${uiLabelMap.CancelStoreSelectBtn}"/>
                 <set field="CancelStoreSelectInfo" value="${uiLabelMap.CancelStoreSelectInfo}"/>
                 <set field="dialogPurpose" value="storePickup_"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceStoreLocator.groovy"/>
+                <script location="component://osafe/groovyScripts/common/eCommerceStoreLocator.groovy"/>
             </actions>
             <widgets>
                 <container id="eCommerceStoreLocatorContainer">
@@ -381,8 +381,8 @@
                 <set field="dialogBoxTitle" value=""/>
                 <set field="dialogBoxStyle" from-field="dialogBoxStyle"/>
                 <set field="uiSequenceScreen" value="LightCart"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showCartItems.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/cart/showCartItems.groovy" />
+                <script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
                 <set field="formLightBoxName" value="cartLightform" />
                 <set field="showCartBtnAction" value="eCommerceShowcart" />
                 <set field="doneAction" value="checkout" />

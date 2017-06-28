@@ -6,7 +6,7 @@
 		<section>
 			<actions>
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -287,7 +287,7 @@
 					global="true" />
 				<set field="reviewScreenPrefix" value="pdp" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReview.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReview.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -1157,7 +1157,7 @@
 					global="true" />
 				<set field="reviewScreenPrefix" value="pdpTabs" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReview.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReview.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -1373,7 +1373,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPComplement" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -1390,7 +1390,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPAccessory" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -1417,7 +1417,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPRecent" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -2025,7 +2025,7 @@
 					global="true" />
 				<set field="reviewScreenPrefix" value="quicklook" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReview.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReview.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -2255,7 +2255,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPComplement" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -2272,7 +2272,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPAccessory" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -2299,7 +2299,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPRecent" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -2681,7 +2681,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReview.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReview.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -2708,7 +2708,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPReviewListItems" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -2748,7 +2748,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReview.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReview.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -2774,7 +2774,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPTabsReviewListItems" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -2815,7 +2815,7 @@
 				<set field="uiDisplayListName" value="" />
 				<set field="uiSequenceScreenPrefix" value="" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReview.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReview.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -2842,7 +2842,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="PDPReviewListItems" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -2881,7 +2881,7 @@
 				<set field="uiBoxListItemTabName" value="reviewItem" />
 				<set field="uiDisplayListName" value="reviewItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReviewItem.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReviewItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -3083,7 +3083,7 @@
 				<set field="uiBoxListItemTabName" value="reviewItem" />
 				<set field="uiDisplayListName" value="reviewItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReviewItem.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReviewItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -3285,7 +3285,7 @@
 				<set field="uiBoxListItemTabName" value="reviewItem" />
 				<set field="uiDisplayListName" value="reviewItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/pdp/review/eCommerceProductReviewItem.groovy" />
+					location="component://osafe/groovyScripts/pdp/review/eCommerceProductReviewItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -3969,7 +3969,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="productItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePLPItem.groovy" />
+					location="component://osafe/groovyScripts/common/eCommercePLPItem.groovy" />
 				<set field="jqueryIdPrefix" value="PLP_" />
 			</actions>
 			<widgets>
@@ -4523,7 +4523,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="productItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePDPItem.groovy" />
+					location="component://osafe/groovyScripts/common/eCommercePDPItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -5004,7 +5004,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="productItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePDPItem.groovy" />
+					location="component://osafe/groovyScripts/common/eCommercePDPItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -5484,7 +5484,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="productItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePDPItem.groovy" />
+					location="component://osafe/groovyScripts/common/eCommercePDPItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -5964,7 +5964,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="categoryItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCLPItem.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceCLPItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -6110,7 +6110,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="ShowWishlistOrderItems" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showWishlistOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/showWishlistOrderItems.groovy" />
 				<set field="uiBoxListItemGridName" value="" />
 				<set field="uiBoxListItemTabName" value="cartItem" />
 				<set field="uiDisplayListName" value="cartItemList" />
@@ -6441,7 +6441,7 @@
 				<set field="uiBoxListItemTabName" value="cartItem" />
 				<set field="uiDisplayListName" value="cartItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
 				<!-- <set field="formName" value="cartform" /> <set field="doneAction" 
 					value="checkout" /> -->
 			</actions>
@@ -7273,7 +7273,7 @@
 				<set field="uiBoxListItemTabName" value="cartItem" />
 				<set field="uiDisplayListName" value="cartItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -7749,7 +7749,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="OrderSummaryOrderItems" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
 				<set field="uiBoxListItemGridName" value="" />
 				<set field="uiBoxListItemTabName" value="cartItem" />
 				<set field="uiDisplayListName" value="cartItemList" />
@@ -8206,7 +8206,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="OrderSummaryOrderItems" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
 				<set field="uiBoxListItemGridName" value="" />
 				<set field="uiBoxListItemTabName" value="cartItem" />
 				<set field="uiDisplayListName" value="cartItemList" />
@@ -8665,7 +8665,7 @@
 			<actions>
 				<set field="uiSequenceScreen" value="OrderSummaryOrderItems" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
 				<set field="uiBoxListItemGridName" value="" />
 				<set field="uiBoxListItemTabName" value="cartItem" />
 				<set field="uiDisplayListName" value="cartItemList" />
@@ -9139,7 +9139,7 @@
 				<set field="uiBoxListItemTabName" value="cartItem" />
 				<set field="uiDisplayListName" value="cartItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/orderConfirmOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/orderConfirmOrderItems.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -9425,8 +9425,8 @@
 			<actions>
 				<set field="uiSequenceScreen" value="OnePageCheckout" />
 				<set field="uiSequenceScreenPrefix" value="" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showCartItems.groovy" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+				<script location="component://osafe/groovyScripts/cart/showCartItems.groovy" />
+				<script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 				<set field="useAvailability" value="Y" />
 				<set field="uiBoxListItemGridName" value="" />
 				<set field="uiBoxListItemTabName" value="" />
@@ -9480,9 +9480,9 @@
 				<property-map resource="OSafeUiLabels" map-name="uiLabelMap"
 					global="true" />
 				<set field="summaryScreen" value="onePageCheckout" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/setup/EcommerceSetup.groovy" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showCartItems.groovy" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+				<script location="component://osafe/groovyScripts/setup/EcommerceSetup.groovy" />
+				<script location="component://osafe/groovyScripts/cart/showCartItems.groovy" />
+				<script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 			</actions>
 			<widgets>
 				<container style="js_onePageCheckoutOrderItemsSummary">
@@ -9669,8 +9669,8 @@
 			<actions>
 				<set field="uiSequenceScreen" value="OnePageCheckout" />
 				<set field="uiSequenceScreenPrefix" value="anon" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showCartItems.groovy" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+				<script location="component://osafe/groovyScripts/cart/showCartItems.groovy" />
+				<script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 				<set field="uiBoxListItemGridName" value="" />
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="" />
@@ -9723,9 +9723,9 @@
 				<property-map resource="OSafeUiLabels" map-name="uiLabelMap"
 					global="true" />
 				<set field="summaryScreen" value="anononePageCheckout" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/setup/EcommerceSetup.groovy" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showCartItems.groovy" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+				<script location="component://osafe/groovyScripts/setup/EcommerceSetup.groovy" />
+				<script location="component://osafe/groovyScripts/cart/showCartItems.groovy" />
+				<script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 			</actions>
 			<widgets>
 				<container style="js_onePageCheckoutOrderItemsSummary">
@@ -10228,7 +10228,7 @@
 	<screen name="personalInfoCustomAttributes">
 		<section>
 			<actions>
-			    <script location="component://osafe/webapp/osafe/WEB-INF/actions/personalInfo/personalInfoCustomAttributes.groovy" />
+			    <script location="component://osafe/groovyScripts/personalInfo/personalInfoCustomAttributes.groovy" />
 			</actions>
 			<widgets>
 					<platform-specific>
@@ -10634,7 +10634,7 @@
 	<screen name="billingAddressInfoCustomAttributes">
 		<section>
 			<actions>
-			    <script location="component://osafe/webapp/osafe/WEB-INF/actions/personalInfo/personalInfoCustomAttributes.groovy" />
+			    <script location="component://osafe/groovyScripts/personalInfo/personalInfoCustomAttributes.groovy" />
 			</actions>
 			<widgets>
 					<platform-specific>
@@ -11053,7 +11053,7 @@
 	<screen name="shippingAddressInfoCustomAttributes">
 		<section>
 			<actions>
-			    <script location="component://osafe/webapp/osafe/WEB-INF/actions/personalInfo/personalInfoCustomAttributes.groovy" />
+			    <script location="component://osafe/groovyScripts/personalInfo/personalInfoCustomAttributes.groovy" />
 			</actions>
 			<widgets>
 					<platform-specific>
@@ -11288,7 +11288,7 @@
 	<screen name="myAccountPersonalInfoCustomAttributes">
 		<section>
 			<actions>
-			    <script location="component://osafe/webapp/osafe/WEB-INF/actions/personalInfo/personalInfoCustomAttributes.groovy" />
+			    <script location="component://osafe/groovyScripts/personalInfo/personalInfoCustomAttributes.groovy" />
 			</actions>
 			<widgets>
 					<platform-specific>
@@ -11612,7 +11612,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="writeReviewProductList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductDetail.groovy" />
+					location="component://osafe/groovyScripts/common/eCommerceProductDetail.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -12190,7 +12190,7 @@
 				<set field="uiBoxListItemTabName" value="cartItem" />
 				<set field="uiDisplayListName" value="cartItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
 				<set field="formName" value="cartform" />
 				<set field="doneAction" value="checkout" />
 			</actions>
@@ -12572,7 +12572,7 @@
 				<set field="uiBoxListItemTabName" value="" />
 				<set field="uiDisplayListName" value="productItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePLPItem.groovy" />
+					location="component://osafe/groovyScripts/common/eCommercePLPItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -13111,7 +13111,7 @@
 				<set field="uiBoxListItemTabName" value="order" />
 				<set field="uiDisplayListName" value="orderList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/order/order.groovy" />
+					location="component://osafe/groovyScripts/order/order.groovy" />
 				<!-- <set field="formName" value="cartform" /> <set field="doneAction" 
 					value="checkout" /> -->
 			</actions>
@@ -13289,7 +13289,7 @@
 				<set field="uiBoxListItemTabName" value="orderItem" />
 				<set field="uiDisplayListName" value="orderItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/order/orderItem.groovy" />
+					location="component://osafe/groovyScripts/order/orderItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -13484,7 +13484,7 @@
 	<screen name="siteHeaderNavigation">
 		<section>
 			<actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/common/siteNavigation.groovy" />
+				<script location="component://osafe/groovyScripts/common/siteNavigation.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>
@@ -13897,7 +13897,7 @@
 				<set field="uiBoxListItemTabName" value="paymentMethodItem" />
 				<set field="uiDisplayListName" value="paymentMethodItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/paymentmethod/paymentMethodItem.groovy" />
+					location="component://osafe/groovyScripts/paymentmethod/paymentMethodItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -14076,7 +14076,7 @@
 				<set field="uiBoxListItemTabName" value="paymentMethodEFTItem" />
 				<set field="uiDisplayListName" value="paymentMethodEFTItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/paymentmethod/paymentMethodItem.groovy" />
+					location="component://osafe/groovyScripts/paymentmethod/paymentMethodItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -14279,7 +14279,7 @@
 				<set field="uiBoxListItemTabName" value="location" />
 				<set field="uiDisplayListName" value="storeLocationList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/storeLocator/storeLocation.groovy" />
+					location="component://osafe/groovyScripts/storeLocator/storeLocation.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -15333,7 +15333,7 @@
 				<set field="uiBoxListItemTabName" value="orderItem" />
 				<set field="uiDisplayListName" value="orderItemList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/order/orderItem.groovy" />
+					location="component://osafe/groovyScripts/order/orderItem.groovy" />
 			</actions>
 			<widgets>
 				<include-screen name="ecommerceDivSequence" />
@@ -15968,7 +15968,7 @@
 				<set field="uiBoxListItemTabName" value="order" />
 				<set field="uiDisplayListName" value="orderList" />
 				<script
-					location="component://osafe/webapp/osafe/WEB-INF/actions/cart/recurringOrderItems.groovy" />
+					location="component://osafe/groovyScripts/cart/recurringOrderItems.groovy" />
 				<!-- <set field="formName" value="cartform" /> <set field="doneAction" 
 					value="checkout" /> -->
 			</actions>
@@ -16285,7 +16285,7 @@
 	<screen name="recurringOrderDetailPaymentMethod">
 		<section>
 			<actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePaymentMethods.groovy" />
+				<script location="component://osafe/groovyScripts/common/eCommercePaymentMethods.groovy" />
 			</actions>
 			<widgets>
 				<platform-specific>

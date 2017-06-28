@@ -25,7 +25,7 @@
                 <set field="nextButtonDescription" value="${uiLabelMap.AddCheckedItemToCartBtn}"/>
                 <set field="nextButtonUrl" value="javascript:submitCheckoutForm(document.${formName}, 'AMCW', '');"/>
                 <set field="addMultiItemsToCartFromWishListAction" value="addMultiItemsToCartFromWishList" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showWishListItems.groovy" />
+                <script location="component://osafe/groovyScripts/cart/showWishListItems.groovy" />
                 <set field="nextButtonVisible" value="${groovy:if(wishListSize > 0)return 'Y' else return 'N';}"/>
             </actions>
             <widgets>
@@ -107,8 +107,8 @@
                 <set field="nextButtonVisible" value="${groovy:if(shoppingCartSize > 0)return 'Y' else return 'N';}"/>
                 <set field="nextButtonUrl" value="javascript:submitCheckoutForm(document.cartform, 'VDN', '');"/>
                 <set field="nextButtonDescription" value="${uiLabelMap.CheckoutBtn}"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showCartItems.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/cart/showCartItems.groovy" />
+                <script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -210,8 +210,8 @@
                                 <if-compare operator="greater" value="0" field="shoppingCartSize"/>
                             </condition>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
                             </actions>
                             <widgets>
                                 <container id="anonSinglePageCheckout" style="anonSinglePageCheckout">
@@ -272,13 +272,13 @@
 
                 <set field="parameters.formNameValue" value="orderreview" global="true" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutPayment.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutPayment.groovy" />
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/StorePaymentOptions.groovy" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutReview.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceOrderSummary.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutReview.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceOrderSummary.groovy" />
+                <script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 
                 <set field="useAvailability" value="Y" />
                 <set field="nextButtonVisible" value="N" />
@@ -391,8 +391,8 @@
                                 <if-compare operator="greater" value="0" field="shoppingCartSize"/>
                             </condition>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
                             </actions>
                             <widgets>
                                 <container id="singlePageCheckout" style="singlePageCheckout">
@@ -455,12 +455,12 @@
 
                 <set field="parameters.formNameValue" value="orderreview" global="true" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutPayment.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutPayment.groovy" />
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/StorePaymentOptions.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutReview.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceOrderSummary.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutReview.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceOrderSummary.groovy" />
+                <script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 
                 <set field="useAvailability" value="Y" />
                 <set field="nextButtonVisible" value="N" />
@@ -535,7 +535,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="singlePageNewCheckoutAddress" style="singlePageNewCheckoutAddress">
@@ -593,7 +593,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="singlePageNewCheckoutMultiAddress" style="singlePageNewCheckoutMultiAddress">
@@ -666,7 +666,7 @@
                 <set field="customerAddressBackAction" value="multiPageCustomerAddress"/>
                 <set field="shippingOptionsBackAction" value="multiPageShippingOptions"/>
                 <set field="loadPca" value="Y" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -676,7 +676,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="multiPageCustomerAddress" style="multiPageCustomerAddress">
@@ -742,7 +742,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="multiPageNewCheckoutAddress" style="multiPageNewCheckoutAddress">
@@ -803,7 +803,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="multiPageNewCheckoutMultiAddress" style="multiPageNewCheckoutMultiAddress">
@@ -864,7 +864,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="multiPageNewCheckoutMultiAddress" style="multiPageNewCheckoutMultiAddress">
@@ -997,11 +997,11 @@
                 
                 <set field="parameters.formNameValue" value="orderreview" global="true" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutPayment.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutPayment.groovy" />
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/StorePaymentOptions.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutReview.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceOrderSummary.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutReview.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceOrderSummary.groovy" />
+                <script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 
                 <set field="storePickupUrl" value="storePickup" />
                 <set field="dialogPurpose" value="storePickup_"/>
@@ -1082,11 +1082,11 @@
 
                 <set field="parameters.formNameValue" value="orderreview" global="true" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutPayment.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutPayment.groovy" />
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/StorePaymentOptions.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutReview.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceOrderSummary.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutReview.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceOrderSummary.groovy" />
+                <script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 
                 <set field="useAvailability" value="Y" />
                 <set field="nextButtonVisible" value="N" />
@@ -1161,8 +1161,8 @@
                 <!-- if Pickup In Store was selected, this value will be changed to 'Y' in groovy -->
                 <set field="isStorePickUp" value="N" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/eCommerceOrderConfirm.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/orderSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/cart/eCommerceOrderConfirm.groovy" />
+                <script location="component://osafe/groovyScripts/cart/orderSalesTaxInfo.groovy" />
 
                 <set field="showCartFootprint" value="Y" />
                 <set field="useAvailability" value="N" />
@@ -1243,7 +1243,7 @@
                 <set field="customerAddressBackAction" value="anonMultiPageCustomerAddress"/>
                 <set field="shippingOptionsBackAction" value="anonMultiPageShippingOptions"/>
                 <set field="loadPca" value="Y" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -1253,7 +1253,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="multiPageCustomerAddress" style="multiPageCustomerAddress">
@@ -1386,12 +1386,12 @@
                 
                 <set field="parameters.formNameValue" value="orderreview" global="true" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutPayment.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutPayment.groovy" />
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/StorePaymentOptions.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutReview.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceOrderSummary.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutReview.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceOrderSummary.groovy" />
+                <script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 
                 <set field="storePickupUrl" value="storePickup" />
                 <set field="dialogPurpose" value="storePickup_"/>
@@ -1472,12 +1472,12 @@
 
                 <set field="parameters.formNameValue" value="orderreview" global="true" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutPayment.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutPayment.groovy" />
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/StorePaymentOptions.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutReview.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceOrderSummary.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutReview.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceOrderSummary.groovy" />
+                <script location="component://osafe/groovyScripts/cart/cartSalesTaxInfo.groovy" />
 
                 <set field="useAvailability" value="Y" />
                 <set field="nextButtonVisible" value="N" />
@@ -1660,7 +1660,7 @@
     <screen name="shippingGroupCartItem">
         <section>
             <actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+				<script location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -1674,8 +1674,8 @@
     <screen name="shippingGroupShipGroupItem">
         <section>
             <actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiOptionsShipGroup.groovy" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/common/ecommerceCheckoutStoreDetail.groovy" />
+				<script location="component://osafe/groovyScripts/cart/shipMultiOptionsShipGroup.groovy" />
+				<script location="component://osafe/groovyScripts/common/ecommerceCheckoutStoreDetail.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -1700,7 +1700,7 @@
     <screen name="shippingGroupOrderItem">
         <section>
             <actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/order/orderItem.groovy" />
+				<script location="component://osafe/groovyScripts/order/orderItem.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -1714,8 +1714,8 @@
     <screen name="shippingGroupOrderShipGroupItem">
         <section>
             <actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/order/orderShipGroupItem.groovy" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/common/ecommerceCheckoutStoreDetail.groovy" />
+				<script location="component://osafe/groovyScripts/order/orderShipGroupItem.groovy" />
+				<script location="component://osafe/groovyScripts/common/ecommerceCheckoutStoreDetail.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -1814,9 +1814,9 @@
             <actions>
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="dialogPurpose" value="storePickup_"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/setup/EcommerceSetup.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/ecommerceCheckoutStoreDetail.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutShippingOptions.groovy" />
+                <script location="component://osafe/groovyScripts/setup/EcommerceSetup.groovy" />
+                <script location="component://osafe/groovyScripts/common/ecommerceCheckoutStoreDetail.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutShippingOptions.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -1831,7 +1831,7 @@
         <section>
 	        <actions>
 	        	<property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
-	            <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePaymentMethods.groovy" />
+	            <script location="component://osafe/groovyScripts/common/eCommercePaymentMethods.groovy" />
 	        </actions>
             <widgets>
                 <platform-specific>
@@ -1933,9 +1933,9 @@
             <actions>
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="dialogPurpose" value="storePickup_"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/setup/EcommerceSetup.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/ecommerceCheckoutStoreDetail.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutShippingOptions.groovy" />
+                <script location="component://osafe/groovyScripts/setup/EcommerceSetup.groovy" />
+                <script location="component://osafe/groovyScripts/common/ecommerceCheckoutStoreDetail.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutShippingOptions.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -1950,7 +1950,7 @@
     <screen name="anonSinglePageOrderPayment">
         <section>
             <actions>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePaymentMethods.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommercePaymentMethods.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -2043,9 +2043,9 @@
     <screen name="multiPageShippingOptionList">
         <section>
             <actions>
-            	<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/showCartItems.groovy" />
-            	<script location="component://osafe/webapp/osafe/WEB-INF/actions/common/ecommerceCheckoutStoreDetail.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutShippingOptions.groovy" />
+            	<script location="component://osafe/groovyScripts/cart/showCartItems.groovy" />
+            	<script location="component://osafe/groovyScripts/common/ecommerceCheckoutStoreDetail.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutShippingOptions.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -2060,7 +2060,7 @@
     <screen name="multiPageCartShippingGroups">
         <section>
             <actions>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/checkout/eCommerceCheckoutShippingOptions.groovy" />
+                <script location="component://osafe/groovyScripts/checkout/eCommerceCheckoutShippingOptions.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -2074,7 +2074,7 @@
     <screen name="multiPageOrderPayment">
         <section>
 	        <actions>
-	            <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePaymentMethods.groovy" />
+	            <script location="component://osafe/groovyScripts/common/eCommercePaymentMethods.groovy" />
 	        </actions>
             <widgets>
                 <platform-specific>
@@ -2133,7 +2133,7 @@
         <section>
             <actions>
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/ecommerceStoreCreditPayment.groovy" />
+                <script location="component://osafe/groovyScripts/common/ecommerceStoreCreditPayment.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -2189,7 +2189,7 @@
                 <set field="doneAction" value="setGiftMessage"/>
                 <set field="nextButtonDescription" value="${uiLabelMap.SaveBtn}"/>
             
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/giftMessageOrderItem.groovy" />
+                <script location="component://osafe/groovyScripts/cart/giftMessageOrderItem.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2246,7 +2246,7 @@
                 <set field="formName" value="giftMessageForm" />
                 <set field="doneAction" value="setGiftMessageConfirm"/>
                 <set field="nextButtonDescription" value="${uiLabelMap.SaveBtn}"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/giftMessageOrderItem.groovy" />
+                <script location="component://osafe/groovyScripts/cart/giftMessageOrderItem.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2357,7 +2357,7 @@
                 <set field="customerAddressBackAction" value="multiPageMultiAddress"/>
                 <set field="shippingOptionsBackAction" value="multiPageMultiShippingOptions"/>
             
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiAddress.groovy" />
+                <script location="component://osafe/groovyScripts/cart/shipMultiAddress.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2420,7 +2420,7 @@
                 <set field="customerAddressBackAction" value="anonMultiPageMultiAddress"/>
                 <set field="shippingOptionsBackAction" value="anonMultiPageMultiShippingOptions"/>
             
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiAddress.groovy" />
+                <script location="component://osafe/groovyScripts/cart/shipMultiAddress.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2476,7 +2476,7 @@
                 <set field="prevButtonUrl" value="singlePageCheckout"/>
                 <set field="addAddressAction" value="singlePageNewCheckoutMultiAddress"/>
             
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiAddress.groovy" />
+                <script location="component://osafe/groovyScripts/cart/shipMultiAddress.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2530,7 +2530,7 @@
                 <set field="prevButtonUrl" value="anonSinglePageCheckout"/>
                 <set field="nextButtonUrl" value="anonSinglePageShipGroupAddress"/>
             
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiAddress.groovy" />
+                <script location="component://osafe/groovyScripts/cart/shipMultiAddress.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2587,7 +2587,7 @@
     <screen name="shipMultiAddressCartItem">
         <section>
             <actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+				<script location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -2620,7 +2620,7 @@
                 <set field="customerAddressBackAction" value="multiPageCustomerAddress"/>
                 <set field="shippingOptionsBackAction" value="multiPageMultiShippingOptions"/>
             
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiOptions.groovy" />
+                <script location="component://osafe/groovyScripts/cart/shipMultiOptions.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2683,7 +2683,7 @@
                 <set field="customerAddressBackAction" value="anonMultiPageCustomerAddress"/>
                 <set field="shippingOptionsBackAction" value="anonMultiPageMultiShippingOptions"/>
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiOptions.groovy" />
+                <script location="component://osafe/groovyScripts/cart/shipMultiOptions.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2738,7 +2738,7 @@
                 <set field="formName" value="multiShipOptionsForm" />
                 <set field="formAction" value="singlePageValidateMultiShippingOptions" />
                 <set field="nextButtonDescription" value="${uiLabelMap.ContinueBtn}"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiOptions.groovy" />
+                <script location="component://osafe/groovyScripts/cart/shipMultiOptions.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2792,7 +2792,7 @@
                 <set field="doneAction" value="setShipMultiOptions"/>
                 <set field="nextButtonDescription" value="${uiLabelMap.SaveBtn}"/>
             
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiOptions.groovy" />
+                <script location="component://osafe/groovyScripts/cart/shipMultiOptions.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2867,7 +2867,7 @@
     <screen name="shipMultiOptionsCartItem">
         <section>
             <actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/cartOrderItems.groovy" />
+				<script location="component://osafe/groovyScripts/cart/cartOrderItems.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -2881,7 +2881,7 @@
     <screen name="shipMultiOptionsShipGroupItem">
         <section>
             <actions>
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/shipMultiOptionsShipGroup.groovy" />
+				<script location="component://osafe/groovyScripts/cart/shipMultiOptionsShipGroup.groovy" />
             </actions>
             <widgets>
                 <platform-specific>

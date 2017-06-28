@@ -8,7 +8,7 @@
                 <property-map resource="eCommerceIdMap" map-name="idMap" global="true" />
                 <set field="siteTitleContentId" value="${idMap.SITE_INFO_HEADER_CONTENT}" />
 				<set field="uiSequenceScreen" value="SiteHeader" />
-				<script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceDivSequence.groovy" />
+				<script location="component://osafe/groovyScripts/common/eCommerceDivSequence.groovy" />
             </actions>
             <widgets>
                 <container id="eCommerceHeader">
@@ -31,7 +31,7 @@
                 <set field="contentPanelStyle" value="eCommerceHomePage"/>
                 <!-- For Page Tagging to be generated -->
                 <set field="createAccountPageTagging" value="Y" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceHomePage.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceHomePage.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -52,7 +52,7 @@
                 <set field="pageClassIdentifier" value="eCommerceCategoryList" />
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="eCommerceLeftPanel" value="eCommerceRefineByCategory" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCategoryList.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCategoryList.groovy" />
                 <set field="formName" value="categoryListForm"/>
             </actions>
             <widgets>
@@ -86,7 +86,7 @@
                 <set field="pageClassIdentifier" value="eCommerceProductList" />
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="eCommerceLeftPanel" value="eCommerceRefineByCategoryFacet" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductList.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceProductList.groovy" />
                 <set field="dialogPurpose" value="plpQuicklook_" global="true"/>
                 <set field="dialogActionRequest" value="eCommercePlpQuickLook" global="true"/>
                 <set field="dialogBoxStyle" value="plpQuicklook" global="true"/>
@@ -136,7 +136,7 @@
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="Sorry!" />
                 <set field="title" from-field="${parameters.searchText} - ${uiLabelMap.SearchResults}" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceSearchResultNotFound.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceSearchResultNotFound.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -170,7 +170,7 @@
                 <set field="activeZoomParam" value="PDP_IMG_ZOOM_ACTIVE_FLAG" />
                 <set field="showHeadingTertiaryInformation" value="Y" />
                 <set field="prodCatContentTypeId" value="PDP_ADDITIONAL" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductDetail.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceProductDetail.groovy" />
                 <set field="dialogPurpose" value="largeImage_" global="true" /> 
                 <set field="dialogBoxStyle" value="viewLargerImage" global="true" />
                 <set field="isQuickLook" value="false"/>
@@ -225,7 +225,7 @@
             <actions>
                 <set field="pageClassIdentifier" value="eCommerceManufacturerDetail" />
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceManufacturerDetail.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceManufacturerDetail.groovy" />
                 <set field="formName" value="productListForm"/>
                 <set field="addToCartPlpAction" value="addManufacturerItemToCart"/>
                 <set field="addToWishListPlpAction" value="addManufacturerItemToWishlist"/>
@@ -303,7 +303,7 @@
                 <set field="confirmTextMapName" value="ConfirmTextReview" />
 				<set field="Client" value="${parameters.CLIENT}" />
 				<set field="productDescription" value="${parameters.productDescription}" /> 
-				<!--  <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceSubmitRatingsThankyou.groovy" />-->
+				<!--  <script location="component://osafe/groovyScripts/common/eCommerceSubmitRatingsThankyou.groovy" />-->
             </actions>
             <widgets>
                 <include-screen name="eCommerceConfirm" />
@@ -319,7 +319,7 @@
                 <set field="pageTitle" value="${uiLabelMap.WriteReviewTitle}" />
                 <set field="layoutSettings.javaScripts[+0]" value="/osafe_theme/productReview/js/productReviewUI.js" global="true" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductReviewSubmit.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceProductReviewSubmit.groovy" />
                 <set field="fieldLevelErrors" value="Y" />
                 <set field="formAction" value="eCommerceCreateProductReviewLogged" />
                 <set field="formName" value="productReviewForm" />
@@ -362,7 +362,7 @@
                 <set field="pageTitle" value="${uiLabelMap.WriteReviewTitle}" />
                 <set field="layoutSettings.javaScripts[+0]" value="/osafe_theme/productReview/js/productReviewUI.js" global="true" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductReviewSubmit.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceProductReviewSubmit.groovy" />
                 <set field="fieldLevelErrors" value="Y" />
                 <set field="formAction" value="eCommerceCreateProductReview" />
                 <set field="formName" value="productReviewForm" />
@@ -413,7 +413,7 @@
     <screen name="categoryBreadcrumbs">
         <section>
             <actions>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCategoryBreadcrumbs.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCategoryBreadcrumbs.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -436,7 +436,7 @@
                 <set field="showName" value="Y"/>
                 <set field="fieldPurpose" value="GUEST" />
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceLogin.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceLogin.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -569,7 +569,7 @@
                 <set field="pageTitle" value="${uiLabelMap.NewCustomerTitle}" />
                 <set field="title" from-field="pageTitle" />
                 <set field="fieldLevelErrors" value="Y" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
                 <set field="formAction" value="eCommerceCreateNewCustomer" />
                 <set field="formName" value="newuserform" />
                 <set field="loadPca" value="Y" />
@@ -582,7 +582,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <platform-specific>
@@ -619,7 +619,7 @@
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="${uiLabelMap.ChangePasswordTitle}" />
                 <set field="title" from-field="pageTitle" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceLogin.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceLogin.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -719,7 +719,7 @@
                 <set field="pageClassIdentifier" value="searchShoppingList" />
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="eCommerceLeftPanel" value="eCommerceShoppingListSearchFacet" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceProductList.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceProductList.groovy" />
                 <set field="dialogPurpose" value="plpQuicklook_" global="true"/>
                 <set field="dialogActionRequest" value="eCommercePlpQuickLook" global="true"/>
                 <set field="dialogBoxStyle" value="plpQuicklook" global="true"/>
@@ -788,7 +788,7 @@
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="${uiLabelMap.ChangePersonalInfoTitle}" />
                 <set field="title" from-field="pageTitle" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceEditCustomerInfo.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceEditCustomerInfo.groovy" />
                 <set field="fieldLevelErrors" value="Y" />
                 <set field="formAction" value="validateUpdateCustomer" />
                 <set field="donePage" value="MyAccount" />
@@ -841,7 +841,7 @@
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="${uiLabelMap.UpdateLoginInfoTitle}" />
                 <set field="title" from-field="pageTitle" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceEditCustomerInfo.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceEditCustomerInfo.groovy" />
                 <set field="backAction" value="MyAccount"/>
             </actions>
             <widgets>
@@ -874,7 +874,7 @@
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="${uiLabelMap.ChangeLoginNameTitle}" />
                 <set field="title" from-field="pageTitle" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceEditCustomerInfo.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceEditCustomerInfo.groovy" />
                 <set field="fieldLevelErrors" value="Y" />
                 <set field="formAction" value="validateCustomerEmail" />
                 <set field="donePage" value="eCommerceEditLoginInfo" />
@@ -926,7 +926,7 @@
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="${uiLabelMap.ChangePasswordTitle}" />
                 <set field="title" from-field="pageTitle" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceEditCustomerInfo.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceEditCustomerInfo.groovy" />
                 <set field="fieldLevelErrors" value="Y" />
                 <set field="formAction" value="validateCustomerPassword" />
                 <set field="donePage" value="eCommerceEditLoginInfo" />
@@ -994,7 +994,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePaymentMethods.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommercePaymentMethods.groovy" />
                             </actions>
                             <widgets>
                                 <container id="eCommercePaymentMethodsContainer" style="creditCardPaymentMethods">
@@ -1032,8 +1032,8 @@
                 <set field="addressSelectionCaption" value="${uiLabelMap.SelectBillingAddressCaption}"/>
                 <set field="addressSelectionDisplayFormat" value="SINGLE_LINE_STREET_CITY"/>
                 <set field="addressSelectionInputName" value="contactMechId"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/paymentmethod/paymentMethodPartySecurity.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/paymentmethod/paymentMethodPartySecurity.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -1115,7 +1115,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="creditCardNewAddress">
@@ -1176,8 +1176,8 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
                             </actions>
                             <widgets>
                                 <container id="eCommerceEditCustomerInfoContainer">
@@ -1241,7 +1241,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="creditCardNewAddress">
@@ -1297,7 +1297,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePaymentMethods.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommercePaymentMethods.groovy" />
                             </actions>
                             <widgets>
                                 <container id="eCommercePaymentMethodsContainer" style="eftPaymentMethods">
@@ -1336,8 +1336,8 @@
                 <set field="addressSelectionCaption" value="${uiLabelMap.SelectBillingAddressCaption}"/>
                 <set field="addressSelectionDisplayFormat" value="SINGLE_LINE_STREET_CITY"/>
                 <set field="addressSelectionInputName" value="contactMechId"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/paymentmethod/paymentMethodPartySecurity.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                <script location="component://osafe/groovyScripts/paymentmethod/paymentMethodPartySecurity.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -1419,7 +1419,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="eftNewAddress">
@@ -1480,8 +1480,8 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCustomerAddress.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCustomerAddress.groovy" />
                             </actions>
                             <widgets>
                                 <container id="eCommerceCreateFftAccountInfo">
@@ -1544,7 +1544,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="eftNewAddress">
@@ -1584,7 +1584,7 @@
                 <set field="pageTitle" value="${uiLabelMap.CustomerAddressBookHeading}" />
                 <set field="title" from-field="pageTitle" />
                 <set field="addressBookInstructions" value="${uiLabelMap.AddressBookInstructionInfo}" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePartyAddress.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommercePartyAddress.groovy" />
                 <set field="donePage" value="eCommerceEditAddressBook" />
                 <set field="osafeFormRequestName" value="validateAddressBook" />
                 <set field="osafeDeleteRequestName" value="deleteAddressBook" />
@@ -1632,8 +1632,8 @@
             <actions>
                 <set field="pageClassIdentifier" value="eCommerceUpdateAddressBook" />
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/EditContactMech.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceAddressPurpose.groovy" />
+                <script location="component://osafe/groovyScripts/common/EditContactMech.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceAddressPurpose.groovy" />
                 <set field="pageTitle" value="${groovy:if(purposeType.equals('BILLING_LOCATION'))return (uiLabelMap.BillingAddressTitle); else return (uiLabelMap.ShippingAddressTitle);}"/>
                 <set field="title" from-field="pageTitle" />
                 <set field="fieldLevelErrors" value="Y" />
@@ -1649,7 +1649,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <container id="eCommerceUpdateAddressBook">
@@ -1675,7 +1675,7 @@
                 <set field="showStatusDetails" value="Y" />
                 <set field="backAction" value="MyAccount"/>
 
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceOrderHistory.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceOrderHistory.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -1708,8 +1708,8 @@
                 <set field="title" from-field="pageTitle" />
                 <set field="showChangeStoreOption" value="N" />
                 <set field="cartShippingLabel" value="${uiLabelMap.CartFinalShippingAndHandlingCaption}" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceOrderDetail.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/orderSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceOrderDetail.groovy" />
+                <script location="component://osafe/groovyScripts/cart/orderSalesTaxInfo.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -1741,7 +1741,7 @@
                 <set field="backAction" value="eCommerceOrderHistory"/>
                 <set field="previousPurchaseProductsHeading" value="${uiLabelMap.PreviousPurchaseProductsHeading}"/>
                 <set field="addMultiItemsToCartAction" value="addMultiItemsToCart"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceReOrderItems.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceReOrderItems.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -1772,7 +1772,7 @@
                 <set field="title" from-field="pageTitle" />
                 <!-- <set field="showStatusDetails" value="Y" /> -->
                 <set field="backAction" value="MyAccount"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceRecurringOrder.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceRecurringOrder.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -1805,7 +1805,7 @@
                 <set field="formName" value="eCommerceRecurrenceOrderDetailForm" />
                 <set field="doneAction" value="updateRecurringOrder"/>
                 <set field="backAction" value="eCommerceRecurringOrder"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/recurringOrderItems.groovy" />
+                <script location="component://osafe/groovyScripts/cart/recurringOrderItems.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -1855,7 +1855,7 @@
             <actions>
                 <set field="formAction" from-field="formAction" default-value="validateCheckoutAddress" />
                 <set field="formName" value="shippingaddressform" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/EditContactMech.groovy" />
+                <script location="component://osafe/groovyScripts/common/EditContactMech.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -1990,7 +1990,7 @@
     <screen name="orderPaymentMethods">
         <section>
         <actions>
-            <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommercePaymentMethods.groovy" />
+            <script location="component://osafe/groovyScripts/common/eCommercePaymentMethods.groovy" />
         </actions>
             <widgets> 
                 <platform-specific>
@@ -2037,7 +2037,7 @@
     <screen name="eCommercePagingControls">
         <section>
         <actions>
-            <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCommonPaging.groovy" />
+            <script location="component://osafe/groovyScripts/common/eCommerceCommonPaging.groovy" />
         </actions>
             <widgets>
                 <container id="resultsNavigationTop">
@@ -2133,7 +2133,7 @@
             <actions>
                 <property-map resource="eCommerceIdMap" map-name="idMap" global="true" />
                 <set field="contentTypeId" value="${idMap.HOME_PAGE_HOTSPOTS}" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceHomeSpot.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceHomeSpot.groovy" />
             </actions>
             <widgets>
                 <section>
@@ -2234,7 +2234,7 @@
                 <set field="pageTitle" from-field="confirmH1MapValue" />
                 <set field="title" from-field="pageTitle" />
                 <set field="pageMessaging" value="N" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceConfirm.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceConfirm.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2276,7 +2276,7 @@
             <actions>
                 <set field="pageClassIdentifier" value="requestCatalog" />
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceRequestCatalogInfo.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceRequestCatalogInfo.groovy" />
                 <set field="pageTitle" value="${uiLabelMap.RequestCatalogTitle}" />
                 <set field="title" from-field="pageTitle" />
                 <set field="fieldLevelErrors" value="${groovy:if(request.getAttribute('setFieldLevelErrors') == 'N')return '' else return 'Y';}" />
@@ -2293,7 +2293,7 @@
                     <decorator-section name="body">
                         <section>
                          <actions>
-                                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceCountry.groovy" />
+                                <script location="component://osafe/groovyScripts/common/eCommerceCountry.groovy" />
                             </actions>
                             <widgets>
                                 <platform-specific>
@@ -2349,7 +2349,7 @@
                 <set field="displayInitialStores" value="N" />
                 <set field="searchStoreFormAction" value="searchStoreLocator" />
                 <set field="searchStoreFormName" value="searchStoreLocator" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceStoreLocator.groovy"/>
+                <script location="component://osafe/groovyScripts/common/eCommerceStoreLocator.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2421,7 +2421,7 @@
                 <set field="mapHeightParam" value="GMAP_MAP_IMG_H" />
                 <set field="displayInitialStores" value="N" />
                 <set field="storeDetail" value="Y" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceStoreLocator.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceStoreLocator.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2450,7 +2450,7 @@
     <screen name="storeDetail">
         <section>
             <actions>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/ecommerceCheckoutStoreDetail.groovy" />
+                <script location="component://osafe/groovyScripts/common/ecommerceCheckoutStoreDetail.groovy" />
             </actions>
             <widgets>
                <platform-specific>
@@ -2470,9 +2470,9 @@
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <set field="orderPDFName" value="Order${parameters.orderId}_"/>
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/setup/EcommerceSetup.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/eCommerceOrderConfirm.groovy" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/cart/orderSalesTaxInfo.groovy" />
+                <script location="component://osafe/groovyScripts/setup/EcommerceSetup.groovy" />
+                <script location="component://osafe/groovyScripts/cart/eCommerceOrderConfirm.groovy" />
+                <script location="component://osafe/groovyScripts/cart/orderSalesTaxInfo.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -2489,7 +2489,7 @@
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="${uiLabelMap.BigFishInfoTitle}" />
                 <set field="title" from-field="pageTitle" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/bigfishInfo.groovy" />
+                <script location="component://osafe/groovyScripts/common/bigfishInfo.groovy" />
             </actions>
             <widgets>
                 <decorator-screen name="${parameters.eCommerceDecoratorName}" location="${parameters.eCommerceDecoratorLocation}">
@@ -2519,7 +2519,7 @@
             <actions>
                 <set field="pageClassIdentifier" value="emailAFriend" />
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceEmailAFriend.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceEmailAFriend.groovy" />
                 <set field="pageTitle" value="${uiLabelMap.EmailAFriendTitle}" />
                 <set field="title" from-field="pageTitle" />
                 <set field="formAction" value="submitEmailAFriend" />

@@ -219,7 +219,7 @@
                 <set field="showMobilePhone" value="Y"/>
                 <set field="mobilePhoneCaption" value="${uiLabelMap.MobilePhoneCaption}"/>
                 <set field="fieldPurpose" value="CUSTOMER" />
-                <script location="component://osafe/webapp/osafe/WEB-INF/actions/common/eCommerceAddressPurpose.groovy" />
+                <script location="component://osafe/groovyScripts/common/eCommerceAddressPurpose.groovy" />
                 <set field="addressDivScreenPrefix" value="myAccountAddressBook"/>
             </actions>
             <widgets>
