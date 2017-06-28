@@ -6,6 +6,7 @@ import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 partyId = null;
 userLogin = context.userLogin;
@@ -38,7 +39,8 @@ if (UtilValidate.isNotEmpty(userLogin))
 if (UtilValidate.isNotEmpty(partyId)) 
 {
 
-    party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+    //party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+    party = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(party)) 
     {
         context.party = party;

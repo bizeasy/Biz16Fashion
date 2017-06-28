@@ -27,6 +27,7 @@ import org.apache.ofbiz.product.catalog.*;
 import org.apache.ofbiz.product.store.*;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart;
 import org.apache.ofbiz.osafe.util.Util;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 ShoppingCart cart = session.getAttribute("shoppingCart");
 context.cart = cart;
@@ -84,7 +85,8 @@ paymentMethodTypeId = null;
 if (paymentMethodTypeIds) 
 {
     paymentMethodTypeId = paymentMethodTypeIds[0];
-    paymentMethodType = delegator.findByPrimaryKeyCache("PaymentMethodType", [paymentMethodTypeId : paymentMethodTypeId]);
+    //paymentMethodType = delegator.findByPrimaryKeyCache("PaymentMethodType", [paymentMethodTypeId : paymentMethodTypeId]);
+    paymentMethodType = EntityQuery.use(delegator).from("PaymentMethodType").where(UtilMisc.toMap("paymentMethodTypeId", paymentMethodTypeId)).cache().queryOne();
     context.paymentMethodType = paymentMethodType;
 }
 
@@ -117,7 +119,8 @@ context.giftMessage = cart.getGiftMessage();
 context.isGift = cart.getIsGift();
 context.currencyUomId = cart.getCurrency();
 
-shipmentMethodType = delegator.findByPrimaryKeyCache("ShipmentMethodType", [shipmentMethodTypeId : cart.getShipmentMethodTypeId()]);
+//shipmentMethodType = delegator.findByPrimaryKeyCache("ShipmentMethodType", [shipmentMethodTypeId : cart.getShipmentMethodTypeId()]);
+shipmentMethodType = EntityQuery.use(delegator).from("ShipmentMethodType").where(UtilMisc.toMap("shipmentMethodTypeId", cart.getShipmentMethodTypeId())).cache().queryOne();
 if (shipmentMethodType) context.shipMethDescription = shipmentMethodType.description;
 
 orh = new OrderReadHelper(orderAdjustments, orderItems);

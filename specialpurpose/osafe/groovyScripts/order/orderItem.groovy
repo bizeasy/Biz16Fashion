@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.osafe.util.Util;
@@ -55,7 +56,8 @@ BigDecimal itemTotal = BigDecimal.ZERO;
 if (UtilValidate.isNotEmpty(rowOrderItem))
 {
 	productId = rowOrderItem.productId;
-	product = delegator.findByPrimaryKeyCache("Product", UtilMisc.toMap("productId", productId));
+	//product = delegator.findByPrimaryKeyCache("Product", UtilMisc.toMap("productId", productId));
+	product = EntityQuery.use(delegator).from("Product").where(UtilMisc.toMap("productId", productId)).cache().queryOne();
 	urlProductId = productId;
 	if (UtilValidate.isEmpty(orderHeader))
 	{
@@ -288,7 +290,8 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	      }
 	      trackingNumber = shipGroup.trackingNumber;
 	      findCarrierShipmentMethodMap = UtilMisc.toMap("shipmentMethodTypeId", shipGroup.shipmentMethodTypeId, "partyId", shipGroup.carrierPartyId,"roleTypeId" ,"CARRIER");
-	      carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap);
+	     // carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap);
+	      carrierShipmentMethod = EntityQuery.use(delegator).from("findCarrierShipmentMethodMap").where(findCarrierShipmentMethodMap).cache().queryOne();
 		  if (UtilValidate.isNotEmpty(carrierShipmentMethod))
 		  {
 			  shipmentMethodType = carrierShipmentMethod.getRelatedOneCache("ShipmentMethodType");

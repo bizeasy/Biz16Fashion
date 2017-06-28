@@ -25,6 +25,7 @@ import org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartItem;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.osafe.util.Util;
 
@@ -70,7 +71,8 @@ product = null;
 if (UtilValidate.isNotEmpty(parameters.add_product_id))
 {
 	add_product_id = parameters.add_product_id;
-	product = delegator.findByPrimaryKeyCache("Product", [productId : add_product_id]);
+	//product = delegator.findByPrimaryKeyCache("Product", [productId : add_product_id]);
+	product = EntityQuery.use(delegator).from("Product").where(UtilMisc.toMap("productId", add_product_id)).cache().queryOne();
 }
 
 if(UtilValidate.isNotEmpty(shoppingCart))
@@ -157,7 +159,8 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 		partyId = userLogin.partyId;
 		if (UtilValidate.isNotEmpty(partyId))
 		{
-			party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+			//party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+			party = EntityQuery.use(delegator).from("Party").where(UtilMisc.toMap("partyId", partyId)).cache().queryOne();
 			if (UtilValidate.isNotEmpty(party))
 			{
 				partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
@@ -254,7 +257,8 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 		{
 			try
 			{
-				productStoreShipEstimate = delegator.findByPrimaryKeyCache("ProductStoreShipmentMethView", [productStoreShipMethId : defaultProductStoreShipMethodId]);
+				//productStoreShipEstimate = delegator.findByPrimaryKeyCache("ProductStoreShipmentMethView", [productStoreShipMethId : defaultProductStoreShipMethodId]);
+				productStoreShipEstimate = EntityQuery.use(delegator).from("ProductStoreShipmentMethView").where(UtilMisc.toMap("productStoreShipMethId", defaultProductStoreShipMethodId)).cache().queryOne();
 				if (UtilValidate.isNotEmpty(productStoreShipEstimate))
 				{
 					//set default shipping method
@@ -291,7 +295,8 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 		}
 		else
 		{
-			carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shoppingCart.getCarrierPartyId()));
+			//carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shoppingCart.getCarrierPartyId()));
+			carrier = EntityQuery.use(delegator).from("PartyGroup").where(UtilMisc.toMap("partyId", shoppingCart.getCarrierPartyId())).cache().queryOne();
 			if(UtilValidate.isNotEmpty(carrier))
 			{
 				if(UtilValidate.isNotEmpty(carrier.groupName))

@@ -4,6 +4,7 @@ import org.apache.ofbiz.base.util.StringUtil;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.ContactHelper;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -27,7 +28,8 @@ if (UtilValidate.isNotEmpty(userLogin))
 
 	 if (UtilValidate.isNotEmpty(parameters.stateCode)) 
 	 {
-	        geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.stateCode]);
+	        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.stateCode]);
+	        geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.stateCode]).cache().queryOne();
 	        if (UtilValidate.isNotEmpty(geoValue)) 
 	        {
 	            context.selectedStateName = geoValue.geoName;
@@ -36,7 +38,8 @@ if (UtilValidate.isNotEmpty(userLogin))
 	 } 
 	 else if (UtilValidate.isNotEmpty(postalAddressData) && UtilValidate.isNotEmpty(postalAddressData.stateProvinceGeoId)) 
 	 {
-	        geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+	        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+	        geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
 	        if (UtilValidate.isNotEmpty(geoValue)) 
 	        {
 	            context.selectedStateName = geoValue.geoName;
@@ -63,7 +66,8 @@ else
 {
     if (UtilValidate.isNotEmpty(parameters.stateCode)) 
     {
-	    geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.stateCode]);
+	    //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.stateCode]);
+	    geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.stateCode]).cache().queryOne();
 	    if (UtilValidate.isNotEmpty(geoValue)) 
 	    {
 	        context.selectedStateName = geoValue.geoName;

@@ -4,6 +4,7 @@ import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.entity.*
 import org.apache.ofbiz.entity.condition.*
 import org.apache.ofbiz.entity.util.*
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.order.*
 import org.apache.ofbiz.webapp.control.*
 import org.apache.ofbiz.product.product.ProductWorker;
@@ -193,7 +194,8 @@ if (UtilValidate.isNotEmpty(orderId))
 
 if (UtilValidate.isNotEmpty(partyId)) 
 {
-    gvParty = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+    //gvParty = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+     gvParty = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(gvParty)) 
     {
         person=gvParty.getRelatedOneCache("Person");

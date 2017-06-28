@@ -22,6 +22,7 @@ import org.apache.ofbiz.party.contact.ContactMechWorker;
 import org.apache.ofbiz.base.util.UtilHttp;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.*;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 
 /* puts the following in the context: "contactMech", "contactMechId",
@@ -143,7 +144,8 @@ if (UtilValidate.isNotEmpty(telecomNumberData))
 // load the geo names for selected countries and states/regions
 if (parameters.countryGeoId) 
 {
-    geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.countryGeoId]);
+    //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.countryGeoId]);
+    geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.countryGeoId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(geoValue)) 
     {
         context.selectedCountryName = geoValue.geoName;
@@ -151,7 +153,8 @@ if (parameters.countryGeoId)
 } 
 else if (postalAddressData?.countryGeoId) 
 {
-    geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.countryGeoId]);
+   // geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.countryGeoId]);
+    geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.countryGeoId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(geoValue))
     {
         context.selectedCountryName = geoValue.geoName;
@@ -160,7 +163,8 @@ else if (postalAddressData?.countryGeoId)
 
 if (parameters.stateProvinceGeoId) 
 {
-    geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.stateProvinceGeoId]);
+    //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.stateProvinceGeoId]);
+    geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.stateProvinceGeoId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(geoValue))
     {
         context.selectedStateName = geoValue.geoName;
@@ -168,7 +172,8 @@ if (parameters.stateProvinceGeoId)
 } 
 else if (postalAddressData?.stateProvinceGeoId) 
 {
-    geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+    //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+    geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(geoValue))
     {
         context.selectedStateName = geoValue.geoName;

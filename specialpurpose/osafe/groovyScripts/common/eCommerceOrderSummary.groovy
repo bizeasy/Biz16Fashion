@@ -2,6 +2,7 @@ package common;
 
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.base.util.UtilMisc;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -102,7 +103,8 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 		}
 		else
 		{
-			carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shoppingCart.getCarrierPartyId()));
+			//carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shoppingCart.getCarrierPartyId()));
+			carrier =  EntityQuery.use(delegator).from("PartyGroup").where([partyId :shoppingCart.getCarrierPartyId()]).cache().queryOne();
 			if(UtilValidate.isNotEmpty(carrier))
 			{
 				if(UtilValidate.isNotEmpty(carrier.groupName))

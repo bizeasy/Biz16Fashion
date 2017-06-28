@@ -9,6 +9,7 @@ import org.apache.ofbiz.osafe.control.SeoUrlHelper;
 import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.GenericValue;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 wishList = LinkedList.newInstance();
 wishListSize = 0;
@@ -34,7 +35,8 @@ product = null;
 if (UtilValidate.isNotEmpty(parameters.add_product_id)) 
 { 
     add_product_id = parameters.add_product_id;
-    product = delegator.findByPrimaryKeyCache("Product", [productId : add_product_id]);
+    //product = delegator.findByPrimaryKeyCache("Product", [productId : add_product_id]);
+    product = EntityQuery.use(delegator).from("Product").where(UtilMisc.toMap("productId", add_product_id)).cache().queryOne();
 }
 
 //set previos continue button url 

@@ -8,6 +8,7 @@ import org.apache.ofbiz.common.CommonWorkers;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.ContactHelper;
 
 productStore = ProductStoreWorker.getProductStore(request);
@@ -85,7 +86,9 @@ if (UtilValidate.isNotEmpty(userLogin))
 				globalContext.userPostalCode=postalAddressData.postalCode;
 				if (UtilValidate.isNotEmpty(postalAddressData.stateProvinceGeoId))
 				{
-			        geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+			        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+			        geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
+			        
 			        if (UtilValidate.isNotEmpty(geoValue)) 
 			        {
 			            globalContext.userSelectedStateName = geoValue.geoName;

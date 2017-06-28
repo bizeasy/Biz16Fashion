@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.common.geo.*;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.party.contact.ContactMechWorker;
 import org.apache.ofbiz.osafe.util.Util;
@@ -62,7 +63,8 @@ if (UtilValidate.isNotEmpty(context.storeDetail) && "Y".equals(context.storeDeta
 	}
 	if (UtilValidate.isNotEmpty(storeId))
 	{
-	    party = delegator.findByPrimaryKeyCache("Party", [partyId : storeId]);
+	    //party = delegator.findByPrimaryKeyCache("Party", [partyId : storeId]);
+	    party = EntityQuery.use(delegator).from("Party").where([partyId : storeId]).cache().queryOne();
 	    if (UtilValidate.isNotEmpty(party)) 
 	    {
 	    	storePartyList = LinkedList.newInstance();
@@ -153,14 +155,16 @@ if(UtilValidate.isNotEmpty(storePartyList))
       if (!partyDetailExistsList.contains(partyId))
       {
     	  partyDetailExistsList.add(partyId);
-          party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+          //party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+          party = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();
           if (UtilValidate.isNotEmpty(party)) 
           {        
             latestPartyGeoPoint = GeoWorker.findLatestGeoPoint(delegator, "PartyGeoPoint", "partyId", partyId, null, null);
 
             if(UtilValidate.isNotEmpty(latestPartyGeoPoint)) 
             {
-                latestGeoPoint = delegator.findByPrimaryKeyCache("GeoPoint", [geoPointId : latestPartyGeoPoint.geoPointId]);
+                //latestGeoPoint = delegator.findByPrimaryKeyCache("GeoPoint", [geoPointId : latestPartyGeoPoint.geoPointId]);
+                latestGeoPoint = EntityQuery.use(delegator).from("GeoPoint").where([geoPointId : latestPartyGeoPoint.geoPointId]).cache().queryOne();
                 latestOsafeGeo = new OsafeGeo(latestGeoPoint.latitude.toString(), latestGeoPoint.longitude.toString());
                 distance = Math.round(Util.distFrom(searchOsafeGeo, latestOsafeGeo, uom) * 10) / 10;
                 if (latestGeoPoint.dataSourceId == dataSourceId && distance <= redius) 

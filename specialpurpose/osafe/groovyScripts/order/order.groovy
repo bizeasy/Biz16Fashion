@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ofbiz.base.util.UtilValidate;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 import java.util.LinkedList;
 import java.util.HashMap;
@@ -29,7 +30,8 @@ if (UtilValidate.isNotEmpty(orderItemShipGroups) && orderItemShipGroupSize == 1)
     {
         trackingNumber = shipGroup.trackingNumber;
         findCarrierShipmentMethodMap = UtilMisc.toMap("shipmentMethodTypeId", shipGroup.shipmentMethodTypeId, "partyId", shipGroup.carrierPartyId,"roleTypeId" ,"CARRIER");
-        carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap);
+        //carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap);
+        carrierShipmentMethod =  EntityQuery.use(delegator).from("CarrierShipmentMethod").where(findCarrierShipmentMethodMap).cache().queryOne();
         carrierDescription = "";
         if (UtilValidate.isNotEmpty(carrierShipmentMethod))
         {

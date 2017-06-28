@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.HashSet;
 import java.util.HashMap;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.shoppingcart.*;
 import org.apache.ofbiz.webapp.stats.VisitHandler;
 
@@ -35,7 +36,8 @@ if (UtilValidate.isNotEmpty(productId))
     virtualProductId = ProductWorker.getVariantVirtualId(gvProduct);
     if (virtualProductId) {
         productId = virtualProductId;
-        gvProduct = delegator.findByPrimaryKeyCache("Product", [productId : productId]);
+      //  gvProduct = delegator.findByPrimaryKeyCache("Product", [productId : productId]);
+        gvProduct = EntityQuery.use(delegator).from("Product").where([productId : productId]).cache().queryOne();
     }
     
     if (UtilValidate.isNotEmpty(gvProduct))
@@ -51,6 +53,7 @@ if (UtilValidate.isNotEmpty(productId))
 
        //Check Product Attribute for Meta Data Overrides
         productAttr = delegator.findByAndCache("ProductAttribute", UtilMisc.toMap("productId", gvProduct.productId));
+        
         productAttrMap = HashMap.newInstance();
 
         if (UtilValidate.isNotEmpty(productAttr))

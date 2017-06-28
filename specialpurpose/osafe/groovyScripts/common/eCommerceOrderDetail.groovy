@@ -10,6 +10,7 @@ import org.apache.ofbiz.product.store.*;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityExpr;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import java.util.LinkedList;
 import java.math.BigDecimal;
@@ -58,7 +59,8 @@ for (GenericValue contactMech : shippingContactMechList)
         for (GenericValue link: contactMechLinkList)
         {
             contactMechIdTo = link.contactMechIdTo
-            contactMech = delegator.findByPrimaryKeyCache("ContactMech", [contactMechId : contactMechIdTo]);
+            //contactMech = delegator.findByPrimaryKeyCache("ContactMech", [contactMechId : contactMechIdTo]);
+            contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId :contactMechIdTo]).cache().queryOne();
             phonePurposeList  = EntityUtil.filterByDate(contactMech.getRelatedCache("PartyContactMechPurpose"), true);
             partyContactMechPurpose = EntityUtil.getFirst(phonePurposeList)
 
@@ -161,7 +163,8 @@ isDemoStore = true;
 shippingApplies = true;
 if (UtilValidate.isNotEmpty(orderId)) 
 {
-    orderHeader = delegator.findByPrimaryKeyCache("OrderHeader", [orderId : orderId]);
+    //orderHeader = delegator.findByPrimaryKeyCache("OrderHeader", [orderId : orderId]);
+    orderHeader = EntityQuery.use(delegator).from("OrderHeader").where([orderId :orderId]).cache().queryOne();
 	if (UtilValidate.isNotEmpty(orderHeader))
 	{
 	    if ("PURCHASE_ORDER".equals(orderHeader?.orderTypeId)) 
@@ -217,8 +220,8 @@ if (UtilValidate.isNotEmpty(orderId))
 	
 		placingCustomerOrderRoles = delegator.findByAndCache("OrderRole", [orderId : orderId, roleTypeId : roleTypeId]);
 		placingCustomerOrderRole = EntityUtil.getFirst(placingCustomerOrderRoles);
-		placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
-	
+		//placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
+		placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId :placingCustomerOrderRole.partyId]).cache().queryOne());
 		billingAccount = orderHeader.getRelatedOneCache("BillingAccount");
 	
 		orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelatedCache("OrderPaymentPreference"), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
@@ -355,7 +358,9 @@ if (UtilValidate.isNotEmpty(orderId))
 						carrierPartyId = shipGroup.carrierPartyId;
 						if(UtilValidate.isNotEmpty(shipmentMethodType))
 						{
-							carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shipGroup.carrierPartyId));
+							//carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shipGroup.carrierPartyId));
+							carrier =  EntityQuery.use(delegator).from("PartyGroup").where([partyId :shipGroup.carrierPartyId]).cache().queryOne();
+							
 							if(UtilValidate.isNotEmpty(carrier))
 							{
 								if(UtilValidate.isNotEmpty(carrier.groupName))

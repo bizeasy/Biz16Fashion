@@ -3,6 +3,7 @@ package common;
 import java.math.BigDecimal;
 import java.util.List;
 import org.apache.ofbiz.base.util.UtilValidate;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import java.util.LinkedList;
 import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
@@ -87,7 +88,8 @@ if(UtilValidate.isNotEmpty(carrierShipmentMethodList))
         returnShippingMethods = UtilMisc.makeListWritable(carrierShipmentMethodList);
         for (GenericValue method: carrierShipmentMethodList)
 		{
-        	psShipmentMeth = delegator.findByPrimaryKeyCache("ProductStoreShipmentMeth", [productStoreShipMethId : method.productStoreShipMethId]);
+        	//psShipmentMeth = delegator.findByPrimaryKeyCache("ProductStoreShipmentMeth", [productStoreShipMethId : method.productStoreShipMethId]);
+        	psShipmentMeth = EntityQuery.use(delegator).from("ProductStoreShipmentMeth").where(UtilMisc.toMap("productStoreShipMethId", method.productStoreShipMethId)).cache().queryOne();
 			allowPoBoxAddr = psShipmentMeth.getString("allowPoBoxAddr");
 			minWeight = psShipmentMeth.getBigDecimal("minWeight");
 			maxWeight = psShipmentMeth.getBigDecimal("maxWeight");
@@ -108,7 +110,8 @@ if(UtilValidate.isNotEmpty(carrierShipmentMethodList))
 				if(UtilValidate.isNotEmpty(shipmentCustomMethodId))
 				{
 					//get the shipment CUSTOM METHOD
-					shipmentCustomMeth = delegator.findByPrimaryKeyCache("CustomMethod", [customMethodId : shipmentCustomMethodId]);
+					//shipmentCustomMeth = delegator.findByPrimaryKeyCache("CustomMethod", [customMethodId : shipmentCustomMethodId]);
+					shipmentCustomMeth = EntityQuery.use(delegator).from("CustomMethod").where(UtilMisc.toMap("customMethodId", shipmentCustomMethodId)).cache().queryOne();
 					if(UtilValidate.isNotEmpty(shipmentCustomMeth))
 					{
 						customMethodName = shipmentCustomMeth.customMethodName;

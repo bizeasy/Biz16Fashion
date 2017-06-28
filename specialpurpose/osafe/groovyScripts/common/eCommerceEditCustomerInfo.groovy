@@ -6,6 +6,7 @@ import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.base.util.*;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 context.allowSolicitation= "";
 context.partyEmailPreference="";
@@ -144,14 +145,16 @@ if (UtilValidate.isNotEmpty(userLogin))
 
     if (UtilValidate.isNotEmpty(parameters.CUSTOMER_STATE)) 
     {
-        geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.CUSTOMER_STATE]);
+        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.CUSTOMER_STATE]);
+        geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.CUSTOMER_STATE]).cache().queryOne();
         if (UtilValidate.isNotEmpty(geoValue))
         {
             context.selectedStateName = geoValue.geoName;
         }
     } else if (UtilValidate.isNotEmpty(postalAddressData) && UtilValidate.isNotEmpty(postalAddressData.stateProvinceGeoId)) 
     {
-        geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+        geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
         if (UtilValidate.isNotEmpty(geoValue))
         {
             context.selectedStateName = geoValue.geoName;

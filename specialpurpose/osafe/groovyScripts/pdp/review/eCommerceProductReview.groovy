@@ -5,6 +5,7 @@ import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.product.catalog.*;
 import org.apache.ofbiz.product.store.*;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.category.CategoryWorker;
 import org.apache.ofbiz.product.category.CategoryContentWrapper;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
@@ -49,7 +50,8 @@ if((UtilValidate.isNotEmpty(reviewMethod)) && (reviewMethod.equalsIgnoreCase("BI
         if (UtilValidate.isNotEmpty(virtualProductId)) 
         {
             productId = virtualProductId;
-            gvProduct = delegator.findByPrimaryKeyCache("Product", [productId : productId]);
+            //gvProduct = delegator.findByPrimaryKeyCache("Product", [productId : productId]);
+            gvProduct = EntityQuery.use(delegator).from("Product").where([productId : productId]).cache().queryOne();
         }
         
         context.product = gvProduct;

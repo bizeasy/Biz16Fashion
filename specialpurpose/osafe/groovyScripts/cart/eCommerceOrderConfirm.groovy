@@ -5,6 +5,7 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.entity.util.*;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.*;
 import org.apache.ofbiz.product.store.*;
 import org.apache.ofbiz.entity.util.EntityUtil;
@@ -133,8 +134,9 @@ if (UtilValidate.isNotEmpty(orderId))
 
 	   placingCustomerOrderRoles = delegator.findByAndCache("OrderRole", [orderId : orderId, roleTypeId : roleTypeId]);
 	   placingCustomerOrderRole = EntityUtil.getFirst(placingCustomerOrderRoles);
-	   placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
-   
+	   //placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
+	   placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne());
+   carrierShipmentMethod = ;
 	   billingAccount = orderHeader.getRelatedOneCache("BillingAccount");
    
 	   cancelOrderPaymentPreferences = EntityUtil.filterByAnd(orderPaymentPreferences, [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
@@ -313,7 +315,8 @@ if (UtilValidate.isNotEmpty(orderId))
 					   carrierPartyId = shipGroup.carrierPartyId;
 					   if(UtilValidate.isNotEmpty(shipmentMethodType))
 					   {
-						   carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shipGroup.carrierPartyId));
+						   //carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shipGroup.carrierPartyId));
+						   carrier = EntityQuery.use(delegator).from("PartyGroup").where(UtilMisc.toMap("partyId", shipGroup.carrierPartyId)).cache().queryOne()
 						   if(UtilValidate.isNotEmpty(carrier))
 						   {
 							   if(UtilValidate.isNotEmpty(carrier.groupName))

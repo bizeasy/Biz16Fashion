@@ -32,7 +32,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.osafe.webapp.ftl.OfbizSeoUrlTransform;
-
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 osafeProperties = UtilProperties.getResourceBundleMap("OsafeProperties.xml", locale);
 productStore = ProductStoreWorker.getProductStore(request);
@@ -665,7 +665,8 @@ if (UtilValidate.isNotEmpty(productId))
         if (UtilValidate.isNotEmpty(virtualProductId))
         {
             productId = virtualProductId;
-            gvProduct = delegator.findByPrimaryKeyCache("Product", [productId : productId]);
+            //gvProduct = delegator.findByPrimaryKeyCache("Product", [productId : productId]);
+            gvProduct =  EntityQuery.use(delegator).from("Product").where([productId :productId]).cache().queryOne();
         }
 
         context.title = "";

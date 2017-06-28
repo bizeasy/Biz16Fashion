@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ofbiz.base.util.UtilValidate;
-
+import org.apache.ofbiz.entity.util.EntityQuery;
 import java.util.LinkedList;
 import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
@@ -245,7 +245,8 @@ if (UtilValidate.isNotEmpty(shoppingList))
 					partyId = shoppingList.partyId;
 					if (UtilValidate.isNotEmpty(partyId))
 					{
-						party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+						//party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+						party = EntityQuery.use(delegator).from("Party").where(UtilMisc.toMap("partyId", partyId)).cache().queryOne();
 						if (UtilValidate.isNotEmpty(party))
 						{
 							partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
