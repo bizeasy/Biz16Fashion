@@ -21,7 +21,7 @@ addressContactMechList = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(party))
 {
 	
-	partyLocations = party.getRelatedCache("PartyContactMech");
+	partyLocations = party.getRelated("PartyContactMech",null,null,true);
 	partyLocations = EntityUtil.filterByDate(partyLocations,UtilDateTime.getDayEnd(UtilDateTime.nowTimestamp()),"fromDate","thruDate",true);
 	partyLocations = EntityUtil.getRelatedCache("PartyContactMechPurpose", partyLocations);
 	partyLocations = EntityUtil.filterByDate(partyLocations,UtilDateTime.getDayEnd(UtilDateTime.nowTimestamp()),"fromDate","thruDate",true);

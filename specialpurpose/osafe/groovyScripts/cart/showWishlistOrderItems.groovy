@@ -63,7 +63,7 @@ productCategoryId = product.primaryProductCategoryId;
 virtualProduct="";
 if(UtilValidate.isEmpty(productCategoryId))
 {
-	productCategoryMemberList = product.getRelatedCache("ProductCategoryMember");
+	productCategoryMemberList = product.getRelated("ProductCategoryMember",null,null,true);
 	productCategoryMemberList = EntityUtil.filterByDate(productCategoryMemberList,true);
 	productCategoryMemberList = EntityUtil.orderBy(productCategoryMemberList, UtilMisc.toList('sequenceNum'));
 	if(UtilValidate.isNotEmpty(productCategoryMemberList))
@@ -105,7 +105,7 @@ if(UtilValidate.isNotEmpty(product.isVariant) && "Y".equals(product.isVariant))
 	urlProductId = virtualProduct.productId;
 	if(UtilValidate.isEmpty(productCategoryId))
 	{
-		productCategoryMemberList = virtualProduct.getRelatedCache("ProductCategoryMember");
+		productCategoryMemberList = virtualProduct.getRelated("ProductCategoryMember",null,null,true);
 		productCategoryMemberList = EntityUtil.filterByDate(productCategoryMemberList,true);
 		productCategoryMemberList = EntityUtil.orderBy(productCategoryMemberList, UtilMisc.toList('sequenceNum'));
 		if(UtilValidate.isNotEmpty(productCategoryMemberList))

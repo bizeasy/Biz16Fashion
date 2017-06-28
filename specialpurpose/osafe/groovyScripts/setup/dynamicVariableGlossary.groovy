@@ -20,7 +20,7 @@ productStore = ProductStoreWorker.getProductStore(request);
 //PRODUCT STORE PARMS
 if (UtilValidate.isNotEmpty(productStore))
 {
-  productStoreParmList = productStore.getRelatedCache("XProductStoreParm");
+  productStoreParmList = productStore.getRelated("XProductStoreParm",null,null,true);
   if (UtilValidate.isNotEmpty(productStoreParmList))
   {
     parmIter = productStoreParmList.iterator();
@@ -115,7 +115,7 @@ if (UtilValidate.isNotEmpty(orderId))
        billingLocations = orderReadHelper.getBillingLocations();
        billingAddress = EntityUtil.getFirst(billingLocations);
        
-       orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelatedCache("OrderPaymentPreference"), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
+       orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelated("OrderPaymentPreference",null,null,true), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
        paymentMethods = [];
        paymentMethodType = "";
        orderPaymentPreferences.each { opp ->

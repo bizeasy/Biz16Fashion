@@ -50,7 +50,7 @@ if (UtilValidate.isNotEmpty(contactMech))
         contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId : contactMechIdTo]).cache().queryOne();
         if(UtilValidate.isNotEmpty(contactMech)) 
         {
-            phonePurposeList  = contactMech.getRelatedCache("PartyContactMechPurpose");
+            phonePurposeList  = contactMech.getRelated("PartyContactMechPurpose",null,null,true);
             phonePurposeList  = EntityUtil.filterByDate(phonePurposeList, true);
             if(UtilValidate.isNotEmpty(phonePurposeList)) 
             {

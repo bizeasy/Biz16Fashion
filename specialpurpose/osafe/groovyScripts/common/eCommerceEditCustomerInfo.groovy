@@ -20,7 +20,7 @@ if (UtilValidate.isNotEmpty(userLogin))
     context.person=person;
     partyId=party.partyId;
     context.partyId = partyId;
-    partyAttributes = party.getRelatedCache("PartyAttribute");
+    partyAttributes = party.getRelated("PartyAttribute",null,null,true);
     if (UtilValidate.isNotEmpty(partyAttributes))
     { 
     	partyAttributeEmailPrefList = EntityUtil.filterByAnd(partyAttributes, UtilMisc.toMap("attrName" , "PARTY_EMAIL_PREFERENCE"));
@@ -62,7 +62,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 
     context.contactMech = "";
     contactMechBilling = "";
-    partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+    partyContactMechPurpose = party.getRelated("PartyContactMechPurpose",null,null,true);
     partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
     
     

@@ -84,7 +84,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	   orderShippingTotal = orderShippingTotal.add(OrderReadHelper.calcOrderAdjustments(orderHeaderAdjustments, orderSubTotal, false, false, true));
 
 	   orderGrandTotal = OrderReadHelper.getOrderGrandTotal(orderItems, orderAdjustments);
-	   orderPaymentPreferences = orderHeader.getRelatedCache("OrderPaymentPreference", UtilMisc.toList("orderPaymentPreferenceId"));
+	   orderPaymentPreferences = orderHeader.getRelated("OrderPaymentPreference", UtilMisc.toList("orderPaymentPreferenceId",null,null,true));
 	   if (UtilValidate.isEmpty(userLogin))
 	   {
 		   userLogin = parameters.temporaryAnonymousUserLogin;
@@ -92,7 +92,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		   // then userLogin is not found when Order Complete Mail is send to user.
 		   if (UtilValidate.isEmpty(userLogin))
 		   {
-			   orderStatuses = orderHeader.getRelatedCache("OrderStatus");
+			   orderStatuses = orderHeader.getRelated("OrderStatus",null,null,true);
 			   filteredOrderStatusList = [];
 			   extOfflineModeExists = false;
 			   
@@ -191,7 +191,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	   totalItems = 0.00;
 	   orderItems.each { oitem ->
 		   totalItems += oitem.quantity;
-		   ritems = oitem.getRelatedCache("ReturnItem");
+		   ritems = oitem.getRelated("ReturnItem",null,null,true);
 		   ritems.each { ritem ->
 			   rh = ritem.getRelatedOne("ReturnHeader",true);
 			   if (!rh.statusId.equals("RETURN_CANCELLED"))
@@ -260,7 +260,7 @@ if (UtilValidate.isNotEmpty(orderId))
 				   promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 				   promoText = productPromo.promoText;
 				   promoInfo.put("promoText", promoText);
-				   productPromoCode = productPromo.getRelatedCache("ProductPromoCode");
+				   productPromoCode = productPromo.getRelated("ProductPromoCode",null,null,true);
 				   if(UtilValidate.isNotEmpty(productPromoCode))
 				   {
 					   promoCodesEntered = orderReadHelper.getProductPromoCodesEntered();

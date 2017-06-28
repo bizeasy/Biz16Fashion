@@ -178,7 +178,7 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 				promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 				promoText = productPromo.promoText;
 				promoInfo.put("promoText", promoText);
-				productPromoCode = productPromo.getRelatedCache("ProductPromoCode");
+				productPromoCode = productPromo.getRelated("ProductPromoCode",null,null,true);
 				if(UtilValidate.isNotEmpty(productPromoCode))
 				{
 					promoCodesEntered = shoppingCart.getProductPromoCodesEntered();

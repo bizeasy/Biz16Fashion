@@ -28,7 +28,7 @@ if (UtilValidate.isNotEmpty(context.contentId) && UtilValidate.isNotEmpty(contex
                 context.metaDescription = content.description;
             }
             //override HTML title, metatags, metakeywords
-            contentAttrList = content.getRelatedCache("ContentAttribute");
+            contentAttrList = content.getRelated("ContentAttribute",null,null,true);
             for(GenericValue contentAttr : contentAttrList)
             {
                 if(contentAttr.attrName == 'HTML_PAGE_TITLE') 

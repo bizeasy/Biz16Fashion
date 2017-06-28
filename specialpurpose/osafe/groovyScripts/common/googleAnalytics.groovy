@@ -69,7 +69,7 @@ transItemList = [];
                 
                 if (UtilValidate.isNotEmpty(categoryLookupProduct))
                 {
-        	        productCategoryMemberList = itemProduct.getRelatedCache("ProductCategoryMember");
+        	        productCategoryMemberList = itemProduct.getRelated("ProductCategoryMember",null,null,true);
                     productCategoryMemberList = EntityUtil.filterByDate(productCategoryMemberList,true);
             	    productCategoryMemberList = EntityUtil.orderBy(productCategoryMemberList,UtilMisc.toList("sequenceNum"));
                     if (UtilValidate.isNotEmpty(productCategoryMemberList))

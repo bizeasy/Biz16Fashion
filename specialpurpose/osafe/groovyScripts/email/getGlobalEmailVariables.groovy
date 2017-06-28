@@ -136,7 +136,7 @@ if (UtilValidate.isNotEmpty(orderId))
        billingLocations = orderReadHelper.getBillingLocations();
        billingAddress = EntityUtil.getFirst(billingLocations);
        
-       orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelatedCache("OrderPaymentPreference"), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
+       orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelated("OrderPaymentPreference",null,null,true), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
        paymentMethods = [];
        paymentMethodType = "";
        orderPaymentPreferences.each { opp ->
@@ -211,7 +211,7 @@ if (UtilValidate.isNotEmpty(partyId))
           globalContext.put("PERSONAL_TITLE",person.personalTitle);
           globalContext.put("NICKNAME",person.nickname);
         }
-        userLogins=gvParty.getRelatedCache("UserLogin");
+        userLogins=gvParty.getRelated("UserLogin",null,null,true);
         userLogin = EntityUtil.getFirst(userLogins);
         if (UtilValidate.isNotEmpty(userLogin)) 
         {

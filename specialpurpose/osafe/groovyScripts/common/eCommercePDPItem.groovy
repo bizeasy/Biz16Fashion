@@ -613,7 +613,7 @@ if(UtilValidate.isNotEmpty(productId))
     {
         Map productContentIdMap = HashMap.newInstance();
 
-        productContentList = product.getRelatedCache("ProductContent");
+        productContentList = product.getRelated("ProductContent",null,null,true);
 		productContentList = EntityUtil.filterByDate(productContentList,true);
 		if (UtilValidate.isNotEmpty(productContentList))
 		{
@@ -627,7 +627,7 @@ if(UtilValidate.isNotEmpty(productId))
 		}
 		
 		//GET PRODUCT ATTRIBUTE LIST AND SET INTO LOCAL MAP(productAttrMap)
-		productAttr = product.getRelatedCache("ProductAttribute");
+		productAttr = product.getRelated("ProductAttribute",null,null,true);
 		productAttrMap = HashMap.newInstance();
 		if (UtilValidate.isNotEmpty(productAttr))
 		{
@@ -751,7 +751,7 @@ if(UtilValidate.isNotEmpty(productId))
     //CHECK WE HAVE A DEFAULT PRODUCT CATEGORY THE PRODUCT IS MEMBER OF
     if (UtilValidate.isEmpty(categoryId))
     {
-        productCategoryMemberList = product.getRelatedCache("ProductCategoryMember");
+        productCategoryMemberList = product.getRelated("ProductCategoryMember",null,null,true);
         productCategoryMemberList = EntityUtil.filterByDate(productCategoryMemberList,true);
 	    productCategoryMemberList = EntityUtil.orderBy(productCategoryMemberList,UtilMisc.toList("sequenceNum"));
         if(UtilValidate.isNotEmpty(productCategoryMemberList))
@@ -772,7 +772,7 @@ if(UtilValidate.isNotEmpty(productId))
 	    if(reviewMethod.equalsIgnoreCase("BIGFISH"))
 	    {
 	        // get the average rating
-		    productCalculatedInfos = product.getRelatedCache("ProductCalculatedInfo");
+		    productCalculatedInfos = product.getRelated("ProductCalculatedInfo",null,null,true);
 		    if (UtilValidate.isNotEmpty(productCalculatedInfos))
 		    {
 				productCalculatedInfo = EntityUtil.getFirst(productCalculatedInfos);
@@ -783,7 +783,7 @@ if(UtilValidate.isNotEmpty(productId))
 		        }
 		    }
 	        
-	        reviews = product.getRelatedCache("ProductReview");
+	        reviews = product.getRelated("ProductReview",null,null,true);
 	        if (UtilValidate.isNotEmpty(reviews))
 	        {
 	            reviews = EntityUtil.filterByAnd(reviews, UtilMisc.toMap("statusId", "PRR_APPROVED", "productStoreId", productStoreId));
@@ -795,7 +795,7 @@ if(UtilValidate.isNotEmpty(productId))
 
     //GET PRODUCT CONTENT LIST AND SET INTO CONTEXT
     Map productContentIdMap = HashMap.newInstance();
-	productContentList = product.getRelatedCache("ProductContent");
+	productContentList = product.getRelated("ProductContent",null,null,true);
 	productContentList = EntityUtil.filterByDate(productContentList,true);
 	if (UtilValidate.isNotEmpty(productContentList))
 	{
@@ -897,7 +897,7 @@ if(UtilValidate.isNotEmpty(productId))
         plpFacetGroupVariantSwatch = request.getAttribute("PLP_FACET_GROUP_VARIANT_SWATCH");
     	plpFacetGroupVariantMatch = Util.getProductStoreParm(request,"PLP_FACET_GROUP_VARIANT_MATCH");
     	
-        productAssoc = product.getRelatedCache("MainProductAssoc");
+        productAssoc = product.getRelated("MainProductAssoc",null,null,true);
         productAssoc = EntityUtil.filterByDate(productAssoc,true);
         productAssoc = EntityUtil.filterByAnd(productAssoc, UtilMisc.toMap("productAssocTypeId","PRODUCT_VARIANT"));
 	    productAssoc = EntityUtil.orderBy(productAssoc,UtilMisc.toList("sequenceNum"));
@@ -913,7 +913,7 @@ if(UtilValidate.isNotEmpty(productId))
 	          if (isSellableVariant)
 		      {
                 assocVariantProduct = pAssoc.getRelatedOne("AssocProduct",true);
-                variantProductFeatureAndAppls = assocVariantProduct.getRelatedCache("ProductFeatureAndAppl");
+                variantProductFeatureAndAppls = assocVariantProduct.getRelated("ProductFeatureAndAppl",null,null,true);
                 variantProductFeatureAndAppls = EntityUtil.filterByDate(variantProductFeatureAndAppls,true);
   	            variantProductFeatureAndAppls = EntityUtil.orderBy(variantProductFeatureAndAppls,UtilMisc.toList("sequenceNum"));
   	            
@@ -921,7 +921,7 @@ if(UtilValidate.isNotEmpty(productId))
 	            
 	            plpPriceMap = dispatcher.runSync("calculateProductPrice", priceContext);
   	            
-                /*variantProductPrices = assocVariantProduct.getRelatedCache("ProductPrice");
+                /*variantProductPrices = assocVariantProduct.getRelated("ProductPrice",null,null,true);
                 variantProductPrices = EntityUtil.filterByDate(variantProductPrices,true);*/
 	            
                 //BULLD PRODUCT CONTENT WRAPPER FOR EACH VARIANT TO PUT INTO CONTEXT
@@ -1038,7 +1038,7 @@ if(UtilValidate.isNotEmpty(productId))
 			     	    {
 			        		if(!variantFirstFeatureIdExist.contains(variantProductFeatureAndAppl.productFeatureId))
 	                        {
-	                    		productVariantContentList = assocVariantProduct.getRelatedCache("ProductContent");
+	                    		productVariantContentList = assocVariantProduct.getRelated("ProductContent",null,null,true);
 	                    		productVariantContentList = EntityUtil.filterByDate(productVariantContentList,true);
 	                    		if (UtilValidate.isNotEmpty(productVariantContentList))
 	                    		{
@@ -1082,7 +1082,7 @@ if(UtilValidate.isNotEmpty(productId))
                 
                 //GET PRODUCT VARIANT ATTRIBUTE LIST AND SET INTO CONTEXT
                 productVariantProductAttributeMap.put("virtualProduct", productAttrMap);
-				assocProductAttr = assocVariantProduct.getRelatedCache("ProductAttribute");
+				assocProductAttr = assocVariantProduct.getRelated("ProductAttribute",null,null,true);
 				assocProductAttrMap = HashMap.newInstance();
 				if (UtilValidate.isNotEmpty(assocProductAttr))
 				{
@@ -1311,7 +1311,7 @@ if(UtilValidate.isNotEmpty(productId))
                 //IF PRODUCT CATEGORY BUILD THE FEATURE SET BASED ON THE PRODUCT_FEATURE_CAT_GRP_APPL (SEQUENCE)
                 if(UtilValidate.isNotEmpty(productCategory))
                 {
-                    productFeatureCatGroupAppls = productCategory.getRelatedCache("ProductFeatureCatGrpAppl");
+                    productFeatureCatGroupAppls = productCategory.getRelated("ProductFeatureCatGrpAppl",null,null,true);
                     //Commenting out since the thru date might be set to hide from the facet group but we do NOT
                     //want to remove from PDP
                     //productFeatureCatGroupAppls = EntityUtil.filterByDate(productFeatureCatGroupAppls,true);
@@ -1386,7 +1386,7 @@ if(UtilValidate.isNotEmpty(productId))
                             inventoryLevelMap = InventoryServices.getProductInventoryLevel(assocVariantProduct.productId, request);
                             plpProductVariantInventoryMap.put(assocVariantProduct.productId, inventoryLevelMap);
                             
-                            variantProductFeatureAndAppls = assocVariantProduct.getRelatedCache("ProductFeatureAndAppl");
+                            variantProductFeatureAndAppls = assocVariantProduct.getRelated("ProductFeatureAndAppl",null,null,true);
                             variantProductFeatureAndAppls = EntityUtil.filterByDate(variantProductFeatureAndAppls,true);
                             variantProductFeatureAndAppls = EntityUtil.orderBy(variantProductFeatureAndAppls,UtilMisc.toList("sequenceNum"));
                             

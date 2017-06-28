@@ -21,7 +21,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	context.person=person;
 	customerName = PartyHelper.getPartyName(delegator, party.partyId, false);
 	
-	partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+	partyContactMechPurpose = party.getRelated("PartyContactMechPurpose",null,null,true);
 	partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 	
 	partyPurposeEmails = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_EMAIL"));

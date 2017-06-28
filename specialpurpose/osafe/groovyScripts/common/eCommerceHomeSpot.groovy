@@ -20,7 +20,7 @@ contentTypeId=context.contentTypeId;
 productStore = ProductStoreWorker.getProductStore(request);
 if(UtilValidate.isNotEmpty(contentTypeId) && UtilValidate.isNotEmpty(productStore))
 {
-    xContentXrefList = productStore.getRelatedCache("XContentXref");
+    xContentXrefList = productStore.getRelated("XContentXref",null,null,true);
     xContentXrefList = EntityUtil.filterByAnd(xContentXrefList, UtilMisc.toMap("contentTypeId" , contentTypeId));
     xContentXrefList = EntityUtil.orderBy(xContentXrefList,UtilMisc.toList("bfContentId"));
     context.spotsList = xContentXrefList;

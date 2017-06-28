@@ -61,7 +61,7 @@ for (GenericValue contactMech : shippingContactMechList)
             contactMechIdTo = link.contactMechIdTo
             //contactMech = delegator.findByPrimaryKeyCache("ContactMech", [contactMechId : contactMechIdTo]);
             contactMech =  EntityQuery.use(delegator).from("ContactMech").where([contactMechId :contactMechIdTo]).cache().queryOne();
-            phonePurposeList  = EntityUtil.filterByDate(contactMech.getRelatedCache("PartyContactMechPurpose"), true);
+            phonePurposeList  = EntityUtil.filterByDate(contactMech.getRelated("PartyContactMechPurpose",null,null,true), true);
             partyContactMechPurpose = EntityUtil.getFirst(phonePurposeList)
 
             if(partyContactMechPurpose) 
@@ -98,7 +98,7 @@ if (!userLogin) {
     if (!userLogin) {
         if (orderId) {
             orderHeader = delegator.findOne("OrderHeader", [orderId : orderId], true);
-            orderStatuses = orderHeader.getRelatedCache("OrderStatus");
+            orderStatuses = orderHeader.getRelated("OrderStatus",null,null,true);
             filteredOrderStatusList = [];
             extOfflineModeExists = false;
             
@@ -241,7 +241,7 @@ if (orderHeader) {
     totalItems = 0.00;
     orderItems.each { oitem ->
         totalItems += oitem.quantity;
-        ritems = oitem.getRelatedCache("ReturnItem");
+        ritems = oitem.getRelated("ReturnItem",null,null,true);
         ritems.each { ritem ->
             rh = ritem.getRelatedOne("ReturnHeader",true);
             if (!rh.statusId.equals("RETURN_CANCELLED")) {

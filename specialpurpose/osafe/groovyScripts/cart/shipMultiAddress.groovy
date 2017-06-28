@@ -100,7 +100,7 @@ if (UtilValidate.isNotEmpty(partyId))
 		{
 			defaultShipAddr = partyProfileDefault.defaultShipAddr;
 		}
-		partyShippingLocations = party.getRelatedCache("PartyContactMech");
+		partyShippingLocations = party.getRelated("PartyContactMech",null,null,true);
 		partyShippingLocations = EntityUtil.filterByDate(partyShippingLocations,UtilDateTime.getDayEnd(UtilDateTime.nowTimestamp()),"fromDate","thruDate",true);
         partyShippingLocations = EntityUtil.getRelatedCache("PartyContactMechPurpose", partyShippingLocations);
 		partyShippingLocations = EntityUtil.filterByDate(partyShippingLocations,UtilDateTime.getDayEnd(UtilDateTime.nowTimestamp()),"fromDate","thruDate",true);

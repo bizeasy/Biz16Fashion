@@ -61,7 +61,7 @@ for (GenericValue contactMech : shippingContactMechList)
             contactMechIdTo = link.contactMechIdTo
             //contactMech = delegator.findByPrimaryKeyCache("ContactMech", [contactMechId : contactMechIdTo]);
             contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId :contactMechIdTo]).cache().queryOne();
-            phonePurposeList  = EntityUtil.filterByDate(contactMech.getRelatedCache("PartyContactMechPurpose"), true);
+            phonePurposeList  = EntityUtil.filterByDate(contactMech.getRelated("PartyContactMechPurpose",null,null,true), true);
             partyContactMechPurpose = EntityUtil.getFirst(phonePurposeList)
 
             if(partyContactMechPurpose) 
@@ -101,7 +101,7 @@ if (UtilValidate.isEmpty(userLogin))
         if (UtilValidate.isNotEmpty(orderId)) 
         {
             orderHeader = delegator.findOne("OrderHeader", [orderId : orderId], true);
-            orderStatuses = orderHeader.getRelatedCache("OrderStatus");
+            orderStatuses = orderHeader.getRelated("OrderStatus",null,null,true);
             filteredOrderStatusList = [];
             extOfflineModeExists = false;
             
@@ -224,7 +224,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId :placingCustomerOrderRole.partyId]).cache().queryOne());
 		billingAccount = orderHeader.getRelatedOne("BillingAccount",true);
 	
-		orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelatedCache("OrderPaymentPreference"), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
+		orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelated("OrderPaymentPreference",null,null,true), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
 		paymentMethods = [];
 		orderPaymentPreferences.each { opp ->
 			paymentMethod = opp.getRelatedOne("PaymentMethod",true);
@@ -266,7 +266,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		totalItems = 0.00;
 		orderItems.each { oitem ->
 			totalItems += oitem.quantity;
-			ritems = oitem.getRelatedCache("ReturnItem");
+			ritems = oitem.getRelated("ReturnItem",null,null,true);
 			ritems.each { ritem ->
 				rh = ritem.getRelatedOne("ReturnHeader",true);
 				if (!rh.statusId.equals("RETURN_CANCELLED"))
@@ -331,7 +331,7 @@ if (UtilValidate.isNotEmpty(orderId))
 								context.storePickupName = partyGroup.groupName;
 							}
 	
-							partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+							partyContactMechPurpose = party.getRelated("PartyContactMechPurpose",null,null,true);
 							partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 	
 							partyGeneralLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"));
@@ -406,7 +406,7 @@ if (UtilValidate.isNotEmpty(orderId))
 					promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 					promoText = productPromo.promoText;
 					promoInfo.put("promoText", promoText);
-					productPromoCode = productPromo.getRelatedCache("ProductPromoCode");
+					productPromoCode = productPromo.getRelated("ProductPromoCode",null,null,true);
 					if(UtilValidate.isNotEmpty(productPromoCode))
 					{
 						promoCodesEntered = orderReadHelper.getProductPromoCodesEntered();

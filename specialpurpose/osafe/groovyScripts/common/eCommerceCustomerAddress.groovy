@@ -51,7 +51,7 @@ if (UtilValidate.isNotEmpty(partyId))
 	    partyProfileDefault = delegator.findOne("PartyProfileDefault", UtilMisc.toMap("partyId", party.partyId, "productStoreId", productStoreId), true);
 
         
-        partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+        partyContactMechPurpose = party.getRelated("PartyContactMechPurpose",null,null,true);
         partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 
         partyBillingLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "BILLING_LOCATION"));

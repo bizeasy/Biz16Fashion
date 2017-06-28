@@ -52,7 +52,7 @@ globalContext.preferredDateTimeFormat = Util.isValidDateFormat(preferredDateTime
 
 if (UtilValidate.isNotEmpty(productStore))
 {
-  pageTrackingList = productStore.getRelatedCache("XPixelTracking");
+  pageTrackingList = productStore.getRelated("XPixelTracking",null,null,true);
   pageTrackingList = EntityUtil.filterByDate(pageTrackingList,true);
   context.pageTrackingList = pageTrackingList;
 }

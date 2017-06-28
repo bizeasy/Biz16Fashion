@@ -71,7 +71,7 @@ if((UtilValidate.isNotEmpty(reviewMethod)) && (reviewMethod.equalsIgnoreCase("BI
         }
         else
         {
-            reviews =  gvProduct.getRelatedCache("ProductReview");
+            reviews =  gvProduct.getRelated("ProductReview",null,null,true);
         }
         
         if (UtilValidate.isNotEmpty(reviews))

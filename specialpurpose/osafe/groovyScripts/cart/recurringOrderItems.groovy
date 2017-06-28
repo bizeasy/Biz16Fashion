@@ -92,11 +92,11 @@ if (UtilValidate.isNotEmpty(shoppingList))
 	{
 		status = active;
 	}
-	recurrenceInfoList = shoppingList.getRelatedCache("RecurrenceInfo");
+	recurrenceInfoList = shoppingList.getRelated("RecurrenceInfo",null,null,true);
 	if (UtilValidate.isNotEmpty(recurrenceInfoList))
 	{
 		recurrenceInfo = EntityUtil.getFirst(recurrenceInfoList);
-		recurrenceRuleList = recurrenceInfo.getRelatedCache("RecurrenceRule");
+		recurrenceRuleList = recurrenceInfo.getRelated("RecurrenceRule",null,null,true);
 		if (UtilValidate.isNotEmpty(recurrenceRuleList))
 		{
 			recurrenceRule = EntityUtil.getFirst(recurrenceRuleList);
@@ -110,7 +110,7 @@ if (UtilValidate.isNotEmpty(shoppingList))
 	}
 	
 	shoppingListId = shoppingList.shoppingListId;
-	shoppingListItems = shoppingList.getRelatedCache("ShoppingListItem")
+	shoppingListItems = shoppingList.getRelated("ShoppingListItem",null,null,true)
 	if (UtilValidate.isNotEmpty(shoppingListItems))
 	{
 		shoppingListItem = EntityUtil.getFirst(shoppingListItems);
@@ -127,7 +127,7 @@ if (UtilValidate.isNotEmpty(shoppingList))
 				  productCategoryId = product.primaryProductCategoryId;
 				  if(UtilValidate.isEmpty(productCategoryId))
 				  {
-					  productCategoryMemberList = product.getRelatedCache("ProductCategoryMember");
+					  productCategoryMemberList = product.getRelated("ProductCategoryMember",null,null,true);
 					  productCategoryMemberList = EntityUtil.filterByDate(productCategoryMemberList,true);
 					  productCategoryMemberList = EntityUtil.orderBy(productCategoryMemberList, UtilMisc.toList('sequenceNum'));
 					  if(UtilValidate.isNotEmpty(productCategoryMemberList))
@@ -142,7 +142,7 @@ if (UtilValidate.isNotEmpty(shoppingList))
 					  urlProductId = virtualProduct.productId;
 					  if(UtilValidate.isEmpty(productCategoryId) && UtilValidate.isNotEmpty(virtualProduct))
 					  {
-						  productCategoryMemberList = virtualProduct.getRelatedCache("ProductCategoryMember");
+						  productCategoryMemberList = virtualProduct.getRelated("ProductCategoryMember",null,null,true);
 						  productCategoryMemberList = EntityUtil.filterByDate(productCategoryMemberList,true);
 						  productCategoryMemberList = EntityUtil.orderBy(productCategoryMemberList, UtilMisc.toList('sequenceNum'));
 						  if(UtilValidate.isNotEmpty(productCategoryMemberList))
@@ -249,7 +249,7 @@ if (UtilValidate.isNotEmpty(shoppingList))
 						party = EntityQuery.use(delegator).from("Party").where(UtilMisc.toMap("partyId", partyId)).cache().queryOne();
 						if (UtilValidate.isNotEmpty(party))
 						{
-							partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+							partyContactMechPurpose = party.getRelated("PartyContactMechPurpose",null,null,true);
 							partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 							partyContactMechPurpose = EntityUtil.orderBy(partyContactMechPurpose,UtilMisc.toList("-fromDate"));
 				
@@ -260,7 +260,7 @@ if (UtilValidate.isNotEmpty(shoppingList))
 						}
 					}
 					
-					List<GenericValue> productAttributes = productAttributes = product.getRelatedCache("ProductAttribute");
+					List<GenericValue> productAttributes = productAttributes = product.getRelated("ProductAttribute",null,null,true);
 					if(UtilValidate.isNotEmpty(productAttributes))
 					{
 						List<GenericValue> productAttrPdpQtyMinAttributes = EntityUtil.filterByAnd(productAttributes, UtilMisc.toMap("productId",productId,"attrName","PDP_QTY_MIN"));

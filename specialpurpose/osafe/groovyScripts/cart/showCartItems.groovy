@@ -103,7 +103,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 			{
 				scItemProductId = shoppingCartItem.getProductId();
 				List<GenericValue> productAttributes = LinkedList.newInstance();
-				productAttributes = product.getRelatedCache("ProductAttribute");
+				productAttributes = product.getRelated("ProductAttribute",null,null,true);
 				if(UtilValidate.isNotEmpty(productAttributes))
 				{
 					List<GenericValue> pdpGiftMessageAttributes = EntityUtil.filterByAnd(productAttributes, UtilMisc.toMap("productId",scItemProductId,"attrName","CHECKOUT_GIFT_MESSAGE"));
@@ -163,7 +163,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 			party = EntityQuery.use(delegator).from("Party").where(UtilMisc.toMap("partyId", partyId)).cache().queryOne();
 			if (UtilValidate.isNotEmpty(party))
 			{
-				partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+				partyContactMechPurpose = party.getRelated("PartyContactMechPurpose",null,null,true);
 				partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 				partyContactMechPurpose = EntityUtil.orderBy(partyContactMechPurpose,UtilMisc.toList("-fromDate"));
 
@@ -358,7 +358,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 				promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 				promoText = productPromo.promoText;
 				promoInfo.put("promoText", promoText);
-				productPromoCode = productPromo.getRelatedCache("ProductPromoCode");
+				productPromoCode = productPromo.getRelated("ProductPromoCode",null,null,true);
 				if(UtilValidate.isNotEmpty(productPromoCode))
 				{
 					promoCodesEntered = shoppingCart.getProductPromoCodesEntered();

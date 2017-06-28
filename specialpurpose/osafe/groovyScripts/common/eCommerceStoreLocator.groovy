@@ -213,7 +213,7 @@ if(UtilValidate.isNotEmpty(storePartyList))
                         groupNameLocal = partyGroup.groupNameLocal;
                     }
 
-                    partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+                    partyContactMechPurpose = party.getRelated("PartyContactMechPurpose",null,null,true);
                     partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
                     partyContactMechPurpose = EntityUtil.orderBy(partyContactMechPurpose,UtilMisc.toList("-fromDate"));
                     
@@ -258,7 +258,7 @@ if(UtilValidate.isNotEmpty(storePartyList))
                         }
                     }
                     
-                    partyContent = party.getRelatedCache("PartyContent");
+                    partyContent = party.getRelated("PartyContent",null,null,true);
                     partyContent = EntityUtil.filterByDate(partyContent,true);
                     partyContent = EntityUtil.orderBy(partyContent,UtilMisc.toList("-fromDate"));
 

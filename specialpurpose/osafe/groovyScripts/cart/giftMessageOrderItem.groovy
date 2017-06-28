@@ -125,7 +125,7 @@ if(UtilValidate.isNotEmpty(orderItem))
 	itemSubTotal = offerPrice.multiply(quantity);
 	//orderReadHelper.getOrderItemSubTotal(orderItem);
 	
-	orderItemAttributes = orderItem.getRelatedCache("OrderItemAttribute");
+	orderItemAttributes = orderItem.getRelated("OrderItemAttribute",null,null,true);
 	if(UtilValidate.isNotEmpty(orderItemAttributes))
     {
         for(GenericValue orderItemAttribute : orderItemAttributes)
@@ -197,7 +197,7 @@ if(UtilValidate.isEmpty(productCategoryId))
 }
 if(UtilValidate.isEmpty(productCategoryId))
 {
-	productCategoryMemberList = product.getRelatedCache("ProductCategoryMember");
+	productCategoryMemberList = product.getRelated("ProductCategoryMember",null,null,true);
 	productCategoryMemberList = EntityUtil.filterByDate(productCategoryMemberList,true);
 	productCategoryMemberList = EntityUtil.orderBy(productCategoryMemberList, UtilMisc.toList('sequenceNum'));
 	if(UtilValidate.isNotEmpty(productCategoryMemberList))
@@ -212,7 +212,7 @@ if(UtilValidate.isNotEmpty(product.isVariant) && "Y".equals(product.isVariant))
 	urlProductId = virtualProduct.productId;
 	if(UtilValidate.isEmpty(productCategoryId))
 	{
-		productCategoryMemberList = virtualProduct.getRelatedCache("ProductCategoryMember");
+		productCategoryMemberList = virtualProduct.getRelated("ProductCategoryMember",null,null,true);
 		productCategoryMemberList = EntityUtil.filterByDate(productCategoryMemberList,true);
 		productCategoryMemberList = EntityUtil.orderBy(productCategoryMemberList, UtilMisc.toList('sequenceNum'));
 		if(UtilValidate.isNotEmpty(productCategoryMemberList))

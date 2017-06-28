@@ -79,7 +79,7 @@ if (UtilValidate.isNotEmpty(storeId))
             context.storeInfo = partyGroup;
         }
 
-        partyContactMechPurpose = party.getRelatedCache("PartyContactMechPurpose");
+        partyContactMechPurpose = party.getRelated("PartyContactMechPurpose",null,null,true);
         partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 
         partyGeneralLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"));
