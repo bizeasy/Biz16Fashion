@@ -39,7 +39,7 @@ if (UtilValidate.isEmpty(partyId))
 {
     if (UtilValidate.isNotEmpty(userLogin)) 
     {
-        party = userLogin.getRelatedOneCache("Party");
+        party = userLogin.getRelatedOne("Party",true);
         partyId = party.partyId;
     }
 } else 
@@ -66,7 +66,7 @@ for (GenericValue contactMech : shippingContactMechList)
 
             if(partyContactMechPurpose) 
             {
-                telecomNumber = partyContactMechPurpose.getRelatedOneCache("TelecomNumber");
+                telecomNumber = partyContactMechPurpose.getRelatedOne("TelecomNumber",true);
                 phoneNumberMap[partyContactMechPurpose.contactMechPurposeTypeId]=telecomNumber;
             }
         }
@@ -171,7 +171,7 @@ if (orderId) {
 
 shippingApplies = true;
 if (orderHeader) {
-    productStore = orderHeader.getRelatedOneCache("ProductStore");
+    productStore = orderHeader.getRelatedOne("ProductStore",true);
     if (productStore) isDemoStore = !"N".equals(productStore.isDemoStore);
 
     orderReadHelper = new OrderReadHelper(orderHeader);
@@ -194,16 +194,16 @@ if (orderHeader) {
     //placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
     placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId :placingCustomerOrderRole.partyId]).cache().queryOne());
 
-    billingAccount = orderHeader.getRelatedOneCache("BillingAccount");
+    billingAccount = orderHeader.getRelatedOne("BillingAccount",true);
 
     orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelatedCache("OrderPaymentPreference"), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
     paymentMethods = [];
     orderPaymentPreferences.each { opp ->
-        paymentMethod = opp.getRelatedOneCache("PaymentMethod");
+        paymentMethod = opp.getRelatedOne("PaymentMethod",true);
         if (paymentMethod) {
             paymentMethods.add(paymentMethod);
         } else {
-            paymentMethodType = opp.getRelatedOneCache("PaymentMethodType");
+            paymentMethodType = opp.getRelatedOne("PaymentMethodType",true);
             if (paymentMethodType) {
                 context.paymentMethodType = paymentMethodType;
             }
@@ -242,7 +242,7 @@ if (orderHeader) {
         totalItems += oitem.quantity;
         ritems = oitem.getRelatedCache("ReturnItem");
         ritems.each { ritem ->
-            rh = ritem.getRelatedOneCache("ReturnHeader");
+            rh = ritem.getRelatedOne("ReturnHeader",true);
             if (!rh.statusId.equals("RETURN_CANCELLED")) {
                 returned += ritem.returnQuantity;
             }

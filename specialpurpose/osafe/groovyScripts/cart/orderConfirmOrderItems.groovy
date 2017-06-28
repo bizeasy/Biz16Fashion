@@ -47,7 +47,7 @@ if (UtilValidate.isNotEmpty(orderItem))
 		currencyUom = Util.getProductStoreParm(request,"CURRENCY_UOM_DEFAULT");
 	}
 
-	product = orderItem.getRelatedOneCache("Product");
+	product = orderItem.getRelatedOne("Product",true);
 	urlProductId = product.productId;
 	productId = product.productId;
 	productCategoryId = product.primaryProductCategoryId;

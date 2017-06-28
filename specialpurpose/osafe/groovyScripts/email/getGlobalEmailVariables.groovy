@@ -146,7 +146,7 @@ if (UtilValidate.isNotEmpty(orderId))
         } 
         else 
         {
-          paymentMethodType = opp.getRelatedOneCache("PaymentMethodType");
+          paymentMethodType = opp.getRelatedOne("PaymentMethodType",true);
           if (paymentMethodType) 
           {
                 paymentMethodType = paymentMethodType;
@@ -198,7 +198,7 @@ if (UtilValidate.isNotEmpty(partyId))
      gvParty = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(gvParty)) 
     {
-        person=gvParty.getRelatedOneCache("Person");
+        person=gvParty.getRelatedOne("Person",true);
         if (UtilValidate.isNotEmpty(person)) 
         {
           globalContext.put("PARTY_ID",partyId);

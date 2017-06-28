@@ -57,7 +57,7 @@ if (UtilValidate.isNotEmpty(contactMech))
                 partyContactMechPurpose = EntityUtil.getFirst(phonePurposeList)
                 if(UtilValidate.isNotEmpty(partyContactMechPurpose)) 
                 {
-                    telecomNumber = partyContactMechPurpose.getRelatedOneCache("TelecomNumber");
+                    telecomNumber = partyContactMechPurpose.getRelatedOne("TelecomNumber",true);
                     phoneNumberMap[partyContactMechPurpose.contactMechPurposeTypeId]=telecomNumber;
                 }
             }

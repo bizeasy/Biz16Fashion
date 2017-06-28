@@ -35,13 +35,13 @@ deliveryOption="";
 party = ""
 if (UtilValidate.isNotEmpty(userLogin))
 {
-	party = userLogin.getRelatedOneCache("Party");
+	party = userLogin.getRelatedOne("Party",true);
 }
 	
 if (UtilValidate.isNotEmpty(party))
 {
 	partyId = party.partyId;
-	person = party.getRelatedOneCache("Person");
+	person = party.getRelatedOne("Person",true);
 }
 
 if (UtilValidate.isNotEmpty(shoppingCart))
@@ -82,7 +82,7 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 		  billingContactMechAddress = EntityUtil.getFirst(billingContactMechAddressList);
 		  if(UtilValidate.isNotEmpty(billingContactMechAddress))
 		  {
-			  billingAddress=billingContactMechAddress.getRelatedOneCache("PostalAddress");
+			  billingAddress=billingContactMechAddress.getRelatedOne("PostalAddress",true);
 			  billingAddress = billingAddress;
 			  billingContactMechId = billingAddress.contactMechId;
 		  }
@@ -161,7 +161,7 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 			promoInfo = HashMap.newInstance();
 			promoInfo.put("cartAdjustment", cartAdjustment);
 			promoCodeText = "";
-			adjustmentType = cartAdjustment.getRelatedOneCache("OrderAdjustmentType");
+			adjustmentType = cartAdjustment.getRelatedOne("OrderAdjustmentType",true);
 			adjustmentTypeDesc = adjustmentType.get("description",locale);
 			//loyalty points
 			if(adjustmentType.orderAdjustmentTypeId.equals("LOYALTY_POINTS"))
@@ -172,7 +172,7 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 				appliedLoyaltyPointsList.add(loyaltyPointsInfo);
 			}
 			//promo
-			productPromo = cartAdjustment.getRelatedOneCache("ProductPromo");
+			productPromo = cartAdjustment.getRelatedOne("ProductPromo",true);
 			if(UtilValidate.isNotEmpty(productPromo))
 			{
 				promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);

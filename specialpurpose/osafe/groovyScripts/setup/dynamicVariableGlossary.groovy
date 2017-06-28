@@ -61,7 +61,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	if (UtilValidate.isNotEmpty(partyId))
 	{
     	context.put("PARTY_ID",partyId);
-        person=userLogin.getRelatedOneCache("Person");
+        person=userLogin.getRelatedOne("Person",true);
         if (UtilValidate.isNotEmpty(person)) 
         {
         	context.put("FIRST_NAME",person.firstName);
@@ -72,7 +72,7 @@ if (UtilValidate.isNotEmpty(userLogin))
         	context.put("PERSONAL_TITLE",person.personalTitle);
         	context.put("NICKNAME",person.nickname);
         }
-        partyGroup=userLogin.getRelatedOneCache("PartyGroup");
+        partyGroup=userLogin.getRelatedOne("PartyGroup",true);
         if (UtilValidate.isNotEmpty(partyGroup)) 
         {
         	context.put("GROUP_NAME",partyGroup.groupName);
@@ -118,14 +118,14 @@ if (UtilValidate.isNotEmpty(orderId))
        paymentMethods = [];
        paymentMethodType = "";
        orderPaymentPreferences.each { opp ->
-       paymentMethod = opp.getRelatedOne("PaymentMethod");
+       paymentMethod = opp.getRelatedOne("PaymentMethod",true);
         if (paymentMethod) 
         {
             paymentMethods.add(paymentMethod);
         } 
         else 
         {
-          paymentMethodType = opp.getRelatedOne("PaymentMethodType");
+          paymentMethodType = opp.getRelatedOne("PaymentMethodType",true);
           if (paymentMethodType) 
           {
                 paymentMethodType = paymentMethodType;

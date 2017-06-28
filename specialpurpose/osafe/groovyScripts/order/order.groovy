@@ -17,7 +17,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 
 orderHeader = request.getAttribute("orderHeader");
-status = orderHeader.getRelatedOneCache("StatusItem");
+status = orderHeader.getRelatedOne("StatusItem",true);
 orderItemShipGroups =  orderHeader.getRelatedCache("OrderItemShipGroup", UtilMisc.toList("shipGroupSeqId"));
 orderItemShipGroupSize = orderItemShipGroups.size();
 rowClass = request.getAttribute("rowClass");
@@ -35,7 +35,7 @@ if (UtilValidate.isNotEmpty(orderItemShipGroups) && orderItemShipGroupSize == 1)
         carrierDescription = "";
         if (UtilValidate.isNotEmpty(carrierShipmentMethod))
         {
-            shipmentMethodType = carrierShipmentMethod.getRelatedOneCache("ShipmentMethodType");
+            shipmentMethodType = carrierShipmentMethod.getRelatedOne("ShipmentMethodType",true);
             if (UtilValidate.isNotEmpty(shipmentMethodType))
             {
               carrierDescription = shipmentMethodType.description;
@@ -45,8 +45,8 @@ if (UtilValidate.isNotEmpty(orderItemShipGroups) && orderItemShipGroupSize == 1)
         carrierPartyGroupName = "";
         if (UtilValidate.isNotEmpty(shipGroup.carrierPartyId) && shipGroup.carrierPartyId != "_NA_")
         {
-            carrierParty = carrierShipmentMethod.getRelatedOneCache("Party");
-            carrierPartyGroup = carrierParty.getRelatedOneCache("PartyGroup");
+            carrierParty = carrierShipmentMethod.getRelatedOne("Party",true);
+            carrierPartyGroup = carrierParty.getRelatedOne("PartyGroup",true);
             carrierPartyGroupName = carrierPartyGroup.groupName;
             trackingURLPartyContents = delegator.findByAndCache("PartyContent",UtilMisc.toMap("partyId",shipGroup.carrierPartyId,"partyContentTypeId","TRACKING_URL"));
             if (UtilValidate.isNotEmpty(trackingURLPartyContents))
@@ -54,13 +54,13 @@ if (UtilValidate.isNotEmpty(orderItemShipGroups) && orderItemShipGroupSize == 1)
                 trackingURLPartyContent = EntityUtil.getFirst(trackingURLPartyContents);
                 if (UtilValidate.isNotEmpty(trackingURLPartyContent))
                 {
-                    content = trackingURLPartyContent.getRelatedOneCache("Content");
+                    content = trackingURLPartyContent.getRelatedOne("Content",true);
                     if (UtilValidate.isNotEmpty(content))
                     {
-                        dataResource = content.getRelatedOneCache("DataResource");
+                        dataResource = content.getRelatedOne("DataResource",true);
                         if (UtilValidate.isNotEmpty(dataResource))
                         {
-                            electronicText = dataResource.getRelatedOneCache("ElectronicText");
+                            electronicText = dataResource.getRelatedOne("ElectronicText",true);
                             trackingURL = electronicText.textData;
                             if (UtilValidate.isNotEmpty(trackingURL))
                             {

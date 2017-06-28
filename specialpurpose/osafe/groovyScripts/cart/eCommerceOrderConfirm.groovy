@@ -37,7 +37,7 @@ if (UtilValidate.isEmpty(partyId))
 {
 	if (UtilValidate.isNotEmpty(userLogin))
 	{
-		party = userLogin.getRelatedOneCache("Party");
+		party = userLogin.getRelatedOne("Party",true);
 		partyId = party.partyId;
 	}
 }
@@ -68,7 +68,7 @@ if (UtilValidate.isNotEmpty(orderId))
    orderHeader = delegator.findOne("OrderHeader", [orderId : orderId], true);
    if (UtilValidate.isNotEmpty(orderHeader))
    {
-	   productStore = orderHeader.getRelatedOneCache("ProductStore");
+	   productStore = userLogin.getRelatedOne("ProductStore",true);
 	   orderReadHelper = new OrderReadHelper(orderHeader);
 	   orderItems = orderReadHelper.getOrderItems();
 	   orderItemsTotalQty = orderReadHelper.getTotalOrderItemsQuantity();
@@ -137,19 +137,19 @@ if (UtilValidate.isNotEmpty(orderId))
 	   //placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
 	   placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne());
    carrierShipmentMethod = ;
-	   billingAccount = orderHeader.getRelatedOneCache("BillingAccount");
+	   billingAccount = orderHeader.getRelatedOne("BillingAccount",true);
    
 	   cancelOrderPaymentPreferences = EntityUtil.filterByAnd(orderPaymentPreferences, [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
 	   paymentMethods = [];
 	   cancelOrderPaymentPreferences.each { opp ->
-		   paymentMethod = opp.getRelatedOneCache("PaymentMethod");
+		   paymentMethod = opp.getRelatedOne("PaymentMethod",true);
 		   if (UtilValidate.isNotEmpty(paymentMethod))
 		   {
 			   paymentMethods.add(paymentMethod);
 		   }
 		   else
 		   {
-			   paymentMethodType = opp.getRelatedOneCache("PaymentMethodType");
+			   paymentMethodType = opp.getRelatedOne("PaymentMethodType",true);
 			   if (UtilValidate.isNotEmpty(paymentMethodType))
 			   {
 				   context.paymentMethodType = paymentMethodType;
@@ -193,7 +193,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		   totalItems += oitem.quantity;
 		   ritems = oitem.getRelatedCache("ReturnItem");
 		   ritems.each { ritem ->
-			   rh = ritem.getRelatedOneCache("ReturnHeader");
+			   rh = ritem.getRelatedOne("ReturnHeader",true);
 			   if (!rh.statusId.equals("RETURN_CANCELLED"))
 			   {
 				   returned += ritem.returnQuantity;
@@ -244,7 +244,7 @@ if (UtilValidate.isNotEmpty(orderId))
 			   promoInfo = HashMap.newInstance();
 			   promoInfo.put("cartAdjustment", cartAdjustment);
 			   promoCodeText = "";
-			   adjustmentType = cartAdjustment.getRelatedOneCache("OrderAdjustmentType");
+			   adjustmentType = cartAdjustment.getRelatedOne("OrderAdjustmentType",true);
 			   adjustmentTypeDesc = adjustmentType.get("description",locale);
 			   //loyalty points
 			   if(adjustmentType.orderAdjustmentTypeId.equals("LOYALTY_POINTS"))
@@ -254,7 +254,7 @@ if (UtilValidate.isNotEmpty(orderId))
 				   loyaltyPointsInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 				   appliedLoyaltyPointsList.add(loyaltyPointsInfo);
 			   }
-			   productPromo = cartAdjustment.getRelatedOneCache("ProductPromo");
+			   productPromo = cartAdjustment.getRelatedOne("ProductPromo".true);
 			   if(UtilValidate.isNotEmpty(productPromo))
 			   {
 				   promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
@@ -311,7 +311,7 @@ if (UtilValidate.isNotEmpty(orderId))
 				   }
 				   if(UtilValidate.isEmpty(selectedStoreId))
 				   {
-					   shipmentMethodType = shipGroup.getRelatedOneCache("ShipmentMethodType");
+					   shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType",true);
 					   carrierPartyId = shipGroup.carrierPartyId;
 					   if(UtilValidate.isNotEmpty(shipmentMethodType))
 					   {

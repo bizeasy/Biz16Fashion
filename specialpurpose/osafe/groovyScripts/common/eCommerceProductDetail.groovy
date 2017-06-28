@@ -620,7 +620,7 @@ if (UtilValidate.isNotEmpty(productId))
                   if (UtilValidate.isNotEmpty(pdpAddCategoryContentList)) 
                   {
                      pdpAddCategoryContent = EntityUtil.getFirst(pdpAddCategoryContentList);
-                     context.pdpEspotContent = pdpAddCategoryContent.getRelatedOneCache("Content");
+                     context.pdpEspotContent = pdpAddCategoryContent.getRelatedOne("Content",true);
                   }
                 }
             }
@@ -649,7 +649,7 @@ if (UtilValidate.isNotEmpty(productId))
 		
         
         productId = gvProduct.productId;
-        partyManufacturer=gvProduct.getRelatedOneCache("ManufacturerParty");
+        partyManufacturer=gvProduct.getRelatedOne("ManufacturerParty",true);
         if (UtilValidate.isNotEmpty(partyManufacturer))
         {
           context.manufacturerPartyId = partyManufacturer.partyId;
@@ -689,7 +689,7 @@ if (UtilValidate.isNotEmpty(productId))
             for (GenericValue productContent: productContentList) 
             {
                productContentTypeId = productContent.productContentTypeId;
-               content = productContent.getRelatedOneCache("Content");
+               content = productContent.getRelatedOne("Content",true);
                context.put(productContent.contentId, content);
                context.put(productContent.productContentTypeId,productContent.contentId);
                productContentIdMap.put(productContent.productContentTypeId,productContent.contentId);
@@ -1068,7 +1068,7 @@ if (UtilValidate.isNotEmpty(productId))
         {
             for (GenericValue priceCond: productIdConds) 
             {
-                priceRule = priceCond.getRelatedOneCache("ProductPriceRule");
+                priceRule = priceCond.getRelatedOne("ProductPriceRule",true);
                 if (EntityUtil.isValueActive(priceRule,UtilDateTime.nowTimestamp()))
                 {
                     qtyBreakIdConds = priceRule.getRelatedCache("ProductPriceCond");
@@ -1413,7 +1413,7 @@ if (UtilValidate.isNotEmpty(productId))
                         {
                             for (GenericValue productFeatureDataResource : productFeatureDataResourceList)
                             {
-                                dataResource = productFeatureDataResource.getRelatedOneCache("DataResource");
+                                dataResource = productFeatureDataResource.getRelatedOne("DataResource",true);
                                 if(UtilValidate.isNotEmpty(dataResource.objectInfo))
                                 {
                                     productFeatureDataResourceMap.put(productFeatureDataResource.productFeatureId,dataResource.objectInfo);
@@ -1456,7 +1456,7 @@ if (UtilValidate.isNotEmpty(productId))
                         for(GenericValue pAssoc : productAssocVariant) 
                         {
                             //GET ASSOCIATED PRODUCT (VARIANT) 
-                            assocVariantProduct = pAssoc.getRelatedOneCache("AssocProduct");
+                            assocVariantProduct = pAssoc.getRelatedOne("AssocProduct",true);
                             
                             if(ProductWorker.isSellable(assocVariantProduct))
                             {
@@ -1487,7 +1487,7 @@ if (UtilValidate.isNotEmpty(productId))
                                     {
                                        productContentTypeId = productContent.productContentTypeId;
                                        variantProductContentMap.put(productContent.productContentTypeId,productContent.contentId);
-                                       variantContent = productContent.getRelatedOneCache("Content");
+                                       variantContent = productContent.getRelatedOne("Content",true);
                                        productVariantContentMap.put(productContent.contentId, variantContent);
                                     }
                                     productVariantProductContentIdMap.put(assocVariantProduct.productId,variantProductContentMap);
@@ -1518,7 +1518,7 @@ if (UtilValidate.isNotEmpty(productId))
                                 {
                                     for (GenericValue priceCond: productIdConds) 
                                     {
-                                        priceRule = priceCond.getRelatedOneCache("ProductPriceRule");
+                                        priceRule = priceCond.getRelatedOne("ProductPriceRule",true);
                                         if (EntityUtil.isValueActive(priceRule,UtilDateTime.nowTimestamp()))
                                         {
                                             qtyBreakIdConds = priceRule.getRelatedCache("ProductPriceCond");

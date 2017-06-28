@@ -17,7 +17,7 @@ if (UtilValidate.isNotEmpty(context.contentId) && UtilValidate.isNotEmpty(contex
     xContentXref = EntityQuery.use(delegator).from("XContentXref").where([bfContentId : context.contentId, productStoreId : context.productStoreId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(xContentXref))
     {
-        content = xContentXref.getRelatedOneCache("Content");
+        content = xContentXref.getRelatedOne("Content",true);
         context.content = content;
     }
     else

@@ -13,13 +13,13 @@ import org.apache.ofbiz.base.util.Debug;
 if (UtilValidate.isNotEmpty(userLogin)) 
 {
 	context.emailLogin=userLogin.userLoginId;
-	person = userLogin.getRelatedOneCache("Person");
+	person = userLogin.getRelatedOne("Person",true);
 	context.firstName=person.firstName;
 	context.lastName=person.lastName;
-	party = userLogin.getRelatedOneCache("Party");
+	party = userLogin.getRelatedOne("Party",true);
 	contactMech = EntityUtil.getFirst(ContactHelper.getContactMech(party, "BILLING_LOCATION", "POSTAL_ADDRESS", false));
 	context.contactMech = contactMech;
-	postalAddressData = contactMech.getRelatedOneCache("PostalAddress");
+	postalAddressData = contactMech.getRelatedOne("PostalAddress",true);
 	context.address1 = postalAddressData.address1;
 	context.address2 = postalAddressData.address2;
 	context.city=postalAddressData.city;

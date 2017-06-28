@@ -35,7 +35,7 @@ if (UtilValidate.isNotEmpty(cart))
 {
 	if (UtilValidate.isNotEmpty(userLogin)) 
 	{
-	    party = userLogin.getRelatedOneCache("Party");
+	    party = userLogin.getRelatedOne("Party",true);
 	}
 
 	shippingEstWpr = new ShippingEstimateWrapper(dispatcher, cart, 0);

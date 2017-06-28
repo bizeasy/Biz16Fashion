@@ -912,7 +912,7 @@ if(UtilValidate.isNotEmpty(productId))
               isSellableVariant = ProductWorker.isSellable(delegator, productIdTo);
 	          if (isSellableVariant)
 		      {
-                assocVariantProduct = pAssoc.getRelatedOneCache("AssocProduct");
+                assocVariantProduct = pAssoc.getRelatedOne("AssocProduct",true);
                 variantProductFeatureAndAppls = assocVariantProduct.getRelatedCache("ProductFeatureAndAppl");
                 variantProductFeatureAndAppls = EntityUtil.filterByDate(variantProductFeatureAndAppls,true);
   	            variantProductFeatureAndAppls = EntityUtil.orderBy(variantProductFeatureAndAppls,UtilMisc.toList("sequenceNum"));
@@ -1112,7 +1112,7 @@ if(UtilValidate.isNotEmpty(productId))
           {
               for (GenericValue productFeatureDataResource : productFeatureDataResourceList)
               {
-              	dataResource = productFeatureDataResource.getRelatedOneCache("DataResource");
+              	dataResource = productFeatureDataResource.getRelatedOne("DataResource",true);
                   if(UtilValidate.isNotEmpty(dataResource.objectInfo))
                   {
                   	productFeatureDataResourceMap.put(productFeatureDataResource.productFeatureId,dataResource.objectInfo);
@@ -1375,7 +1375,7 @@ if(UtilValidate.isNotEmpty(productId))
                     for(GenericValue pAssoc : productAssocVariant) 
                     {
                         //GET ASSOCIATED PRODUCT (VARIANT) 
-                        assocVariantProduct = pAssoc.getRelatedOneCache("AssocProduct");
+                        assocVariantProduct = pAssoc.getRelatedOne("AssocProduct",true);
                         
                         if(ProductWorker.isSellable(assocVariantProduct))
                         {
@@ -1511,7 +1511,7 @@ if(UtilValidate.isNotEmpty(productId))
 	}
     
 	//Get Manufacturer info
-	partyManufacturer=product.getRelatedOneCache("ManufacturerParty");
+	partyManufacturer=product.getRelatedOne("ManufacturerParty",true);
 	if (UtilValidate.isNotEmpty(partyManufacturer))
 	{
 	  context.plpManufacturerPartyId = partyManufacturer.partyId;

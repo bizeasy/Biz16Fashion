@@ -56,7 +56,7 @@ transItemList = [];
         {
             saleCategoryParts=new StringBuffer();
             orderItems.each { orderItem ->
-                itemProduct = orderItem.getRelatedOneCache("Product");
+                itemProduct = orderItem.getRelatedOne("Product",true);
                 productCategoryId = "";
                 categoryName = "";
                 transItemMap = [:];
@@ -75,7 +75,7 @@ transItemList = [];
                     if (UtilValidate.isNotEmpty(productCategoryMemberList))
                     {
         	            productCategoryMember = EntityUtil.getFirst(productCategoryMemberList);
-                        productCategory = productCategoryMember.getRelatedOneCache("ProductCategory");
+                        productCategory = productCategoryMember.getRelatedOne("ProductCategory",true);
                         categoryName = CategoryContentWrapper.getProductCategoryContentAsText(productCategory, "CATEGORY_NAME", locale, dispatcher);
                         transItemMap.categoryName;
                     }

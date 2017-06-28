@@ -10,7 +10,7 @@ import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.base.util.UtilDateTime;
 
 cart = session.getAttribute("shoppingCart");
-party = userLogin.getRelatedOneCache("Party");
+party = userLogin.getRelatedOne("Party",true);
 partyId = party.partyId;
 context.party = party;
 partyProfileDefault = null;

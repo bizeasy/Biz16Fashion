@@ -66,7 +66,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 		currencyUom = localOrderReadHelper.getCurrency();
 	}
 
-	orderStatus = orderHeader.getRelatedOneCache("StatusItem");
+	orderStatus = orderHeader.getRelatedOne("StatusItem",true);
 	if (UtilValidate.isNotEmpty(rowOrderItem.statusId))
 	{
 		orderItemStatus = delegator.findOne("StatusItem",[statusId : rowOrderItem.statusId],true);
@@ -237,7 +237,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 		boolean isCategoryAlive = false;
 		for(GenericValue productCategoryMember : productCategoryMembers)
 		{
-			productCategory = productCategoryMember.getRelatedOneCache("ProductCategory");
+			productCategory = productCategoryMember.getRelatedOne("ProductCategory",true);
 			for (Map<String, Object> workingCategoryMap : allUnexpiredCategories) 
 			{
 				workingCategory = (GenericValue) workingCategoryMap.get("ProductCategory");
@@ -294,13 +294,13 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	      carrierShipmentMethod = EntityQuery.use(delegator).from("findCarrierShipmentMethodMap").where(findCarrierShipmentMethodMap).cache().queryOne();
 		  if (UtilValidate.isNotEmpty(carrierShipmentMethod))
 		  {
-			  shipmentMethodType = carrierShipmentMethod.getRelatedOneCache("ShipmentMethodType");
+			  shipmentMethodType = carrierShipmentMethod.getRelatedOne("ShipmentMethodType",true);
 		      shipMethodDescription = shipmentMethodType.description;
 		      carrierPartyGroupName = "";
 		      if (shipGroup.carrierPartyId != "_NA_")
 		      {
-		          carrierParty = carrierShipmentMethod.getRelatedOneCache("Party");
-		          carrierPartyGroup = carrierParty.getRelatedOneCache("PartyGroup");
+		          carrierParty = carrierShipmentMethod.getRelatedOne("Party",true);
+		          carrierPartyGroup = carrierParty.getRelatedOne("PartyGroup",true);
 		          carrierPartyGroupName = carrierPartyGroup.groupName;
 		          trackingURLPartyContents = delegator.findByAndCache("PartyContent",UtilMisc.toMap("partyId", shipGroup.carrierPartyId, "partyContentTypeId", "TRACKING_URL"));
 		          if (UtilValidate.isNotEmpty(trackingURLPartyContents))
@@ -308,13 +308,13 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 		              trackingURLPartyContent = EntityUtil.getFirst(trackingURLPartyContents);
 		              if (UtilValidate.isNotEmpty(trackingURLPartyContent))
 		              {
-		                  content = trackingURLPartyContent.getRelatedOneCache("Content");
+		                  content = trackingURLPartyContent.getRelatedOne("Content",true);
 		                  if (UtilValidate.isNotEmpty(content))
 		                  {
-		                      dataResource = content.getRelatedOneCache("DataResource");
+		                      dataResource = content.getRelatedOne("DataResource",true);
 		                      if (UtilValidate.isNotEmpty(dataResource))
 		                      {
-		                          electronicText = dataResource.getRelatedOneCache("ElectronicText");
+		                          electronicText = dataResource.getRelatedOne("ElectronicText",true);
 		                          trackingURL = electronicText.textData;
 		                          if (UtilValidate.isNotEmpty(trackingURL))
 		                          {

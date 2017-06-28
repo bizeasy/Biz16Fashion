@@ -98,7 +98,7 @@ if (UtilValidate.isNotEmpty(productId))
             keywords.add(productName);
             members = delegator.findByAndCache("ProductCategoryMember", [productId : gvProduct.productId]);
             members.each { member ->
-                category = member.getRelatedOneCache("ProductCategory");
+                category = member.getRelatedOne("ProductCategory",true);
                 if (category.longDescription) {
                     keywords.add(category.longDescription);
                 }

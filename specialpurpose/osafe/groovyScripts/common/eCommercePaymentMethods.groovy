@@ -61,7 +61,7 @@ if(Util.isProductStoreParmTrue(request,"CHECKOUT_KEEP_PAYMENT_METHODS"))
                     valueMap = HashMap.newInstance();
                     paymentMethodValueMaps.add(valueMap);
                     valueMap.put("paymentMethod", paymentMethod);
-                    GenericValue creditCard = paymentMethod.getRelatedOneCache("CreditCard");
+                    GenericValue creditCard = paymentMethod.getRelatedOne("CreditCard",true);
                     if (UtilValidate.isNotEmpty(creditCard))
                     {
                         valueMap.put("creditCard", creditCard);
@@ -73,7 +73,7 @@ if(Util.isProductStoreParmTrue(request,"CHECKOUT_KEEP_PAYMENT_METHODS"))
                     eftValueMap = HashMap.newInstance();
                     paymentMethodEftValueMaps.add(eftValueMap);
                     eftValueMap.put("paymentMethod", paymentMethod);
-                    GenericValue eftAccount = paymentMethod.getRelatedOneCache("EftAccount");
+                    GenericValue eftAccount = paymentMethod.getRelatedOne("EftAccount",true);
                     if (UtilValidate.isNotEmpty(eftAccount))
                     {
                         eftValueMap.put("eftAccount", eftAccount);

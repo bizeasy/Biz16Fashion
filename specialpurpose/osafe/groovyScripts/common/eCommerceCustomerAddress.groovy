@@ -45,7 +45,7 @@ if (UtilValidate.isNotEmpty(partyId))
     {
         context.party = party;
         context.partyId = partyId;
-        context.person = party.getRelatedOneCache("Person");
+        context.person = party.getRelatedOne("Person",true);
 
 		productStoreId = ProductStoreWorker.getProductStoreId(request);
 	    partyProfileDefault = delegator.findOne("PartyProfileDefault", UtilMisc.toMap("partyId", party.partyId, "productStoreId", productStoreId), true);
@@ -61,7 +61,7 @@ if (UtilValidate.isNotEmpty(partyId))
         if (UtilValidate.isNotEmpty(partyBillingLocations)) 
         {
         	partyBillingLocation = EntityUtil.getFirst(partyBillingLocations);
-        	billingPostalAddress = partyBillingLocation.getRelatedOneCache("PostalAddress");
+        	billingPostalAddress = partyBillingLocation.getRelatedOne("PostalAddress",true);
             billingContactMechList = EntityUtil.getRelated("ContactMech",partyBillingLocations);
 
             context.BILLINGPostalAddress = billingPostalAddress;
@@ -88,7 +88,7 @@ if (UtilValidate.isNotEmpty(partyId))
 				}
 			}
             partyShippingLocation = EntityUtil.getFirst(tempPartyShippingLocations);
-            shippingPostalAddress = partyShippingLocation.getRelatedOneCache("PostalAddress");
+            shippingPostalAddress = partyShippingLocation.getRelatedOne("PostalAddress",true);
             shippingContactMechList=EntityUtil.getRelated("ContactMech",partyShippingLocations);
 
             context.SHIPPINGPostalAddress = shippingPostalAddress;
@@ -102,7 +102,7 @@ if (UtilValidate.isNotEmpty(partyId))
         if (UtilValidate.isNotEmpty(partyPurposeEmails)) 
         {
         	partyPurposeEmail = EntityUtil.getFirst(partyPurposeEmails);
-            contactMech = partyPurposeEmail.getRelatedOneCache("ContactMech");
+            contactMech = partyPurposeEmail.getRelatedOne("ContactMech",true);
             userEmailContactMechList= EntityUtil.getRelated("ContactMech",partyPurposeEmails);
 
             context.userEmailContactMech = contactMech;

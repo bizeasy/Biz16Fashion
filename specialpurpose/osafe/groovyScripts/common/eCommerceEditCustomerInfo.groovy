@@ -15,8 +15,8 @@ context.partyTextPreference="";
 if (UtilValidate.isNotEmpty(userLogin)) 
 {
     context.userLoginId = userLogin.userLoginId;
-    party = userLogin.getRelatedOneCache("Party");
-    person = party.getRelatedOneCache("Person");
+    party = userLogin.getRelatedOne("Party",true);
+    person = party.getRelatedOne("Person",true);
     context.person=person;
     partyId=party.partyId;
     context.partyId = partyId;
@@ -73,7 +73,7 @@ if (UtilValidate.isNotEmpty(userLogin))
     if (UtilValidate.isNotEmpty(partyPurposeEmails)) 
     {
     	partyPurposeEmail = EntityUtil.getFirst(partyPurposeEmails);
-        contactMech = partyPurposeEmail.getRelatedOneCache("ContactMech");
+        contactMech = partyPurposeEmail.getRelatedOne("ContactMech",true);
         context.userEmailContactMech = contactMech;
         context.userEmailAddress = contactMech.infoString;
         context.userEmailAllowSolicitation= partyPurposeEmail.allowSolicitation;
@@ -95,7 +95,7 @@ if (UtilValidate.isNotEmpty(userLogin))
     if (UtilValidate.isNotEmpty(contactMechBilling))
     {
         context.contactMech = contactMechBilling;
-	    postalAddressData = contactMechBilling.getRelatedOneCache("PostalAddress");
+	    postalAddressData = contactMechBilling.getRelatedOne("PostalAddress",true);
 	    context.postalAddressData = postalAddressData;
 	    if (UtilValidate.isNotEmpty(postalAddressData))
 	    {
@@ -130,7 +130,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	                    partyContactMechPurpose = EntityUtil.getFirst(phonePurposeList)
 	                    if(UtilValidate.isNotEmpty(partyContactMechPurpose)) 
 	                    {
-	                        telecomNumber = partyContactMechPurpose.getRelatedOneCache("TelecomNumber");
+	                        telecomNumber = partyContactMechPurpose.getRelatedOne("TelecomNumber",true);
 	                        phoneNumberMap[partyContactMechPurpose.contactMechPurposeTypeId]=telecomNumber;
 	                    }
 	                }

@@ -69,7 +69,7 @@ if (UtilValidate.isNotEmpty(context.storeDetail) && "Y".equals(context.storeDeta
 	    {
 	    	storePartyList = LinkedList.newInstance();
 	    	storePartyList.add(party);
-	        partyGroup = party.getRelatedOneCache("PartyGroup");
+	        partyGroup = party.getRelatedOne("PartyGroup",true);
 	        if (UtilValidate.isNotEmpty(partyGroup)) 
 	        {
 	            context.storeInfo = partyGroup;
@@ -206,7 +206,7 @@ if(UtilValidate.isNotEmpty(storePartyList))
               	    storeContentSpotDataResourceId = "";
          		    context.storeContentSpotDataResourceId = storeContentSpotDataResourceId;
 
-                    partyGroup = party.getRelatedOneCache("PartyGroup");
+                    partyGroup = party.getRelatedOne("PartyGroup",true);
                     if (UtilValidate.isNotEmpty(partyGroup)) 
                     {
                         groupName = partyGroup.groupName;
@@ -224,7 +224,7 @@ if(UtilValidate.isNotEmpty(storePartyList))
                     if (UtilValidate.isNotEmpty(storeLocationLocations)) 
                     {
                     	storeLocationLocation = EntityUtil.getFirst(storeLocationLocations);
-                    	storeAddress = storeLocationLocation.getRelatedOneCache("PostalAddress");
+                    	storeAddress = storeLocationLocation.getRelatedOne("PostalAddress",true);
                         context.storeAddress =storeAddress;
                         address1 = storeAddress.address1;
                         address2 = storeAddress.address2;
@@ -247,7 +247,7 @@ if(UtilValidate.isNotEmpty(storePartyList))
                     if (UtilValidate.isNotEmpty(storeTelephoneLocations)) 
                     {
                     	storeTelephoneLocation = EntityUtil.getFirst(storeTelephoneLocations);
-                    	storePhone = storeTelephoneLocation.getRelatedOneCache("TelecomNumber");
+                    	storePhone = storeTelephoneLocation.getRelatedOne("TelecomNumber",true);
                         context.storePhone =storePhone;
                         areaCode = storePhone.areaCode;
                         contactNumber = storePhone.contactNumber;
@@ -266,12 +266,12 @@ if(UtilValidate.isNotEmpty(storePartyList))
                     if (UtilValidate.isNotEmpty(storeHours)) 
                     {
                     	storeHour = EntityUtil.getFirst(storeHours);
-                        content = storeHour.getRelatedOneCache("Content");
+                        content = storeHour.getRelatedOne("Content",true);
                         if (UtilValidate.isNotEmpty(content))
                         {
                            openingHoursContentId = content.contentId;
                            context.storeHoursContentId = openingHoursContentId;
-                           dataResource = content.getRelatedOneCache("DataResource");
+                           dataResource = content.getRelatedOne("DataResource",true);
                            if (UtilValidate.isNotEmpty(dataResource))
                            {
                         	   storeHoursDataResourceId = dataResource.dataResourceId;
@@ -284,12 +284,12 @@ if(UtilValidate.isNotEmpty(storePartyList))
                     if (UtilValidate.isNotEmpty(storeNotices)) 
                     {
                     	storeNotice = EntityUtil.getFirst(storeNotices);
-                        content = storeNotice.getRelatedOneCache("Content");
+                        content = storeNotice.getRelatedOne("Content",true);
                         if (UtilValidate.isNotEmpty(content))
                         {
                            storeNoticeContentId = content.contentId;
                            context.storeNoticeContentId = storeNoticeContentId;
-                           dataResource = content.getRelatedOneCache("DataResource");
+                           dataResource = content.getRelatedOne("DataResource",true);
                            if (UtilValidate.isNotEmpty(dataResource))
                            {
                         	   storeNoticeDataResourceId = dataResource.dataResourceId;
@@ -301,12 +301,12 @@ if(UtilValidate.isNotEmpty(storePartyList))
                     if (UtilValidate.isNotEmpty(storeContentSpots)) 
                     {
                     	storeContentSpot = EntityUtil.getFirst(storeContentSpots);
-                        content = storeContentSpot.getRelatedOneCache("Content");
+                        content = storeContentSpot.getRelatedOne("Content",true);
                         if (UtilValidate.isNotEmpty(content))
                         {
                      	   storeContentSpotContentId = content.contentId;
                      	   context.storeContentSpotContentId = storeContentSpotContentId;
-                           dataResource = content.getRelatedOneCache("DataResource");
+                           dataResource = content.getRelatedOne("DataResource",true);
                            if (UtilValidate.isNotEmpty(dataResource))
                            {
                         	  storeContentSpotDataResourceId = dataResource.dataResourceId;

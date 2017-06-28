@@ -107,7 +107,7 @@ if(UtilValidate.isEmpty(currencyUom))
 
 if(UtilValidate.isNotEmpty(orderItem))
 {
-	product = orderItem.getRelatedOneCache("Product");
+	product = orderItem.getRelatedOne("Product",true);
 	urlProductId = product.getString("productId");
 	productId = product.getString("productId");
 	productCategoryId = orderItem.getString("productCategoryId");

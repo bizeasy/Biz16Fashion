@@ -185,7 +185,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 						delegator.create(contactMech);
 
 						//Create New Shipping Postal Address for the cart
-						address = partyShippingLocation.getRelatedOneCache("PostalAddress");
+						address = partyShippingLocation.getRelatedOne("PostalAddress",true);
 						GenericValue postalAddress = delegator.makeValue("PostalAddress");
 						postalAddress.set("contactMechId",contactMechId);
 						postalAddress.set("toName",address.toName);
@@ -341,7 +341,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 			promoInfo = HashMap.newInstance();
 			promoInfo.put("cartAdjustment", cartAdjustment);
 			promoCodeText = "";
-			adjustmentType = cartAdjustment.getRelatedOneCache("OrderAdjustmentType");
+			adjustmentType = cartAdjustment.getRelatedOne("OrderAdjustmentType",true);
 			adjustmentTypeDesc = adjustmentType.get("description",locale);
 			//loyalty points
 			if(adjustmentType.orderAdjustmentTypeId.equals("LOYALTY_POINTS"))
@@ -352,7 +352,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 				appliedLoyaltyPointsList.add(loyaltyPointsInfo);
 			}
 			//promo
-			productPromo = cartAdjustment.getRelatedOneCache("ProductPromo");
+			productPromo = cartAdjustment.getRelatedOne("ProductPromo",true);
 			if(UtilValidate.isNotEmpty(productPromo))
 			{
 				promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);

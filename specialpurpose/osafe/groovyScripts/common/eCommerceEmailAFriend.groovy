@@ -16,8 +16,8 @@ customerName = "Your Friend";
 if (UtilValidate.isNotEmpty(userLogin))
 {
 	context.userLoginId = userLogin.userLoginId;
-	party = userLogin.getRelatedOneCache("Party");
-	person = party.getRelatedOneCache("Person");
+	party = userLogin.getRelatedOne("Party",true);
+	person = party.getRelatedOne("Person",true);
 	context.person=person;
 	customerName = PartyHelper.getPartyName(delegator, party.partyId, false);
 	
@@ -31,7 +31,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	if (UtilValidate.isNotEmpty(partyPurposeEmails))
 	{
 		partyPurposeEmail = EntityUtil.getFirst(partyPurposeEmails);
-		contactMech = partyPurposeEmail.getRelatedOneCache("ContactMech");
+		contactMech = partyPurposeEmail.getRelatedOne("ContactMech",true);
 		context.userEmailContactMech = contactMech;
 		context.userEmailAddress = contactMech.infoString;
 		

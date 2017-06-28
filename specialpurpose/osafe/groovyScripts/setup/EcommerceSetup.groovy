@@ -63,20 +63,20 @@ if (UtilValidate.isNotEmpty(userLogin))
 {
 	globalContext.userEmailAddress=userLogin.userLoginId;
 
-	person = userLogin.getRelatedOneCache("Person");
+	person = userLogin.getRelatedOne("Person",true);
 	if (UtilValidate.isNotEmpty(person))
 	{
 		globalContext.userFirstName=person.firstName;
 		globalContext.userLastName=person.lastName;
 		
 	}
-	party = userLogin.getRelatedOneCache("Party");
+	party = userLogin.getRelatedOne("Party",true);
 	if (UtilValidate.isNotEmpty(party))
 	{
 		contactMech = EntityUtil.getFirst(ContactHelper.getContactMech(party, "BILLING_LOCATION", "POSTAL_ADDRESS", false));
 		if (UtilValidate.isNotEmpty(contactMech))
 		{
-			postalAddressData = contactMech.getRelatedOneCache("PostalAddress");
+			postalAddressData = contactMech.getRelatedOne("PostalAddress",true);
 			if (UtilValidate.isNotEmpty(postalAddressData))
 			{
 				globalContext.userPostalAddressData=postalAddressData;

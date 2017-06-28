@@ -49,7 +49,7 @@ if (UtilValidate.isNotEmpty(allStores))
 {
 	for(GenericValue store : allStores)
 	{
-		storeParty = store.getRelatedOneCache("Party");
+		storeParty = store.getRelatedOne("Party",true);
 		if(UtilValidate.isNotEmpty(storeParty.statusId) && "PARTY_ENABLED".equals(storeParty.statusId))
 		{
 			openStores.add(storeParty);
@@ -73,7 +73,7 @@ if (UtilValidate.isNotEmpty(storeId))
     party = delegator.findOne("Party", [partyId : storeId], true);
     if (UtilValidate.isNotEmpty(party))
     {
-        partyGroup = party.getRelatedOneCache("PartyGroup");
+        partyGroup = party.getRelatedOne("PartyGroup",true);
         if (UtilValidate.isNotEmpty(partyGroup)) 
         {
             context.storeInfo = partyGroup;
@@ -89,7 +89,7 @@ if (UtilValidate.isNotEmpty(storeId))
         if (UtilValidate.isNotEmpty(partyGeneralLocations)) 
         {
         	partyGeneralLocation = EntityUtil.getFirst(partyGeneralLocations);
-        	context.storeAddress = partyGeneralLocation.getRelatedOneCache("PostalAddress");
+        	context.storeAddress = partyGeneralLocation.getRelatedOne("PostalAddress",true);
         }
 
         partyPrimaryPhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_PHONE"));
@@ -99,7 +99,7 @@ if (UtilValidate.isNotEmpty(storeId))
         if (UtilValidate.isNotEmpty(partyPrimaryPhones)) 
         {
         	partyPrimaryPhone = EntityUtil.getFirst(partyPrimaryPhones);
-        	context.storePhone = partyPrimaryPhone.getRelatedOneCache("TelecomNumber");
+        	context.storePhone = partyPrimaryPhone.getRelatedOne("TelecomNumber",true);
         }
     }
 }
