@@ -105,7 +105,8 @@ if (paymentAddress) context.paymentAddress = paymentAddress;
 
 // TODO: FIXME!
 /*
-billingAccount = cart.getBillingAccountId() ? delegator.findByPrimaryKey("BillingAccount", [billingAccountId : cart.getBillingAccountId()]) : null;
+billingAccount = cart.getBillingAccountId() ? EntityQuery.use(delegator).from("BillingAccount").where("billingAccountId", cart.getBillingAccountId()).queryOne() : null;
+
 if (billingAccount)
     context.billingAccount = billingAccount;
 */

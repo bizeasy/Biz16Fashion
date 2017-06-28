@@ -147,7 +147,8 @@ allowAnonymousView = context.allowAnonymousView;
 
 isDemoStore = true;
 if (orderId) {
-    orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : orderId]);
+    orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
+    
     if ("PURCHASE_ORDER".equals(orderHeader?.orderTypeId)) {
         //drop shipper or supplier
         roleTypeId = "SUPPLIER_AGENT";

@@ -110,7 +110,8 @@ globalContext.put("EMAIL_TITLE",context.title);
 
 if (UtilValidate.isNotEmpty(orderId)) 
 {
-    orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : orderId]);
+    orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
+    
     if (UtilValidate.isNotEmpty(orderHeader)) 
     {
        orderReadHelper = new OrderReadHelper(orderHeader);

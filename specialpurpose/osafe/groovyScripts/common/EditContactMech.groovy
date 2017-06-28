@@ -71,7 +71,8 @@ if (UtilValidate.isNotEmpty(paymentMethodId))
 cmNewPurposeTypeId = parameters.contactMechPurposeTypeId;
 if (UtilValidate.isNotEmpty(cmNewPurposeTypeId))
 {
-    contactMechPurposeType = delegator.findByPrimaryKey("ContactMechPurposeType", [contactMechPurposeTypeId : cmNewPurposeTypeId]);
+    contactMechPurposeType = EntityQuery.use(delegator).from("ContactMechPurposeType").where("contactMechPurposeTypeId", cmNewPurposeTypeId).queryOne();
+    
     if (UtilValidate.isNotEmpty(contactMechPurposeType))
     {
         context.contactMechPurposeType = contactMechPurposeType;
