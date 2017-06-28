@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.apache.ofbiz.base.util.UtilValidate;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
@@ -176,13 +176,13 @@ else
 		price = cartLine.getBasePrice();
 	}
 }
-List<GenericValue> productAttributes = FastList.newInstance();
+List<GenericValue> productAttributes = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(product))
 {
 	productAttributes = product.getRelatedCache("ProductAttribute");
 }
 
-List<GenericValue> virtualProductAttributes = FastList.newInstance();
+List<GenericValue> virtualProductAttributes = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(virtualProduct))
 {
 	virtualProductAttributes = virtualProduct.getRelatedCache("ProductAttribute");
@@ -298,7 +298,7 @@ if(UtilValidate.isNotEmpty(productAttributes))
 }
 
 //BUILD CONTEXT MAP FOR PRODUCT_FEATURE_TYPE_ID and DESCRIPTION(EITHER FROM PRODUCT_FEATURE_GROUP OR PRODUCT_FEATURE_TYPE)
-Map productFeatureTypesMap = FastMap.newInstance();
+Map productFeatureTypesMap = HashMap.newInstance();
 productFeatureTypesList = delegator.findList("ProductFeatureType", null, null, null, null, true);
 
 //get the whole list of ProductFeatureGroup and ProductFeatureGroupAndAppl
@@ -339,8 +339,8 @@ if(UtilValidate.isNotEmpty(cartShipInfo))
 
 //product features : STANDARD FEATURES 
 //Issue 38934, 38916 - Check for duplicate feature descriptions
-productFeatureAndAppls = FastList.newInstance();
-Map standardFeatureExistsMap = FastMap.newInstance();
+productFeatureAndAppls = LinkedList.newInstance();
+Map standardFeatureExistsMap = HashMap.newInstance();
 standardFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE"), UtilMisc.toList("sequenceNum"));
 standardFeatures = EntityUtil.filterByDate(standardFeatures,true);
 standardFeatures = EntityUtil.orderBy(standardFeatures,UtilMisc.toList('sequenceNum'));

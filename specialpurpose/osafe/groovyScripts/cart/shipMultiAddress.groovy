@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.apache.ofbiz.base.util.UtilValidate;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
@@ -27,12 +27,12 @@ import org.apache.ofbiz.base.util.UtilDateTime;
 ShoppingCart shoppingCart = session.getAttribute("shoppingCart");
 userLogin = context.userLogin;
 partyId = null;
-multiAddressList = FastList.newInstance();
-shippingContactMechList = FastList.newInstance();
+multiAddressList = LinkedList.newInstance();
+shippingContactMechList = LinkedList.newInstance();
 totalQuantity=0;
 numberOfItems=0;
-lineIndexGiftMessageMap = FastMap.newInstance();
-lineIndexCartItemIndexMap = FastMap.newInstance();
+lineIndexGiftMessageMap = HashMap.newInstance();
+lineIndexCartItemIndexMap = HashMap.newInstance();
 
 if(UtilValidate.isNotEmpty(shoppingCart))
 {
@@ -52,7 +52,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 				Map cartAttrMap = shoppingCartItem.getOrderItemAttributes();
 				if(UtilValidate.isNotEmpty(cartAttrMap))
 				{
-					Map giftMsgMap = FastMap.newInstance();
+					Map giftMsgMap = HashMap.newInstance();
 					int iProductMsgIdx=idx +1;
 					String sProductMsgIdx = iProductMsgIdx;
 					for (Map.Entry itemAttr : cartAttrMap.entrySet())

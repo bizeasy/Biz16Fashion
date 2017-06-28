@@ -6,8 +6,8 @@ import org.apache.ofbiz.party.contact.*;
 import org.apache.ofbiz.product.store.*;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.accounting.payment.*;
 import org.apache.ofbiz.order.order.*;
 import org.apache.ofbiz.product.catalog.*;
@@ -32,7 +32,7 @@ if (UtilValidate.isNotEmpty(orderId))
 			orderTaxTotal = orderTaxTotal.add(OrderReadHelper.calcOrderAdjustments(orderHeaderAdjustments, orderSubTotal, false, true, false));
 			orderItemShipGroups = orderReadHelper.getOrderItemShipGroups();
 			shipGroupsSize = orderItemShipGroups.size();
-			appliedTaxList = FastList.newInstance();
+			appliedTaxList = LinkedList.newInstance();
 			BigDecimal totalTaxPercent = BigDecimal.ZERO;
 			shipGroupSalesTaxSame = true;
 			
@@ -40,7 +40,7 @@ if (UtilValidate.isNotEmpty(orderId))
 			if (UtilValidate.isNotEmpty(orderAdjustments))
 			{
 				//This section will verify if each ship group has the same percentages applied for taxes, if so we can display them for each percentage
-				List orderAdjustmentsSalesTax = FastList.newInstance();
+				List orderAdjustmentsSalesTax = LinkedList.newInstance();
 				if(UtilValidate.isNotEmpty(orderAdjustments))
 				{
 					orderAdjustmentsSalesTax = EntityUtil.filterByAnd(orderAdjustments, UtilMisc.toMap("orderAdjustmentTypeId", "SALES_TAX"));
@@ -116,7 +116,7 @@ if (UtilValidate.isNotEmpty(orderId))
 							}
 							if(("N").equals(alreadyInList))
 							{
-								taxInfo = FastMap.newInstance();
+								taxInfo = HashMap.newInstance();
 								taxInfo.put("taxAuthorityRateSeqId", taxAuthorityRateSeqId);
 								taxInfo.put("amount", orderTaxAdjustment.amount);
 								taxAdjSourceBD = new BigDecimal(orderTaxAdjustment.sourcePercentage);

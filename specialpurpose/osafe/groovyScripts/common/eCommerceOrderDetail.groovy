@@ -11,14 +11,14 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import java.math.BigDecimal;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.condition.*;
 import org.apache.ofbiz.accounting.payment.*;
 import org.apache.ofbiz.order.order.*;
 import org.apache.ofbiz.product.catalog.*;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.base.util.UtilNumber;
@@ -375,14 +375,14 @@ if (UtilValidate.isNotEmpty(orderId))
 		}
 		
 		//get Adjustment Info
-		appliedPromoList = FastList.newInstance();
-		appliedLoyaltyPointsList = FastList.newInstance();
+		appliedPromoList = LinkedList.newInstance();
+		appliedLoyaltyPointsList = LinkedList.newInstance();
 		if(UtilValidate.isNotEmpty(orderHeaderAdjustments) && orderHeaderAdjustments.size() > 0)
 		{
 			adjustments = orderHeaderAdjustments;
 			for (GenericValue cartAdjustment : adjustments)
 			{
-				promoInfo = FastMap.newInstance();
+				promoInfo = HashMap.newInstance();
 				promoInfo.put("cartAdjustment", cartAdjustment);
 				promoCodeText = "";
 				adjustmentType = cartAdjustment.getRelatedOneCache("OrderAdjustmentType");
@@ -390,7 +390,7 @@ if (UtilValidate.isNotEmpty(orderId))
 				//loyalty points
 				if(adjustmentType.orderAdjustmentTypeId.equals("LOYALTY_POINTS"))
 				{
-					loyaltyPointsInfo = FastMap.newInstance();
+					loyaltyPointsInfo = HashMap.newInstance();
 					loyaltyPointsInfo.put("cartAdjustment", cartAdjustment);
 					loyaltyPointsInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 					appliedLoyaltyPointsList.add(loyaltyPointsInfo);

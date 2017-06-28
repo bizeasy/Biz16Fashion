@@ -2,7 +2,7 @@ package common;
 
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.UtilValidate;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.party.contact.ContactHelper;
@@ -15,9 +15,9 @@ partyId = party.partyId;
 context.party = party;
 partyProfileDefault = null;
 
-shippingContactMechList = FastList.newInstance();
-billingContactMechList = FastList.newInstance();
-addressContactMechList = FastList.newInstance();
+shippingContactMechList = LinkedList.newInstance();
+billingContactMechList = LinkedList.newInstance();
+addressContactMechList = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(party))
 {
 	

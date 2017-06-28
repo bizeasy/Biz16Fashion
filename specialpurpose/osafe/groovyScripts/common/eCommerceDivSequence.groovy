@@ -1,7 +1,7 @@
 package common;
 
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.osafe.services.OsafeManageXml;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
@@ -11,7 +11,7 @@ import org.apache.ofbiz.base.util.UtilValidate;
 
 osafeProperties = UtilProperties.getResourceBundleMap("OsafeProperties.xml", locale);
 XmlFilePath = FlexibleStringExpander.expandString(osafeProperties.ecommerceUiSequenceXmlFile, context);
-searchRestrictionMap = FastMap.newInstance();
+searchRestrictionMap = HashMap.newInstance();
 searchRestrictionMap.put("screen", "Y");
 uiSequenceSearchList =  OsafeManageXml.getSearchListFromXmlFile(XmlFilePath, searchRestrictionMap, uiSequenceScreen,true, false, true);
 

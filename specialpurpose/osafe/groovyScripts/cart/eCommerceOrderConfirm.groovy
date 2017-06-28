@@ -9,8 +9,8 @@ import org.apache.ofbiz.party.contact.*;
 import org.apache.ofbiz.product.store.*;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.accounting.payment.*;
 import org.apache.ofbiz.order.order.*;
 import org.apache.ofbiz.product.catalog.*;
@@ -59,7 +59,7 @@ roleTypeId = "PLACING_CUSTOMER";
 context.roleTypeId = roleTypeId;
 chosenShippingMethodDescription="";
 shippingInstructions = "";
-ordersList = FastList.newInstance();
+ordersList = LinkedList.newInstance();
 shippingApplies = true;
 
 if (UtilValidate.isNotEmpty(orderId)) 
@@ -232,14 +232,14 @@ if (UtilValidate.isNotEmpty(orderId))
 	   
 	   
 	   //get Adjustment Info
-	   appliedPromoList = FastList.newInstance();
-	   appliedLoyaltyPointsList = FastList.newInstance();
+	   appliedPromoList = LinkedList.newInstance();
+	   appliedLoyaltyPointsList = LinkedList.newInstance();
 	   if(UtilValidate.isNotEmpty(orderHeaderAdjustments) && orderHeaderAdjustments.size() > 0)
 	   {
 		   adjustments = orderHeaderAdjustments;
 		   for (GenericValue cartAdjustment : adjustments)
 		   {
-			   promoInfo = FastMap.newInstance();
+			   promoInfo = HashMap.newInstance();
 			   promoInfo.put("cartAdjustment", cartAdjustment);
 			   promoCodeText = "";
 			   adjustmentType = cartAdjustment.getRelatedOneCache("OrderAdjustmentType");
@@ -247,7 +247,7 @@ if (UtilValidate.isNotEmpty(orderId))
 			   //loyalty points
 			   if(adjustmentType.orderAdjustmentTypeId.equals("LOYALTY_POINTS"))
 			   {
-				   loyaltyPointsInfo = FastMap.newInstance();
+				   loyaltyPointsInfo = HashMap.newInstance();
 				   loyaltyPointsInfo.put("cartAdjustment", cartAdjustment);
 				   loyaltyPointsInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 				   appliedLoyaltyPointsList.add(loyaltyPointsInfo);
@@ -393,7 +393,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	   }
 	   
 	   //BUILD CONTEXT MAP FOR PRODUCT_FEATURE_TYPE_ID and DESCRIPTION(EITHER FROM PRODUCT_FEATURE_GROUP OR PRODUCT_FEATURE_TYPE)
-	   Map productFeatureTypesMap = FastMap.newInstance();
+	   Map productFeatureTypesMap = HashMap.newInstance();
 	   productFeatureTypesList = delegator.findList("ProductFeatureType", null, null, null, null, true);
 	   
 	   //get the whole list of ProductFeatureGroup and ProductFeatureGroupAndAppl

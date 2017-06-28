@@ -2,8 +2,8 @@ import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.util.EntityUtil;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
@@ -11,8 +11,8 @@ import org.apache.ofbiz.order.shoppingcart.ShoppingCart;
 
 userLogin = session.getAttribute("userLogin");
 context.userLogin = userLogin;
-savedPaymentMethodValueMaps = FastList.newInstance();
-savedPaymentMethodEftValueMaps = FastList.newInstance();
+savedPaymentMethodValueMaps = LinkedList.newInstance();
+savedPaymentMethodEftValueMaps = LinkedList.newInstance();
 partyId = null;
 partyProfileDefault = null;
 productStoreId = "";
@@ -49,8 +49,8 @@ if(Util.isProductStoreParmTrue(request,"CHECKOUT_KEEP_PAYMENT_METHODS"))
     if(UtilValidate.isNotEmpty(partyId))
     {
         paymentMethods = delegator.findByAndCache("PaymentMethod", UtilMisc.toMap("partyId", partyId), UtilMisc.toList("lastUpdatedStamp"));
-        paymentMethodValueMaps = FastList.newInstance();
-        paymentMethodEftValueMaps = FastList.newInstance();
+        paymentMethodValueMaps = LinkedList.newInstance();
+        paymentMethodEftValueMaps = LinkedList.newInstance();
         if(UtilValidate.isNotEmpty(paymentMethods))
         {
             paymentMethods = EntityUtil.filterByDate(paymentMethods, true);
@@ -58,7 +58,7 @@ if(Util.isProductStoreParmTrue(request,"CHECKOUT_KEEP_PAYMENT_METHODS"))
             {
                 if ("CREDIT_CARD".equals(paymentMethod.getString("paymentMethodTypeId"))) 
                 {
-                    valueMap = FastMap.newInstance();
+                    valueMap = HashMap.newInstance();
                     paymentMethodValueMaps.add(valueMap);
                     valueMap.put("paymentMethod", paymentMethod);
                     GenericValue creditCard = paymentMethod.getRelatedOneCache("CreditCard");
@@ -70,7 +70,7 @@ if(Util.isProductStoreParmTrue(request,"CHECKOUT_KEEP_PAYMENT_METHODS"))
                 }
                 else if ("EFT_ACCOUNT".equals(paymentMethod.getString("paymentMethodTypeId")))
                 {
-                    eftValueMap = FastMap.newInstance();
+                    eftValueMap = HashMap.newInstance();
                     paymentMethodEftValueMaps.add(eftValueMap);
                     eftValueMap.put("paymentMethod", paymentMethod);
                     GenericValue eftAccount = paymentMethod.getRelatedOneCache("EftAccount");

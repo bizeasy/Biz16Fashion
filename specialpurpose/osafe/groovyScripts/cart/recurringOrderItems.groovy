@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.apache.ofbiz.base.util.UtilValidate;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.osafe.util.Util;
@@ -79,9 +79,9 @@ pdpQtyMaxAttributeValue = "";
 status = "Y";
 currencyUom ="";
 
-Map productFeatureTypesMap = FastMap.newInstance();
-List productFeatureAndAppls = FastList.newInstance();
-partyShippingLocations = FastList.newInstance();
+Map productFeatureTypesMap = HashMap.newInstance();
+List productFeatureAndAppls = LinkedList.newInstance();
+partyShippingLocations = LinkedList.newInstance();
 
 if (UtilValidate.isNotEmpty(shoppingList))
 {
@@ -156,7 +156,7 @@ if (UtilValidate.isNotEmpty(shoppingList))
 				
 				  //product features : STANDARD FEATURES
 	 			 //Issue 38934, 38916 - Check for duplicate feature descriptions
-				  Map standardFeatureExistsMap = FastMap.newInstance();
+				  Map standardFeatureExistsMap = HashMap.newInstance();
 				  standardFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE"), UtilMisc.toList("sequenceNum"));
 				  standardFeatures = EntityUtil.filterByDate(standardFeatures,true);
 				  standardFeatures = EntityUtil.orderBy(standardFeatures,UtilMisc.toList('sequenceNum'));

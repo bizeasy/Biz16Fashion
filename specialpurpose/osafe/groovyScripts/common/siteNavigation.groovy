@@ -3,7 +3,7 @@ package common;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
 import org.apache.ofbiz.product.category.CategoryWorker;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.util.EntityUtil;
 
 productStoreCatalogList  = CatalogWorker.getStoreCatalogs(request);

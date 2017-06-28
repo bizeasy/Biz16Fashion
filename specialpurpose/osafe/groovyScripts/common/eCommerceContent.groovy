@@ -1,7 +1,7 @@
 package common;
 
 import org.apache.ofbiz.base.util.*;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.content.content.ContentWorker;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 

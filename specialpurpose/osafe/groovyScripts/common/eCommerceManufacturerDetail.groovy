@@ -8,8 +8,8 @@ import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityConditionBuilder;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.osafe.util.Util;
@@ -17,7 +17,7 @@ import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
 import org.apache.ofbiz.product.category.CategoryWorker;
 
-paramsExpr = FastList.newInstance();
+paramsExpr = LinkedList.newInstance();
 exprBldr =  new EntityConditionBuilder();
 cart = session.getAttribute("shoppingCart");
 
@@ -48,7 +48,7 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
           paramCond = EntityCondition.makeCondition([prodCond], EntityOperator.AND);
 		  
 		  productSearchList = delegator.findList("Product",paramCond, null, orderBy, null, true);
-          productList = FastList.newInstance();
+          productList = LinkedList.newInstance();
 		  if (UtilValidate.isNotEmpty(productSearchList))
 		  {
               currentCategories = [];
@@ -93,7 +93,7 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
 					 }
                   
 					 ProductContentWrapper productContentWrapper = new ProductContentWrapper(product, request);
-					 Map manufacturerProductItems = FastMap.newInstance();
+					 Map manufacturerProductItems = HashMap.newInstance();
 					 manufacturerProductItems.put("productId",product.productId);
 					 manufacturerProductItems.put("primaryProductCategoryId",product.primaryProductCategoryId);
 					 manufacturerProductItems.put("name",productContentWrapper.get("PRODUCT_NAME").toString());

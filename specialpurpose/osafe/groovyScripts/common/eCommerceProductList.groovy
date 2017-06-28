@@ -7,8 +7,8 @@ import org.apache.ofbiz.base.util.UtilHttp;
 import org.apache.ofbiz.base.util.StringUtil;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.product.category.CategoryContentWrapper;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -179,11 +179,11 @@ context.previousParamsMap = previousParamsMap;
 filterGroup = parameters.filterGroup ?: "";
 if (UtilValidate.isNotEmpty(filterGroup))
 {
-  facetGroups = FastList.newInstance();
+  facetGroups = LinkedList.newInstance();
   filterGroupArr = StringUtil.split(filterGroup, "|");
   for (int i = 0; i < filterGroupArr.size(); i++)
   {
-        facetAndValue = FastMap.newInstance();
+        facetAndValue = HashMap.newInstance();
         facetGroup = filterGroupArr[i];
         facetGroup =StringUtils.replace(facetGroup, "_", " ");
 
@@ -208,7 +208,7 @@ if (UtilValidate.isNotEmpty(filterGroup))
 }
 
 //GET THE LIST OF FACET VALUES.
-facetValueList = FastList.newInstance();
+facetValueList = LinkedList.newInstance();
 facetGroups = context.facetGroups;
 facetGroupMatch = Util.getProductStoreParm(request,"FACET_GROUP_VARIANT_MATCH");
 
@@ -230,8 +230,8 @@ if (UtilValidate.isNotEmpty(facetGroupMatch))
 	searchText = parameters.searchText ?: "";
 	if (UtilValidate.isNotEmpty(searchText))
 	{
-      facetGroups = FastList.newInstance();
-   	  paramsExpr = FastList.newInstance();
+      facetGroups = LinkedList.newInstance();
+   	  paramsExpr = LinkedList.newInstance();
 	  exprBldr =  new EntityConditionBuilder();
       List exprListForParameters = [];
       orderBy = ["description"];
@@ -251,7 +251,7 @@ if (UtilValidate.isNotEmpty(facetGroupMatch))
         for (GenericValue productFeature: productFeatureList)
         {
       
-            facetAndValue = FastMap.newInstance();
+            facetAndValue = HashMap.newInstance();
             facetAndValue.put("facet",productFeature.productFeatureTypeId);
             facetAndValue.put("facetValue",productFeature.description);
             facetGroups.add(facetAndValue);
@@ -270,7 +270,7 @@ if(UtilValidate.isNotEmpty(productScrollerUrlList))
 	session.removeAttribute("productScrollerUrlList");
 }
 //now build the list and add it to the session
-productScrollerUrlList = FastList.newInstance();
+productScrollerUrlList = LinkedList.newInstance();
 //get related system parameters
 plpFacetGroupVariantSwatch = Util.getProductStoreParm(request,"PLP_FACET_GROUP_VARIANT_SWATCH_IMG");
 plpFacetGroupVariantSticky = Util.getProductStoreParm(request,"PLP_FACET_GROUP_VARIANT_PDP_MATCH");

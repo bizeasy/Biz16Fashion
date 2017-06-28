@@ -9,9 +9,9 @@ import org.apache.ofbiz.product.category.CategoryWorker;
 import org.apache.ofbiz.product.category.CategoryContentWrapper;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.product.ProductWorker;
-import javolution.util.FastList;
-import javolution.util.FastSet;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.order.shoppingcart.*;
 import org.apache.ofbiz.webapp.stats.VisitHandler;
@@ -22,7 +22,7 @@ catalogName = CatalogWorker.getCatalogName(request);
 prodCatalogId = CatalogWorker.getCurrentCatalogId(request);
 productStoreId = ProductStoreWorker.getProductStoreId(request);
 userLogin = session.getAttribute("userLogin");
-productAttrMap = FastMap.newInstance();
+productAttrMap = HashMap.newInstance();
 productId = request.getParameter("productId");
  context.put("title", productId);
    
@@ -51,7 +51,7 @@ if (UtilValidate.isNotEmpty(productId))
 
        //Check Product Attribute for Meta Data Overrides
         productAttr = delegator.findByAndCache("ProductAttribute", UtilMisc.toMap("productId", gvProduct.productId));
-        productAttrMap = FastMap.newInstance();
+        productAttrMap = HashMap.newInstance();
 
         if (UtilValidate.isNotEmpty(productAttr))
         {

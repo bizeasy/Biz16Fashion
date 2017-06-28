@@ -6,8 +6,8 @@ import java.sql.Timestamp;
 
 import java.util.*;
 import org.apache.ofbiz.product.store.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.commons.lang.StringUtils;
 
@@ -18,8 +18,8 @@ customerOrderList = delegator.findByAndCache("OrderHeaderAndRoles", UtilMisc.toM
 context.customerOrderList = customerOrderList;
 customerOrderIdList = EntityUtil.getFieldListFromEntityList(customerOrderList, "orderId", true);	
 
-prodCond = FastList.newInstance();
-paramsExpr = FastList.newInstance();
+prodCond = LinkedList.newInstance();
+paramsExpr = LinkedList.newInstance();
 
 if (UtilValidate.isNotEmpty(orderId))
 {
@@ -29,7 +29,7 @@ if (UtilValidate.isNotEmpty(orderId))
 else
 {
 	//make all orderIds uppercase
-	customerOrderIdListUpper = FastList.newInstance();
+	customerOrderIdListUpper = LinkedList.newInstance();
 	if(UtilValidate.isNotEmpty(customerOrderIdList))
 	{
 		for(Object customerOrderId : customerOrderIdList)
@@ -39,7 +39,7 @@ else
 	}
 	paramsExpr.add(EntityCondition.makeCondition(EntityFunction.UPPER_FIELD("orderId"), EntityOperator.IN, customerOrderIdListUpper));
 }
-List orderedItemsList = FastList.newInstance();
+List orderedItemsList = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(paramsExpr))
 {
 	mainCond = EntityCondition.makeCondition(paramsExpr, EntityOperator.AND);

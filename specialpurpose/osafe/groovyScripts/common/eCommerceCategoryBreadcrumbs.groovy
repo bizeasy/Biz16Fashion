@@ -6,8 +6,8 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
 import org.apache.ofbiz.product.category.CategoryWorker;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.ofbiz.osafe.solr.SolrConstants;
 import java.net.URLDecoder;
 
@@ -26,7 +26,7 @@ CategoryWorker.setTrail(request, curCategoryId);
 topCategoryList = request.getAttribute("topLevelList");
 if (UtilValidate.isNotEmpty(topCategoryList))
 {
-    catContentWrappers = FastMap.newInstance();
+    catContentWrappers = HashMap.newInstance();
     CategoryWorker.getCategoryContentWrappers(catContentWrappers, topCategoryList, request);
     context.catContentWrappers = catContentWrappers;
 }
@@ -39,9 +39,9 @@ context.productCategoryIdFacet = "N";
 filterGroup = parameters.filterGroup ?: "";
 if (UtilValidate.isNotEmpty(filterGroup))
 {
-  facetGroups = FastList.newInstance();
-  filterGroupValues = FastList.newInstance();
-  removeFilterGroupValues = FastList.newInstance();
+  facetGroups = LinkedList.newInstance();
+  filterGroupValues = LinkedList.newInstance();
+  removeFilterGroupValues = LinkedList.newInstance();
   filterGroupArr = StringUtil.split(filterGroup, "|");
   
   for (int i = 0; i < filterGroupArr.size(); i++)
@@ -81,7 +81,7 @@ if (UtilValidate.isNotEmpty(filterGroup))
             // underscores can be replaced to get the description used for the breadcrumb
             facetGroupName =StringUtils.replace(facetGroupName, "_", " ");
         }
-        removeValueList = FastList.newInstance();
+        removeValueList = LinkedList.newInstance();
         for(int j=0; j<filterGroupArr.size(); j++)
         {
             if(i != j)

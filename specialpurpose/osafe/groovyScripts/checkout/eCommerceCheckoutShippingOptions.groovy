@@ -14,7 +14,7 @@ import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.common.geo.GeoWorker;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartItem;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents;
 
@@ -85,7 +85,7 @@ if (UtilValidate.isNotEmpty(cart))
 	}
 
 	//Generic Custom Method Variable Context
-	Map<String, Object> customMethodContext = FastMap.newInstance();
+	Map<String, Object> customMethodContext = HashMap.newInstance();
 	//add cart to context
 	if (UtilValidate.isNotEmpty(cart))
 	{

@@ -2,8 +2,8 @@ package common;
 
 import java.util.List;
 import java.util.Map;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.common.geo.*;
 import org.apache.ofbiz.base.util.*;
@@ -33,7 +33,7 @@ if (UtilValidate.isNotEmpty(isStoreNotFoundAddress) && "Y".equals(isStoreNotFoun
 	address = notFoundAddress;
 }
 
-storePartyList = FastList.newInstance();
+storePartyList = LinkedList.newInstance();
 session = context.session;
 
 //Check if we are showing a single store detail or a list of available stores
@@ -65,7 +65,7 @@ if (UtilValidate.isNotEmpty(context.storeDetail) && "Y".equals(context.storeDeta
 	    party = delegator.findByPrimaryKeyCache("Party", [partyId : storeId]);
 	    if (UtilValidate.isNotEmpty(party)) 
 	    {
-	    	storePartyList = FastList.newInstance();
+	    	storePartyList = LinkedList.newInstance();
 	    	storePartyList.add(party);
 	        partyGroup = party.getRelatedOneCache("PartyGroup");
 	        if (UtilValidate.isNotEmpty(partyGroup)) 
@@ -102,9 +102,9 @@ redius = 20;
 numDiplay = 10; 
 gmapUrl ="";
 
-geoPoints = FastList.newInstance();
-partyDetailList = FastList.newInstance();
-partyDetailExistsList = FastList.newInstance();
+geoPoints = LinkedList.newInstance();
+partyDetailList = LinkedList.newInstance();
+partyDetailExistsList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(storePartyList)) 
 {
 	mapWidth = Util.getProductStoreParm(request,"GMAP_MAP_IMG_W");

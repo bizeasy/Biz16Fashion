@@ -1,16 +1,16 @@
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.osafe.events.WishListEvents;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.osafe.control.SeoUrlHelper;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.GenericValue;
 
-wishList = FastList.newInstance();
+wishList = LinkedList.newInstance();
 wishListSize = 0;
 wishListId = WishListEvents.getWishListId(request, false);
 totalPrice = 0;
@@ -83,7 +83,7 @@ if (UtilValidate.isNotEmpty(continueShoppingLink))
 }
 
 //BUILD CONTEXT MAP FOR PRODUCT_FEATURE_TYPE_ID and DESCRIPTION(EITHER FROM PRODUCT_FEATURE_GROUP OR PRODUCT_FEATURE_TYPE)
-Map productFeatureTypesMap = FastMap.newInstance();
+Map productFeatureTypesMap = HashMap.newInstance();
 productFeatureTypesList = delegator.findList("ProductFeatureType", null, null, null, null, true);
 
 //get the whole list of ProductFeatureGroup and ProductFeatureGroupAndAppl

@@ -1,7 +1,7 @@
 package common;
 
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.base.util.UtilMisc;
@@ -115,7 +115,7 @@ String buildNextLi(Map map, List order, String current, String prefix, Map produ
 	//If pdpSelectMultiVariant is "NONE" or undefined, then we need to set the VARSTOCK values outside of the function defined under this "if statement" so that the values can be accessed 
 	if(UtilValidate.isNotEmpty(map) && (UtilValidate.isNotEmpty(plpPdpSelectMultiVariant) && (plpPdpSelectMultiVariant.equals("QTY") || plpPdpSelectMultiVariant.equals("CHECKBOX"))))
     {
-		Map productVariantStockMap = FastMap.newInstance();
+		Map productVariantStockMap = HashMap.newInstance();
 	    map.each { key, value ->
 		   def optValue = null;
 		   def stockClass = "";
@@ -250,7 +250,7 @@ String buildNextLi(Map map, List order, String current, String prefix, Map produ
 Map makeGroup(Delegator delegator, Map<String, List<String>> featureList, List<String> items, List<String> order, int index, Map standardFeatureMap) throws IllegalArgumentException, IllegalStateException
 {
         
-        Map<String, List<String>> tempGroup = FastMap.newInstance();
+        Map<String, List<String>> tempGroup = HashMap.newInstance();
         Map<String, Object> group = new LinkedHashMap<String, Object>();
         String orderKey = (String) order.get(index);
 
@@ -615,7 +615,7 @@ if(UtilValidate.isNotEmpty(productId))
 	}
 	
 	//GET PRODUCT CONTENT LIST AND SET INTO CONTEXT
-    Map productContentIdMap = FastMap.newInstance();
+    Map productContentIdMap = HashMap.newInstance();
 	productContentList = product.getRelatedCache("ProductContent");
 	productContentList = EntityUtil.filterByDate(productContentList,true);
 	if (UtilValidate.isNotEmpty(productContentList))
@@ -631,7 +631,7 @@ if(UtilValidate.isNotEmpty(productId))
 	
 	//GET PRODUCT ATTRIBUTE LIST AND SET INTO LOCAL MAP(productAttrMap)
 	productAttr = product.getRelatedCache("ProductAttribute");
-	productAttrMap = FastMap.newInstance();
+	productAttrMap = HashMap.newInstance();
 	if (UtilValidate.isNotEmpty(productAttr))
 	{
 		attrlIter = productAttr.iterator();
@@ -785,7 +785,7 @@ if(UtilValidate.isNotEmpty(productId))
     int facetUrlPosition = 0;
 
     // GET PRODUCT FEATURE TYPE
-    Map plpProductFeatureTypesMap = FastMap.newInstance();
+    Map plpProductFeatureTypesMap = HashMap.newInstance();
     productFeatureTypesList = delegator.findList("ProductFeatureType", null, null, null, null, true);
     if(UtilValidate.isNotEmpty(productFeatureTypesList))
     {
@@ -802,8 +802,8 @@ if(UtilValidate.isNotEmpty(productId))
 		productFeatureCatGrpAppls = delegator.findByAndCache("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", categoryId), UtilMisc.toList("sequenceNum"));
 		// Using findByAndCache Call since the ProductService(Service getProductVariantTree call) will make the same findByAndCache Call.
 		//Issue 38934, 38916 - Check for duplicate feature descriptions
-	    productDistinguishingFeatures = FastList.newInstance();
-	    Map distinguishingFeatureExistsMap = FastMap.newInstance();
+	    productDistinguishingFeatures = LinkedList.newInstance();
+	    Map distinguishingFeatureExistsMap = HashMap.newInstance();
 	    distinguishingFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "DISTINGUISHING_FEAT"), UtilMisc.toList("sequenceNum"));
 	    distinguishingFeatures = EntityUtil.filterByDate(distinguishingFeatures, true);
 	    
@@ -821,7 +821,7 @@ if(UtilValidate.isNotEmpty(productId))
 	        }
 	    }
 		
-		productFeatureTypes = FastList.newInstance();
+		productFeatureTypes = LinkedList.newInstance();
 		productFeaturesByType = new LinkedHashMap();
 		//traverse through groups in sorted order
 		for (GenericValue productFeatureCatGrpAppl: productFeatureCatGrpAppls)
@@ -841,7 +841,7 @@ if(UtilValidate.isNotEmpty(productId))
 						productFeatureGroupAppls = EntityUtil.filterByDate(productFeatureGroupAppls, true);
 						if (UtilValidate.isNotEmpty(productFeatureGroupAppls))
 						{
-							prodFeaturesList = FastList.newInstance();
+							prodFeaturesList = LinkedList.newInstance();
 							for(GenericValue productFeatureGroupAppl: productFeatureGroupAppls)
 							{
 								//pull the feature from the list of distinguishing features we already have
@@ -871,7 +871,7 @@ if(UtilValidate.isNotEmpty(productId))
 			productFeatureGroupAppls = EntityUtil.filterByDate(productFeatureGroupAppls, true);
 			if (UtilValidate.isNotEmpty(productFeatureGroupAppls))
 			{
-				prodFeaturesList = FastList.newInstance();
+				prodFeaturesList = LinkedList.newInstance();
 				for(GenericValue productFeatureGroupAppl: productFeatureGroupAppls)
 				{
 					//pull the feature from the list of distinguishing features we already have
@@ -887,15 +887,15 @@ if(UtilValidate.isNotEmpty(productId))
 		}
 	}
 	
-    List productSelectableFeatureAndAppl = FastList.newInstance();
-    List productVariantFeatureList = FastList.newInstance();
-    List productAssoc= FastList.newInstance();
+    List productSelectableFeatureAndAppl = LinkedList.newInstance();
+    List productVariantFeatureList = LinkedList.newInstance();
+    List productAssoc= LinkedList.newInstance();
     
-    Map productVariantContentWrapperMap = FastMap.newInstance();
-    Map productVariantProductContentIdMap = FastMap.newInstance();
-	Map productVariantProductAttributeMap = FastMap.newInstance();
-    Map productFeatureFirstVariantIdMap = FastMap.newInstance();
-    Map productFeatureDataResourceMap = FastMap.newInstance();
+    Map productVariantContentWrapperMap = HashMap.newInstance();
+    Map productVariantProductContentIdMap = HashMap.newInstance();
+	Map productVariantProductAttributeMap = HashMap.newInstance();
+    Map productFeatureFirstVariantIdMap = HashMap.newInstance();
+    Map productFeatureDataResourceMap = HashMap.newInstance();
 
     featureValueSelected = request.getAttribute("featureValueSelected");
     prevFeatureValueSelected = "";
@@ -904,8 +904,8 @@ if(UtilValidate.isNotEmpty(productId))
     
     if(UtilValidate.isNotEmpty((product).isVirtual) && ((product).isVirtual).toUpperCase()== "Y")
     {
-    	Map plpProductVariantPriceMap = FastMap.newInstance();
-    	Map descpFeatureGroupDescMap = FastMap.newInstance();
+    	Map plpProductVariantPriceMap = HashMap.newInstance();
+    	Map descpFeatureGroupDescMap = HashMap.newInstance();
         variantFirstFeatureIdExist = [];
         facetGroupVariantMatch = request.getAttribute("FACET_GROUP_VARIANT_MATCH");
         plpFacetGroupVariantSticky = request.getAttribute("PLP_FACET_GROUP_VARIANT_STICKY");
@@ -1064,7 +1064,7 @@ if(UtilValidate.isNotEmpty(productId))
 	                    		productVariantContentList = EntityUtil.filterByDate(productVariantContentList,true);
 	                    		if (UtilValidate.isNotEmpty(productVariantContentList))
 	                    		{
-	                                Map variantProductContentMap = FastMap.newInstance();
+	                                Map variantProductContentMap = HashMap.newInstance();
 	                                for (GenericValue productContent: productVariantContentList) 
 	                                {
 	                        		   productContentTypeId = productContent.productContentTypeId;
@@ -1114,7 +1114,7 @@ if(UtilValidate.isNotEmpty(productId))
 				//GET PRODUCT VARIANT ATTRIBUTE LIST AND SET INTO CONTEXT
                 productVariantProductAttributeMap.put("virtualProduct", productAttrMap);
 				assocProductAttr = assocVariantProduct.getRelatedCache("ProductAttribute");
-				assocProductAttrMap = FastMap.newInstance();
+				assocProductAttrMap = HashMap.newInstance();
 				if (UtilValidate.isNotEmpty(assocProductAttr))
 				{
 					assocAttrlIter = assocProductAttr.iterator();
@@ -1269,8 +1269,8 @@ if(UtilValidate.isNotEmpty(productId))
             // GET PRODUCT FEATURE AND APPLS: SELECTABLE FEATURES
             // Using findByAndCache Call since the ProductService(Service getProductVariantTree call) will make the same findByAndCache Call.
         	//Issue 38934, 38916 - Check for duplicate feature descriptions
-            productSelectableFeatures = FastList.newInstance();
-            Map selectableFeatureExistsMap = FastMap.newInstance();
+            productSelectableFeatures = LinkedList.newInstance();
+            Map selectableFeatureExistsMap = HashMap.newInstance();
             selectableFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", product.productId, "productFeatureApplTypeId", "SELECTABLE_FEATURE"), UtilMisc.toList("sequenceNum"));
             selectableFeatures = EntityUtil.filterByDate(selectableFeatures, true);
             for (GenericValue selectableFeature : selectableFeatures)
@@ -1307,12 +1307,12 @@ if(UtilValidate.isNotEmpty(productId))
                 	plpFeatureSetAll.add(plpFeatureType);
                 }
                 String lastProductFeatureTypeId="";
-                List productFeatureAndApplSelectList = FastList.newInstance();
-                Map plpProductFeatureAndApplSelectMap = FastMap.newInstance();
-                Map plpProductVariantStandardFeatureMap = FastMap.newInstance();
-                Map plpProductVariantProductMap = FastMap.newInstance();
-                Map plpProductVariantInventoryMap = FastMap.newInstance();
-                Map plpProductFeatureFirstVariantIdMap = FastMap.newInstance();
+                List productFeatureAndApplSelectList = LinkedList.newInstance();
+                Map plpProductFeatureAndApplSelectMap = HashMap.newInstance();
+                Map plpProductVariantStandardFeatureMap = HashMap.newInstance();
+                Map plpProductVariantProductMap = HashMap.newInstance();
+                Map plpProductVariantInventoryMap = HashMap.newInstance();
+                Map plpProductFeatureFirstVariantIdMap = HashMap.newInstance();
                 
 
                 
@@ -1362,7 +1362,7 @@ if(UtilValidate.isNotEmpty(productId))
                    String productFeatureTypeId = productFeatureAndAppl.productFeatureTypeId;
                    if (!plpProductFeatureAndApplSelectMap.containsKey(productFeatureTypeId))
                    {
-                       productFeatureAndApplSelectList = FastList.newInstance();
+                       productFeatureAndApplSelectList = LinkedList.newInstance();
                    }
                    else
                    {
@@ -1379,7 +1379,7 @@ if(UtilValidate.isNotEmpty(productId))
 				context.plpVariantProductAssocList = productAssocVariant;
 				
 				
-                List<String> items = FastList.newInstance();
+                List<String> items = LinkedList.newInstance();
                 variantFeatureIdExist = [];
                 
                 if (UtilValidate.isNotEmpty(productAssocVariant)) 

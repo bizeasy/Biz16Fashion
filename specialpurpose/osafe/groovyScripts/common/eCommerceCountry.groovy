@@ -1,4 +1,4 @@
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.StringUtil;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.common.CommonWorkers;
@@ -7,7 +7,7 @@ import org.apache.ofbiz.base.util.*;
 defaultCountry = Util.getProductStoreParm(request,"COUNTRY_DEFAULT");
 countryDropDown = Util.getProductStoreParm(request,"COUNTRY_DROPDOWN");
 defaultCountryGeoMap = [:];
-List countryList = FastList.newInstance();
+List countryList = LinkedList.newInstance();
 
 if (UtilValidate.isNotEmpty(defaultCountry))
  {

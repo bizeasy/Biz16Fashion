@@ -6,7 +6,7 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.Debug
 
 storeId = parameters.storeId;
@@ -43,7 +43,7 @@ if (UtilValidate.isEmpty(storeId))
 //get a list of all the stores
 productStore = ProductStoreWorker.getProductStore(request);
 productStoreId=productStore.getString("productStoreId");
-openStores = FastList.newInstance();
+openStores = LinkedList.newInstance();
 allStores = delegator.findByAndCache("ProductStoreRole", UtilMisc.toMap("productStoreId", productStoreId,"roleTypeId", "STORE_LOCATION"));
 if (UtilValidate.isNotEmpty(allStores))
 {

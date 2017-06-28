@@ -2,8 +2,8 @@ package common;
 
 import java.sql.Timestamp
 
-import javolution.util.FastList
-import javolution.util.FastMap
+import java.util.LinkedList
+import java.util.HashMap
 import org.apache.ofbiz.osafe.util.Util;
 
 import org.apache.ofbiz.base.util.*
@@ -22,12 +22,12 @@ if(UtilValidate.isNotEmpty(fileList))
 {
 
 	 // Get the latest release name
-     releaseFileList = FastList.newInstance();
+     releaseFileList = LinkedList.newInstance();
      for (releaseFile in fileList)
      {
          if (releaseFile.getName().startsWith("BF-Version-Release-V"))
          {
-             infoMap = FastMap.newInstance();
+             infoMap = HashMap.newInstance();
              infoMap.put("file", releaseFile);
              infoMap.put("fileName", releaseFile.getName());
              infoMap.put("fileNameUpperCase", releaseFile.getName().toUpperCase());

@@ -3,17 +3,17 @@ package common;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilMisc;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.party.contact.ContactHelper;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartItem;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart.CartShipInfo;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart.CartShipInfo.CartShipItemInfo;
 import org.apache.ofbiz.order.shoppingcart.CheckOutEvents;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.Debug;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.entity.GenericValue;
 import java.math.BigDecimal;
 import org.apache.ofbiz.entity.GenericEntityException;
@@ -26,8 +26,8 @@ shippingInstructions = "";
 storeId = "";
 offerPriceVisible = "";
 deliveryOption = "";
-appliedPromoList = FastList.newInstance();
-appliedLoyaltyPointsList = FastList.newInstance();
+appliedPromoList = LinkedList.newInstance();
+appliedLoyaltyPointsList = LinkedList.newInstance();
 
 shoppingCart = session.getAttribute("shoppingCart");
 deliveryOption="";
@@ -156,7 +156,7 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 		adjustments = shoppingCart.getAdjustments();
 		for (GenericValue cartAdjustment : adjustments)
 		{
-			promoInfo = FastMap.newInstance();
+			promoInfo = HashMap.newInstance();
 			promoInfo.put("cartAdjustment", cartAdjustment);
 			promoCodeText = "";
 			adjustmentType = cartAdjustment.getRelatedOneCache("OrderAdjustmentType");
@@ -164,7 +164,7 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 			//loyalty points
 			if(adjustmentType.orderAdjustmentTypeId.equals("LOYALTY_POINTS"))
 			{
-				loyaltyPointsInfo = FastMap.newInstance();
+				loyaltyPointsInfo = HashMap.newInstance();
 				loyaltyPointsInfo.put("cartAdjustment", cartAdjustment);
 				loyaltyPointsInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 				appliedLoyaltyPointsList.add(loyaltyPointsInfo);
@@ -221,7 +221,7 @@ for (GenericValue creditCardType :  creditCardTypes)
 
 
 //BUILD CONTEXT MAP FOR PRODUCT_FEATURE_TYPE_ID and DESCRIPTION(EITHER FROM PRODUCT_FEATURE_GROUP OR PRODUCT_FEATURE_TYPE)
-Map productFeatureTypesMap = FastMap.newInstance();
+Map productFeatureTypesMap = HashMap.newInstance();
 productFeatureTypesList = delegator.findList("ProductFeatureType", null, null, null, null, true);
 
 //get the whole list of ProductFeatureGroup and ProductFeatureGroupAndAppl

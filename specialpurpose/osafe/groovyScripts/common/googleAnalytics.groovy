@@ -8,7 +8,7 @@ import org.apache.ofbiz.webapp.stats.VisitHandler;
 import org.apache.ofbiz.product.catalog.*;
 import org.apache.ofbiz.product.category.*;
 import org.apache.ofbiz.product.store.*;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.service.LocalDispatcher;

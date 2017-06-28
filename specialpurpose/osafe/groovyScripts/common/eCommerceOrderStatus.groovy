@@ -11,7 +11,7 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import java.math.BigDecimal;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.condition.*;

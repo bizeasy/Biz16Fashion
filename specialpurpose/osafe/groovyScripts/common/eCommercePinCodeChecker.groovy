@@ -7,7 +7,7 @@ import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.osafe.util.Util;
 import java.math.BigDecimal;
 import org.apache.ofbiz.service.LocalDispatcher;
-import javolution.util.FastMap;
+import java.util.HashMap;
 
 CURRENCY_UOM_DEFAULT = Util.getProductStoreParm(request,"CURRENCY_UOM_DEFAULT");
 context.currencyUom = CURRENCY_UOM_DEFAULT;
@@ -24,7 +24,7 @@ String pincode = StringUtils.trimToEmpty(parameters.pincode);
 String isValidPinCode = StringUtils.trimToEmpty(parameters.isValidPinCode);
 String deliveryAvailable = "";
 BigDecimal codLimit = BigDecimal.ZERO;
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 if(UtilValidate.isNotEmpty(pincode))
 {
 	svcCtx.put("pincode", pincode);
