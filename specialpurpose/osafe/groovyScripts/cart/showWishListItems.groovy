@@ -17,7 +17,7 @@ wishListId = WishListEvents.getWishListId(request, false);
 totalPrice = 0;
 if (UtilValidate.isNotEmpty(wishListId)) 
 { 
-    wishList = delegator.findByAndCache("ShoppingListItem", [shoppingListId : wishListId]);
+    wishList = EntityQuery.use(delegator).from("ShoppingListItem").where("shoppingListId", wishListId).cache().queryList();
 	for(GenericValue wishListItem : wishList)
 	{
 		//add up total price

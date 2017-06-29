@@ -100,7 +100,7 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
 					 manufacturerProductItems.put("productImageSmallUrl",productContentWrapper.get("PRODUCT_NAME"));
 					 manufacturerProductItems.productImageSmallUrl = productContentWrapper.get("SMALL_IMAGE_URL");
 					 //set default and list price
-					 virtualProductPrices = delegator.findByAndCache("ProductPrice", UtilMisc.toMap("productId", product.productId, "currencyUomId", cart.getCurrency(), "productStoreGroupId", "_NA_"), UtilMisc.toList("-fromDate"));
+					 virtualProductPrices = EntityQuery.use(delegator).from("ProductPrice").where("productId", product.productId, "currencyUomId", cart.getCurrency(), "productStoreGroupId", "_NA_").orderBy(UtilMisc.toList("-fromDate")).cache().queryList();
 					 virtualProductPrices = EntityUtil.filterByDate(virtualProductPrices, true);
 					 if (UtilValidate.isNotEmpty(virtualProductPrices))
 					 {

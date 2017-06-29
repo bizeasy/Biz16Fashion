@@ -41,7 +41,7 @@ phoneNumberMap = [:];
 if (UtilValidate.isNotEmpty(contactMech))
 {
     contactMechIdFrom = contactMech.contactMechId;
-    contactMechLinkList = delegator.findByAndCache("ContactMechLink", UtilMisc.toMap("contactMechIdFrom", contactMechIdFrom))
+    contactMechLinkList = EntityQuery.use(delegator).from("ContactMechLink").where("contactMechIdFrom", contactMechIdFrom).cache().queryList();
 
     for (GenericValue link: contactMechLinkList)
     {

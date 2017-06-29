@@ -42,7 +42,7 @@ if (UtilValidate.isNotEmpty(productStoreId))
 {
   globalContext.put("PRODUCT_STORE_ID",productStoreId);
   //PRODUCT STORE PARMS
-  productStoreParmList = delegator.findByAndCache("XProductStoreParm",UtilMisc.toMap("productStoreId",productStoreId));
+  productStoreParmList = EntityQuery.use(delegator).from("XProductStoreParm").where("productStoreId",productStoreId).cache().queryList();
   if (UtilValidate.isNotEmpty(productStoreParmList))
   {
 	  parmIter = productStoreParmList.iterator();
@@ -248,6 +248,6 @@ if (UtilValidate.isNotEmpty(productId))
 shoppingListId = context.shoppingListId;
 if (UtilValidate.isNotEmpty(shoppingListId)) 
 {
-	shoppingCartInfoList = delegator.findByAndCache("ShoppingListItem", [shoppingListId : shoppingListId]);
+	shoppingCartInfoList = EntityQuery.use(delegator).from("ShoppingListItem").where("shoppingListId",shoppingListId).cache().queryList();
 	globalContext.put("CART_ITEMS",shoppingCartInfoList);
 }

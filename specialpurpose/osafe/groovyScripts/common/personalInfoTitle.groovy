@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.lang.*;
 import org.apache.ofbiz.entity.GenericValue;
 
-personTitleList = delegator.findByAndCache("Enumeration", [enumTypeId : "PERSONAL_TITLE"], ["sequenceId"]);
+personTitleList = EntityQuery.use(delegator).from("Enumeration").where("enumTypeId", "PERSONAL_TITLE").orderBy(UtilMisc.toList("sequenceId")).cache().queryList();
 if(UtilValidate.isNotEmpty(personTitleList))
 {
     personTitles = LinkedList.newInstance();

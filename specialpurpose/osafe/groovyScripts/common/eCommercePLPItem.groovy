@@ -799,12 +799,12 @@ if(UtilValidate.isNotEmpty(productId))
 	if(UtilValidate.isNotEmpty(categoryId))
 	{
 		//sorted list of groups
-		productFeatureCatGrpAppls = delegator.findByAndCache("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", categoryId), UtilMisc.toList("sequenceNum"));
+		productFeatureCatGrpAppls = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productCategoryId", categoryId).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 		// Using findByAndCache Call since the ProductService(Service getProductVariantTree call) will make the same findByAndCache Call.
 		//Issue 38934, 38916 - Check for duplicate feature descriptions
 	    productDistinguishingFeatures = LinkedList.newInstance();
 	    Map distinguishingFeatureExistsMap = HashMap.newInstance();
-	    distinguishingFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "DISTINGUISHING_FEAT"), UtilMisc.toList("sequenceNum"));
+	    distinguishingFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", productId, "productFeatureApplTypeId", "DISTINGUISHING_FEAT").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 	    distinguishingFeatures = EntityUtil.filterByDate(distinguishingFeatures, true);
 	    
 	    for (GenericValue distinguishingFeature : distinguishingFeatures)
@@ -837,7 +837,7 @@ if(UtilValidate.isNotEmpty(productId))
 					{
 						productFeatureTypes.add(featureType);
 						//get the sorted list of values in the group
-						productFeatureGroupAppls = delegator.findByAndCache("ProductFeatureGroupAppl", UtilMisc.toMap("productFeatureGroupId", featureType), UtilMisc.toList("sequenceNum"));
+						productFeatureGroupAppls = EntityQuery.use(delegator).from("ProductFeatureGroupAppl").where("productFeatureGroupId", featureType).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 						productFeatureGroupAppls = EntityUtil.filterByDate(productFeatureGroupAppls, true);
 						if (UtilValidate.isNotEmpty(productFeatureGroupAppls))
 						{
@@ -867,7 +867,7 @@ if(UtilValidate.isNotEmpty(productId))
 		{
 			productFeatureTypes.add(featureType);
 			//get the sorted list of values in the group
-			productFeatureGroupAppls = delegator.findByAndCache("ProductFeatureGroupAppl", UtilMisc.toMap("productFeatureGroupId", featureType), UtilMisc.toList("sequenceNum"));
+			productFeatureGroupAppls = EntityQuery.use(delegator).from("ProductFeatureGroupAppl").where("productFeatureGroupId", featureType).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 			productFeatureGroupAppls = EntityUtil.filterByDate(productFeatureGroupAppls, true);
 			if (UtilValidate.isNotEmpty(productFeatureGroupAppls))
 			{
@@ -1132,7 +1132,7 @@ if(UtilValidate.isNotEmpty(productId))
     
 	    if (UtilValidate.isNotEmpty(plpFacetGroupVariantSwatch))
 	    {
-	      productSelectableFeatureAndAppl = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId",productId, "productFeatureTypeId", plpFacetGroupVariantSwatch, "productFeatureApplTypeId", "SELECTABLE_FEATURE"), UtilMisc.toList("sequenceNum"));
+	      productSelectableFeatureAndAppl = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId",productId, "productFeatureTypeId", plpFacetGroupVariantSwatch, "productFeatureApplTypeId", "SELECTABLE_FEATURE").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 	      productSelectableFeatureAndAppl = EntityUtil.filterByDate(productSelectableFeatureAndAppl,true);
 	      
           //BUILD CONTEXT MAP FOR PRODUCT_FEATURE_DATA_RESOURCE (productFeatureId, objectInfo)
@@ -1184,7 +1184,7 @@ if(UtilValidate.isNotEmpty(productId))
 	        productVariantSelectContentWrapper = ProductContentWrapper.makeProductContentWrapper(productFeatureSelectVariantProduct, request);
 	        if (UtilValidate.isNotEmpty(productVariantSelectContentWrapper))
 	        {
-	            productContentList = delegator.findByAndCache("ProductContent", UtilMisc.toMap("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_URL"));
+	            productContentList = EntityQuery.use(delegator).from("ProductContent").where("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_URL").cache().queryList();
 	            productContentList = EntityUtil.filterByDate(productContentList,true);
         		if (UtilValidate.isNotEmpty(productContentList))
         		{
@@ -1194,7 +1194,7 @@ if(UtilValidate.isNotEmpty(productId))
     		        {
     			        productVariantSelectSmallURL = productVariantSelectContentWrapper.get("SMALL_IMAGE_URL");
 
-    		            productContentList = delegator.findByAndCache("ProductContent", UtilMisc.toMap("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_ALT_URL"));
+    		            productContentList = EntityQuery.use(delegator).from("ProductContent").where("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_ALT_URL").cache().queryList();
     		            productContentList = EntityUtil.filterByDate(productContentList,true);
     	        		if (UtilValidate.isNotEmpty(productContentList))
     	        		{
@@ -1271,7 +1271,7 @@ if(UtilValidate.isNotEmpty(productId))
         	//Issue 38934, 38916 - Check for duplicate feature descriptions
             productSelectableFeatures = LinkedList.newInstance();
             Map selectableFeatureExistsMap = HashMap.newInstance();
-            selectableFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", product.productId, "productFeatureApplTypeId", "SELECTABLE_FEATURE"), UtilMisc.toList("sequenceNum"));
+            selectableFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", product.productId, "productFeatureApplTypeId", "SELECTABLE_FEATURE").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
             selectableFeatures = EntityUtil.filterByDate(selectableFeatures, true);
             for (GenericValue selectableFeature : selectableFeatures)
             {

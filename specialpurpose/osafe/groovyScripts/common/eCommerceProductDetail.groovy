@@ -1063,7 +1063,7 @@ if (UtilValidate.isNotEmpty(productId))
         //GET QUANTITY PRICE BREAK RULES TO SHOW
         volumePricingRule = [];
         volumePricingRuleMap = HashMap.newInstance();
-        productIdConds = delegator.findByAndCache("ProductPriceCond", [inputParamEnumId: "PRIP_PRODUCT_ID", condValue: gvProduct.productId],["productPriceRuleId"]);
+        productIdConds = EntityQuery.use(delegator).from("PaymentMethod").where(fieldMap).orderBy(UtilMisc.toList("lastUpdatedStamp")).cache().queryList();
         if (UtilValidate.isNotEmpty(productIdConds))
         {
             for (GenericValue priceCond: productIdConds) 
@@ -1125,12 +1125,12 @@ if (UtilValidate.isNotEmpty(productId))
 		if(UtilValidate.isNotEmpty(productCategoryId))
 		{
 			//sorted list of groups
-			productFeatureCatGrpAppls = delegator.findByAndCache("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", productCategoryId), UtilMisc.toList("sequenceNum"));
+			productFeatureCatGrpAppls = EntityQuery.use(delegator).from("ProductFeatureCatGrpAppl").where("productCategoryId", productCategoryId).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 			// Using findByAndCache Call since the ProductService(Service getProductVariantTree call) will make the same findByAndCache Call.
 			//Issue 38934, 38916 - Check for duplicate feature descriptions
 		    productDistinguishingFeatures = LinkedList.newInstance();
 		    Map distinguishingFeatureExistsMap = HashMap.newInstance();
-		    distinguishingFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", gvProduct.productId, "productFeatureApplTypeId", "DISTINGUISHING_FEAT"), UtilMisc.toList("sequenceNum"));
+		    distinguishingFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", gvProduct.productId, "productFeatureApplTypeId", "DISTINGUISHING_FEAT").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 		    distinguishingFeatures = EntityUtil.filterByDate(distinguishingFeatures, true);
 		    
 		    for (GenericValue distinguishingFeature : distinguishingFeatures)
@@ -1163,7 +1163,7 @@ if (UtilValidate.isNotEmpty(productId))
 						{
 							productFeatureTypes.add(featureType);
 							//get the sorted list of values in the group
-							productFeatureGroupAppls = delegator.findByAndCache("ProductFeatureGroupAppl", UtilMisc.toMap("productFeatureGroupId", featureType), UtilMisc.toList("sequenceNum"));
+							productFeatureGroupAppls = EntityQuery.use(delegator).from("ProductFeatureGroupAppl").where("productFeatureGroupId", featureType).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 							productFeatureGroupAppls = EntityUtil.filterByDate(productFeatureGroupAppls, true);
 							if (UtilValidate.isNotEmpty(productFeatureGroupAppls))
 							{
@@ -1193,7 +1193,7 @@ if (UtilValidate.isNotEmpty(productId))
 			{
 				productFeatureTypes.add(featureType);
 				//get the sorted list of values in the group
-				productFeatureGroupAppls = delegator.findByAndCache("ProductFeatureGroupAppl", UtilMisc.toMap("productFeatureGroupId", featureType), UtilMisc.toList("sequenceNum"));
+				productFeatureGroupAppls = EntityQuery.use(delegator).from("ProductFeatureGroupAppl").where("productFeatureGroupId", featureType).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 				productFeatureGroupAppls = EntityUtil.filterByDate(productFeatureGroupAppls, true);
 				if (UtilValidate.isNotEmpty(productFeatureGroupAppls))
 				{
@@ -1314,7 +1314,7 @@ if (UtilValidate.isNotEmpty(productId))
             	//Issue 38934, 38916 - Check for duplicate feature descriptions
                 productSelectableFeatures = LinkedList.newInstance();
                 Map selectableFeatureExistsMap = HashMap.newInstance();
-                selectableFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", gvProduct.productId, "productFeatureApplTypeId", "SELECTABLE_FEATURE"), UtilMisc.toList("sequenceNum"));
+                selectableFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", gvProduct.productId, "productFeatureApplTypeId", "SELECTABLE_FEATURE").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
                 selectableFeatures = EntityUtil.filterByDate(selectableFeatures, true);
                 for (GenericValue selectableFeature : selectableFeatures)
                 {
@@ -1513,7 +1513,7 @@ if (UtilValidate.isNotEmpty(productId))
                                 //variantVolumePricingRuleMapMap IS PUT INTO CONTEXT
                                 volumePricingRule = [];
                                 volumePricingRuleMap = HashMap.newInstance();
-                                productIdConds = delegator.findByAndCache("ProductPriceCond", [inputParamEnumId: "PRIP_PRODUCT_ID", condValue: assocVariantProduct.productId],["productPriceRuleId"]);
+                                productIdConds = EntityQuery.use(delegator).from("ProductPriceCond").where("inputParamEnumId","PRIP_PRODUCT_ID", "condValue", assocVariantProduct.productId).orderBy(UtilMisc.toList("productPriceRuleId")).cache().queryList();
                                 if (UtilValidate.isNotEmpty(productIdConds))
                                 {
                                     for (GenericValue priceCond: productIdConds) 
@@ -1575,7 +1575,7 @@ if (UtilValidate.isNotEmpty(productId))
 												{
 													productVariantFeatureTypes.add(featureType);
 													//get the sorted list of values in the group
-													productFeatureGroupAppls = delegator.findByAndCache("ProductFeatureGroupAppl", UtilMisc.toMap("productFeatureGroupId", featureType), UtilMisc.toList("sequenceNum"));
+													productFeatureGroupAppls = EntityQuery.use(delegator).from("ProductFeatureGroupAppl").where("productFeatureGroupId", featureType).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 													productFeatureGroupAppls = EntityUtil.filterByDate(productFeatureGroupAppls, true);
 													if (UtilValidate.isNotEmpty(productFeatureGroupAppls))
 													{

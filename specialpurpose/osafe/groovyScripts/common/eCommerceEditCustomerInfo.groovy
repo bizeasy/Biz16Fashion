@@ -41,7 +41,7 @@ if (UtilValidate.isNotEmpty(userLogin))
     context.homePhonePartyContactDetail = "";
     context.workPhonePartyContactDetail = "";
     context.mobilePhonePartyContactDetail = "";
-    partyContactDetailByPurpose = delegator.findByAndCache("PartyContactDetailByPurpose",UtilMisc.toMap("partyId", partyId), UtilMisc.toList("-fromDate"));
+    partyContactDetailByPurpose = EntityQuery.use(delegator).from("PartyContactDetailByPurpose").where("partyId", partyId).cache().queryList();
     partyContactDetailByPurpose = EntityUtil.filterByDate(partyContactDetailByPurpose,true);
     
     partyHomePhone = EntityUtil.filterByAnd(partyContactDetailByPurpose,UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_HOME"));
@@ -114,7 +114,8 @@ if (UtilValidate.isNotEmpty(userLogin))
 	        }
 	    }
 	    
-        contactMechLinkList = delegator.findByAndCache("ContactMechLink", UtilMisc.toMap("contactMechIdFrom", contactMechBilling.contactMechId));
+        contactMechLinkList = EntityQuery.use(delegator).from("ContactMechLink").where("contactMechIdFrom", contactMechBilling.contactMechId).cache().queryList();
+        
 	    if (UtilValidate.isNotEmpty(contactMechLinkList))
 	    {
 	        for (GenericValue link: contactMechLinkList)

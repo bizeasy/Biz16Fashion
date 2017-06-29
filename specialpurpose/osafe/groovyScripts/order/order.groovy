@@ -48,7 +48,7 @@ if (UtilValidate.isNotEmpty(orderItemShipGroups) && orderItemShipGroupSize == 1)
             carrierParty = carrierShipmentMethod.getRelatedOne("Party",true);
             carrierPartyGroup = carrierParty.getRelatedOne("PartyGroup",true);
             carrierPartyGroupName = carrierPartyGroup.groupName;
-            trackingURLPartyContents = delegator.findByAndCache("PartyContent",UtilMisc.toMap("partyId",shipGroup.carrierPartyId,"partyContentTypeId","TRACKING_URL"));
+            trackingURLPartyContents = EntityQuery.use(delegator).from("PartyContent").where("partyId",shipGroup.carrierPartyId,"partyContentTypeId","TRACKING_URL").cache().queryList();
             if (UtilValidate.isNotEmpty(trackingURLPartyContents))
             {
                 trackingURLPartyContent = EntityUtil.getFirst(trackingURLPartyContents);

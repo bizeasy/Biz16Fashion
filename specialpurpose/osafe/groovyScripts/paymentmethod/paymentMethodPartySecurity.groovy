@@ -26,7 +26,7 @@ if(UtilValidate.isNotEmpty(paymentMethodId))
 		{
     		fieldMap.put("paymentMethodTypeId",context.paymentMethodType);
 		}
-	    paymentMethods = delegator.findByAndCache("PaymentMethod", fieldMap, UtilMisc.toList("lastUpdatedStamp"));
+	    paymentMethods = EntityQuery.use(delegator).from("PaymentMethod").where(fieldMap).orderBy(UtilMisc.toList("lastUpdatedStamp")).cache().queryList();
 	    if(UtilValidate.isNotEmpty(paymentMethods))
 	    {
 	    	partySecurityCheck="Y";

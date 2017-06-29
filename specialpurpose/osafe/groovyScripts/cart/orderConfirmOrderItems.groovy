@@ -209,7 +209,7 @@ if (UtilValidate.isNotEmpty(orderItem))
 	//Issue 38934, 38916 - Check for duplicate feature descriptions
 	productFeatureAndAppls = LinkedList.newInstance();
 	Map standardFeatureExistsMap = HashMap.newInstance();
-	standardFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE"), UtilMisc.toList("sequenceNum"));
+	standardFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 	standardFeatures = EntityUtil.filterByDate(standardFeatures,true);
 	standardFeatures = EntityUtil.orderBy(standardFeatures,UtilMisc.toList('sequenceNum'));
 

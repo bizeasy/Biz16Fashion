@@ -3,6 +3,6 @@ import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.entity.condition.*;
 
-shoppingLists = delegator.findByAndCache("ShoppingList", [partyId : userLogin.partyId, shoppingListTypeId : "SLT_AUTO_REODR"],UtilMisc.toList("isActive DESC"));
+shoppingLists = EntityQuery.use(delegator).from("ShoppingList").where("shoppingListTypeId","SLT_AUTO_REODR", "partyId",userLogin.partyId).orderBy(UtilMisc.toList("isActive DESC")).cache().queryList();
 context.shoppingLists = shoppingLists;
 

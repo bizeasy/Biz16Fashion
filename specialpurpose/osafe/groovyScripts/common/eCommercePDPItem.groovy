@@ -710,7 +710,7 @@ if(UtilValidate.isNotEmpty(productId))
 
     //Not useing the calculateProductPrice service on purpose.
     //Instead just pulling the pricing directly from DB for plp type item displays (Complement, Accessory and  Recently Viewed)
-    /*virtualProductPrices = delegator.findByAndCache("ProductPrice", UtilMisc.toMap("productId", productId, "currencyUomId", cart.getCurrency(), "productStoreGroupId", "_NA_","productPricePurposeId","PURCHASE"), UtilMisc.toList("-fromDate"));
+    /*virtualProductPrices = EntityQuery.use(delegator).from("ProductPrice").where("productId", productId, "currencyUomId", cart.getCurrency(), "productStoreGroupId", "_NA_","productPricePurposeId","PURCHASE").orderBy(UtilMisc.toList("-fromDate")).cache().queryList();
     virtualProductPrices = EntityUtil.filterByDate(virtualProductPrices, true);
     if (UtilValidate.isNotEmpty(virtualProductPrices))
     {
@@ -732,7 +732,7 @@ if(UtilValidate.isNotEmpty(productId))
 
     //CHECK if the virtual product has RECURRING price.
     //Instead just pulling the pricing directly from DB for plp type item displays (Complement, Accessory and  Recently Viewed)
-    recurringProductPrices = delegator.findByAndCache("ProductPrice", UtilMisc.toMap("productId", productId, "currencyUomId", cart.getCurrency(), "productStoreGroupId", "_NA_","productPricePurposeId","RECURRING_CHARGE"), UtilMisc.toList("-fromDate"));
+    recurringProductPrices = EntityQuery.use(delegator).from("ProductPrice").where("productId", productId, "currencyUomId", cart.getCurrency(), "productStoreGroupId", "_NA_","productPricePurposeId","RECURRING_CHARGE").orderBy(UtilMisc.toList("-fromDate")).cache().queryList();
     recurringProductPrices = EntityUtil.filterByDate(recurringProductPrices, true);
     if (UtilValidate.isNotEmpty(recurringProductPrices))
     {
@@ -824,7 +824,7 @@ if(UtilValidate.isNotEmpty(productId))
 	//Issue 38934, 38916 - Check for duplicate feature descriptions
     productDistinguishingFeatures = LinkedList.newInstance();
     Map distinguishingFeatureExistsMap = HashMap.newInstance();
-    distinguishingFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "DISTINGUISHING_FEAT"), UtilMisc.toList("sequenceNum"));
+    distinguishingFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", productId, "productFeatureApplTypeId", "DISTINGUISHING_FEAT").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
     distinguishingFeatures = EntityUtil.filterByDate(distinguishingFeatures, true);
     
     for (GenericValue distinguishingFeature : distinguishingFeatures)
@@ -1103,7 +1103,7 @@ if(UtilValidate.isNotEmpty(productId))
         
 	    if (UtilValidate.isNotEmpty(plpFacetGroupVariantSwatch))
 	    {
-	      productSelectableFeatureAndAppl = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId",productId, "productFeatureTypeId", plpFacetGroupVariantSwatch, "productFeatureApplTypeId", "SELECTABLE_FEATURE"), UtilMisc.toList("sequenceNum"));
+	      productSelectableFeatureAndAppl = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId",productId, "productFeatureTypeId", plpFacetGroupVariantSwatch, "productFeatureApplTypeId", "SELECTABLE_FEATURE").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 	      productSelectableFeatureAndAppl = EntityUtil.filterByDate(productSelectableFeatureAndAppl,true);
 	      
           //BUILD CONTEXT MAP FOR PRODUCT_FEATURE_DATA_RESOURCE (productFeatureId, objectInfo)
@@ -1155,7 +1155,7 @@ if(UtilValidate.isNotEmpty(productId))
 	        productVariantSelectContentWrapper = ProductContentWrapper.makeProductContentWrapper(productFeatureSelectVariantProduct, request);
 	        if (UtilValidate.isNotEmpty(productVariantSelectContentWrapper))
 	        {
-	            productContentList = delegator.findByAndCache("ProductContent", UtilMisc.toMap("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_URL"));
+	            productContentList = EntityQuery.use(delegator).from("ProductContent").where("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_URL").cache().queryList();
 	            productContentList = EntityUtil.filterByDate(productContentList,true);
         		if (UtilValidate.isNotEmpty(productContentList))
         		{
@@ -1165,7 +1165,7 @@ if(UtilValidate.isNotEmpty(productId))
     		        {
     			        productVariantSelectSmallURL = productVariantSelectContentWrapper.get("SMALL_IMAGE_URL");
 
-    		            productContentList = delegator.findByAndCache("ProductContent", UtilMisc.toMap("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_ALT_URL"));
+    		            productContentList = EntityQuery.use(delegator).from("ProductContent").where("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_ALT_URL").cache().queryList();
     		            productContentList = EntityUtil.filterByDate(productContentList,true);
     	        		if (UtilValidate.isNotEmpty(productContentList))
     	        		{
@@ -1264,7 +1264,7 @@ if(UtilValidate.isNotEmpty(productId))
         	//Issue 38934, 38916 - Check for duplicate feature descriptions
             productSelectableFeatures = LinkedList.newInstance();
             Map selectableFeatureExistsMap = HashMap.newInstance();
-            selectableFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", product.productId, "productFeatureApplTypeId", "SELECTABLE_FEATURE"), UtilMisc.toList("sequenceNum"));
+            selectableFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", product.productId, "productFeatureApplTypeId", "SELECTABLE_FEATURE").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
             selectableFeatures = EntityUtil.filterByDate(selectableFeatures, true);
             for (GenericValue selectableFeature : selectableFeatures)
             {

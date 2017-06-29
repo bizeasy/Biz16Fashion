@@ -200,7 +200,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	//Issue 38934, 38916 - Check for duplicate feature descriptions
 	productFeatureAndAppls = LinkedList.newInstance();
 	Map standardFeatureExistsMap = HashMap.newInstance();
-	standardFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE"), UtilMisc.toList("sequenceNum"));
+	standardFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 	standardFeatures = EntityUtil.filterByDate(standardFeatures,true);
 	standardFeatures = EntityUtil.orderBy(standardFeatures,UtilMisc.toList('sequenceNum'));
 
@@ -228,7 +228,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	    buyableProductId = virtualProductId;
 	}
 	//Checked that Product is available in Product Category Member
-	productCategoryMembers = delegator.findByAndCache("ProductCategoryMember", UtilMisc.toMap("productId", buyableProductId));
+	productCategoryMembers = EntityQuery.use(delegator).from("ProductCategoryMember").where("productId", buyableProductId).cache().queryList();
 	productCategoryMembers = EntityUtil.filterByDate(productCategoryMembers);
 	if(UtilValidate.isNotEmpty(productCategoryMembers))
 	{
@@ -302,7 +302,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 		          carrierParty = carrierShipmentMethod.getRelatedOne("Party",true);
 		          carrierPartyGroup = carrierParty.getRelatedOne("PartyGroup",true);
 		          carrierPartyGroupName = carrierPartyGroup.groupName;
-		          trackingURLPartyContents = delegator.findByAndCache("PartyContent",UtilMisc.toMap("partyId", shipGroup.carrierPartyId, "partyContentTypeId", "TRACKING_URL"));
+		          trackingURLPartyContents = EntityQuery.use(delegator).from("PartyContent").where("partyId", shipGroup.carrierPartyId, "partyContentTypeId", "TRACKING_URL").cache().queryList();
 		          if (UtilValidate.isNotEmpty(trackingURLPartyContents))
 		          {
 		              trackingURLPartyContent = EntityUtil.getFirst(trackingURLPartyContents);

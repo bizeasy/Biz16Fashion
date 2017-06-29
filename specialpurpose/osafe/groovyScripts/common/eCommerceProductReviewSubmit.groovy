@@ -52,7 +52,7 @@ if (UtilValidate.isNotEmpty(productId))
 
 
        //Check Product Attribute for Meta Data Overrides
-        productAttr = delegator.findByAndCache("ProductAttribute", UtilMisc.toMap("productId", gvProduct.productId));
+        productAttr = EntityQuery.use(delegator).from("ProductAttribute").where("productId",gvProduct.productId).cache().queryList();
         
         productAttrMap = HashMap.newInstance();
 
@@ -96,7 +96,7 @@ if (UtilValidate.isNotEmpty(productId))
         {
             keywords = [];
             keywords.add(productName);
-            members = delegator.findByAndCache("ProductCategoryMember", [productId : gvProduct.productId]);
+            members = EntityQuery.use(delegator).from("ProductCategoryMember").where("productId",gvProduct.productId).cache().queryList();
             members.each { member ->
                 category = member.getRelatedOne("ProductCategory",true);
                 if (category.longDescription) {

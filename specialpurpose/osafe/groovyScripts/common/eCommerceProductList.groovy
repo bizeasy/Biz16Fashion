@@ -326,7 +326,7 @@ for (SolrIndexDocument productInfo : productDocumentList)
 	//if plpFacetGroupVariantSticky is defined then check if this product has that feature
 	if (UtilValidate.isNotEmpty(plpFacetGroupVariantSticky) && UtilValidate.isNotEmpty(featureValueSelected))
 	{
-		productSelectableFeatureAndAppl = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId",productInfoId, "productFeatureTypeId", plpFacetGroupVariantSticky, "productFeatureApplTypeId", "SELECTABLE_FEATURE", "description", featureValueSelected), UtilMisc.toList("sequenceNum"));
+		productSelectableFeatureAndAppl = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId",productInfoId, "productFeatureTypeId", plpFacetGroupVariantSticky, "productFeatureApplTypeId", "SELECTABLE_FEATURE", "description", featureValueSelected).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 		if (productSelectableFeatureAndAppl.size() < 1)
 		{
 			productFeatureTypeExists = false;

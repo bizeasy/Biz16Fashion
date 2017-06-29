@@ -47,7 +47,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	        }
 	 }
 	
-    telecomNumber = delegator.findByAndCache("PartyContactDetailByPurpose",[partyId : party.partyId, contactMechPurposeTypeId : "PHONE_HOME"], UtilMisc.toList("fromDate"));
+    telecomNumber = EntityQuery.use(delegator).from("PartyContactDetailByPurpose").where("partyId", party.partyId,"contactMechPurposeTypeId", "PHONE_HOME").orderBy(UtilMisc.toList("fromDate")).cache().queryList();
     telecomNumber = EntityUtil.filterByDate(telecomNumber,true);
 
     if(UtilValidate.isNotEmpty(telecomNumber))

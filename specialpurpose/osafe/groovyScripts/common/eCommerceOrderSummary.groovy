@@ -214,7 +214,7 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 }
 
 // Credit Card Info
-creditCardTypes = delegator.findByAndCache("Enumeration", [enumTypeId : "CREDIT_CARD_TYPE"], ["sequenceId"]);
+creditCardTypes = EntityQuery.use(delegator).from("Enumeration").where("enumTypeId", "CREDIT_CARD_TYPE").orderBy(UtilMisc.toList("sequenceId ")).cache().queryList();
 creditCardTypesMap = [:];
 for (GenericValue creditCardType :  creditCardTypes)
 {

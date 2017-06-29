@@ -54,7 +54,7 @@ for (GenericValue contactMech : shippingContactMechList)
     phoneNumberMap = [:];
     if(contactMech){
         contactMechIdFrom = contactMech.contactMechId;
-        contactMechLinkList = delegator.findByAndCache("ContactMechLink", UtilMisc.toMap("contactMechIdFrom", contactMechIdFrom))
+        contactMechLinkList = EntityQuery.use(delegator).from("ContactMechLink").where("contactMechIdFrom", contactMechIdFrom).cache().queryList();
 
         for (GenericValue link: contactMechLinkList)
         {
@@ -75,7 +75,7 @@ for (GenericValue contactMech : shippingContactMechList)
 }
 context.shippingContactMechPhoneMap = shippingContactMechPhoneMap;
 
-creditCardTypes = delegator.findByAndCache("Enumeration", [enumTypeId : "CREDIT_CARD_TYPE"], ["sequenceId"]);
+creditCardTypes = EntityQuery.use(delegator).from("Enumeration").where("enumTypeId", "CREDIT_CARD_TYPE").orderBy(UtilMisc.toList("sequenceId ")).cache().queryList();
 creditCardTypesMap = [:];
 for (GenericValue creditCardType :  creditCardTypes) 
 {
@@ -160,7 +160,7 @@ if (orderId) {
     // check OrderRole to make sure the user can view this order.  This check must be done for any order which is not anonymously placed and
     // any anonymous order when the allowAnonymousView security flag (see above) is not set to Y, to prevent peeking
     if (orderHeader && (!"anonymous".equals(orderHeader.createdBy) || ("anonymous".equals(orderHeader.createdBy) && !"Y".equals(allowAnonymousView)))) {
-        orderRole = EntityUtil.getFirst(delegator.findByAndCache("OrderRole", [orderId : orderId, partyId : partyId, roleTypeId : roleTypeId]));
+        orderRole = EntityUtil.getFirst(EntityQuery.use(delegator).from("OrderRole").where("orderId",orderId,"partyId" , partyId, "roleTypeId", roleTypeId).cache().queryList(););
 
         if (!userLogin || !orderRole) {
             context.remove("orderHeader");
@@ -190,7 +190,7 @@ if (orderHeader) {
     orderTaxTotal = OrderReadHelper.getAllOrderItemsAdjustmentsTotal(orderItems, orderAdjustments, false, true, false);
     orderTaxTotal = orderTaxTotal.add(OrderReadHelper.calcOrderAdjustments(orderHeaderAdjustments, orderSubTotal, false, true, false));
 
-    placingCustomerOrderRoles = delegator.findByAndCache("OrderRole", [orderId : orderId, roleTypeId : roleTypeId]);
+    placingCustomerOrderRoles = EntityQuery.use(delegator).from("OrderRole").where("orderId",orderId, "roleTypeId", roleTypeId).cache().queryList();
     placingCustomerOrderRole = EntityUtil.getFirst(placingCustomerOrderRoles);
     //placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
     placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId :placingCustomerOrderRole.partyId]).cache().queryOne());
@@ -279,7 +279,7 @@ if (orderHeader) {
     context.orderShipmentInfoSummaryList = orderShipmentInfoSummaryList;
     context.customerPoNumberSet = customerPoNumberSet;
 
-    orderItemChangeReasons = delegator.findByAndCache("Enumeration", [enumTypeId : "ODR_ITM_CH_REASON"], ["sequenceId"]);
+    orderItemChangeReasons = EntityQuery.use(delegator).from("Enumeration").where("enumTypeId",ODR_ITM_CH_REASON").orderBy(UtilMisc.toList("sequenceId")).cache().queryList();
     context.orderItemChangeReasons = orderItemChangeReasons;
 	
 	context.shippingApplies = shippingApplies;

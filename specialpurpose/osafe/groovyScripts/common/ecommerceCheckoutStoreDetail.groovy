@@ -44,7 +44,7 @@ if (UtilValidate.isEmpty(storeId))
 productStore = ProductStoreWorker.getProductStore(request);
 productStoreId=productStore.getString("productStoreId");
 openStores = LinkedList.newInstance();
-allStores = delegator.findByAndCache("ProductStoreRole", UtilMisc.toMap("productStoreId", productStoreId,"roleTypeId", "STORE_LOCATION"));
+allStores = EntityQuery.use(delegator).from("ProductStoreRole").where("productStoreId", productStoreId, "roleTypeId", STORE_LOCATION).cache().queryList();
 if (UtilValidate.isNotEmpty(allStores))
 {
 	for(GenericValue store : allStores)

@@ -45,7 +45,7 @@ wishListSize = 0;
 wishListId = WishListEvents.getWishListId(request, false);
 if (UtilValidate.isNotEmpty(wishListId))
 {
-	wishList = delegator.findByAndCache("ShoppingListItem", [shoppingListId : wishListId]);
+	wishList = EntityQuery.use(delegator).from("ShoppingListItem").where("shoppingListId", wishListId).cache().queryList();
 	wishListSize = wishList.size();
 }
 
@@ -228,7 +228,7 @@ if(UtilValidate.isNotEmpty(productFeatureTypesList))
 //Issue 38934, 38916 - Check for duplicate feature descriptions
 productFeatureAndAppls = LinkedList.newInstance();
 Map standardFeatureExistsMap = HashMap.newInstance();
-standardFeatures = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE"), UtilMisc.toList("sequenceNum"));
+standardFeatures = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE").orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 standardFeatures = EntityUtil.filterByDate(standardFeatures,true);
 standardFeatures = EntityUtil.orderBy(standardFeatures,UtilMisc.toList('sequenceNum'));
 

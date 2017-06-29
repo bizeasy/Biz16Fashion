@@ -14,7 +14,7 @@ import org.apache.commons.lang.StringUtils;
 productStoreId = ProductStoreWorker.getProductStoreId(request);
 String orderId = StringUtils.trimToEmpty(parameters.orderId);
 
-customerOrderList = delegator.findByAndCache("OrderHeaderAndRoles", UtilMisc.toMap("roleTypeId","PLACING_CUSTOMER", "partyId",userLogin.partyId), UtilMisc.toList("-orderDate"));
+customerOrderList = EntityQuery.use(delegator).from("OrderHeaderAndRoles").where("roleTypeId","PLACING_CUSTOMER", "partyId",userLogin.partyId).orderBy(UtilMisc.toList("-orderDate")).cache().queryList();
 context.customerOrderList = customerOrderList;
 customerOrderIdList = EntityUtil.getFieldListFromEntityList(customerOrderList, "orderId", true);	
 

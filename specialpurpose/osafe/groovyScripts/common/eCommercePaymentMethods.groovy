@@ -48,7 +48,7 @@ if(Util.isProductStoreParmTrue(request,"CHECKOUT_KEEP_PAYMENT_METHODS"))
 {
     if(UtilValidate.isNotEmpty(partyId))
     {
-        paymentMethods = delegator.findByAndCache("PaymentMethod", UtilMisc.toMap("partyId", partyId), UtilMisc.toList("lastUpdatedStamp"));
+        paymentMethods = EntityQuery.use(delegator).from("PaymentMethod").where("partyId", partyId).orderBy(UtilMisc.toList("lastUpdatedStamp")).cache().queryList();
         paymentMethodValueMaps = LinkedList.newInstance();
         paymentMethodEftValueMaps = LinkedList.newInstance();
         if(UtilValidate.isNotEmpty(paymentMethods))
