@@ -5,8 +5,8 @@ import org.apache.ofbiz.base.util.UtilDateTime;
 import com.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.GenericValue;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
@@ -24,7 +24,7 @@ if (UtilValidate.isNotEmpty(custRequestList))
         custReqAttribute = EntityUtil.filterByCondition(custRequestAttributeList, EntityCondition.makeCondition("attrName", EntityOperator.EQUALS, "IS_DOWNLOADED"));
 
         custRequestId = custRequest.custRequestId;
-        Map<String, Object> updateCustReqAttrCtx = FastMap.newInstance();
+        Map<String, Object> updateCustReqAttrCtx = HashMap.newInstance();
         updateCustReqAttrCtx.put("userLogin",userLogin);
         updateCustReqAttrCtx.put("custRequestId",custRequestId);
         updateCustReqAttrCtx.put("attrName","IS_DOWNLOADED");

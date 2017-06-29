@@ -3,8 +3,8 @@ package product;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.base.util.UtilValidate;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityConditionBuilder;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
@@ -21,7 +21,7 @@ fromDateShort = StringUtils.trimToEmpty(parameters.dateFrom);
 toDateShort = StringUtils.trimToEmpty(parameters.dateTo);
 initializedCB = StringUtils.trimToEmpty(parameters.initializedCB);
 preRetrieved = StringUtils.trimToEmpty(parameters.preRetrieved);
-List infoMsgList = FastList.newInstance();
+List infoMsgList = LinkedList.newInstance();
 Boolean isValidDate = true;
 if (UtilValidate.isNotEmpty(preRetrieved))
 {
@@ -39,18 +39,18 @@ if (UtilValidate.isNotEmpty(initializedCB))
 String entryDateFormat = entryDateTimeFormat;
 fromDate = null;
 toDate = UtilDateTime.nowTimestamp();
-dateExpr= FastList.newInstance();
-statusExpr= FastList.newInstance();    
-resultList = FastList.newInstance();
-pendingOneToFiveReviews = FastList.newInstance();
-pendingSixToTenReviews= FastList.newInstance();
-pendingElevenToTwentyReviews = FastList.newInstance();
-pendingTwentyPlusReviews = FastList.newInstance();
-resultList = FastList.newInstance();
+dateExpr= LinkedList.newInstance();
+statusExpr= LinkedList.newInstance();    
+resultList = LinkedList.newInstance();
+pendingOneToFiveReviews = LinkedList.newInstance();
+pendingSixToTenReviews= LinkedList.newInstance();
+pendingElevenToTwentyReviews = LinkedList.newInstance();
+pendingTwentyPlusReviews = LinkedList.newInstance();
+resultList = LinkedList.newInstance();
 dateCond = null;
 statusCond = null;
 mainCond = null;
-reviewRatingList = FastList.newInstance();
+reviewRatingList = LinkedList.newInstance();
 //Converting to TimeStamp and preparing entity condition.
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {   
@@ -143,17 +143,17 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
                 EntityCondition.makeCondition("statusId", EntityOperator.EQUALS, "PRR_PENDING")],EntityOperator.AND);
         pendingTwentyPlusReviews = EntityUtil.filterByCondition(reviewRatingList, pendingTwentyPlus);
     }
-    resultMap= FastMap.newInstance();
+    resultMap= HashMap.newInstance();
     resultMap.put("status",uiLabelMap.ApprovedLabel)
     resultMap.put("statusId","PRR_APPROVED")
     resultMap.put("count",approvedReviews.size());
     resultList.add(resultMap);
-    resultMap= FastMap.newInstance();
+    resultMap= HashMap.newInstance();
     resultMap.put("status",uiLabelMap.PendingLabel)
     resultMap.put("statusId","PRR_PENDING")
     resultMap.put("count",pendingReviews.size());
     resultList.add(resultMap);
-    resultMap= FastMap.newInstance();
+    resultMap= HashMap.newInstance();
     resultMap.put("status",uiLabelMap.DeletedLabel)
     resultMap.put("statusId","PRR_DELETED")
     resultMap.put("count",deletedReviews.size());

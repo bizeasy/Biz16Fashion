@@ -3,8 +3,8 @@ package product;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.GenericValue;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilMisc;
 
 if (UtilValidate.isNotEmpty(context.virtualProduct)) 
@@ -16,7 +16,7 @@ if (UtilValidate.isNotEmpty(context.virtualProduct))
     
     allProductSelectableFeatureAndAppls = EntityUtil.filterByAnd(allProductFeatureAndAppls, UtilMisc.toMap("productFeatureApplTypeId", "SELECTABLE_FEATURE"));
     
-    productSelFeatureTypes = FastList.newInstance();
+    productSelFeatureTypes = LinkedList.newInstance();
     productSelFeaturesByType = new LinkedHashMap();
     for (GenericValue feature: allProductSelectableFeatureAndAppls) 
     {
@@ -28,7 +28,7 @@ if (UtilValidate.isNotEmpty(context.virtualProduct))
        features = productSelFeaturesByType.get(featureType);
        if (UtilValidate.isEmpty(features)) 
        {
-          features = FastList.newInstance();
+          features = LinkedList.newInstance();
           productSelFeaturesByType.put(featureType, features);
        }
        features.add(feature);
@@ -38,7 +38,7 @@ if (UtilValidate.isNotEmpty(context.virtualProduct))
     
     allProductDescFeatureAndAppls = EntityUtil.filterByAnd(allProductFeatureAndAppls, UtilMisc.toMap("productFeatureApplTypeId", "DISTINGUISHING_FEAT"));
     
-    productDescFeatureTypes = FastList.newInstance();
+    productDescFeatureTypes = LinkedList.newInstance();
     productDescFeaturesByType = new LinkedHashMap();
     for (GenericValue feature: allProductDescFeatureAndAppls) 
     {
@@ -50,7 +50,7 @@ if (UtilValidate.isNotEmpty(context.virtualProduct))
        features = productDescFeaturesByType.get(featureType);
        if (UtilValidate.isEmpty(features)) 
        {
-          features = FastList.newInstance();
+          features = LinkedList.newInstance();
           productDescFeaturesByType.put(featureType, features);
        }
        features.add(feature);
@@ -60,7 +60,7 @@ if (UtilValidate.isNotEmpty(context.virtualProduct))
 }
 
 //BUILD CONTEXT MAP FOR PRODUCT_FEATURE_TYPE_ID and DESCRIPTION(EITHER FROM PRODUCT_FEATURE_GROUP OR PRODUCT_FEATURE_TYPE)
-Map productFeatureTypesMap = FastMap.newInstance();
+Map productFeatureTypesMap = HashMap.newInstance();
 productFeatureTypesList = delegator.findList("ProductFeatureType", null, null, null, null, false);
 
 //get the whole list of ProductFeatureGroup and ProductFeatureGroupAndAppl
@@ -102,7 +102,7 @@ if (UtilValidate.isNotEmpty(context.variantProduct))
     
     variantProductStandardFeatureAndAppls = EntityUtil.filterByAnd(allVariantProductFeatureAndAppls, UtilMisc.toMap("productFeatureApplTypeId", "STANDARD_FEATURE"));
     context.variantProductStandardFeatureAndAppls = variantProductStandardFeatureAndAppls;
-    variantProductStdFeatureTypes = FastList.newInstance();
+    variantProductStdFeatureTypes = LinkedList.newInstance();
     variantProductStdFeaturesByType = new LinkedHashMap();
     for (GenericValue feature: variantProductStandardFeatureAndAppls) 
     {
@@ -114,7 +114,7 @@ if (UtilValidate.isNotEmpty(context.variantProduct))
        features = variantProductStdFeaturesByType.get(featureType);
        if (UtilValidate.isEmpty(features)) 
        {
-          features = FastList.newInstance();
+          features = LinkedList.newInstance();
           variantProductStdFeaturesByType.put(featureType, features);
        }
        features.add(feature);

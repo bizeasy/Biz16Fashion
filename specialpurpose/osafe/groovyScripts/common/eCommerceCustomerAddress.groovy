@@ -39,7 +39,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 if (UtilValidate.isNotEmpty(partyId)) 
 {
 
-    //party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+    //party = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();;
     party = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(party)) 
     {

@@ -20,7 +20,8 @@
 import org.apache.ofbiz.entity.*
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.entity.condition.*
-import org.apache.ofbiz.entity.util.EntityUtil
+import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 // executes only on startup when only the basic parameters.portalPageId (from commonscreens.xml) is available
 if (userLogin && parameters.parentPortalPageId && !parameters.portalPageId) {

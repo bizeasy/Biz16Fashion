@@ -2,8 +2,8 @@ package customer;
 
 import java.util.List;
 import java.util.Map;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -38,7 +38,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
 viewIndex = Integer.valueOf(parameters.viewIndex  ?: 1);
 viewSize = Integer.valueOf(parameters.viewSize ?: UtilProperties.getPropertyValue("osafeAdmin", "default-view-size"));
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 
@@ -63,7 +63,7 @@ if (UtilValidate.isEmpty(productStoreall))
 }
 
 
-List<String> roleTypeIds = FastList.newInstance();
+List<String> roleTypeIds = LinkedList.newInstance();
 roleTypeIds.add("INTERNAL_ORGANIZATIO");
 
 if(UtilValidate.isNotEmpty(roleTypeIds))
@@ -74,7 +74,7 @@ if(UtilValidate.isNotEmpty(roleTypeIds))
 
 Map<String, Object> svcRes;
 
-List<GenericValue> partyList = FastList.newInstance();
+List<GenericValue> partyList = LinkedList.newInstance();
 
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N") 
 {

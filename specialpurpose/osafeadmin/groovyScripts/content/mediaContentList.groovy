@@ -1,7 +1,7 @@
 package content;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
@@ -26,7 +26,7 @@ import java.util.List;
 
 //get List of user_content directories
 List<File> fileList = OsafeAdminUtil.getUserContentDirectories();
-List<String> directoryNameList = FastList.newInstance();
+List<String> directoryNameList = LinkedList.newInstance();
 osafeProperties = UtilProperties.getResourceBundleMap("OsafeProperties.xml", locale);
 if(UtilValidate.isNotEmpty(fileList))
 {
@@ -38,7 +38,7 @@ if(UtilValidate.isNotEmpty(fileList))
 context.directoryNameList = directoryNameList;
 
 //retrieve media content by search
-mediaTypes = FastList.newInstance();
+mediaTypes = LinkedList.newInstance();
 for(directoryName in directoryNameList)
 {
 	if(UtilValidate.isNotEmpty(parameters.get(StringUtil.removeSpaces(directoryName))))
@@ -67,9 +67,9 @@ if (UtilValidate.isNotEmpty(initializedCB))
 {
    context.initializedCB=initializedCB;
 }
-fileListMap = FastMap.newInstance();
-fileList = FastList.newInstance();
-fileArray = FastList.newInstance();
+fileListMap = HashMap.newInstance();
+fileList = LinkedList.newInstance();
+fileArray = LinkedList.newInstance();
 
 //get List of user_content files as map
 for (String mediaType: mediaTypes)
@@ -94,7 +94,7 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
             parentPath = file.getParent();
             File parentDirPath = new File(parentPath);
             parentDirName = parentDirPath.getName()
-            attrMap = FastMap.newInstance();
+            attrMap = HashMap.newInstance();
             String fileName = file.getName();
             double filesize = file.length();
             double filesizeInKB = filesize / 1024;

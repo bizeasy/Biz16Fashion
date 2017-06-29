@@ -16,6 +16,7 @@ import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
 import org.apache.ofbiz.product.category.CategoryWorker;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 paramsExpr = LinkedList.newInstance();
 exprBldr =  new EntityConditionBuilder();

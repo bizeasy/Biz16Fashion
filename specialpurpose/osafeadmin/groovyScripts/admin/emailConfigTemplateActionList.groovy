@@ -1,10 +1,10 @@
 package email;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilValidate;
 
 
-templates = FastList.newInstance();
+templates = LinkedList.newInstance();
 emailTypeId = request.getAttribute("emailTypeId");
 if(UtilValidate.isNotEmpty(emailTypeId)) 
 {

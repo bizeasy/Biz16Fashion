@@ -3,8 +3,8 @@ package shipping;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.entity.GenericValue;

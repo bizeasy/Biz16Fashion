@@ -7,7 +7,7 @@ import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.product.catalog.*;
 import org.apache.ofbiz.product.store.*;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.ofbiz.base.util.UtilProperties;

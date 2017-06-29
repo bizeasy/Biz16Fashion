@@ -3,8 +3,8 @@ package customer;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.base.util.UtilValidate;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityConditionBuilder;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
@@ -21,7 +21,7 @@ fromDateShort = StringUtils.trimToEmpty(parameters.dateFrom);
 toDateShort = StringUtils.trimToEmpty(parameters.dateTo);
 initializedCB = StringUtils.trimToEmpty(parameters.initializedCB);
 preRetrieved = StringUtils.trimToEmpty(parameters.preRetrieved);
-List infoMsgList = FastList.newInstance();
+List infoMsgList = LinkedList.newInstance();
 Boolean isValidDate = true;
 if (UtilValidate.isNotEmpty(preRetrieved))
 {
@@ -39,11 +39,11 @@ if (UtilValidate.isNotEmpty(initializedCB))
 String entryDateFormat = entryDateTimeFormat;
 fromDate = null;
 toDate = UtilDateTime.nowTimestamp();
-dateExpr= FastList.newInstance();   
-visitors= FastList.newInstance(); 
+dateExpr= LinkedList.newInstance();   
+visitors= LinkedList.newInstance(); 
 dateCond = null;
 mainCond = EntityCondition.makeCondition("shoppingListTypeId", EntityOperator.EQUALS, "SLT_SPEC_PURP");
-visitorList = FastList.newInstance();
+visitorList = LinkedList.newInstance();
 //Converting to TimeStamp and preparing entity condition.
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
@@ -119,7 +119,7 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
         //Seperating GUEST && REG users Month-Wise
         while(tempFromDate <= toDate)
         {
-            visitorMap = FastMap.newInstance();
+            visitorMap = HashMap.newInstance();
             cond = EntityCondition.makeCondition([EntityCondition.makeCondition("lastUpdatedStamp", EntityOperator.GREATER_THAN_EQUAL_TO, tempFromDate),
                                                   EntityCondition.makeCondition("lastUpdatedStamp", EntityOperator.LESS_THAN_EQUAL_TO, tempToDate)], EntityOperator.AND);
             monthList = UtilDateTime.getMonthNames(locale);

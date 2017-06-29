@@ -1,7 +1,7 @@
 package storelocation;
 
 
-import javolution.util.FastMap;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.common.CommonWorkers;
@@ -29,9 +29,9 @@ if (UtilValidate.isNotEmpty(partyGroup))
     storeName = partyGroup.groupName;
 }
 context.storeName = storeName;
-partyGeneralContactMechValueMap = FastMap.newInstance();
-partyPrimaryPhoneContactMechValueMap = FastMap.newInstance();
-partyPrimaryEmailContactMechValueMap = FastMap.newInstance();
+partyGeneralContactMechValueMap = HashMap.newInstance();
+partyPrimaryPhoneContactMechValueMap = HashMap.newInstance();
+partyPrimaryEmailContactMechValueMap = HashMap.newInstance();
 
 contactMechs = ContactHelper.getContactMech(party, "GENERAL_LOCATION", "POSTAL_ADDRESS", false);
 if (UtilValidate.isNotEmpty(contactMechs))

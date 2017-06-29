@@ -4,7 +4,7 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import org.apache.ofbiz.base.util.UtilProperties;
 import com.osafe.services.OsafeManageXml;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import java.util.Map;
 import org.apache.ofbiz.base.util.FileUtil;
 

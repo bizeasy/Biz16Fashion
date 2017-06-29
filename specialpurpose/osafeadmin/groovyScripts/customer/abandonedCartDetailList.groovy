@@ -6,8 +6,8 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.commons.lang.StringUtils;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -34,7 +34,7 @@ messageMap.put("partyId", partyId);
 
 context.detailInfoBoxHeading = UtilProperties.getMessage("OSafeAdminUiLabels","CustomerDetailInfoHeading",messageMap, locale )
 
-List contentList = FastList.newInstance();
+List contentList = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(shoppingListId))
 {
    orderBy = ["shoppingListItemSeqId ASC"];

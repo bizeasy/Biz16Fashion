@@ -17,6 +17,7 @@
  * under the License.
  */
  import org.apache.ofbiz.entity.util.EntityUtil
+ import org.apache.ofbiz.entity.util.EntityQuery ;
 
 findResult = EntityQuery.use(delegator).from("Facility").where("ownerPartyId", partyId).queryList();
 

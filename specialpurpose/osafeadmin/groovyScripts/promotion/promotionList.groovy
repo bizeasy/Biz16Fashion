@@ -3,8 +3,8 @@ package promotion;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -47,7 +47,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 svcCtx.put("showAll", "N");
@@ -80,7 +80,7 @@ if (UtilValidate.isEmpty(srchPromoActive) && UtilValidate.isNotEmpty(srchPromoEx
     svcCtx.put("productStorePromoApplStatus", "INACTIVE");
 }
 Map<String, Object> svcRes;
-List<GenericValue> productPromoList = FastList.newInstance();
+List<GenericValue> productPromoList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
 
@@ -96,7 +96,7 @@ else
 
 if (UtilValidate.isNotEmpty(context.pagingList))
 {
-    productPromoUsage = FastMap.newInstance();
+    productPromoUsage = HashMap.newInstance();
     // top promotion dynamic view entity
     DynamicViewEntity topPromotionDve = new DynamicViewEntity();
     topPromotionDve.addMemberEntity("OH", "OrderHeader");
@@ -115,7 +115,7 @@ if (UtilValidate.isNotEmpty(context.pagingList))
 
     orderBy = UtilMisc.toList("-totalOrders");
     //FieldsToSelect
-    List topPromotionFields = FastList.newInstance();
+    List topPromotionFields = LinkedList.newInstance();
     topPromotionFields.add("totalOrders");
     topPromotionFields.add("productPromoCodeId");
     // set distinct

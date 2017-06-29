@@ -1,7 +1,7 @@
 package content;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
@@ -25,11 +25,11 @@ import org.apache.commons.lang.StringEscapeUtils;
 String productId = StringUtils.trimToEmpty(parameters.productId);
 orderBy = ["productContentTypeId"];
 
-productContentList = FastList.newInstance();
+productContentList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(productId))
 {
 	
-	Map createProductTextContentCtx = FastMap.newInstance();
+	Map createProductTextContentCtx = HashMap.newInstance();
 	createProductTextContentCtx.put("productId", parameters.productId);
 	createProductTextContentCtx.put("userLogin", userLogin);
 	
@@ -57,7 +57,7 @@ if(UtilValidate.isNotEmpty(productId))
     conds = null
     conds = EntityCondition.makeCondition([productId : productId]);
     
-    productContentTypeIdExpr= FastList.newInstance();
+    productContentTypeIdExpr= LinkedList.newInstance();
     productContentTypeIdCond = null;
     productContentTypeIdExpr.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "PDP_SPC_CONTENT_01"));
     productContentTypeIdExpr.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "PDP_SPC_CONTENT_02"));

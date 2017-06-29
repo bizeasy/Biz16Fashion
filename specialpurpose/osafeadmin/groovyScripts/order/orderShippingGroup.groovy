@@ -3,8 +3,8 @@ package order;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.GenericValue;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 
 orderItemShipGroup = request.getAttribute("orderItemShipGroup");

@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import java.util.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.entity.util.*;
@@ -25,7 +25,7 @@ import org.apache.ofbiz.order.order.OrderReadHelper;
 import com.osafe.util.OsafeAdminUtil;
 
 orderStatusIncDashboard = globalContext.get("ORDER_STATUS_INC_DASHBOARD");
-List includedOrderStatusList = FastList.newInstance();
+List includedOrderStatusList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(orderStatusIncDashboard))
 {
     orderStatusIncDashboardList = StringUtil.split(orderStatusIncDashboard,",")
@@ -83,7 +83,7 @@ if(UtilValidate.isNotEmpty(periodFromTs) && UtilValidate.isNotEmpty(periodToTs))
     dve.addMemberEntity("OA", "OrderAttribute");
     dve.addAliasAll("OA", ""); // no prefix
     dve.addViewLink("OH", "OA", Boolean.FALSE, UtilMisc.toList(new ModelKeyMap("orderId", "orderId")));
-    List fieldsToSelect = FastList.newInstance();
+    List fieldsToSelect = LinkedList.newInstance();
     fieldsToSelect.add("orderId");
     // set distinct on so we only get one row per order
     EntityFindOptions findOpts = new EntityFindOptions(true, EntityFindOptions.TYPE_SCROLL_INSENSITIVE, EntityFindOptions.CONCUR_READ_ONLY, true);
@@ -808,15 +808,15 @@ if(UtilValidate.isNotEmpty(periodFromTs) && UtilValidate.isNotEmpty(periodToTs))
 
     orderBy = UtilMisc.toList("-quantityOrdered");
     //FieldsToSelect
-    List topProductFields = FastList.newInstance();
+    List topProductFields = LinkedList.newInstance();
     topProductFields.add("productId");
     topProductFields.add("quantityOrdered");
     topProductFields.add("unitPrice");
     // set distinct
     topProductFindOpts = new EntityFindOptions(true, EntityFindOptions.TYPE_SCROLL_INSENSITIVE, EntityFindOptions.CONCUR_READ_ONLY, true);
 
-    List <GenericValue> topProductsList  = FastList.newInstance();
-    Map<String, GenericValue> allTopProductsMap = FastMap.newInstance();
+    List <GenericValue> topProductsList  = LinkedList.newInstance();
+    Map<String, GenericValue> allTopProductsMap = HashMap.newInstance();
     GenericValue workingReportProduct = null;
     String productId = null;
 
@@ -907,7 +907,7 @@ if(UtilValidate.isNotEmpty(periodFromTs) && UtilValidate.isNotEmpty(periodToTs))
             topProductsList = topProductsList.subList(0,5);
         }
 
-        topProductContentWrappers = FastMap.newInstance();
+        topProductContentWrappers = HashMap.newInstance();
         for (GenericValue topProduct: topProductsList) 
         {
             GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", topProduct.productId), false);
@@ -919,8 +919,8 @@ if(UtilValidate.isNotEmpty(periodFromTs) && UtilValidate.isNotEmpty(periodToTs))
     context.topProductsList = topProductsList;
 
     // Store Pick Up Top Products
-    List <GenericValue> storePickupTopProductsList  = FastList.newInstance();
-    allTopProductsMap = FastMap.newInstance();
+    List <GenericValue> storePickupTopProductsList  = LinkedList.newInstance();
+    allTopProductsMap = HashMap.newInstance();
     workingReportProduct = null;
     productId = null;
 
@@ -1011,7 +1011,7 @@ if(UtilValidate.isNotEmpty(periodFromTs) && UtilValidate.isNotEmpty(periodToTs))
             storePickupTopProductsList = storePickupTopProductsList.subList(0,5);
         }
 
-        storePickupTopProductContentWrappers = FastMap.newInstance();
+        storePickupTopProductContentWrappers = HashMap.newInstance();
         for (GenericValue topProduct: storePickupTopProductsList) 
         {
             GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", topProduct.productId), false);
@@ -1043,7 +1043,7 @@ if(UtilValidate.isNotEmpty(periodFromTs) && UtilValidate.isNotEmpty(periodToTs))
 
     orderBy = UtilMisc.toList("-totalOrders");
     //FieldsToSelect
-    List topPromotionFields = FastList.newInstance();
+    List topPromotionFields = LinkedList.newInstance();
     topPromotionFields.add("totalOrders");
     topPromotionFields.add("productPromoCodeId");
     // set distinct

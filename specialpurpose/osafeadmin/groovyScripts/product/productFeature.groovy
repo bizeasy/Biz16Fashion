@@ -5,7 +5,7 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityFunction
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import javolution.util.FastList;
+import java.util.LinkedList;
 
 import org.apache.ofbiz.entity.GenericEntityException
 import org.apache.ofbiz.entity.model.DynamicViewEntity
@@ -14,7 +14,7 @@ import org.apache.ofbiz.entity.util.EntityFindOptions
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.commons.lang.StringUtils;
 
-productFeatureList = FastList.newInstance();
+productFeatureList = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(parameters.featureTypeId)) 
 {
 	featureTypeId = StringUtils.trimToEmpty(parameters.featureTypeId);
@@ -48,7 +48,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
 }
 
 prodFeatureCond = null;
-paramsExpr = FastList.newInstance();
+paramsExpr = LinkedList.newInstance();
 
 if (UtilValidate.isNotEmpty(productFeatureId))
 {
@@ -69,7 +69,7 @@ if (UtilValidate.isNotEmpty(paramsExpr))
 eli = null;
 // set distinct
 productFeatureFindOpts = new EntityFindOptions(true, EntityFindOptions.TYPE_SCROLL_INSENSITIVE, EntityFindOptions.CONCUR_READ_ONLY, true);	
-productFeatureSearchList=FastList.newInstance();
+productFeatureSearchList=LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
 	// Product feature dynamic view entity

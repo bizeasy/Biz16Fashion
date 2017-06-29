@@ -1,6 +1,6 @@
 package user;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -22,7 +22,7 @@ if (UtilValidate.isNotEmpty(securityGroups))
 session = context.session;
 srchUserLoginId = StringUtils.trimToEmpty(parameters.srchUserLoginId);
 searchGroupId = StringUtils.trimToEmpty(parameters.searchGroupId);
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 
 // User Login Id
@@ -36,7 +36,7 @@ if(UtilValidate.isNotEmpty(srchUserLoginId))
 // groupId
 if(UtilValidate.isNotEmpty(searchGroupId))
 {
-	userLogSecGroupCond = FastList.newInstance();
+	userLogSecGroupCond = LinkedList.newInstance();
 	userLogSecGroupCond.add(EntityCondition.makeCondition(EntityFunction.UPPER_FIELD("groupId"), EntityOperator.EQUALS, searchGroupId.toUpperCase()));
 	userLoginSecurityGroups = delegator.findList("UserLoginSecurityGroup", EntityCondition.makeCondition([groupId : searchGroupId]), null, null, null, false);
 	contentIds = EntityUtil.getFieldListFromEntityList(userLoginSecurityGroups, "userLoginId", true);
@@ -56,7 +56,7 @@ if (UtilValidate.isNotEmpty(exprs))
 
 orderBy = ["userLoginId"];
 
-users=FastList.newInstance();
+users=LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
 	users = delegator.findList("UserLogin",mainCond, null, orderBy, null, false);

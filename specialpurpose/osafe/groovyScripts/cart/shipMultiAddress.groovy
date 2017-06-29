@@ -90,7 +90,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 defaultShipAddr = "";
 if (UtilValidate.isNotEmpty(partyId)) 
 {
-    //party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+    //party = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();;
     party = EntityQuery.use(delegator).from("Party").where(UtilMisc.toMap("partyId", partyId)).cache().queryOne();
     if (UtilValidate.isNotEmpty(party)) 
     {

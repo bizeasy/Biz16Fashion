@@ -1,7 +1,7 @@
 package content;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
@@ -22,7 +22,7 @@ import java.awt.image.PixelGrabber;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import java.io.FileInputStream;
 
-fileAttrMap = FastMap.newInstance();
+fileAttrMap = HashMap.newInstance();
 osafeProperties = UtilProperties.getResourceBundleMap("OsafeProperties.xml", locale);
 if(UtilValidate.isNotEmpty(parameters.currentMediaName))
 {
@@ -132,7 +132,7 @@ if(UtilValidate.isNotEmpty(mediaName))
 
 //get List of user_content directories
 List<File> fileList = OsafeAdminUtil.getUserContentDirectories();
-List<String> directoryNameList = FastList.newInstance();
+List<String> directoryNameList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(fileList))
 {
 	for(File file : fileList) {

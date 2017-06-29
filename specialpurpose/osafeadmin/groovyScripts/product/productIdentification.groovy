@@ -1,12 +1,12 @@
 package product;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilValidate;
 import com.osafe.util.Util;
 import org.apache.ofbiz.base.util.StringUtil;
 
-List goodIdentificationTypesList = FastList.newInstance();
-List goodIdentificationTypes = FastList.newInstance();
+List goodIdentificationTypesList = LinkedList.newInstance();
+List goodIdentificationTypes = LinkedList.newInstance();
 String goodIdentificationTypeTxt = Util.getProductStoreParm(request,"PRODUCT_INC_GOOD_ID");
 if (UtilValidate.isNotEmpty(goodIdentificationTypeTxt))
 {

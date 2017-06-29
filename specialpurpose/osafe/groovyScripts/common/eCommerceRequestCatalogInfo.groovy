@@ -28,7 +28,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 
 	 if (UtilValidate.isNotEmpty(parameters.stateCode)) 
 	 {
-	        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.stateCode]);
+	        //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.stateCode]).cache().queryOne();
 	        geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.stateCode]).cache().queryOne();
 	        if (UtilValidate.isNotEmpty(geoValue)) 
 	        {
@@ -38,7 +38,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	 } 
 	 else if (UtilValidate.isNotEmpty(postalAddressData) && UtilValidate.isNotEmpty(postalAddressData.stateProvinceGeoId)) 
 	 {
-	        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+	        //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
 	        geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
 	        if (UtilValidate.isNotEmpty(geoValue)) 
 	        {
@@ -66,7 +66,7 @@ else
 {
     if (UtilValidate.isNotEmpty(parameters.stateCode)) 
     {
-	    //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.stateCode]);
+	    //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.stateCode]).cache().queryOne();
 	    geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.stateCode]).cache().queryOne();
 	    if (UtilValidate.isNotEmpty(geoValue)) 
 	    {

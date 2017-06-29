@@ -1,7 +1,7 @@
 package content;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -10,7 +10,7 @@ import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 
 orderBy = ["contentId"];
-List conds = FastList.newInstance();
+List conds = LinkedList.newInstance();
 osafeProperties = UtilProperties.getResourceBundleMap("OsafeProperties.xml", locale);
 conds.add(EntityCondition.makeCondition([contentTypeId : "BF_STATIC_PAGE"]));
 conds.add(EntityCondition.makeCondition([productStoreId : productStoreId]));

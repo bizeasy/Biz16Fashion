@@ -1,7 +1,7 @@
 import org.apache.ofbiz.entity.condition.*;
 import org.apache.ofbiz.entity.util.*;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -159,7 +159,7 @@ if (paymentMethodTypeId && paymentServiceTypeEnumId)
 
 if (!paymentMethodTypeId || !paymentServiceTypeEnumId) 
 {
-    customMethods = FastList.newInstance();
+    customMethods = LinkedList.newInstance();
     customMethods.add(EntityCondition.makeCondition("customMethodTypeId", EntityOperator.EQUALS, "CC_AUTH"));
     customMethods.add(EntityCondition.makeCondition("customMethodTypeId", EntityOperator.EQUALS, "CC_CAPTURE"));
     customMethods.add(EntityCondition.makeCondition("customMethodTypeId", EntityOperator.EQUALS, "CC_REAUTH"));

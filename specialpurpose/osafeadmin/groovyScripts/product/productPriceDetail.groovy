@@ -5,8 +5,8 @@ import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.base.util.UtilValidate;
 import com.osafe.util.OsafeAdminUtil;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.ofbiz.entity.GenericValue;
@@ -19,7 +19,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
     product = delegator.findOne("Product",["productId":parameters.productId], false);
     context.product = product;
     
-    virtualProductPriceCondList = FastList.newInstance();
+    virtualProductPriceCondList = LinkedList.newInstance();
     int virtualProductPriceCondListSize = 0;
     
     // get the product price
@@ -117,7 +117,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
     
    // get QUANTITY price break rules to show
     productPriceCondListAll = delegator.findByAnd("ProductPriceCond", [inputParamEnumId: "PRIP_PRODUCT_ID", condValue: product.productId],["productPriceRuleId ASC"]);
-    productPriceCondList = FastList.newInstance();
+    productPriceCondList = LinkedList.newInstance();
     int productPriceCondListSize = 0;
     if (UtilValidate.isNotEmpty(productPriceCondListAll))
     {

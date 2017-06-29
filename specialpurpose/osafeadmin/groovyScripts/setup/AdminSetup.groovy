@@ -19,8 +19,8 @@ import org.apache.ofbiz.webapp.website.WebSiteWorker;
 import org.apache.ofbiz.order.order.OrderReadHelper;
 import com.osafe.util.OsafeAdminUtil;
 import com.osafe.services.OsafeAdminCatalogServices;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
 
 globalContext.stores = delegator.findList("ProductStore",EntityCondition.makeCondition([isDemoStore : "N"]), null, null, null, false);
@@ -138,7 +138,7 @@ if (retrieveProductStoreData && UtilValidate.isNotEmpty(productStore))
     	     session.setAttribute("selectedProdCatalogCategory",prodCatalogCategory);
              globalContext.rootProductCategoryId=prodCatalogCategory.productCategoryId;
              
-    	     currentCategories = FastList.newInstance();
+    	     currentCategories = LinkedList.newInstance();
     	     allUnexpiredCategories = OsafeAdminCatalogServices.getRelatedCategories(delegator, prodCatalogCategory.productCategoryId, null, true, false, true);
     	     for (Map<String, Object> workingCategoryMap : allUnexpiredCategories) 
     	     {
@@ -250,7 +250,7 @@ globalContext.entryDateTimeFormat = preferredDateFormat+" HH:mm:ss";
 globalContext.entryTimeFormat = "HH:mm:ss";
 
 //ADMIN CONTEXT PROCESSING
-adminContext = FastMap.newInstance();
+adminContext = HashMap.newInstance();
 if (UtilValidate.isNotEmpty(session.getAttribute("ADMIN_CONTEXT")))
 {
     adminContext = UtilGenerics.checkMap(session.getAttribute("ADMIN_CONTEXT"), String.class, String.class);

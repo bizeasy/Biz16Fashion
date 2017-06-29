@@ -1,7 +1,7 @@
 package admin;
 
-import javolution.util.FastList
-import javolution.util.FastMap
+import java.util.LinkedList
+import java.util.HashMap
 
 import org.apache.commons.lang.StringUtils
 import org.apache.ofbiz.base.util.FileUtil
@@ -16,8 +16,8 @@ currentMode=context.mode;
 
 ecommerceConfigPath = FlexibleStringExpander.expandString(UtilProperties.getPropertyValue("osafeAdmin.properties", "ecommerce-config-path"), context);
 
-parameterFileList = FastList.newInstance();
-bigfishParamList = FastList.newInstance();
+parameterFileList = LinkedList.newInstance();
+bigfishParamList = LinkedList.newInstance();
 parameterFileName = "";
 
 // Get the all ecommerce config file
@@ -28,7 +28,7 @@ if(UtilValidate.isNotEmpty(fileList))
     {
         if (parameterFile.getName().startsWith("Parameters_") || parameterFile.getName().startsWith("parameters_"))
         {
-            infoMap = FastMap.newInstance();
+            infoMap = HashMap.newInstance();
             infoMap.put("file", parameterFile);
             infoMap.put("fileName", parameterFile.getName());
             infoMap.put("fileNameUpperCase", parameterFile.getName().toUpperCase());
@@ -54,7 +54,7 @@ if (UtilValidate.isNotEmpty(searchFileName))
     }
 	if("add".equalsIgnoreCase(currentMode))
 	{
-		emptyAddMap = FastMap.newInstance();
+		emptyAddMap = HashMap.newInstance();
 		bigfishParamList.add(emptyAddMap);
 	}
 }

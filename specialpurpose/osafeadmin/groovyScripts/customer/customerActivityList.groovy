@@ -6,8 +6,8 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.commons.lang.StringUtils;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.util.EntityUtil;
 
@@ -23,7 +23,7 @@ messageMap.put("partyId", partyId);
 
 context.detailInfoBoxHeading = UtilProperties.getMessage("OSafeAdminUiLabels","CustomerDetailInfoHeading",messageMap, locale )
 
-activityList = FastList.newInstance();
+activityList = LinkedList.newInstance();
 
 userLogins = party.getRelated("UserLogin");
 if(UtilValidate.isNotEmpty(userLogins))
@@ -48,7 +48,7 @@ if(UtilValidate.isNotEmpty(userLogins))
     }
 
     //UserLogin Activity
-    activityMap = FastMap.newInstance();
+    activityMap = HashMap.newInstance();
     activityMap.put("activity", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityRegisteredLabel", UtilMisc.toMap(), locale));
     activityMap.put("activityDescription", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityUserLoginRegistrationInfo", UtilMisc.toMap(), locale));
     activityMap.put("activityDate", userLogin.createdTxStamp);
@@ -64,7 +64,7 @@ if(UtilValidate.isNotEmpty(userLogins))
     {
         subject = communicationEvent.subject;
         //CommunicationEvent Activity
-        activityMap = FastMap.newInstance();
+        activityMap = HashMap.newInstance();
         activityMap.put("activity", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityEmailSentLabel", UtilMisc.toMap(), locale));
         activityMap.put("activityDescription", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityEmailInfo", UtilMisc.toMap("subject", subject), locale));
         activityMap.put("activityDate", communicationEvent.entryDate);
@@ -81,7 +81,7 @@ if(UtilValidate.isNotEmpty(shoppingListList))
     {
         //ShoppingList Activity
         shoppingListId = shoppingList.shoppingListId;
-        activityMap = FastMap.newInstance();
+        activityMap = HashMap.newInstance();
         activityMap.put("activity", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityAbandonedCartLabel", UtilMisc.toMap(), locale));
         activityMap.put("activityDescription", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityAbandonedCartInfo", UtilMisc.toMap("shoppingListId", shoppingListId), locale));
         activityMap.put("activityDate", shoppingList.lastUpdatedStamp);
@@ -108,7 +108,7 @@ if(UtilValidate.isNotEmpty(custRequestContactUsList))
             comments = "";
         } 
         
-        activityMap = FastMap.newInstance();
+        activityMap = HashMap.newInstance();
         activityMap.put("activity", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityContactUsLabel", UtilMisc.toMap(), locale));
         activityMap.put("activityDescription", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityContactUsInfo", UtilMisc.toMap(), locale));
         activityMap.put("activityDate", custRequestContactUs.custRequestDate);
@@ -134,7 +134,7 @@ if(UtilValidate.isNotEmpty(custRequestCatalogList))
         {
             comments = "";
         }
-        activityMap = FastMap.newInstance();
+        activityMap = HashMap.newInstance();
         activityMap.put("activity", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityRequestCatalogLabel", UtilMisc.toMap(), locale));
         activityMap.put("activityDescription", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityRequestCatalogInfo", UtilMisc.toMap(), locale));
         activityMap.put("activityDate", custRequestCatalog.custRequestDate);
@@ -152,7 +152,7 @@ if(UtilValidate.isNotEmpty(orderHeaderAndRoleList))
         //Order Placed Activity
         orderId = orderHeaderAndRole.orderId;
         grandTotal = orderHeaderAndRole.grandTotal;
-        activityMap = FastMap.newInstance();
+        activityMap = HashMap.newInstance();
         activityMap.put("activity", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityOrderPlacedLabel", UtilMisc.toMap(), locale));
         activityMap.put("activityDescription", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityOrderPlacedInfo", UtilMisc.toMap("orderId", orderId, "grandTotal", grandTotal), locale));
         activityMap.put("activityDate", orderHeaderAndRole.entryDate);
@@ -183,7 +183,7 @@ if(UtilValidate.isNotEmpty(userLoginId))
             {
                 productName = ", " + product.productName;
             }
-            activityMap = FastMap.newInstance();
+            activityMap = HashMap.newInstance();
             activityMap.put("activity", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityRatingPostedLabel", UtilMisc.toMap(), locale));
             activityMap.put("activityDescription", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityRatingPostedInfo", UtilMisc.toMap("productId", productId, "internalName", internalName, "productName", productName, "productRating", productRating), locale));
             activityMap.put("activityDate", productReview.postedDateTime);
@@ -203,7 +203,7 @@ if(UtilValidate.isNotEmpty(partyId))
         {
             visitId = visit.visitId;
             initialRequest = visit.initialRequest; 
-            activityMap = FastMap.newInstance();
+            activityMap = HashMap.newInstance();
             activityMap.put("activity", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityVisitLabel", UtilMisc.toMap(), locale));
             activityMap.put("activityDescription", UtilProperties.getMessage("OSafeAdminUiLabels", "CustomerActivityVisitInfo", UtilMisc.toMap("visitId", visitId), locale));
             activityMap.put("activityDate", visit.fromDate);

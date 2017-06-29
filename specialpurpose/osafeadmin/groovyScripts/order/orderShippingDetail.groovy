@@ -13,8 +13,8 @@ import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 userLogin = session.getAttribute("userLogin");
 orderId = StringUtils.trimToEmpty(parameters.orderId);

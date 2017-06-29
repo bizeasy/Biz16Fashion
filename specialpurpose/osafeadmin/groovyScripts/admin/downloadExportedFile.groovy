@@ -9,8 +9,8 @@ import java.io.File;
 import java.io.RandomAccessFile;
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.base.util.string.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.base.util.UtilDateTime;

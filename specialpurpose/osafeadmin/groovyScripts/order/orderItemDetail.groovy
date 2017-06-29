@@ -15,8 +15,8 @@ import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.condition.EntityFunction;
 import java.math.BigDecimal;
 import org.apache.ofbiz.entity.GenericEntityException;
@@ -35,8 +35,8 @@ messageMap=[:];
 orderHeaderAdjustments = null;
 notesCount = 0;
 
-appliedPromoList = FastList.newInstance();
-appliedLoyaltyPointsList = FastList.newInstance();
+appliedPromoList = LinkedList.newInstance();
+appliedLoyaltyPointsList = LinkedList.newInstance();
 
 orderSubTotal = 0;
 if (UtilValidate.isNotEmpty(orderId))
@@ -74,7 +74,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		orderAdjustments = orderReadHelper.getAdjustments();
 		orderHeaderAdjustments = orderReadHelper.getOrderHeaderAdjustments();
 		headerAdjustmentsToShow = orderReadHelper.filterOrderAdjustments(orderHeaderAdjustments, true, false, false, false, false);
-		otherAdjustmentsList = FastList.newInstance();
+		otherAdjustmentsList = LinkedList.newInstance();
 
 		if (UtilValidate.isNotEmpty(headerAdjustmentsToShow) && headerAdjustmentsToShow.size() > 0)
 		{
@@ -87,7 +87,7 @@ if (UtilValidate.isNotEmpty(orderId))
 			}
 		}
 		otherAdjustmentsAmount = OrderReadHelper.calcOrderAdjustments(otherAdjustmentsList, orderSubTotal, true, false, false);
-		otherAdjustmentsList = FastList.newInstance();
+		otherAdjustmentsList = LinkedList.newInstance();
 		otherAdjustmentsList = EntityUtil.filterByAnd(orderAdjustments, [EntityCondition.makeCondition("productPromoId", EntityOperator.EQUALS, null)]);
 		otherAdjustmentsList = EntityUtil.filterByAnd(otherAdjustmentsList, [EntityCondition.makeCondition("orderAdjustmentTypeId", EntityOperator.NOT_EQUAL, "LOYALTY_POINTS")]);
 		otherAdjustmentsAmount = OrderReadHelper.calcOrderAdjustments(otherAdjustmentsList, orderSubTotal, true, false, false);
@@ -117,13 +117,13 @@ if (UtilValidate.isNotEmpty(orderId))
 				//if loyalty points adjustment then store info
 				if(adjustmentType.orderAdjustmentTypeId.equals("LOYALTY_POINTS"))
 				{
-					loyaltyPointsInfo = FastMap.newInstance();
+					loyaltyPointsInfo = HashMap.newInstance();
 					loyaltyPointsInfo.put("cartAdjustment", cartAdjustment);
 					loyaltyPointsInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 					appliedLoyaltyPointsList.add(loyaltyPointsInfo);
 				}
 				//if promo adjustment then store info
-				promoInfo = FastMap.newInstance();
+				promoInfo = HashMap.newInstance();
 				promoInfo.put("cartAdjustment", cartAdjustment);
 				promoCodeText = "";
 				productPromo = cartAdjustment.getRelatedOneCache("ProductPromo");

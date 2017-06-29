@@ -6,7 +6,7 @@ import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.party.contact.ContactHelper;
@@ -20,10 +20,10 @@ OrderNotes = null;
 shippingApplies = true;
 boolean allItemsApproved = false;
 boolean allItemsCompleted = false;
-List<String> approvedList = FastList.newInstance();
-List<String> completedList = FastList.newInstance();
-List<GenericValue> orderItems = FastList.newInstance();
-List<GenericValue> shipGroups = FastList.newInstance();
+List<String> approvedList = LinkedList.newInstance();
+List<String> completedList = LinkedList.newInstance();
+List<GenericValue> orderItems = LinkedList.newInstance();
+List<GenericValue> shipGroups = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(orderId)) 
 {
 	orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : orderId]);
@@ -142,7 +142,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	        context.pageTitle = UtilProperties.getMessage("OSafeAdminUiLabels","OrderStatusDetailTitle",messageMap, locale )
 	        context.generalInfoBoxHeading = UtilProperties.getMessage("OSafeAdminUiLabels","OrderDetailInfoHeading",messageMap, locale )
 	    }
-	    conditions = FastList.newInstance();
+	    conditions = LinkedList.newInstance();
 	    conditions.add(EntityCondition.makeCondition("statusTypeId", EntityOperator.EQUALS, "ORDER_STATUS"));
 	    conditions.add(EntityCondition.makeCondition("statusId", EntityOperator.IN, ["ORDER_APPROVED", "ORDER_CANCELLED","ORDER_COMPLETED"]));
 	    mainCond = EntityCondition.makeCondition(conditions, EntityOperator.AND);

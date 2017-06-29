@@ -35,7 +35,7 @@ product = null;
 if (UtilValidate.isNotEmpty(parameters.add_product_id)) 
 { 
     add_product_id = parameters.add_product_id;
-    //product = delegator.findByPrimaryKeyCache("Product", [productId : add_product_id]);
+    //product = EntityQuery.use(delegator).from("Product").where([productId : add_product_id]).cache().queryOne();
     product = EntityQuery.use(delegator).from("Product").where(UtilMisc.toMap("productId", add_product_id)).cache().queryOne();
 }
 

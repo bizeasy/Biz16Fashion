@@ -155,7 +155,7 @@ if(UtilValidate.isNotEmpty(storePartyList))
       if (!partyDetailExistsList.contains(partyId))
       {
     	  partyDetailExistsList.add(partyId);
-          //party = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+          //party = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();;
           party = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();
           if (UtilValidate.isNotEmpty(party)) 
           {        

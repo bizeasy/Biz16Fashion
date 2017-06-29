@@ -134,7 +134,7 @@ if (UtilValidate.isNotEmpty(orderId))
 
 	   placingCustomerOrderRoles = EntityQuery.use(delegator).from("OrderRole").where("orderId" , orderId, "roleTypeId" , roleTypeId).cache().queryList();
 	   placingCustomerOrderRole = EntityUtil.getFirst(placingCustomerOrderRoles);
-	   //placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
+	   //placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne();
 	   placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne());
    carrierShipmentMethod = ;
 	   billingAccount = orderHeader.getRelatedOne("BillingAccount",true);
@@ -315,7 +315,7 @@ if (UtilValidate.isNotEmpty(orderId))
 					   carrierPartyId = shipGroup.carrierPartyId;
 					   if(UtilValidate.isNotEmpty(shipmentMethodType))
 					   {
-						   //carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shipGroup.carrierPartyId));
+						   //carrier =  EntityQuery.use(delegator).from("PartyGroup").where([partyId : shipGroup.carrierPartyId]).cache().queryOne();
 						   carrier = EntityQuery.use(delegator).from("PartyGroup").where(UtilMisc.toMap("partyId", shipGroup.carrierPartyId)).cache().queryOne()
 						   if(UtilValidate.isNotEmpty(carrier))
 						   {

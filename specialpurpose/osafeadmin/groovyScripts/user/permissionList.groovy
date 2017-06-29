@@ -1,6 +1,6 @@
 package user;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -18,7 +18,7 @@ if (UtilValidate.isNotEmpty(securityGroups))
 //search filtering
 session = context.session;
 searchGroupId = StringUtils.trimToEmpty(parameters.searchGroupId);
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 
 // groupId
@@ -38,7 +38,7 @@ if (UtilValidate.isNotEmpty(exprs))
 
 orderBy = ["permissionId"];
 
-users=FastList.newInstance();
+users=LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
     users = delegator.findList("SecurityPermission",mainCond, null, orderBy, null, false);

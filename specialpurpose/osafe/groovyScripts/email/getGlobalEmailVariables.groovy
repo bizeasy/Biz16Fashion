@@ -195,7 +195,7 @@ if (UtilValidate.isNotEmpty(orderId))
 
 if (UtilValidate.isNotEmpty(partyId)) 
 {
-    //gvParty = delegator.findByPrimaryKeyCache("Party", [partyId : partyId]);
+    //gvParty = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();;
      gvParty = EntityQuery.use(delegator).from("Party").where([partyId : partyId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(gvParty)) 
     {

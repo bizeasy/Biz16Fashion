@@ -2,6 +2,7 @@ import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import java.util.LinkedList;
 import java.util.HashMap;
 import org.apache.ofbiz.osafe.util.Util;

@@ -12,8 +12,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.entity.util.*;

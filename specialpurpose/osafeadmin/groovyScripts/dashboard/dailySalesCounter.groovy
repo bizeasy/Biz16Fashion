@@ -7,7 +7,7 @@ import org.apache.ofbiz.base.util.UtilProperties;
 
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.*;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.party.party.PartyHelper;
@@ -46,7 +46,7 @@ void sumCol(GenericValue gv1, GenericValue gv2, String columnName)
 if(!OsafeAdminUtil.isProductStoreParmFalse(request,"ADM_SHOW_DAILY_COUNTER"))
 {
 	orderStatusIncDashboard = globalContext.get("ORDER_STATUS_INC_DASHBOARD");
-	List includedOrderStatusList = FastList.newInstance();
+	List includedOrderStatusList = LinkedList.newInstance();
 	if(UtilValidate.isNotEmpty(orderStatusIncDashboard))
 	{
 	    orderStatusIncDashboardList = StringUtil.split(orderStatusIncDashboard,",")

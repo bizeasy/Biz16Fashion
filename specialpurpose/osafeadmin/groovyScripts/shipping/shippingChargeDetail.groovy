@@ -3,8 +3,8 @@ package shipping;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.entity.GenericValue;
@@ -29,7 +29,7 @@ party.add("partyId");
 
 includeCountryOps = new EntityFindOptions();
 includeCountryOps.setDistinct(true);
-conditions = FastList.newInstance();
+conditions = LinkedList.newInstance();
 conditions.add(EntityCondition.makeCondition("roleTypeId", EntityOperator.EQUALS, "CARRIER"));
 mainCond = EntityCondition.makeCondition(conditions, EntityOperator.AND);
 

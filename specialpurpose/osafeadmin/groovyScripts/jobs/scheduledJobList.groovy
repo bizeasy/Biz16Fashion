@@ -8,8 +8,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
@@ -63,7 +63,7 @@ srchFinished=StringUtils.trimToEmpty(parameters.srchFinished);
 srchPending=StringUtils.trimToEmpty(parameters.srchPending);
 srchQueued=StringUtils.trimToEmpty(parameters.srchQueued);
 srchRunning=StringUtils.trimToEmpty(parameters.srchRunning);
-List infoMsgList = FastList.newInstance();
+List infoMsgList = LinkedList.newInstance();
 Boolean isValidDate = true;
 context.srchAll=srchAll;
 initializedCB = StringUtils.trimToEmpty(parameters.initializedCB);
@@ -87,11 +87,11 @@ nowTs = UtilDateTime.nowTimestamp();
 session = context.session;
 productStore = ProductStoreWorker.getProductStore(request);
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 context.userLogin=userLogin;
 
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 prodCond=null;
 statusCond=null;
@@ -261,7 +261,7 @@ if (UtilValidate.isNotEmpty(exprs))
 }
 
 // Review Status with CheckBox implementation
-statusExpr= FastList.newInstance();
+statusExpr= LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(srchCanceled))
 {
     statusExpr.add(EntityCondition.makeCondition("statusId", EntityOperator.EQUALS, "SERVICE_CANCELLED"));
@@ -313,7 +313,7 @@ if (UtilValidate.isNotEmpty(statusExpr))
 
 //orderBy = ["runTime"];
 
-scheduledJobs=FastList.newInstance();
+scheduledJobs=LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N" && isValidDate) 
 {
     scheduledJobs = delegator.findList("JobSandbox",mainCond, null, ["runTime DESC"], null, false); 

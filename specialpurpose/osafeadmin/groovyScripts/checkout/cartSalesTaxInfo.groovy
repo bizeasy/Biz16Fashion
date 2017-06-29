@@ -15,9 +15,9 @@ import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart.CartShipInfo;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart.CartShipInfo.CartShipItemInfo;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.Debug;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import com.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
@@ -30,9 +30,9 @@ shoppingCart = ShoppingCartEvents.getCartObject(request);
 
 if(UtilValidate.isNotEmpty(shoppingCart))
 {
-	appliedTaxList = FastList.newInstance();
+	appliedTaxList = LinkedList.newInstance();
 	int iShipInfoSize = shoppingCart.getShipInfoSize();
-	List cartShipTaxAdjustments = FastList.newInstance();
+	List cartShipTaxAdjustments = LinkedList.newInstance();
 	BigDecimal totalTaxPercent = BigDecimal.ZERO;
 	
 	
@@ -157,7 +157,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 			}
 			if(("N").equals(alreadyInList))
 			{
-				taxInfo = FastMap.newInstance();
+				taxInfo = HashMap.newInstance();
 				taxInfo.put("taxAuthorityRateSeqId", taxAuthorityRateSeqId);
 				taxInfo.put("amount", cartTaxAdjustment.amount);
 				taxAdjSourceBD = new BigDecimal(cartTaxAdjustment.sourcePercentage);

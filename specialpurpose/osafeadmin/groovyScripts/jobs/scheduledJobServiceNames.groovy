@@ -2,8 +2,8 @@ package jobs;
 
 import java.util.List;
 import java.util.Map;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.FileUtil;
 import org.apache.ofbiz.base.util.UtilMisc;
@@ -13,8 +13,8 @@ import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import com.osafe.services.OsafeManageXml;
 import org.apache.ofbiz.base.util.Debug;
 
-scheduledJobList = FastList.newInstance();
-scheduledJobListFromXml = FastList.newInstance();
+scheduledJobList = LinkedList.newInstance();
+scheduledJobListFromXml = LinkedList.newInstance();
 adminXmlPath = FlexibleStringExpander.expandString(UtilProperties.getPropertyValue("osafeAdmin.properties", "admin-xml-defintion-directory"), context);
 String scheduledJobListFilePath = FlexibleStringExpander.expandString(adminXmlPath + "/scheduled_job_names.xml", null);
 // Get the admin xml file

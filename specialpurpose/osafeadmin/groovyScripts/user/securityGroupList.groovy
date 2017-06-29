@@ -1,6 +1,6 @@
 package user;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -18,7 +18,7 @@ else
 
 srchSecurityGroup = StringUtils.trimToEmpty(parameters.srchSecurityGroup);
 
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 
 if(UtilValidate.isNotEmpty(srchSecurityGroup))
@@ -36,7 +36,7 @@ if(UtilValidate.isNotEmpty(exprs))
 
 orderBy = ["groupId"];
 
-securityGroups = FastList.newInstance();
+securityGroups = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
 	securityGroups = delegator.findList("SecurityGroup", mainCond, null, orderBy, null, false);

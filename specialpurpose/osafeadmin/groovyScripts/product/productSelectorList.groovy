@@ -1,6 +1,6 @@
 package product;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -50,7 +50,7 @@ productDve.addAlias("PR", "introductionDate", "introductionDate", null, null, nu
 productDve.addAlias("PR", "salesDiscontinuationDate", "salesDiscontinuationDate", null, null, null, null);
 
 //FieldsToSelect
-List productFields = FastList.newInstance();
+List productFields = LinkedList.newInstance();
 productFields.add("productId");
 productFields.add("internalName");
 productFields.add("isVirtual");
@@ -59,10 +59,10 @@ productFields.add("introductionDate");
 productFields.add("salesDiscontinuationDate");
 // set distinct
 productFindOpts = new EntityFindOptions(true, EntityFindOptions.TYPE_SCROLL_INSENSITIVE, EntityFindOptions.CONCUR_READ_ONLY, true);
-prodCond = FastList.newInstance();
-paramsExpr = FastList.newInstance();
-prodCtntExprDesc = FastList.newInstance();
-prodCtntExprName = FastList.newInstance();
+prodCond = LinkedList.newInstance();
+paramsExpr = LinkedList.newInstance();
+prodCtntExprDesc = LinkedList.newInstance();
+prodCtntExprName = LinkedList.newInstance();
 prodCtntCondDesc = null;
 
 if (UtilValidate.isNotEmpty(productId))
@@ -73,7 +73,7 @@ if (UtilValidate.isNotEmpty(productId))
 if (UtilValidate.isNotEmpty(productName))
 {
     prodNameList = delegator.findByAnd("ProductContentAndText", [productContentTypeId : "PRODUCT_NAME"]);
-    productIdListName = FastList.newInstance();
+    productIdListName = LinkedList.newInstance();
     if (UtilValidate.isNotEmpty(prodNameList))
     {
         for (GenericValue prodName : prodNameList)
@@ -96,7 +96,7 @@ if (UtilValidate.isNotEmpty(internalName))
 }
 
 // Reterive Only Virtual Product with CheckBox implementation
-virtualExpr= FastList.newInstance();
+virtualExpr= LinkedList.newInstance();
 virtSrchCond = null;
 mainCond = null;
 
@@ -130,7 +130,7 @@ else if((UtilValidate.isNotEmpty(srchFinishedGoodOnly) && UtilValidate.isNotEmpt
 //When Virtual and Variant are checked.
 else if(UtilValidate.isNotEmpty(srchVariantOnly) && UtilValidate.isNotEmpty(srchVirtualOnly) && UtilValidate.isEmpty(srchFinishedGoodOnly))
 {
-    condExpr= FastList.newInstance();
+    condExpr= LinkedList.newInstance();
     condExpr.add(EntityCondition.makeCondition("isVirtual", EntityOperator.EQUALS, "Y"));
     condExpr.add(EntityCondition.makeCondition("isVariant", EntityOperator.EQUALS, "Y"));
     virtualExpr.add(EntityCondition.makeCondition(condExpr, EntityOperator.OR));
@@ -141,13 +141,13 @@ if (UtilValidate.isNotEmpty(virtualExpr))
     virtSrchCond = EntityCondition.makeCondition(virtualExpr, EntityOperator.AND);
 }
 
-dateExpr= FastList.newInstance();
-introDateExpr= FastList.newInstance();
+dateExpr= LinkedList.newInstance();
+introDateExpr= LinkedList.newInstance();
 introDateExpr.add(EntityCondition.makeCondition("introductionDate", EntityOperator.LESS_THAN_EQUAL_TO, atTime));
 introDateExpr.add(EntityCondition.makeCondition("introductionDate", EntityOperator.EQUALS, null));
 dateExpr.add(EntityCondition.makeCondition(introDateExpr, EntityOperator.OR));
 
-discoDateExpr= FastList.newInstance();
+discoDateExpr= LinkedList.newInstance();
 discoDateExpr.add(EntityCondition.makeCondition("salesDiscontinuationDate", EntityOperator.GREATER_THAN, atTime));
 discoDateExpr.add(EntityCondition.makeCondition("salesDiscontinuationDate", EntityOperator.EQUALS, null));
 dateExpr.add(EntityCondition.makeCondition(discoDateExpr, EntityOperator.OR));
@@ -190,7 +190,7 @@ if (UtilValidate.isNotEmpty(dateCond))
 }
 
 eli = null;
-productSearchList=FastList.newInstance();
+productSearchList=LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
     eli = delegator.findListIteratorByCondition(productDve, mainCond, null, productFields, null, productFindOpts);

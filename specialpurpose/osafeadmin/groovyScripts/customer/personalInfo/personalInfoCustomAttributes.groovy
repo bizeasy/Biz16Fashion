@@ -6,10 +6,10 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.UtilHttp;
 import org.apache.ofbiz.base.util.UtilMisc;
 import com.osafe.services.OsafeManageXml;
-import javolution.util.FastMap;
+import java.util.HashMap;
 
 customPartyAttributeList = null;
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 svcCtx.put("useCache", "false");
 partyCustomAttributeListRes = dispatcher.runSync("getPartyCustomAttributeList", svcCtx);
 //CustomPartyAttributeServices.getPartyCustomAttributeList();

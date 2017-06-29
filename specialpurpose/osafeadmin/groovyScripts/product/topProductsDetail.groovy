@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import java.util.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.entity.util.*;
@@ -52,9 +52,9 @@ isValidDate = context.isValidDate;
 if(isValidDate)
 {
 // Top Products
-    List <GenericValue> topProductsList  = FastList.newInstance();
-    Map<String, GenericValue> allTopProductsMap = FastMap.newInstance();
-    Map<String, String> allTopProductsOrderMap = FastMap.newInstance();
+    List <GenericValue> topProductsList  = LinkedList.newInstance();
+    Map<String, GenericValue> allTopProductsMap = HashMap.newInstance();
+    Map<String, String> allTopProductsOrderMap = HashMap.newInstance();
     GenericValue workingReportProduct = null;
     String productId = null;
 
@@ -89,7 +89,7 @@ if(isValidDate)
 
     orderBy = UtilMisc.toList("-quantityOrdered");
     //FieldsToSelect
-    List topProductFields = FastList.newInstance();
+    List topProductFields = LinkedList.newInstance();
     topProductFields.add("productId");
     topProductFields.add("quantityOrdered");
     topProductFields.add("unitPrice");
@@ -112,7 +112,7 @@ if(isValidDate)
     dve.addMemberEntity("OT", "OrderRole");
     dve.addAliasAll("OT", ""); // no prefix
     dve.addViewLink("OH", "OT", Boolean.FALSE, UtilMisc.toList(new ModelKeyMap("orderId", "orderId")));
-    List fieldsToSelect = FastList.newInstance();
+    List fieldsToSelect = LinkedList.newInstance();
     fieldsToSelect.add("orderId");
     // set distinct on so we only get one row per order
     EntityFindOptions findOpts = new EntityFindOptions(true, EntityFindOptions.TYPE_SCROLL_INSENSITIVE, EntityFindOptions.CONCUR_READ_ONLY, true);
@@ -451,7 +451,7 @@ if(isValidDate)
     Map topProductContentWrappers = null;
     if (UtilValidate.isNotEmpty(topProductsList))
     {
-        topProductContentWrappers = FastMap.newInstance();
+        topProductContentWrappers = HashMap.newInstance();
         for (GenericValue topProduct: topProductsList) 
         {
             productId = topProduct.productId;

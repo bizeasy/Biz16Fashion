@@ -13,10 +13,10 @@ import org.apache.ofbiz.party.contact.*;
 import org.apache.ofbiz.product.inventory.InventoryWorker;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
 import org.apache.ofbiz.accounting.payment.*;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilDateTime;
 import com.osafe.util.OsafeAdminUtil;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilNumber;
 
 orderId = parameters.orderId;
@@ -26,7 +26,7 @@ session = context.session;
 svcCtx = session.getAttribute("orderPDFMap");
 if (UtilValidate.isEmpty(svcCtx)) 
 {
-    Map<String, Object> svcCtx = FastMap.newInstance();
+    Map<String, Object> svcCtx = HashMap.newInstance();
 }
 
 if (UtilValidate.isNotEmpty(orderId)) 
@@ -57,7 +57,7 @@ if (UtilValidate.isNotEmpty(svcCtx))
 		{
 			response.setHeader("Content-Disposition","attachment; filename=\"" + orderPDFName + ".pdf" + "\";");
 		}
-        Map<String, Object> upOrderHeaderCtx = FastMap.newInstance();
+        Map<String, Object> upOrderHeaderCtx = HashMap.newInstance();
         upOrderHeaderCtx.put("userLogin",userLogin);
         upOrderHeaderCtx.put("isDownloaded","Y");
         upOrderHeaderCtx.put("datetimeDownloaded",UtilDateTime.nowTimestamp());
@@ -71,7 +71,7 @@ if (UtilValidate.isNotEmpty(svcCtx))
         
             orderAttrIsDownloaded = delegator.findOne("OrderAttribute", ["orderId" : orderHeader.orderId, "attrName" : "IS_DOWNLOADED"], false);
         
-            Map<String, Object> isDownloadedOrderAttrCtx = FastMap.newInstance();
+            Map<String, Object> isDownloadedOrderAttrCtx = HashMap.newInstance();
             isDownloadedOrderAttrCtx.put("orderId", orderHeader.orderId);
             isDownloadedOrderAttrCtx.put("userLogin",userLogin);
             isDownloadedOrderAttrCtx.put("attrName","IS_DOWNLOADED");
@@ -86,7 +86,7 @@ if (UtilValidate.isNotEmpty(svcCtx))
             }
         
             orderAttrDateTimeDownloaded = delegator.findOne("OrderAttribute", ["orderId" : orderHeader.orderId, "attrName" : "DATETIME_DOWNLOADED"], false);
-            Map<String, Object> dateTimeDownloadedOrderAttrCtx = FastMap.newInstance();
+            Map<String, Object> dateTimeDownloadedOrderAttrCtx = HashMap.newInstance();
             dateTimeDownloadedOrderAttrCtx.put("orderId", orderHeader.orderId);
             dateTimeDownloadedOrderAttrCtx.put("userLogin",userLogin);
             dateTimeDownloadedOrderAttrCtx.put("attrName","DATETIME_DOWNLOADED");
@@ -149,8 +149,8 @@ if (UtilValidate.isNotEmpty(svcCtx))
 			shipGroupsSize = orderItemShipGroups.size();
 			
 			//This section will verify if each ship group has the same percentages applied for taxes, if so we can display them for each percentage
-			appliedTaxList = FastList.newInstance();
-			List orderAdjustmentsSalesTax = FastList.newInstance();
+			appliedTaxList = LinkedList.newInstance();
+			List orderAdjustmentsSalesTax = LinkedList.newInstance();
 			if(UtilValidate.isNotEmpty(orderAdjustments))
 			{
 				orderAdjustmentsSalesTax = EntityUtil.filterByAnd(orderAdjustments, UtilMisc.toMap("orderAdjustmentTypeId", "SALES_TAX"));
@@ -230,7 +230,7 @@ if (UtilValidate.isNotEmpty(svcCtx))
 						}
 						if(("N").equals(alreadyInList))
 						{
-							taxInfo = FastMap.newInstance();
+							taxInfo = HashMap.newInstance();
 							taxInfo.put("taxAuthorityRateSeqId", taxAuthorityRateSeqId);
 							taxInfo.put("amount", orderTaxAdjustment.amount);
 							taxAdjSourceBD = new BigDecimal(orderTaxAdjustment.sourcePercentage);

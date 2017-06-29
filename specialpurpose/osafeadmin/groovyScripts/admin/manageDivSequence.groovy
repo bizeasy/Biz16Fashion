@@ -6,8 +6,8 @@ import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilMisc;
 import com.osafe.services.OsafeManageXml;
 import org.apache.commons.lang.StringUtils;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.Set;
@@ -19,9 +19,9 @@ String searchString = StringUtils.trimToEmpty(parameters.screenType);
 currentMode=context.mode;
 if (UtilValidate.isNotEmpty(searchString))
 {
-    screenSearchList = FastList.newInstance();
-    allScreenSearchLis = FastList.newInstance();
-    searchRestrictionMap = FastMap.newInstance();
+    screenSearchList = LinkedList.newInstance();
+    allScreenSearchLis = LinkedList.newInstance();
+    searchRestrictionMap = HashMap.newInstance();
     searchRestrictionMap.put("screen", "Y");
     screenSearchList =  OsafeManageXml.getSearchListFromXmlFile(XmlFilePath, searchRestrictionMap, searchString, true, false);
     for(Map screenListMap : screenSearchList) 
@@ -40,8 +40,8 @@ if (UtilValidate.isNotEmpty(searchString))
     }
 
     // make group search list sorted by value
-    screenGroupSearchList = FastList.newInstance();
-    processedGroupList = FastList.newInstance();
+    screenGroupSearchList = LinkedList.newInstance();
+    processedGroupList = LinkedList.newInstance();
     for(Map screenListMap : screenSearchList) 
 	{
         if (!processedGroupList.contains(screenListMap.group)) 
@@ -71,7 +71,7 @@ if (UtilValidate.isNotEmpty(searchString))
 	
 	if("add".equalsIgnoreCase(currentMode))
 	{
-		emptyAddMap = FastMap.newInstance();
+		emptyAddMap = HashMap.newInstance();
 		screenSearchList.add(emptyAddMap);
 	}
 	

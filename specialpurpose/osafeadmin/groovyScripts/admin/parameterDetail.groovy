@@ -1,8 +1,8 @@
 package admin;
 
 import org.apache.ofbiz.base.util.UtilValidate;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.entity.util.EntityUtil;

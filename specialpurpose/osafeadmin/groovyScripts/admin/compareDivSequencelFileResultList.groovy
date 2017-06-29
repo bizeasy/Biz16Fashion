@@ -3,8 +3,8 @@ package admin;
 import com.osafe.services.OsafeManageXml;
 import java.util.Map;
 import java.util.List;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.base.util.string.*;
 import org.apache.commons.lang.StringUtils;
@@ -47,7 +47,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-compareDivSeqList = FastList.newInstance();
+compareDivSeqList = LinkedList.newInstance();
 tmpDir = FileUtil.getFile("runtime/tmp");
 uploadedFile = new File(tmpDir, context.uploadedFileName);
 
@@ -73,7 +73,7 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N") {
     }
     for (toMapEntry in divSeqToList) {
         if (initial || searchKeysNotInYourLabelFile.equals("Y")) {
-            compareDivSeqList.add(UtilMisc.toMap("key", toMapEntry.key,"screen",toMapEntry.screen, "fromMap", FastMap.newInstance(), "toMap", toMapEntry, "type", "2"));
+            compareDivSeqList.add(UtilMisc.toMap("key", toMapEntry.key,"screen",toMapEntry.screen, "fromMap", HashMap.newInstance(), "toMap", toMapEntry, "type", "2"));
         }
     }
 }

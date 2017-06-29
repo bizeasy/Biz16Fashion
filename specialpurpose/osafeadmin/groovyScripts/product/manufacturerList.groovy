@@ -1,6 +1,6 @@
 package user;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -19,7 +19,7 @@ else
 srchManufacturerId = StringUtils.trimToEmpty(parameters.srchManufacturerId);
 srchManufacturerName = StringUtils.trimToEmpty(parameters.srchManufacturerName);
 
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 
 if(UtilValidate.isNotEmpty(srchManufacturerId))
@@ -43,7 +43,7 @@ mainCond=prodCond;
 
 orderBy = ["partyId"];
 
-manufacturers = FastList.newInstance();
+manufacturers = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
 	manufacturers = delegator.findList("PartyRoleAndPartyDetail", mainCond, null, orderBy, null, false);

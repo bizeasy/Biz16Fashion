@@ -2,8 +2,8 @@ package customer;
 
 import java.util.List;
 import java.util.Map;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -35,9 +35,9 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-List<String> roleTypeIds = FastList.newInstance();
+List<String> roleTypeIds = LinkedList.newInstance();
 roleTypeIds.add("CUSTOMER");
-List<GenericValue> partyList = FastList.newInstance();
+List<GenericValue> partyList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(party))
 {
 	partyRelationships = party.getRelated("FromPartyRelationship");
@@ -50,7 +50,7 @@ if(UtilValidate.isNotEmpty(party))
 	changed = request.removeAttribute("party");
 }
 
-Map roleTypesDescMap = FastMap.newInstance();
+Map roleTypesDescMap = HashMap.newInstance();
 List<GenericValue> roleTypesDesc = delegator.findByAnd("RoleType", UtilMisc.toMap());
 for(GenericValue roleTypeDesc : roleTypesDesc)
 {

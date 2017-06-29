@@ -1,7 +1,7 @@
 package jobs;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.base.util.string.*;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 

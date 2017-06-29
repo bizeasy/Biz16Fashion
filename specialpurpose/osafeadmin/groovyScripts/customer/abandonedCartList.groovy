@@ -7,8 +7,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
@@ -65,11 +65,11 @@ nowTs = UtilDateTime.nowTimestamp();
 session = context.session;
 productStore = ProductStoreWorker.getProductStore(request);
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 context.userLogin=userLogin;
 
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 prodCond=null;
 statusCond=null;
@@ -119,7 +119,7 @@ anonItemsCond = EntityCondition.makeCondition([anonCond, itemsCond], EntityOpera
 regItemsCond = EntityCondition.makeCondition([regCond, itemsCond], EntityOperator.AND);
 
 // Radio buttons
-statusExpr= FastList.newInstance();
+statusExpr= LinkedList.newInstance();
 if("isAnonItems".equals(isAnon))
 {
     statusExpr.add(anonItemsCond);
@@ -177,7 +177,7 @@ if (UtilValidate.isNotEmpty(statusExpr))
    }
 }
 
-shoppingLists=FastList.newInstance();
+shoppingLists=LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N") 
 {
 	shoppingLists = delegator.findList("ShoppingList",mainCond, null, ["lastUpdatedStamp DESC"], null, false); 

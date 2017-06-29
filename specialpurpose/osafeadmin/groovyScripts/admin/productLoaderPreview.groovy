@@ -3,8 +3,8 @@ package admin;
 import java.util.List;
 import java.util.Map;
 import org.apache.ofbiz.base.util.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilValidate;
 
 String xlsFileName = parameters.uploadedXLSFile;
@@ -24,34 +24,34 @@ if(UtilValidate.isEmpty(parameters.uploadedXLSPath))
 String tempDir = xlsFilePath;
 String filePath = tempDir + xlsFileName;
 
-List productCatDataList = FastList.newInstance();
-List productDataList = FastList.newInstance();
-List productAssocDataList = FastList.newInstance();
-List productFacetGroupDataList = FastList.newInstance();
-List productFacetValueDataList = FastList.newInstance();
-List manufacturerDataList = FastList.newInstance();
-List productAttributesDataList = FastList.newInstance();
-List errorMessageList = FastList.newInstance();
+List productCatDataList = LinkedList.newInstance();
+List productDataList = LinkedList.newInstance();
+List productAssocDataList = LinkedList.newInstance();
+List productFacetGroupDataList = LinkedList.newInstance();
+List productFacetValueDataList = LinkedList.newInstance();
+List manufacturerDataList = LinkedList.newInstance();
+List productAttributesDataList = LinkedList.newInstance();
+List errorMessageList = LinkedList.newInstance();
 
 
-List prodCatErrorList = FastList.newInstance();
-List prodCatWarningList = FastList.newInstance();
-List productErrorList = FastList.newInstance();
-List productWarningList = FastList.newInstance();
-List productAssocErrorList = FastList.newInstance();
-List productAssocWarningList = FastList.newInstance();
-List productFacetGroupErrorList = FastList.newInstance();
-List productFacetGroupWarningList = FastList.newInstance();
-List productFacetValueErrorList = FastList.newInstance();
-List productFacetValueWarningList = FastList.newInstance();
-List productManufacturerErrorList = FastList.newInstance();
-List productManufacturerWarningList = FastList.newInstance();
-List productAttributesErrorList = FastList.newInstance();
-List productAttributesWarningList = FastList.newInstance();
+List prodCatErrorList = LinkedList.newInstance();
+List prodCatWarningList = LinkedList.newInstance();
+List productErrorList = LinkedList.newInstance();
+List productWarningList = LinkedList.newInstance();
+List productAssocErrorList = LinkedList.newInstance();
+List productAssocWarningList = LinkedList.newInstance();
+List productFacetGroupErrorList = LinkedList.newInstance();
+List productFacetGroupWarningList = LinkedList.newInstance();
+List productFacetValueErrorList = LinkedList.newInstance();
+List productFacetValueWarningList = LinkedList.newInstance();
+List productManufacturerErrorList = LinkedList.newInstance();
+List productManufacturerWarningList = LinkedList.newInstance();
+List productAttributesErrorList = LinkedList.newInstance();
+List productAttributesWarningList = LinkedList.newInstance();
 
 if (UtilValidate.isNotEmpty(filePath) && UtilValidate.isNotEmpty(xlsFileName)) 
 {
-	Map<String, Object> productDataListSvcCtx = FastMap.newInstance();
+	Map<String, Object> productDataListSvcCtx = HashMap.newInstance();
 	productDataListSvcCtx.put("productFilePath", xlsFilePath);
 	productDataListSvcCtx.put("productFileName", xlsFileName);
 	
@@ -69,7 +69,7 @@ if (UtilValidate.isNotEmpty(filePath) && UtilValidate.isNotEmpty(xlsFileName))
 	errorMessageList = UtilGenerics.checkList(productDataListSvcRes.get("errorMessageList"), String.class);
 }
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 svcCtx.put("productCatDataList", productCatDataList);
 svcCtx.put("productDataList", productDataList);
 svcCtx.put("productAssocDataList", productAssocDataList);

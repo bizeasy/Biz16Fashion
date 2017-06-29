@@ -6,8 +6,8 @@ import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.party.contact.ContactHelper;
@@ -34,7 +34,7 @@ BigDecimal priorShippingAdjustmentTotal = BigDecimal.ZERO;
 BigDecimal priorTaxAdjustmentTotal = BigDecimal.ZERO;
 BigDecimal priorMiscAdjustmentTotal = BigDecimal.ZERO;
 BigDecimal totalChargeRefunded = BigDecimal.ZERO;
-List<String> processedReturnIds = FastList.newInstance();
+List<String> processedReturnIds = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(orderHeader)) 
 {
 	
@@ -189,9 +189,9 @@ BigDecimal originalOrderItemSubtotal = BigDecimal.ZERO;
 BigDecimal cancelOrderItemSubtotal = BigDecimal.ZERO;
 BigDecimal returnOrderItemSubtotal = BigDecimal.ZERO;
 
-List orderItemSequenceIds = FastList.newInstance();
-Map returnItemSeqIdQuantityMap = FastMap.newInstance();
-List<GenericValue> returnItems = FastList.newInstance();
+List orderItemSequenceIds = LinkedList.newInstance();
+Map returnItemSeqIdQuantityMap = HashMap.newInstance();
+List<GenericValue> returnItems = LinkedList.newInstance();
 
 for(int i = 0; i < orderItems.size() ; i++)
 {
@@ -243,7 +243,7 @@ for(int i = 0; i < orderItems.size() ; i++)
 BigDecimal adjustmentAmountTotalShipping = BigDecimal.ZERO;
 if(statusId.equalsIgnoreCase("ORDER_CANCELLED"))
 {
-	Map svcShippingCtx = FastMap.newInstance();
+	Map svcShippingCtx = HashMap.newInstance();
 	svcShippingCtx.put("orderId", parameters.orderId);
 	svcShippingCtx.put("orderItemSequenceIds", orderItemSequenceIds);
 	
@@ -255,7 +255,7 @@ if(statusId.equalsIgnoreCase("ORDER_CANCELLED"))
 BigDecimal adjustmentAmountTotalTax = BigDecimal.ZERO;
 if(statusId.equalsIgnoreCase("ORDER_CANCELLED"))
 {
-	Map svcTaxCtx = FastMap.newInstance();
+	Map svcTaxCtx = HashMap.newInstance();
 	svcTaxCtx.put("orderId", parameters.orderId);
 	svcTaxCtx.put("orderItemSequenceIds", orderItemSequenceIds);
 
@@ -265,7 +265,7 @@ if(statusId.equalsIgnoreCase("ORDER_CANCELLED"))
 
 //Calculate the Adjust Promo Amount
 BigDecimal adjustmentAmountTotalPromo = BigDecimal.ZERO;
-Map svcPromoCtx = FastMap.newInstance();
+Map svcPromoCtx = HashMap.newInstance();
 svcPromoCtx.put("orderId", parameters.orderId);
 svcPromoCtx.put("orderItemSequenceIds", orderItemSequenceIds);
 

@@ -3,8 +3,8 @@ package promotion;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.entity.GenericValue;
@@ -32,7 +32,7 @@ if (UtilValidate.isNotEmpty(context.productStoreId))
 {
     context.productStoreShipmentMethList = delegator.findByAnd('ProductStoreShipmentMethView', [productStoreId: context.productStoreId], ['sequenceNumber']);
 }
-conditions = FastList.newInstance();
+conditions = LinkedList.newInstance();
 conditions.add(EntityCondition.makeCondition("enumTypeId", EntityOperator.EQUALS, "PROD_PROMO_PCAPPL"));
 conditions.add(EntityCondition.makeCondition("sequenceId", EntityOperator.IN, ["01", "02"]));
 mainCond = EntityCondition.makeCondition(conditions, EntityOperator.AND);
@@ -44,7 +44,7 @@ if (UtilValidate.isNotEmpty(productPromoApplEnums))
 }
 
 
-conditions = FastList.newInstance();
+conditions = LinkedList.newInstance();
 conditions.add(EntityCondition.makeCondition("enumTypeId", EntityOperator.EQUALS, "PROD_PROMO_IN_PARAM"));
 conditions.add(EntityCondition.makeCondition("sequenceId", EntityOperator.IN, ["01", "02", "03", "04", "16"]));
 mainCond = EntityCondition.makeCondition(conditions, EntityOperator.AND);
@@ -62,7 +62,7 @@ if (UtilValidate.isNotEmpty(condOperEnums))
     context.selectedCondOperEnum = "PPC_GT";
 }
 
-conditions = FastList.newInstance();
+conditions = LinkedList.newInstance();
 conditions.add(EntityCondition.makeCondition("enumTypeId", EntityOperator.EQUALS, "PROD_PROMO_ACTION"));
 conditions.add(EntityCondition.makeCondition("sequenceId", EntityOperator.NOT_IN, ["10"]));
 mainCond = EntityCondition.makeCondition(conditions, EntityOperator.AND);
@@ -197,7 +197,7 @@ if (UtilValidate.isNotEmpty(productPromoId))
              }
 
         }
-        Map<String, Object> svcCtx = FastMap.newInstance();
+        Map<String, Object> svcCtx = HashMap.newInstance();
         userLogin = session.getAttribute("userLogin");
         svcCtx.put("userLogin", userLogin);
         svcCtx.put("showAll", "N");
@@ -213,7 +213,7 @@ if (UtilValidate.isNotEmpty(productPromoId))
         
         if (UtilValidate.isNotEmpty(context.productPromoList))
         {
-            productPromoUsage = FastMap.newInstance();
+            productPromoUsage = HashMap.newInstance();
             // top promotion dynamic view entity
             DynamicViewEntity topPromotionDve = new DynamicViewEntity();
             topPromotionDve.addMemberEntity("OH", "OrderHeader");
@@ -232,7 +232,7 @@ if (UtilValidate.isNotEmpty(productPromoId))
 
             orderBy = UtilMisc.toList("-totalOrders");
             //FieldsToSelect
-            List topPromotionFields = FastList.newInstance();
+            List topPromotionFields = LinkedList.newInstance();
             topPromotionFields.add("totalOrders");
             topPromotionFields.add("productPromoCodeId");
             // set distinct

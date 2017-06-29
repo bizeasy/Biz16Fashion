@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.ofbiz.base.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
@@ -42,14 +42,14 @@ productStoreall = StringUtils.trimToEmpty(parameters.productStoreall);
 productId = StringUtils.trimToEmpty(parameters.productId);
 party=null;
 
-List infoMsgList = FastList.newInstance();
+List infoMsgList = LinkedList.newInstance();
 Boolean isValidDate = true;
 
 initializedCB = StringUtils.trimToEmpty(parameters.initializedCB);
 preRetrieved = StringUtils.trimToEmpty(parameters.preRetrieved);
 
 
-List<String> orderStatusIds = FastList.newInstance();
+List<String> orderStatusIds = LinkedList.newInstance();
 orderStatusIncSearch = globalContext.get("ORDER_STATUS_INC_SEARCH");
 
 if(UtilValidate.isNotEmpty(orderStatusIncSearch))
@@ -142,12 +142,12 @@ viewIndex = Integer.valueOf(parameters.viewIndex  ?: 1);
 viewSize = Integer.valueOf(parameters.viewSize ?: UtilProperties.getPropertyValue("osafeAdmin", "default-view-size"));
 
 // Order List
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 if (UtilValidate.isEmpty(productStoreall))
 {
-	List<String> lProductStoreId = FastList.newInstance();
+	List<String> lProductStoreId = LinkedList.newInstance();
 	lProductStoreId.add(globalContext.productStoreId);
 	svcCtx.put("productStoreId",lProductStoreId);
 }
@@ -229,7 +229,7 @@ if (UtilValidate.isNotEmpty(srchStorePickup))
     svcCtx.put("attrValue", "STORE_PICKUP");
 }
 
-List orderContactMechIds = FastList.newInstance();
+List orderContactMechIds = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(orderEmail)) 
 {
     context.orderEmail = orderEmail;
@@ -275,7 +275,7 @@ svcCtx.put("showAll", "N");
 
 Map<String, Object> svcRes;
 
-List<GenericValue> orderList = FastList.newInstance();
+List<GenericValue> orderList = LinkedList.newInstance();
 
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N" && isValidDate) 
 {

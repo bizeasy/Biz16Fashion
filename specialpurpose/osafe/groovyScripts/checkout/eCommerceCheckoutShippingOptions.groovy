@@ -105,7 +105,7 @@ if (UtilValidate.isNotEmpty(cart))
 	        returnShippingMethods = UtilMisc.makeListWritable(carrierShipmentMethodList);
 	        for (GenericValue method: carrierShipmentMethodList)
 			{
-	        	//psShipmentMeth = delegator.findByPrimaryKeyCache("ProductStoreShipmentMeth", [productStoreShipMethId : method.productStoreShipMethId]);
+	        	//psShipmentMeth = EntityQuery.use(delegator).from("ProductStoreShipmentMeth").where(UtilMisc.toMap("productStoreShipMethId", method.productStoreShipMethId)).cache().queryOne();
 				psShipmentMeth = EntityQuery.use(delegator).from("ProductStoreShipmentMeth").where(UtilMisc.toMap("productStoreShipMethId", method.productStoreShipMethId)).cache().queryOne();
 				allowPoBoxAddr = psShipmentMeth.getString("allowPoBoxAddr");
 				minWeight = psShipmentMeth.getBigDecimal("minWeight");
@@ -127,7 +127,7 @@ if (UtilValidate.isNotEmpty(cart))
 					if(UtilValidate.isNotEmpty(shipmentCustomMethodId))
 					{
 						//get the shipment CUSTOM METHOD
-						//shipmentCustomMeth = delegator.findByPrimaryKeyCache("CustomMethod", [customMethodId : shipmentCustomMethodId]);
+						//shipmentCustomMeth = EntityQuery.use(delegator).from("CustomMethod").where([customMethodId : shipmentCustomMethodId]).cache().queryOne();;
 						shipmentCustomMeth = EntityQuery.use(delegator).from("CustomMethod").where(UtilMisc.toMap("customMethodId", shipmentCustomMethodId.productStoreShipMethId)).cache().queryOne();
 						if(UtilValidate.isNotEmpty(shipmentCustomMeth))
 						{

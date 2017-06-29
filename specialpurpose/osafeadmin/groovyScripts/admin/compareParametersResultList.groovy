@@ -3,8 +3,8 @@ package admin;
 import com.osafe.services.OsafeManageXml;
 import java.util.Map;
 import java.util.List;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.base.util.string.*;
 import org.apache.commons.lang.StringUtils;
@@ -48,7 +48,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-compareParamList = FastList.newInstance();
+compareParamList = LinkedList.newInstance();
 tmpDir = FileUtil.getFile("runtime/tmp");
 uploadedFile = new File(tmpDir, context.uploadedFileName);
 
@@ -85,7 +85,7 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
     {
         if (initial || searchParamKeysNotInYourDatabase.equals("Y")) 
         {
-            compareParamList.add(UtilMisc.toMap("key", toMapEntry.parmKey, "fromMap", FastMap.newInstance(), "toMap", toMapEntry, "type", "2"));
+            compareParamList.add(UtilMisc.toMap("key", toMapEntry.parmKey, "fromMap", HashMap.newInstance(), "toMap", toMapEntry, "type", "2"));
         }
     }
 }

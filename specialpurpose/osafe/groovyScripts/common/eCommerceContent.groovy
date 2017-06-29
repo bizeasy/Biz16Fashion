@@ -13,7 +13,7 @@ import org.apache.ofbiz.entity.util.EntityQuery;
 
 if (UtilValidate.isNotEmpty(context.contentId) && UtilValidate.isNotEmpty(context.productStoreId)) 
 {
-    //xContentXref = delegator.findByPrimaryKeyCache("XContentXref", [bfContentId : context.contentId, productStoreId : context.productStoreId]);
+    //xContentXref = EntityQuery.use(delegator).from("XContentXref").where([bfContentId : context.contentId, productStoreId : context.productStoreId]).cache().queryOne();;
     xContentXref = EntityQuery.use(delegator).from("XContentXref").where([bfContentId : context.contentId, productStoreId : context.productStoreId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(xContentXref))
     {

@@ -31,7 +31,7 @@ import org.apache.ofbiz.entity.transaction.*;
 import org.apache.ofbiz.entity.condition.*;
 import com.osafe.util.OsafeAdminUtil;
 import org.apache.commons.lang.StringUtils;
-import javolution.util.FastList;
+import java.util.LinkedList;
 
 tmpDir = FileUtil.getFile("runtime/tmp");
 exportFileName = "bigfish-content-export"+(OsafeAdminUtil.convertDateTimeFormat(UtilDateTime.nowTimestamp(), "yyyyMMdd-HHmm"))+".xml";
@@ -65,8 +65,8 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-passedContentTypeIds = FastList.newInstance();
-passedProdCatContentTypeIds = FastList.newInstance();
+passedContentTypeIds = LinkedList.newInstance();
+passedProdCatContentTypeIds = LinkedList.newInstance();
 
 if(UtilValidate.isNotEmpty(exportContentLibrary)) 
 {
@@ -155,7 +155,7 @@ context.passedProdCatContentTypeIds = passedProdCatContentTypeIds;
 numberOfContentTypeIds = passedContentTypeIds?.size() ?: 0;
 context.numberOfContentTypeIds = numberOfContentTypeIds;
 
-partyContactMechPurposeTypeExpr = FastList.newInstance();
+partyContactMechPurposeTypeExpr = LinkedList.newInstance();
 partyContactMechPurposeTypeExpr.add(EntityCondition.makeCondition("contactMechPurposeTypeId", EntityOperator.EQUALS, "BILLING_LOCATION"));
 partyContactMechPurposeTypeExpr.add(EntityCondition.makeCondition("contactMechPurposeTypeId", EntityOperator.EQUALS, "PAYMENT_LOCATION"));
 partyContactMechPurposeTypeCond = EntityCondition.makeCondition(partyContactMechPurposeTypeExpr, EntityOperator.OR);

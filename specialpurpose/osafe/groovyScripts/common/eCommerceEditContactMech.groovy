@@ -26,7 +26,7 @@ if (UtilValidate.isNotEmpty(postalAddressData))
 
 if (UtilValidate.isNotEmpty(parameters.CUSTOMER_STATE)) 
 {
-    //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.CUSTOMER_STATE]);
+    //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.CUSTOMER_STATE]).cache().queryOne();
     geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.CUSTOMER_STATE]).cache().queryOne();
     if (UtilValidate.isNotEmpty(geoValue)) 
     {
@@ -46,7 +46,7 @@ if (UtilValidate.isNotEmpty(contactMech))
     for (GenericValue link: contactMechLinkList)
     {
         contactMechIdTo = link.contactMechIdTo
-        //contactMech = delegator.findByPrimaryKeyCache("ContactMech", [contactMechId : contactMechIdTo]);
+        //contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId : contactMechIdTo]).cache().queryOne();
         contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId : contactMechIdTo]).cache().queryOne();
         if(UtilValidate.isNotEmpty(contactMech)) 
         {

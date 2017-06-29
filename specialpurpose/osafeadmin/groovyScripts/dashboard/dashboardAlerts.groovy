@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import java.util.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.entity.util.*;
@@ -17,8 +17,8 @@ import org.apache.ofbiz.entity.GenericValue;
 //ALERTS
 displayAlerts = "N";		
 //JobSandbox warning
-alertMap = FastMap.newInstance();
-alertMapList = FastList.newInstance();
+alertMap = HashMap.newInstance();
+alertMapList = LinkedList.newInstance();
 entityRowCount = delegator.findCountByCondition("JobSandbox",null, null, null);
 parameters_alerts = UtilProperties.getResourceBundleMap("parameters_alerts.xml", locale);
 long alertJobSandboxRowsLong = 100000;
@@ -47,7 +47,7 @@ else
 alertMapList.add(alertMap);
 
 //alert info
-alertMap = FastMap.newInstance();
+alertMap = HashMap.newInstance();
 alertMap.put("infoMessage", uiLabelMap.AlertInfo);
 alertMap.put("actionPath", uiLabelMap.AlertActionPathInfo);
 alertMap.put("action", "adminToolDetail?detailScreen=manageBigfishParameter");

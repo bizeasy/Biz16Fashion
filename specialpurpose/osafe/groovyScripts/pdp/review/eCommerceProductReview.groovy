@@ -50,7 +50,7 @@ if((UtilValidate.isNotEmpty(reviewMethod)) && (reviewMethod.equalsIgnoreCase("BI
         if (UtilValidate.isNotEmpty(virtualProductId)) 
         {
             productId = virtualProductId;
-            //gvProduct = delegator.findByPrimaryKeyCache("Product", [productId : productId]);
+            //gvProduct = EntityQuery.use(delegator).from("Product").where([productId : productId]).cache().queryOne();
             gvProduct = EntityQuery.use(delegator).from("Product").where([productId : productId]).cache().queryOne();
         }
         

@@ -1,6 +1,6 @@
 package catalog;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -27,7 +27,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-paramsExpr = FastList.newInstance();
+paramsExpr = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(srchPriceRuleName))
 {
     paramsExpr.add(EntityCondition.makeCondition(EntityFunction.UPPER_FIELD("ruleName"),
@@ -35,7 +35,7 @@ if (UtilValidate.isNotEmpty(srchPriceRuleName))
     context.srchPriceRuleName=srchPriceRuleName;
 }
 orderBy = ["fromDate"];
-List<GenericValue> priceRuleList = FastList.newInstance();
+List<GenericValue> priceRuleList = LinkedList.newInstance();
 
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {

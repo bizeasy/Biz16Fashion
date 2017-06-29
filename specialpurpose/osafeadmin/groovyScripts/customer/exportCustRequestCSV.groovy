@@ -5,11 +5,11 @@ import org.apache.ofbiz.base.util.UtilDateTime;
 import com.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.GenericValue;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 userLogin = session.getAttribute("userLogin");
-custRequestList=FastList.newInstance();
+custRequestList=LinkedList.newInstance();
 custRequestCond = session.getAttribute("custRequestCond");
 isDownloaded = session.getAttribute("custRequestCondIsDownload");
 lastName = session.getAttribute("custRequestCondLastName");
@@ -21,7 +21,7 @@ if (UtilValidate.isNotEmpty(lCustRequest))
     	for (GenericValue custRequest: lCustRequest) 
     	{
            custRequestAttrList = custRequest.getRelated("CustRequestAttribute");
-           custRequestAttrMap = FastMap.newInstance();
+           custRequestAttrMap = HashMap.newInstance();
            if (UtilValidate.isNotEmpty(custRequestAttrList))
            {
               attrlIter = custRequestAttrList.iterator();
@@ -76,7 +76,7 @@ if (UtilValidate.isNotEmpty(custRequestList))
     for(GenericValue custRequest : custRequestList)
     {
         custRequestId = custRequest.custRequestId;
-        Map<String, Object> updateCustReqAttrCtx = FastMap.newInstance();
+        Map<String, Object> updateCustReqAttrCtx = HashMap.newInstance();
         updateCustReqAttrCtx.put("userLogin",userLogin);
         updateCustReqAttrCtx.put("custRequestId",custRequestId);
         updateCustReqAttrCtx.put("attrName","IS_DOWNLOADED");

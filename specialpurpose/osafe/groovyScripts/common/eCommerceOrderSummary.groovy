@@ -103,7 +103,7 @@ if (UtilValidate.isNotEmpty(shoppingCart))
 		}
 		else
 		{
-			//carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shoppingCart.getCarrierPartyId()));
+			//carrier =  EntityQuery.use(delegator).from("PartyGroup").where(UtilMisc.toMap("partyId", shoppingCart.getCarrierPartyId())).cache().queryOne();
 			carrier =  EntityQuery.use(delegator).from("PartyGroup").where([partyId :shoppingCart.getCarrierPartyId()]).cache().queryOne();
 			if(UtilValidate.isNotEmpty(carrier))
 			{

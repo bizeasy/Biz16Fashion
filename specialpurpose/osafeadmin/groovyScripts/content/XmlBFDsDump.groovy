@@ -29,7 +29,7 @@ import org.apache.ofbiz.entity.model.*;
 import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.entity.transaction.*;
 import org.apache.ofbiz.entity.condition.*;
-import javolution.util.FastList;
+import java.util.LinkedList;
 
 outpath = parameters.outpath;
 filename = "c:/clients/bigfish/moda/test.xml";
@@ -70,7 +70,7 @@ if (maxRecStr) {
 }
 orderBy = ["contentId"];
 spotListMenuId=context.spotListMenuId;
-List contentAssocList = FastList.newInstance();
+List contentAssocList = LinkedList.newInstance();
 context.userLoginId = userLogin.userLoginId;
 passedEntityNames = new LinkedHashSet();
 passedEntityNames.add("Content");
@@ -81,12 +81,12 @@ contentCond = null;
 dataResourceCond = null;
 if(UtilValidate.isNotEmpty(spotListMenuId))
  {
-	List conds = FastList.newInstance();
+	List conds = LinkedList.newInstance();
 	conds.add(EntityCondition.makeCondition("contentId", spotListMenuId));
 	contentAssocList = delegator.findList("ContentAssoc",EntityCondition.makeCondition(conds), null, orderBy, null, false);
     if (UtilValidate.isNotEmpty(contentAssocList))
      {
-       condsExpr = FastList.newInstance();
+       condsExpr = LinkedList.newInstance();
        List condExprList = [];
        List dataResourceExprList = [];
        for (GenericValue contentAssoc: contentAssocList) 

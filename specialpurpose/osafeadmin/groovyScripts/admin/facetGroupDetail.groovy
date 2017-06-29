@@ -3,8 +3,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.EntityFunction;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import javolution.util.FastList;
-import javolution.util.FastMap
+import java.util.LinkedList;
+import java.util.HashMap
 
 import org.apache.ofbiz.base.util.UtilMisc
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -16,7 +16,7 @@ rearrangeSeq = false;
 if(UtilValidate.isNotEmpty(productCategoryId))
 {
 	// Create Facet group for category, price and rating if not exist
-    createFeatureGroupCtx = FastMap.newInstance();
+    createFeatureGroupCtx = HashMap.newInstance();
     createFeatureGroupCtx.put("userLogin", userLogin);
 
     facetGroupCategory = delegator.findByPrimaryKey("ProductFeatureGroup", UtilMisc.toMap("productFeatureGroupId","FACET_GROUP_CATEGORY"));
@@ -43,7 +43,7 @@ if(UtilValidate.isNotEmpty(productCategoryId))
         createFeatureGroupRes = dispatcher.runSync("createFeatureGroup", createFeatureGroupCtx);
     }
     
-    createProductFeatureCatGrpApplCtx = FastMap.newInstance();
+    createProductFeatureCatGrpApplCtx = HashMap.newInstance();
     createProductFeatureCatGrpApplCtx.put("productCategoryId", productCategoryId);
     createProductFeatureCatGrpApplCtx.put("userLogin", userLogin);
 
@@ -75,7 +75,7 @@ if(UtilValidate.isNotEmpty(productCategoryId))
     }
 }
 
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 
 // productFeatureGroupId

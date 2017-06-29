@@ -1,7 +1,7 @@
 package user;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -20,13 +20,13 @@ context.viewSize = viewSize;
 
 groupId = parameters.groupId;
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 
-List contentList = FastList.newInstance();
+List contentList = LinkedList.newInstance();
 context.groupId = userLogin.groupId;
 
 // groupId

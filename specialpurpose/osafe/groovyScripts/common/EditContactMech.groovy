@@ -145,7 +145,7 @@ if (UtilValidate.isNotEmpty(telecomNumberData))
 // load the geo names for selected countries and states/regions
 if (parameters.countryGeoId) 
 {
-    //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.countryGeoId]);
+    //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.countryGeoId]).cache().queryOne();
     geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.countryGeoId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(geoValue)) 
     {
@@ -173,7 +173,7 @@ if (parameters.stateProvinceGeoId)
 } 
 else if (postalAddressData?.stateProvinceGeoId) 
 {
-    //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+    //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
     geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
     if (UtilValidate.isNotEmpty(geoValue))
     {

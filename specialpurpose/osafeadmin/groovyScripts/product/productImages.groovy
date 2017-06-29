@@ -1,6 +1,6 @@
 package product;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.UtilProperties;
@@ -41,14 +41,14 @@ if (UtilValidate.isNotEmpty(parameters.productId))
     	Debug.logError(nfe, nfe.getMessage(),"");
     	totAltImg = 4;
     }
-    maxAltImages = FastList.newInstance();
+    maxAltImages = LinkedList.newInstance();
     for(imgNo = 1; imgNo <= totAltImg; imgNo++)
     {
     	maxAltImages.add(imgNo.toString());
     }
     context.maxAltImages = maxAltImages;
     
-    maxAattachs = FastList.newInstance();
+    maxAattachs = LinkedList.newInstance();
     for(attachNo = 1; attachNo <= 3; attachNo++)
     {
     	maxAattachs.add(attachNo.toString());

@@ -1,7 +1,7 @@
 package admin;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.base.util.UtilMisc;
@@ -11,7 +11,7 @@ import org.apache.ofbiz.entity.condition.*;
 import org.apache.ofbiz.entity.model.DynamicViewEntity;
 import org.apache.ofbiz.entity.util.EntityFindOptions;
 
-jobStatusAnalysisList = FastList.newInstance();
+jobStatusAnalysisList = LinkedList.newInstance();
 
 now = UtilDateTime.nowTimestamp();
 thirtyDaysAgoTime = UtilDateTime.addDaysToTimestamp(now, 30 * -1);
@@ -27,7 +27,7 @@ dynamicView.addAlias("JSB", "count", "serviceName", null, null, null, "count");
 orderBy = UtilMisc.toList("serviceName");
 
 // list of fields to select
-fieldsToSelect = FastList.newInstance();
+fieldsToSelect = LinkedList.newInstance();
 fieldsToSelect.add("serviceName");
 fieldsToSelect.add("count");
 
@@ -147,7 +147,7 @@ if (eli != null)
     catch (GenericEntityException e) {}
 }
 
-jobStatusAnalysis = FastMap.newInstance();
+jobStatusAnalysis = HashMap.newInstance();
 jobStatusAnalysis.put("status",uiLabelMap.FinishedExclLabel);
 jobStatusAnalysis.put("statusId", "SERVICE_FINISHED");
 jobStatusAnalysis.put("result", jobsFinishedExclList);
@@ -161,7 +161,7 @@ while (UtilValidate.isNotEmpty(listIter) && listIter.hasNext())
 jobStatusAnalysis.put("rowCount",rowCount);
 jobStatusAnalysisList.add(jobStatusAnalysis);
 
-jobStatusAnalysis = FastMap.newInstance();
+jobStatusAnalysis = HashMap.newInstance();
 jobStatusAnalysis.put("status",uiLabelMap.FinishedWithinLabel);
 jobStatusAnalysis.put("statusId", "SERVICE_FINISHED");
 jobStatusAnalysis.put("result", jobsFinishedWithinList);
@@ -175,7 +175,7 @@ while (UtilValidate.isNotEmpty(listIter) && listIter.hasNext())
 jobStatusAnalysis.put("rowCount",rowCount);
 jobStatusAnalysisList.add(jobStatusAnalysis);
 
-jobStatusAnalysis = FastMap.newInstance();
+jobStatusAnalysis = HashMap.newInstance();
 jobStatusAnalysis.put("status",uiLabelMap.FailedLabel);
 jobStatusAnalysis.put("statusId", "SERVICE_FAILED");
 jobStatusAnalysis.put("result",jobsFailedList);
@@ -189,7 +189,7 @@ while (UtilValidate.isNotEmpty(listIter) && listIter.hasNext())
 jobStatusAnalysis.put("rowCount",rowCount);
 jobStatusAnalysisList.add(jobStatusAnalysis);
 
-jobStatusAnalysis = FastMap.newInstance();
+jobStatusAnalysis = HashMap.newInstance();
 jobStatusAnalysis.put("status",uiLabelMap.CrashedLabel);
 jobStatusAnalysis.put("statusId", "SERVICE_CRASHED");
 jobStatusAnalysis.put("result", jobsCrashedList);
@@ -203,7 +203,7 @@ while (UtilValidate.isNotEmpty(listIter) && listIter.hasNext())
 jobStatusAnalysis.put("rowCount",rowCount);
 jobStatusAnalysisList.add(jobStatusAnalysis);
 
-jobStatusAnalysis = FastMap.newInstance();
+jobStatusAnalysis = HashMap.newInstance();
 jobStatusAnalysis.put("status",uiLabelMap.QueuedLabel);
 jobStatusAnalysis.put("statusId", "SERVICE_QUEUED");
 jobStatusAnalysis.put("result",jobsQueuedList);
@@ -217,7 +217,7 @@ while (UtilValidate.isNotEmpty(listIter) && listIter.hasNext())
 jobStatusAnalysis.put("rowCount",rowCount);
 jobStatusAnalysisList.add(jobStatusAnalysis);
 
-jobStatusAnalysis = FastMap.newInstance();
+jobStatusAnalysis = HashMap.newInstance();
 jobStatusAnalysis.put("status",uiLabelMap.RunningLabel);
 jobStatusAnalysis.put("statusId", "SERVICE_RUNNING");
 jobStatusAnalysis.put("result",jobsRunningList);
@@ -231,7 +231,7 @@ while (UtilValidate.isNotEmpty(listIter) && listIter.hasNext())
 jobStatusAnalysis.put("rowCount",rowCount);
 jobStatusAnalysisList.add(jobStatusAnalysis);
 
-jobStatusAnalysis = FastMap.newInstance();
+jobStatusAnalysis = HashMap.newInstance();
 jobStatusAnalysis.put("status",uiLabelMap.CancelledLabel);
 jobStatusAnalysis.put("statusId", "SERVICE_CANCELLED");
 jobStatusAnalysis.put("result", jobsCancelledList);
@@ -245,7 +245,7 @@ while (UtilValidate.isNotEmpty(listIter) && listIter.hasNext())
 jobStatusAnalysis.put("rowCount",rowCount);
 jobStatusAnalysisList.add(jobStatusAnalysis);
 
-jobStatusAnalysis = FastMap.newInstance();
+jobStatusAnalysis = HashMap.newInstance();
 jobStatusAnalysis.put("status",uiLabelMap.PendingLabel);
 jobStatusAnalysis.put("statusId", "SERVICE_PENDING");
 jobStatusAnalysis.put("result",jobsPendingList);

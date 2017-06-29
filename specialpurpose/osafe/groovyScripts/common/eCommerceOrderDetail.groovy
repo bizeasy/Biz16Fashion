@@ -59,7 +59,7 @@ for (GenericValue contactMech : shippingContactMechList)
         for (GenericValue link: contactMechLinkList)
         {
             contactMechIdTo = link.contactMechIdTo
-            //contactMech = delegator.findByPrimaryKeyCache("ContactMech", [contactMechId : contactMechIdTo]);
+            //contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId : contactMechIdTo]).cache().queryOne();
             contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId :contactMechIdTo]).cache().queryOne();
             phonePurposeList  = EntityUtil.filterByDate(contactMech.getRelated("PartyContactMechPurpose",null,null,true), true);
             partyContactMechPurpose = EntityUtil.getFirst(phonePurposeList)
@@ -220,7 +220,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	
 		placingCustomerOrderRoles = EntityQuery.use(delegator).from("OrderRole").where("orderId",orderId, "roleTypeId", roleTypeId).cache().queryList();
 		placingCustomerOrderRole = EntityUtil.getFirst(placingCustomerOrderRoles);
-		//placingCustomerPerson = placingCustomerOrderRole == null ? null : delegator.findByPrimaryKeyCache("Person", [partyId : placingCustomerOrderRole.partyId]);
+		//placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne();
 		placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId :placingCustomerOrderRole.partyId]).cache().queryOne());
 		billingAccount = orderHeader.getRelatedOne("BillingAccount",true);
 	
@@ -358,7 +358,7 @@ if (UtilValidate.isNotEmpty(orderId))
 						carrierPartyId = shipGroup.carrierPartyId;
 						if(UtilValidate.isNotEmpty(shipmentMethodType))
 						{
-							//carrier =  delegator.findByPrimaryKeyCache("PartyGroup", UtilMisc.toMap("partyId", shipGroup.carrierPartyId));
+							//carrier =  EntityQuery.use(delegator).from("PartyGroup").where([partyId : shipGroup.carrierPartyId]).cache().queryOne();
 							carrier =  EntityQuery.use(delegator).from("PartyGroup").where([partyId :shipGroup.carrierPartyId]).cache().queryOne();
 							
 							if(UtilValidate.isNotEmpty(carrier))

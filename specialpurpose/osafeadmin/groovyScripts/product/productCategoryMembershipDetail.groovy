@@ -5,7 +5,7 @@ import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.*;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.service.LocalDispatcher;
 import org.apache.ofbiz.entity.condition.EntityCondition;

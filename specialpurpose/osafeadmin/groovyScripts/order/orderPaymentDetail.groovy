@@ -9,7 +9,7 @@ import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.order.order.OrderReadHelper;
 import com.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.entity.GenericValue;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilFormatOut;
 
 userLogin = session.getAttribute("userLogin");
@@ -37,7 +37,7 @@ if (UtilValidate.isNotEmpty(orderId))
 
 if(UtilValidate.isNotEmpty(orderId))
 {
-    List summaryPaymentInfo = FastList.newInstance();
+    List summaryPaymentInfo = LinkedList.newInstance();
     //Fetching Data For PAYMENT METHOD INFO && PAYMENT PREFERENCE section(credit card or paypal)
     if (UtilValidate.isNotEmpty(parameters.orderPaymentPreferenceId)) 
     {

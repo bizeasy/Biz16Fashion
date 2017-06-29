@@ -6,8 +6,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import com.osafe.util.Util;
 import org.apache.commons.lang.StringUtils;
@@ -59,7 +59,7 @@ preRetrieved = StringUtils.trimToEmpty(parameters.preRetrieved);
 fromDateShort = StringUtils.trimToEmpty(parameters.from);
 toDateShort = StringUtils.trimToEmpty(parameters.to);
 statusId = StringUtils.trimToEmpty(parameters.status);
-List infoMsgList = FastList.newInstance();
+List infoMsgList = LinkedList.newInstance();
 Boolean isValidDate = true;
 if (UtilValidate.isNotEmpty(preRetrieved))
 {
@@ -79,11 +79,11 @@ nowTs = UtilDateTime.nowTimestamp();
 session = context.session;
 productStore = ProductStoreWorker.getProductStore(request);
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 context.userLogin=userLogin;
 
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 prodCond=null;
 statusCond=null;
@@ -140,7 +140,7 @@ if (UtilValidate.isNotEmpty(exprs))
 }
 
 // Review Status with CheckBox implementation
-statusExpr= FastList.newInstance();
+statusExpr= LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(srchReviewPend))
 {
     statusExpr.add(EntityCondition.makeCondition("statusId", EntityOperator.EQUALS, "PRR_PENDING"));
@@ -161,7 +161,7 @@ if(UtilValidate.isNotEmpty(srchReviewReject))
 }
 
 //Considering Stars Condition
-starsExpr= FastList.newInstance();
+starsExpr= LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(searchOneStar))
 {
     starsExpr.add(EntityCondition.makeCondition("productRating", EntityOperator.EQUALS, new BigDecimal("1")));
@@ -184,7 +184,7 @@ if(UtilValidate.isNotEmpty(searchFiveStars))
 }
 
 //Considering Date Condition
-dateExpr= FastList.newInstance();
+dateExpr= LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(fromDateShort))
 {
     if(OsafeAdminUtil.isDateTime(fromDateShort, entryDateTimeFormat))
@@ -274,13 +274,13 @@ if(UtilValidate.isNotEmpty(searchCond) && UtilValidate.isEmpty(mainCond))
 
 orderBy = ["productReviewId"];
 
-productReviews=FastList.newInstance();
+productReviews=LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N" && isValidDate) 
 {
     productReviews = delegator.findList("ProductReview",mainCond, null, orderBy, null, false);
 }
  
-productSearchByCategoryList=FastList.newInstance();
+productSearchByCategoryList=LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(productReviews))
 {
   if (UtilValidate.isNotEmpty(globalContext.currentCategories))

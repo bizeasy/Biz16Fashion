@@ -2,8 +2,8 @@ package catalog;
 
 import java.util.List;
 import java.util.Map;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -42,7 +42,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
 viewIndex = Integer.valueOf(parameters.viewIndex  ?: 1);
 viewSize = Integer.valueOf(parameters.viewSize ?: UtilProperties.getPropertyValue("osafeAdmin", "default-view-size"));
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 
@@ -71,9 +71,9 @@ svcCtx.put("roleTypeId", "MANUFACTURER");
 
 Map<String, Object> svcRes;
 
-List<GenericValue> partyList = FastList.newInstance();
-List<GenericValue> completePartyList = FastList.newInstance();
-List<GenericValue> matchNamePartyList = FastList.newInstance();
+List<GenericValue> partyList = LinkedList.newInstance();
+List<GenericValue> completePartyList = LinkedList.newInstance();
+List<GenericValue> matchNamePartyList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N") 
 {
      svcRes = dispatcher.runSync("findParty", svcCtx);

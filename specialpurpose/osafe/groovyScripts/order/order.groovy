@@ -30,7 +30,7 @@ if (UtilValidate.isNotEmpty(orderItemShipGroups) && orderItemShipGroupSize == 1)
     {
         trackingNumber = shipGroup.trackingNumber;
         findCarrierShipmentMethodMap = UtilMisc.toMap("shipmentMethodTypeId", shipGroup.shipmentMethodTypeId, "partyId", shipGroup.carrierPartyId,"roleTypeId" ,"CARRIER");
-        //carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap);
+        //carrierShipmentMethod = EntityQuery.use(delegator).from("CarrierShipmentMethod").where(findCarrierShipmentMethodMap).cache().queryOne();
         carrierShipmentMethod =  EntityQuery.use(delegator).from("CarrierShipmentMethod").where(findCarrierShipmentMethodMap).cache().queryOne();
         carrierDescription = "";
         if (UtilValidate.isNotEmpty(carrierShipmentMethod))

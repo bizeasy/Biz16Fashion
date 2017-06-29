@@ -1,8 +1,8 @@
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.base.util.string.*;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.GenericValue;
 
@@ -25,7 +25,7 @@ else
     session = context.session;
     svcCtx = session.getAttribute("orderPDFMap");
     if (UtilValidate.isEmpty(svcCtx)) {
-        Map<String, Object> svcCtx = FastMap.newInstance();
+        Map<String, Object> svcCtx = HashMap.newInstance();
     }
     if (UtilValidate.isNotEmpty(svcCtx)) {
         svcCtx.put("viewSize",  Integer.valueOf("1000"));

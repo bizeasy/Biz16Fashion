@@ -3,7 +3,7 @@ package product;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.product.catalog.*;
 import org.apache.ofbiz.product.category.*;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 

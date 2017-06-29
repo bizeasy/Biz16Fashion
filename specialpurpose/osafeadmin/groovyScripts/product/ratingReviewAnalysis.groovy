@@ -3,8 +3,8 @@ package product;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.base.util.UtilValidate;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityConditionBuilder;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
@@ -40,9 +40,9 @@ if (UtilValidate.isNotEmpty(initializedCB))
 String entryDateFormat = entryDateTimeFormat;
 fromDate = null;
 toDate = UtilDateTime.nowTimestamp();
-dateExpr= FastList.newInstance();
-statusExpr= FastList.newInstance();    
-resultList = FastList.newInstance();
+dateExpr= LinkedList.newInstance();
+statusExpr= LinkedList.newInstance();    
+resultList = LinkedList.newInstance();
 dateCond = null;
 statusCond = null;
 mainCond = null;
@@ -50,8 +50,8 @@ viewApproved= parameters.viewApproved;
 viewDeleted= parameters.viewDeleted;
 viewPending= parameters.viewPending;
 viewAll= parameters.viewall;
-reviewRatingList = FastList.newInstance();
-List infoMsgList = FastList.newInstance();
+reviewRatingList = LinkedList.newInstance();
+List infoMsgList = LinkedList.newInstance();
 Boolean isValidDate = true;
 //Converting to TimeStamp and preparing entity condition.
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
@@ -128,7 +128,7 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
     {
         rowCount = 0;
         avgRating = 0;
-        resultMap = FastMap.newInstance(); 
+        resultMap = HashMap.newInstance(); 
         List filteredList = EntityUtil.filterByAnd(reviewRatingList, [productId : distinctValue]);
         rowCount = filteredList.size();
         avgRatingGv = delegator.findByPrimaryKey("ProductCalculatedInfo",[productId : distinctValue]).averageCustomerRating;

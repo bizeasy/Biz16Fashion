@@ -6,8 +6,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
@@ -46,15 +46,15 @@ viewSize = Integer.valueOf(parameters.viewSize ?: UtilProperties.getPropertyValu
 context.viewIndex = viewIndex;
 context.viewSize = viewSize;
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 
 //spotListMenuId=context.spotListMenuId;
-List contentList = FastList.newInstance();
+List contentList = LinkedList.newInstance();
 context.userLoginId = userLogin.userLoginId;
 
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 prodCond=null;
 statusCond=null;
@@ -81,7 +81,7 @@ if (UtilValidate.isNotEmpty(exprs))
 
 orderBy = ["productStoreShipMethId"];
 
-productStoreShipmentMethList=FastList.newInstance();
+productStoreShipmentMethList=LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
 	productStoreShipmentMethList = delegator.findList("ProductStoreShipmentMeth",mainCond, null, orderBy, null, false);

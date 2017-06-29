@@ -5,8 +5,8 @@ import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.base.util.UtilValidate;
 import com.osafe.util.OsafeAdminUtil;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 custRequestList=session.getAttribute("custRequestList");
 custRequestName = "CustRequest_";

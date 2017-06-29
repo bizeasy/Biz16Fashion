@@ -1,7 +1,7 @@
 package order;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -11,12 +11,12 @@ viewIndex = Integer.valueOf(parameters.viewIndex  ?: 1);
 viewSize = Integer.valueOf(parameters.viewSize ?: UtilProperties.getPropertyValue("osafeAdmin", "default-view-size"));
 context.viewIndex = viewIndex;
 context.viewSize = viewSize;
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 
 orderId = StringUtils.trimToEmpty(parameters.orderId);
-contentList = FastList.newInstance();
+contentList = LinkedList.newInstance();
 
 if (UtilValidate.isNotEmpty(orderId)) 
 {

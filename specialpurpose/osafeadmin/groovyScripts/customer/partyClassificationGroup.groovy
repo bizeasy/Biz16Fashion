@@ -5,7 +5,7 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityFunction
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import javolution.util.FastList;
+import java.util.LinkedList;
 
 import org.apache.ofbiz.entity.GenericEntityException
 import org.apache.ofbiz.entity.model.DynamicViewEntity
@@ -35,7 +35,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
 }
 
 partyClassificationCond = null;
-paramsExpr = FastList.newInstance();
+paramsExpr = LinkedList.newInstance();
 
 if (UtilValidate.isNotEmpty(partyClassificationGroupId))
 {
@@ -56,7 +56,7 @@ if (UtilValidate.isNotEmpty(paramsExpr))
 eli = null;
 // set distinct
 partyClassificationFindOpts = new EntityFindOptions(true, EntityFindOptions.TYPE_SCROLL_INSENSITIVE, EntityFindOptions.CONCUR_READ_ONLY, true);
-partyClassificationSearchList=FastList.newInstance();
+partyClassificationSearchList=LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {
 	// Party Classification Group dynamic view entity

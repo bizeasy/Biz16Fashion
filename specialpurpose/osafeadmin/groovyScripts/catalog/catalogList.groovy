@@ -1,8 +1,8 @@
 package catalog;
 
 import org.apache.ofbiz.product.category.CategoryContentWrapper;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.commons.lang.StringUtils;
@@ -23,10 +23,10 @@ initializedCB = StringUtils.trimToEmpty(parameters.initializedCB);
 preRetrieved = StringUtils.trimToEmpty(parameters.preRetrieved);
 catalogActiveDate = StringUtils.trimToEmpty(parameters.catalogActiveDate);
 showAll = StringUtils.trimToEmpty(parameters.showAll);
-List errMsgList = FastList.newInstance();
-List infoMsgList = FastList.newInstance();
+List errMsgList = LinkedList.newInstance();
+List infoMsgList = LinkedList.newInstance();
 Boolean isValidDate = true;
-categoryRollupList =  FastList.newInstance();
+categoryRollupList =  LinkedList.newInstance();
 Timestamp catalogActiveDateTs = null;
 
 if (UtilValidate.isNotEmpty(preRetrieved))
@@ -43,7 +43,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-paramsExpr = FastList.newInstance();
+paramsExpr = LinkedList.newInstance();
 
 productStore = context.productStore;
 if (UtilValidate.isNotEmpty(productStore))
@@ -64,8 +64,8 @@ if (UtilValidate.isNotEmpty(productStore))
             paramCond=EntityCondition.makeCondition(paramsExpr, EntityOperator.AND);
             mainCond=paramCond;
         }
-        dateExpr = FastList.newInstance();
-        activeThruDateExpr = FastList.newInstance();
+        dateExpr = LinkedList.newInstance();
+        activeThruDateExpr = LinkedList.newInstance();
         if(UtilValidate.isEmpty(showAll))
         {
             if(UtilValidate.isNotEmpty(catalogActiveDate)) 
@@ -124,9 +124,9 @@ if (UtilValidate.isNotEmpty(productStore))
         request.setAttribute("topLevelList", categoryRollupList);
         if (UtilValidate.isNotEmpty(categoryRollupList)) 
         {
-            catContentWrappers = FastMap.newInstance();
-            subCatRollUpMap = FastMap.newInstance();
-            currentCategories = FastList.newInstance();
+            catContentWrappers = HashMap.newInstance();
+            subCatRollUpMap = HashMap.newInstance();
+            currentCategories = LinkedList.newInstance();
             
             for (GenericValue categoryRollUp : categoryRollupList)
             {
@@ -140,7 +140,7 @@ if (UtilValidate.isNotEmpty(productStore))
                     
                     
                 }
-                paramsExpr = FastList.newInstance();
+                paramsExpr = LinkedList.newInstance();
                 paramsExpr.add(EntityCondition.makeCondition("parentProductCategoryId", EntityOperator.EQUALS, categoryRollUp.productCategoryId));
                 paramCond = null;
                 mainCond = null;

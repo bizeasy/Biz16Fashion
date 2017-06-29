@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.Set;
 import java.io.File;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
-import javolution.util.FastSet;
+import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.base.util.string.*;
@@ -26,7 +26,7 @@ if (UtilValidate.isNotEmpty(context.productStoreId)) {
     //Else Display the Selected file
     else{
     	styleFileName = parameters.fileName;
-        Map<String, Object> svcCtx = FastMap.newInstance();
+        Map<String, Object> svcCtx = HashMap.newInstance();
         userLogin = session.getAttribute("userLogin");
         svcCtx.put("userLogin", userLogin);
         if (UtilValidate.isNotEmpty(context.visualThemeId)) {
@@ -39,9 +39,9 @@ if (UtilValidate.isNotEmpty(context.productStoreId)) {
 	    if(UtilValidate.isNotEmpty(parentStyleFilePath) && UtilValidate.isNotEmpty(styleFileName)) {
 	    	parentStyleFile = FileUtil.getFile(parentStyleFilePath);
 	        if (parentStyleFile.exists()) {
-	            fileList = FastList.newInstance();
+	            fileList = LinkedList.newInstance();
 	            // get all the CSS files.
-	            files = parentStyleFile.getParentFile().listFiles(new FileUtil.SearchTextFilesFilter("css", FastSet.newInstance(), FastSet.newInstance()));
+	            files = parentStyleFile.getParentFile().listFiles(new FileUtil.SearchTextFilesFilter("css", HashSet.newInstance(), HashSet.newInstance()));
 	            for (int i = 0; i < files.length; i++) {
 	                if (!files[i].isDirectory() && !files[i].getName().startsWith(".")) {
 	                     // find the Required file in the list.

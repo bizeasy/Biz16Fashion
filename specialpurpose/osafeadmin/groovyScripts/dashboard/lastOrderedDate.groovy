@@ -10,8 +10,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.entity.util.*;
@@ -25,7 +25,7 @@ import com.ibm.icu.util.Calendar;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.RegularExpression.Context;
 
 orderStatusIncDashboard = globalContext.get("ORDER_STATUS_INC_DASHBOARD");
-List includedOrderStatusList = FastList.newInstance();
+List includedOrderStatusList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(orderStatusIncDashboard))
 {
     orderStatusIncDashboardList = StringUtil.split(orderStatusIncDashboard,",")

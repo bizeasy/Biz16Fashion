@@ -12,6 +12,7 @@ import org.apache.ofbiz.product.category.CategoryContentWrapper;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents;
 import java.util.LinkedList;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.osafe.services.OsafeManageXml;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;

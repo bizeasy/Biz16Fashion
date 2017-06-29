@@ -121,7 +121,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	        for (GenericValue link: contactMechLinkList)
 	        {
 	            contactMechIdTo = link.contactMechIdTo
-	            contactMech = delegator.findByPrimaryKeyCache("ContactMech", [contactMechId : contactMechIdTo]);
+	            contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId : contactMechIdTo]).cache().queryOne();
 	            if(UtilValidate.isNotEmpty(contactMech)) 
 	            {
 	                phonePurposeList  = contactMech.getRelatedCache("PartyContactMechPurpose");
@@ -146,7 +146,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 
     if (UtilValidate.isNotEmpty(parameters.CUSTOMER_STATE)) 
     {
-        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.CUSTOMER_STATE]);
+        //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.CUSTOMER_STATE]).cache().queryOne();
         geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : parameters.CUSTOMER_STATE]).cache().queryOne();
         if (UtilValidate.isNotEmpty(geoValue))
         {
@@ -154,7 +154,7 @@ if (UtilValidate.isNotEmpty(userLogin))
         }
     } else if (UtilValidate.isNotEmpty(postalAddressData) && UtilValidate.isNotEmpty(postalAddressData.stateProvinceGeoId)) 
     {
-        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+        //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
         geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
         if (UtilValidate.isNotEmpty(geoValue))
         {

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
@@ -45,7 +45,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 svcCtx.put("lookupFlag", "Y");
@@ -80,7 +80,7 @@ if (UtilValidate.isNotEmpty(partyGroupName))
 }
 
 Map<String, Object> svcRes;
-List<GenericValue> partyList = FastList.newInstance();
+List<GenericValue> partyList = LinkedList.newInstance();
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N") {
 
      svcRes = dispatcher.runSync("findParty", svcCtx);

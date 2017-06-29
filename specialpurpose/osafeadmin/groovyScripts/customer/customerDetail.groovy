@@ -1,7 +1,7 @@
 package customer;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilProperties;
@@ -23,7 +23,7 @@ if(UtilValidate.isNotEmpty(partyId))
 	context.partyId=partyId;
 }
 
-List<String> roleTypeIds = FastList.newInstance();
+List<String> roleTypeIds = LinkedList.newInstance();
 roleTypeIds.add("INTERNAL_ORGANIZATIO");
 
 if (UtilValidate.isNotEmpty(partyId))
@@ -71,8 +71,8 @@ if (UtilValidate.isNotEmpty(partyId))
     	{
 	        partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 	
-	        shippingContactMechList = FastList.newInstance();
-	        addrExpr= FastList.newInstance();
+	        shippingContactMechList = LinkedList.newInstance();
+	        addrExpr= LinkedList.newInstance();
 	        addrExpr.add(EntityCondition.makeCondition("contactMechPurposeTypeId", EntityOperator.EQUALS, "SHIPPING_LOCATION"));
 	        addrExpr.add(EntityCondition.makeCondition("contactMechPurposeTypeId", EntityOperator.EQUALS, "GENERAL_LOCATION"));
 	        addrExpr.add(EntityCondition.makeCondition("contactMechPurposeTypeId", EntityOperator.EQUALS, "BILLING_LOCATION"));
@@ -204,7 +204,7 @@ if (UtilValidate.isNotEmpty(partyId))
 	
 }
 
-Map<String, Object> svcCtx = FastMap.newInstance();
+Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
 svcCtx.put("userLogin", userLogin);
 
@@ -224,7 +224,7 @@ if(UtilValidate.isNotEmpty(roleTypeIds))
 
 Map<String, Object> svcRes;
 
-List<GenericValue> partyList = FastList.newInstance();
+List<GenericValue> partyList = LinkedList.newInstance();
 
 svcRes = dispatcher.runSync("findParty", svcCtx);
 

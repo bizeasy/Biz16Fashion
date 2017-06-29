@@ -1,6 +1,6 @@
 package shipping;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.base.util.UtilMisc;
@@ -8,10 +8,10 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 
 orderBy = ["partyId"];
 
-List carrierList = FastList.newInstance();
+List carrierList = LinkedList.newInstance();
 
-partyExpr= FastList.newInstance();
-partyStatusExpr= FastList.newInstance();
+partyExpr= LinkedList.newInstance();
+partyStatusExpr= LinkedList.newInstance();
 partyCond = null;
 partyStatusCond = null;
 

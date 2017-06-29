@@ -36,7 +36,7 @@ if (UtilValidate.isNotEmpty(productId))
     virtualProductId = ProductWorker.getVariantVirtualId(gvProduct);
     if (virtualProductId) {
         productId = virtualProductId;
-      //  gvProduct = delegator.findByPrimaryKeyCache("Product", [productId : productId]);
+      //  gvProduct = EntityQuery.use(delegator).from("Product").where([productId : productId]).cache().queryOne();
         gvProduct = EntityQuery.use(delegator).from("Product").where([productId : productId]).cache().queryOne();
     }
     

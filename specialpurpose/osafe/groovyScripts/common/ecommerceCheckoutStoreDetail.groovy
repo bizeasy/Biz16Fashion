@@ -7,7 +7,8 @@ import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import java.util.LinkedList;
-import org.apache.ofbiz.base.util.Debug
+import org.apache.ofbiz.base.util.Debug;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 storeId = parameters.storeId;
 shoppingCart = session.getAttribute("shoppingCart");

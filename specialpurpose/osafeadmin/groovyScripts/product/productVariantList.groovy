@@ -7,7 +7,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.entity.GenericValue;
-import javolution.util.FastMap;
+import java.util.HashMap;
 
 if (UtilValidate.isNotEmpty(parameters.productId)) 
 {
@@ -44,7 +44,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
     }
     
     //BUILD CONTEXT MAP FOR PRODUCT_FEATURE_TYPE_ID and DESCRIPTION(EITHER FROM PRODUCT_FEATURE_GROUP OR PRODUCT_FEATURE_TYPE)
-    Map productFeatureTypesMap = FastMap.newInstance();
+    Map productFeatureTypesMap = HashMap.newInstance();
     productFeatureTypesList = delegator.findList("ProductFeatureType", null, null, null, null, false);
 
     //get the whole list of ProductFeatureGroup and ProductFeatureGroupAndAppl

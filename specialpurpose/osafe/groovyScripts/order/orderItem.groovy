@@ -56,7 +56,7 @@ BigDecimal itemTotal = BigDecimal.ZERO;
 if (UtilValidate.isNotEmpty(rowOrderItem))
 {
 	productId = rowOrderItem.productId;
-	//product = delegator.findByPrimaryKeyCache("Product", UtilMisc.toMap("productId", productId));
+	//product = EntityQuery.use(delegator).from("Product").where(UtilMisc.toMap("productId", productId))).cache().queryOne();
 	product = EntityQuery.use(delegator).from("Product").where(UtilMisc.toMap("productId", productId)).cache().queryOne();
 	urlProductId = productId;
 	if (UtilValidate.isEmpty(orderHeader))
@@ -290,7 +290,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	      }
 	      trackingNumber = shipGroup.trackingNumber;
 	      findCarrierShipmentMethodMap = UtilMisc.toMap("shipmentMethodTypeId", shipGroup.shipmentMethodTypeId, "partyId", shipGroup.carrierPartyId,"roleTypeId" ,"CARRIER");
-	     // carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap);
+	     // carrierShipmentMethod = EntityQuery.use(delegator).from("CarrierShipmentMethod").where(findCarrierShipmentMethodMap).cache().queryOne();
 	      carrierShipmentMethod = EntityQuery.use(delegator).from("findCarrierShipmentMethodMap").where(findCarrierShipmentMethodMap).cache().queryOne();
 		  if (UtilValidate.isNotEmpty(carrierShipmentMethod))
 		  {

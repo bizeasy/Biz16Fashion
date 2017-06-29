@@ -1,6 +1,6 @@
 package user;
 
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -18,7 +18,7 @@ else
 
 srchPermission = StringUtils.trimToEmpty(parameters.srchPermission);
 
-exprs = FastList.newInstance();
+exprs = LinkedList.newInstance();
 mainCond=null;
 
 if(UtilValidate.isNotEmpty(srchPermission))
@@ -34,7 +34,7 @@ if (UtilValidate.isNotEmpty(exprs)) {
 }
 
 orderBy = ["permissionId"];
-permissions = FastList.newInstance();
+permissions = LinkedList.newInstance();
 
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 {

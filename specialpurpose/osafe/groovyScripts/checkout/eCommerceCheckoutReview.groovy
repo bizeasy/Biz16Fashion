@@ -85,7 +85,7 @@ paymentMethodTypeId = null;
 if (paymentMethodTypeIds) 
 {
     paymentMethodTypeId = paymentMethodTypeIds[0];
-    //paymentMethodType = delegator.findByPrimaryKeyCache("PaymentMethodType", [paymentMethodTypeId : paymentMethodTypeId]);
+    //paymentMethodType = EntityQuery.use(delegator).from("PaymentMethodType").where(UtilMisc.toMap("paymentMethodTypeId", paymentMethodTypeId)).cache().queryOne();
     paymentMethodType = EntityQuery.use(delegator).from("PaymentMethodType").where(UtilMisc.toMap("paymentMethodTypeId", paymentMethodTypeId)).cache().queryOne();
     context.paymentMethodType = paymentMethodType;
 }
@@ -120,7 +120,7 @@ context.giftMessage = cart.getGiftMessage();
 context.isGift = cart.getIsGift();
 context.currencyUomId = cart.getCurrency();
 
-//shipmentMethodType = delegator.findByPrimaryKeyCache("ShipmentMethodType", [shipmentMethodTypeId : cart.getShipmentMethodTypeId()]);
+//shipmentMethodType = EntityQuery.use(delegator).from("ShipmentMethodType").where([shipmentMethodTypeId : cart.getShipmentMethodTypeId()]).cache().queryOne();
 shipmentMethodType = EntityQuery.use(delegator).from("ShipmentMethodType").where(UtilMisc.toMap("shipmentMethodTypeId", cart.getShipmentMethodTypeId())).cache().queryOne();
 if (shipmentMethodType) context.shipMethDescription = shipmentMethodType.description;
 

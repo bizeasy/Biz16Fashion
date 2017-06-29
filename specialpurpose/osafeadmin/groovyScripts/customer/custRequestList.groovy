@@ -1,7 +1,7 @@
 package customer;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
@@ -26,7 +26,7 @@ contactUsDateFrom = StringUtils.trimToEmpty(parameters.contactUsDateFrom);
 contactUsDateTo = StringUtils.trimToEmpty(parameters.contactUsDateTo);
 productStoreall = StringUtils.trimToEmpty(parameters.productStoreall);
 String entryDateFormat = entryDateTimeFormat;
-List infoMsgList = FastList.newInstance();
+List infoMsgList = LinkedList.newInstance();
 Boolean isValidDate = true;
 String isDownloaded = "";
 party=null;
@@ -57,10 +57,10 @@ if (UtilValidate.isNotEmpty(initializedCB))
 
 Timestamp contactUsDateFromTs = null;
 Timestamp contactUsDateToTs = null;
-paramsExpr = FastList.newInstance();
-contactUsSearchList=FastList.newInstance();
-lCustRequest=FastList.newInstance();
-dateExpr= FastList.newInstance();
+paramsExpr = LinkedList.newInstance();
+contactUsSearchList=LinkedList.newInstance();
+lCustRequest=LinkedList.newInstance();
+dateExpr= LinkedList.newInstance();
 
 dateCond = null;
 mainCond = EntityCondition.makeCondition("custRequestTypeId", EntityOperator.EQUALS, custRequestType);
@@ -130,7 +130,7 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N" && UtilValidate.
             custRequestAttrList = custRequest.getRelated("CustRequestAttribute");
             if (UtilValidate.isNotEmpty(isDownloaded) || UtilValidate.isNotEmpty(lastName))
             {
-               custRequestAttrMap = FastMap.newInstance();
+               custRequestAttrMap = HashMap.newInstance();
                if (UtilValidate.isNotEmpty(custRequestAttrList))
                {
                   attrlIter = custRequestAttrList.iterator();

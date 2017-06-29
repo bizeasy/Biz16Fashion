@@ -86,7 +86,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 				globalContext.userPostalCode=postalAddressData.postalCode;
 				if (UtilValidate.isNotEmpty(postalAddressData.stateProvinceGeoId))
 				{
-			        //geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : postalAddressData.stateProvinceGeoId]);
+			        //geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
 			        geoValue = EntityQuery.use(delegator).from("Geo").where([geoId : postalAddressData.stateProvinceGeoId]).cache().queryOne();
 			        
 			        if (UtilValidate.isNotEmpty(geoValue)) 

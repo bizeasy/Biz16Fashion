@@ -15,6 +15,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.osafe.services.InventoryServices;
 import org.apache.ofbiz.product.catalog.CatalogWorker;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 
 orderItem = request.getAttribute("orderItem");

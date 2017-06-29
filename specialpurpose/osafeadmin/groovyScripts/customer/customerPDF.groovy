@@ -12,12 +12,12 @@ import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.party.contact.ContactMechWorker;
 import org.apache.ofbiz.base.util.*;
-import javolution.util.FastMap;
+import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilDateTime;
 import com.osafe.util.OsafeAdminUtil;
 
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
@@ -51,7 +51,7 @@ session = context.session;
 svcCtx = session.getAttribute("customerPDFMap");
 if (UtilValidate.isEmpty(svcCtx)) 
 {
-    svcCtx = FastMap.newInstance();
+    svcCtx = HashMap.newInstance();
 }
 
 if (UtilValidate.isNotEmpty(partyId))
@@ -83,7 +83,7 @@ if (UtilValidate.isNotEmpty(svcCtx))
             response.setHeader("Content-Disposition","attachment; filename=\"" + UtilValidate.stripWhitespace(customerPDFName) + ".pdf" + "\";");
         }
         
-        Map<String, Object> upPartyCtx = FastMap.newInstance();
+        Map<String, Object> upPartyCtx = HashMap.newInstance();
         upPartyCtx.put("userLogin",userLogin);
         upPartyCtx.put("isDownloaded","Y");
         upPartyCtx.put("datetimeDownloaded",UtilDateTime.nowTimestamp());
@@ -93,7 +93,7 @@ if (UtilValidate.isNotEmpty(svcCtx))
             person = delegator.findOne("Person",["partyId":party.partyId], false);
             
             partyAttrIsDownload = delegator.findOne("PartyAttribute", ["partyId" : party.partyId, "attrName" : "IS_DOWNLOADED"], false);
-            Map<String, Object> isDownloadedPartyAttrCtx = FastMap.newInstance();
+            Map<String, Object> isDownloadedPartyAttrCtx = HashMap.newInstance();
             isDownloadedPartyAttrCtx.put("partyId", party.partyId);
             isDownloadedPartyAttrCtx.put("userLogin",userLogin);
             isDownloadedPartyAttrCtx.put("attrName","IS_DOWNLOADED");
@@ -108,7 +108,7 @@ if (UtilValidate.isNotEmpty(svcCtx))
             }
             
             partyAttrDateTimeDownload = delegator.findOne("PartyAttribute", ["partyId" : party.partyId, "attrName" : "DATETIME_DOWNLOADED"], false);
-            Map<String, Object> dateTimeDownloadedPartyAttrCtx = FastMap.newInstance();
+            Map<String, Object> dateTimeDownloadedPartyAttrCtx = HashMap.newInstance();
             dateTimeDownloadedPartyAttrCtx.put("partyId", party.partyId);
             dateTimeDownloadedPartyAttrCtx.put("userLogin",userLogin);
             dateTimeDownloadedPartyAttrCtx.put("attrName","DATETIME_DOWNLOADED");

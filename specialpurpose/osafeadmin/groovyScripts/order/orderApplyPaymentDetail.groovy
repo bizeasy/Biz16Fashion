@@ -12,8 +12,8 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import org.apache.ofbiz.entity.GenericValue;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 import java.math.BigDecimal;
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.entity.GenericEntityException;
@@ -110,7 +110,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		orderAdjustments = orderReadHelper.getAdjustments();
 		orderOpenAmount = orderReadHelper.getOrderGrandTotal(orderItems, orderAdjustments);
 		orderPaymentPrefList = orderReadHelper.getPaymentPreferences();
-		orderPaymentList = FastList.newInstance();
+		orderPaymentList = LinkedList.newInstance();
 		if (UtilValidate.isNotEmpty(orderPaymentPrefList))
 		{
 			if (UtilValidate.isNotEmpty(orderPaymentPrefList))

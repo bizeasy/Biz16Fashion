@@ -1,13 +1,13 @@
 import org.apache.ofbiz.base.util.UtilValidate;
-import javolution.util.FastMap;
-import javolution.util.FastList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.lang.*;
 import org.apache.ofbiz.entity.GenericValue;
 
 if (UtilValidate.isNotEmpty(context.enumTypeId)) 
 {
     enumTypeList = delegator.findByAnd("Enumeration", [enumTypeId : context.enumTypeId], ["sequenceId"]);
-	processEnumTypes = FastList.newInstance();
+	processEnumTypes = LinkedList.newInstance();
     if(UtilValidate.isNotEmpty(enumTypeList))
     {
         for (GenericValue enumType :  enumTypeList) 

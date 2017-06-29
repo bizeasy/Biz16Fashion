@@ -6,7 +6,7 @@ import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
-import javolution.util.FastList;
+import java.util.LinkedList;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
@@ -19,8 +19,8 @@ if (UtilValidate.isNotEmpty(parameters.productId))
 {
     product = delegator.findOne("Product",["productId":parameters.productId], false);
     
-    virtualProductContentList = FastList.newInstance();
-    productContentList = FastList.newInstance();
+    virtualProductContentList = LinkedList.newInstance();
+    productContentList = LinkedList.newInstance();
     context.product = product;
     
     virtualProduct = null;

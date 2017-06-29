@@ -2,8 +2,8 @@ package admin;
 
 import org.apache.ofbiz.entity.condition.EntityConditionBuilder;
 import org.apache.ofbiz.base.util.UtilValidate;
-import javolution.util.FastList;
-import javolution.util.FastMap;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilProperties;
@@ -51,7 +51,7 @@ if (UtilValidate.isNotEmpty(initializedCB))
    context.initializedCB=initializedCB;
 }
 
-paramsExpr = FastList.newInstance();
+paramsExpr = LinkedList.newInstance();
 exprBldr =  new EntityConditionBuilder();
 paramCond=null;
 List exprListForParameters = [];
@@ -125,7 +125,7 @@ if (UtilValidate.isNotEmpty(paramCond))
 
 parameterSearchList = [];
 orderBy = ["parmKey"];
-productStoreParamsList=FastList.newInstance();
+productStoreParamsList=LinkedList.newInstance();
 
 if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N") 
  {
