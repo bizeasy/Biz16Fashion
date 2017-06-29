@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the Osafeadmin Component." permissionId="OSAFEADMIN_VIEW"/>
+    <SecurityPermission description="Create operations in the Osafeadmin Component." permissionId="OSAFEADMIN_CREATE"/>
+    <SecurityPermission description="Update operations in the Osafeadmin Component." permissionId="OSAFEADMIN_UPDATE"/>
+    <SecurityPermission description="Delete operations in the Osafeadmin Component." permissionId="OSAFEADMIN_DELETE"/>
+    <SecurityPermission description="ALL operations in the Osafeadmin Component." permissionId="OSAFEADMIN_ADMIN"/>
+
+    <SecurityGroupPermission groupId="SUPER" permissionId="OSAFEADMIN_ADMIN"/>
+
+</entity-engine-xml>

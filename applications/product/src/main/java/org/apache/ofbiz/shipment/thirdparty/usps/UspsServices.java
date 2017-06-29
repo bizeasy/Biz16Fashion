@@ -37,6 +37,7 @@ import java.util.Map;
 import javax.xml.transform.TransformerException;
 
 import org.apache.commons.lang.StringUtils;
+//import org.apache.ofbiz.osafe.thirdparty.firstdata.globalgatewaye4.util.StringUtils;
 import org.apache.ofbiz.base.util.Base64;
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.base.util.GeneralException;

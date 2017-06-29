@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="OSAFEADMIN_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="OSAFEADMIN_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="OSAFEADMIN_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="OSAFEADMIN_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="OSAFEADMIN_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="OSAFEADMIN_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="OSAFEADMIN_ADMIN"/>
+</entity-engine-xml>
