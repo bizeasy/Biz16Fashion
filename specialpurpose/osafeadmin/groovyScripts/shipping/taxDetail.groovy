@@ -18,7 +18,8 @@ taxAuthorityRateSeqId = parameters.taxAuthorityRateSeqId;
 
 if (UtilValidate.isNotEmpty(taxAuthorityRateSeqId))
 {
-    taxAuthorityRateProduct = delegator.findByPrimaryKey("TaxAuthorityRateProduct", [taxAuthorityRateSeqId : taxAuthorityRateSeqId]);
+    taxAuthorityRateProduct = EntityQuery.use(delegator).from("TaxAuthorityRateProduct").where("taxAuthorityRateSeqId", taxAuthorityRateSeqId).queryOne();
+    
     
     if(UtilValidate.isNotEmpty(taxAuthorityRateProduct)) 
     {

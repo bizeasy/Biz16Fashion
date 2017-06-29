@@ -19,7 +19,7 @@ orderHeader = null;
 
 if (UtilValidate.isNotEmpty(orderId)) 
 {
-	orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : orderId]);
+	orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
 	context.orderHeader = orderHeader;
 	
 	orderProductStore = orderHeader.getRelatedOne("ProductStore");
@@ -49,7 +49,8 @@ if(UtilValidate.isNotEmpty(orderId))
     if(UtilValidate.isNotEmpty(context.orderPaymentPreferenceId))
     {
         paymentPrefId = context.orderPaymentPreferenceId;
-        orderPaymentPreference = delegator.findByPrimaryKey("OrderPaymentPreference",UtilMisc.toMap("orderPaymentPreferenceId",paymentPrefId));
+        orderPaymentPreference = EntityQuery.use(delegator).from("OrderPaymentPreference").where(UtilMisc.toMap("orderPaymentPreferenceId",paymentPrefId)).queryOne();
+        
         context.date = OsafeAdminUtil.convertDateTimeFormat(orderPaymentPreference.createdDate, preferredDateFormat);
         context.time = OsafeAdminUtil.convertDateTimeFormat(orderPaymentPreference.createdDate, preferredTimeFormat);
         

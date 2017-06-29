@@ -27,7 +27,8 @@ jobId = StringUtils.trimToEmpty(parameters.jobId);
 context.jobId = jobId;
 if (UtilValidate.isNotEmpty(jobId))
 {
-    schedJob = delegator.findByPrimaryKey("JobSandbox", [jobId : jobId]);
+    schedJob = EntityQuery.use(delegator).from("JobSandbox").where(UtilMisc.toMap("jobId",jobId)).queryOne();
+    
     context.schedJob = schedJob;
     
     //break up the timestamp into a date for display(date, time, AMPM)

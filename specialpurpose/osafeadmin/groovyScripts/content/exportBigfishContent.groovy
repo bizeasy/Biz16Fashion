@@ -173,7 +173,8 @@ if (UtilValidate.isNotEmpty(exportFile))
         beganTransaction = TransactionUtil.begin(3600);
         try {
             TransactionUtil.commit(beganTransaction);
-            contentType = delegator.findByPrimaryKey("ContentType", ["contentTypeId" : contentTypeId]);
+            contentType = EntityQuery.use(delegator).from("ContentType").where("contentTypeId", contentTypeId).queryOne();
+            
             if (contentType!= null) 
             {
                 contentType.writeXmlText(writer, "");
@@ -233,7 +234,8 @@ if (UtilValidate.isNotEmpty(exportFile))
         beganTransaction = TransactionUtil.begin(3600);
         try {
             TransactionUtil.commit(beganTransaction);
-            contentType = delegator.findByPrimaryKey("ProductCategoryContentType", ["prodCatContentTypeId" : prodCatContentTypeId]);
+            contentType = EntityQuery.use(delegator).from("ProductCategoryContentType").where("prodCatContentTypeId", prodCatContentTypeId).queryOne();
+            
             if (contentType!= null) 
             {
                 //contentType.writeXmlText(writer, "");

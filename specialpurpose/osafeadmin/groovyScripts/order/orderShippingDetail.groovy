@@ -26,7 +26,7 @@ orderItems = null;
 orderSubTotal = 0;
 if (UtilValidate.isNotEmpty(orderId))
 {
-	orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : orderId]);
+	orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
 	
 	orderProductStore = orderHeader.getRelatedOne("ProductStore");
 	if (UtilValidate.isNotEmpty(orderProductStore.storeName))

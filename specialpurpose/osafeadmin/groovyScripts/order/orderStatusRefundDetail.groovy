@@ -19,7 +19,8 @@ import org.apache.ofbiz.base.util.UtilMisc;
 
 if (UtilValidate.isNotEmpty(parameters.orderId)) 
 {
-	orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : parameters.orderId]);
+	orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", parameters.orderId).queryOne();
+	
 }
 
 statusId = parameters.statusId;
@@ -209,8 +210,8 @@ for(int i = 0; i < orderItems.size() ; i++)
 	{
 		orderItemSequenceIds.add(orderItemSeqId);
 		
-		orderItem = delegator.findByPrimaryKey("OrderItem", [orderId : parameters.orderId, orderItemSeqId: orderItemSeqId]);
-
+		orderItem = EntityQuery.use(delegator).from("OrderItem").where("orderId", parameters.orderId,"orderItemSeqId", orderItemSeqId).queryOne();
+		
 		//CALCULATE FOR ITEM CANCEL
 		if(statusId.equalsIgnoreCase("ORDER_CANCELLED"))
 		{

@@ -12,7 +12,7 @@ contactMechId = parameters.contactMechId;
 partyId = parameters.partyId;
 if (UtilValidate.isNotEmpty(contactMechId))
 {
-	party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+	party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
     partyContactMechPurposes = party.getRelated("PartyContactMechPurpose");
 	if (UtilValidate.isNotEmpty(partyContactMechPurposes))
 	{

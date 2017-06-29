@@ -41,7 +41,7 @@ appliedLoyaltyPointsList = LinkedList.newInstance();
 orderSubTotal = 0;
 if (UtilValidate.isNotEmpty(orderId))
 {
-	orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : orderId]);
+	orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
 	
 	if (UtilValidate.isNotEmpty(orderHeader))
 	{

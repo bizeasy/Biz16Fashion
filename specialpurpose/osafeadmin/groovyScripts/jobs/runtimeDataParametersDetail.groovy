@@ -17,7 +17,8 @@ runtimeDataId = StringUtils.trimToEmpty(parameters.runtimeDataId);
 context.runtimeDataId = runtimeDataId;
 if (UtilValidate.isNotEmpty(runtimeDataId))
 {
-	runtimeData = delegator.findByPrimaryKey("RuntimeData", [runtimeDataId : runtimeDataId]);
+	runtimeData = EntityQuery.use(delegator).from("RuntimeData").where(UtilMisc.toMap("runtimeDataId", runtimeDataId)).queryOne();
+	
 	context.runtimeData = runtimeData;
 }
 
@@ -26,7 +27,8 @@ jobId = StringUtils.trimToEmpty(parameters.jobId);
 context.jobId = jobId;
 if (UtilValidate.isNotEmpty(jobId))
 {
-	schedJob = delegator.findByPrimaryKey("JobSandbox", [jobId : jobId]);
+	schedJob = EntityQuery.use(delegator).from("JobSandbox").where(UtilMisc.toMap("jobId",jobId)).queryOne()
+	
 	context.schedJob = schedJob;
 	detailInfoBoxHeading = FlexibleStringExpander.expandString(UtilProperties.getMessage("OSafeAdminUiLabels","RuntimeDataParametersHeading",locale), context);
 	

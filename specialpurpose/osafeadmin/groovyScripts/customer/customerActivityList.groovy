@@ -16,7 +16,7 @@ partyId = StringUtils.trimToEmpty(parameters.partyId);
 
 context.partyId=partyId;
 
-party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
 
 messageMap=[:];
 messageMap.put("partyId", partyId);
@@ -98,7 +98,7 @@ if(UtilValidate.isNotEmpty(custRequestContactUsList))
     {
         //CustRequest ContactUs Activity
         custRequestId = custRequestContactUs.custRequestId;
-        custReqContactUsAttr = delegator.findByPrimaryKey("CustRequestAttribute", [custRequestId : custRequestId, "attrName" : "COMMENT"]);
+        custReqContactUsAttr = EntityQuery.use(delegator).from("CustRequestAttribute").where("custRequestId", custRequestId,"attrName","COMMENT").queryOne();
         if(UtilValidate.isNotEmpty(custReqContactUsAttr) && UtilValidate.isNotEmpty(custReqContactUsAttr.attrValue))
         {
             comments = custReqContactUsAttr.attrValue;
@@ -125,7 +125,7 @@ if(UtilValidate.isNotEmpty(custRequestCatalogList))
     {
         //CustRequest Request Catalog Activity
         custRequestId = custRequestCatalog.custRequestId;
-        custReqCatalogAttr = delegator.findByPrimaryKey("CustRequestAttribute", [custRequestId : custRequestId, "attrName" : "COMMENT"]);
+        custReqCatalogAttr = EntityQuery.use(delegator).from("CustRequestAttribute").where("custRequestId", custRequestId,"attrName","COMMENT").queryOne();
         if(UtilValidate.isNotEmpty(custReqCatalogAttr) && UtilValidate.isNotEmpty(custReqCatalogAttr.attrValue))
         {
             comments = custReqCatalogAttr.attrValue;

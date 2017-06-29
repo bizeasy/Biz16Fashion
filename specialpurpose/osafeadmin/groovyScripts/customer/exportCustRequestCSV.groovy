@@ -81,7 +81,8 @@ if (UtilValidate.isNotEmpty(custRequestList))
         updateCustReqAttrCtx.put("custRequestId",custRequestId);
         updateCustReqAttrCtx.put("attrName","IS_DOWNLOADED");
         updateCustReqAttrCtx.put("attrValue","Y");
-        custReqAttribute = delegator.findByPrimaryKey("CustRequestAttribute",UtilMisc.toMap("custRequestId", custRequestId,"attrName","IS_DOWNLOADED"));
+        custReqAttribute = EntityQuery.use(delegator).from("CustRequestAttribute").where(UtilMisc.toMap("custRequestId", custRequestId,"attrName","IS_DOWNLOADED")).queryOne();
+        
         if(UtilValidate.isNotEmpty(custReqAttribute))
         {
             dispatcher.runSync("updateCustRequestAttribute", updateCustReqAttrCtx);
@@ -91,7 +92,8 @@ if (UtilValidate.isNotEmpty(custRequestList))
             dispatcher.runSync("createCustRequestAttribute", updateCustReqAttrCtx);
         }
         
-        custReqAttribute = delegator.findByPrimaryKey("CustRequestAttribute",UtilMisc.toMap("custRequestId", custRequestId,"attrName","DATETIME_DOWNLOADED"));
+        custReqAttribute = EntityQuery.use(delegator).from("CustRequestAttribute").where(UtilMisc.toMap("custRequestId", custRequestId,"attrName","DATETIME_DOWNLOADED")).queryOne();
+        
         updateCustReqAttrCtx.put("attrName","DATETIME_DOWNLOADED");
         updateCustReqAttrCtx.put("attrValue",UtilDateTime.nowTimestamp().toString());
         if(UtilValidate.isNotEmpty(custReqAttribute))

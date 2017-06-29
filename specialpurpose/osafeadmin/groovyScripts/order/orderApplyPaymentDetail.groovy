@@ -30,7 +30,7 @@ orderReadHelper = null;
 
 if (UtilValidate.isNotEmpty(orderId)) 
 {
-	orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : orderId]);
+	orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
 	if (UtilValidate.isNotEmpty(orderHeader)) 
 	{
 		orderProductStore = orderHeader.getRelatedOne("ProductStore");
@@ -71,7 +71,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	        context.partyId = partyId;
 			if(UtilValidate.isNotEmpty(partyId))
 			{
-				party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+				party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
 				if(UtilValidate.isNotEmpty(party))
 				{
 					partyRoles = party.getRelated("PartyRole");

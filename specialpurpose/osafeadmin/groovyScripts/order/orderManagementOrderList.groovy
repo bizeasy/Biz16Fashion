@@ -57,7 +57,9 @@ if(UtilValidate.isNotEmpty(orderStatusIncSearch))
     orderStatusIncSearchList = StringUtil.split(orderStatusIncSearch, ",");
     for (String orderStatus : orderStatusIncSearchList) 
     {
-        statusItem = delegator.findByPrimaryKey("StatusItem", UtilMisc.toMap("statusId", orderStatus.trim()));
+        statusItem = EntityQuery.use(delegator).from("StatusItem").where(UtilMisc.toMap("statusId", orderStatus.trim())).queryOne();
+        
+        
         statusDescription = "";
         if(UtilValidate.isNotEmpty(statusItem))
         {
@@ -214,7 +216,7 @@ if (UtilValidate.isNotEmpty(infoMsgList))
 }
 if(UtilValidate.isNotEmpty(partyId))
 {
-    party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+    party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
     svcCtx.put("partyId", partyId);
 }
 

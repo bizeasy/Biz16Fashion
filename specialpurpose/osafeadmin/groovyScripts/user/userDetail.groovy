@@ -10,7 +10,7 @@ userLoginId = StringUtils.trimToEmpty(parameters.userLoginId);
 context.userLoginId = userLoginId;
 if (UtilValidate.isNotEmpty(userLoginId))
 {
-    userInfo = delegator.findByPrimaryKey("UserLogin", [userLoginId : userLoginId]);
+    userInfo = EntityQuery.use(delegator).from("UserLogin").where("userLoginId", userLoginId).queryOne();
     context.userInfo = userInfo;	
 	
 	if ((UtilValidate.isNotEmpty(userInfo)) && (UtilValidate.isNotEmpty(userInfo.disabledDateTime)))

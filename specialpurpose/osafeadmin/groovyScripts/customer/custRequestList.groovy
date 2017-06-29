@@ -66,7 +66,7 @@ dateCond = null;
 mainCond = EntityCondition.makeCondition("custRequestTypeId", EntityOperator.EQUALS, custRequestType);
 if(UtilValidate.isNotEmpty(partyId)) 
 {
-    party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+    party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
     mainCond = EntityCondition.makeCondition([mainCond, EntityCondition.makeCondition("fromPartyId", EntityOperator.EQUALS, partyId)], EntityOperator.AND);
 }
 if(UtilValidate.isNotEmpty(contactUsDateFrom))

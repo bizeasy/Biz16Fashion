@@ -28,7 +28,7 @@ roleTypeIds.add("INTERNAL_ORGANIZATIO");
 
 if (UtilValidate.isNotEmpty(partyId))
 {
-	party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+	party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
 	if (UtilValidate.isNotEmpty(party))
 	{
         context.party=party;

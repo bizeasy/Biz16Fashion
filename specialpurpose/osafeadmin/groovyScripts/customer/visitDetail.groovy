@@ -20,7 +20,8 @@ partyId= "";
 
 if (UtilValidate.isNotEmpty(visitId))
 {
-	visit = delegator.findByPrimaryKey("Visit", [visitId : visitId]);
+	visit = EntityQuery.use(delegator).from("Visit").where(UtilMisc.toMap("visitId", visitId)).queryOne();
+	
 	if (UtilValidate.isNotEmpty(visit))
 	{
 		partyId = visit.partyId;
@@ -50,7 +51,8 @@ if (UtilValidate.isNotEmpty(visit))
 	if(UtilValidate.isNotEmpty(visit.partyId))
 	{
 		partyId= visit.partyId;
-		party = delegator.findByPrimaryKey("Party", [partyId : visit.partyId]);
+		party = EntityQuery.use(delegator).from("Party").where(UtilMisc.toMap("partyId", visit.partyId)).queryOne();
+		
 		context.party = party;
 	}
 }

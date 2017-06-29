@@ -36,7 +36,7 @@ if (UtilValidate.isNotEmpty(adminContext))
 		{
 			context.customerInformationHeading = UtilProperties.getMessage("OSafeAdminUiLabels","CustomerDetailInfoHeading",["partyId" : partyId], locale )
 		}
-		party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+		party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
 		if(UtilValidate.isNotEmpty(party))
 		{
 

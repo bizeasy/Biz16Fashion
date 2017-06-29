@@ -20,7 +20,7 @@ contentList = LinkedList.newInstance();
 
 if (UtilValidate.isNotEmpty(orderId)) 
 {
-	orderHeader = delegator.findByPrimaryKey("OrderHeader", [orderId : orderId]);
+	orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
 	context.orderHeader = orderHeader;
 	
 	orderProductStore = orderHeader.getRelatedOne("ProductStore");

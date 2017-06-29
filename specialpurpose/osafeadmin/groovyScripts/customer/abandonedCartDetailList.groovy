@@ -27,7 +27,7 @@ context.pageTitle = UtilProperties.getMessage("OSafeAdminUiLabels","AbandonedCar
 context.generalInfoBoxHeading = UtilProperties.getMessage("OSafeAdminUiLabels","CustomerDetailInfoHeading",messageMap, locale )
 context.customerNoteInfoBoxHeading = UtilProperties.getMessage("OSafeAdminUiLabels","CustomerNoteHeading",messageMap, locale )
 
-party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
 
 messageMap=[:];
 messageMap.put("partyId", partyId);

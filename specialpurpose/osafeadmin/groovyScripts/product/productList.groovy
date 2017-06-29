@@ -55,7 +55,8 @@ if (UtilValidate.isNotEmpty(add_product_id) && UtilValidate.isNotEmpty(prod_type
    }
    else if(prod_type.equals("FinishedGood"))
    {
-	   GenericValue finished_good = delegator.findByPrimaryKey("Product", [productId : add_product_id]);
+	   GenericValue finished_good = EntityQuery.use(delegator).from("Product").where("productId", add_product_id).queryOne();
+	   
 	   add_product_name = ProductContentWrapper.getProductContentAsText(finished_good, 'PRODUCT_NAME', request);
    }
    messageMap.put("add_product_name", add_product_name);

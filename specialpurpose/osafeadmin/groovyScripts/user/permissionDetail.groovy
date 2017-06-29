@@ -7,6 +7,6 @@ permissionId = StringUtils.trimToEmpty(parameters.permissionId);
 context.permissionId = permissionId;
 if (UtilValidate.isNotEmpty(permissionId))
 {
-	permissions = delegator.findByPrimaryKey("SecurityPermission", [permissionId : permissionId]);
+	permissions = EntityQuery.use(delegator).from("SecurityPermission").where("permissionId", permissionId).queryOne();
 	context.permissions = permissions;
 }

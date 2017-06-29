@@ -7,6 +7,6 @@ groupId = StringUtils.trimToEmpty(parameters.groupId);
 context.groupId = groupId;
 if (UtilValidate.isNotEmpty(groupId))
 {
-    securityGroupInfo = delegator.findByPrimaryKey("SecurityGroup", [groupId : groupId]);
+    securityGroupInfo = EntityQuery.use(delegator).from("SecurityGroup").where("groupId", groupId).queryOne();
     context.securityGroupInfo = securityGroupInfo;	
 }

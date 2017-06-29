@@ -131,7 +131,8 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
         resultMap = HashMap.newInstance(); 
         List filteredList = EntityUtil.filterByAnd(reviewRatingList, [productId : distinctValue]);
         rowCount = filteredList.size();
-        avgRatingGv = delegator.findByPrimaryKey("ProductCalculatedInfo",[productId : distinctValue]).averageCustomerRating;
+        avgRatingGv = (EntityQuery.use(delegator).from("ProductCalculatedInfo").where("productId", distinctValue).queryOne()).averageCustomerRating;
+        
         product = delegator.findOne("Product",["productId":distinctValue], false);
         if (UtilValidate.isNotEmpty(product)) 
          {

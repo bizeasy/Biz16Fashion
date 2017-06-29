@@ -133,7 +133,8 @@ if (UtilValidate.isNotEmpty(productStore))
                 String mapKey = categoryRollUp.productCategoryId;
                 if (!catContentWrappers.containsKey(mapKey)) 
                 {
-                    gvProductCategory = delegator.findByPrimaryKey("ProductCategory",UtilMisc.toMap("productCategoryId",mapKey));
+                    gvProductCategory = EntityQuery.use(delegator).from("ProductCategory").where("productCategoryId", mapKey).queryOne();
+                    
                     CategoryContentWrapper productCategoryContentWrapper = new CategoryContentWrapper(gvProductCategory, request);
                     catContentWrappers.put(mapKey,productCategoryContentWrapper);
                     currentCategories.add(gvProductCategory);
@@ -163,7 +164,8 @@ if (UtilValidate.isNotEmpty(productStore))
                         productCategoryId=subCategoryRollUp.productCategoryId;
                         if (!catContentWrappers.containsKey(productCategoryId)) 
                         {
-                            gvProductCategory = delegator.findByPrimaryKey("ProductCategory",UtilMisc.toMap("productCategoryId",productCategoryId));
+                            gvProductCategory = EntityQuery.use(delegator).from("ProductCategory").where("productCategoryId", productCategoryId).queryOne();
+                            
                             CategoryContentWrapper productCategoryContentWrapper = new CategoryContentWrapper(gvProductCategory, request);
                             catContentWrappers.put(productCategoryId,productCategoryContentWrapper);
                             currentCategories.add(gvProductCategory);

@@ -18,7 +18,7 @@ messageMap.put("partyId", partyId);
 
 context.partyId=partyId;
 
-party = delegator.findByPrimaryKey("Party", [partyId : partyId]);
+party = EntityQuery.use(delegator).from("Party").where("partyId", partyId).queryOne();
 context.party = party;
 storeName = "";
 storeName = PartyHelper.getPartyName(party);

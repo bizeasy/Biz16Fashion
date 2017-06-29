@@ -85,7 +85,8 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
 		 pagingListSize = 0;
 		 for(GenericValue foundParty : completePartyList)
 		 {
-			 party = delegator.findByPrimaryKey("Party",UtilMisc.toMap("partyId",foundParty.partyId));
+			 party = EntityQuery.use(delegator).from("Party").where("partyId", foundParty.partyId).queryOne()
+			 
 			 partyContentWrapper = PartyContentWrapper.makePartyContentWrapper(party, request);
 			 if(UtilValidate.isNotEmpty(partyContentWrapper))
 			 {

@@ -20,7 +20,8 @@ if (UtilValidate.isNotEmpty(parameters.featureTypeId))
 	featureTypeId = StringUtils.trimToEmpty(parameters.featureTypeId);
 	productFeatureList = delegator.findByAnd("ProductFeature", UtilMisc.toMap("productFeatureTypeId", featureTypeId), UtilMisc.toList("description"));
 	
-	productFeatureType = delegator.findByPrimaryKey("ProductFeatureType", UtilMisc.toMap("productFeatureTypeId", featureTypeId));
+	productFeatureType = EntityQuery.use(delegator).from("ProductFeatureType").where("productFeatureTypeId", featureTypeId).queryOne();
+	
 	context.featureTypeId = featureTypeId;
 	context.featureTypeDescription = productFeatureType.description; 
 	context.productFeatureList = productFeatureList;

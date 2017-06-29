@@ -24,7 +24,8 @@ partyId=parameters.carrierPartyId;
 //get carrier info
 if (UtilValidate.isNotEmpty(partyId))
 {
-    carrier = delegator.findByPrimaryKey("PartyGroup", [partyId : partyId]);
+    carrier = EntityQuery.use(delegator).from("PartyGroup").where("partyId", partyId).queryOne();
+    
     context.carrier = carrier;
     
 }

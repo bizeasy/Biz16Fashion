@@ -19,7 +19,8 @@ if(UtilValidate.isNotEmpty(productCategoryId))
     createFeatureGroupCtx = HashMap.newInstance();
     createFeatureGroupCtx.put("userLogin", userLogin);
 
-    facetGroupCategory = delegator.findByPrimaryKey("ProductFeatureGroup", UtilMisc.toMap("productFeatureGroupId","FACET_GROUP_CATEGORY"));
+    facetGroupCategory = EntityQuery.use(delegator).from("ProductFeatureGroup").where("productFeatureGroupId", "FACET_GROUP_CATEGORY").queryOne();
+    
     if(UtilValidate.isEmpty(facetGroupCategory))
     {
         createFeatureGroupCtx.put("productFeatureGroupId", "FACET_GROUP_CATEGORY");
@@ -27,7 +28,8 @@ if(UtilValidate.isNotEmpty(productCategoryId))
         createFeatureGroupRes = dispatcher.runSync("createFeatureGroup", createFeatureGroupCtx);
     }
 
-    facetGroupPrice = delegator.findByPrimaryKey("ProductFeatureGroup", UtilMisc.toMap("productFeatureGroupId","FACET_GROUP_PRICE"));
+    facetGroupPrice = EntityQuery.use(delegator).from("ProductFeatureGroup").where("productFeatureGroupId", "FACET_GROUP_PRICE").queryOne();
+    
     if(UtilValidate.isEmpty(facetGroupPrice))
     {
         createFeatureGroupCtx.put("productFeatureGroupId", "FACET_GROUP_PRICE");
@@ -35,7 +37,7 @@ if(UtilValidate.isNotEmpty(productCategoryId))
         createFeatureGroupRes = dispatcher.runSync("createFeatureGroup", createFeatureGroupCtx);
     }
 
-    facetGroupRating = delegator.findByPrimaryKey("ProductFeatureGroup", UtilMisc.toMap("productFeatureGroupId","FACET_GROUP_RATINGS"));
+    facetGroupRating = EntityQuery.use(delegator).from("ProductFeatureGroup").where("productFeatureGroupId", "FACET_GROUP_RATINGS").queryOne();
     if(UtilValidate.isEmpty(facetGroupRating))
     {
         createFeatureGroupCtx.put("productFeatureGroupId", "FACET_GROUP_RATINGS");

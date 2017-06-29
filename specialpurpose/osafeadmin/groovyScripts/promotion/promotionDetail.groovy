@@ -114,7 +114,8 @@ if (UtilValidate.isNotEmpty(productPromotionId))
 
     context.productPromotionId = productPromotionId;
 
-    productPromo = delegator.findByPrimaryKey("ProductPromo", [productPromoId : productPromotionId]);
+    productPromo = EntityQuery.use(delegator).from("ProductPromo").where("productPromoId", productPromotionId).queryOne();
+    
     context.productPromo = productPromo;
  
     productStorePromoApplList = delegator.findByAnd("ProductStorePromoAppl", [productPromoId : productPromotionId, productStoreId : context.productStoreId]);
@@ -135,7 +136,8 @@ if (UtilValidate.isNotEmpty(productPromoId))
 
     context.productPromoId = productPromoId;
 
-    productPromo = delegator.findByPrimaryKey("ProductPromo", [productPromoId : productPromoId]);
+    productPromo = EntityQuery.use(delegator).from("ProductPromo").where("productPromoId", productPromoId).queryOne();
+    
     context.productPromo = productPromo;
  
     productStorePromoApplList = delegator.findByAnd("ProductStorePromoAppl", [productPromoId : productPromoId, productStoreId : context.productStoreId]);

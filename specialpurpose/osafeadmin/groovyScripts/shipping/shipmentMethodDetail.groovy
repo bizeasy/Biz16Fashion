@@ -25,7 +25,8 @@ shipmentMethodTypeId=parameters.shipmentMethodTypeId;
 //get shipment method info
 if (UtilValidate.isNotEmpty(shipmentMethodTypeId))
 {
-    shipmentMethod = delegator.findByPrimaryKey("ShipmentMethodType", [shipmentMethodTypeId : shipmentMethodTypeId]);
+    shipmentMethod = EntityQuery.use(delegator).from("ShipmentMethodType").where("shipmentMethodTypeId", shipmentMethodTypeId).queryOne();
+    
     context.shipmentMethod = shipmentMethod;
     
 }
