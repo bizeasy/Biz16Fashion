@@ -37,6 +37,7 @@ import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.order.order.OrderServices;
 import org.apache.ofbiz.order.shoppingcart.CartItemModifyException;
@@ -89,7 +90,7 @@ public class OsafeAdminOrderServices
         GenericValue orderHeader = null;
         try 
         {
-            orderHeader = EntityQuery.use(_delegator).from("OrderHeader").where("orderId", orderId).queryOne();
+            orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
         } 
         catch (GenericEntityException e) 
         {
@@ -259,7 +260,7 @@ public class OsafeAdminOrderServices
 	                        String productId = orderItem.getString("productId");
 	                        try 
 	                        {
-	                            products.add(i, EntityQuery.use(_delegator).from("Product").where("productId", productId).queryOne());  // get the product entity
+	                            products.add(i, EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne());  // get the product entity
 	                            amounts.add(i, OrderReadHelper.getOrderItemSubTotal(orderItem, allAdjustments, true, false)); // get the item amount
 	                            shipAmts.add(i, OrderReadHelper.getOrderItemAdjustmentsTotal(orderItem, allAdjustments, false, false, true)); // get the shipping amount
 	                            itPrices.add(i, orderItem.getBigDecimal("unitPrice"));
@@ -864,7 +865,7 @@ public class OsafeAdminOrderServices
                     String configId = null;
                     try 
                     {
-                        product = EntityQuery.use(_delegator).from("Product").where("productId", productId).queryOne();
+                        product = EntityQuery.use(delegator).from("Product").where("productId", productId).queryOne();
                         if ("AGGREGATED_CONF".equals(product.getString("productTypeId"))) 
                         {
                             List<GenericValue>productAssocs = delegator.findByAnd("ProductAssoc", UtilMisc.toMap("productAssocTypeId", "PRODUCT_CONF", "productIdTo", product.getString("productId")), null, false);

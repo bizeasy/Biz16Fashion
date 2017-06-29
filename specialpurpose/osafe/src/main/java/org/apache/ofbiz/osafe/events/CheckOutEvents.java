@@ -683,10 +683,10 @@ public class CheckOutEvents {
 	                Map serviceContext = UtilMisc.toMap("productStoreId", cart.getProductStoreId());
 	                serviceContext.put("payToPartyId", cart.getBillFromVendorPartyId());
 	                serviceContext.put("billToPartyId", cart.getBillToCustomerPartyId());
-	                serviceContext.put("itemProductList", FastList.newInstance());
-	                serviceContext.put("itemAmountList", FastList.newInstance());
-	                serviceContext.put("itemPriceList", FastList.newInstance());
-	                serviceContext.put("itemShippingList", FastList.newInstance());
+	                serviceContext.put("itemProductList", new LinkedList<>());
+	                serviceContext.put("itemAmountList", new LinkedList<>());
+	                serviceContext.put("itemPriceList", new LinkedList<>());
+	                serviceContext.put("itemShippingList", new LinkedList<>());
 	                serviceContext.put("orderShippingAmount", shipAmount);
 	                serviceContext.put("shippingAddress", shipAddress);
 	                serviceContext.put("orderPromotionsAmount", BigDecimal.ZERO);

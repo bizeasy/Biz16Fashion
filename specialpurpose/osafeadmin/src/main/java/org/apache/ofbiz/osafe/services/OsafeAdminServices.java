@@ -209,7 +209,7 @@ public class OsafeAdminServices {
                             Datasource datasourceInfo = EntityConfig.getDatasource(helperInfo.getHelperBaseName());
                             String relatedEntityName = delegator.getModelEntity(relatedEntity).getTableName(datasourceInfo);
                             //Preparing DELETE query
-                            sqlP = new SQLProcessor(helperInfo);
+                            sqlP = new SQLProcessor(delegator, helperInfo);
                             sql = "DELETE FROM " + relatedEntityName;
                             sqlP.prepareStatement(sql);
                             deleteRowCount = sqlP.executeUpdate();
@@ -218,7 +218,7 @@ public class OsafeAdminServices {
                         Datasource datasourceInfo = EntityConfig.getDatasource(helperInfo.getHelperBaseName());
                         String entity = delegator.getModelEntity(entityName).getTableName(datasourceInfo);
                       //Preparing DELETE query for Vist entity
-                        sqlP = new SQLProcessor(helperInfo);
+                        sqlP = new SQLProcessor(delegator, helperInfo);
                         sql = "DELETE FROM " + entity;
                         sql += " WHERE LAST_UPDATED_STAMP < '"+dayBackDateTime+"'";
                         sqlP.prepareStatement(sql);
@@ -230,7 +230,7 @@ public class OsafeAdminServices {
                         Datasource datasourceInfo = EntityConfig.getDatasource(helperInfo.getHelperBaseName());
                         String tableName = delegator.getModelEntity(entityName).getTableName(datasourceInfo);
                         //Preparing DELETE query
-                        sqlP = new SQLProcessor(helperInfo);
+                        sqlP = new SQLProcessor(delegator, helperInfo);
                         sql = "DELETE FROM " + tableName;
                         sqlP.prepareStatement(sql);
                         deleteRowCount = sqlP.executeUpdate();

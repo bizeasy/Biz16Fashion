@@ -114,7 +114,7 @@ public class OsafeAdminFeedServices
             if (baseDir.isDirectory() && baseDir.canRead()) 
             {
                 File[] fileArray = baseDir.listFiles();
-                FastList<File> files = new LinkedList<>();
+                LinkedList<File> files = new LinkedList<>();
                 
                 for (File file: fileArray) 
                 {
@@ -126,7 +126,7 @@ public class OsafeAdminFeedServices
                 int passes=0;
                 int lastUnprocessedFilesCount = 0;
                 
-                FastList<File> unprocessedFiles = new LinkedList<>();
+                LinkedList<File> unprocessedFiles = new LinkedList<>();
                 while (files.size()>0 && files.size() != lastUnprocessedFilesCount) 
                 {
                     lastUnprocessedFilesCount = files.size();
@@ -450,7 +450,7 @@ public class OsafeAdminFeedServices
             if (baseDir.isDirectory() && baseDir.canRead()) 
             {
                 File[] fileArray = baseDir.listFiles();
-                FastList<File> files = new LinkedList<>();
+                LinkedList<File> files = new LinkedList<>();
                 
                 for (File file: fileArray) 
                 {
@@ -462,7 +462,7 @@ public class OsafeAdminFeedServices
                 int passes=0;
                 int lastUnprocessedFilesCount = 0;
                 
-                FastList<File> unprocessedFiles = new LinkedList<>();
+                LinkedList<File> unprocessedFiles = new LinkedList<>();
                 while (files.size()>0 && files.size() != lastUnprocessedFilesCount) 
                 {
                     lastUnprocessedFilesCount = files.size();
@@ -809,7 +809,7 @@ public class OsafeAdminFeedServices
             if (baseDir.isDirectory() && baseDir.canRead()) 
             {
                 File[] fileArray = baseDir.listFiles();
-                FastList<File> files = new LinkedList<>();
+                LinkedList<File> files = new LinkedList<>();
                 
                 for (File file: fileArray) 
                 {
@@ -820,7 +820,7 @@ public class OsafeAdminFeedServices
                 }
                 int passes=0;
                 int lastUnprocessedFilesCount = 0;
-                FastList<File> unprocessedFiles = new LinkedList<>();
+                LinkedList<File> unprocessedFiles = new LinkedList<>();
                 while (files.size()>0 && files.size() != lastUnprocessedFilesCount) 
                 {
                     lastUnprocessedFilesCount = files.size();
@@ -1149,7 +1149,7 @@ public class OsafeAdminFeedServices
             if (baseDir.isDirectory() && baseDir.canRead()) 
             {
                 File[] fileArray = baseDir.listFiles();
-                FastList<File> files = new LinkedList<>();
+                LinkedList<File> files = new LinkedList<>();
                 
                 for (File file: fileArray) 
                 {
@@ -1161,7 +1161,7 @@ public class OsafeAdminFeedServices
                 int passes=0;
                 int lastUnprocessedFilesCount = 0;
                 
-                FastList<File> unprocessedFiles = new LinkedList<>();
+                LinkedList<File> unprocessedFiles = new LinkedList<>();
                 while (files.size()>0 && files.size() != lastUnprocessedFilesCount) 
                 {
                     lastUnprocessedFilesCount = files.size();

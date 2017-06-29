@@ -76,7 +76,7 @@ public class OsafeWebToolsServices {
             if (baseDir.isDirectory() && baseDir.canRead()) 
             {
                 File[] fileArray = baseDir.listFiles();
-                FastList<File> files = new LinkedList<>();
+                LinkedList<File> files = new LinkedList<>();
                 
                 for (File file: fileArray) 
                 {
@@ -96,7 +96,7 @@ public class OsafeWebToolsServices {
                 int passes=0;
                 int initialListSize = files.size();
                 int lastUnprocessedFilesCount = 0;
-                FastList<File> unprocessedFiles = new LinkedList<>();
+                LinkedList<File> unprocessedFiles = new LinkedList<>();
                 while (files.size()>0 && files.size() != lastUnprocessedFilesCount) 
                 {
                     lastUnprocessedFilesCount = files.size();

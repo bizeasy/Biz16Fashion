@@ -98,6 +98,7 @@ import org.apache.ofbiz.entity.config.model.Datasource;
 import org.apache.ofbiz.entity.datasource.GenericHelperInfo;
 import org.apache.ofbiz.entity.jdbc.SQLProcessor;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.party.contact.ContactHelper;
 import org.apache.ofbiz.party.contact.ContactMechWorker;
@@ -3284,7 +3285,7 @@ public class ImportServices {
         			{
         				featureTypeId=featureTypeId.substring(0,20);
         			}
-        			FastMap mFeatureMap=(FastMap)mFeatureTypeMap.get(featureType);
+        			HashMap mFeatureMap=(HashMap)mFeatureTypeMap.get(featureType);
             		Set featureSet = mFeatureMap.keySet();
             		Iterator iterFeature = featureSet.iterator();
             		while (iterFeature.hasNext())
@@ -4386,7 +4387,7 @@ public class ImportServices {
 	            			}
 	                        
 	            			
-                            FastMap mFeatureMap=(FastMap)mFeatureTypeMap.get(featureType);
+                            HashMap mFeatureMap=(HashMap)mFeatureTypeMap.get(featureType);
 	                		Set featureSet = mFeatureMap.keySet();
 	                		Iterator iterFeature = featureSet.iterator();
 	                		int iSeq=0;
@@ -4559,7 +4560,7 @@ public class ImportServices {
                 			{
                 				featureTypeId=featureTypeId.substring(0,20);
                 			}
-	            			FastMap mFeatureMap=(FastMap)mFeatureTypeMap.get(featureType);
+	            			HashMap mFeatureMap=(HashMap)mFeatureTypeMap.get(featureType);
 	                		Set featureSet = mFeatureMap.keySet();
 	                		Iterator iterFeature = featureSet.iterator();
 	                		int iSeq=0;
@@ -4771,7 +4772,7 @@ public class ImportServices {
                 			    {
                 				    featureTypeId=featureTypeId.substring(0,20);
                 			    }
-                			    FastMap mFeatureMap=(FastMap)mFeatureTypeMap.get(featureType);
+                			    HashMap mFeatureMap=(HashMap)mFeatureTypeMap.get(featureType);
 	                		    Set featureSet = mFeatureMap.keySet();
 	                		    Iterator iterFeature = featureSet.iterator();
 	                		    
@@ -5549,7 +5550,7 @@ public class ImportServices {
 			{
     			productFeatureTypeId=productFeatureTypeId.substring(0,20);
 			}
-	    	List<GenericValue> productFeatureList = _delegator.findByAnd("ProductFeature", UtilMisc.toMap("productFeatureTypeId", productFeatureTypeId, "productFeatureCategoryId", productFeatureTypeId, null, false));
+	    	List<GenericValue> productFeatureList = _delegator.findByAnd("ProductFeature", UtilMisc.toMap("productFeatureTypeId", productFeatureTypeId, "productFeatureCategoryId", productFeatureTypeId), null, false);
 			if(UtilValidate.isNotEmpty(productFeatureList))
 			{
 				for (GenericValue productFeatureValue : productFeatureList)
@@ -5746,7 +5747,7 @@ public class ImportServices {
                 try
                 {
                     GenericHelperInfo helperInfo = delegator.getGroupHelperInfo(delegator.getEntityGroupName(entity));
-                    sqlP = new SQLProcessor(helperInfo);
+                    sqlP = new SQLProcessor(delegator, helperInfo);
                     Datasource datasourceInfo = EntityConfig.getDatasource(helperInfo.getHelperBaseName());
 
                     int deleteRowCount =0; 
@@ -8062,9 +8063,9 @@ public class ImportServices {
 	                if (UtilValidate.isNotEmpty(partyManufacturer))
 	                {
 	                	PartyContentWrapper partyContentWrapper = new PartyContentWrapper(dispatcher, partyManufacturer, _locale, "text/html");
-	                	if (UtilValidate.isNotEmpty(partyContentWrapper.get("PROFILE_NAME")))
+	                	if (UtilValidate.isNotEmpty(partyContentWrapper.get("PROFILE_NAME", "string")))
 		                {
-	                		brand = partyContentWrapper.get("PROFILE_NAME").toString();
+	                		brand = partyContentWrapper.get("PROFILE_NAME", "string").toString();
 		                }
 	                }
 	                
@@ -18192,7 +18193,7 @@ public class ImportServices {
     	                dataRow.put(Constants.FACET_VAL_GRP_ID_DATA_KEY, featureTypeId);
     	                dataRow.put(Constants.FACET_VAL_FEAT_TYPE_ID_DATA_KEY, featureTypeId);
 
-    				    FastMap mFeatureMap=(FastMap)mFeatureTypeMap.get(featureType);
+    				    HashMap mFeatureMap=(HashMap)mFeatureTypeMap.get(featureType);
     	  		        Set featureSet = mFeatureMap.keySet();
     	  		        Iterator iterFeature = featureSet.iterator();
     	  		    
@@ -18261,7 +18262,7 @@ public class ImportServices {
                     Map<String, Object> dataRow = new HashMap<>();
                     dataRow.put(Constants.FACET_VAL_GRP_ID_DATA_KEY, productFeatureGroupAppl.getString("productFeatureGroupId"));
 
-                    List productFeatures = EntityUtil.filterByAnd(productFeatureList, UtilMisc.toMap("productFeatureId", productFeatureGroupAppl.getString("productFeatureId")),null, false);
+                    List productFeatures = EntityUtil.filterByAnd(productFeatureList, UtilMisc.toMap("productFeatureId", productFeatureGroupAppl.getString("productFeatureId")));
                     GenericValue productFeature = null;
                     if(UtilValidate.isNotEmpty(productFeatures))
                     {
@@ -18273,7 +18274,7 @@ public class ImportServices {
                         dataRow.put(Constants.FACET_VAL_FEAT_TYPE_ID_DATA_KEY, productFeature.getString("productFeatureTypeId"));
                         dataRow.put(Constants.FACET_VAL_FEAT_DESC_DATA_KEY, productFeature.getString("description"));
                         
-                        List productFeatureGroups = EntityUtil.filterByAnd(productFeatureGroupList, UtilMisc.toMap("productFeatureGroupId", productFeature.getString("productFeatureTypeId")),null, false);
+                        List productFeatureGroups = EntityUtil.filterByAnd(productFeatureGroupList, UtilMisc.toMap("productFeatureGroupId", productFeature.getString("productFeatureTypeId")));
                         if(UtilValidate.isNotEmpty(productFeatureGroups))
                         {
                         	GenericValue productFeatureGroup = EntityUtil.getFirst(productFeatureGroups);
@@ -18284,7 +18285,7 @@ public class ImportServices {
                     
                     if(UtilValidate.isNotEmpty(productFeature))
                     {
-                        List plpSwatchProductFeatureDataResources = EntityUtil.filterByAnd(plpSwatchProductFeatureDataResourceList, UtilMisc.toMap("productFeatureId", productFeature.getString("productFeatureId")),null, false);
+                        List plpSwatchProductFeatureDataResources = EntityUtil.filterByAnd(plpSwatchProductFeatureDataResourceList, UtilMisc.toMap("productFeatureId", productFeature.getString("productFeatureId")));
                         if(UtilValidate.isNotEmpty(plpSwatchProductFeatureDataResources))
                         {
                             GenericValue plpSwatchProductFeatureDataResource = EntityUtil.getFirst(plpSwatchProductFeatureDataResources);
@@ -18293,7 +18294,7 @@ public class ImportServices {
                             dataRow.put(Constants.FACET_VAL_PLP_SWATCH_DATA_KEY, dataResourceName);
                         }
                         
-                        List pdpSwatchProductFeatureDataResources = EntityUtil.filterByAnd(pdpSwatchProductFeatureDataResourceList, UtilMisc.toMap("productFeatureId", productFeature.getString("productFeatureId")),null, false);
+                        List pdpSwatchProductFeatureDataResources = EntityUtil.filterByAnd(pdpSwatchProductFeatureDataResourceList, UtilMisc.toMap("productFeatureId", productFeature.getString("productFeatureId")));
                         if(UtilValidate.isNotEmpty(pdpSwatchProductFeatureDataResources))
                         {
                             GenericValue pdpSwatchProductFeatureDataResource = EntityUtil.getFirst(pdpSwatchProductFeatureDataResources);

@@ -58,6 +58,7 @@ import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.model.ModelEntity;
 import org.apache.ofbiz.entity.model.ModelReader;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.service.ServiceUtil;
 import org.w3c.tidy.Tidy;
@@ -221,7 +222,7 @@ public class OsafeAdminUtil {
         if(UtilValidate.isNotEmpty(productId) && UtilValidate.isNotEmpty(productPriceTypeId))
         {
             try {
-                productPriceList = delegator.findByAnd("ProductPrice", UtilMisc.toMap("productId", productId, "productPriceTypeId", productPriceTypeId,"productPricePurposeId", productPricePurposeId), UtilMisc.toList("-fromDate"), null, false);
+                productPriceList = delegator.findByAnd("ProductPrice", UtilMisc.toMap("productId", productId, "productPriceTypeId", productPriceTypeId,"productPricePurposeId", productPricePurposeId), UtilMisc.toList("-fromDate"), false);
                 if(UtilValidate.isNotEmpty(productPriceList))
                 {
                     productPriceListFiltered = EntityUtil.filterByDate(productPriceList);
@@ -1602,7 +1603,7 @@ public class OsafeAdminUtil {
         // check that id is not already exist
         try 
         {
-    	    GenericValue gv = EntityQuery.use(_delegator).from(entityName).where(entityPK, seqId).queryOne();
+    	    GenericValue gv = EntityQuery.use(delegator).from(entityName).where(entityPK, seqId).queryOne();
     	    if (UtilValidate.isEmpty(gv))
     	    {
     	        return seqId;
