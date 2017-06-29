@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.product.ProductWorker;
 import com.osafe.util.Util;
@@ -173,7 +174,10 @@ if(UtilValidate.isNotEmpty(productFeatureTypesList))
 }
 
 //product features : STANDARD FEATURES 
-productFeatureAndAppls = delegator.findByAndCache("ProductFeatureAndAppl", UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE"), UtilMisc.toList("sequenceNum"));
+productFeatureAndAppls = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where(UtilMisc.toMap("productId", productId, "productFeatureApplTypeId", "STANDARD_FEATURE")).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
+
+
+
 productFeatureAndAppls = EntityUtil.filterByDate(productFeatureAndAppls,true);
 productFeatureAndAppls = EntityUtil.orderBy(productFeatureAndAppls,UtilMisc.toList('sequenceNum'));
 
