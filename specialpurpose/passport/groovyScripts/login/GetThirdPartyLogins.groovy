@@ -35,7 +35,8 @@ if (!adminErrorInfo || !adminErrorInfo.hasError()) {
     storePassportLoginMethList = null
     // Get lists of passport login methods
     if (productStoreId) {
-        storePassportLoginMethList = delegator.findByAnd("ThirdPartyLogin", ["productStoreId": productStoreId], ["sequenceNum ASC"], false)
+        storePassportLoginMethList = EntityQuery.use(delegator).from("ThirdPartyLogin").where("productStoreId" , productStoreId).queryList();
+        
         storePassportLoginMethList = EntityUtil.filterByDate(storePassportLoginMethList)
     }
         
@@ -43,7 +44,8 @@ if (!adminErrorInfo || !adminErrorInfo.hasError()) {
     if (storePassportLoginMethList) {
         storeLoginMethList = []
         for (storeLoginMeth in storePassportLoginMethList) {
-            storeLoginMethDetail = EntityUtil.getFirst(EntityUtil.filterByDate(delegator.findByAnd(storeLoginMeth.loginMethTypeId + storeLoginMeth.loginProviderId, ["productStoreId": productStoreId], null, false)))
+            storeLoginMethDetail = EntityUtil.getFirst(EntityUtil.filterByDate(EntityQuery.use(delegator).from(storeLoginMeth.loginMethTypeId + storeLoginMeth.loginProviderId).where("productStoreId" , productStoreId).queryList()))
+            
             storeLoginMethList.add(storeLoginMethDetail)
         }
         context.storeLoginMethList = storeLoginMethList

@@ -25,7 +25,8 @@
  showScreen = "origin"
  List errMsgList = []
  
- productStore = EntityUtil.getFirst(delegator.findByAnd("ProductStore", [payToPartyId: partyId], null, false))
+ productStore = EntityQuery.use(delegator).from("ProductStore").where("payToPartyId", partyId).queryList();
+ 
  if(productStore){
      context.productStoreId = productStore.productStoreId
  }
@@ -34,7 +35,8 @@
      showScreen = "message"
  } else {
      facility = delegator.findOne("Facility", [facilityId : productStore.inventoryFacilityId], false)
-     webSite = EntityUtil.getFirst(delegator.findByAnd("WebSite", [productStoreId: productStore.productStoreId], null, false))
+     webSite = EntityQuery.use(delegator).from("WebSite").where("productStoreId", productStore.productStoreId).queryList();
+     
      
      if(UtilValidate.isEmpty(facility)){
          errMsgList.add("Facility not set!")
@@ -50,7 +52,7 @@
     return
  }
  
- productStoreCatalog = EntityUtil.getFirst(delegator.findByAnd("ProductStoreCatalog", [productStoreId: productStore.productStoreId], null, false))
+ productStoreCatalog = EntityQuery.use(delegator).from("ProductStoreCatalog").where("productStoreId", productStore.productStoreId).queryList();
  if(productStoreCatalog){
      prodCatalog = productStoreCatalog.getRelatedOne("ProdCatalog", false)
      prodCatalogId = prodCatalog.prodCatalogId
@@ -69,9 +71,9 @@
          showErrorMsg = "Y"
      }
      
-     prodCatalogCategory  = EntityUtil.getFirst(delegator.findByAnd("ProdCatalogCategory", [prodCatalogId: prodCatalogId, sequenceNum: new Long(1)], null, false))
+     prodCatalogCategory  = EntityQuery.use(delegator).from("ProdCatalogCategory").where("prodCatalogId", prodCatalogId).queryList();
      if(prodCatalogCategory){
-         productCategory = EntityUtil.getFirst(delegator.findByAnd("ProductCategory", [primaryParentCategoryId : prodCatalogCategory.productCategoryId], null, false))
+         productCategory = EntityUtil.getFirst(EntityQuery.use(delegator).from("ProductCategory").where("primaryParentCategoryId",prodCatalogCategory.productCategoryId).queryList())
          if(productCategory){
              productCategoryId = productCategory.productCategoryId
          }
@@ -88,12 +90,14 @@
              showErrorMsg = "Y"
          }
          /**************** get product from ProductCategory ******************/
-         productCategoryMember  = EntityUtil.getFirst(delegator.findByAnd("ProductCategoryMember", [productCategoryId: productCategoryId], null, false))
+         productCategoryMember  = EntityUtil.getFirst(EntityQuery.use(delegator).from("ProductCategoryMember").where("primaryParentCategoryId",productCategoryId).queryList())
+         
          if(productCategoryMember){
              product = productCategoryMember.getRelatedOne("Product", false)
              productId = product.productId
              // Average cost
-             averageCostValues = delegator.findByAnd("ProductPrice", [productId : productId, productPricePurposeId : "PURCHASE", productPriceTypeId : "AVERAGE_COST"], null, false)
+             averageCostValues = EntityQuery.use(delegator).from("ProductPrice").where("productId" , productId,"productPricePurposeId","PURCHASE", "productPriceTypeId","AVERAGE_COST"]).queryList()
+             
              if(averageCostValues){
                  averageCostValue = EntityUtil.getFirst(EntityUtil.filterByDate(averageCostValues))
                  if (averageCostValue?.price != null) {
@@ -101,7 +105,8 @@
                  }
              }
              //    Default cost
-             defaultPriceValues = delegator.findByAnd("ProductPrice", [productId : productId, productPricePurposeId : "PURCHASE", productPriceTypeId : "DEFAULT_PRICE"], null, false)
+             defaultPriceValues = EntityQuery.use(delegator).from("ProductPrice").where("productId" , productId,"productPricePurposeId","PURCHASE", "productPriceTypeId","DEFAULT_PRICE").queryList()
+             
              if(defaultPriceValues){
                  defaultPrice = EntityUtil.getFirst(EntityUtil.filterByDate(defaultPriceValues))
                  if (defaultPrice?.price != null) {
