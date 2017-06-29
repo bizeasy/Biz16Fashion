@@ -112,7 +112,7 @@ if (UtilValidate.isNotEmpty(orderId))
 			//iterate through adjustments
 			for (GenericValue cartAdjustment : adjustments)
 			{
-				adjustmentType = cartAdjustment.getRelatedOneCache("OrderAdjustmentType");
+				adjustmentType = cartAdjustment.getRelatedOne("OrderAdjustmentType",true);
 				adjustmentTypeDesc = adjustmentType.get("description",locale);
 				//if loyalty points adjustment then store info
 				if(adjustmentType.orderAdjustmentTypeId.equals("LOYALTY_POINTS"))
@@ -126,7 +126,7 @@ if (UtilValidate.isNotEmpty(orderId))
 				promoInfo = HashMap.newInstance();
 				promoInfo.put("cartAdjustment", cartAdjustment);
 				promoCodeText = "";
-				productPromo = cartAdjustment.getRelatedOneCache("ProductPromo");
+				productPromo = cartAdjustment.getRelatedOne("ProductPromo",true);
 				if(UtilValidate.isNotEmpty(productPromo))
 				{
 					promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
