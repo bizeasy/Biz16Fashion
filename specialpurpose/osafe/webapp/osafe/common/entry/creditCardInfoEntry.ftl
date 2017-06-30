@@ -64,7 +64,7 @@
 	              <#assign cardType = requestParameters.cardType?if_exists>
 	            </#if>
 	            <#if cardType?has_content>
-	              <#assign cardTypeEnums = delegator.findByAndCache("Enumeration", {"enumCode" : cardType, "enumTypeId" : "CREDIT_CARD_TYPE"})?if_exists/>
+	              <#assign cardTypeEnums = EntityQuery.use(delegator).from("Enumeration").where({"enumCode" : cardType, "enumTypeId" : "CREDIT_CARD_TYPE"}).cache().queryList()/>
 	              <#if cardTypeEnums?has_content>
 	                <#assign cardTypeEnum = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(cardTypeEnums) />
 	                <option value="${cardTypeEnum.enumCode!}">${cardTypeEnum.description!}</option>

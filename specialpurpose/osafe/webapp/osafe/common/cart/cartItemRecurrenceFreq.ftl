@@ -4,7 +4,7 @@
        <label>${uiLabelMap.CartItemRecurrenceFreqCaption}</label>
        <span>
        <#if recurrenceFreq?exists && recurrenceFreq?has_content>
-	       <#assign recurrenceFreqEnums = delegator.findByAndCache("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumCode" , recurrenceFreq))/>  
+	       <#assign recurrenceFreqEnums = EntityQuery.use(delegator).from("Enumeration").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumCode" , recurrenceFreq)).cache().queryList()/>  
 	       <#if recurrenceFreqEnums?has_content>
 	           <#assign recurrenceFreqEnum = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(recurrenceFreqEnums) />  
 	           <#if recurrenceFreqEnum?has_content>

@@ -1,6 +1,6 @@
 <#include "component://osafe/webapp/osafe/includes/CommonMacros.ftl"/>
 <#if partyId?exists && partyId?has_content>
-    <#assign partyAttributes = delegator.findByAndCache("PartyAttribute", {"partyId" : partyId})?if_exists />
+    <#assign partyAttributes = EntityQuery.use(delegator).from("PartyAttribute").where({"partyId" : partyId}).cache().queryList()/>
 </#if>
 
 <#if customPartyAttributeList?has_content>

@@ -33,7 +33,7 @@
 					                <#assign textSize = productAtrributeMap.PT_TEXT_SIZE!/>
 									<#if textSize?has_content && textSize == "TRUE">
 						                <select id="fontSize_${idx!}" name="fontSize_${idx!}" class="fontSize" onChange="javascript:updateImageTextSize('${idx!}');updatePersonalizationMap(this);">
-						                	<#assign fontSizeEnums = delegator.findByAndCache("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "FONT_SIZE"))/>    
+						                	<#assign fontSizeEnums = EntityQuery.use(delegator).from("Enumeration").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "FONT_SIZE")).cache().queryList()/>   
 						                  	<#assign fontSize = fontSizeFromMap!requestParameters.get("fontSize_" + idx)!"">
 						                  	<option value="">${uiLabelMap.FontSizeLabel}</option>
 						                  	<#if fontSizeEnums?has_content>
@@ -83,7 +83,7 @@
 						        <label>${uiLabelMap.FontCaption}</label>
 						        <div class="entryField">
 					                <select id="js_fontEnum" name="fontEnum" class="fontEnum" onChange="javascript:updateImageTextFont();updatePersonalizationMap(this);">
-					                	<#assign fontEnums = delegator.findByAndCache("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "FONT_FAMILY"))/>    
+					                	<#assign fontEnums = EntityQuery.use(delegator).from("Enumeration").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "FONT_FAMILY")).cache().queryList()/>   
 					                  	<#if personalizationDefaultMap?has_content>
 								  			<#assign textAreaDefaultFont = personalizationDefaultMap.PT_DEFAULT_FONT!""/>
 								  		</#if>
@@ -110,7 +110,7 @@
 						        <label>${uiLabelMap.FontAlignmentCaption}</label>
 						        <div class="entryField">
 					                <select id="js_textAlign" name="textAlign" class="textAlign" onChange="javascript:updateImageTextAlignment();updatePersonalizationMap(this);">
-					                	<#assign textAlignEnums = delegator.findByAndCache("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "TEXT_ALIGN"))/>    
+					                	<#assign textAlignEnums = EntityQuery.use(delegator).from("Enumeration").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "TEXT_ALIGN")).cache().queryList()/>   
 					                  	<#if personalizationDefaultMap?has_content>
 								  			<#assign textAreaDefaultTextAlign = personalizationDefaultMap.PT_DEFAULT_TEXT_ALIGN!""/>
 								  		</#if>

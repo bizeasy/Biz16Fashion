@@ -136,9 +136,10 @@
               <#assign trackingURL = "">
               <#assign trackingNumber = "">
               <#if orderItem.orderId?exists && orderItem.orderId?has_content >
-              	<#assign shipGroupAssoc = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(delegator.findByAndCache("OrderItemShipGroupAssoc", {"orderId": orderItem.orderId, "orderItemSeqId": orderItem.orderItemSeqId}))/>
+              	<#assign shipGroupAssoc = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(EntityQuery.use(delegator).from("OrderItemShipGroupAssoc").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId": orderItem.orderId, "orderItemSeqId": orderItem.orderItemSeqId)).cache().queryList())/>
+              	
               	<#if shipGroupAssoc?has_content>
-                  <#assign shipGroup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(delegator.findByAndCache("OrderItemShipGroup", {"orderId": orderItem.orderId, "shipGroupSeqId": shipGroupAssoc.shipGroupSeqId}))/>
+                  <#assign shipGroup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(EntityQuery.use(delegator).from("OrderItemShipGroup").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId": orderItem.orderId, "shipGroupSeqId": shipGroupAssoc.shipGroupSeqId)).cache().queryList())/>
                   <#if shipGroup?has_content>
                       <#assign shipDate = ""/>
                       <#assign orderHeader = delegator.findByPrimaryKeyCache("OrderHeader", {"orderId": orderItem.orderId})/>
@@ -158,7 +159,7 @@
                           <#assign carrierParty = carrierShipmentMethod.getRelatedOneCache("Party")/>
                           <#assign carrierPartyGroup = carrierParty.getRelatedOneCache("PartyGroup")/>
                           <#assign carrierPartyGroupName = carrierPartyGroup.groupName/>
-                          <#assign trackingURLPartyContents = delegator.findByAndCache("PartyContent", {"partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"})/>
+                          <#assign trackingURLPartyContents = EntityQuery.use(delegator).from("PartyContent").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL")).cache().queryList()/>
                           <#if trackingURLPartyContents?has_content>
                               <#assign trackingURLPartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(trackingURLPartyContents)/>
                               <#if trackingURLPartyContent?has_content>

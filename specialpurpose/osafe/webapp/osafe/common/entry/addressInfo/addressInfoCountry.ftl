@@ -16,7 +16,7 @@
 </#if>
 
 <#if parameters.fbLocationCountry?has_content> 
-	<#assign fbUserCountryList = delegator.findByAndCache("Geo", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoName" , parameters.fbLocationCountry, "geoTypeId", "COUNTRY"))/>
+	<#assign fbUserCountryList = EntityQuery.use(delegator).from("Geo").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoName" , parameters.fbLocationCountry, "geoTypeId", "COUNTRY")).cache().queryList()/>
 	<#if fbUserCountryList?has_content>
 		<#assign fbUserCountry = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(fbUserCountryList)/>  
 		<#assign selectedCountry = fbUserCountry.geoId/>

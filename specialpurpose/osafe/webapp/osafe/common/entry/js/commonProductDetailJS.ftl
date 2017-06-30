@@ -1091,7 +1091,7 @@
 				</#if>
 	  		}
 	  		var updateFont = "20";
-	  		<#assign fontSizeEnums = delegator.findByAndCache("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "FONT_SIZE"))/>  
+	  		<#assign fontSizeEnums = EntityQuery.use(delegator).from("Enumeration").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "FONT_SIZE")).cache().queryList()/>  
 	      	<#if fontSizeEnums?has_content>
 	      		<#list fontSizeEnums as fontSizeEnum>
 	      			if(updateFontEnum == "${fontSizeEnum.enumId!}")
@@ -1183,7 +1183,7 @@
 				</#if>
 	  		}
 	  		var updateFontFamily = "Arial";
-	  		<#assign fontFamilyEnums = delegator.findByAndCache("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "FONT_FAMILY"))/>  
+	  		<#assign fontFamilyEnums = EntityQuery.use(delegator).from("Enumeration").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "FONT_FAMILY")).cache().queryList()/>  
 	      	<#if fontSizeEnums?has_content>
 	      		<#list fontFamilyEnums as fontFamilyEnum>
 	      			if(updateFontFamilyEnum == "${fontFamilyEnum.enumId!}")
@@ -1213,7 +1213,7 @@
 				</#if>
 	  		}
 	  		var updateTextAlign = "Arial";
-	  		<#assign textAlignEnums = delegator.findByAndCache("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "TEXT_ALIGN"))/>  
+	  		<#assign textAlignEnums = EntityQuery.use(delegator).from("Enumeration").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "TEXT_ALIGN")).cache().queryList()/>  
 	      	<#if textAlignEnums?has_content>
 	      		<#list textAlignEnums as textAlignEnum>
 	      			if(updateTextAlignEnum == "${textAlignEnum.enumId!}")

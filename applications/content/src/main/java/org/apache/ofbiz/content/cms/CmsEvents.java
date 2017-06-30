@@ -77,12 +77,9 @@ public class CmsEvents {
                 return "error";
             }
         }
-        Debug.log("websiteId ======== "+webSiteId);
         // is this a default request or called from a defined request mapping
         String targetRequest = (String) request.getAttribute("targetRequestUri");
         String actualRequest = (String) request.getAttribute("thisRequestUri");
-        Debug.log("actualRequest ======== "+actualRequest);
-        Debug.log("targetRequest ======== "+targetRequest);
         if (targetRequest != null) {
             targetRequest = targetRequest.replaceAll("\\W", "");
         } else {
@@ -101,7 +98,6 @@ public class CmsEvents {
         String pathInfo = null;
 
         String displayMaintenancePage = (String) session.getAttribute("displayMaintenancePage");
-        Debug.log("displayMaintenancePage ======== "+displayMaintenancePage);
         if (UtilValidate.isNotEmpty(displayMaintenancePage) && "Y".equalsIgnoreCase(displayMaintenancePage)) {
             try {
                 writer = response.getWriter();
@@ -123,16 +119,13 @@ public class CmsEvents {
         } else {
         // If an override view is present then use that in place of request.getPathInfo()
         String overrideViewUri = (String) request.getAttribute("_CURRENT_CHAIN_VIEW_");
-        Debug.log("overrideViewUri ======== "+overrideViewUri);
         if (UtilValidate.isNotEmpty(overrideViewUri)) {
             pathInfo = overrideViewUri;
         } else {
             pathInfo = request.getPathInfo();
-            Debug.log("pathInfo ====000==== "+pathInfo);
             if (targetRequest.equals(actualRequest) && pathInfo != null) {
                 // was called directly -- path info is everything after the request
                 String[] pathParsed = pathInfo.split("/", 3);
-                Debug.log("pathParsed ======== "+pathParsed.toString());
                 if (pathParsed.length > 2) {
                     pathInfo = pathParsed[2];
                 } else {
@@ -140,7 +133,6 @@ public class CmsEvents {
                 }
             } // if called through the default request, there is no request in pathinfo
         }
-        Debug.log("pathInfo ======== "+pathInfo);
         // if path info is null or path info is / (i.e application mounted on root); check for a default content
         if (pathInfo == null || "/".equals(pathInfo)) {
             GenericValue defaultContent = null;
@@ -148,8 +140,6 @@ public class CmsEvents {
                 defaultContent = EntityQuery.use(delegator).from("WebSiteContent")
                         .where("webSiteId", webSiteId, "webSiteContentTypeId", "DEFAULT_PAGE")
                         .orderBy("-fromDate").filterByDate().cache().queryFirst();
-                Debug.log("defaultContent ======== "+defaultContent);
-                
             } catch (GenericEntityException e) {
                 Debug.logError(e, module);
             }
@@ -157,7 +147,6 @@ public class CmsEvents {
                 pathInfo = defaultContent.getString("contentId");
             }
         }
-        Debug.log("pathInfo ===111===== "+pathInfo);
         // check for path alias first
         if (pathInfo != null) {
             // clean up the pathinfo for parsing
@@ -213,7 +202,6 @@ public class CmsEvents {
             // verify the request content is associated with the current website
             int statusCode = -1;
             boolean hasErrorPage = false;
-            Debug.log("statusCode ===111===== "+statusCode);
             if (contentId != null) {
                 try {
                     statusCode = verifyContentToWebSite(delegator, webSiteId, contentId);
@@ -224,7 +212,6 @@ public class CmsEvents {
             } else {
                 statusCode = HttpServletResponse.SC_NOT_FOUND;
             }
-            Debug.log("statusCode ===222===== "+statusCode);
             // We try to find a specific Error page for this website concerning the status code
             if (statusCode != HttpServletResponse.SC_OK) {
                 GenericValue errorContainer = null;
@@ -278,7 +265,6 @@ public class CmsEvents {
                 }
 
             }
-            Debug.log("statusCode ===333===== "+statusCode);
             if (statusCode == HttpServletResponse.SC_OK || hasErrorPage) {
                 // create the template map
                 MapStack<String> templateMap = MapStack.create();

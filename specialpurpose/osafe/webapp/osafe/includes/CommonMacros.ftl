@@ -198,7 +198,7 @@
   <#assign levelClass = "">
   <#if levelValue?has_content && levelValue="1">
       <#assign levelClass = "topLevel">
-	  <#assign megaMenuProductCategoryContentList = delegator.findByAndCache("ProductCategoryContent", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , category.productCategoryId?string, "prodCatContentTypeId" , "PLP_ESPOT_MEGA_MENU")) />
+	  <#assign megaMenuProductCategoryContentList = EntityQuery.use(delegator).from("ProductCategoryContent").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , category.productCategoryId?string, "prodCatContentTypeId" , "PLP_ESPOT_MEGA_MENU")).cache().queryList()/>
 	  <#if megaMenuProductCategoryContentList?has_content>
 	   <#assign megaMenuProductCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(megaMenuProductCategoryContentList,true) />
 	   <#assign prodCategoryContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(megaMenuProductCategoryContentList) />
@@ -214,7 +214,7 @@
 	   </#if>
 	  </#if>
 	  
-	  <#assign productCategoryMemberList = delegator.findByAndCache("ProductCategoryMember", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , category.productCategoryId?string)) />
+	  <#assign productCategoryMemberList = EntityQuery.use(delegator).from("ProductCategoryMember").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , category.productCategoryId?string)).cache().queryList()/>
 	  <#if productCategoryMemberList?has_content>
 	     <#assign productCategoryMemberList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryMemberList,true) />
 	     <#if productCategoryMemberList?has_content>

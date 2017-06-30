@@ -4,7 +4,7 @@
 </#if>
 <#assign orderByList = Static["org.apache.ofbiz.base.util.UtilMisc"].toList("fromDate")/>
 <#assign fieldsMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", partyId, "contactMechPurposeTypeId", "PHONE_HOME")/>
-<#assign homePhonePartyContactDetails = delegator.findByAndCache("PartyContactDetailByPurpose", fieldsMap, orderByList)?if_exists/>
+<#assign homePhonePartyContactDetails = EntityQuery.use(delegator).from("PartyContactDetailByPurpose").where(fieldsMap).orderBy(orderByList).cache().queryList()/>
 <#if homePhonePartyContactDetails?has_content>
      <#assign homePhonePartyContactDetails = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(homePhonePartyContactDetails?if_exists)?if_exists/>
     <#assign homePhonePartyContactDetail = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(homePhonePartyContactDetails?if_exists)?if_exists/>

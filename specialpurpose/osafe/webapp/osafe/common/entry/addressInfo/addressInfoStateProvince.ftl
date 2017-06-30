@@ -18,7 +18,7 @@
 </#if>
 
 <#if parameters.fbLocationCountry?has_content> 
-	<#assign fbUserCountryList = delegator.findByAndCache("Geo", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoName" , parameters.fbLocationCountry, "geoTypeId", "COUNTRY"))/>
+	<#assign fbUserCountryList = EntityQuery.use(delegator).from("Geo").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoName" , parameters.fbLocationCountry, "geoTypeId", "COUNTRY")).cache().queryList()/>
 	<#if fbUserCountryList?has_content>
 		<#assign fbUserCountry = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(fbUserCountryList)/>  
 		<#assign selectedCountry = fbUserCountry.geoId/>
@@ -28,7 +28,7 @@
 <#assign  selectedState = parameters.get(fieldPurpose+"_STATE")!stateProvinceGeoId?if_exists/>
 
 <#if parameters.fbLocationState?has_content> 
-	<#assign fbUserStateList = delegator.findByAndCache("Geo", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoName" , parameters.fbLocationState))/>
+	<#assign fbUserStateList = EntityQuery.use(delegator).from("Geo").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoName" , parameters.fbLocationState)).cache().queryList()/>
 	<#if fbUserStateList?has_content>
 		<#assign fbUserState = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(fbUserStateList)/>  
 		<#assign selectedState = fbUserState.geoId/>
@@ -36,7 +36,7 @@
 </#if>
 
 <#if parameters.fbLocationCountry?has_content> 
-	<#assign fbUserCountryList = delegator.findByAndCache("Geo", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoName" , parameters.fbLocationCountry, "geoTypeId", "COUNTRY"))/>
+	<#assign fbUserCountryList = EntityQuery.use(delegator).from("Geo").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoName" , parameters.fbLocationCountry, "geoTypeId", "COUNTRY")).cache().queryList()/>
 	<#if fbUserCountryList?has_content>
 		<#assign fbUserCountry = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(fbUserCountryList)/>  
 		<#assign selectedCountry = fbUserCountry.geoId/>
