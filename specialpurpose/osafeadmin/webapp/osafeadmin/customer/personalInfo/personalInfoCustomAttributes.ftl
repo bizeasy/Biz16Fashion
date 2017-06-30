@@ -1,5 +1,5 @@
 <#if partyId?exists && partyId?has_content>
-    <#assign partyAttributes = delegator.findByAnd("PartyAttribute", {"partyId" : partyId})?if_exists />
+    <#assign partyAttributes = delegator.findByAnd("PartyAttribute", {"partyId" : partyId}, null, false)?if_exists />
 </#if>
 
 <#if customPartyAttributeList?has_content>

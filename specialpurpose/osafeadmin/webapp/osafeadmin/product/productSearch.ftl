@@ -38,7 +38,7 @@
   </div>
   
   <#if rootProductCategoryId?has_content>
-      <#assign topLevelList = delegator.findByAnd("ProductCategoryRollupAndChild", {"parentProductCategoryId" : rootProductCategoryId}, Static["org.apache.ofbiz.base.util.UtilMisc"].toList('sequenceNum')) />
+      <#assign topLevelList = delegator.findByAnd("ProductCategoryRollupAndChild", {"parentProductCategoryId" : rootProductCategoryId}, Static["org.apache.ofbiz.base.util.UtilMisc"].toList('sequenceNum'), false) />
       <#assign topLevelList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(topLevelList) />
   </#if>
   <div class="entryRow">
@@ -50,7 +50,7 @@
             <#if topLevelList?exists && topLevelList?has_content>
               <#list topLevelList as category>
                   <option value="${category.productCategoryId?if_exists}" <#if (parameters.srchCategoryId!"") == "${category.productCategoryId?if_exists}">selected</#if>>&nbsp;&nbsp;${category.categoryName?if_exists}</option>
-                  <#assign subCatList = delegator.findByAnd("ProductCategoryRollupAndChild", {"parentProductCategoryId" : category.getString("productCategoryId")}, Static["org.apache.ofbiz.base.util.UtilMisc"].toList('sequenceNum')) />
+                  <#assign subCatList = delegator.findByAnd("ProductCategoryRollupAndChild", {"parentProductCategoryId" : category.getString("productCategoryId")}, Static["org.apache.ofbiz.base.util.UtilMisc"].toList('sequenceNum'), false) />
                   <#assign subCatList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(subCatList) />
                   <#if subCatList?exists && subCatList?has_content>
                     <#list subCatList as subCategory>

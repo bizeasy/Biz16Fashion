@@ -27,9 +27,9 @@
       <#assign rowNo = 1/>
         <#list productPriceCondList as priceCond>
           <#assign priceRule = priceCond.getRelatedOne("ProductPriceRule")?if_exists>
-          <#assign qtyBreakIdCondList = delegator.findByAnd("ProductPriceCond",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("inputParamEnumId", "PRIP_QUANTITY", "productPriceRuleId",priceRule.productPriceRuleId),Static["org.apache.ofbiz.base.util.UtilMisc"].toList("condValue"))/>
+          <#assign qtyBreakIdCondList = delegator.findByAnd("ProductPriceCond",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("inputParamEnumId", "PRIP_QUANTITY", "productPriceRuleId",priceRule.productPriceRuleId),Static["org.apache.ofbiz.base.util.UtilMisc"].toList("condValue"), false)/>
           <#if qtyBreakIdCondList?has_content && qtyBreakIdCondList?exists>
-            <#assign priceIdActionList= delegator.findByAnd("ProductPriceAction",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productPriceActionTypeId", "PRICE_FLAT", "productPriceRuleId",priceRule.productPriceRuleId),Static["org.apache.ofbiz.base.util.UtilMisc"].toList("productPriceRuleId"))/>
+            <#assign priceIdActionList= delegator.findByAnd("ProductPriceAction",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productPriceActionTypeId", "PRICE_FLAT", "productPriceRuleId",priceRule.productPriceRuleId),Static["org.apache.ofbiz.base.util.UtilMisc"].toList("productPriceRuleId"), false)/>
             <#if priceIdActionList?has_content && priceIdActionList?exists>
               <#assign priceIdAction = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(priceIdActionList)/>
             </#if>

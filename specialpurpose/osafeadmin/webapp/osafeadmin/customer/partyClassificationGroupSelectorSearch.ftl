@@ -8,7 +8,7 @@
       </div>
     </div>
   </div>
-  <#assign partyClassificationTypes = delegator.findByAnd("PartyClassificationType", {}, ["description"]) />
+  <#assign partyClassificationTypes = delegator.findByAnd("PartyClassificationType", {}, ["description"], false) />
   <div class="entryRow">
     <div class="entry medium">
       <label class="extraLargeLabel">${uiLabelMap.PartyClassificationTypeCaption}</label>

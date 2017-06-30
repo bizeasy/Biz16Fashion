@@ -45,7 +45,7 @@
            </#if>
       </#if>
       <#if showCustomerContactUsLink == 'true'>
-           <#assign partyContactUs = delegator.findByAnd("CustRequest",  {"fromPartyId" : party.partyId, "custRequestTypeId" : "RF_CONTACT_US"})?if_exists/>
+           <#assign partyContactUs = delegator.findByAnd("CustRequest",  {"fromPartyId" : party.partyId, "custRequestTypeId" : "RF_CONTACT_US"}, null, false)?if_exists/>
            <#if (partyContactUs?has_content)>
                <a href="<@ofbizUrl>custRequestContactUsSearch?partyId=${party.partyId}&preRetrieved=Y&productStoreall=Y</@ofbizUrl>" onMouseover="showTooltip(event,'${uiLabelMap.CustomerContactUsTooltip} [${partyContactUs.size()!}]');" onMouseout="hideTooltip()"><span class="contactUsIcon"></span></a>
            <#else>
@@ -53,7 +53,7 @@
            </#if>
       </#if>
       <#if showCustomerCatalogReqLink == 'true'>
-           <#assign partyCatalogReqs = delegator.findByAnd("CustRequest",  {"fromPartyId" : party.partyId, "custRequestTypeId" : "RF_CATALOG"})?if_exists/>
+           <#assign partyCatalogReqs = delegator.findByAnd("CustRequest",  {"fromPartyId" : party.partyId, "custRequestTypeId" : "RF_CATALOG"}, null, false)?if_exists/>
            <#if (partyCatalogReqs?has_content)>
                <a href="<@ofbizUrl>custRequestCatalogSearch?partyId=${party.partyId}&preRetrieved=Y&productStoreall=Y</@ofbizUrl>" onMouseover="showTooltip(event,'${uiLabelMap.CustomerCatalogRequestTooltip} [${partyCatalogReqs.size()!}]');" onMouseout="hideTooltip()"><span class="catalogRequestIcon"></span></a>
            <#else>

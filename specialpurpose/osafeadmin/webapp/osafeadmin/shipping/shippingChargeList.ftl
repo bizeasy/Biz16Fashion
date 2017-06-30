@@ -18,8 +18,8 @@
             <#list resultList as shipCharge>
               <#assign hasNext = shipCharge_has_next>
                 <tr class="dataRow <#if rowClass == "2">even<#else>odd</#if>">
-                <#assign shipmentCostEstimateList = delegator.findByAnd("ShipmentCostEstimate", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productStoreShipMethId",shipCharge.productStoreShipMethId!))/>
-                <#assign shipmentGatewayList = delegator.findByAnd("ShipmentGatewayConfig", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentGatewayConfigId",shipCharge.shipmentGatewayConfigId!))/>
+                <#assign shipmentCostEstimateList = delegator.findByAnd("ShipmentCostEstimate", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productStoreShipMethId",shipCharge.productStoreShipMethId!), null, false)/>
+                <#assign shipmentGatewayList = delegator.findByAnd("ShipmentGatewayConfig", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentGatewayConfigId",shipCharge.shipmentGatewayConfigId!), null, false)/>
                 <#assign shipmentGatewayConfig = "" />
                 <#if shipmentGatewayList?has_content>                    
 	              	<#assign shipmentGateway = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(shipmentGatewayList)/>

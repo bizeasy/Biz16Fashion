@@ -23,7 +23,7 @@
       <td class="nameCol <#if !hasNext>lastRow</#if>">${taxAuthRateProduct.taxPercentage!}</td>
       <td class="dateCol <#if !hasNext>lastRow</#if>">${(taxAuthRateProduct.fromDate?string(preferredDateFormat))!""}</td>
       <td class="dateCol <#if !hasNext>lastRow</#if>">${(taxAuthRateProduct.thruDate?string(preferredDateFormat))!""}</td>
-      <#assign geoAssocList = delegator.findByAnd("GeoAssoc" Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoId", taxAuthRateProduct.taxAuthGeoId))!"" />
+      <#assign geoAssocList = delegator.findByAnd("GeoAssoc" Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoId", taxAuthRateProduct.taxAuthGeoId), null, false)!"" />
       <td class="actionCol <#if !hasNext>lastRow</#if>">
         <#if geoAssocList?has_content>
           <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${geoAssocList?size} ${uiLabelMap.GeoSubItemsAssocInfo}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>

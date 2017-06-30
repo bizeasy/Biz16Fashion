@@ -3,7 +3,7 @@
     <th class="nameCol">${uiLabelMap.AttributeNameLabel}</th>
     <th class="nameCol">${uiLabelMap.AttributeValueLabel}</th>
   </tr>
-  <#assign resultList = delegator.findByAnd("OrderAttribute", {"orderId" : orderHeader.orderId!})/>
+  <#assign resultList = delegator.findByAnd("OrderAttribute", {"orderId" : orderHeader.orderId!}, null, false)/>
   <#if resultList?exists && resultList?has_content>
     <#assign rowClass = "1"/>
     <#list resultList as attribute>

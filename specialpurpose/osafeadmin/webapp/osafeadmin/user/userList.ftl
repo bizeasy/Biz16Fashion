@@ -15,7 +15,7 @@
             <#assign securityGroupExpired = "false">
             <#list resultList as userRow>
             	<#if searchGroupId?exists && searchGroupId?has_content>
-            		<#assign userLoginSecurityGroups = delegator.findByAnd("UserLoginSecurityGroup", {"userLoginId" : userRow.userLoginId, "groupId" : searchGroupId})>
+            		<#assign userLoginSecurityGroups = delegator.findByAnd("UserLoginSecurityGroup", {"userLoginId" : userRow.userLoginId, "groupId" : searchGroupId}, null, false)>
             		<#if userLoginSecurityGroup?has_content>
 	            		<#list userLoginSecurityGroups as userLoginSecurityGroup>
 	            			<#if userLoginSecurityGroup.thruDate?exists && userLoginSecurityGroup.thruDate?has_content >
@@ -29,7 +29,7 @@
             	</#if>
             	<#if securityGroupExpired="false">
             		<!-- build string with all security groups to be used as toolTip text in action column -->
-            		<#assign userGroups = delegator.findByAnd("UserLoginSecurityGroup", {"userLoginId" : userRow.userLoginId})>
+            		<#assign userGroups = delegator.findByAnd("UserLoginSecurityGroup", {"userLoginId" : userRow.userLoginId}, null, false)>
             		<#assign groupIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(userGroups, "groupId", true)>
             		<#assign groupIdsString = "">
             		<#list groupIds as groupIdString>

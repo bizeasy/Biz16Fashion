@@ -1,7 +1,7 @@
 <#if partyId?exists && partyId?has_content>
     <#assign orderByList = Static["org.apache.ofbiz.base.util.UtilMisc"].toList("fromDate")/>
     <#assign fieldsMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", partyId, "contactMechPurposeTypeId", "PHONE_MOBILE")/>
-    <#assign mobilePhonePartyContactDetails = delegator.findByAnd("PartyContactDetailByPurpose", fieldsMap, orderByList)?if_exists/>
+    <#assign mobilePhonePartyContactDetails = delegator.findByAnd("PartyContactDetailByPurpose", fieldsMap, orderByList, false)?if_exists/>
     <#if mobilePhonePartyContactDetails?has_content>
         <#assign mobilePhonePartyContactDetails = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(mobilePhonePartyContactDetails?if_exists)?if_exists/>
         <#assign mobilePhonePartyContactDetail = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(mobilePhonePartyContactDetails?if_exists)?if_exists/>

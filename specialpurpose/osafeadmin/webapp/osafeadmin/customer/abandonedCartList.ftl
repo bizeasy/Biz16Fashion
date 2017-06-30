@@ -31,10 +31,10 @@
              </#if>
              <td class="nameCol <#if !hasNext>lastRow</#if>">${lastName!}</td>
              <td class="nameCol <#if !hasNext>lastRow</#if>">${firstName!}</td>
-             <#assign shoppingListItems = delegator.findByAnd("ShoppingListItem", {"shoppingListId" : cart.shoppingListId!})>
+             <#assign shoppingListItems = delegator.findByAnd("ShoppingListItem", {"shoppingListId" : cart.shoppingListId!}, null, false)>
              <#assign shoppingListSize = shoppingListItems.size() >
              <td class="qtyCol <#if !hasNext>lastRow</#if>">${shoppingListSize!}</td>
-             <#assign shoppingListItemsQty = delegator.findByAnd("ShoppingListItem", {"shoppingListId" : cart.shoppingListId!})>
+             <#assign shoppingListItemsQty = delegator.findByAnd("ShoppingListItem", {"shoppingListId" : cart.shoppingListId!}, null, false)>
              <#assign qtyCount = 0>
              <#if (shoppingListSize &gt; 0) >
 	             <#list shoppingListItemsQty as qty>

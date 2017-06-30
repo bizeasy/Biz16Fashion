@@ -2,7 +2,7 @@
   <#assign currentCatalogId = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCurrentCatalogId(request) />
   <#assign rootProductCategoryId = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogTopCategoryId(request, currentCatalogId) />
   
-  <#assign categoryMembers = delegator.findByAnd("ProductCategoryMember",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId", productCategory.productCategoryId!))>
+  <#assign categoryMembers = delegator.findByAnd("ProductCategoryMember",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId", productCategory.productCategoryId!), null, false)>
   <#assign categoryMembers = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(categoryMembers)>
   <#if categoryMembers?has_content>
       <#assign prodCatMembershipCount = categoryMembers.size()!0/>

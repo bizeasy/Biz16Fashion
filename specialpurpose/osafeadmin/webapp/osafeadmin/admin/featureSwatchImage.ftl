@@ -1,4 +1,4 @@
-<#assign productFeatureDataResourcesPDP = delegator.findByAnd("ProductFeatureDataResource", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureId",parameters.productFeatureId!,"featureDataResourceTypeId","PDP_SWATCH_IMAGE_URL"))/>
+<#assign productFeatureDataResourcesPDP = delegator.findByAnd("ProductFeatureDataResource", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureId",parameters.productFeatureId!,"featureDataResourceTypeId","PDP_SWATCH_IMAGE_URL"),null, false)/>
 <#if productFeatureDataResourcesPDP?has_content>
   <#assign productFeatureDataResourcePDP = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(productFeatureDataResourcesPDP) />
   <#assign dataResourcePDP = productFeatureDataResourcePDP.getRelatedOne("DataResource")/>
@@ -8,7 +8,7 @@
   </#if>
 </#if>
 
-<#assign productFeatureDataResourcesPLP = delegator.findByAnd("ProductFeatureDataResource", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureId",parameters.productFeatureId!,"featureDataResourceTypeId","PLP_SWATCH_IMAGE_URL"))/>
+<#assign productFeatureDataResourcesPLP = delegator.findByAnd("ProductFeatureDataResource", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureId",parameters.productFeatureId!,"featureDataResourceTypeId","PLP_SWATCH_IMAGE_URL"),null, false)/>
 <#if productFeatureDataResourcesPLP?has_content>
   <#assign productFeatureDataResourcePLP = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(productFeatureDataResourcesPLP) />
   <#assign dataResourcePLP = productFeatureDataResourcePLP.getRelatedOne("DataResource")/>

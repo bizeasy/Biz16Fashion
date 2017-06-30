@@ -35,7 +35,7 @@
             </#if>
             <#assign orderItemPrice = (orderItem.unitPrice)*(orderItem.quantity)/>
             <#assign shippedQuantity = 0?number>
-            <#assign orderItemShipments = delegator.findByAnd("OrderShipment", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId, "orderItemSeqId", orderItem.orderItemSeqId))/>
+            <#assign orderItemShipments = delegator.findByAnd("OrderShipment", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId, "orderItemSeqId", orderItem.orderItemSeqId), null, false)/>
             <#if orderItemShipments?has_content>
                 <#list orderItemShipments as orderItemShipment>
                     <#if orderItemShipment.quantity?has_content>

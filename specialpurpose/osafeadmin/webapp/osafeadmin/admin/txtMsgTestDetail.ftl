@@ -18,7 +18,7 @@
             </div>
              <div class="infoValue">
                  <#assign selectedTemplate = parameters.templateId!"">
-                 <#assign templateList = delegator.findByAnd("XContentXref",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productStoreId", globalContext.productStoreId,"contentTypeId",contentTypeId),Static["org.apache.ofbiz.base.util.UtilMisc"].toList("contentId"))/>
+                 <#assign templateList = delegator.findByAnd("XContentXref",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productStoreId", globalContext.productStoreId,"contentTypeId",contentTypeId),Static["org.apache.ofbiz.base.util.UtilMisc"].toList("contentId"), false)/>
                  <select id="templateId" name="templateId" class="small">
 	                 <#if templateList?has_content>
 	                   <#list templateList as template>

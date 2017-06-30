@@ -8,7 +8,7 @@
       </div>
     </div>
   </div>
-  <#assign productFeatureTypes = delegator.findByAnd("ProductFeatureType", {}, ["description"]) />
+  <#assign productFeatureTypes = delegator.findByAnd("ProductFeatureType", {}, ["description"], false) />
   <div class="entryRow">
     <div class="entry">
       <label class="largeLabel">${uiLabelMap.ProductFeatureTypeCaption}</label>

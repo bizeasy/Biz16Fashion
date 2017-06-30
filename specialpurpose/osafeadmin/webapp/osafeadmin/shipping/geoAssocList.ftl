@@ -1,4 +1,4 @@
-<#assign geoAssocList = delegator.findByAnd("GeoAssoc" Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoId", taxAuthorityRateProduct.taxAuthGeoId))!"" />
+<#assign geoAssocList = delegator.findByAnd("GeoAssoc" Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoId", taxAuthorityRateProduct.taxAuthGeoId), null, false)!"" />
   <#if geoAssocList?has_content>
     <table class="osafe" cellspacing="0">
       <thead>

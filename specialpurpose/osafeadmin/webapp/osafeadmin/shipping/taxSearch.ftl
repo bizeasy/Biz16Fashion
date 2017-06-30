@@ -1,5 +1,5 @@
 <!-- start searchBox -->
-  <#assign taxAuthorityRateProductList = delegator.findByAnd("TaxAuthorityRateProduct" Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productStoreId", globalContext.productStoreId))!"" />
+  <#assign taxAuthorityRateProductList = delegator.findByAnd("TaxAuthorityRateProduct" Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productStoreId", globalContext.productStoreId), null, false)!"" />
   <#if taxAuthorityRateProductList?has_content>
     <#assign taxAuthPartyIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(taxAuthorityRateProductList, "taxAuthPartyId", true) />
   </#if>

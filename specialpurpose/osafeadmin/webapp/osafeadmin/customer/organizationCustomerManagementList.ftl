@@ -84,7 +84,7 @@
                     </#if>
                     </td>
                      
-                    <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", partyRow.partyId}) />
+                    <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", partyRow.partyId}, null, false) />
                     <#assign partyRoleTypeIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(partyRoles, "roleTypeId", true) />
                     
                     <#if partyRoles?has_content>
@@ -207,7 +207,7 @@
 				            </#if>
 				        </td>
 				                 
-				        <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", organizationEmployeeId}) />
+				        <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", organizationEmployeeId}, null, false) />
 				        <#assign partyRoleTypeIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(partyRoles, "roleTypeId", true) />
 				                
 				        <#if partyRoles?has_content>

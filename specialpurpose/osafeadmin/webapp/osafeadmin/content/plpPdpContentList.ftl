@@ -48,7 +48,7 @@
   <#if levelValue?has_content && levelValue="1">
     <#assign megaMenuProdCatContentTypeId = "PLP_ESPOT_MEGA_MENU"/>
     <#assign megaMenuMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : megaMenuProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : megaMenuProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
      
     <#if prodCategoryContentList?has_content>
@@ -58,7 +58,7 @@
     </#if>
     <#assign pageTopProdCatContentTypeId = "PLP_ESPOT_PAGE_TOP"/>
     <#assign pageTopMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : pageTopProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : pageTopProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
      
     <#if prodCategoryContentList?has_content>
@@ -69,7 +69,7 @@
     
     <#assign pageEndProdCatContentTypeId = "PLP_ESPOT_PAGE_END"/>
     <#assign pageEndMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : pageEndProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : pageEndProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
      
     <#if prodCategoryContentList?has_content>
@@ -80,7 +80,7 @@
     
     <#assign facetTopProdCatContentTypeId = "PLP_ESPOT_FACET_TOP"/>
     <#assign facetTopMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : facetTopProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : facetTopProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
      
     <#if prodCategoryContentList?has_content>
@@ -91,7 +91,7 @@
     
     <#assign facetEndProdCatContentTypeId = "PLP_ESPOT_FACET_END"/>
     <#assign facetEndMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : facetEndProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : facetEndProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
      
     <#if prodCategoryContentList?has_content>
@@ -167,7 +167,7 @@
   <#if levelValue?has_content && levelValue="2">
     <#assign PDPAddlContentTypeId = "PDP_ADDITIONAL"/>
     <#assign PDPAddlMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : PDPAddlContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : PDPAddlContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
     <#if prodCategoryContentList?has_content>
       <#assign PDPAddlMode = "Edit"/>
@@ -179,7 +179,7 @@
     
     <#assign pageTopProdCatContentTypeId = "PLP_ESPOT_PAGE_TOP"/>
     <#assign pageTopMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : pageTopProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : pageTopProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
     
     <#if prodCategoryContentList?has_content>
@@ -192,7 +192,7 @@
 
     <#assign pageEndProdCatContentTypeId = "PLP_ESPOT_PAGE_END"/>
     <#assign pageEndMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : pageEndProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : pageEndProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
     
     <#if prodCategoryContentList?has_content>
@@ -205,7 +205,7 @@
 
     <#assign facetTopProdCatContentTypeId = "PLP_ESPOT_FACET_TOP"/>
     <#assign facetTopMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : facetTopProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : facetTopProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
     
     <#if prodCategoryContentList?has_content>
@@ -218,7 +218,7 @@
 
     <#assign facetEndProdCatContentTypeId = "PLP_ESPOT_FACET_END"/>
     <#assign facetEndMode = "Add"/>
-    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : facetEndProdCatContentTypeId?if_exists})>
+    <#assign productCategoryContentList = delegator.findByAnd("ProductCategoryContent", {"productCategoryId" : category.getString("productCategoryId"), "prodCatContentTypeId" : facetEndProdCatContentTypeId?if_exists}, null, false)>
     <#assign prodCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryContentList?if_exists) />
     
     <#if prodCategoryContentList?has_content>

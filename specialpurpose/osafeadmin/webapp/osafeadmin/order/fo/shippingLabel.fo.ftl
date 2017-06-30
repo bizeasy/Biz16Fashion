@@ -35,7 +35,7 @@ under the License.
     </#if>
     
      <#-- Company Address -->
-    <#assign companyAddresses = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId, "contactMechPurposeTypeId","GENERAL_LOCATION"))/>
+    <#assign companyAddresses = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId, "contactMechPurposeTypeId","GENERAL_LOCATION"), null, false)/>
     <#assign selAddresses = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(companyAddresses, nowTimestamp, "fromDate", "thruDate", true)/>
     <#if selAddresses?has_content>
      <#assign companyAddress = delegator.findOne("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selAddresses[0].contactMechId), false)/>
@@ -155,10 +155,10 @@ under the License.
 		</#if>
 	</#list>
 	
-	<#assign itemIssuances =  delegator.findByAnd('ItemIssuance', {"orderId" : orderHeader.orderId, "shipmentId": shipment.shipmentId!, "shipGroupSeqId", shipGroup.shipGroupSeqId})!"" />
+	<#assign itemIssuances =  delegator.findByAnd('ItemIssuance', {"orderId" : orderHeader.orderId, "shipmentId": shipment.shipmentId!, "shipGroupSeqId", shipGroup.shipGroupSeqId}, null, false)!"" />
 	<#if itemIssuances?has_content>
 		<#list itemIssuances as itemIssuance>
-		    <#assign orderItemBillings = delegator.findByAnd('OrderItemBilling', {"orderId" : orderHeader.orderId, "orderItemSeqId": itemIssuance.orderItemSeqId!})!"" />
+		    <#assign orderItemBillings = delegator.findByAnd('OrderItemBilling', {"orderId" : orderHeader.orderId, "orderItemSeqId": itemIssuance.orderItemSeqId!}, null, false)!"" />
 		    <#if orderItemBillings?has_content>
 		        <#assign orderItemBilling = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(orderItemBillings) /> 
 		        <#assign invoiceId = orderItemBilling.invoiceId!/>
@@ -338,7 +338,7 @@ under the License.
                            </fo:table-row >
                                <#assign pieces = 0?number/>
                                <#assign totalAmountToBeCollected = 0.00?number>
-			                   <#assign invoiceItems = delegator.findByAnd('InvoiceItem', {"invoiceId" : invoiceId!})!"" />
+			                   <#assign invoiceItems = delegator.findByAnd('InvoiceItem', {"invoiceId" : invoiceId!}, null, false)!"" />
 			                   <#list invoiceItems as invoiceItem>
 			                       <#if invoiceItems?has_content>
 			                           <#if invoiceItem.invoiceItemTypeId == 'INV_FPROD_ITEM'>
@@ -515,10 +515,10 @@ under the License.
 		              <#list packages as package>
 		              <#assign grandTotal = 0.00?number>
 	                  <#list package as line>
-	                        <#assign orderShipments = delegator.findByAnd('OrderShipment', {"orderId" : orderHeader.orderId, "shipmentId": shipment.shipmentId!, "shipGroupSeqId", shipGroup.shipGroupSeqId, "shipmentItemSeqId", line.shipmentItemSeqId!})!"" />
+	                        <#assign orderShipments = delegator.findByAnd('OrderShipment', {"orderId" : orderHeader.orderId, "shipmentId": shipment.shipmentId!, "shipGroupSeqId", shipGroup.shipGroupSeqId, "shipmentItemSeqId", line.shipmentItemSeqId!}, null, false)!"" />
 	                        <#if orderShipments?has_content>
 	                          <#assign orderShipment = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(orderShipments) />
-	                          <#assign orderItemBillings = delegator.findByAnd('OrderItemBilling', {"orderId" : orderHeader.orderId,"orderItemSeqId", orderShipment.orderItemSeqId!, "invoiceId",invoiceId!})!"" />
+	                          <#assign orderItemBillings = delegator.findByAnd('OrderItemBilling', {"orderId" : orderHeader.orderId,"orderItemSeqId", orderShipment.orderItemSeqId!, "invoiceId",invoiceId!}, null, false)!"" />
 	                          <#if orderItemBillings?has_content>
 	                              <#assign orderItemBilling =  Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(orderItemBillings) />
 	                              <#assign invoiceItem = delegator.findOne('InvoiceItem', {"invoiceId" : invoiceId,"invoiceItemSeqId", orderItemBilling.invoiceItemSeqId!}, false)!"" />
@@ -528,11 +528,11 @@ under the License.
 	                        <#if invoiceItem?has_content>
 	                            <#assign amount = (invoiceItem.amount)*(invoiceItem.quantity?default(1))! />
 	                        </#if>
-	                        <#assign invoiceItemTaxAmounts =  delegator.findByAnd('InvoiceItem', {"invoiceId" : invoiceId,"invoiceItemTypeId", "ITM_SALES_TAX"!})!"" />
+	                        <#assign invoiceItemTaxAmounts =  delegator.findByAnd('InvoiceItem', {"invoiceId" : invoiceId,"invoiceItemTypeId", "ITM_SALES_TAX"!}, null, false)!"" />
 	                        <#if invoiceItemTaxAmounts?has_content>
 	                            <#assign invoiceItemTaxAmount = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(invoiceItemTaxAmounts) />
 	                        </#if>
-	                        <#assign invoiceItemAdjustmentList = delegator.findByAnd('InvoiceItem', {"invoiceId" : invoiceId,"invoiceItemTypeId", "ITM_PROMOTION_ADJ"!, "productId", line.product.productId})!"" />
+	                        <#assign invoiceItemAdjustmentList = delegator.findByAnd('InvoiceItem', {"invoiceId" : invoiceId,"invoiceItemTypeId", "ITM_PROMOTION_ADJ"!, "productId", line.product.productId}, null, false)!"" />
 	                        
 	                        <#if invoiceItemAdjustmentList?has_content>
 	                            <#list invoiceItemAdjustmentList as invoiceItemAdjustment>

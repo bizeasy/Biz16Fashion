@@ -1,7 +1,7 @@
 <#if product?has_content>
   <#assign attachment = ""/>
   
-  <#assign productContents = delegator.findByAnd("ProductContent", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId",product.productId,"productContentTypeId", "ATTACH_URL_0${attachNo}"))/>
+  <#assign productContents = delegator.findByAnd("ProductContent", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId",product.productId,"productContentTypeId", "ATTACH_URL_0${attachNo}"), null, false)/>
   <#if productContents?has_content>
       <#assign productContents = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productContents) />
 	  

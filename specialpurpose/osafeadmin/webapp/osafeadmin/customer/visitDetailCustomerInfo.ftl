@@ -42,7 +42,7 @@
      </div>
      <div class="infoValue">
        <#if party?has_content>
-         <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", party.partyId})>
+         <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", party.partyId}, null, false)>
          <#if partyRoles?has_content>
           <#list partyRoles as partyRole>
               <#assign roleType = partyRole.getRelatedOne("RoleType")>

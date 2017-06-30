@@ -71,7 +71,7 @@
                     </#if>
                     </td>
                      
-                    <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", partyRow.partyId}) />
+                    <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", partyRow.partyId}, null, false) />
                     <#assign partyRoleTypeIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(partyRoles, "roleTypeId", true) />
                     
                     <#if partyRoles?has_content>
@@ -137,7 +137,7 @@
                                                <a href="<@ofbizUrl>customerNoteList?partyId=${partyRow.partyId}</@ofbizUrl>"><span class="noteIcon"></span>${uiLabelMap.CustomerNoteTooltip} [0]</a>
                                            </#if>
                                        </li>
-                                       <#assign partyContactUs = delegator.findByAnd("CustRequest",  {"fromPartyId" : partyRow.partyId, "custRequestTypeId" : "RF_CONTACT_US"})?if_exists/>
+                                       <#assign partyContactUs = delegator.findByAnd("CustRequest",  {"fromPartyId" : partyRow.partyId, "custRequestTypeId" : "RF_CONTACT_US"}, null, false)?if_exists/>
                                        <li>
                                            <#if (partyContactUs?has_content)>
                                                <a href="<@ofbizUrl>custRequestContactUsSearch?partyId=${partyRow.partyId}&preRetrieved=Y</@ofbizUrl>"><span class="contactUsIcon"></span>${uiLabelMap.CustomerContactUsTooltip} [${partyContactUs.size()!}]</a>
@@ -145,7 +145,7 @@
                                                <p><span class="contactUsIcon"></span> ${uiLabelMap.CustomerContactUsTooltip} [0]</p>
                                            </#if>
                                        </li>
-                                       <#assign partyCatalogReqs = delegator.findByAnd("CustRequest",  {"fromPartyId" : partyRow.partyId, "custRequestTypeId" : "RF_CATALOG"})?if_exists/>
+                                       <#assign partyCatalogReqs = delegator.findByAnd("CustRequest",  {"fromPartyId" : partyRow.partyId, "custRequestTypeId" : "RF_CATALOG"}, null, false)?if_exists/>
                                        <li>
                                            <#if (partyCatalogReqs?has_content)>
                                                <a href="<@ofbizUrl>custRequestCatalogSearch?partyId=${partyRow.partyId}&preRetrieved=Y</@ofbizUrl>"><span class="catalogRequestIcon"></span>${uiLabelMap.CustomerCatalogRequestTooltip} [${partyCatalogReqs.size()!}]</a>

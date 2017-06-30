@@ -123,7 +123,7 @@
 		        <select id="cardType" name="cardType" class="cardType">
 	                <#assign cardType = requestParameters.cardType?if_exists>
 		            <#if cardType?has_content>
-		              <#assign cardTypeEnums = delegator.findByAnd("Enumeration", {"enumCode" : cardType, "enumTypeId" : "CREDIT_CARD_TYPE"})?if_exists/>
+		              <#assign cardTypeEnums = delegator.findByAnd("Enumeration", {"enumCode" : cardType, "enumTypeId" : "CREDIT_CARD_TYPE"}, null, false)?if_exists/>
 		              <#if cardTypeEnums?has_content>
 		                <#assign cardTypeEnum = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(cardTypeEnums) />
 		                <option value="${cardTypeEnum.enumCode!}">${cardTypeEnum.description!}</option>
@@ -209,7 +209,7 @@
 	          <select name="paymentMethodId" id="paymentMethodId">
 	              <#assign offlinePaymentMethodId = requestParameters.paymentMethodId?if_exists>
 		          <#if offlinePaymentMethodId?has_content>
-		            <#assign offlinePaymentMethods = delegator.findByAnd("PaymentMethodType", {"paymentMethodTypeId" : offlinePaymentMethodId})?if_exists/>
+		            <#assign offlinePaymentMethods = delegator.findByAnd("PaymentMethodType", {"paymentMethodTypeId" : offlinePaymentMethodId}, null, false)?if_exists/>
 		            <#if offlinePaymentMethods?has_content>
 		              <#assign offlinePaymentMethod = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(offlinePaymentMethods) />
 		              <option value="${offlinePaymentMethod.paymentMethodTypeId!}">${offlinePaymentMethod.description!}</option>

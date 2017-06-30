@@ -76,7 +76,7 @@
       <#if store_id?has_content >
         <#assign partyGroup = delegator.findOne("PartyGroup", {"partyId": store_id}, false)! />
         <#--
-        <#assign partyGroupList = delegator.findByAnd("PartyGroup", {"groupNameLocal": store_id})! />
+        <#assign partyGroupList = delegator.findByAnd("PartyGroup", {"groupNameLocal": store_id}, null, false)! />
         <#if partyGroupList?has_content>
           <#assign partyGroup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyGroupList) />
         </#if>

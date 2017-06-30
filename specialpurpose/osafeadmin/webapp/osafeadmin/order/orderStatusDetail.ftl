@@ -78,7 +78,7 @@
         		<input name="shipmentMethod" type="hidden" id="shipmentMethod" maxlength="20" value="NO_SHIPPING@_NA_"/>
         	<#else>
         		<#assign productStoreId = Static["org.apache.ofbiz.product.store.ProductStoreWorker"].getProductStoreId(request) />
-	            <#assign carrierShipmentMethodList = delegator.findByAnd('ProductStoreShipmentMethView', {"productStoreId" : productStoreId})!"" />
+	            <#assign carrierShipmentMethodList = delegator.findByAnd('ProductStoreShipmentMethView', {"productStoreId" : productStoreId}, null, false)!"" />
 	            <#assign selectedShippingMethod = parameters.shipmentMethod!orderShippingMethod!""/>
 	            <select name="shipmentMethod" id="shipmentMethod" class="small">
 	                <#if carrierShipmentMethodList?has_content>

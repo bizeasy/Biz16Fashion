@@ -24,7 +24,7 @@
   <#elseif levelValue?has_content && levelValue="2">
     <#assign levelClass = "subLevel">
   </#if>
-  <#local subCatList = delegator.findByAnd("ProductCategoryRollupAndChild",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("parentProductCategoryId", category.getString("productCategoryId")),Static["org.apache.ofbiz.base.util.UtilMisc"].toList("sequenceNum","fromDate","productCategoryId")) >
+  <#local subCatList = delegator.findByAnd("ProductCategoryRollupAndChild",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("parentProductCategoryId", category.getString("productCategoryId")),Static["org.apache.ofbiz.base.util.UtilMisc"].toList("sequenceNum","fromDate","productCategoryId"), false) >
   <#if !(subCatList?has_content)>
     <#assign subListSize=subCatList.size()/>
     <#if subListSize == 0>
@@ -41,7 +41,7 @@
         <td class="dateCol">${(category.fromDate?string(preferredDateFormat))!""}</td>
         <td class="dateCol">${(category.thruDate?string(preferredDateFormat))!""}</td>
         <td class="actionCol">
-        <#assign productCategoryRollup = delegator.findByAnd("ProductCategoryRollup", {"parentProductCategoryId" : category.productCategoryId})>
+        <#assign productCategoryRollup = delegator.findByAnd("ProductCategoryRollup", {"parentProductCategoryId" : category.productCategoryId}, null, false)>
           <#if !productCategoryRollup?has_content>
               <a class="editLink" href="<@ofbizUrl>${facetGroupDetail!}?productCategoryId=${category.productCategoryId}</@ofbizUrl>">${uiLabelMap.EditLabel}</a>
           </#if>

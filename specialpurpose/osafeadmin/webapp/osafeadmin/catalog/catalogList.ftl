@@ -31,7 +31,7 @@
       <#local macroLevelUrl = "categoryDetail">
     </#if>
   </#if>
-  <#assign categoryMembers = delegator.findByAnd("ProductCategoryMember",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId", category.productCategoryId))>
+  <#assign categoryMembers = delegator.findByAnd("ProductCategoryMember",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId", category.productCategoryId), null, false)>
   <#assign categoryMembers = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(categoryMembers)>
   <#assign prodCatMembershipCount = categoryMembers.size()!0/>
 

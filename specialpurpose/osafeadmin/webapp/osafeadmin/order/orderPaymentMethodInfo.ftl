@@ -20,7 +20,7 @@
     </div>
   </div>
   <#if creditCardInfo.cardType?exists>
-     <#assign enumerationCreditCards = delegator.findByAnd("Enumeration", {"enumCode" : creditCardInfo.cardType})>
+     <#assign enumerationCreditCards = delegator.findByAnd("Enumeration", {"enumCode" : creditCardInfo.cardType}, null, false)>
   </#if>
   <div class="infoRow">
     <div class="infoEntry">

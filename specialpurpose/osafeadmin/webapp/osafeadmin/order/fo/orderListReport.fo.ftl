@@ -61,32 +61,32 @@ under the License.
     <#assign HTTP_HOST = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request, "HTTP_HOST")/>
     
      <#-- Company Address -->
-    <#assign companyAddresses = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId, "contactMechPurposeTypeId","GENERAL_LOCATION"))/>
+    <#assign companyAddresses = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId, "contactMechPurposeTypeId","GENERAL_LOCATION"), null, false)/>
     <#assign selAddresses = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(companyAddresses, nowTimestamp, "fromDate", "thruDate", true)/>
     <#if selAddresses?has_content>
      <#assign companyAddress = delegator.findOne("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selAddresses[0].contactMechId), false)/>
     </#if>
     
      <#-- Company Phone-->
-    <#assign phones = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_PHONE"))/>
+    <#assign phones = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_PHONE"), null, false)/>
      <#if selPhones?has_content>
         <#assign selPhones = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(phones, nowTimestamp, "fromDate", "thruDate", true)/>
         <#assign companyPhone = delegator.findOne("TelecomNumber", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selPhones[0].contactMechId), false)/>
      </#if>
-     <#assign faxNumbers = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","FAX_NUMBER"))/>
+     <#assign faxNumbers = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","FAX_NUMBER"), null, false)/>
      <#if faxNumbers?has_content>  
         <#assign faxNumbers = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(faxNumbers, nowTimestamp,"fromDate", "thruDate", true)/>
         <#assign companyFax = delegator.findOne("TelecomNumber", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",faxNumbers[0].contactMechId), false)/>
      </#if>
      <#-- Company Email -->
-     <#assign emails = delegator.findByAnd("PartyContactMechPurpose",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_EMAIL"))/>
+     <#assign emails = delegator.findByAnd("PartyContactMechPurpose",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_EMAIL"), null, false)/>
      <#if selEmails?has_content>
        <#assign selEmails = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(emails, nowTimestamp, "fromDate", "thruDate", true)/>
        <#assign companyEmail = delegator.findOne("ContactMech",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selEmails[0].contactMechId), false)/>
      </#if>
 
      <#-- Company Website -->
-     <#assign websiteUrls = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(delegator.findByAnd("PartyContactMechPurpose",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_WEB_URL")))/>
+     <#assign websiteUrls = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(delegator.findByAnd("PartyContactMechPurpose",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_WEB_URL"), null, false))/>
      <#if websiteUrls?has_content> 
          <#assign websiteUrl = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(websiteUrls)/>
          <#assign companyWebsite = delegator.findOne("ContactMech",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", websiteUrl.contactMechId), false)/>
@@ -418,7 +418,7 @@ under the License.
         <fo:block space-after="0.2in"/>
         <#-- end order info -->
 
-        <#assign shipGroups = delegator.findByAnd("OrderItemShipGroup", {"orderId" : orderId})>
+        <#assign shipGroups = delegator.findByAnd("OrderItemShipGroup", {"orderId" : orderId}, null, false)>
         <#-- order customer info -->
         <fo:table table-layout="fixed" width="100%" border-end-style="solid" border-bottom-style="solid" border-start-style="solid" border-top-style="solid">
         <fo:table-column column-number="1" column-width="proportional-column-width(40)"/>
@@ -1316,7 +1316,7 @@ under the License.
                 </fo:table-row>
               </fo:table-header>
               <fo:table-body font-size="8pt">
-                  <#assign noteList = delegator.findByAnd("OrderHeaderNoteView", {"orderId" : orderId!})/>
+                  <#assign noteList = delegator.findByAnd("OrderHeaderNoteView", {"orderId" : orderId!}, null, false)/>
                   <#if noteList?exists && noteList?has_content>
                     <#list noteList as note>
                     <fo:table-row>
@@ -1381,7 +1381,7 @@ under the License.
                 </fo:table-row>
               </fo:table-header>
               <fo:table-body font-size="8pt">
-                  <#assign attributeList = delegator.findByAnd("OrderAttribute", {"orderId" : orderId!})/>
+                  <#assign attributeList = delegator.findByAnd("OrderAttribute", {"orderId" : orderId!}, null, false)/>
                   <#if attributeList?exists && attributeList?has_content>
                     <#list attributeList as attribute>
                     	<#if attribute.attrName = "DATETIME_DOWNLOADED">

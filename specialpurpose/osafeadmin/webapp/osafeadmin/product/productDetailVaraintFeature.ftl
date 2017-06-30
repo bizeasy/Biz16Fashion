@@ -1,7 +1,7 @@
 <#if product?has_content>
   <#if selFeatureTypesList?has_content>
     <#list selFeatureTypesList as selFeatureType>
-      <#assign productFeatureList = delegator.findByAnd("ProductFeature", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureTypeId" , selFeatureType), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description"))/>
+      <#assign productFeatureList = delegator.findByAnd("ProductFeature", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureTypeId" , selFeatureType), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description"), false)/>
       <#if productFeatureList?has_content>
         <div class="infoRow column">
           <div class="infoEntry">
@@ -50,7 +50,7 @@
   
   <#if descFeatureTypesList?has_content>
     <#list descFeatureTypesList as descFeatureType>
-      <#assign productFeatureList = delegator.findByAnd("ProductFeature", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureTypeId" , descFeatureType), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description"))/>
+      <#assign productFeatureList = delegator.findByAnd("ProductFeature", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureTypeId" , descFeatureType), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description"), false)/>
       <#if productFeatureList?has_content>
         <div class="infoRow column">
           <div class="infoEntry">

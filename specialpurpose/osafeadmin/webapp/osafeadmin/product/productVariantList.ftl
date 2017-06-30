@@ -17,7 +17,7 @@
     <th class="qtyCol">${uiLabelMap.BFInventoryWarehouseLabel}</th>
     <#list resultList as variantProduct>
       <#assign variantProdDetail = variantProduct.getRelatedOne("AssocProduct")>
-        <#assign productFeatureAndAppls = delegator.findByAnd("ProductFeatureAndAppl", {"productId" : (variantProduct.productIdTo)?if_exists, "productFeatureApplTypeId", "STANDARD_FEATURE"}, Static["org.apache.ofbiz.base.util.UtilMisc"].toList("productFeatureTypeId"))/>
+        <#assign productFeatureAndAppls = delegator.findByAnd("ProductFeatureAndAppl", {"productId" : (variantProduct.productIdTo)?if_exists, "productFeatureApplTypeId", "STANDARD_FEATURE"}, Static["org.apache.ofbiz.base.util.UtilMisc"].toList("productFeatureTypeId"), false)/>
         <#if productFeatureAndAppls?exists && productFeatureAndAppls?has_content>
           <#list productFeatureAndAppls as productFeatureAndAppl>
             <#assign featureType = ""/>
@@ -97,7 +97,7 @@
         <td class="qtyCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">
         	<input type="text"  class="textEntry textAlignRight" name="bfWHInventory_${variantProduct.productIdTo!""}" id="bfWHInventory_${variantProduct.productIdTo!""}" value="${parameters.get("bfWHInventory_${variantProduct.productIdTo!}")!bfWHInventory!}"/>
         </td>
-        <#assign productFeatureAndAppls = delegator.findByAnd("ProductFeatureAndAppl", {"productId" : (variantProduct.productIdTo)?if_exists, "productFeatureApplTypeId", "STANDARD_FEATURE"}, Static["org.apache.ofbiz.base.util.UtilMisc"].toList("productFeatureTypeId"))/>
+        <#assign productFeatureAndAppls = delegator.findByAnd("ProductFeatureAndAppl", {"productId" : (variantProduct.productIdTo)?if_exists, "productFeatureApplTypeId", "STANDARD_FEATURE"}, Static["org.apache.ofbiz.base.util.UtilMisc"].toList("productFeatureTypeId"), false)/>
         <#if productFeatureAndAppls?exists && productFeatureAndAppls?has_content>
           <#list productFeatureAndAppls as productFeatureAndAppl>
             <td class="statusCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">${(productFeatureAndAppl.get("description",locale))?if_exists}</td>

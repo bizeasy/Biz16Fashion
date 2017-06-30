@@ -6,7 +6,7 @@
     <th class="dateCol">${uiLabelMap.TimeLabel}</th>
     <th class="noteCol">${uiLabelMap.NoteLabel}</th>
   </tr>
-  <#assign resultList = delegator.findByAnd("PartyNoteView", {"targetPartyId" : party.partyId!})/>
+  <#assign resultList = delegator.findByAnd("PartyNoteView", {"targetPartyId" : party.partyId!}, null, false)/>
   <#if resultList?exists && resultList?has_content>
     <#assign rowClass = "1"/>
     <#list resultList as note>

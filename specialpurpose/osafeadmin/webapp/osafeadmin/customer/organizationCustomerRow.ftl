@@ -55,7 +55,7 @@
             </#if>
         </td>
                  
-        <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", parameters.organizationCustomerPartyId}) />
+        <#assign partyRoles = delegator.findByAnd("PartyRole", {"partyId", parameters.organizationCustomerPartyId}, null, false) />
         <#assign partyRoleTypeIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(partyRoles, "roleTypeId", true) />
                 
         <#if partyRoles?has_content>

@@ -51,7 +51,7 @@
             </div>
             <div class="infoIcon">
                 <#if orderItemShipGroup?has_content && (orderItemShipGroup.carrierPartyId?has_content && orderItemShipGroup.carrierPartyId != "_NA_") && orderItemShipGroup.trackingNumber?has_content>
-                    <#assign trackingURLPartyContents = delegator.findByAnd("PartyContent", {"partyId": orderItemShipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"})/>
+                    <#assign trackingURLPartyContents = delegator.findByAnd("PartyContent", {"partyId": orderItemShipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"}, null, false)/>
                     <#if trackingURLPartyContents?has_content>
                         <#assign trackingURLPartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(trackingURLPartyContents)/>
                         <#if trackingURLPartyContent?has_content>

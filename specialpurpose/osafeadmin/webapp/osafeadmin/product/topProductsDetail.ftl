@@ -54,7 +54,7 @@
                     <td class="nameCol <#if !product_has_next>lastRow</#if>">${internalName!""}</td>
                     <td class="descCol <#if !product_has_next>lastRow</#if>">${productName?if_exists} </td>
                     <td class="nameCol <#if !product_has_next>lastRow</#if>">
-                      <#assign productCategoryMembers = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(delegator.findByAnd("ProductCategoryMember",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId",productId))?if_exists) />
+                      <#assign productCategoryMembers = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(delegator.findByAnd("ProductCategoryMember",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId",productId), null, false)?if_exists) />
                       <#if productCategoryMembers?has_content>
                         <#assign productCategoryMember = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(productCategoryMembers) />
                         <#assign productCategory = productCategoryMember.getRelatedOne("ProductCategory") />

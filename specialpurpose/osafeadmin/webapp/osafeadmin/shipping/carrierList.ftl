@@ -12,7 +12,7 @@
       <#if partyGroupPartyIds?has_content && partyGroupPartyIds.contains(carrier.partyId)>
         <#assign hasNext = carrier_has_next>
         <#assign trackingURL = ""/>
-        <#assign trackingURLPartyContents = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(delegator.findByAnd("PartyContent", {"partyId": carrier.partyId, "partyContentTypeId": "TRACKING_URL"}))/>
+        <#assign trackingURLPartyContents = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(delegator.findByAnd("PartyContent", {"partyId": carrier.partyId, "partyContentTypeId": "TRACKING_URL"}, null, false))/>
         <#if trackingURLPartyContents?has_content>
             <#assign trackingURLPartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(trackingURLPartyContents)/>
             <#if trackingURLPartyContent?has_content>

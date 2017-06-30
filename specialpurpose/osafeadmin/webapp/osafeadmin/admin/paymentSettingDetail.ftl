@@ -6,7 +6,7 @@
             </div>
             <div class="infoValue">
                 <#if mode?has_content && mode == "add">
-                    <#assign paymentServiceTypeEnums = delegator.findByAnd("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "PRDS_PAYSVC"), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description")) />
+                    <#assign paymentServiceTypeEnums = delegator.findByAnd("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumTypeId", "PRDS_PAYSVC"), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description"), false) />
                     <#assign selectedPaymentServiceTypeEnum = parameters.paymentServiceTypeEnumId!productStorePaymentSetting.paymentServiceTypeEnumId!""/>
                     <select name="paymentServiceTypeEnumId" id="paymentServiceTypeEnumId" class="extraSmall">
                       <#if paymentServiceTypeEnums?has_content>
@@ -32,7 +32,7 @@
             </div>
             <div class="infoValue">
                 <#if mode?has_content && mode == "add">
-                    <#assign paymentMethodTypes = delegator.findByAnd("PaymentMethodType", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap(), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description")) />
+                    <#assign paymentMethodTypes = delegator.findByAnd("PaymentMethodType", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap(), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description"), false) />
                     <#assign selectedPaymentMethodType = parameters.paymentMethodTypeId!productStorePaymentSetting.paymentMethodTypeId!""/>
                     <select name="paymentMethodTypeId" id="paymentMethodTypeId" class="extraSmall">
                         <#if paymentMethodTypes?has_content && displayPaymentMethodTypes?has_content>
@@ -87,7 +87,7 @@
         </div>
     </div>
 
-    <#assign paymentGatewayConfigs = delegator.findByAnd("PaymentGatewayConfig", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap(), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description")) />
+    <#assign paymentGatewayConfigs = delegator.findByAnd("PaymentGatewayConfig", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap(), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("description"), false) />
     <#assign selectedPaymentGatewayConfig = parameters.paymentGatewayConfigId!productStorePaymentSetting.paymentGatewayConfigId!""/>
     <div class="infoRow row">
         <div class="infoEntry long">

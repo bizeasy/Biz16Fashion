@@ -3,7 +3,7 @@
     <#if parameters.productId?has_content>
         <#assign product = delegator.findOne("Product", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", parameters.productId), false)?if_exists>
     </#if>
-    <#assign productCategoryMembers = delegator.findByAnd("ProductCategoryMember", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", parameters.productId))?if_exists>
+    <#assign productCategoryMembers = delegator.findByAnd("ProductCategoryMember", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", parameters.productId), null, false)?if_exists>
     <#assign productCategoryMembers = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryMembers!)/>
     
     <#assign productCategoryIdList = Static["javolution.util.FastList"].newInstance()/>
@@ -30,7 +30,7 @@
     <#assign count = 0?number/>
     <#list productCategoryIdList as productCategoryId>
 
-    <#assign productFeatureCatGrpAppls = delegator.findByAnd("ProductFeatureCatGrpAppl", {"productCategoryId" : productCategoryId}, ["sequenceNum", "productFeatureGroupId"]) />
+    <#assign productFeatureCatGrpAppls = delegator.findByAnd("ProductFeatureCatGrpAppl", {"productCategoryId" : productCategoryId}, ["sequenceNum", "productFeatureGroupId"], false) />
       <#if productFeatureCatGrpAppls?has_content>
         <#list productFeatureCatGrpAppls as productFeatureCatGrpAppl>
           <#if !alreadyShownProductFeatureGroupId.contains(productFeatureCatGrpAppl.productFeatureGroupId)>
@@ -56,7 +56,7 @@
 	            <span class="radiobutton">
 	              <#assign productFeatureApplType = ""/>
 	              <#assign productFeatureId = ""/>
-	              <#assign productFeatureGroupAndAppls = delegator.findByAnd("ProdFeaGrpAppAndProdFeaApp", {"productId" : parameters.productId!"", "productFeatureGroupId" : productFeatureCatGrpAppl.productFeatureGroupId!""})>
+	              <#assign productFeatureGroupAndAppls = delegator.findByAnd("ProdFeaGrpAppAndProdFeaApp", {"productId" : parameters.productId!"", "productFeatureGroupId" : productFeatureCatGrpAppl.productFeatureGroupId!""}, null, false)>
 	              <#assign productFeatureGroupAndAppls = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productFeatureGroupAndAppls!)/>
 	              <#assign productFeatureGroupAndAppl = ""/>
 	              <#if productFeatureGroupAndAppls?has_content>
@@ -110,7 +110,7 @@
 			      </#if>
 	              <#assign distinguishProductFeatureMultiValue = parameters.get("distinguishProductFeatureMulti_${productFeatureCatGrpAppl.productFeatureGroupId}")!distinguishProductFeatureMultiValue!"">
 	                    
-	              <#assign productFeatureGroupAppls = delegator.findByAnd("ProductFeatureGroupAppl", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureGroupId" , productFeatureCatGrpAppl.productFeatureGroupId!""), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("sequenceNum"))/>
+	              <#assign productFeatureGroupAppls = delegator.findByAnd("ProductFeatureGroupAppl", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureGroupId" , productFeatureCatGrpAppl.productFeatureGroupId!""), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("sequenceNum"), false)/>
 	              <#-- assign productFeatureGroupAppls = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productFeatureGroupApplList!)/ -->
 	              <#if productFeatureGroupAppls?has_content>
 	                <span id="distinguishFeatureValue_${productFeatureCatGrpAppl.productFeatureGroupId}">

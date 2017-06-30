@@ -63,7 +63,7 @@
           </#if>
         </td>
         <td class="geoCol <#if !partyRow_has_next>lastRow</#if>">
-          <#assign partyGeoPointList = delegator.findByAnd("PartyGeoPoint", {"partyId": partyRow.partyId}) />
+          <#assign partyGeoPointList = delegator.findByAnd("PartyGeoPoint", {"partyId": partyRow.partyId}, null, false) />
           <#if partyGeoPointList?has_content>
             <#assign partyGeoPoint = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyGeoPointList)/>
           </#if>
@@ -75,7 +75,7 @@
         </td>
         <td class="tooltipCol <#if !partyRow_has_next>lastRow</#if>lastCol">
           <#assign tooltipData = "<div class=tooltipData>"/>
-          <#assign storeHoursPartyContents = delegator.findByAnd("PartyContent", {"partyId": partyRow.partyId, "partyContentTypeId": "STORE_HOURS"})/>
+          <#assign storeHoursPartyContents = delegator.findByAnd("PartyContent", {"partyId": partyRow.partyId, "partyContentTypeId": "STORE_HOURS"}, null, false)/>
           <#if storeHoursPartyContents?has_content>
               <#assign storeHoursPartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(storeHoursPartyContents)/>
               <#if storeHoursPartyContent?has_content>
@@ -90,7 +90,7 @@
                 </#if>
               </#if>
           </#if>
-          <#assign storeNoticePartyContents = delegator.findByAnd("PartyContent", {"partyId": partyRow.partyId, "partyContentTypeId": "STORE_NOTICE"})/>
+          <#assign storeNoticePartyContents = delegator.findByAnd("PartyContent", {"partyId": partyRow.partyId, "partyContentTypeId": "STORE_NOTICE"}, null, false)/>
           <#if storeNoticePartyContents?has_content>
               <#assign storeNoticePartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(storeNoticePartyContents)/>
               <#if storeNoticePartyContent?has_content>

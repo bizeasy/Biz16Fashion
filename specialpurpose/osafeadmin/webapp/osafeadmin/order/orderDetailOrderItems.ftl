@@ -86,18 +86,18 @@
                 <!-- Tracking URL for each order item-->
                 <#if orderItem.orderId?exists && orderItem.orderId?has_content && shipGroupsSize != 1 >
                     <#assign trackingURL = ""/>
-                    <#assign shipGroupAssocs = delegator.findByAnd("OrderItemShipGroupAssoc", {"orderId": orderItem.orderId, "orderItemSeqId": orderItem.orderItemSeqId})/>
+                    <#assign shipGroupAssocs = delegator.findByAnd("OrderItemShipGroupAssoc", {"orderId": orderItem.orderId, "orderItemSeqId": orderItem.orderItemSeqId}, null, false)/>
                     <#if shipGroupAssocs?has_content>
                     	<#assign shipGroupAssoc = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(shipGroupAssocs)/>
                     </#if>
                     <#if shipGroupAssoc?exists && shipGroupAssoc?has_content>
-                        <#assign shipGroup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(delegator.findByAnd("OrderItemShipGroup", {"orderId": orderItem.orderId, "shipGroupSeqId": shipGroupAssoc.shipGroupSeqId}))/> 
+                        <#assign shipGroup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(delegator.findByAnd("OrderItemShipGroup", {"orderId": orderItem.orderId, "shipGroupSeqId": shipGroupAssoc.shipGroupSeqId}, null, false))/> 
                         <#if shipGroup?has_content>
                           <#assign orderHeader = delegator.findOne("OrderHeader", {"orderId": orderItem.orderId}, false)/>
                           <#if orderHeader?has_content && (orderHeader.statusId == "ORDER_COMPLETED" || orderItem.statusId == "ITEM_COMPLETED") >
                               <#assign trackingNumber = shipGroup.trackingNumber!""/>
                               <#if (shipGroup.carrierPartyId?has_content && shipGroup.carrierPartyId != "_NA_")>
-                                  <#assign trackingURLPartyContents = delegator.findByAnd("PartyContent", {"partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"})/>
+                                  <#assign trackingURLPartyContents = delegator.findByAnd("PartyContent", {"partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"}, null, false)/>
                                   <#if trackingURLPartyContents?has_content>
                                       <#assign trackingURLPartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(trackingURLPartyContents)/>
                                       <#if trackingURLPartyContent?has_content>

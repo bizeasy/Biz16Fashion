@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <#assign partyStatusItem = delegator.findByAnd("StatusItem", {"statusTypeId" : "PARTY_STATUS"}, ["sequenceId"])?if_exists />
+    <#assign partyStatusItem = delegator.findByAnd("StatusItem", {"statusTypeId" : "PARTY_STATUS"}, ["sequenceId"], false)?if_exists />
     <div class="infoRow column">
         <div class="infoEntry">
             <div class="infoCaption">

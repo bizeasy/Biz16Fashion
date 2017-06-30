@@ -41,7 +41,7 @@
 						            <th class="qtyCol lastCol">${uiLabelMap.QtyLabel}</th>
 						        </tr>
                               <#list shipmentItems as shipmentItem>
-                                <#assign orderItem = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(delegator.findByAnd("OrderItem", {"orderId": shipment.primaryOrderId, "productId": shipmentItem.productId}))/> 
+                                <#assign orderItem = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(delegator.findByAnd("OrderItem", {"orderId": shipment.primaryOrderId, "productId": shipmentItem.productId}, null, false))/> 
 						        <#assign order =orderItem.getRelatedOne("OrderHeader")!""/>
 						        <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
 						            <td class="idCol firstCol <#if !shipmentItem_has_next?if_exists>lastRow</#if>">${shipmentItem.productId!}</td>
