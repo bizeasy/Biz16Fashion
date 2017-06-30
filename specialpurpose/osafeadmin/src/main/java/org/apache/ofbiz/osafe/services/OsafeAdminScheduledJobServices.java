@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  *******************************************************************************/
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import static org.apache.ofbiz.base.util.UtilGenerics.checkCollection;
 
@@ -74,7 +74,7 @@ import org.apache.ofbiz.service.ServiceUtil;
 import java.text.ParseException;
 
 import com.ibm.icu.util.Calendar;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.base.util.MessageString;
 
 /**

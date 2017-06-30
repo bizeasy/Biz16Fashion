@@ -7,7 +7,7 @@
         
         <div class="boxBody">
             <div class="heading">
-                ${uiLabelMap.OriginalChargeMadeOnHeading!} ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderHeader.orderDate, preferredDateFormat).toLowerCase())!"N/A"}
+                ${uiLabelMap.OriginalChargeMadeOnHeading!} ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderHeader.orderDate, preferredDateFormat).toLowerCase())!"N/A"}
             </div>
             <div class="infoRow row">
 			    <div class="infoEntry">

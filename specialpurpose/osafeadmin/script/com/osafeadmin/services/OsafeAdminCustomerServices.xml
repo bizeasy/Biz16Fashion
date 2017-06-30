@@ -78,7 +78,7 @@
         </if-compare>
 
         <!-- DOB Short(MMDD) validation -->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
             <field field="parameters.dobShortDayUs"/>
             <field field="parameters.dobShortMonthUs"/>
             <string value="1972"/>
@@ -99,7 +99,7 @@
         </if-compare>
 
          <!-- DOB Long(MMDDYYYY) validation -->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
             <field field="parameters.dobLongDayUs"/>
             <field field="parameters.dobLongMonthUs"/>
             <field field="parameters.dobLongYearUs"/>
@@ -122,7 +122,7 @@
         </if-compare>
         
         <!-- DOB Short(DDMM) validation -->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
             <field field="parameters.dobShortDayUk"/>
             <field field="parameters.dobShortMonthUk"/>
             <string value="1972"/>
@@ -143,7 +143,7 @@
         </if-compare>
         
         <!-- DOB Long(DDMMYYYY) validation -->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
             <field field="parameters.dobLongDayUk"/>
             <field field="parameters.dobLongMonthUk"/>
             <field field="parameters.dobLongYearUk"/>
@@ -176,7 +176,7 @@
             <set field="useCache" value="false" type="Boolean"/>
             <set field="uiSequenceScreen" value="PersonalInfo" type="String"/>
             
-            <call-class-method class-name="com.osafe.services.OsafeManageXml" method-name="getSearchListFromXmlFile" ret-field="uiSequenceSearchList">
+            <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeManageXml" method-name="getSearchListFromXmlFile" ret-field="uiSequenceSearchList">
                 <field field="XmlFilePath" type="String"/>
                 <field field="searchRestrictionMap" type="Map"/>
                 <field field="uiSequenceScreen" type="String"/>
@@ -226,7 +226,7 @@
 		                </condition>
 		                <then>
 		                    <!-- DOB Short(MMDD) validation -->
-					        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+					        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_DD"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_MM"/>
 					            <string value="1972"/>
@@ -253,7 +253,7 @@
 		                    </condition>
 		                <then>
 		                    <!-- DOB Long(MMDDYYYY) validation -->
-					        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+					        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_DD"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_MM"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_YYYY"/>
@@ -281,7 +281,7 @@
 		                    </condition>
 		                <then>
 		                    <!-- DOB Short(DDMM) validation -->
-					        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+					        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_DD"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_MM"/>
 					            <string value="1972"/>
@@ -309,7 +309,7 @@
 		                    </condition>
 		                <then>
 		                    <!-- DOB Long(DDMMYYYY) validation -->
-					        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+					        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_DD"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_MM"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_YYYY"/>
@@ -958,7 +958,7 @@
         <if-compare field="parameters.customer_fullName_mandatory" operator="equals" value="Y">
         	<if-empty field="parameters.customer_firstName">
         		<property-to-field field="field" resource="OSafeUiLabels" property="FirstNameCaption"/>
-        		<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+        		<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGenericError"/>
@@ -966,7 +966,7 @@
         	</if-empty>
         	<if-empty field="parameters.customer_lastName">
         		<property-to-field field="field" resource="OSafeUiLabels" property="LastNameCaption"/>
-        		<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+        		<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGenericError"/>
@@ -988,7 +988,7 @@
         <if-compare field="parameters.customer_attnName_mandatory" operator="equals" value="Y">
 	        <if-empty field="parameters.customer_attnName">
 	            <property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGenericError"/>
@@ -1016,7 +1016,7 @@
 	            				<if-compare-field operator="not-equals" field="customerPostalAddress.contactMechId" to-field="parameters.contactMechId">
 	            					<set from-field="parameters.customer_attnName" field="nickName"/>
 	            					<property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-	            					<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	            					<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 						                <field field="field"/>
 						            </call-class-method>
 				            		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="AddressNickNameUniqueError"/>
@@ -1026,7 +1026,7 @@
 	            					<!-- We are adding a new Address, error if ATTN_NAME exists -->
 				            		<set from-field="parameters.customer_attnName" field="nickName"/>
 				            		<property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-				            		<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+				            		<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 						                <field field="field"/>
 						            </call-class-method>
 				            		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="AddressNickNameUniqueError"/>
@@ -1042,7 +1042,7 @@
         <if-compare field="parameters.customer_address1_mandatory" operator="equals" value="Y">
 	        <if-empty field="parameters.customer_address1">
 	            <property-to-field field="field" resource="OSafeUiLabels" property="AddressLine1Caption"/>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGenericError"/>
@@ -1053,7 +1053,7 @@
         <if-compare field="parameters.customer_city_mandatory" operator="equals" value="Y">
             <if-empty field="parameters.customer_city">
                 <property-to-field field="field" resource="OSafeUiLabels" property="TownOrCityCaption"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGenericError"/>
@@ -1063,7 +1063,7 @@
         <if-compare field="parameters.customer_postalCode_mandatory" operator="equals" value="Y">
             <if-empty field="parameters.customer_postalCode">
                 <property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGenericError"/>
@@ -1072,13 +1072,13 @@
         </if-compare>
         <if-not-empty field="parameters.customer_postalCode">
             <if-compare value="USA" operator="equals" field="parameters.customer_country">
-                <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
                     <field field="parameters.customer_postalCode"/>
                 </call-class-method>
             </if-compare>
             <if-compare field="isZipCode" operator="equals"  value="false">
             	<property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-            	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+            	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="InvalidPostalCodeError"/>
@@ -1094,7 +1094,7 @@
             <if-not-empty field="statesList">
 	            <if-empty field="parameters.customer_state">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="StateOrProvinceCaption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGenericError"/>
@@ -1172,7 +1172,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankCustomerIdError"/>
             <string-to-list string="${tempErrorMessage}" message-field="partyId" list="error_list"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                 <field field="parameters.partyId"/>
             </call-class-method>
             <if-compare field="isValidId" operator="equals" value="true">
@@ -1260,7 +1260,7 @@
         </if-compare>
 
         <!-- DOB Short(MMDD) validation -->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
             <field field="parameters.dobShortDayUs"/>
             <field field="parameters.dobShortMonthUs"/>
             <string value="1972"/>
@@ -1281,7 +1281,7 @@
         </if-compare>
 
         <!-- DOB Long(MMDDYYYY) validation -->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
             <field field="parameters.dobLongDayUs"/>
             <field field="parameters.dobLongMonthUs"/>
             <field field="parameters.dobLongYearUs"/>
@@ -1304,7 +1304,7 @@
         </if-compare>
         
         <!-- DOB Short(DDMM) validation -->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
             <field field="parameters.dobShortDayUk"/>
             <field field="parameters.dobShortMonthUk"/>
             <string value="1972"/>
@@ -1325,7 +1325,7 @@
         </if-compare>
         
          <!-- DOB Long(DDMMYYYY) validation -->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
             <field field="parameters.dobLongDayUk"/>
             <field field="parameters.dobLongMonthUk"/>
             <field field="parameters.dobLongYearUk"/>
@@ -1351,7 +1351,7 @@
          <if-compare field="parameters.billing_fullName_mandatory" operator="equals" value="Y">
         	<if-empty field="parameters.billing_firstName">
         		<property-to-field field="field" resource="OSafeUiLabels" property="FirstNameCaption"/>
-        		<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+        		<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -1359,7 +1359,7 @@
         	</if-empty>
         	<if-empty field="parameters.billing_lastName">
         		<property-to-field field="field" resource="OSafeUiLabels" property="LastNameCaption"/>
-        		<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+        		<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -1381,7 +1381,7 @@
         <if-compare field="parameters.billing_attnName_mandatory" operator="equals" value="Y">
 	        <if-empty field="parameters.billing_attnName">
 	            <property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -1392,7 +1392,7 @@
         <if-compare field="parameters.billing_address1_mandatory" operator="equals" value="Y">
             <if-empty field="parameters.billing_address1">
                 <property-to-field field="field" resource="OSafeUiLabels" property="AddressLine1Caption"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -1403,7 +1403,7 @@
         <if-compare field="parameters.billing_city_mandatory" operator="equals" value="Y">
             <if-empty field="parameters.billing_city">
                 <property-to-field field="field" resource="OSafeUiLabels" property="TownOrCityCaption"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -1414,7 +1414,7 @@
         <if-compare field="parameters.billing_postalCode_mandatory" operator="equals" value="Y">
             <if-empty field="parameters.billing_postalCode">
                 <property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -1423,13 +1423,13 @@
         </if-compare>
         <if-not-empty field="parameters.billing_postalCode">
             <if-compare value="USA" operator="equals" field="parameters.billing_country">
-                <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
                     <field field="parameters.billing_postalCode"/>
                 </call-class-method>
             </if-compare>
             <if-compare field="isZipCode" operator="equals"  value="false">
             	<property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-            	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+            	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="InvalidBillingPostalCodeError"/>
@@ -1446,7 +1446,7 @@
             <if-not-empty field="statesList">
                 <if-empty field="parameters.billing_state">
                     <property-to-field field="field" resource="OSafeUiLabels" property="StateOrProvinceCaption"/>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -1472,7 +1472,7 @@
 	        <if-compare field="parameters.shipping_attnName_mandatory" operator="equals" value="Y">
 	            <if-empty field="parameters.shipping_attnName">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -1487,7 +1487,7 @@
 	           		<if-compare-field operator="equals" field="billingPostalAddressAttnName" to-field="shippingPostalAddressAttnName">
 				        <set from-field="parameters.shipping_attnName" field="nickName"/>
 				         <property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-				         <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+				         <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 			                <field field="field"/>
 			            </call-class-method>
 				        <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="AddressNickNameUniqueError"/>
@@ -1499,7 +1499,7 @@
 	        <if-compare field="parameters.shipping_address1_mandatory" operator="equals" value="Y">
 	            <if-empty field="parameters.shipping_address1">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="AddressLine1Caption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -1510,7 +1510,7 @@
 	        <if-compare field="parameters.shipping_city_mandatory" operator="equals" value="Y">
 	            <if-empty field="parameters.shipping_city">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="TownOrCityCaption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -1521,7 +1521,7 @@
 	        <if-compare field="parameters.shipping_postalCode_mandatory" operator="equals" value="Y">
 	            <if-empty field="parameters.shipping_postalCode">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -1530,13 +1530,13 @@
 	        </if-compare>
 	        <if-not-empty field="parameters.shipping_postalCode">
 	            <if-compare value="USA" operator="equals" field="parameters.shipping_country">
-	                <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
 	                    <field field="parameters.shipping_postalCode"/>
 	                </call-class-method>
 	            </if-compare>
 	            <if-compare field="isZipCode" operator="equals"  value="false">
 		            <property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-		            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+		            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
 	                <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="InvalidShippingPostalCodeError"/>
@@ -1553,7 +1553,7 @@
 	            <if-not-empty field="statesList">
 	                <if-empty field="parameters.shipping_state">
 	                    <property-to-field field="field" resource="OSafeUiLabels" property="StateOrProvinceCaption"/>
-	                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 			                <field field="field"/>
 			            </call-class-method>
         				<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -1578,7 +1578,7 @@
             <set field="useCache" value="false" type="Boolean"/>
             <set field="uiSequenceScreen" value="PersonalInfo" type="String"/>
             
-            <call-class-method class-name="com.osafe.services.OsafeManageXml" method-name="getSearchListFromXmlFile" ret-field="uiSequenceSearchList">
+            <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeManageXml" method-name="getSearchListFromXmlFile" ret-field="uiSequenceSearchList">
                 <field field="XmlFilePath" type="String"/>
                 <field field="searchRestrictionMap" type="Map"/>
                 <field field="uiSequenceScreen" type="String"/>
@@ -1626,7 +1626,7 @@
 		                </condition>
 		                <then>
 		                    <!-- DOB Short(MMDD) validation -->
-					        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+					        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_DD"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_MM"/>
 					            <string value="1972"/>
@@ -1653,7 +1653,7 @@
 		                    </condition>
 		                <then>
 		                    <!-- DOB Long(MMDDYYYY) validation -->
-					        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+					        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_DD"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_MM"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_YYYY"/>
@@ -1681,7 +1681,7 @@
 		                    </condition>
 		                <then>
 		                    <!-- DOB Short(DDMM) validation -->
-					        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+					        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_DD"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_MM"/>
 					            <string value="1972"/>
@@ -1710,7 +1710,7 @@
 		                    </condition>
 		                <then>
 		                    <!-- DOB Long(DDMMYYYY) validation -->
-					        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
+					        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkDateOfBirth" ret-field="checkDateOfBirthResult">
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_DD"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_MM"/>
 					            <field field="paramMap.${customPartyAttributeMap.AttrName}_YYYY"/>
@@ -2231,7 +2231,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="OrganizationIdNumericError"/>
 	            <string-to-list string="${tempErrorMessage}" message-field="partyId" list="error_list"/>
             <else>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 	                <field field="parameters.partyId"/>
 	            </call-class-method>
 	            <if-compare field="isValidId" operator="equals" value="true">
@@ -2265,7 +2265,7 @@
          <if-compare field="parameters.billing_fullName_mandatory" operator="equals" value="Y">
         	<if-empty field="parameters.billing_firstName">
         		<property-to-field field="field" resource="OSafeUiLabels" property="FirstNameCaption"/>
-        		<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+        		<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -2273,7 +2273,7 @@
         	</if-empty>
         	<if-empty field="parameters.billing_lastName">
         		<property-to-field field="field" resource="OSafeUiLabels" property="LastNameCaption"/>
-        		<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+        		<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -2295,7 +2295,7 @@
         <if-compare field="parameters.billing_attnName_mandatory" operator="equals" value="Y">
 	        <if-empty field="parameters.billing_attnName">
 	            <property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -2306,7 +2306,7 @@
         <if-compare field="parameters.billing_address1_mandatory" operator="equals" value="Y">
             <if-empty field="parameters.billing_address1">
                 <property-to-field field="field" resource="OSafeUiLabels" property="AddressLine1Caption"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -2317,7 +2317,7 @@
         <if-compare field="parameters.billing_city_mandatory" operator="equals" value="Y">
             <if-empty field="parameters.billing_city">
                 <property-to-field field="field" resource="OSafeUiLabels" property="TownOrCityCaption"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -2328,7 +2328,7 @@
         <if-compare field="parameters.billing_postalCode_mandatory" operator="equals" value="Y">
             <if-empty field="parameters.billing_postalCode">
                 <property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         		<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -2337,13 +2337,13 @@
         </if-compare>
         <if-not-empty field="parameters.billing_postalCode">
             <if-compare value="USA" operator="equals" field="parameters.billing_country">
-                <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
                     <field field="parameters.billing_postalCode"/>
                 </call-class-method>
             </if-compare>
             <if-compare field="isZipCode" operator="equals"  value="false">
             	<property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-            	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+            	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="InvalidBillingPostalCodeError"/>
@@ -2360,7 +2360,7 @@
             <if-not-empty field="statesList">
                 <if-empty field="parameters.billing_state">
                     <property-to-field field="field" resource="OSafeUiLabels" property="StateOrProvinceCaption"/>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 	                <field field="field"/>
 	            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBillingAddressGenericError"/>
@@ -2386,7 +2386,7 @@
 	        <if-compare field="parameters.shipping_attnName_mandatory" operator="equals" value="Y">
 	            <if-empty field="parameters.shipping_attnName">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -2401,7 +2401,7 @@
 	           		<if-compare-field operator="equals" field="billingPostalAddressAttnName" to-field="shippingPostalAddressAttnName">
 				        <set from-field="parameters.shipping_attnName" field="nickName"/>
 				         <property-to-field field="field" resource="OSafeUiLabels" property="AddressNickNameCaption"/>
-				         <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+				         <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 			                <field field="field"/>
 			            </call-class-method>
 				        <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="AddressNickNameUniqueError"/>
@@ -2413,7 +2413,7 @@
 	        <if-compare field="parameters.shipping_address1_mandatory" operator="equals" value="Y">
 	            <if-empty field="parameters.shipping_address1">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="AddressLine1Caption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -2424,7 +2424,7 @@
 	        <if-compare field="parameters.shipping_city_mandatory" operator="equals" value="Y">
 	            <if-empty field="parameters.shipping_city">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="TownOrCityCaption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -2435,7 +2435,7 @@
 	        <if-compare field="parameters.shipping_postalCode_mandatory" operator="equals" value="Y">
 	            <if-empty field="parameters.shipping_postalCode">
 	                <property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
         			<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -2444,13 +2444,13 @@
 	        </if-compare>
 	        <if-not-empty field="parameters.shipping_postalCode">
 	            <if-compare value="USA" operator="equals" field="parameters.shipping_country">
-	                <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
 	                    <field field="parameters.shipping_postalCode"/>
 	                </call-class-method>
 	            </if-compare>
 	            <if-compare field="isZipCode" operator="equals"  value="false">
 		            <property-to-field field="field" resource="OSafeUiLabels" property="PostalCodeOrZipCaption"/>
-		            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+		            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 		                <field field="field"/>
 		            </call-class-method>
 	                <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="InvalidShippingPostalCodeError"/>
@@ -2467,7 +2467,7 @@
 	            <if-not-empty field="statesList">
 	                <if-empty field="parameters.shipping_state">
 	                    <property-to-field field="field" resource="OSafeUiLabels" property="StateOrProvinceCaption"/>
-	                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
+	                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="stripTrailingColon" ret-field="field">
 			                <field field="field"/>
 			            </call-class-method>
         				<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankShippingAddressGenericError"/>
@@ -2612,7 +2612,7 @@
                <set field="parameters.phoneHome_mandatory" value="Y"/>
             </then>
         </if>
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
             <field field="parameters.phoneHomeArea"/>
             <field field="parameters.phoneHomeContact"/>
             <field field="parameters.phoneHome_mandatory"/>
@@ -2641,7 +2641,7 @@
             </if-empty>
         </if-compare>
        <if-not-empty field="parameters.phoneHomeContactOther">
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
             <string value=""/>
             <field field="parameters.phoneHomeContactOther"/>
             <string value="false"/>
@@ -2672,7 +2672,7 @@
                <set field="parameters.phoneMobile_mandatory" value="Y"/>
             </then>
         </if>
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
             <field field="parameters.phoneMobileArea"/>
             <field field="parameters.phoneMobileContact"/>
             <field field="parameters.phoneMobile_mandatory"/>
@@ -2701,7 +2701,7 @@
             </if-empty>
         </if-compare>
        <if-not-empty field="parameters.phoneMobileContactOther">
-           <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
+           <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
                <string value=""/>
                <field field="parameters.phoneMobileContactOther"/>
                <string value="false"/>
@@ -2731,7 +2731,7 @@
                <set field="parameters.phoneWork_mandatory" value="Y"/>
             </then>
         </if>
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
             <field field="parameters.phoneWorkArea"/>
             <field field="parameters.phoneWorkContact"/>
             <field field="parameters.phoneWorkExt"/>
@@ -2763,7 +2763,7 @@
             </if-empty>
         </if-compare>
        <if-not-empty field="parameters.phoneWorkContactOther">
-           <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
+           <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
                <string value=""/>
                <field field="parameters.phoneWorkContactOther"/>
                <field field="parameters.phoneWorkExtOther"/>

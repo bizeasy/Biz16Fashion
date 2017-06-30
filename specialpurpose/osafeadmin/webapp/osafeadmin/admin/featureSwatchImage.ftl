@@ -28,7 +28,7 @@
   <input type="hidden" name="productFeatureGroupId" value="${parameters.productFeatureGroupId!}"/>
   
   <#-- Product Feature PLP Swatch Image -->
-      <#assign featureSwatchImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("FEATURE_SWATCH_IMAGE_URL")! />
+      <#assign featureSwatchImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("FEATURE_SWATCH_IMAGE_URL")! />
       <#if productFeaturePLPSwatchURL?has_content && productFeaturePLPSwatchURL != "">
         <#assign productFeaturePLPSwatchURLStr = productFeaturePLPSwatchURL.toString() />
         <#if productFeaturePLPSwatchURLStr?has_content && (productFeaturePLPSwatchURLStr.lastIndexOf("/") > 0)>
@@ -63,7 +63,7 @@
        </div>
        
        <#assign urlReferencePlpSwatchImageExist = "false"/>
-       <#if (productFeaturePLPSwatchURLStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productFeaturePLPSwatchURLStr)>
+       <#if (productFeaturePLPSwatchURLStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productFeaturePLPSwatchURLStr)>
          <#assign urlReferencePlpSwatchImageExist = "true"/>
        </#if>
        
@@ -169,7 +169,7 @@
        </div>
        
        <#assign urlReferencePdpSwatchImageExist = "false"/>
-       <#if (productFeaturePDPSwatchURLStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productFeaturePDPSwatchURLStr)>
+       <#if (productFeaturePDPSwatchURLStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productFeaturePDPSwatchURLStr)>
          <#assign urlReferencePdpSwatchImageExist = "true"/>
        </#if>
        

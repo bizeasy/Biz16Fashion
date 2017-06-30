@@ -18,7 +18,7 @@
               <#assign hasNext = orderStatus_has_next>            
                 <tr class="dataRow <#if rowClass == "2">even<#else>odd</#if>">      
                     <#if orderStatus.statusDatetime?exists && orderStatus.statusDatetime?has_content>
-                        <#assign orderStatusDate = "${(Static['com.osafe.util.OsafeAdminUtil'].convertDateTimeFormat(orderStatus.statusDatetime, preferredDateTimeFormat).toLowerCase())!}" >
+                        <#assign orderStatusDate = "${(Static['org.apache.ofbiz.osafe.util.OsafeAdminUtil'].convertDateTimeFormat(orderStatus.statusDatetime, preferredDateTimeFormat).toLowerCase())!}" >
                         <#assign orderStatusDate = orderStatusDate?split(" ") />
                     </#if>  
                     <#assign orderPaymentPreferenceId = orderStatus.getString("orderPaymentPreferenceId")?if_exists />

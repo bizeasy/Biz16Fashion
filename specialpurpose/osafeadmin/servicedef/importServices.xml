@@ -3,15 +3,15 @@
     <description>OSafe Services</description>
     <vendor/>
     <version>1.0</version>
-    <service name="importClientOrders" engine="java" location="com.osafe.services.OrderServices" invoke="importClientOrders" auth="false">
+    <service name="importClientOrders" engine="java" location="org.apache.ofbiz.osafe.services.OrderServices" invoke="importClientOrders" auth="false">
         <description>Import Client Orders </description>
     </service>
 
-    <service name="importClientProcess" engine="java" location="com.osafe.services.ImportServices" invoke="importProcess" auth="false">
+    <service name="importClientProcess" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importProcess" auth="false">
         <description>Import Client Process </description>
     </service>
 
-    <service name="importDataFileCsvToXml" engine="java" location="com.osafe.services.ImportServices" invoke="importDataFileCsvToXml" auth="false">
+    <service name="importDataFileCsvToXml" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importDataFileCsvToXml" auth="false">
         <description>Import Additional Product Feature Category Group Associations </description>
         <attribute name="definitionFileName" type="String" mode="IN" optional="false" />
         <attribute name="definitionName" type="String" mode="IN" optional="false"/>
@@ -21,7 +21,7 @@
         <attribute name="recordSize" mode="OUT" type="String"  optional="false"></attribute>
     </service>
 
-    <service name="importAdditionalProductFeatureTypes" engine="java" location="com.osafe.services.ImportServices" invoke="additionalProductFeatureTypesImport" auth="false">
+    <service name="importAdditionalProductFeatureTypes" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="additionalProductFeatureTypesImport" auth="false">
         <description>Import Additional Product Features Types, Categoroies and Groups </description>
         <attribute name="definitionFileName" type="String" mode="IN" optional="false" />
         <attribute name="definitionName" type="String" mode="IN" optional="false"/>
@@ -31,7 +31,7 @@
         <attribute name="recordSize" mode="OUT" type="String"  optional="false"></attribute>
     </service>
 
-    <service name="importAdditionalProductFeatureGroupAppls" engine="java" location="com.osafe.services.ImportServices" invoke="additionalProductFeatureGroupApplsImport" auth="false">
+    <service name="importAdditionalProductFeatureGroupAppls" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="additionalProductFeatureGroupApplsImport" auth="false">
         <description>Import Additional Product Features Group Appls </description>
         <attribute name="definitionFileName" type="String" mode="IN" optional="false" />
         <attribute name="definitionName" type="String" mode="IN" optional="false"/>
@@ -41,7 +41,7 @@
         <attribute name="recordSize" mode="OUT" type="String"  optional="false"></attribute>
     </service>
 
-    <service name="importAdditionalProductFeatures" engine="java" location="com.osafe.services.ImportServices" invoke="additionalProductFeaturesImport" auth="false">
+    <service name="importAdditionalProductFeatures" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="additionalProductFeaturesImport" auth="false">
         <description>Import Additional Product Features </description>
         <attribute name="definitionFileName" type="String" mode="IN" optional="false" />
         <attribute name="definitionName" type="String" mode="IN" optional="false"/>
@@ -51,7 +51,7 @@
         <attribute name="recordSize" mode="OUT" type="String"  optional="false"></attribute>
     </service>
 
-    <service name="importAdditionalProductFeatureAppls" engine="java" location="com.osafe.services.ImportServices" invoke="additionalProductFeatureApplsImport" auth="false">
+    <service name="importAdditionalProductFeatureAppls" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="additionalProductFeatureApplsImport" auth="false">
         <description>Import Product Features Appls</description>
         <attribute name="definitionFileName" type="String" mode="IN" optional="false" />
         <attribute name="definitionName" type="String" mode="IN" optional="false"/>
@@ -65,7 +65,7 @@
         <attribute name="recordSize" mode="OUT" type="String"  optional="false"></attribute>
     </service>
 
-    <service name="importAdditionalProductFeatureCatGrpAppls" engine="java" location="com.osafe.services.ImportServices" invoke="additionalProductFeatureCatGrpApplsImport" auth="false">
+    <service name="importAdditionalProductFeatureCatGrpAppls" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="additionalProductFeatureCatGrpApplsImport" auth="false">
         <description>Import Additional Product Feature Category Group Associations </description>
         <attribute name="definitionFileName" type="String" mode="IN" optional="false" />
         <attribute name="definitionName" type="String" mode="IN" optional="false"/>
@@ -75,27 +75,27 @@
         <attribute name="recordSize" mode="OUT" type="String"  optional="false"></attribute>
     </service>
 
-    <service name="importXLSFileAndGenerateXML" engine="java" location="com.osafe.services.ImportServices" invoke="importXLSFileAndGenerateXML" auth="false">
+    <service name="importXLSFileAndGenerateXML" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importXLSFileAndGenerateXML" auth="false">
         <description>Import xls tabs, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="definitionFileLoc" mode="IN" type="String" optional="false"/>
         <attribute name="xlsDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
-    <service name="importXLSFileAndRunInsertInDataBase" engine="java" location="com.osafe.services.ImportServices" transaction-timeout="7200" invoke="importXLSFileAndRunInsertInDataBase" auth="false">
+    <service name="importXLSFileAndRunInsertInDataBase" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" transaction-timeout="7200" invoke="importXLSFileAndRunInsertInDataBase" auth="false">
         <description>Import xls tabs and execute insert script in database using importDefinitionNames</description>
         <attribute name="definitionFileLoc" mode="IN" type="String" optional="false"/>
         <attribute name="xlsDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
-    <service name="importCsvToXml" engine="java" location="com.osafe.services.ImportServices" invoke="importCsvToXml" auth="false">
+    <service name="importCsvToXml" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importCsvToXml" auth="false">
         <description>Convert CSV Files To XML</description>
         <attribute name="sourceCsvFileLoc" mode="IN" type="String" optional="false"/>
         <attribute name="definitionFileLoc" mode="IN" type="String" optional="false"/>
         <attribute name="targetXmlFileLoc" mode="IN" type="String" optional="false"/>
     </service>
-    <service name="importClientProductTemplate" engine="java" location="com.osafe.services.ImportServices" invoke="importProductXls" auth="false" use-transaction="false">
+    <service name="importClientProductTemplate" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importProductXls" auth="false" use-transaction="false">
         <description>Import xls tabs, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="xlsDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
@@ -107,7 +107,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
     
-    <service name="importClientProductXMLTemplate" engine="java" location="com.osafe.services.ImportServices" invoke="importProductXML" auth="false" use-transaction="false">
+    <service name="importClientProductXMLTemplate" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importProductXML" auth="false" use-transaction="false">
         <description>Import XML Elements, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="xmlDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
@@ -119,7 +119,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="true"/>
     </service>
     
-    <service name="importClientOrderStatusXMLTemplate" engine="java" location="com.osafe.services.ImportServices" invoke="importOrderStatusXML" auth="false" use-transaction="false">
+    <service name="importClientOrderStatusXMLTemplate" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importOrderStatusXML" auth="false" use-transaction="false">
         <description>Import XML Elements, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="xmlDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
@@ -128,7 +128,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="true"/>
     </service>
     
-    <service name="importClientStoreXMLTemplate" engine="java" location="com.osafe.services.ImportServices" invoke="importStoreXML" auth="false" use-transaction="true" transaction-timeout="7200">
+    <service name="importClientStoreXMLTemplate" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importStoreXML" auth="false" use-transaction="true" transaction-timeout="7200">
         <description>Import XML Elements, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="xmlDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
@@ -137,7 +137,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="true"/>
     </service>
     
-    <service name="importClientProductRatingXMLTemplate" engine="java" location="com.osafe.services.ImportServices" invoke="importProductRatingXML" auth="false" use-transaction="false">
+    <service name="importClientProductRatingXMLTemplate" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importProductRatingXML" auth="false" use-transaction="false">
         <description>Import XML Elements, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="xmlDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
@@ -146,7 +146,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="true"/>
     </service>
 
-    <service name="exportClientProductTemplate" engine="java" location="com.osafe.services.ImportServices" invoke="exportProductXls" auth="false" use-transaction="true" transaction-timeout="7200">
+    <service name="exportClientProductTemplate" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="exportProductXls" auth="false" use-transaction="true" transaction-timeout="7200">
         <description>Export xls tabs as client product import template</description>
         <attribute name="productStoreId" mode="IN" type="String" optional="false" ></attribute>
         <attribute name="browseRootProductCategoryId" mode="IN" type="String" optional="false" ></attribute>
@@ -154,7 +154,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
     
-    <service name="exportClientProductTemplateXML" engine="java" location="com.osafe.services.ImportServices" invoke="exportProductXML" auth="false" use-transaction="true" transaction-timeout="7200">
+    <service name="exportClientProductTemplateXML" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="exportProductXML" auth="false" use-transaction="true" transaction-timeout="7200">
         <description>Export xml elements as client product import template</description>
         <attribute name="productStoreId" mode="IN" type="String" optional="false" ></attribute>
         <attribute name="browseRootProductCategoryId" mode="IN" type="String" optional="false" ></attribute>
@@ -162,7 +162,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
 
-    <service name="importEbayProduct" engine="java" location="com.osafe.services.ImportServices" invoke="importEbayProductXls" auth="false" use-transaction="false">
+    <service name="importEbayProduct" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importEbayProductXls" auth="false" use-transaction="false">
         <description>Import eBay xls generate client product import template</description>
         <attribute name="uploadFileName" mode="IN" type="String" optional="true"/>
         <attribute name="uploadFilePath" mode="IN" type="String" optional="true"/>
@@ -171,18 +171,18 @@
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
 
-    <service name="importRemoveEntityData" engine="java" location="com.osafe.services.ImportServices" invoke="importRemoveEntityData" auth="false" use-transaction="false">
+    <service name="importRemoveEntityData" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importRemoveEntityData" auth="false" use-transaction="false">
         <description>Remove Entity Data from database</description>
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
 
-    <service name="generateProductContent" engine="java" location="com.osafe.services.ImportServices" invoke="buildGMHProductContent" auth="false" use-transaction="false">
+    <service name="generateProductContent" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="buildGMHProductContent" auth="false" use-transaction="false">
         <description>Temp Service, generate Content xml files for GMH production PDP and PLP Label</description>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
     </service>
 
     <service name="entityImportDir" engine="java"
-            location="com.osafe.services.OsafeWebToolsServices" invoke="entityImportDir" auth="true" use-transaction="false">
+            location="org.apache.ofbiz.osafe.services.OsafeWebToolsServices" invoke="entityImportDir" auth="true" use-transaction="false">
         <description>Imports all entity xml files contained in a directory</description>
         <permission-service service-name="entityMaintPermCheck" main-action="VIEW"/>
         <attribute name="path" type="String" mode="IN" optional="true"/>
@@ -195,14 +195,14 @@
         <attribute name="filePause" type="Long" mode="IN" optional="true"/>
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
-    <service name="importReevooCsvToFeed" engine="java" location="com.osafe.services.ImportServices" invoke="importReevooCsvToFeed" auth="false">
+    <service name="importReevooCsvToFeed" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importReevooCsvToFeed" auth="false">
         <description>Convert Reevoo CSV Files To Product Rating Feed XML</description>
         <attribute name="reevooCsvFileLoc" mode="IN" type="String" optional="false"/>
         <attribute name="feedFile" type="java.io.File" mode="OUT" optional="true"/>
         <attribute name="feedFileAsString" type="String" mode="OUT" optional="true"/>
     </service>
     
-    <service name="importCustomerXMLTemplate" engine="java" location="com.osafe.services.ImportServices" invoke="importCustomerXML" auth="false" use-transaction="false">
+    <service name="importCustomerXMLTemplate" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="importCustomerXML" auth="false" use-transaction="false">
         <description>Import XML Elements, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="xmlDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
@@ -210,7 +210,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="true"/>
     </service>
 
-    <service name="importBlueDartPrepaidTemplate" engine="java" location="com.osafe.services.BlueDartImportServices" invoke="importBlueDartPrePaidXls" auth="false" use-transaction="false">
+    <service name="importBlueDartPrepaidTemplate" engine="java" location="org.apache.ofbiz.osafe.services.BlueDartImportServices" invoke="importBlueDartPrePaidXls" auth="false" use-transaction="false">
         <description>Import xls tabs, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="xlsDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
@@ -219,7 +219,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
     
-    <service name="importBlueDartCoDTemplate" engine="java" location="com.osafe.services.BlueDartImportServices" invoke="importBlueDartCoDXls" auth="false" use-transaction="false">
+    <service name="importBlueDartCoDTemplate" engine="java" location="org.apache.ofbiz.osafe.services.BlueDartImportServices" invoke="importBlueDartCoDXls" auth="false" use-transaction="false">
         <description>Import xls tabs, generate xml files in given directory using importDefinitionNames</description>
         <attribute name="xlsDataFile" mode="IN" type="String" optional="false"/>
         <attribute name="xmlDataDir" mode="IN" type="String" optional="false"/>
@@ -228,7 +228,7 @@
         <attribute name="messages" type="List" mode="OUT" optional="false"/>
     </service>
     
-    <service name="validateProductData" engine="java" location="com.osafe.services.ImportServices" invoke="validateProductData" auth="false" use-transaction="false">
+    <service name="validateProductData" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="validateProductData" auth="false" use-transaction="false">
         <description>Validate the Product Data</description>
         <attribute name="productCatDataList" mode="IN" type="List" optional="true"/>
         <attribute name="productDataList" mode="IN" type="List" optional="true"/>
@@ -265,7 +265,7 @@
         <attribute name="errorMessageList" mode="OUT" type="List" optional="true"/>
     </service>
     
-    <service name="getProductDataListFromFile" engine="java" location="com.osafe.services.ImportServices" invoke="getProductDataListFromFile" auth="false" use-transaction="false">
+    <service name="getProductDataListFromFile" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="getProductDataListFromFile" auth="false" use-transaction="false">
         <description>Get the Product Data List from File</description>
         <attribute name="productFilePath" mode="IN" type="String" optional="false"/>
         <attribute name="productFileName" mode="IN" type="String" optional="false"/>
@@ -279,7 +279,7 @@
         <attribute name="errorMessageList" mode="OUT" type="List" optional="true"/>
     </service>
     
-    <service name="getOrderStatusDataListFromFile" engine="java" location="com.osafe.services.ImportServices" invoke="getOrderStatusDataListFromFile" auth="false" use-transaction="false">
+    <service name="getOrderStatusDataListFromFile" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="getOrderStatusDataListFromFile" auth="false" use-transaction="false">
         <description>Get the Order Status Update Data List from File</description>
         <attribute name="orderStatusFilePath" mode="IN" type="String" optional="false"/>
         <attribute name="orderStatusFileName" mode="IN" type="String" optional="false"/>
@@ -288,7 +288,7 @@
         <attribute name="orderStatusCount" mode="OUT" type="String" optional="true"/>
     </service>
     
-    <service name="validateOrderStatusData" engine="java" location="com.osafe.services.ImportServices" invoke="validateOrderStatusData" auth="false" use-transaction="false">
+    <service name="validateOrderStatusData" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="validateOrderStatusData" auth="false" use-transaction="false">
         <description>Validate the Order Status Update Data</description>
         <attribute name="orderStatusDataList" mode="IN" type="List" optional="true"/>
         <attribute name="productStoreId" mode="IN" type="String" optional="true"/>
@@ -299,7 +299,7 @@
         <attribute name="serviceLogWarningMessageList" mode="OUT" type="List" optional="true"/>
     </service>
     
-    <service name="getProductRatingDataListFromFile" engine="java" location="com.osafe.services.ImportServices" invoke="getProductRatingDataListFromFile" auth="false" use-transaction="false">
+    <service name="getProductRatingDataListFromFile" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="getProductRatingDataListFromFile" auth="false" use-transaction="false">
         <description>Get the Product Rating Data List from File</description>
         <attribute name="productRatingFilePath" mode="IN" type="String" optional="false"/>
         <attribute name="productRatingFileName" mode="IN" type="String" optional="false"/>
@@ -308,7 +308,7 @@
         <attribute name="productRatingCount" mode="OUT" type="String" optional="true"/>
     </service>
     
-    <service name="validateProductRatingData" engine="java" location="com.osafe.services.ImportServices" invoke="validateProductRatingData" auth="false" use-transaction="false">
+    <service name="validateProductRatingData" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="validateProductRatingData" auth="false" use-transaction="false">
         <description>Validate the Product Rating Data</description>
         <attribute name="productRatingDataList" mode="IN" type="List" optional="true"/>
         <attribute name="processedProductIdList" mode="OUT" type="List" optional="true"/>
@@ -318,7 +318,7 @@
         <attribute name="errorMessageList" mode="OUT" type="List" optional="true"/>
     </service>
     
-    <service name="getCustomerDataListFromFile" engine="java" location="com.osafe.services.ImportServices" invoke="getCustomerDataListFromFile" auth="false" use-transaction="false">
+    <service name="getCustomerDataListFromFile" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="getCustomerDataListFromFile" auth="false" use-transaction="false">
         <description>Get the Product Rating Data List from File</description>
         <attribute name="customerFilePath" mode="IN" type="String" optional="false"/>
         <attribute name="customerFileName" mode="IN" type="String" optional="false"/>
@@ -326,13 +326,13 @@
         <attribute name="errorMessageList" mode="OUT" type="List" optional="true"/>
     </service>
     
-    <service name="validateCustomerData" engine="java" location="com.osafe.services.ImportServices" invoke="validateCustomerData" auth="false" use-transaction="false">
+    <service name="validateCustomerData" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="validateCustomerData" auth="false" use-transaction="false">
         <description>Validate the Product Rating Data</description>
         <attribute name="customerDataList" mode="IN" type="List" optional="true"/>
         <attribute name="errorMessageList" mode="OUT" type="List" optional="true"/>
     </service>
     
-    <service name="getStoreDataListFromFile" engine="java" location="com.osafe.services.ImportServices" invoke="getStoreDataListFromFile" auth="false" use-transaction="false">
+    <service name="getStoreDataListFromFile" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="getStoreDataListFromFile" auth="false" use-transaction="false">
         <description>Get the Store Data List from File</description>
         <attribute name="storeFilePath" mode="IN" type="String" optional="false"/>
         <attribute name="storeFileName" mode="IN" type="String" optional="false"/>
@@ -341,7 +341,7 @@
         <attribute name="storeCount" mode="OUT" type="String" optional="true"/>
     </service>
     
-    <service name="validateStoreData" engine="java" location="com.osafe.services.ImportServices" invoke="validateStoreData" auth="false" use-transaction="false">
+    <service name="validateStoreData" engine="java" location="org.apache.ofbiz.osafe.services.ImportServices" invoke="validateStoreData" auth="false" use-transaction="false">
         <description>Validate the Product Rating Data</description>
         <attribute name="storeDataList" mode="IN" type="List" optional="true"/>
         <attribute name="productStoreId" mode="IN" type="String" optional="true"/>

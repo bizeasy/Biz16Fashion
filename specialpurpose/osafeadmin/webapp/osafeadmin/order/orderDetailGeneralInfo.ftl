@@ -34,7 +34,7 @@
      </div>
      <div class="infoValue medium">
         <#if orderHeader?has_content>
-            ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderHeader.orderDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
+            ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderHeader.orderDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
         </#if>
      </div>
      <div class="infoValue">

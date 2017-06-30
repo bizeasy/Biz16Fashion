@@ -1,4 +1,4 @@
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,7 +33,7 @@ import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
 import org.apache.ofbiz.service.ServiceUtil;
 
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 import org.apache.ofbiz.base.util.StringUtil;
 

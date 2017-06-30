@@ -61,7 +61,7 @@
         <check-errors/>
 
         <log level="info" message="${address}"></log>
-        <call-class-method class-name="com.osafe.geo.OsafeGeo"  method-name="fromAddress" ret-field="osafeGeo">
+        <call-class-method class-name="org.apache.ofbiz.osafe.geo.OsafeGeo"  method-name="fromAddress" ret-field="osafeGeo">
             <field field="address"/>
             <field field="parameters.productStoreId"/>
         </call-class-method>
@@ -276,7 +276,7 @@
                     <string value="ofbiz.home"/>
                 </call-class-method>
                 <set field="baseDir" from-field="ofbizHome" type="String"/>
-                <string-append field="baseDir" string="/hot-deploy"/>
+                <string-append field="baseDir" string="/specialpurpose"/>
                 <string-append field="baseDir" string="/osafe/webapp/osafe"/>
                 <create-object class-name="java.io.File" field="contentFile">
                     <field field="baseDir" type="String"/>

@@ -91,19 +91,19 @@
 		            <string-to-list string="${tempErrorMessage}" message-field="password" list="error_list"/>
 		        <else>
 			        <!-- Check Password Strength -->
-			        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="pwdLenStr">
+			        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="pwdLenStr">
 			            <field field="parameters.productStoreId" type="String"/>
 			            <string value="REG_PWD_MIN_CHAR"/>
 			        </call-class-method>
-			        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="minDigitStr">
+			        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="minDigitStr">
 			            <field field="parameters.productStoreId" type="String"/>
 			            <string value="REG_PWD_MIN_NUM"/>
 			        </call-class-method>
-			        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="minUpCaseStr">
+			        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="minUpCaseStr">
 			            <field field="parameters.productStoreId" type="String"/>
 			            <string value="REG_PWD_MIN_UPPER"/>
 			        </call-class-method>
-			        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="passPattern" ret-field="isValidPass">
+			        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="passPattern" ret-field="isValidPass">
 			            <field field="parameters.password" type="String"/>
 		                <field field="pwdLenStr" type="String"/>
 		                <field field="minDigitStr" type="String"/>
@@ -240,7 +240,7 @@
 		        		
 		        		<set field="pdpQuantityMinMaxSetCount" value="0" type="Integer"/>
 				        <if-not-empty field="pdpQuantityMin">
-				        	<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+				        	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 					            <field field="pdpQuantityMin"/>
 					        </call-class-method>
 					        <if-compare field="isNumber" operator="equals" value="false">
@@ -265,7 +265,7 @@
 				        </if-not-empty>
 				        
 				        <if-not-empty field="pdpQuantityMax">
-				        	<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+				        	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 					            <field field="pdpQuantityMax"/>
 					        </call-class-method>
 					        <if-compare field="isNumber" operator="equals" value="false">
@@ -309,7 +309,7 @@
 						</if-compare>
 						
 						<if-not-empty field="pdpQuantityDefault">
-							<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+							<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 					            <field field="pdpQuantityDefault"/>
 					        </call-class-method>
 					        <if-compare field="isNumber" operator="equals"  value="false">

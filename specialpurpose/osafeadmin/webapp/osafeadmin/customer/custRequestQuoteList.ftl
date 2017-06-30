@@ -61,7 +61,7 @@
           ${email!}
         </td>
         <td class="dateCol">
-          ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(requestQuote.createdDate, preferredDateFormat).toLowerCase())!"N/A"}
+          ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(requestQuote.createdDate, preferredDateFormat).toLowerCase())!"N/A"}
         </td>
         <td class="statusCol">
           <#if exported == 'Y'>
@@ -72,7 +72,7 @@
         </td>
         <td class="actionCol">
           <#if partNumber != ''>
-              <#assign partNumber = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(partNumber, ADM_TOOLTIP_MAX_CHAR!)/>
+              <#assign partNumber = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(partNumber, ADM_TOOLTIP_MAX_CHAR!)/>
               <a href="javascript:void(0);" onMouseover="showTooltip(event,'${partNumber!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
           </#if>
         </td>

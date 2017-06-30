@@ -1,4 +1,4 @@
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -111,11 +111,11 @@ import org.apache.ofbiz.party.content.PartyContentWrapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.osafe.constants.Constants;
-import com.osafe.feeds.FeedsUtil;
-import com.osafe.feeds.osafefeeds.*;
-import com.osafe.util.OsafeAdminUtil;
-import com.osafe.util.OsafeProductLoaderHelper; 
+import org.apache.ofbiz.osafe.constants.Constants;
+import org.apache.ofbiz.osafe.feeds.FeedsUtil;
+import org.apache.ofbiz.osafe.feeds.osafefeeds.*;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeProductLoaderHelper; 
 
 import org.apache.commons.lang.StringEscapeUtils;
 
@@ -145,7 +145,7 @@ public class ImportServices {
 	
 	public static List<Map<Object, Object>> imageLocationPrefList = OsafeManageXml.getListMapsFromXmlFile(XmlFilePath);
 	
-	private static String schemaLocation = FlexibleStringExpander.expandString("${sys:getProperty('ofbiz.home')}/hot-deploy/osafeadmin/dtd/feeds/bigfishfeed.xsd", context);
+	private static String schemaLocation = FlexibleStringExpander.expandString("${sys:getProperty('ofbiz.home')}/specialpurpose/osafeadmin/dtd/feeds/bigfishfeed.xsd", context);
 	
 	private static final String resource = "OSafeAdminUiLabels";
 	private static Set sFeatureGroupExists = new HashSet<>();
@@ -8267,7 +8267,7 @@ public class ImportServices {
         {
         	try 
         	{
-        		JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+        		JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
             	Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             	JAXBElement<BigFishProductFeedType> bfProductFeedType = (JAXBElement<BigFishProductFeedType>)unmarshaller.unmarshal(inputWorkbook);
             	
@@ -9531,7 +9531,7 @@ public class ImportServices {
         {
         	try 
         	{
-        		JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+        		JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
             	Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             	JAXBElement<BigFishStoreFeedType> bfStoreFeedType = (JAXBElement<BigFishStoreFeedType>)unmarshaller.unmarshal(inputWorkbook);
             	if(UtilValidate.isNotEmpty(bfStoreFeedType)) 
@@ -10124,7 +10124,7 @@ public class ImportServices {
     {
     	try 
     	{
-    		JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+    		JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
         	Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         	JAXBElement<BigFishCustomerFeedType> bfCustomerFeedType = (JAXBElement<BigFishCustomerFeedType>)unmarshaller.unmarshal(inputWorkbook);
         	
@@ -11730,7 +11730,7 @@ public class ImportServices {
         {
         	try 
         	{
-        		JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+        		JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
             	Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             	JAXBElement<BigFishProductRatingFeedType> bfProductRatingFeedType = (JAXBElement<BigFishProductRatingFeedType>)unmarshaller.unmarshal(inputWorkbook);
             	
@@ -14279,7 +14279,7 @@ public class ImportServices {
         {
             try 
             {
-	            JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+	            JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
 	            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 	            
 	            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -14439,7 +14439,7 @@ public class ImportServices {
         {
             try 
             {
-	            JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+	            JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
 	            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 	            
 	            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -15017,7 +15017,7 @@ public class ImportServices {
         {
             try 
             {
-	            JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+	            JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
 	            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 	            
 	            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -15298,7 +15298,7 @@ public class ImportServices {
         {
             try 
             {
-	            JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+	            JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
 	            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 	            
 	            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -15467,7 +15467,7 @@ public class ImportServices {
         {
             try 
             {
-	            JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+	            JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
 	            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 	            
 	            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -15701,7 +15701,7 @@ public class ImportServices {
 	    {
 	    	try 
 	    	{
-	    		JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+	    		JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
 	        	Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 	        	JAXBElement<BigFishOrderStatusUpdateFeedType> bfOrderStatusUpdateFeedType = (JAXBElement<BigFishOrderStatusUpdateFeedType>)unmarshaller.unmarshal(inputWorkbook);
 	        	

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.sql.Timestamp;
 import java.util.Collection;

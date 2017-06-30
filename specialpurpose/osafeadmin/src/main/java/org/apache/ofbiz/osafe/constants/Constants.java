@@ -1,4 +1,4 @@
-package com.osafe.constants;
+package org.apache.ofbiz.osafe.constants;
 
 
 public class Constants {

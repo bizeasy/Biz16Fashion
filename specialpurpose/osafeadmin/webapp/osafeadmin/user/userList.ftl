@@ -53,7 +53,7 @@
 		                <td class="nameCol <#if !hasNext>lastRow</#if>">${userRow.isSystem!""}</td>
 		                <td class="nameCol <#if !hasNext>lastRow</#if>">${userRow.enabled!""}</td>
 		                <td class="nameCol <#if !hasNext>lastRow</#if>">${userRow.requirePasswordChange!""}</td>
-		                <td class="dateCol <#if !hasNext>lastRow</#if>"><#if userRow.disabledDateTime?exists && userRow.disabledDateTime?has_content>${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(userRow.disabledDateTime, preferredDateFormat).toLowerCase())!""}</#if></td> 
+		                <td class="dateCol <#if !hasNext>lastRow</#if>"><#if userRow.disabledDateTime?exists && userRow.disabledDateTime?has_content>${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(userRow.disabledDateTime, preferredDateFormat).toLowerCase())!""}</#if></td> 
 		                <td class="actionCol">
 		                 <a href="<@ofbizUrl>userSecurityGroupList?userLoginId=${userRow.userLoginId}</@ofbizUrl>" onMouseover="showTooltip(event,'${userLoginGroupToolTipText!}');" onMouseout="hideTooltip()"><span class="helperInfoIcon"></span></a>
 		                </td> 		                

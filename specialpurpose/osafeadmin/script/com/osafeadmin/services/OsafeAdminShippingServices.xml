@@ -12,7 +12,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="productStoreShipMethId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="productStoreShipMethId">
                     <field field="parameters.productStoreShipMethId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -30,7 +30,7 @@
                             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="productStoreShipMethIdExistError"/>
                             <string-to-list string="${tempErrorMessage}" message-field="productStoreShipMethId"  list="error_list"/>
                             <else>
-                                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					                <field field="parameters.productStoreShipMethId"/>
 					            </call-class-method>
 					            <if-compare field="isValidId" operator="equals" value="false">
@@ -144,7 +144,7 @@
         <if-empty field="parameters.sequenceNum">
         	<set field="parameters.sequenceNum" value="1" type="Long"/>
         	<else>
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.sequenceNum"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -265,7 +265,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="productStoreShipMethId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="productStoreShipMethId">
                     <field field="parameters.productStoreShipMethId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -386,7 +386,7 @@
         <if-empty field="parameters.sequenceNum">
         	<set field="parameters.sequenceNum" value="1" type="Long"/>
         	<else>
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.sequenceNum" />
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -509,7 +509,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="partyId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="partyId">
                     <field field="parameters.carrierPartyId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -527,7 +527,7 @@
                             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="partyIdExistError"/>
                             <string-to-list string="${tempErrorMessage}" message-field="carrierPartyId"  list="error_list"/>
                             <else>
-                            	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                            	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					                <field field="parameters.carrierPartyId"/>
 					            </call-class-method>
 					            <if-compare field="isValidId" operator="equals" value="false">
@@ -620,7 +620,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankPartyIdError"/>
             <string-to-list string="${tempErrorMessage}" message-field="partyId"  list="error_list"/>
             <else>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					<field field="parameters.partyId"/>
 				</call-class-method>
 				<if-compare field="isValidId" operator="equals" value="false">
@@ -666,7 +666,7 @@
         <if-empty field="parameters.sequenceNumber">
         	<set field="parameters.sequenceNumber" value="1" type="Long"/>
         	<else>
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.sequenceNumber"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -706,7 +706,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankPartyIdError"/>
             <string-to-list string="${tempErrorMessage}" message-field="partyId"  list="error_list"/>
             <else>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					<field field="parameters.partyId"/>
 				</call-class-method>
 				<if-compare field="isValidId" operator="equals" value="false">
@@ -730,7 +730,7 @@
         <if-empty field="parameters.sequenceNumber">
         	<set field="parameters.sequenceNumber" value="1" type="Long"/>
         	<else>
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.sequenceNumber"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -769,7 +769,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="shipmentMethodTypeId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="shipmentMethodTypeId">
                     <field field="parameters.shipmentMethodTypeId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -786,7 +786,7 @@
                             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ShipmentMethodTypeIdExistError"/>
                             <string-to-list string="${tempErrorMessage}" message-field="shipmentMethodTypeId"  list="error_list"/>
                         <else>
-                                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					                <field field="parameters.shipmentMethodTypeId"/>
 					            </call-class-method>
 					            <if-compare field="isValidId" operator="equals" value="false">
@@ -809,7 +809,7 @@
         <if-empty field="parameters.sequenceNum">
         	<set field="parameters.sequenceNum" value="1" type="Long"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.sequenceNum"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -837,7 +837,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="partyId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="partyId">
                     <field field="parameters.carrierPartyId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -920,7 +920,7 @@
         <if-empty field="parameters.sequenceNum">
         	<set field="parameters.sequenceNum" value="1" type="Long"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.sequenceNum"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">

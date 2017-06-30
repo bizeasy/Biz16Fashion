@@ -2,7 +2,7 @@ package common;
 
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.StringUtil;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 postalAddress = request.getAttribute("PostalAddress");
 displayFormat = request.getAttribute("DISPLAY_FORMAT");

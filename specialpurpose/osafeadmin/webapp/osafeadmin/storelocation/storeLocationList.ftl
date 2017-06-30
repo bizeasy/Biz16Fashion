@@ -83,7 +83,7 @@
                 <#if content?has_content>
                   <#assign storeHoursTextData = Static["org.apache.ofbiz.content.content.ContentWorker"].renderContentAsText(dispatcher, delegator, content.contentId, Static["javolution.util.FastMap"].newInstance(), locale, "", true)/>
                   <#if storeHoursTextData?has_content && storeHoursTextData != "null">
-                    <#assign storeHoursTextData = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(storeHoursTextData, ADM_TOOLTIP_MAX_CHAR!)/>
+                    <#assign storeHoursTextData = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(storeHoursTextData, ADM_TOOLTIP_MAX_CHAR!)/>
                     <#assign tooltipData = tooltipData+"<div class=tooltipFirstSubheading>${uiLabelMap.StoreWrkHrCaption}</div>"/>
                     <#assign tooltipData = tooltipData+"<div>${storeHoursTextData}</div>"/>
                   </#if>
@@ -98,7 +98,7 @@
                 <#if content?has_content>
                   <#assign storeNoticeTextData = Static["org.apache.ofbiz.content.content.ContentWorker"].renderContentAsText(dispatcher, delegator, content.contentId, Static["javolution.util.FastMap"].newInstance(), locale, "", true)/>
                   <#if storeNoticeTextData?has_content && storeNoticeTextData != "null">
-                    <#assign storeNoticeTextData = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(storeNoticeTextData, ADM_TOOLTIP_MAX_CHAR!)/>
+                    <#assign storeNoticeTextData = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(storeNoticeTextData, ADM_TOOLTIP_MAX_CHAR!)/>
                     <#assign tooltipData = tooltipData+"<div class=tooltipFirstSubheading>${uiLabelMap.StoreNoticeCaption}</div>"/>
                     <#assign tooltipData = tooltipData+"<div>${storeNoticeTextData}</div>"/>
                   </#if>

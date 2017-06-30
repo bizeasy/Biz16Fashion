@@ -42,7 +42,8 @@ import org.apache.ofbiz.entity.transaction.GenericTransactionException;
 import org.apache.ofbiz.entity.transaction.TransactionUtil;
 import org.apache.ofbiz.security.Security;
 import org.apache.ofbiz.service.LocalDispatcher;
-import org.apache.ofbiz.webapp.control.ContextFilter;
+//import org.apache.ofbiz.webapp.control.ContextFilter;
+import org.apache.ofbiz.webapp.control.ControlFilter;
 import org.apache.ofbiz.webapp.control.ControlServlet;
 import org.apache.ofbiz.webapp.control.RequestHandler;
 import org.apache.ofbiz.webapp.control.RequestHandlerException;
@@ -256,7 +257,7 @@ public class SeoUrlControlServlet extends ControlServlet
         }
 
         // some containers call filters on EVERY request, even forwarded ones, so let it know that it came from the control servlet
-        //request.setAttribute(ContextFilter.FORWARDED_FROM_SERVLET, Boolean.TRUE);
+        request.setAttribute(ControlFilter.FORWARDED_FROM_SERVLET, Boolean.TRUE);
 
         String errorPage = null;
         try {

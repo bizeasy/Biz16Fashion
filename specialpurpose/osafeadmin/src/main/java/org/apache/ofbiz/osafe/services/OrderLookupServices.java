@@ -17,7 +17,7 @@
  under the License.
  */
 
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.util.LinkedList;
 import org.apache.ofbiz.base.util.*;

@@ -15,7 +15,7 @@
         <#assign hasNext = cart_has_next>
         <tr class="dataRow <#if rowClass == "2">even<#else>odd</#if>">
              <td class="idCol" ><a href="abandonedCartDetail?cartId=${cart.shoppingListId!}&partyId=${cart.partyId!}">${cart.shoppingListId!}</a></td>
-             <#assign lastUpdatedDate = Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(cart.lastUpdatedStamp, preferredDateFormat)!>
+             <#assign lastUpdatedDate = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(cart.lastUpdatedStamp, preferredDateFormat)!>
              <td class="dateCol <#if !hasNext>lastRow</#if>">${lastUpdatedDate!}</td>
              <td class="nameCol <#if !hasNext>lastRow</#if>"><a href="customerDetail?partyId=${cart.partyId!}">${cart.partyId!}</a></td>
              <#if cart.partyId?has_content >

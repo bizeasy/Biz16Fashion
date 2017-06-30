@@ -34,8 +34,8 @@
   </thead>
   <tbody>
     <#assign rowClass = "1"/>
-    <#assign productListPrice = Static["com.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "LIST_PRICE")!/>
-    <#assign productDefaultPrice = Static["com.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "DEFAULT_PRICE")!/>
+    <#assign productListPrice = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "LIST_PRICE")!/>
+    <#assign productDefaultPrice = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "DEFAULT_PRICE")!/>
     <#list resultList as variantProduct>
       <#assign variantProdDetail = variantProduct.getRelatedOne("AssocProduct")>
       <#assign productInStoreOnlyAttribute = delegator.findOne("ProductAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("attrName" , "PDP_IN_STORE_ONLY", "productId" , variantProdDetail.productId!),false)?if_exists/>
@@ -48,7 +48,7 @@
         <td class="dateCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">${(variantProdDetail.introductionDate?string(preferredDateFormat))!""}</td>
         <td class="dateCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">${(variantProdDetail.salesDiscontinuationDate?string(preferredDateFormat))!""}</td>
         <#assign variantProductPriceInfo = "">
-        <#assign productVariantListPrice =  Static["com.osafe.util.OsafeAdminUtil"].getProductPrice(request, variantProdDetail.productId, "LIST_PRICE")!>
+        <#assign productVariantListPrice =  Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductPrice(request, variantProdDetail.productId, "LIST_PRICE")!>
         <#if productVariantListPrice?has_content>
 	    	<#assign listPrice = productVariantListPrice.price!"" />
 	    	<#assign pricesMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("variantListPrice", globalContext.currencySymbol+""+listPrice, "productListPrice", globalContext.currencySymbol+""+productListPrice.price!"")>
@@ -61,7 +61,7 @@
         <td class="dollarCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">
         	<input type="text"  class="textEntry textAlignRight" name="variantListPrice_${variantProduct.productIdTo!""}" id="variantListPrice_${variantProduct.productIdTo!""}" value="${parameters.get("variantListPrice_${variantProduct.productIdTo!}")!listPrice!}"/>
         </td>
-        <#assign productVariantSalePrice = Static["com.osafe.util.OsafeAdminUtil"].getProductPrice(request, variantProdDetail.productId, "DEFAULT_PRICE")!>
+        <#assign productVariantSalePrice = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductPrice(request, variantProdDetail.productId, "DEFAULT_PRICE")!>
         <#if productVariantSalePrice?has_content>
 	    	<#assign defaultPrice = productVariantSalePrice.price!"" />
 	    	<#assign pricesMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("variantSalePrice", globalContext.currencySymbol+""+defaultPrice, "virtualSalePrice", globalContext.currencySymbol+""+productDefaultPrice.price!)>

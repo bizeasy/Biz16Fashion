@@ -15,7 +15,7 @@
                 <td class="boxNumber">
                     <#if (orderCount!0) != 0>
                         <#assign defaultStatusList = "">
-                        <#assign orderStatusIncDashboard = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "ORDER_STATUS_INC_DASHBOARD")!"" />
+                        <#assign orderStatusIncDashboard = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "ORDER_STATUS_INC_DASHBOARD")!"" />
 	                    <#if orderStatusIncDashboard?has_content>
 	                      <#assign orderStatusIncDashboardList = Static["org.apache.ofbiz.base.util.StringUtil"].split(orderStatusIncDashboard, ",")/>
 	                      <#if orderStatusIncDashboardList?has_content>

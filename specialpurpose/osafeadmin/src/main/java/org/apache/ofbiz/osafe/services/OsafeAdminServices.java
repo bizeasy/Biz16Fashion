@@ -1,4 +1,4 @@
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.io.File;
 import java.io.FileNotFoundException;

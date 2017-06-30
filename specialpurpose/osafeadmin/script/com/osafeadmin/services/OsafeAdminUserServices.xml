@@ -16,7 +16,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BadUserLoginIdError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="userLoginId"  list="error_list"/>
                     <else>
-                    	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                    	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                                     <field field="parameters.userLoginId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="true">
@@ -38,7 +38,7 @@
                     </else>
                 </if-compare-field>
                 <!-- check if userLoginId contains an @ symbol -->
-                <call-class-method class-name="com.osafe.util.Util"  method-name="isSubString" ret-field="isSubString">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isSubString" ret-field="isSubString">
                 	<string value="@"/>
 	                <field field="parameters.userLoginId"/>
 	            </call-class-method>
@@ -84,7 +84,7 @@
         </if-empty>
         
         <if-not-empty field="parameters.DISABLED_DATE">
-	        <call-class-method class-name="com.osafe.services.OsafeAdminScheduledJobServices"  method-name="getValidJobDate" ret-field="ValidDisabledDateTime">
+	        <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeAdminScheduledJobServices"  method-name="getValidJobDate" ret-field="ValidDisabledDateTime">
 	            <field field="parameters.DISABLED_DATE"/>
 	            <field field="parameters.DISABLED_HOUR"/>
 	            <field field="parameters.DISABLED_MINUTE"/>
@@ -97,7 +97,7 @@
 		        <else>
 		            <set from-field="ValidDisabledDateTime" field="parameters.disabledDateTime"/> 
 		            <!-- check if datetime passed already -->
-		            <call-class-method class-name="com.osafe.services.OsafeAdminScheduledJobServices"  method-name="checkPassedJobDate" ret-field="PassedDisabledTime">
+		            <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeAdminScheduledJobServices"  method-name="checkPassedJobDate" ret-field="PassedDisabledTime">
 		                <field field="parameters.disabledDateTime"/>
 		            </call-class-method>
 		            <if-compare field="PassedDisabledTime" operator="equals" value="false">
@@ -256,7 +256,7 @@
 		            <string-to-list string="${tempErrorMessage}" message-field="passwordHint"  list="error_list"/>
 		        </if-empty>
 		        <if-not-empty field="parameters.DISABLED_DATE">
-			        <call-class-method class-name="com.osafe.services.OsafeAdminScheduledJobServices"  method-name="getValidJobDate" ret-field="ValidDisabledDateTime">
+			        <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeAdminScheduledJobServices"  method-name="getValidJobDate" ret-field="ValidDisabledDateTime">
 			            <field field="parameters.DISABLED_DATE"/>
 			            <field field="parameters.DISABLED_HOUR"/>
 			            <field field="parameters.DISABLED_MINUTE"/>
@@ -269,7 +269,7 @@
 				        <else>
 				            <set from-field="ValidDisabledDateTime" field="parameters.disabledDateTime"/> 
 				            <!-- check if datetime passed already -->
-				            <call-class-method class-name="com.osafe.services.OsafeAdminScheduledJobServices"  method-name="checkPassedJobDate" ret-field="PassedDisabledTime">
+				            <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeAdminScheduledJobServices"  method-name="checkPassedJobDate" ret-field="PassedDisabledTime">
 				                <field field="parameters.disabledDateTime"/>
 				            </call-class-method>
 				            <if-compare field="PassedDisabledTime" operator="equals" value="false">
@@ -285,7 +285,7 @@
 		        </if-compare>
 		        
 		        <if-not-empty field="parameters.successiveFailedLogins">
-		            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+		            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
 		                <field field="parameters.successiveFailedLogins"/>
 		            </call-class-method>
 		            <if-compare field="isNumber" operator="equals" value="false">
@@ -328,7 +328,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGroupIdError"/>
             <string-to-list string="${tempErrorMessage}" message-field="groupId"  list="error_list"/>
             <else>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					<field field="parameters.groupId"/>
 				</call-class-method>
 				<if-compare field="isValidId" operator="equals" value="false">
@@ -383,7 +383,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankGroupIdError"/>
             <string-to-list string="${tempErrorMessage}" message-field="groupId"  list="error_list"/>
             <else>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					<field field="parameters.groupId"/>
 				</call-class-method>
 				<if-compare field="isValidId" operator="equals" value="false">
@@ -427,7 +427,7 @@
             <field-to-list field="groupIdValue" list="newGroupIdList"/>
         </iterate-map>
         <if-not-empty field="newGroupIdList">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupGroupIdList">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupGroupIdList">
                 <field field="newGroupIdList" type="List"/>
             </call-class-method>
         </if-not-empty>
@@ -478,7 +478,7 @@
             <field-to-list field="permissionIdValue" list="newPermissionIdList"/>
         </iterate-map>
         <if-not-empty field="newPermissionIdList">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupPermissionIdList">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupPermissionIdList">
                 <field field="newPermissionIdList" type="List"/>
             </call-class-method>
         </if-not-empty>

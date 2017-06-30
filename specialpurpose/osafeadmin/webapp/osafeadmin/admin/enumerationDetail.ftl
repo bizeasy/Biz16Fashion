@@ -84,7 +84,7 @@
                 <div class="infoCaption"><label>${uiLabelMap.CreatedDateCaption}</label></div>
                 <div class="infoValue">
                     <#if createdDate?has_content>
-                      ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(createdDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
+                      ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(createdDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
                     </#if>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                 <div class="infoCaption"><label>${uiLabelMap.UpdatedDateCaption}</label></div>
                 <div class="infoValue">
                     <#if lastUpdatedDate?has_content>
-                        ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(lastUpdatedDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
+                        ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(lastUpdatedDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
                     </#if>
                 </div>
             </div>

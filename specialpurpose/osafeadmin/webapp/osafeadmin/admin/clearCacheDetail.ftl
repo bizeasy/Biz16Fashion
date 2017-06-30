@@ -13,7 +13,7 @@
         <#assign hasNext = clearCache_has_next>
         <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
             <td class="nameCol <#if !hasNext?if_exists>lastRow</#if>">${clearCache.cacheType!""}</td>
-            <td class="descCol <#if !hasNext?if_exists>lastRow</#if>">${Static["com.osafe.util.Util"].getFormattedText(clearCache.cacheStore!"")}</td>
+            <td class="descCol <#if !hasNext?if_exists>lastRow</#if>">${Static["org.apache.ofbiz.osafe.util.Util"].getFormattedText(clearCache.cacheStore!"")}</td>
             <td class="actionColSmall">
                 <a href="javascript:clearCache('${clearCache.cacheToClear!}', '${clearCache.cacheType!}');">
                     <span class="clearCacheIcon"></span>

@@ -1,4 +1,4 @@
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 
 import java.sql.Timestamp;

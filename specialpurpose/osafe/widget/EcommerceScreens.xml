@@ -2598,7 +2598,7 @@
         <section>
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/securityGroupDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/user/securityGroupDetail.groovy"/>
                 <set field="detailFormName" value="userSecurityGroupForm"/>
             </actions>
             <widgets>

@@ -111,7 +111,7 @@
 <input type="hidden" id="${fieldPurpose?if_exists}_attnName_mandatory" name="${fieldPurpose?if_exists}_attnName_mandatory" value="Y"/>
 
 
-<#if Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(COUNTRY_MULTI!"")>
+<#if Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(COUNTRY_MULTI!"")>
     <div class="infoRow">
         <div class="infoEntry">
             <div class="infoCaption">

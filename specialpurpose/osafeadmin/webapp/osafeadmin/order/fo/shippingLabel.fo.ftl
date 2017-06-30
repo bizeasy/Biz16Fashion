@@ -20,9 +20,9 @@ under the License.
 <#escape x as x?xml>
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"<#if defaultFontFamily?has_content>font-family="${defaultFontFamily}"</#if>> 
     
-    <#assign logoImageUrl = Static["com.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_LOGO")/>
-    <#assign companyEmail = Static["com.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_REPLY_TO")/>
-    <#assign companyPhone = Static["com.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_TEL_NO")/>
+    <#assign logoImageUrl = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_LOGO")/>
+    <#assign companyEmail = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_REPLY_TO")/>
+    <#assign companyPhone = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_TEL_NO")/>
     
     <#assign orderId=shipment.primaryOrderId!>
     <#assign orderHeader = delegator.findByPrimaryKey("OrderHeader",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderId))/>
@@ -79,7 +79,7 @@ under the License.
         	<#assign partyPurposePhone = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyPurposeHomePhones)/>
         	<#assign telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber")/>
             <#assign phoneHomeTelecomNumber =telecomNumber/>
-            <#assign formattedHomePhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneHomeTelecomNumber.areaCode?if_exists, phoneHomeTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+            <#assign formattedHomePhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneHomeTelecomNumber.areaCode?if_exists, phoneHomeTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
         </#if>
 
         <#assign partyPurposeWorkPhones = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(partyContactMechPurpose, Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechPurposeTypeId", "PHONE_WORK"))/>
@@ -90,7 +90,7 @@ under the License.
         	<#assign partyPurposePhone = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyPurposeWorkPhones)/>
         	<#assign telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber")/>
             <#assign phoneWorkTelecomNumber =telecomNumber/>
-	        <#assign formattedWorkPhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneWorkTelecomNumber.areaCode?if_exists, phoneWorkTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+	        <#assign formattedWorkPhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneWorkTelecomNumber.areaCode?if_exists, phoneWorkTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
 	        <#if partyPurposePhone.extension?has_content>
 	          <#assign partyWorkPhoneExt = partyPurposePhone.extension!/> 
 	        </#if>
@@ -104,7 +104,7 @@ under the License.
         	<#assign partyPurposePhone = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyPurposeMobilePhones)/>
         	<#assign telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber")/>
             <#assign phoneMobileTelecomNumber =telecomNumber/>
-            <#assign formattedCellPhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneMobileTelecomNumber.areaCode?if_exists, phoneMobileTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+            <#assign formattedCellPhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneMobileTelecomNumber.areaCode?if_exists, phoneMobileTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
         </#if>
 
      </#if>

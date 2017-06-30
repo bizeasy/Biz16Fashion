@@ -11,7 +11,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="false" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="productPromoId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="productPromoId">
                     <field field="parameters.productPromoId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -49,7 +49,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankPromotionUseLimitPerOrderError"/>
             <string-to-list string="${tempErrorMessage}"  message-field="useLimitPerOrder" list="error_list"/>
            <else>
-               <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+               <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                    <field field="parameters.useLimitPerOrder"/>
                </call-class-method>
                <if-compare field="isNumber" operator="equals" value="false">
@@ -74,7 +74,7 @@
            </else>
         </if-empty>
         <if-not-empty field="parameters.useLimitPerCustomer">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.useLimitPerCustomer"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -83,7 +83,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.useLimitPerPromotion">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.useLimitPerPromotion"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -93,7 +93,7 @@
         </if-not-empty>
 
         <if-not-empty field="parameters.fromDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.fromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -101,7 +101,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveFromDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="useLimitPerCustomer" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.fromDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.fromDate">
                         <field field="parameters.fromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -109,7 +109,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.thruDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.thruDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -117,7 +117,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveThruDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="thruDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.thruDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.thruDate">
                         <field field="parameters.thruDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -147,7 +147,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankPromotionRuleActionQuantityError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="quantity" list="error_list"/>
                    <else>
-                       <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+                       <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                            <field field="parameters.quantity"/>
                        </call-class-method>
                        <if-compare field="isNumber" operator="equals" value="false">
@@ -250,7 +250,7 @@
                         <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankPromotionRuleActionMinQuantityError"/>
                         <string-to-list string="${tempErrorMessage}" message-field="quantity" list="error_list"/>
                         <else>
-                            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+                            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                                 <field field="parameters.quantity"/>
                             </call-class-method>
                             <if-compare field="isNumber" operator="equals" value="false">
@@ -641,7 +641,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankPromotionUseLimitPerOrderError"/>
             <string-to-list string="${tempErrorMessage}" message-field="useLimitPerOrder" list="error_list"/>
            <else>
-               <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+               <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                    <field field="parameters.useLimitPerOrder"/>
                </call-class-method>
                <if-compare field="isNumber" operator="equals" value="false">
@@ -666,7 +666,7 @@
            </else>
         </if-empty>
         <if-not-empty field="parameters.useLimitPerCustomer">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.useLimitPerCustomer"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -675,7 +675,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.useLimitPerPromotion">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.useLimitPerPromotion"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -685,7 +685,7 @@
         </if-not-empty>
 
         <if-not-empty field="parameters.fromDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.fromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -693,7 +693,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveFromDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="fromDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.fromDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.fromDate">
                         <field field="parameters.fromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -701,7 +701,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.thruDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.thruDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -709,7 +709,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveThruDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="thruDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.thruDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.thruDate">
                         <field field="parameters.thruDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -739,7 +739,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankPromotionRuleActionQuantityError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="quantity" list="error_list"/>
                    <else>
-                       <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+                       <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                            <field field="parameters.quantity"/>
                        </call-class-method>
                        <if-compare field="isNumber" operator="equals" value="false">
@@ -842,7 +842,7 @@
                         <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankPromotionRuleActionMinQuantityError"/>
                         <string-to-list string="${tempErrorMessage}" message-field="quantity" list="error_list"/>
                         <else>
-                            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+                            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                                 <field field="parameters.quantity"/>
                             </call-class-method>
                             <if-compare field="isNumber" operator="equals" value="false">
@@ -1250,7 +1250,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="productPromoCodeId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="productPromoCodeId">
                     <field field="parameters.productPromoCodeId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -1260,7 +1260,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="PromotionCodeIdLengthError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="productPromoCodeId" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="productPromoCodeId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="true">
@@ -1284,7 +1284,7 @@
             </else>
         </if-empty>
         <if-not-empty field="parameters.promoCodeUseLimitPerCode">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.promoCodeUseLimitPerCode"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -1293,7 +1293,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.promoCodeUseLimitPerCustomer">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.promoCodeUseLimitPerCustomer"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -1320,7 +1320,7 @@
             </if>
         </if-not-empty>
         <if-not-empty field="parameters.promoCodeFromDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.promoCodeFromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -1328,7 +1328,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveFromDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="promoCodeFromDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.promoCodeFromDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.promoCodeFromDate">
                         <field field="parameters.promoCodeFromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -1336,7 +1336,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.promoCodeThruDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.promoCodeThruDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -1344,7 +1344,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveThruDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="promoCodeThruDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.promoCodeThruDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.promoCodeThruDate">
                         <field field="parameters.promoCodeThruDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -1366,7 +1366,7 @@
 
     <simple-method method-name="updatePromotionCode" short-description="Update a promotion Code">
         <if-not-empty field="parameters.promoCodeUseLimitPerCode">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.promoCodeUseLimitPerCode"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -1375,7 +1375,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.promoCodeUseLimitPerCustomer">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.promoCodeUseLimitPerCustomer"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals" value="false">
@@ -1402,7 +1402,7 @@
             </if>
         </if-not-empty>
         <if-not-empty field="parameters.promoCodeFromDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.promoCodeFromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -1410,7 +1410,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveFromDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="promoCodeFromDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.promoCodeFromDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.promoCodeFromDate">
                     
                         <field field="parameters.promoCodeFromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
@@ -1419,7 +1419,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.promoCodeThruDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.promoCodeThruDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -1427,7 +1427,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveThruDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="promoCodeThruDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.promoCodeThruDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.promoCodeThruDate">
                         <field field="parameters.promoCodeThruDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>

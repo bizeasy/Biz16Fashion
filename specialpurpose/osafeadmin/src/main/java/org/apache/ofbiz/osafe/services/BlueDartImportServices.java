@@ -1,4 +1,4 @@
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -39,7 +39,7 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.LocalDispatcher;
 
-import com.osafe.constants.Constants;
+import org.apache.ofbiz.osafe.constants.Constants;
 
 public class BlueDartImportServices 
 {

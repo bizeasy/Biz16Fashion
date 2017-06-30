@@ -139,7 +139,7 @@
     	</#if>
     </#if>
     <#assign pdpQuantityMin = parameters.pdpQuantityMin!pdpQuantityMin!"" />
-    <#assign PDP_QTY_MIN = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MIN")!"1"/>  
+    <#assign PDP_QTY_MIN = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MIN")!"1"/>  
     <div class="infoRow row buyableProductAttribute">
        <div class="infoEntry">
            <div class="infoCaption">
@@ -163,7 +163,7 @@
     	</#if>
     </#if>
     <#assign pdpQuantityMax = parameters.pdpQuantityMax!pdpQuantityMax!"" />
-    <#assign PDP_QTY_MAX = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MAX")!"99"/>  
+    <#assign PDP_QTY_MAX = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MAX")!"99"/>  
     <div class="infoRow row buyableProductAttribute">
        <div class="infoEntry">
            <div class="infoCaption">
@@ -187,8 +187,8 @@
     	</#if>
     </#if>
     <#assign pdpQuantityDefault = parameters.pdpQuantityDefault!pdpQuantityDefault!"" />
-    <#assign PDP_QTY_DEFAULT = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_DEFAULT")!"1"/> 
-    <#if Static["com.osafe.util.OsafeAdminUtil"].isNumber(PDP_QTY_DEFAULT) >
+    <#assign PDP_QTY_DEFAULT = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_DEFAULT")!"1"/> 
+    <#if Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isNumber(PDP_QTY_DEFAULT) >
         <#assign PDP_QTY_DEFAULT = PDP_QTY_DEFAULT!"" />
     <#else>  
         <#assign PDP_QTY_DEFAULT = 1 />

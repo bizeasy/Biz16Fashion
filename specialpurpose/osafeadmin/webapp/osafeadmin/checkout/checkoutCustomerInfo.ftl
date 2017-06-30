@@ -124,7 +124,7 @@
     </div>
 
     <#if phoneHomeTelecomNumber?has_content>
-        <#assign formattedHomePhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneHomeTelecomNumber.areaCode?if_exists, phoneHomeTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+        <#assign formattedHomePhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneHomeTelecomNumber.areaCode?if_exists, phoneHomeTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
         <#-- Splits the contactNumber -->
         <#if phoneHomeTelecomNumber?exists && phoneHomeTelecomNumber?has_content>
             <#assign telecomHomeNoContactMechId = phoneHomeTelecomNumber.contactMechId!"" />
@@ -137,7 +137,7 @@
         </#if>
     </#if>
     <#if phoneMobileTelecomNumber?has_content>
-        <#assign formattedCellPhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneMobileTelecomNumber.areaCode?if_exists, phoneMobileTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+        <#assign formattedCellPhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneMobileTelecomNumber.areaCode?if_exists, phoneMobileTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
         <#-- Splits the contactNumber -->
         <#if phoneMobileTelecomNumber?exists && phoneMobileTelecomNumber?has_content>
             <#assign telecomMobileNoContactMechId = phoneMobileTelecomNumber.contactMechId!"" />
@@ -150,7 +150,7 @@
         </#if>
     </#if>
     <#if phoneWorkTelecomNumber?has_content>
-        <#assign formattedWorkPhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneWorkTelecomNumber.areaCode?if_exists, phoneWorkTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+        <#assign formattedWorkPhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneWorkTelecomNumber.areaCode?if_exists, phoneWorkTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
         <#-- Splits the contactNumber -->
         <#if phoneWorkTelecomNumber?exists && phoneWorkTelecomNumber?has_content>
             <#if partyPurposeWorkPhone?has_content>

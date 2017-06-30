@@ -1,6 +1,6 @@
 <#assign curDateTime = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().toString()/>
 <#-- Product Large Image -->
-<#assign largeImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PROFILE_IMAGE_URL")! />
+<#assign largeImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PROFILE_IMAGE_URL")! />
 <div class="infoRow">
   <div class="infoEntry">
     <div class="infoCaption">
@@ -31,7 +31,7 @@
   </div>
 </div>
 <#assign urlReferenceLargeImageExist = "false"/>
-<#if (profileImageUrlStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(profileImageUrlStr)>
+<#if (profileImageUrlStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(profileImageUrlStr)>
   <#assign urlReferenceLargeImageExist = "true"/>
 </#if>
 <#if urlReferenceLargeImageExist = "false">

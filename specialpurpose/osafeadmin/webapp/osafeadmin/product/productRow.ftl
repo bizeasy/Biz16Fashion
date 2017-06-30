@@ -22,7 +22,7 @@
            ${productName?html!""}</td>
            <td class="actionCol">
              <#if productLongDescription?has_content && productLongDescription !="">
-               <#assign productLongDescription = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
+               <#assign productLongDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
                <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${productLongDescription!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
              </#if>
              <a href="javascript:void(0);" onMouseover="<#if productLargeImageUrl?has_content>showTooltipImage(event,'','${productLargeImageUrl}?${nowTimestamp!}');<#else>showTooltip(event,'${uiLabelMap.ProductImagesTooltip}');</#if>" onMouseout="hideTooltip()"><span class="imageIcon"></span></a>
@@ -30,7 +30,7 @@
            <td class="seqCol">
              <input type="text" class="infoValue small textAlignCenter" name="${parameters.assocType!}SequenceNum_" id="${parameters.assocType!}SequenceNum" value="" maxlength="9"/>
            </td>
-           <#assign productName = Static["com.osafe.util.OsafeAdminUtil"].formatSimpleText('${productContentWrapper.get("PRODUCT_NAME")!""}')/>
+           <#assign productName = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatSimpleText('${productContentWrapper.get("PRODUCT_NAME")!""}')/>
            <td class="actionCol">
              <a href="javascript:setRowNo('');javascript:deletTableRow('${product.productId?if_exists}','${productName!""}','${parameters.tableId!}','${parameters.assocType!}');" onMouseover="javascript:showTooltip(event,'${uiLabelMap.DeleteProductAssociationTooltip}');" onMouseout="hideTooltip()" ><span class="crossIcon"></span></a>
              <a href="javascript:setRowNo('');javascript:openLookup(document.${detailFormName!}.${parameters.assocType!}AddProductId,document.${detailFormName!}.${parameters.assocType!}AddProductName,'lookupProduct','500','700','center','true');" onMouseover="javascript:showTooltip(event,'${uiLabelMap.InsertBeforeNewRowTooltip}');" onMouseout="hideTooltip()"><span class="insertBeforeIcon"></span></a>

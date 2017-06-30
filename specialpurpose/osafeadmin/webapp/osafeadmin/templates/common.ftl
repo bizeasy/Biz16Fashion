@@ -6,7 +6,7 @@
             <#assign productStoreId = session.getAttribute("productStoreId")?if_exists>
             <#if productStore?has_content>
 	            <#if pageTitle?has_content>
-	               <#assign titleOfPage = Static["com.osafe.util.OsafeAdminUtil"].stripHTML(pageTitle)>
+	               <#assign titleOfPage = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].stripHTML(pageTitle)>
 	            </#if>
 	            <title>${productStore.storeName!""}&nbsp;:&nbsp;${uiLabelMap.eCommerceAdminModuleTitle}
 	            <#if pageTitle?has_content>, ${StringUtil.wrapString(titleOfPage)}</#if>
@@ -45,10 +45,10 @@
             </#list>
         </#if>
 
-        <#assign addressVerificationMethod = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"ADDRESS_VERIFICATION_METHOD")!""/>
+        <#assign addressVerificationMethod = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"ADDRESS_VERIFICATION_METHOD")!""/>
         <#if addressVerificationMethod?has_content && loadPca?has_content && loadPca == "Y">
             <#if addressVerificationMethod.toUpperCase() == "PCA">
-                <#assign osafeCapturePlus = Static["com.osafe.captureplus.OsafeCapturePlus"].getInstance(globalContext.productStoreId!) />
+                <#assign osafeCapturePlus = Static["org.apache.ofbiz.osafe.captureplus.OsafeCapturePlus"].getInstance(globalContext.productStoreId!) />
                 <#if osafeCapturePlus.isNotEmpty()>
                     ${setRequestAttribute("osafeCapturePlus",osafeCapturePlus)}
                 </#if>
@@ -60,7 +60,7 @@
             <div id="bodyContainer">
                 <div id="header">
                     ${sections.render('siteLogo')}
-                    <#if !Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmFalse(request,"ADM_SHOW_DAILY_COUNTER")>  
+                    <#if !Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmFalse(request,"ADM_SHOW_DAILY_COUNTER")>  
                     	${sections.render('dailySalesCounter')}
                     </#if>
                     ${sections.render('siteInfo')}
@@ -70,7 +70,7 @@
                 	${sections.render('navigationBarBreadcrumb')}
                     ${sections.render('pageHeading')}
                     <#if showLastOrder?has_content && showLastOrder =="Y">
-                    	<#if !Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmFalse(request,"ADM_SHOW_DASHBOARD")> 
+                    	<#if !Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmFalse(request,"ADM_SHOW_DASHBOARD")> 
                         	${sections.render('lastOrder')}
                         </#if>
                     </#if>

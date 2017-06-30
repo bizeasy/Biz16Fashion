@@ -63,9 +63,9 @@
     <!-- Request Mappings -->
     <request-map uri="osafe">
         <security https="false" auth="false"/>
-        <event type="java" path="org.apache.ofbiz.content.cms.CmsEvents" invoke="cms"/>
-        <response name="success" type="none"/>
-        <response name="error" type="view" value="error"/>
+        <!-- <event type="java" path="org.apache.ofbiz.content.cms.CmsEvents" invoke="cms"/> -->
+        <response name="success" type="request" value="main"/>
+        <!-- <response name="error" type="view" value="error"/> -->
     </request-map>
     <!-- End of Request Mappings -->
     <!-- Request Mappings -->
@@ -3567,6 +3567,7 @@
     </request-map>
 
     <!-- View Mappings -->
+    <view-map name="error" page="/error/error.jsp"/>
     <view-map name="main" type="screen" page="component://osafe/widget/EcommerceScreens.xml#eCommerceHomePage"/>
     <view-map name="errorPage" type="screen" page="component://osafe/widget/EcommerceScreens.xml#eCommerceErrorPage"/>
     <view-map name="eCommerceConfirm" type="screen" page="component://osafe/widget/EcommerceScreens.xml#eCommerceConfirm"/>

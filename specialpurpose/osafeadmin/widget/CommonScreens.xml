@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd"> 
+
 
 
     <screen name="main-decorator">
@@ -51,9 +52,9 @@
 
                 <set field="activeApp" value="osafe-admin" global="true"/>
                 <set field="applicationTitle" value="${uiLabelMap.eCommerceAdminApplicationTitle}" global="true"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/setup/AdminSetup.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/previousSearchCriteria.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/dashboard/dailySalesCounter.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/setup/AdminSetup.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/common/previousSearchCriteria.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/dashboard/dailySalesCounter.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -198,7 +199,7 @@
     <screen name="NavigationMenu">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/navigation/navigationDescriptor.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/navigation/navigationDescriptor.groovy"/>
             </actions>
             <widgets>
                 <container id="navigation">
@@ -214,7 +215,7 @@
     <screen name="NavigationMenuBreadcrumb">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/navigation/navigationBreadcrumb.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/navigation/navigationBreadcrumb.groovy"/>
             </actions>
             <widgets>
                 <container id="navigationMenuBreadcrumb">
@@ -274,7 +275,7 @@
     <screen name="LastOrderedDate">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/dashboard/lastOrderedDate.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/dashboard/lastOrderedDate.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -301,12 +302,12 @@
         <section>
         <actions>
             <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/commonPaging.groovy"/>
+            <script location="component://osafeadmin/groovyScripts/common/commonPaging.groovy"/>
             <set field="resultList" from-field="resultList" type="List" global="true"/>
             <set field="confirmAction" from-field="confirmAction" global="true"/>
             <set field="detailFormName" from-field="searchFormName" default-value="detailFormName" global="true"/>
             <set field="confirmDialogText" value="${uiLabelMap.ShowAllError}" global="true" />
-            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/previousSearchCriteria.groovy"/>
+            <script location="component://osafeadmin/groovyScripts/common/previousSearchCriteria.groovy"/>
         </actions>
             <widgets>
                 <platform-specific>
@@ -321,7 +322,7 @@
     <screen name="selectorListPaging">
         <section>
         <actions>
-            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/commonPaging.groovy"/>
+            <script location="component://osafeadmin/groovyScripts/common/commonPaging.groovy"/>
             <set field="resultList" from-field="resultList" type="List" global="true"/>
         </actions>
             <widgets>
@@ -564,7 +565,7 @@
     <screen name="navigationDescriptor">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/navigation/navigationDescriptor.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/navigation/navigationDescriptor.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -589,8 +590,8 @@
     <screen name="LookupDecorator">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/setup/AdminSetup.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/previousSearchCriteria.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/setup/AdminSetup.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/common/previousSearchCriteria.groovy"/>
             </actions>
             <widgets>
                 <decorator-section-include name="body"/>
@@ -671,14 +672,14 @@
                 <!-- base/top/specific map first, then more common map added for shared labels -->
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/setup/AdminSetup.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/setup/AdminSetup.groovy"/>
                 <set field="layoutSettings" type="NewMap" global="true"/>
                 <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="OSAFE_DEFAULT"/>
                 <service service-name="getVisualThemeResources">
                     <field-map field-name="visualThemeId"/>
                     <field-map field-name="themeResources" from-field="layoutSettings"/>
                 </service>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/previewContent.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/content/previewContent.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -779,7 +780,7 @@
         <section>
             <actions>
                 <set field="enumTypeId" value="PERSONAL_TITLE"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/enumTypes.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/common/enumTypes.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://osafeadmin/webapp/osafeadmin/common/titleTypes.ftl"/></html></platform-specific>
@@ -790,7 +791,7 @@
         <section>
             <actions>
                 <set field="enumTypeId" value="GIFT_MESSAGE"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/enumTypes.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/common/enumTypes.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://osafeadmin/webapp/osafeadmin/common/giftMessageTypes.ftl"/></html></platform-specific>
@@ -811,9 +812,9 @@
 	<screen name="commonAddressEntry">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/adminAddressPurpose.groovy" />
+                <script location="component://osafeadmin/groovyScripts/common/adminAddressPurpose.groovy" />
                 <entity-one value-field="postalAddress" entity-name="PostalAddress"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/adminCountry.groovy" />
+                <script location="component://osafeadmin/groovyScripts/common/adminCountry.groovy" />
                 <property-map resource="OSafeUiLabels" map-name="eCommerceUiLabel" global="true" />
             </actions>
             <widgets>
@@ -843,7 +844,7 @@
     <screen name="displayPostalAddress">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/displayPostalAddress.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/common/displayPostalAddress.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://osafeadmin/webapp/osafeadmin/common/displayPostalAddress.ftl"/></html></platform-specific>
@@ -853,7 +854,7 @@
     <screen name="displayPostalAddressPDF">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/displayPostalAddress.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/common/displayPostalAddress.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://osafeadmin/webapp/osafeadmin/common/displayPostalAddress.fo.ftl"/></html></platform-specific>
@@ -865,7 +866,7 @@
         <section>
             <actions>
                 <set field="enumTypeId" value="REVIEW_AGE"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/enumTypes.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/common/enumTypes.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://osafeadmin/webapp/osafeadmin/common/reviewAges.ftl"/></html></platform-specific>
@@ -876,7 +877,7 @@
         <section>
             <actions>
                 <set field="enumTypeId" value="REVIEW_CUSTOM_01"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/enumTypes.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/common/enumTypes.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://osafeadmin/webapp/osafeadmin/common/reviewCustom01.ftl"/></html></platform-specific>
@@ -886,7 +887,7 @@
     <screen name="scheduledJobServiceNames">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/jobs/scheduledJobServiceNames.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/jobs/scheduledJobServiceNames.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://osafeadmin/webapp/osafeadmin/jobs/scheduledJobServiceNames.ftl"/></html></platform-specific>

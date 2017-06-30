@@ -1,4 +1,4 @@
-package com.osafe.util;
+package org.apache.ofbiz.osafe.util;
 
 import java.util.List;
 import java.util.Map;

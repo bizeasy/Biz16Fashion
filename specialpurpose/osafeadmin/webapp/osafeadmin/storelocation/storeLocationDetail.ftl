@@ -71,7 +71,7 @@
 
   </#if> 
   <#assign statusId = statusId!"PARTY_ENABLED">
-  <#assign countryList = Static["com.osafe.util.OsafeAdminUtil"].getCountryList(request)/>
+  <#assign countryList = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getCountryList(request)/>
   <#assign selectedCountry = parameters.countryGeoId!countryGeoId!COUNTRY_DEFAULT!""/>
   <#-- assign stateList = Static["org.apache.ofbiz.common.CommonWorkers"].getAssociatedStateList(delegator, selectedCountry) / -->
   <#assign stateMap = dispatcher.runSync("getAssociatedStateList", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("countryGeoId", selectedCountry, "userLogin", userLogin, "listOrderBy", "geoCode"))/>
@@ -108,7 +108,7 @@
     </div>
   </div>
 
-  <#if COUNTRY_MULTI?has_content && Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(COUNTRY_MULTI)>
+  <#if COUNTRY_MULTI?has_content && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(COUNTRY_MULTI)>
     <div class="infoRow row">
       <div class="infoEntry long">
         <div class="infoCaption">

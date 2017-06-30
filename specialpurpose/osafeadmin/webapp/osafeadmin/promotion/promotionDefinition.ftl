@@ -44,7 +44,7 @@
         <#if isPromotionDetail>
           <#if (mode?has_content && mode == "add")>
             <#if !parameters.productPromoId?has_content>
-               <#assign productPromoSeqId = Static["com.osafe.util.OsafeAdminUtil"].getNextSeqId(delegator, "ProductPromo", "ProductPromo", "productPromoId")!""/>
+               <#assign productPromoSeqId = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getNextSeqId(delegator, "ProductPromo", "ProductPromo", "productPromoId")!""/>
             </#if>
             <input type="hidden" name="productPromoId" id="productPromoId" maxlength="20" value="${parameters.productPromoId!productPromoSeqId!""}"/>${parameters.productPromoId!productPromoSeqId!""}
           <#elseif mode?has_content && mode == "edit">

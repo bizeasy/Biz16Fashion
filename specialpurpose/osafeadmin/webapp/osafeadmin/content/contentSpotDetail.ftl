@@ -116,7 +116,7 @@
      		    </div>
      		    <div class="infoIcon">
      		        <#assign ofbizHome = Static["java.lang.System"].getProperty("ofbiz.home")!>
-     		        <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "FileReferenceContentHelpInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${ofbizHome}/hot-deploy/osafe/webapp/osafe"), locale)/>
+     		        <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "FileReferenceContentHelpInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${ofbizHome}/specialpurpose/osafe/webapp/osafe"), locale)/>
                     <a href="javascript:void(0);" onMouseover="showTooltip(event,'${tooltipData!""}');" onMouseout="hideTooltip()"><span class="helperIcon"></span></a>
                 </div>
 	 		</div>
@@ -126,7 +126,7 @@
 		<div class="infoRow">
 	   		<div class="infoEntry">
 	      		<div class="infoCaption"><label>${uiLabelMap.CreatedDateCaption}</label></div>
-	     		<div class="infoValue">${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(createdDate, preferredDateTimeFormat).toLowerCase())!"N/A"}</div>
+	     		<div class="infoValue">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(createdDate, preferredDateTimeFormat).toLowerCase())!"N/A"}</div>
 	   		</div>
 	    </div>
  		<#-- ===== Status Buttons ====== -->
@@ -157,7 +157,7 @@
 	     		<div class="infoValue">
                 	<#if statusId == "CTNT_PUBLISHED" >
           				<#if lastModifiedDate?has_content>
-          					${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(lastModifiedDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
+          					${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(lastModifiedDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
           				</#if>
                 	</#if>
                    

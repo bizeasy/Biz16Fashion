@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ofbiz.org/dtds/widget-screen.xsd">
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd"> 
+
 
     <screen name="adminCheckout">
         <section>
@@ -13,8 +15,8 @@
                 <set field="submitFormActionBtn" value="${uiLabelMap.SubmitOrderBtn}"/>
                 <set field="helperFileName" value ="adminCheckoutHelp.htm"/>
                 <set field="detailFormName" value="adminCheckoutFORM"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/adminCheckout.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/cartSalesTaxInfo.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/checkout/adminCheckout.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/checkout/cartSalesTaxInfo.groovy"/>
                 
                 <set field="salesChannelBoxHeading" value="${uiLabelMap.SalesChannelBoxHeading}"/>
                 <set field="shoppingCartBoxHeading" value="${uiLabelMap.ShoppingCartHeading}"/>
@@ -140,8 +142,8 @@
             	<property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="${uiLabelMap.CheckoutTitle}"/>
                 <set field="cartSection" value="TOP"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/adminCheckout.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/cartSalesTaxInfo.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/checkout/adminCheckout.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/checkout/cartSalesTaxInfo.groovy"/>
             </actions>
             <widgets>
             <container id="shoppingCartContainer">
@@ -161,8 +163,8 @@
             	<property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="pageTitle" value="${uiLabelMap.CheckoutTitle}"/>
                 <set field="cartSection" value="BOTTOM"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/adminCheckout.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/cartSalesTaxInfo.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/checkout/adminCheckout.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/checkout/cartSalesTaxInfo.groovy"/>
             </actions>
             <widgets>
             <container id="shoppingCartBottomContainer">
@@ -222,8 +224,8 @@
         <section>
             <actions>
               <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
-              <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/adminCheckout.groovy"/>
-              <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/cartSalesTaxInfo.groovy"/>
+              <script location="component://osafeadmin/groovyScripts/checkout/adminCheckout.groovy"/>
+              <script location="component://osafeadmin/groovyScripts/checkout/cartSalesTaxInfo.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -404,7 +406,7 @@
                 <set field="submitFormActionBtn" value="${uiLabelMap.SaveBtn}"/>
                 <set field="helperFileName" value ="adminGiftMessageHelp.htm"/>
                 <set field="detailFormName" value="adminGiftMessageFORM"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/checkout/adminGiftMessage.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/checkout/adminGiftMessage.groovy"/>
                 
                 <set field="shoppingCartItemBoxHeading" value="${uiLabelMap.ShoppingCartItemHeading}"/>
                 <set field="giftMessageBoxHeading" value="${uiLabelMap.GiftMessageBoxHeading}"/>

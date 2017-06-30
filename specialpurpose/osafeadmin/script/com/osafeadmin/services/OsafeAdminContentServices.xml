@@ -104,7 +104,7 @@
 	                    <string value="ofbiz.home"/>
 	                </call-class-method>
 	                <set field="baseDir" from-field="ofbizHome" type="String"/>
-	                <string-append field="baseDir" string="/hot-deploy"/>
+	                <string-append field="baseDir" string="/specialpurpose"/>
 	                <string-append field="baseDir" string="/osafe/webapp/osafe"/>
 	                <create-object class-name="java.io.File" field="contentFile">
 	                    <field field="baseDir" type="String"/>
@@ -165,7 +165,7 @@
                 <set field="contentIdLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="contentId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="contentId">
                     <field field="parameters.contentId" type="String"/>
                     <field field="contentIdLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -181,7 +181,7 @@
                             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="SpotContentIdExistError"/>
                             <string-to-list string="${tempErrorMessage}" message-field="contentId" list="error_list"/>
                             <else>
-                                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                                     <field field="parameters.contentId"/>
                                 </call-class-method>
                                 <if-compare field="isValidId" operator="equals" value="false">
@@ -220,7 +220,7 @@
                     <string value="ofbiz.home"/>
                 </call-class-method>
                 <set field="baseDir" from-field="ofbizHome" type="String"/>
-                <string-append field="baseDir" string="/hot-deploy"/>
+                <string-append field="baseDir" string="/specialpurpose"/>
                 <string-append field="baseDir" string="/osafe/webapp/osafe"/>
                 <create-object class-name="java.io.File" field="contentFile">
                     <field field="baseDir" type="String"/>
@@ -378,7 +378,7 @@
                     <if-compare operator="greater" value="-1" field="indexOf" type="Integer">
                         <set field="isValidSeoName" value="false"/>
                     <else>
-	                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+	                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 	                        <field field="attrValue"/>
 	                    </call-class-method>
 	                    <if-compare field="isValidId" operator="equals" value="false">
@@ -459,7 +459,7 @@
 	                    <string value="ofbiz.home"/>
 	                </call-class-method>
 	                <set field="baseDir" from-field="ofbizHome" type="String"/>
-	                <string-append field="baseDir" string="/hot-deploy"/>
+	                <string-append field="baseDir" string="/specialpurpose"/>
 	                <string-append field="baseDir" string="/osafe/webapp/osafe"/>
 	                <create-object class-name="java.io.File" field="contentFile">
 	                    <field field="baseDir" type="String"/>
@@ -553,7 +553,7 @@
         <entity-one entity-name="Content" value-field="content"/> 
         <remove-related value-field="content" relation-name="ContentRole"/>
         <!-- Need to check if ContentKeyword entity exists before attempting to delete related -->
-        <call-class-method method-name="entityExists" class-name="com.osafe.util.OsafeAdminUtil" ret-field="entityExists">
+        <call-class-method method-name="entityExists" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="entityExists">
             <field field="delegator" type="org.apache.ofbiz.entity.Delegator"/>
             <string value="ContentKeyword"/>
         </call-class-method>

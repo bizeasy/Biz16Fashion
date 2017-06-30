@@ -12,7 +12,7 @@
         <value xml:lang="en">http://localhost:8983/solr</value>
     </property>
     <property key="solrProductIndexFile">
-        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/hot-deploy/solr/import/productsToIndex.csv</value>
+        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/specialpurpose/solr/import/productsToIndex.csv</value>
     </property>
     <property key="productCategoryFacetDescription">
         <value xml:lang="en">Category</value>
@@ -21,10 +21,10 @@
         <value xml:lang="en">Refine by Category</value>
     </property>
     <property key="solrSchemaXmlFile">
-        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/hot-deploy/solr/conf/schema.xml</value>
+        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/specialpurpose/solr/conf/schema.xml</value>
     </property>
     <property key="solrSchemaConstantFieldXmlFile">
-        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/hot-deploy/solr/conf/schema-ConstantField.xml</value>
+        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/specialpurpose/solr/conf/schema-ConstantField.xml</value>
     </property>
 <!-- *************************************** -->
 <!-- Store Settings -->
@@ -165,7 +165,7 @@
 <!-- ecommerce UI Sequence File -->
 <!-- *************************************** -->
     <property key="ecommerceUiSequenceXmlFile">
-        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/hot-deploy/osafe/config/OSafeUiSequence.xml</value>
+        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/specialpurpose/osafe/config/OSafeUiSequence.xml</value>
     </property>
 <!-- *************************************** -->
 <!-- PDP Alternate Images -->
@@ -211,19 +211,19 @@
 <!-- Version File Paths -->
 <!-- *************************************** -->
     <property key="bigfishVersionFilesPath">
-        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/hot-deploy/osafe/data/version</value>
+        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/specialpurpose/osafe/data/version</value>
     </property>
     <property key="bigfishDeploymentPropertyFile">
-        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/hot-deploy/osafe/config/client-deployment.properties</value>
+        <value xml:lang="en">${sys:getProperty('ofbiz.home')}/specialpurpose/osafe/config/client-deployment.properties</value>
     </property>
 <!-- *************************************** -->
 <!-- Import/Export Directories -->
 <!-- *************************************** -->
     <property key="importDir">
-        <value xml:lang="en">[ofbiz.home]/hot-deploy/osafe/import/</value>
+        <value xml:lang="en">[ofbiz.home]/specialpurpose/osafe/import/</value>
     </property>
     <property key="exportDir">
-        <value xml:lang="en">[ofbiz.home]/hot-deploy/osafe/import/len/export/</value>
+        <value xml:lang="en">[ofbiz.home]/specialpurpose/osafe/import/len/export/</value>
     </property>
 <!-- *************************************** -->
 <!-- IImport Excel Sheet Tab Name mapping with Entity name -->

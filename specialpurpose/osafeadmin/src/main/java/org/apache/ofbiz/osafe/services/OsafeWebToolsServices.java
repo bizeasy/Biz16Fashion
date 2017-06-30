@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.io.File;
 import java.net.URL;

@@ -18,7 +18,7 @@
         </if-empty>
         
         <if-not-empty field="parameters.fromDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.fromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -26,7 +26,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveFromDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="fromDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.fromDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.fromDate">
                         <field field="parameters.fromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -34,7 +34,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.thruDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.thruDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -42,7 +42,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveThruDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="thruDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.thruDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.thruDate">
                         <field field="parameters.thruDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -63,7 +63,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidCategorySeqNumError"/>
             <string-to-list string="${tempErrorMessage}" message-field="sequenceNum" list="error_list"/>
         <else>
-            <call-class-method method-name="trimTrailSpaces" class-name="com.osafe.util.OsafeAdminUtil" ret-field="sequenceNum">
+            <call-class-method method-name="trimTrailSpaces" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="sequenceNum">
                 <field field="parameters.sequenceNum"/>
             </call-class-method>
             <call-class-method class-name="org.apache.ofbiz.base.util.UtilValidate" method-name="isInteger" ret-field="sequenceNumVaild">
@@ -102,13 +102,13 @@
         
         <check-errors/>
         <if-not-empty field="parameters.formattedFromDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.formattedFromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
             <if-compare field="checkDateValidResult" operator="equals" value="false" type="Boolean">
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.formattedFromDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.formattedFromDate">
                         <field field="parameters.formattedFromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -438,7 +438,7 @@
         </if-not-empty>
         
         <if-not-empty field="parameters.introductionDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.introductionDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -446,7 +446,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductIntroDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="introductionDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.introductionDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.introductionDate">
                         <field field="parameters.introductionDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -455,7 +455,7 @@
         </if-not-empty>
         
         <if-not-empty field="parameters.salesDiscontinuationDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.salesDiscontinuationDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -463,7 +463,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductDiscontDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="salesDiscontinuationDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.salesDiscontinuationDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.salesDiscontinuationDate">
                         <field field="parameters.salesDiscontinuationDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -578,7 +578,7 @@
         
         <set field="pdpQuantityMinMaxSetCount" value="0" type="Integer"/>
         <if-not-empty field="parameters.pdpQuantityMin">
-        	<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+        	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 	            <field field="parameters.pdpQuantityMin"/>
 	        </call-class-method>
 	        <if-compare field="isNumber" operator="equals" value="false">
@@ -603,7 +603,7 @@
         </if-not-empty>
         
         <if-not-empty field="parameters.pdpQuantityMax">
-        	<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+        	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 	            <field field="parameters.pdpQuantityMax"/>
 	        </call-class-method>
 	        <if-compare field="isNumber" operator="equals" value="false">
@@ -647,7 +647,7 @@
 		</if-compare>
 		
 		<if-not-empty field="parameters.pdpQuantityDefault">
-			<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+			<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 	            <field field="parameters.pdpQuantityDefault"/>
 	        </call-class-method>
 	        <if-compare field="isNumber" operator="equals"  value="false">
@@ -1024,7 +1024,7 @@
 	    
 	    
 	    <set field="argListNames[]" from-field="parameters.productId"/>
-	    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="htmlSpecialChars" ret-field="productDetailNamehtml">
+	    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="htmlSpecialChars" ret-field="productDetailNamehtml">
             <field field="parameters.productDetailName"/>
         </call-class-method>
 	    <set field="argListNames[]" from-field="productDetailNamehtml"/>
@@ -1333,7 +1333,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankProductFeatureGroupIdError"/>
             <string-to-list string="${tempErrorMessage}" message-field="productFeatureGroupId" list="error_list"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                 <field field="parameters.productFeatureGroupId"/>
             </call-class-method>
             <if-compare field="isValidId" operator="equals" value="true">
@@ -1357,7 +1357,7 @@
         </else>
         </if-empty>
         <!-- Validating DESCRIPTION"-->
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
             <field field="parameters.grpDescription"/>
         </call-class-method>
         <if-compare field="isValidDesc" operator="equals" value="false">
@@ -1407,7 +1407,7 @@
 	                    </if-empty>
 	                </if-compare-field>
                 </iterate-map>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                     <field field="productFeatureIdValue"/>
                 </call-class-method>
                 <if-compare field="isValidId" operator="equals" value="true">
@@ -1428,7 +1428,7 @@
             </if-not-empty>
         </iterate-map>
         <if-not-empty field="productFeatureIdList">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupProductFeatureIdList">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupProductFeatureIdList">
                 <field field="productFeatureIdList" type="List"/>
             </call-class-method>
         </if-not-empty>
@@ -1464,7 +1464,7 @@
         
         <!-- sort the sequence map and make mutiple-->
         <set field="seqMutiple" value="10" type="Integer"/>
-        <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
+        <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
             <field field="parameters.sequenceNum" type="java.util.Map"/>
             <field field="seqMutiple" type="Integer"/>
         </call-class-method>
@@ -1604,7 +1604,7 @@
             
             <set field="descriptionMap" from-field="parameters.description" />
             <set field="descriptionValue" from-field="descriptionMap.${productFeatureGroupIdKey}"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
                 <field field="descriptionValue"/>
             </call-class-method>
             <if-compare field="isValidDesc" operator="equals" value="false">
@@ -1760,7 +1760,7 @@
 
         <!-- sort the sequence map and make mutiple-->
         <set field="seqMutiple" value="10" type="Integer"/>
-        <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
+        <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
             <field field="parameters.sequenceNum" type="java.util.Map"/>
             <field field="seqMutiple" type="Integer"/>
         </call-class-method>
@@ -1827,7 +1827,7 @@
             <call-simple-method method-name="validateSequenceNumber" xml-resource="component://osafeadmin/script/com/osafeadmin/events/OsafeAdminValidationEvents.xml"/>
 
            <!--  description -->
-           <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
+           <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
                <field field="parameters.grpDescription"/>
            </call-class-method>
            <if-compare field="isValidDesc" operator="equals" value="false">
@@ -2030,7 +2030,7 @@
 
         <!-- sort the sequence map and make mutiple-->
         <set field="seqMutiple" value="10" type="Integer"/>
-        <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
+        <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
             <field field="parameters.sequenceNum" type="java.util.Map"/>
             <field field="seqMutiple" type="Integer"/>
         </call-class-method>
@@ -2179,7 +2179,7 @@
                     <field field="largeImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.largeImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.largeImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2208,7 +2208,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.largeImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.largeImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -2230,7 +2230,7 @@
                     <field field="thumbnailImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.thumbnailImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.thumbnailImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2259,7 +2259,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.thumbnailImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.thumbnailImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -2281,7 +2281,7 @@
                     <field field="detailImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.detailImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.detailImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2310,7 +2310,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.detailImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.detailImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -2332,7 +2332,7 @@
                     <field field="smallImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.smallImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.smallImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2361,7 +2361,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.smallImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.smallImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -2383,7 +2383,7 @@
                     <field field="smallAltImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.smallAltImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.smallAltImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2412,7 +2412,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.smallAltImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.smallAltImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -2446,7 +2446,7 @@
         <iterate-map key="largeImageKey" value="largeImageValue" map="largeImageResourceTypeMap">
 	        <if-compare operator="equals" value="url" field="largeImageResourceTypeMap.${largeImageKey}">
 	            <if-not-empty field="largeImageUrlRefMap.${largeImageKey}">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="largeImageUrlRefMap.${largeImageKey}"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2466,7 +2466,7 @@
 	                    <field field="largeImageTargetPath" type="String"/>
 	                </create-object>
 	                <if-not-empty field="largeImageFilePath">
-		                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+		                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 		                    <field field="largeImageFilePath"/>
 		                </call-class-method>
 		                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2498,7 +2498,7 @@
 	        
 	        <if-compare operator="equals" value="url" field="thumbnailImageResourceTypeMap.${largeImageKey}">
 	            <if-not-empty field="thumbnailImageUrlRefMap.${largeImageKey}">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="thumbnailImageUrlRefMap.${largeImageKey}"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2518,7 +2518,7 @@
 	                    <field field="thumbnailImageTargetPath" type="String"/>
 	                </create-object>
 	                <if-not-empty field="thumbnailImageFilePath">
-		                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+		                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 		                    <field field="thumbnailImageFilePath"/>
 		                </call-class-method>
 		                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2550,7 +2550,7 @@
 	        
 	        <if-compare operator="equals" value="url" field="detailImageResourceTypeMap.${largeImageKey}">
 	            <if-not-empty field="detailImageUrlRefMap.${largeImageKey}">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="detailImageUrlRefMap.${largeImageKey}"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2570,7 +2570,7 @@
 	                    <field field="detailImageTargetPath" type="String"/>
 	                </create-object>
 	                <if-not-empty field="detailImageFilePath">
-		                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+		                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 		                    <field field="detailImageFilePath"/>
 		                </call-class-method>
 		                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2608,7 +2608,7 @@
                     <field field="plpSwatchImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.plpSwatchImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.plpSwatchImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2637,7 +2637,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.plpSwatchImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.plpSwatchImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -2659,7 +2659,7 @@
                     <field field="pdpSwatchImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.pdpSwatchImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.pdpSwatchImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2688,7 +2688,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.pdpSwatchImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.pdpSwatchImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -2925,7 +2925,7 @@
         <iterate-map key="attachKey" value="attachValue" map="attachResourceTypeMap">
 	        <if-compare operator="equals" value="url" field="attachResourceTypeMap.${attachKey}">
 	            <if-not-empty field="attachUrlRefMap.${attachKey}">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="attachUrlRefMap.${attachKey}"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -2945,7 +2945,7 @@
 	                    <field field="attachTargetPath" type="String"/>
 	                </create-object>
 	                <if-not-empty field="attachFilePath">
-		                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+		                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 		                    <field field="attachFilePath"/>
 		                </call-class-method>
 		                <if-compare operator="equals" value="false" field="isValidURL">
@@ -3016,7 +3016,7 @@
                     <field field="videoUrlTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.videoUrlFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.videoUrlFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -3045,7 +3045,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.videoUrlUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.videoUrlUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -3067,7 +3067,7 @@
                     <field field="video360UrlTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.video360UrlFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.video360UrlFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -3096,7 +3096,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.video360UrlUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.video360UrlUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -3252,7 +3252,7 @@
                     <field field="categoryImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.categoryImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.categoryImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -3281,7 +3281,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.categoryImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.categoryImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -3327,7 +3327,7 @@
             </iterate-map>
         </iterate-map>
         <if-not-empty field="newCompProductIdList">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupProductIdList">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupProductIdList">
                 <field field="newCompProductIdList" type="List"/>
             </call-class-method>
         </if-not-empty>
@@ -3367,7 +3367,7 @@
             </iterate-map>
         </iterate-map>
         <if-not-empty field="newAccessProductIdList">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupAccessProductIdList">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupAccessProductIdList">
                 <field field="newAccessProductIdList" type="List"/>
             </call-class-method>
         </if-not-empty>
@@ -3428,7 +3428,7 @@
         
         <!-- sort the sequence map and make mutiple-->
         <set field="seqMutiple" value="10" type="Integer"/>
-        <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
+        <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
             <field field="parameters.sequenceNum" type="java.util.Map"/>
             <field field="seqMutiple" type="Integer"/>
         </call-class-method>
@@ -3543,7 +3543,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankProductIdError"/>
             <string-to-list string="${tempErrorMessage}" message-field="productId" list="error_list"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                 <field field="parameters.productId"/>
             </call-class-method>
             <if-compare field="isValidId" operator="equals" value="true">
@@ -3674,7 +3674,7 @@
                 </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.introductionDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.introductionDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -3682,7 +3682,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductIntroDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="introductionDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.introductionDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.introductionDate">
                         <field field="parameters.introductionDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -3690,7 +3690,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.salesDiscontinuationDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.salesDiscontinuationDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -3698,7 +3698,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductDiscontDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="salesDiscontinuationDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.salesDiscontinuationDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.salesDiscontinuationDate">
                         <field field="parameters.salesDiscontinuationDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -3815,7 +3815,7 @@
             <iterate-map key="goodIdentificationTypeIdKey" value="goodIdentificationTypeIdValue" map="parameters.goodIdentificationTypeId">
                 <set field="idValue1" from-field="idValuesMap.${goodIdentificationTypeIdKey}"/>
                 <if-not-empty field="idValue1">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 		                <field field="idValue1"/>
 		            </call-class-method>
 		            <if-compare field="isValidId" operator="equals" value="false">
@@ -3897,7 +3897,7 @@
         <if-compare field="parameters.isVirtual" operator="not-equals" value="Y">
             <set field="pdpQuantityMinMaxSetCount" value="0" type="Integer"/>
 	        <if-not-empty field="parameters.pdpQuantityMin">
-	        	<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+	        	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 		            <field field="parameters.pdpQuantityMin"/>
 		        </call-class-method>
 		        <if-compare field="isNumber" operator="equals" value="false">
@@ -3922,7 +3922,7 @@
 	        </if-not-empty>
 	        
 	        <if-not-empty field="parameters.pdpQuantityMax">
-	        	<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+	        	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 		            <field field="parameters.pdpQuantityMax"/>
 		        </call-class-method>
 		        <if-compare field="isNumber" operator="equals" value="false">
@@ -3966,7 +3966,7 @@
 			</if-compare>
 			
 			<if-not-empty field="parameters.pdpQuantityDefault">
-				<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+				<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 		            <field field="parameters.pdpQuantityDefault"/>
 		        </call-class-method>
 		        <if-compare field="isNumber" operator="equals"  value="false">
@@ -4098,7 +4098,7 @@
        
         
         <set field="argListNames[]" from-field="parameters.productId"/>
-	    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="htmlSpecialChars" ret-field="productDetailNamehtml">
+	    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="htmlSpecialChars" ret-field="productDetailNamehtml">
             <field field="parameters.productDetailName"/>
         </call-class-method>
 	    <set field="argListNames[]" from-field="productDetailNamehtml"/>
@@ -4120,7 +4120,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="UniqueCatalogIdError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="topNavId" list="error_list"/>
             <else>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 	                <field field="parameters.topNavId"/>
 	            </call-class-method>
 	            <if-compare field="isValidId" operator="equals" value="false">
@@ -4142,7 +4142,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankActiveFromDateError"/>
             <string-to-list string="${tempErrorMessage}" message-field="fromDate" list="error_list"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.fromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -4150,7 +4150,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveFromDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="fromDate" list="error_list"/>
                 <else>
-                	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="fromDateCheck">
+                	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="fromDateCheck">
                         <field field="parameters.fromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -4159,7 +4159,7 @@
         </else>
         </if-empty>
         <if-not-empty field="parameters.thruDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.thruDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -4167,7 +4167,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveThruDateDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="thruDate" list="error_list"/>
                 <else>
-                	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="thruDateCheck">
+                	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="thruDateCheck">
                         <field field="parameters.thruDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -4187,7 +4187,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidCategorySeqNumError"/>
             <string-to-list string="${tempErrorMessage}" message-field="sequenceNum" list="error_list"/>
         <else>
-            <call-class-method method-name="trimTrailSpaces" class-name="com.osafe.util.OsafeAdminUtil" ret-field="sequenceNum">
+            <call-class-method method-name="trimTrailSpaces" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="sequenceNum">
                 <field field="parameters.sequenceNum"/>
             </call-class-method>
             <call-class-method class-name="org.apache.ofbiz.base.util.UtilValidate" method-name="isInteger" ret-field="sequenceNumVaild">
@@ -4249,7 +4249,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="UniqueCatalogIdError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="subNavId" list="error_list"/>
             <else>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 	                <field field="parameters.subNavId"/>
 	            </call-class-method>
 	            <if-compare field="isValidId" operator="equals" value="false">
@@ -4270,7 +4270,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankActiveFromDateError"/>
             <string-to-list string="${tempErrorMessage}" message-field="fromDate" list="error_list"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.fromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -4278,7 +4278,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveFromDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="fromDate" list="error_list"/>
                 <else>
-                	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="fromDateCheck">
+                	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="fromDateCheck">
                         <field field="parameters.fromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -4287,7 +4287,7 @@
         </else>
         </if-empty>
         <if-not-empty field="parameters.thruDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.thruDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -4295,7 +4295,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveThruDateDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="thruDate" list="error_list"/>
                 <else>
-                	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="thruDateCheck">
+                	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="thruDateCheck">
                         <field field="parameters.thruDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -4315,7 +4315,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidCategorySeqNumError"/>
             <string-to-list string="${tempErrorMessage}" message-field="sequenceNum" list="error_list"/>
         <else>
-            <call-class-method method-name="trimTrailSpaces" class-name="com.osafe.util.OsafeAdminUtil" ret-field="sequenceNum">
+            <call-class-method method-name="trimTrailSpaces" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="sequenceNum">
                 <field field="parameters.sequenceNum"/>
             </call-class-method>
             <call-class-method class-name="org.apache.ofbiz.base.util.UtilValidate" method-name="isInteger" ret-field="sequenceNumVaild">
@@ -4385,12 +4385,12 @@
 
         <!-- if setting the primaryParentCategoryId, create a rollup entity too -->
         <if-not-empty field="parameters.fromDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.fromDate">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.fromDate">
                 <field field="parameters.fromDate"/>
             </call-class-method>
         </if-not-empty>
         <if-not-empty field="parameters.thruDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.thruDate">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.thruDate">
                 <field field="parameters.thruDate"/>
             </call-class-method>
         </if-not-empty>
@@ -4466,7 +4466,7 @@
 
         <!-- sort the sequence map and make mutiple-->
         <set field="seqMutiple" value="10" type="Integer"/>
-        <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
+        <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
             <field field="parameters.sequenceNum" type="java.util.Map"/>
             <field field="seqMutiple" type="Integer"/>
         </call-class-method>
@@ -4526,7 +4526,7 @@
         <!-- Saving values in Entities for associating FACET VALUES to a FACET GROUP -->
         <iterate-map key="newProductFeatureIdKey" value="newProductFeatureIdValue" map="parameters.newProductFeatureId">
            <if-not-empty field="newProductFeatureIdValue">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                     <field field="newProductFeatureIdValue"/>
                 </call-class-method>
                 <if-compare field="isValidId" operator="equals" value="true">
@@ -4624,7 +4624,7 @@
                     <field field="plpSwatchImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.plpSwatchImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.plpSwatchImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -4653,7 +4653,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.plpSwatchImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.plpSwatchImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -4675,7 +4675,7 @@
                     <field field="pdpSwatchImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.pdpSwatchImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.pdpSwatchImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -4704,7 +4704,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.pdpSwatchImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.pdpSwatchImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -4742,7 +4742,7 @@
 	                <result-to-field result-name="uploadFileName" field="parameters.plpSwatchImageName"/>
 	                <result-to-field result-name="uploadFilePath" field="parameters.plpSwatchImagePath"/>
 	            </call-service>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="moveContent">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="moveContent">
 	                <field field="parameters.plpSwatchImagePath"/>
 	                <field field="featureSwatchTargetPath"/>
 	                <field field="parameters.plpSwatchImageName"/>
@@ -4804,7 +4804,7 @@
 	                <result-to-field result-name="uploadFileName" field="parameters.pdpSwatchImageName"/>
 	                <result-to-field result-name="uploadFilePath" field="parameters.pdpSwatchImagePath"/>
 	            </call-service>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="moveContent">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="moveContent">
 	                <field field="parameters.pdpSwatchImagePath"/>
 	                <field field="featureSwatchTargetPath"/>
 	                <field field="parameters.pdpSwatchImageName"/>
@@ -4898,7 +4898,7 @@
 
         <!-- sort the sequence map and make mutiple-->
         <set field="seqMutiple" value="10" type="Integer"/>
-        <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
+        <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
             <field field="parameters.sequenceNum" type="java.util.Map"/>
             <field field="seqMutiple" type="Integer"/>
         </call-class-method>
@@ -4943,7 +4943,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankProductIdError"/>
             <string-to-list string="${tempErrorMessage}" message-field="productIdTo" list="error_list"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                 <field field="parameters.productIdTo"/>
             </call-class-method>
             <if-compare field="isValidId" operator="equals" value="true">
@@ -4988,7 +4988,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.introductionDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.introductionDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -4996,7 +4996,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductIntroDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="introductionDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.introductionDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.introductionDate">
                         <field field="parameters.introductionDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -5004,7 +5004,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.salesDiscontinuationDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.salesDiscontinuationDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -5012,7 +5012,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductDiscontDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="salesDiscontinuationDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.salesDiscontinuationDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.salesDiscontinuationDate">
                         <field field="parameters.salesDiscontinuationDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -5223,7 +5223,7 @@
         
         <set field="pdpQuantityMinMaxSetCount" value="0" type="Integer"/>
         <if-not-empty field="parameters.pdpQuantityMin">
-        	<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+        	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 	            <field field="parameters.pdpQuantityMin"/>
 	        </call-class-method>
 	        <if-compare field="isNumber" operator="equals" value="false">
@@ -5248,7 +5248,7 @@
         </if-not-empty>
         
         <if-not-empty field="parameters.pdpQuantityMax">
-        	<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+        	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 	            <field field="parameters.pdpQuantityMax"/>
 	        </call-class-method>
 	        <if-compare field="isNumber" operator="equals" value="false">
@@ -5292,7 +5292,7 @@
 		</if-compare>
 		
 		<if-not-empty field="parameters.pdpQuantityDefault">
-			<call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
+			<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isNumber" ret-field="isNumber">
 	            <field field="parameters.pdpQuantityDefault"/>
 	        </call-class-method>
 	        <if-compare field="isNumber" operator="equals"  value="false">
@@ -5583,7 +5583,7 @@
         </iterate-map>
         
         <set field="argListNames[]" from-field="parameters.productIdTo"/>
-	    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="htmlSpecialChars" ret-field="productDetailNamehtml">
+	    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="htmlSpecialChars" ret-field="productDetailNamehtml">
             <field field="parameters.productDetailName"/>
         </call-class-method>
 	    <set field="argListNames[]" from-field="productDetailNamehtml"/>
@@ -5616,7 +5616,7 @@
         </if-not-empty>
 
         <if-not-empty field="parameters.introductionDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.introductionDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -5624,7 +5624,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductIntroDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="introductionDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.introductionDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.introductionDate">
                         <field field="parameters.introductionDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -5633,7 +5633,7 @@
         </if-not-empty>
 
         <if-not-empty field="parameters.salesDiscontinuationDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.salesDiscontinuationDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -5641,7 +5641,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductDiscontDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="salesDiscontinuationDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.salesDiscontinuationDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="toTimestamp" ret-field="parameters.salesDiscontinuationDate">
                         <field field="parameters.salesDiscontinuationDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -5902,7 +5902,7 @@
         </else>
         </if-not-empty>
         <if-not-empty field="newCategoryMemberIdList">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupCategoryMemberIdList">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="findDuplicates" ret-field="dupCategoryMemberIdList">
                 <field field="newCategoryMemberIdList" type="List"/>
             </call-class-method>
         </if-not-empty>
@@ -6105,7 +6105,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="partyId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="partyId">
                     <field field="parameters.partyId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -6121,7 +6121,7 @@
                             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ManufacturerPartyIdExistError"/>
                             <string-to-list string="${tempErrorMessage}" message-field="manufacturerPartyId"  list="error_list"/>
                             <else>
-                                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					                <field field="parameters.partyId"/>
 					            </call-class-method>
 					            <if-compare field="isValidId" operator="equals" value="false">
@@ -6155,7 +6155,7 @@
                     <field field="largeImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.largeImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.largeImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -6184,7 +6184,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.largeImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.largeImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -6231,7 +6231,7 @@
                     <if-empty field="parameters.user_postalCode">
 		            <else>
 		                <if-compare value="USA" operator="equals" field="parameters.user_country">
-		                    <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+		                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
 		                        <field field="parameters.user_postalCode"/>
 		                    </call-class-method>
 		                </if-compare>
@@ -6390,7 +6390,7 @@
                 <set field="maxLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="partyId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="partyId">
                     <field field="parameters.partyId" type="String"/>
                     <field field="maxLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -6400,7 +6400,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ManufacturerPartyIdLengthError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="manufacturerPartyId"  list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 		                <field field="parameters.partyId"/>
 		            </call-class-method>
 		            <if-compare field="isValidId" operator="equals" value="false">
@@ -6432,7 +6432,7 @@
                     <field field="largeImageTargetPath" type="String"/>
                 </create-object>
                 <if-not-empty field="parameters.largeImageFilePath">
-	                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+	                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
 	                    <field field="parameters.largeImageFilePath"/>
 	                </call-class-method>
 	                <if-compare operator="equals" value="false" field="isValidURL">
@@ -6461,7 +6461,7 @@
             </if-not-empty>
         <else>
             <if-not-empty field="parameters.largeImageUrlRef">
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidURL" ret-field="isValidURL">
                     <field field="parameters.largeImageUrlRef"/>
                 </call-class-method>
                 <if-compare operator="equals" value="false" field="isValidURL">
@@ -6509,7 +6509,7 @@
         
         <if-not-empty field="parameters.user_postalCode">
             <if-compare value="USA" operator="equals" field="parameters.user_country">
-                <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
                     <field field="parameters.user_postalCode"/>
                 </call-class-method>
             </if-compare>
@@ -6804,7 +6804,7 @@
             <string-to-list string="${tempErrorMessage}" message-field="description" list="error_list"/>
         </if-empty>
         <if-not-empty field="parameters.fromDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.fromDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -6812,7 +6812,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveFromDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="fromDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.fromDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.fromDate">
                         <field field="parameters.fromDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -6820,7 +6820,7 @@
             </if-compare>
         </if-not-empty>
         <if-not-empty field="parameters.thruDate">
-            <call-class-method class-name="com.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.thruDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -6828,7 +6828,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidActiveThruDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="thruDate" list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.thruDate">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.thruDate">
                         <field field="parameters.thruDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>

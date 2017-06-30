@@ -32,7 +32,7 @@
                     <td class="nameCol <#if !partyRow_has_next>lastRow</#if>"><#if manufacturerShortDescription?exists && manufacturerShortDescription?has_content>${manufacturerShortDescription!""}</#if></td>
                     <td class="actionCol">
                       <#if manufacturerLongDescription?exists && manufacturerLongDescription?has_content && manufacturerLongDescription !="">
-                        <#assign manufacturerLongDescriptionToolTip = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(manufacturerLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
+                        <#assign manufacturerLongDescriptionToolTip = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(manufacturerLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
                       </#if>
                       <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${manufacturerLongDescriptionToolTip!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
                     </td>
@@ -42,7 +42,7 @@
                     </#if>
                     </td>
                     <td class="actionCol <#if !hasNext?if_exists>lastRow</#if> <#if !hasNext?if_exists>bottomActionIconRow</#if>">
-                      <#assign editManufacturerTooltip = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(uiLabelMap.EditManufacturerTooltip, ADM_TOOLTIP_MAX_CHAR!)/>
+                      <#assign editManufacturerTooltip = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(uiLabelMap.EditManufacturerTooltip, ADM_TOOLTIP_MAX_CHAR!)/>
                       <a href="<@ofbizUrl>manufacturerDetail?manufacturerPartyId=${partyRow.partyId}</@ofbizUrl>" onMouseover="javascript:showTooltip(event,'${editManufacturerTooltip!""}');" onMouseout="hideTooltip()"><span class="detailIcon"></span></a>
                     </td>
                   </tr>

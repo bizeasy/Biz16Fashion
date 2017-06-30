@@ -6,7 +6,7 @@
 //
 
 
-package com.osafe.feeds.osafefeeds;
+package org.apache.ofbiz.osafe.feeds.osafefeeds;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

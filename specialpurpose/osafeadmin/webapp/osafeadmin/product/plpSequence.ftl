@@ -30,7 +30,7 @@
             <td class="descCol <#if !hasNext>lastRow</#if>">${productName?if_exists}</td>
             <td class="actionCol <#if !hasNext>lastRow</#if>">
               <#if productLongDescription?has_content && productLongDescription !="">
-                <#assign productLongDescription = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
+                <#assign productLongDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
                 <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${productLongDescription?html}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
                 <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)!""/>
               </#if>

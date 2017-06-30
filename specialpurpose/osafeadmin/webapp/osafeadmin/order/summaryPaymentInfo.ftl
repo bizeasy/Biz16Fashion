@@ -22,8 +22,8 @@
           <#assign currencyUomId = orderReadHelper.getCurrency()/>
           <tbody>
             <tr class="dataRow <#if rowClass == "2">even<#else>odd></#if>">
-              <td class="seqCol <#if !hasNext>lastRow</#if>">${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(paymentInfo.createdDate, preferredDateFormat).toLowerCase())!"N/A"}</td>
-              <td class="seqCol <#if !hasNext>lastRow</#if>">${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(paymentInfo.createdDate, preferredTimeFormat).toLowerCase())!"N/A"}</td>
+              <td class="seqCol <#if !hasNext>lastRow</#if>">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(paymentInfo.createdDate, preferredDateFormat).toLowerCase())!"N/A"}</td>
+              <td class="seqCol <#if !hasNext>lastRow</#if>">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(paymentInfo.createdDate, preferredTimeFormat).toLowerCase())!"N/A"}</td>
               <td class="itemCol <#if !hasNext>lastRow</#if>">
                   ${paymentMethod.description} 
                   <#if paymentMethod.paymentMethodTypeId == 'CREDIT_CARD' && creditCard?has_content>(${creditCard.cardType})</#if>

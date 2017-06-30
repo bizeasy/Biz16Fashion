@@ -16,7 +16,7 @@
 
     <!-- order lookup services -->
     <service name="searchOrders" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OrderLookupServices" invoke="findOrders">
+            location="org.apache.ofbiz.osafe.services.OrderLookupServices" invoke="findOrders">
         <description>Uses dynamic view entity to find orders; returns a list of Order (OrderHeader) objects</description>
         <!-- order header fields -->
         <attribute name="orderId" type="String" mode="IN" optional="true"/>
@@ -165,12 +165,12 @@
     </service>
 
     <service name="updateLabelXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="modifyLabelXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="modifyLabelXml">
         <description>Uses Update Label xml config file</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="category" mode="IN" type="String" optional="true"/>
         <attribute name="description" mode="IN" type="String" optional="true"/>
-        <attribute name="value" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="value" mode="IN" type="String" optional="true" allow-html="any"/>
         <attribute name="labelFileProperty" mode="IN" type="String" optional="true"/>
         <attribute name="deploymentLabelFileProperty" mode="IN" type="String" optional="true"/>
     </service>
@@ -197,7 +197,7 @@
     </service>
 
     <service name="deleteUiLabelXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="deleteUiLabelXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="deleteUiLabelXml">
         <description>Delete Ui Label from xml config file</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="labelFileProperty" mode="IN" type="String" optional="true"/>
@@ -223,13 +223,13 @@
         <attribute name="key" mode="INOUT" type="String" optional="true"/>
         <attribute name="category" mode="IN" type="String" optional="true"/>
         <attribute name="description" mode="IN" type="String" optional="true"/>
-        <attribute name="value" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="value" mode="IN" type="String" optional="true" allow-html="any"/>
         <attribute name="labelFileProperty" mode="IN" type="String" optional="true"/>
         <attribute name="deploymentLabelFileProperty" mode="IN" type="String" optional="true"/>
     </service>
     
     <service name="updateDivSeqXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="modifyDivSequenceXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="modifyDivSequenceXml">
         <description>Uses Update Label xml config file</description>
         <attribute name="key" mode="INOUT" type="String" optional="true"/>
         <attribute name="screen" mode="IN" type="String" optional="true"/>
@@ -240,7 +240,7 @@
         <attribute name="group" mode="IN" type="String" optional="true"/>
     </service>
     <service name="addDivSeqItemXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="addDivSeqItemXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="addDivSeqItemXml">
         <description>add Ui Label in xml config file</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="screen" mode="IN" type="String" optional="true"/>
@@ -272,7 +272,7 @@
     </service>
 
     <service name="deleteDivSeqItemXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="deleteDivSeqItemXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="deleteDivSeqItemXml">
         <description>Delete Ui Label from xml config file</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="screen" mode="IN" type="String"/>
@@ -305,7 +305,7 @@
     </service>
     
     <service name="addCustomPartyAttributeItemXml" engine="java" auth="true"
-            location="com.osafe.services.OsafeManageXml"
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml"
             invoke="addCustomPartyAttributeItemXml">
         <description>
          Create Custom Party Attribute.
@@ -322,7 +322,7 @@
     </service>
     
     <service name="copyCustomPartyAttributeXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="copyCustomPartyAttributeXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="copyCustomPartyAttributeXml">
         <description>Uses copy Custom Party Attribute xml file</description>
     </service>
     
@@ -353,7 +353,7 @@
     </service>
     
     <service name="updateCustomPartyAttributeItemXml" engine="java" auth="true"
-            location="com.osafe.services.OsafeManageXml"
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml"
             invoke="updateCustomPartyAttributeItemXml">
         <description>
          Create Custom Party Attribute.
@@ -397,25 +397,25 @@
     </service>
     
     <service name="addUiLabelXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="addUiLabelXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="addUiLabelXml">
         <description>add Ui Label in xml config file</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="category" mode="IN" type="String" optional="true"/>
         <attribute name="description" mode="IN" type="String" optional="true"/>
-        <attribute name="value" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="value" mode="IN" type="String" optional="true" allow-html="any"/>
         <attribute name="labelFileProperty" mode="IN" type="String" optional="true"/>
         <attribute name="deploymentLabelFileProperty" mode="IN" type="String" optional="true"/>
     </service>
 
     <service name="copyLabelXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="copyLabelXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="copyLabelXml">
         <description>Uses copy Label xml config file</description>
         <attribute name="labelFileProperty" mode="IN" type="String" optional="true"/>
         <attribute name="deploymentLabelFileProperty" mode="IN" type="String" optional="true"/>
     </service>
 
     <service name="copyDivSequenceXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="copyDivSequenceXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="copyDivSequenceXml">
         <description>Uses copy Div Sequence xml config file</description>
     </service>
 
@@ -509,7 +509,7 @@
         <attribute name="productStoreId" mode="INOUT" type="String"/>
         <attribute name="parmKey" mode="INOUT" type="String"/>
         <attribute name="description" mode="IN" type="String" optional="true" allow-html="any"/>
-        <attribute name="parmValue" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="parmValue" mode="IN" type="String" optional="true" allow-html="any"/>
         <attribute name="parmCategory" mode="IN" type="String" optional="true" />
     </service>
     
@@ -532,7 +532,7 @@
         <attribute name="productStoreId" mode="INOUT" type="String"/>
         <attribute name="parmKey" mode="INOUT" type="String" optional="true"/>
         <attribute name="description" mode="IN" type="String" optional="true" allow-html="any"/>
-        <attribute name="parmValue" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="parmValue" mode="IN" type="String" optional="true" allow-html="any"/>
         <attribute name="parmCategory" mode="IN" type="String" optional="true"/>
     </service>
     
@@ -575,7 +575,7 @@
         <attribute name="key" mode="INOUT" type="String"/>
         <attribute name="category" mode="IN" type="String" optional="true"/>
         <attribute name="description" mode="IN" type="String" optional="true"/>
-        <attribute name="value" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="value" mode="IN" type="String" optional="true" allow-html="any"/>
         <attribute name="labelFileProperty" mode="IN" type="String" optional="true"/>
         <attribute name="deploymentLabelFileProperty" mode="IN" type="String" optional="true"/>
     </service>
@@ -607,7 +607,7 @@
         <attribute name="showDetail" mode="INOUT" type="String" optional="true"/>
     </service>
      <service name="updateDivSequenceXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="modifyDivSequenceXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="modifyDivSequenceXml">
         <description>Uses Update Label xml config file</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="screen" mode="IN" type="String" optional="true"/>
@@ -647,7 +647,7 @@
     </service>
 
     <service name="copyDivSequenceXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="copyDivSequenceXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="copyDivSequenceXml">
         <description>Uses copy Div Sequence xml config file</description>
     </service>
 
@@ -1260,7 +1260,7 @@
         <implements service="removeContent"/>
     </service>
     <service name="findParty" engine="java"
-        location="com.osafe.services.PartyServices" invoke="findParty">
+        location="org.apache.ofbiz.osafe.services.PartyServices" invoke="findParty">
         <description>General Party Find Service, Used in the findparty page in the Party Manager, etc</description>
         <attribute name="extInfo" type="String" mode="IN" optional="true"/>
         <attribute name="roleTypeId" type="String" mode="IN" optional="true"/> <!-- can be null or ANY to include All -->
@@ -1424,7 +1424,7 @@
     </service>
     
     <service name="createUpdateProdPriceRule" engine="java"
-            location="com.osafe.services.OsafeAdminPricingServices" invoke="createUpdateProdPriceRule" auth="true">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminPricingServices" invoke="createUpdateProdPriceRule" auth="true">
         <description>Create and Update Product Price Rule</description>
         <attribute name="productId" mode="IN" type="String" optional="false"/>
         <attribute name="PriceTypeRadio" mode="IN" type="String" optional="true"/>
@@ -1435,7 +1435,7 @@
     </service>
     
     <service name="deleteProdPriceRule" engine="java"
-            location="com.osafe.services.OsafeAdminPricingServices" invoke="deleteProdPriceRule" auth="true">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminPricingServices" invoke="deleteProdPriceRule" auth="true">
         <description>Delete Product Price Condition, Action and Rule</description>
         <attribute name="productPriceRuleId" mode="IN" type="String" optional="false"/>
     </service>
@@ -1900,7 +1900,7 @@
         </group>
     </service>
     <service name="updateMediaContent" engine="java"
-            location="com.osafe.services.OsafeAdminMediaContent" invoke="updateMediaContent" auth="true">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminMediaContent" invoke="updateMediaContent" auth="true">
         <description>Update Media Contents</description>
         <attribute name="mediaType" mode="IN" type="String" optional="false"/>
         <attribute name="currentMediaName" mode="IN" type="String" optional="false"/>
@@ -1942,7 +1942,7 @@
         </group>
     </service>
     <service name="addMediaContent" engine="java"
-            location="com.osafe.services.OsafeAdminMediaContent" invoke="addMediaContent" auth="true">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminMediaContent" invoke="addMediaContent" auth="true">
         <description>Create Media Content</description>
         <attribute name="contentTempPath" mode="IN" type="String" optional="false"/>
         <attribute name="contentTargetPath" mode="IN" type="String" optional="false"/>
@@ -1959,7 +1959,7 @@
         </group>
     </service>
     <service name="deleteMediaContent" engine="java"
-            location="com.osafe.services.OsafeAdminMediaContent" invoke="deleteMediaContent" auth="true">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminMediaContent" invoke="deleteMediaContent" auth="true">
         <description>Create Media Content</description>
         <attribute name="currentMediaType" mode="IN" type="String" optional="false"/>
         <attribute name="currentMediaName" mode="IN" type="String" optional="false"/>
@@ -2017,7 +2017,7 @@
             location="component://osafeadmin/script/com/osafeadmin/services/OsafeAdminNoteServices.xml" invoke="updateNoteData" auth="true">
         <description>Update Note Data</description>
         <attribute name="noteId" mode="IN" type="String" optional="false"/>
-        <attribute name="noteInfo" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="noteInfo" mode="IN" type="String" optional="true" allow-html="any"/>
     </service>
     
     <service name="createOrderNoteDataGroup" engine="group" auth="false" transaction-timeout="7200">
@@ -2033,7 +2033,7 @@
             location="component://osafeadmin/script/com/osafeadmin/services/OsafeAdminNoteServices.xml" invoke="createOrderNoteData" auth="true">
         <description>Create Order Header Note</description>
         <attribute name="orderId" mode="IN" type="String" optional="false"/>
-        <attribute name="noteInfo" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="noteInfo" mode="IN" type="String" optional="true" allow-html="any"/>
         <attribute name="internalNote" mode="IN" type="String" optional="false"/>
     </service>
     
@@ -2050,7 +2050,7 @@
             location="component://osafeadmin/script/com/osafeadmin/services/OsafeAdminNoteServices.xml" invoke="createCustomerNoteData" auth="true">
         <description>Create Order Header Note</description>
         <attribute name="partyId" mode="IN" type="String" optional="false"/>
-        <attribute name="noteInfo" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <attribute name="noteInfo" mode="IN" type="String" optional="true" allow-html="any"/>
         <attribute name="internalNote" mode="IN" type="String" optional="false"/>
     </service>
 
@@ -2263,7 +2263,7 @@
     </service>
     
     <service name="findPromotion" engine="java"
-        location="com.osafe.services.PromotionServices" invoke="findPromotion">
+        location="org.apache.ofbiz.osafe.services.PromotionServices" invoke="findPromotion">
         <description>General Promotion Find Service, return product promo list with promocode and product store using left outer join</description>
         <attribute name="VIEW_INDEX" type="String" mode="IN" optional="true"/>
         <attribute name="VIEW_SIZE" type="String" mode="IN" optional="true"/>
@@ -2288,7 +2288,7 @@
     </service>
     
     <service name="addProductImageAndContent" default-entity-name="ProductContent" engine="java"
-        location="com.osafe.services.OsafeAdminCatalogServices" invoke="addProductImageAndContent" auth="true">
+        location="org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices" invoke="addProductImageAndContent" auth="true">
         <implements service="uploadFileInterface"/>
         <auto-attributes include="pk" mode="IN" optional="true"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
@@ -2301,7 +2301,7 @@
     </service>
     
     <service name="addProductVideoAndContent" default-entity-name="ProductContent" engine="java"
-        location="com.osafe.services.OsafeAdminCatalogServices" invoke="addProductVideoAndContent" auth="true">
+        location="org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices" invoke="addProductVideoAndContent" auth="true">
         <implements service="uploadFileInterface"/>
         <auto-attributes include="pk" mode="IN" optional="true"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
@@ -3025,7 +3025,7 @@
     </service>
     
     <service name="loadProductData" engine="java"
-        location="com.osafe.services.OsafeAdminServices" invoke="loadProductDataToDB" auth="true" transaction-timeout="720000">
+        location="org.apache.ofbiz.osafe.services.OsafeAdminServices" invoke="loadProductDataToDB" auth="true" transaction-timeout="720000">
         <description>Upload the product xls data to database</description>
         <implements service="commonFormHiddenFields"/>
         <attribute mode="IN" name="xlsFileName" optional="true" type="String"/>
@@ -3057,7 +3057,7 @@
     </service>
     
     <service name="addProductCategoryImage" default-entity-name="ProductCategory" engine="java"
-        location="com.osafe.services.OsafeAdminCatalogServices" invoke="addProductCategoryImage" auth="true">
+        location="org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices" invoke="addProductCategoryImage" auth="true">
         <implements service="uploadFileInterface"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
@@ -3126,7 +3126,7 @@
         <attribute name="orderAdjustmentDescription" mode="IN" type="String" optional="true"/>
         <attribute name="orderAdjustmentAmount" mode="IN" type="String" optional="true"/>
         
-        <override name="note" mode="IN" type="String" optional="true" allow-html="safe"/>
+        <override name="note" mode="IN" type="String" optional="true" allow-html="any"/>
         <override name="shipGroupSeqId" mode="IN" type="String" optional="true"/>
         <override name="statusId" mode="IN" type="String" optional="true"/>
     </service>
@@ -3242,7 +3242,7 @@
             <invoke name="importEbayProduct" result-to-context="true"/>
         </group>
     </service>
-    <service name="uploadFile" engine="java" location="com.osafe.services.OsafeAdminServices" invoke="uploadFile" auth="true" transaction-timeout="7200">
+    <service name="uploadFile" engine="java" location="org.apache.ofbiz.osafe.services.OsafeAdminServices" invoke="uploadFile" auth="true" transaction-timeout="7200">
         <description>Upload the file to runtime upload temp directory</description>
         <implements service="uploadFileInterface"/>
         <attribute name="uploadFileName" mode="OUT" type="String" optional="false"/>
@@ -3305,18 +3305,18 @@
     </service>
     
     <service name="modifyImageLocationPreferencesXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="modifyImageLocationPreferencesXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="modifyImageLocationPreferencesXml">
         <description>Uses Update Label xml config file</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="value" mode="IN" type="String" optional="true"/>
     </service>
     <service name="copyImageLocationPreferencesXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="copyImageLocationPreferencesXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="copyImageLocationPreferencesXml">
         <description>Uses copy Image Location Preference xml config file</description>
     </service>
     
     <service name="exportCustomerXML" engine="java" transaction-timeout="7200" auth="true"
-            location="com.osafe.services.ImportServices" invoke="exportCustomerXML">
+            location="org.apache.ofbiz.osafe.services.ImportServices" invoke="exportCustomerXML">
         <description>Update Customer Export</description>
         <attribute name="customerList" type="java.util.List" mode="IN" optional="true"/>
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
@@ -3345,7 +3345,7 @@
         <implements service="createTextContent"/>
         <auto-attributes include="pk" mode="INOUT" optional="true"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
-        <override name="pixelSequenceNum" type="String" allow-html="safe"/>
+        <override name="pixelSequenceNum" type="String" allow-html="any"/>
     </service>
 
     <service name="updatePixelTrackingGroup" engine="group" auth="false">
@@ -3367,7 +3367,7 @@
         <implements service="updateTextContent"/>
         <auto-attributes include="pk" mode="INOUT" optional="true"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
-        <override name="pixelSequenceNum" type="String" allow-html="safe"/>
+        <override name="pixelSequenceNum" type="String" allow-html="any"/>
     </service>
 
     <service name="deletePixelTrackingGroup" engine="group" auth="false">
@@ -3454,7 +3454,7 @@
     </service>
 
     <service name="exportOrderXML" engine="java" transaction-timeout="7200" auth="true"
-            location="com.osafe.services.ImportServices" invoke="exportOrderXML">
+            location="org.apache.ofbiz.osafe.services.ImportServices" invoke="exportOrderXML">
         <description>Export Order XML</description>
         <attribute name="orderList" type="java.util.List" mode="IN" optional="true"/>
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
@@ -3465,7 +3465,7 @@
     </service>
     
     <service name="exportCustRequestContactUsXML" engine="java" transaction-timeout="7200" auth="true"
-            location="com.osafe.services.ImportServices" invoke="exportCustRequestContactUsXML">
+            location="org.apache.ofbiz.osafe.services.ImportServices" invoke="exportCustRequestContactUsXML">
         <description>Export ContactUs XML</description>
         <attribute name="custRequestIdList" type="java.util.List" mode="IN" optional="true"/>
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
@@ -3476,7 +3476,7 @@
     </service>
     
     <service name="exportCustRequestCatalogXML" engine="java" transaction-timeout="7200" auth="true"
-            location="com.osafe.services.ImportServices" invoke="exportCustRequestCatalogXML">
+            location="org.apache.ofbiz.osafe.services.ImportServices" invoke="exportCustRequestCatalogXML">
         <description>Export Request Catalog XML</description>
         <attribute name="custRequestIdList" type="java.util.List" mode="IN" optional="true"/>
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
@@ -3525,14 +3525,14 @@
     </service>
 
     <service name="updateProductFeatureAppls" engine="java" transaction-timeout="7200" auth="true"
-            location="com.osafe.services.OsafeAdminCatalogServices" invoke="updateProductFeatureAppls">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices" invoke="updateProductFeatureAppls">
         <description>Update ProductFeatureAppl Sequence Number base on productFeatureId</description>
         <attribute name="productFeatureId" type="String" mode="IN" optional="false"/>
         <attribute name="sequenceNum" type="Long" mode="IN" optional="true"/>
     </service>
 
     <service name="updateProductFeatureAppl" engine="java" transaction-timeout="7200" auth="true"
-            location="com.osafe.services.OsafeAdminCatalogServices" invoke="updateProductFeatureAppl">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices" invoke="updateProductFeatureAppl">
         <description>Update ProductFeatureAppl Sequence Number</description>
         <attribute name="productId" type="String" mode="IN" optional="false"/>
         <attribute name="productFeatureId" type="String" mode="IN" optional="false"/>
@@ -3542,7 +3542,7 @@
     </service>
 
     <service name="createProductFeatureAppl" engine="java" transaction-timeout="7200" auth="true"
-            location="com.osafe.services.OsafeAdminCatalogServices" invoke="createProductFeatureAppl">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices" invoke="createProductFeatureAppl">
         <description>create ProductFeatureAppl Number.</description>
         <attribute name="productId" type="String" mode="IN" optional="false"/>
         <attribute name="productFeatureId" type="String" mode="IN" optional="false"/>
@@ -3676,7 +3676,7 @@
     </service>
     
     <service name="convertProductRatings" engine="java"
-            location="com.osafe.services.OsafeAdminFeedServices" invoke="convertProductRatings" auth="true" transaction-timeout="720000">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminFeedServices" invoke="convertProductRatings" auth="true" transaction-timeout="720000">
         <implements service="commonFormHiddenFields"/>
         <attribute name="uploadedFile" type="java.nio.ByteBuffer" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_fileName" type="String" mode="IN" optional="true"/>
@@ -3686,7 +3686,7 @@
     </service>
     
     <service name="convertStores" engine="java"
-            location="com.osafe.services.OsafeAdminFeedServices" invoke="convertStores" auth="true" transaction-timeout="720000">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminFeedServices" invoke="convertStores" auth="true" transaction-timeout="720000">
         <implements service="commonFormHiddenFields"/>
         <attribute name="uploadedFile" type="java.nio.ByteBuffer" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_fileName" type="String" mode="IN" optional="true"/>
@@ -3696,7 +3696,7 @@
     </service>
     
     <service name="convertOrderStatus" engine="java"
-            location="com.osafe.services.OsafeAdminFeedServices" invoke="convertOrderStatus" auth="true" transaction-timeout="720000">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminFeedServices" invoke="convertOrderStatus" auth="true" transaction-timeout="720000">
         <implements service="commonFormHiddenFields"/>
         <attribute name="uploadedFile" type="java.nio.ByteBuffer" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_fileName" type="String" mode="IN" optional="true"/>
@@ -3706,7 +3706,7 @@
     </service>
     
     <service name="convertProductLoadFile" engine="java"
-            location="com.osafe.services.OsafeAdminFeedServices" invoke="convertProductLoadFile" auth="true" transaction-timeout="720000">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminFeedServices" invoke="convertProductLoadFile" auth="true" transaction-timeout="720000">
         <implements service="commonFormHiddenFields"/>
         <attribute name="uploadedFile" type="java.nio.ByteBuffer" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_fileName" type="String" mode="IN" optional="true"/>
@@ -3763,7 +3763,7 @@
     </service>
 
     <service name="importBluedartPrepaid" engine="java"
-            location="com.osafe.services.OsafeAdminFeedServices" invoke="importBluedartPrepaid" auth="true" transaction-timeout="720000">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminFeedServices" invoke="importBluedartPrepaid" auth="true" transaction-timeout="720000">
         <attribute name="uploadedFile" type="java.nio.ByteBuffer" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_fileName" type="String" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_contentType" type="String" mode="IN" optional="true"/>
@@ -3780,7 +3780,7 @@
     </service>
 
     <service name="importBluedartCoD" engine="java"
-            location="com.osafe.services.OsafeAdminFeedServices" invoke="importBluedartCoD" auth="true" transaction-timeout="720000">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminFeedServices" invoke="importBluedartCoD" auth="true" transaction-timeout="720000">
         <attribute name="uploadedFile" type="java.nio.ByteBuffer" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_fileName" type="String" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_contentType" type="String" mode="IN" optional="true"/>
@@ -3797,7 +3797,7 @@
     </service>
 
     <service name="importCustomerXml" engine="java"
-            location="com.osafe.services.OsafeAdminFeedServices" invoke="importCustomerXml" auth="true" transaction-timeout="720000">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminFeedServices" invoke="importCustomerXml" auth="true" transaction-timeout="720000">
         <attribute name="uploadedFile" type="java.nio.ByteBuffer" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_fileName" type="String" mode="IN" optional="true"/>
         <attribute name="_uploadedFile_contentType" type="String" mode="IN" optional="true"/>
@@ -3936,7 +3936,7 @@
     </service>
     
     <service name="exportGoogleProductXml" engine="java" transaction-timeout="7200" auth="true"
-            location="com.osafe.services.ImportServices" invoke="exportGoogleProductXml">
+            location="org.apache.ofbiz.osafe.services.ImportServices" invoke="exportGoogleProductXml">
         <description>Export Product in Google Xml</description>
         <attribute name="productStoreId" mode="IN" type="String" optional="false" ></attribute>
         <attribute name="browseRootProductCategoryId" mode="IN" type="String" optional="false" ></attribute>
@@ -3969,7 +3969,7 @@
         </group>
     </service>
     <service name="deleteScheduledJobs" engine="java"
-            location="com.osafe.services.OsafeAdminServices" invoke="deleteScheduledJobs" auth="true" transaction-timeout="7200">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminServices" invoke="deleteScheduledJobs" auth="true" transaction-timeout="7200">
         <attribute name="statusId" type="String" mode="IN" optional="false"/>
         <attribute name="serviceName" type="String" mode="IN" optional="false"/>
         <attribute name="isOld" type="String" mode="IN" optional="true"/>
@@ -3985,7 +3985,7 @@
         </group>
     </service>
     <service name="deleteEntityRows" engine="java"
-        location="com.osafe.services.OsafeAdminServices" invoke="deleteEntityRows" auth="true" transaction-timeout="720000">
+        location="org.apache.ofbiz.osafe.services.OsafeAdminServices" invoke="deleteEntityRows" auth="true" transaction-timeout="720000">
         <attribute name="entityDBName" type="String" mode="IN" optional="true"/>
         <attribute name="showDetail" type="String" mode="OUT" optional="true"/>
     </service>
@@ -4021,9 +4021,9 @@
             <exclude field-name="lastModifiedDate"/>
             <exclude field-name="lastModifiedByUserLogin"/>
         </auto-attributes>
-        <override name="description" allow-html="safe"/>
-        <override name="longDescription" allow-html="safe"/>
-        <override name="productName" allow-html="safe"/>
+        <override name="description" allow-html="any"/>
+        <override name="longDescription" allow-html="any"/>
+        <override name="productName" allow-html="any"/>
     </service>
     <service name="createProduct" default-entity-name="Product" engine="simple"
                 location="component://product/script/org/ofbiz/product/product/ProductServices.xml" invoke="createProduct" auth="true">
@@ -4300,7 +4300,7 @@
     
     <!-- Custom Party Attributes -->
     <service name="getPartyCustomAttributeList" engine="java"
-            location="com.osafe.services.CustomPartyAttributeServices" invoke="getPartyCustomAttributeList">
+            location="org.apache.ofbiz.osafe.services.CustomPartyAttributeServices" invoke="getPartyCustomAttributeList">
         <description>Party Custom Attribute List</description>
         <attribute name="useCache" type="String" mode="IN" optional="true"/>
         <attribute name="customPartyAttributeList" type="java.util.List" mode="OUT" optional="true"/>
@@ -4456,7 +4456,7 @@
     </service>
         
     <service name="addPartyImageAndContent" default-entity-name="PartyContent" engine="java"
-        location="com.osafe.services.OsafeAdminCatalogServices" invoke="addPartyImageAndContent" auth="true">
+        location="org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices" invoke="addPartyImageAndContent" auth="true">
         <implements service="uploadFileInterface"/>
         <auto-attributes include="pk" mode="IN" optional="true"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
@@ -4511,7 +4511,7 @@
     </service>
 
      <service name="updateBigfishParameterXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="modifyBigfishParameterXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="modifyBigfishParameterXml">
         <description>Uses Update Bigfish Parameter Xml config file</description>
         <attribute name="parameterFileName" mode="INOUT" type="String" optional="false"/>
         <attribute name="key" mode="IN" type="String"/>
@@ -4520,7 +4520,7 @@
     </service>
 
     <service name="copyBigfishParameterXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="copyBigfishParameterXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="copyBigfishParameterXml">
         <description>Uses copy Bigfish Parameter Xml config file</description>
         <attribute name="parameterFileName" mode="IN" type="String" optional="false"/>
     </service>
@@ -4546,14 +4546,14 @@
     </service>
 
     <service name="deleteBigfishParameterXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="deleteBigfishParameterXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="deleteBigfishParameterXml">
         <description>Delete Bigfish Parameter</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="parameterFileName" mode="INOUT" type="String" optional="false"/>
     </service>
 
     <service name="addBigfishParameterXml" engine="java" transaction-timeout="300" auth="true"
-            location="com.osafe.services.OsafeManageXml" invoke="addBigfishParameterXml">
+            location="org.apache.ofbiz.osafe.services.OsafeManageXml" invoke="addBigfishParameterXml">
         <description>add Bigfish Parameter in xml config file</description>
         <attribute name="key" mode="IN" type="String"/>
         <attribute name="description" mode="IN" type="String" optional="true"/>
@@ -4562,7 +4562,7 @@
     </service>
     
     <service name="recalcOrderShippingAmount" engine="java" transaction-timeout="300"
-            location="com.osafe.services.OsafeAdminOrderServices" invoke="recalcOrderShippingAmount">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminOrderServices" invoke="recalcOrderShippingAmount">
         <description>Re Calculate the Order Shipping Amount</description>
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
         <attribute name="orderItemSequenceIds" type="List" mode="IN" optional="false"/>
@@ -4570,7 +4570,7 @@
     </service>
     
     <service name="recalcOrderTaxAmount" engine="java" transaction-timeout="300"
-            location="com.osafe.services.OsafeAdminOrderServices" invoke="recalcOrderTaxAmount">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminOrderServices" invoke="recalcOrderTaxAmount">
         <description>Re Calculate the Order Tax Amount</description>
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
         <attribute name="orderItemSequenceIds" type="List" mode="IN" optional="false"/>
@@ -4578,7 +4578,7 @@
     </service>
     
     <service name="recalcOrderPromoAmount" engine="java" transaction-timeout="300"
-            location="com.osafe.services.OsafeAdminOrderServices" invoke="recalcOrderPromoAmount">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminOrderServices" invoke="recalcOrderPromoAmount">
         <description>Re Calculate the Order Promo Amount</description>
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
         <attribute name="orderItemSequenceIds" type="List" mode="IN" optional="false"/>
@@ -4586,7 +4586,7 @@
     </service>
     
     <service name="createCartFromOrder" engine="java" transaction-timeout="300"
-            location="com.osafe.services.OsafeAdminOrderServices" invoke="createCartFromOrder">
+            location="org.apache.ofbiz.osafe.services.OsafeAdminOrderServices" invoke="createCartFromOrder">
         <description>Create Cart from Order</description>
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
         <attribute name="skipInventoryChecks" type="Boolean" mode="IN" optional="true"/>
@@ -4624,7 +4624,7 @@
     </service>
     
     <service name="changeShipGroupOrderItemStatus" engine="java" auth="true"
-            location="com.osafe.services.ImportServices"
+            location="org.apache.ofbiz.osafe.services.ImportServices"
             invoke="changeShipGroupOrderItemStatus">
         <description>
             Change Order Item Status Based on Ship Group Quantity

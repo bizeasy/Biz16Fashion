@@ -31,7 +31,7 @@
             </td>
             <td class="actionCol">
 	        	<#if productFeatureCatGrpAppl.facetTooltip?has_content>
-	        	    <#assign facetTooltipText = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(productFeatureCatGrpAppl.facetTooltip, ADM_TOOLTIP_MAX_CHAR!)/>
+	        	    <#assign facetTooltipText = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(productFeatureCatGrpAppl.facetTooltip, ADM_TOOLTIP_MAX_CHAR!)/>
 	        	    <p onMouseover="showTooltip(event,'${facetTooltipText!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></p>
 	        	</#if>
 	        </td> 

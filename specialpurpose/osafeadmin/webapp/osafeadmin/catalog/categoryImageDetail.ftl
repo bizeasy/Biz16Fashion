@@ -2,7 +2,7 @@
 
   <#-- Product Category Image -->
       <#assign categoryImageUrl = productCategory.categoryImageUrl!/>
-      <#assign categoryImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("CATEGORY_IMAGE_URL")! />
+      <#assign categoryImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("CATEGORY_IMAGE_URL")! />
       <#if categoryImageUrl?has_content && categoryImageUrl != "">
         <#assign categoryImageUrlStr = categoryImageUrl.toString() />
         <#if categoryImageUrlStr?has_content && (categoryImageUrlStr.lastIndexOf("/") > 0)>
@@ -43,7 +43,7 @@
        </div>
        
        <#assign urlReferenceCategoryImageExist = "false"/>
-       <#if (categoryImageUrlStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(categoryImageUrlStr)>
+       <#if (categoryImageUrlStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(categoryImageUrlStr)>
          <#assign urlReferenceCategoryImageExist = "true"/>
        </#if>
        

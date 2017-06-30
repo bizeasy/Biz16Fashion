@@ -173,7 +173,7 @@
             <#if (variantProduct?has_content && mode=="edit") || (virtualProduct?has_content && mode=="add")>
                 <div class="infoIcon">
                   <#if virtualongDescription?has_content>
-                    <#assign virtualongDescription = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualongDescription, descriptionTooltipMaxChar)/>
+                    <#assign virtualongDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualongDescription, descriptionTooltipMaxChar)/>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${virtualongDescription}"), locale)/>
                   <#else>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionBlankInfo", locale)/>
@@ -199,7 +199,7 @@
             <#if (variantProduct?has_content && mode=="edit") || (virtualProduct?has_content && mode=="add")>
                 <div class="infoIcon">
                   <#if virtualShortSalesPitch?has_content>
-                    <#assign virtualShortSalesPitch = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualShortSalesPitch, descriptionTooltipMaxChar)/>
+                    <#assign virtualShortSalesPitch = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualShortSalesPitch, descriptionTooltipMaxChar)/>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${virtualShortSalesPitch}"), locale)/>
                   <#else>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionBlankInfo", locale)/>
@@ -225,7 +225,7 @@
             <#if (variantProduct?has_content && mode=="edit") || (virtualProduct?has_content && mode=="add")>
                 <div class="infoIcon">
                   <#if virtualSpecialInstruction?has_content>
-                    <#assign virtualSpecialInstruction = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualSpecialInstruction, descriptionTooltipMaxChar)/>
+                    <#assign virtualSpecialInstruction = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualSpecialInstruction, descriptionTooltipMaxChar)/>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${virtualSpecialInstruction}"), locale)/>
                   <#else>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionBlankInfo", locale)/>
@@ -250,7 +250,7 @@
             <#if (variantProduct?has_content && mode=="edit") || (virtualProduct?has_content && mode=="add")>
                 <div class="infoIcon">
                   <#if virtualDeliveryInfo?has_content>
-                    <#assign VirtualDescriptionInfo = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualDeliveryInfo, descriptionTooltipMaxChar)/>
+                    <#assign VirtualDescriptionInfo = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualDeliveryInfo, descriptionTooltipMaxChar)/>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${virtualDeliveryInfo}"), locale)/>
                   <#else>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionBlankInfo", locale)/>
@@ -275,7 +275,7 @@
             <#if (variantProduct?has_content && mode=="edit") || (virtualProduct?has_content && mode=="add")>
                 <div class="infoIcon">
                   <#if virtualDirections?has_content>
-                    <#assign virtualDirections = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualDirections, descriptionTooltipMaxChar)/>
+                    <#assign virtualDirections = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualDirections, descriptionTooltipMaxChar)/>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${virtualDirections}"), locale)/>
                   <#else>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionBlankInfo", locale)/>
@@ -300,7 +300,7 @@
             <#if (variantProduct?has_content && mode=="edit") || (virtualProduct?has_content && mode=="add")>
                 <div class="infoIcon">
                   <#if virtualTermsAndConds?has_content>
-                    <#assign virtualTermsAndConds = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualTermsAndConds, descriptionTooltipMaxChar)/>
+                    <#assign virtualTermsAndConds = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualTermsAndConds, descriptionTooltipMaxChar)/>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${virtualTermsAndConds}"), locale)/>
                   <#else>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionBlankInfo", locale)/>
@@ -325,7 +325,7 @@
             <#if (variantProduct?has_content && mode=="edit") || (virtualProduct?has_content && mode=="add")>
                 <div class="infoIcon">
                   <#if virtualIngredients?has_content>
-                    <#assign virtualIngredients = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualIngredients, descriptionTooltipMaxChar)/>
+                    <#assign virtualIngredients = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualIngredients, descriptionTooltipMaxChar)/>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${virtualIngredients}"), locale)/>
                   <#else>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionBlankInfo", locale)/>
@@ -350,7 +350,7 @@
             <#if (variantProduct?has_content && mode=="edit") || (virtualProduct?has_content && mode=="add")>
                 <div class="infoIcon">
                   <#if virtualWarnings?has_content>
-                    <#assign virtualWarnings = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualWarnings, descriptionTooltipMaxChar)/>
+                    <#assign virtualWarnings = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(virtualWarnings, descriptionTooltipMaxChar)/>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionInfo", Static["org.apache.ofbiz.base.util.UtilMisc"].toList("${virtualWarnings}"), locale)/>
                   <#else>
                     <#assign tooltipData = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels", "VirtualDescriptionBlankInfo", locale)/>

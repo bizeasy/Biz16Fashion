@@ -1,6 +1,6 @@
 <#if custRequest?has_content>
   <#if custRequest.createdDate?has_content>
-    <#assign createdDate =(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(custRequest.createdDate, preferredDateFormat).toLowerCase())!"N/A" />
+    <#assign createdDate =(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(custRequest.createdDate, preferredDateFormat).toLowerCase())!"N/A" />
   </#if>
   
   <#assign comment =""/>
@@ -54,7 +54,7 @@
     <#if custReqAttribute.attrName == 'CONTACT_PHONE'>
       <#assign attrNamePhone = custReqAttribute.attrName+caption!""/>
       <#assign phone = custReqAttribute.attrValue!""/>
-      <#assign formattedHomePhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone("", phone?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+      <#assign formattedHomePhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone("", phone?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
     </#if>
     <#if custReqAttribute.attrName == 'ORDER_NUMBER'>
       <#assign attrNameOrderNo = custReqAttribute.attrName+caption!""/>
@@ -323,7 +323,7 @@
       </div>
       <div class="infoValue">
         <#assign expDateTs = Static["java.sql.Timestamp"].valueOf(exportedDate)/>
-        ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(expDateTs, preferredDateFormat).toLowerCase())!"N/A"}
+        ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(expDateTs, preferredDateFormat).toLowerCase())!"N/A"}
       </div>
     </div>
   </div>

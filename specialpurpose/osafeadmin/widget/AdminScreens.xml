@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ofbiz.org/dtds/widget-screen.xsd">
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd"> 
+
 
     <screen name="adminHome">
         <section>
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
-                <set field="pageTitle" value="${groovy:if(com.osafe.util.OsafeAdminUtil.isProductStoreParmFalse(request, 'ADM_SHOW_DASHBOARD') == true)return uiLabelMap.AdminModuleTitle else return uiLabelMap.DashboardSummaryTitle;}"/>
+                <set field="pageTitle" value="${groovy:if(org.apache.ofbiz.osafe.util.OsafeAdminUtil.isProductStoreParmFalse(request, 'ADM_SHOW_DASHBOARD') == true)return uiLabelMap.AdminModuleTitle else return uiLabelMap.DashboardSummaryTitle;}"/>
                 <set field="title" from-field="pageTitle"/>
                 <set field="periodRequest" value="updatePeriodDashboardSummary"/>
                 <set field="showLastOrder" value="Y"/>
@@ -51,7 +53,7 @@
     <screen name="dashboardSummary">
         <section>
             <actions>
-                <set field="showDashboard" value="${groovy:if(com.osafe.util.OsafeAdminUtil.isProductStoreParmFalse(request, 'ADM_SHOW_DASHBOARD') == true)return 'N' else return 'Y';}"/>
+                <set field="showDashboard" value="${groovy:if(org.apache.ofbiz.osafe.util.OsafeAdminUtil.isProductStoreParmFalse(request, 'ADM_SHOW_DASHBOARD') == true)return 'N' else return 'Y';}"/>
             </actions>
             <widgets>
 	            <section>
@@ -60,8 +62,8 @@
 		            </condition>
 		            <actions>
 		         		<set field="pageTitle" value="Operations"/>
-		            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/dashboard/periodRange.groovy"/>
-		                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/dashboard/dashboard.groovy"/>
+		            	<script location="component://osafeadmin/groovyScripts/dashboard/periodRange.groovy"/>
+		                <script location="component://osafeadmin/groovyScripts/dashboard/dashboard.groovy"/>
 		         	</actions>
 		         	<widgets>
 		         		<container id="dashboard">
@@ -89,7 +91,7 @@
     <screen name="dashboardAlerts">
         <section>
             <actions>
-                <set field="showAlerts" value="${groovy:if(com.osafe.util.OsafeAdminUtil.isProductStoreParmFalse(request, 'ADM_SHOW_ALERTS'))return 'N' else return 'Y';}"/>
+                <set field="showAlerts" value="${groovy:if(org.apache.ofbiz.osafe.util.OsafeAdminUtil.isProductStoreParmFalse(request, 'ADM_SHOW_ALERTS'))return 'N' else return 'Y';}"/>
             </actions>
             <widgets>
             	<section>
@@ -98,7 +100,7 @@
 		            </condition>
 		            <actions>
 		         		<set field="pageTitle" value="Operations"/>
-		                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/dashboard/dashboardAlerts.groovy"/>
+		                <script location="component://osafeadmin/groovyScripts/dashboard/dashboardAlerts.groovy"/>
 		         	</actions>
 		         	<widgets>
 		         		<container id="dashboard">
@@ -149,7 +151,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderManagementOrderList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/order/orderManagementOrderList.groovy"/>
                       </actions>
                       <widgets>
                         <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -259,8 +261,8 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderDetail.groovy"/>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderSalesTaxInfo.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/order/orderDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/order/orderSalesTaxInfo.groovy"/>
                           <set field="argListNames[]" from-field="notesCount"/>
                           <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -421,7 +423,7 @@
                      <section>
                       <actions>
                         
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderNoteDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/order/orderNoteDetail.groovy"/>
                         <set field="argListNames[]" from-field="notesCount"/>
                         <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -491,7 +493,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderNoteDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/order/orderNoteDetail.groovy"/>
                             <set field="argListNames[]" from-field="notesCount"/>
                             <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -561,7 +563,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderStatusDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/order/orderStatusDetail.groovy"/>
                             <set field="argListNames[]" from-field="notesCount"/>
                             <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -616,8 +618,8 @@
         <section>
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/setup/AdminSetup.groovy" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderStatusRefundDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/setup/AdminSetup.groovy" />
+                <script location="component://osafeadmin/groovyScripts/order/orderStatusRefundDetail.groovy"/>
             </actions>
             <widgets>
                 <container id="orderFinancialAdjustmentDetail" style="orderFinancialAdjustmentDetail">
@@ -706,7 +708,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderStatusDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/order/orderStatusDetail.groovy"/>
                             <set field="argListNames[]" from-field="notesCount"/>
                             <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -775,7 +777,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/statusUpdateList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/order/statusUpdateList.groovy"/>
                          <set field="argListNames[]" from-field="notesCount"/>
                          <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -846,7 +848,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderNoteDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/order/orderNoteDetail.groovy"/>
                           <set field="argListNames[]" from-field="notesCount"/>
                           <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -911,7 +913,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderStatusSummary.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/order/orderStatusSummary.groovy"/>
                       </actions>
                       <widgets>
                         <container id="OrderStatusSummary" style="commonSearchList">
@@ -981,8 +983,8 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderItemDetail.groovy"/>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderSalesTaxInfo.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/order/orderItemDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/order/orderSalesTaxInfo.groovy"/>
                           <set field="argListNames[]" from-field="notesCount"/>
                           <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -1036,8 +1038,8 @@
     <screen name="orderItemInfo">
         <section>
             <actions>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderItemDetail.groovy"/>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderSalesTaxInfo.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderItemDetail.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderSalesTaxInfo.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -1053,8 +1055,8 @@
 	<screen name="orderItemNotes">
         <section>
             <actions>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderItemDetail.groovy"/>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderSalesTaxInfo.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderItemDetail.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderSalesTaxInfo.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -1069,8 +1071,8 @@
     <screen name="orderItemAttributes">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderItemDetail.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderSalesTaxInfo.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/order/orderItemDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/order/orderSalesTaxInfo.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -1085,8 +1087,8 @@
     <screen name="orderItemsSummary">
         <section>
             <actions>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderItemDetail.groovy"/>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderSalesTaxInfo.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderItemDetail.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderSalesTaxInfo.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -1124,7 +1126,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderShippingDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/order/orderShippingDetail.groovy"/>
                           <set field="argListNames[]" from-field="notesCount"/>
                           <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -1175,7 +1177,7 @@
     <screen name="orderShippingGroupsDetailInfo">
         <section>
             <actions>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderShippingGroup.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderShippingGroup.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -1190,7 +1192,7 @@
 	<screen name="orderShippingGroupItemsInfo">
         <section>
             <actions>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderShippingGroupItem.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderShippingGroupItem.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -1204,7 +1206,7 @@
 	<screen name="orderShippingGroupShipmentsInfo">
         <section>
             <actions>
-            	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderShippingGroupShipment.groovy"/>
+            	<script location="component://osafeadmin/groovyScripts/order/orderShippingGroupShipment.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -1244,7 +1246,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerManagementList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/customer/customerManagementList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="customerManagement" style="commonSearchList">
@@ -1396,7 +1398,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonCustomerDetail" style="commonCustomerDetail">
@@ -1585,7 +1587,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                              <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
+                              <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="customerAddressDetail" style="commonCustomerDetail">
@@ -1649,7 +1651,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                              <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
+                              <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="customerNoteList" style="commonCustomerDetail">
@@ -1713,7 +1715,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                              <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
+                              <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonCustomerNoteDetail" style="commonCustomerDetail">
@@ -1778,7 +1780,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonCustomerNoteDetail" style="commonCustomerDetail">
@@ -1842,8 +1844,8 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerActivityList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/customer/customerActivityList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="customerActivityDetail" style="commonCustomerActivityDetail">
@@ -1906,7 +1908,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/visitDetail.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/customer/visitDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="visitDetail" style="commonDetail">
@@ -1986,7 +1988,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/promotion/promotionList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/promotion/promotionList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="promotion" style="commonSearchList">
@@ -2155,7 +2157,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/promotion/promotionDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/promotion/promotionDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonPromotionDetail" style="commonPromotionDetail">
@@ -2289,7 +2291,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productReviewList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productReviewList.groovy"/>
                       </actions>
                       <widgets>
                         <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -2392,7 +2394,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productReviewDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/product/productReviewDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonReviewDetail" style="commonReviewDetail">
@@ -2514,7 +2516,7 @@
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderManagementOrderList.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/order/orderManagementOrderList.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="FoReportDecorator" location="component://osafeadmin/widget/CommonScreens.xml">
@@ -2567,9 +2569,9 @@
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/setup/AdminSetup.groovy" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/dashboard/dailySalesCounter.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderPDF.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/setup/AdminSetup.groovy" />
+                <script location="component://osafeadmin/groovyScripts/dashboard/dailySalesCounter.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/order/orderPDF.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -2587,8 +2589,8 @@
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true" />
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="customerPDFName" value="Customer${parameters.partyId}_" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/setup/AdminSetup.groovy" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerPDF.groovy" />
+                <script location="component://osafeadmin/groovyScripts/setup/AdminSetup.groovy" />
+                <script location="component://osafeadmin/groovyScripts/customer/customerPDF.groovy" />
             </actions>
             <widgets>
                 <platform-specific>
@@ -2866,7 +2868,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
                       </actions>
                       <widgets>
                       <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -2942,8 +2944,8 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/categoryDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/catalog/categoryDetail.groovy"/>
                             <set field="detailInfoBoxHeading" value="${uiLabelMap.CatalogEntryDetailHeading}: ${productCategoryName}"/>
                       </actions>
                       <widgets>
@@ -3008,7 +3010,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="categoryDetail" style="categoryDetail">
@@ -3069,7 +3071,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="categoryDetail" style="categoryDetail">
@@ -3658,7 +3660,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/enumerationList.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/admin/enumerationList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="enumerationList" style="commonSearchList">
@@ -3699,7 +3701,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/enumerationDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/enumerationDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="enumerationDetail" style="commonDetail">
@@ -3822,7 +3824,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/staticPageSeoUrlDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/content/staticPageSeoUrlDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="staticPageSeoUrlDetail" style="staticPageSeoUrlDetail">
@@ -3979,7 +3981,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/carrierList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/shipping/carrierList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="carrierManagement" style="commonSearchList">
@@ -4064,7 +4066,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/carrierDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/shipping/carrierDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="carrierDetail" style="commonDetail">
@@ -4122,7 +4124,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/shipmentMethodList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/shipping/shipmentMethodList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="shipmentMethodList" style="commonSearchList">
@@ -4205,7 +4207,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/shipmentMethodDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/shipping/shipmentMethodDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="shipmentMethodDetail" style="commonDetail">
@@ -4265,7 +4267,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/shippingChargeList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/shipping/shippingChargeList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="shippingChargeList" style="commonSearchList">
@@ -4356,7 +4358,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/shippingChargeDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/shipping/shippingChargeDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonShipChargeDetail" style="commonDetail">
@@ -4420,7 +4422,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/jobs/scheduledJobList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/jobs/scheduledJobList.groovy"/>
                       </actions>
                       <widgets>
                         <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -4543,7 +4545,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/jobs/scheduledJobDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/jobs/scheduledJobDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonScheduledJobDetail" style="commonScheduledJobDetail">
@@ -4607,7 +4609,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/jobs/runtimeDataParametersDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/jobs/runtimeDataParametersDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="runtimeDataParametersDetail" style="sysConfigCssDetail">
@@ -4667,7 +4669,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/userList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/user/userList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="userManagement" style="commonSearchList">
@@ -4785,7 +4787,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/userDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/user/userDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonUserDetail" style="commonDetail">
@@ -4851,7 +4853,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/securityGroupList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/user/securityGroupList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="securityGroupManagement" style="commonSearchList">
@@ -4967,7 +4969,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/securityGroupDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/user/securityGroupDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonSecurityGroupDetail" style="commonDetail">
@@ -5027,7 +5029,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/permissionList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/user/permissionList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="permissionList" style="commonSearchList">
@@ -5116,7 +5118,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/userSecurityGroupList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/user/userSecurityGroupList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="userSecurityGroupList" style="commonSearchList">
@@ -5191,7 +5193,7 @@
         <section>
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/securityGroupDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/user/securityGroupDetail.groovy"/>
                 <set field="detailFormName" value="userSecurityGroupForm"/>
             </actions>
             <widgets>
@@ -5217,7 +5219,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/securityGroupList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/user/securityGroupList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="lookupSecurityGroupList" style="lookupList">
@@ -5297,7 +5299,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/securityGroupPermissionList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/user/securityGroupPermissionList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="securityGroupPermissionList" style="commonSearchList">
@@ -5372,7 +5374,7 @@
         <section>
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/permissionDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/user/permissionDetail.groovy"/>
                 <set field="detailFormName" value="securityGroupPermissionForm"/>
             </actions>
             <widgets>
@@ -5398,7 +5400,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/user/permissionSelectorList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/user/permissionSelectorList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="lookupPermissionList" style="lookupList">
@@ -5665,7 +5667,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/contentSpotList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/content/contentSpotList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="${contentSpotListId}" style="commonSearchList">
@@ -5843,7 +5845,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/contentSpotDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/content/contentSpotDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ContentDetailHeading}: ${content.contentId}"/>
                       </actions>
                       <widgets>
@@ -5972,7 +5974,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="plpContentList" style="commonSearchList">
@@ -6091,7 +6093,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="contentDetail" style="commonSearchList">
@@ -6162,8 +6164,8 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/dashboard/periodRange.groovy"/>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/topProductsDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/dashboard/periodRange.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/product/topProductsDetail.groovy"/>
                       </actions>
                       <widgets>
                         <include-screen name="PeriodRange" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -6225,7 +6227,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/parameterList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/parameterList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="productStoreParmList" style="commonSearchList">
@@ -6307,7 +6309,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/parameterDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/parameterDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="parameterDetail" style="parameterDetail">
@@ -6422,7 +6424,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/product/productList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="productList" style="commonSearchList">
@@ -6471,7 +6473,7 @@
     <screen name="productSearch">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -6508,8 +6510,8 @@
                 <set field="helperFileName" value ="productDetailHelp.htm"/>
                 <set field="activeTopMenuItem" value="CatalogNav"/>
                 <set field="activeSubMenuItem" value="CatalogProductNav"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productPriceDetail.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productPriceDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productDetail.groovy"/>
                 <set field="productInfoBoxHeading" value="${uiLabelMap.ProductDetailsHeading} ${product.productId}: ${productDetailHeading}"/>
                 <set field="productFeatureBoxHeading" from-field="productFeatureBoxHeading" default-value="${uiLabelMap.ProductFeatureHeading}"/>
             </actions>
@@ -6531,8 +6533,8 @@
                 <set field="helperFileName" value ="productDetailHelp.htm"/>
                 <set field="activeTopMenuItem" value="CatalogNav"/>
                 <set field="activeSubMenuItem" value="CatalogProductNav"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productPriceDetail.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productPriceDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productDetail.groovy"/>
                 <set field="productInfoBoxHeading" value="${uiLabelMap.ProductDetailsHeading} ${product.productId}: ${productDetailHeading}"/>
                 <set field="productFeatureBoxHeading" from-field="productFeatureBoxHeading" default-value="${uiLabelMap.ProductFeatureHeading}"/>
                 <set field="addToCartAction" value="addToCart"/>
@@ -6557,9 +6559,9 @@
                 <set field="activeTopMenuItem" value="CatalogNav"/>
                 <set field="activeSubMenuItem" value="CatalogProductNav"/>
                 <set field="descriptionTooltipMaxChar" value="50"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productPriceDetail.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productDetail.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/addProductVariant.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productPriceDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/addProductVariant.groovy"/>
                 <set field="productInfoBoxHeading" value="${uiLabelMap.ProductDetailsHeading} ${product.productId}: ${productDetailHeading}"/>
                 <set field="productVirtualInfoBoxHeading" value="${uiLabelMap.VirtualProductAttributesHeading}"/>
                 <set field="productVariantFeatureBoxHeading" value="${uiLabelMap.ProductSelectableFeaturesHeading}"/>
@@ -6611,7 +6613,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productIdentification.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productIdentification.groovy"/>
                         <set field="warningText" value="${uiLabelMap.SolrReIndexProductHelperInfo}"/>
                         <set field="warningUrl" value="adminToolDetail?detailScreen=solrReIndexDetail"/>
                       </actions>
@@ -6692,7 +6694,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/manufacturerList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/manufacturerList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="lookupManufacturerList" style="lookupList">
@@ -6857,7 +6859,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductVideosDetailsHeading} ${product.productId}: ${productDetailHeading}"/>
                       </actions>
                       <widgets>
@@ -6939,7 +6941,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/productContentSpotList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/content/productContentSpotList.groovy"/>
                          <set field="listBoxHeading" value="${uiLabelMap.ProductContentListHeading} ${productId}: ${productDetailHeading}"/>
                       </actions>
                       <widgets>
@@ -7000,7 +7002,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/contentSpotDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/content/contentSpotDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${parameters.productContentTypeId}. ${uiLabelMap.ProductHeading} ${parameters.productId}: ${productDetailHeading}"/>
                       </actions>
                       <widgets>
@@ -7094,7 +7096,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageUiLabelList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/manageUiLabelList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="manageUiLabelList" style="commonSearchList">
@@ -7239,7 +7241,7 @@
                     <decorator-section name="body">
                      <section>
                           <actions>
-                                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/uiLabelDetail.groovy"/>
+                                <script location="component://osafeadmin/groovyScripts/admin/uiLabelDetail.groovy"/>
                                 <set field="helperText" value="${uiLabelMap.CacheResetHelperInfo}"/>
                           </actions>
                       <widgets>
@@ -7323,7 +7325,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productFeatureList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productFeatureList.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductFeaturesHeading} ${product.productId}: ${productDetailHeading}"/>
                         <set field="warningText" value="${uiLabelMap.ProductFeatureUpdateWarning}"/>
                         <set field="warningUrl" value="adminToolDetail?detailScreen=solrReIndexDetail"/>
@@ -7395,7 +7397,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productFeatureDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productFeatureDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductFeaturesDetailHeading} ${product.productId}: ${productDetailHeading}"/>
                         <set field="warningText" value="${uiLabelMap.ProductFeatureUpdateWarning}"/>
                         <set field="warningUrl" value="adminToolDetail?detailScreen=solrReIndexDetail"/>
@@ -7469,7 +7471,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productVariantList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productVariantList.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductVariantsHeading} ${product.productId}: ${productDetailHeading}"/>
                       </actions>
                       <widgets>
@@ -7519,9 +7521,9 @@
                 <set field="helperFileName" value ="productDetailHelp.htm"/>
                 <set field="activeTopMenuItem" value="CatalogNav"/>
                 <set field="activeSubMenuItem" value="CatalogProductNav"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productVariantGroup.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productPriceDetail.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productVariantGroup.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productPriceDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productDetail.groovy"/>
                 <set field="productInfoBoxHeading" value="${uiLabelMap.ProductVariantGroupDetailsHeading} ${product.productId}: ${productDetailHeading}"/>
                 <set field="warningText" value="${uiLabelMap.SolrReIndexProductHelperInfo}"/>
                 <set field="warningUrl" value="adminToolDetail?detailScreen=solrReIndexDetail"/>
@@ -7556,9 +7558,9 @@
                 <set field="detailFormName" value="addProductVariant"/>
                 <set field="usePreviousParams" value="Y"/>
                 <set field="descriptionTooltipMaxChar" value="50"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productDetail.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/addProductVariant.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productPriceDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/addProductVariant.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productPriceDetail.groovy"/>
                 <set field="productVirtualInfoBoxHeading" value="${uiLabelMap.VirtualProductAttributesHeading}"/>
                 <set field="productInfoBoxHeading" value="${uiLabelMap.ProductDetailsHeading}"/>
                 <set field="productVariantFeatureBoxHeading" value="${uiLabelMap.ProductSelectableFeaturesHeading}"/>
@@ -7622,7 +7624,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productImages.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productImages.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductImagesHeading} ${product.productId}: ${productDetailHeading}"/>
                       </actions>
                       <widgets>
@@ -7698,7 +7700,7 @@
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="altImgNo" from-field="altImageNum"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productAltImages.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productAltImages.groovy"/>
                 <set field="detailInfoBoxHeading" value="${detailInfoBoxHeading} ${product.productId}: ${productDetailHeading}"/>
             </actions>
             <widgets>
@@ -7752,7 +7754,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productImages.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productImages.groovy"/>
                         <!--  set field="detailInfoBoxHeading" value="${uiLabelMap.ProductAttachmentsHeading} ${product.productId}: ${productDetailHeading}"/> -->
                       </actions>
                       <widgets>
@@ -7815,7 +7817,7 @@
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="attachNo" from-field="attachNum"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productAttachments.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productAttachments.groovy"/>
                 <set field="detailInfoBoxHeading" value="${detailInfoBoxHeading} ${product.productId}: ${productDetailHeading}"/>
             </actions>
             <widgets>
@@ -7845,7 +7847,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/solrConfigList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/solrConfigList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="solrConfigList" style="commonSearchList">
@@ -7890,7 +7892,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/lookupDataList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/lookupDataList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="lookupDataList" style="commonSearchList">
@@ -7936,7 +7938,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/facetValueList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/facetValueList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="facetValueList" style="commonSearchList">
@@ -7985,7 +7987,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/facetValueDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/facetValueDetail.groovy"/>
                         <set field="warningText" value="${uiLabelMap.FacetValueDetailWarningInfo}"/>
                         <set field="warningUrl" value="adminToolDetail?detailScreen=solrReIndexDetail"/>
                       </actions>
@@ -8118,7 +8120,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/facetGroupDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/facetGroupDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonFacetGroupDetail" style="commonDetail">
@@ -8244,7 +8246,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productImages.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productImages.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.DefaultSwatchImagesHeading} : ${parameters.productFeatureId}"/>
                       </actions>
                       <widgets>
@@ -8306,7 +8308,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="facetGroupList" style="commonSearchList">
@@ -8361,7 +8363,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/facetGroupDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/facetGroupDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="facetGroupDetail" style="commonDetail">
@@ -8418,7 +8420,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/emailConfigList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/emailConfigList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="emailConfigList" style="commonSearchList">
@@ -8483,7 +8485,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/emailConfigDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/emailConfigDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="emailConfigDetail" style="emailConfigDetail">
@@ -8540,7 +8542,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/adminToolList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/adminToolList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="adminToolList" style="commonSearchList">
@@ -8638,7 +8640,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/paymentSettingsList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/paymentSettingsList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="paymentSettingsList" style="commonSearchList">
@@ -8683,7 +8685,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageEmailList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/manageEmailList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="manageEmailList" style="commonSearchList">
@@ -8735,7 +8737,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productPriceDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/product/productPriceDetail.groovy"/>
                             <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductPricingHeading} ${product.productId}: ${productDetailHeading}"/>
                             <set field="warningText" value="${uiLabelMap.ProdPricingSolrReIndexHelperInfo}"/>
                             <set field="warningUrl" value="adminToolDetail?detailScreen=solrReIndexDetail"/>
@@ -8823,7 +8825,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/clearCacheDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/admin/clearCacheDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="clearLabelCacheDetail" style="clearLabelCacheDetail">
@@ -8997,7 +8999,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/storelocation/storeLocationList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/storelocation/storeLocationList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="storeList" style="commonSearchList">
@@ -9090,7 +9092,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/storelocation/storeLocationDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/storelocation/storeLocationDetail.groovy"/>
                         <set field="confirmAction" value="deleteStoreLocation"/>
                         <set field="confirmActionBtn" value="${uiLabelMap.DeleteBtn}"/>
                         <set field="confirmDialogText" value="${uiLabelMap.DeleteStoreLocationConfirmText}"/>
@@ -9262,7 +9264,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productMetatagDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productMetatagDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductHTMLMetatagsDetailHeading} ${product.productId}: ${productDetailHeading}"/>
                       </actions>
                       <widgets>
@@ -9328,7 +9330,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/mediaContentList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/content/mediaContentList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="mediaContentList" style="commonSearchList">
@@ -9414,7 +9416,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/mediaContentDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/content/mediaContentDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.MediaDetailDetailsHeading}: ${mediaName}"/>
                       </actions>
                       <widgets>
@@ -9478,7 +9480,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                      	<script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/mediaContentDetail.groovy"/>
+                      	<script location="component://osafeadmin/groovyScripts/content/mediaContentDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="mediaDetail" style="mediaDetail">
@@ -9699,7 +9701,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/compareLabelFileResultList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/compareLabelFileResultList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="compareLabelFileResult" style="commonSearchList">
@@ -9869,7 +9871,7 @@
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="custRequestCSVName" value="RequestQuote_"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/custRequestCSV.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/customer/custRequestCSV.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="export-csv-decorator" location="component://osafeadmin/widget/CommonScreens.xml">
@@ -9943,7 +9945,7 @@
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="custRequestCSVName" value="Request-Catalog"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/custRequestCSV.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/customer/custRequestCSV.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="export-csv-decorator" location="component://osafeadmin/widget/CommonScreens.xml">
@@ -9971,7 +9973,7 @@
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="custRequestCSVName" value="ContactUs_"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/custRequestCSV.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/customer/custRequestCSV.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="export-csv-decorator" location="component://osafeadmin/widget/CommonScreens.xml">
@@ -10007,7 +10009,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/custRequestList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/customer/custRequestList.groovy"/>
                       </actions>
                       <widgets>
                         <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -10121,8 +10123,8 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/custRequestDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/customer/custRequestDetail.groovy"/>
                       </actions>
                       <widgets>
 	                      <container id="${custRequestDetailId}" style="commonDetail">
@@ -10222,7 +10224,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/editStyleDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/admin/editStyleDetail.groovy"/>
                       </actions>
                       <widgets>
                       <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -10309,7 +10311,7 @@
     <screen name="manageStyleDetail">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageStyleDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/admin/manageStyleDetail.groovy"/>
             </actions>
             <widgets>
               <container id="manageClientCssDetail" style="manageClientCssDetail">
@@ -10355,7 +10357,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productSelectorList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productSelectorList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="lookupProductList" style="lookupList">
@@ -10427,7 +10429,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="lookupCategoryList" style="lookupList">
@@ -10464,7 +10466,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/catalogList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/catalogList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="lookupTopCategoryList" style="lookupList">
@@ -10503,7 +10505,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/partyClassificationGroup.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/customer/partyClassificationGroup.groovy"/>
                         <set field="searchBoxHeading" value="${uiLabelMap.PartyClassificationGroupPickerTitle}"/>
                       </actions>
                       <widgets>
@@ -10578,7 +10580,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productFeature.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productFeature.groovy"/>
                         <set field="searchBoxHeading" value="${uiLabelMap.ProductFeaturePickerTitle}"/>
                       </actions>
                       <widgets>
@@ -10650,7 +10652,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productFeature.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productFeature.groovy"/>
                         <set field="searchBoxHeading" value="${uiLabelMap.DescriptiveFeaturePickerTitle} (${featureTypeDescription})"/>
                       </actions>
                       <widgets>
@@ -10717,7 +10719,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/categoryMetatagDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/categoryMetatagDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.categoryHTMLMetatagsDetailHeading} : ${productCategoryName}"/>
                       </actions>
                       <widgets>
@@ -10777,7 +10779,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/staticPageMetatagDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/content/staticPageMetatagDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="staticPageMetaTagDetail" style="staticPageMetaTagDetail">
@@ -10835,7 +10837,7 @@
                     <decorator-section name="body">
                      <section>
                          <actions>
-                             <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/bigfishFeedsList.groovy"/>
+                             <script location="component://osafeadmin/groovyScripts/admin/bigfishFeedsList.groovy"/>
                          </actions>
                       <widgets>
                         <container id="feedsList" style="commonSearchList">
@@ -11694,7 +11696,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/exportCustomerXML.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/customer/exportCustomerXML.groovy"/>
                       </actions>
                       <widgets>
                         <container id="feedsCustomerExportDetail" style="feedsCustomerExportDetail">
@@ -11749,7 +11751,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/exportOrderXML.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/order/exportOrderXML.groovy"/>
                       </actions>
                       <widgets>
                         <container id="feedsOrderExportDetail" style="feedsOrderExportDetail">
@@ -11804,7 +11806,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/exportCustRequestXML.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/customer/exportCustRequestXML.groovy"/>
                       </actions>
                       <widgets>
                         <container id="feedsContactUsExportDetail" style="feedsContactUsExportDetail">
@@ -11860,7 +11862,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/exportCustRequestXML.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/customer/exportCustRequestXML.groovy"/>
                       </actions>
                       <widgets>
                         <container id="feedsRequestCatalogExportDetail" style="feedsRequestCatalogExportDetail">
@@ -11898,7 +11900,7 @@
     <screen name="productLoadersList">
         <section>
             <actions>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/productLoaderList.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/admin/productLoaderList.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -11988,7 +11990,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/productLoaderPreview.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/productLoaderPreview.groovy"/>
                       </actions>
                       <widgets>
                         <container id="xlsLoaderPreview" style="productLoaderDetail">
@@ -12241,7 +12243,7 @@
                     <decorator-section name="body">
                      <section>
                          <actions>
-                             <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/imageLocationPreferences.groovy"/>
+                             <script location="component://osafeadmin/groovyScripts/admin/imageLocationPreferences.groovy"/>
                          </actions>
                       <widgets>
                         <container id="imageLocationPreferencesDetail" style="productLoaderDetail">
@@ -12290,7 +12292,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/categoryImageDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/categoryImageDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.CategoryImageHeading} : ${productCategory.categoryName}"/>
                       </actions>
                       <widgets>
@@ -12352,7 +12354,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                           <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productAssociationDetail.groovy"/>
+                           <script location="component://osafeadmin/groovyScripts/product/productAssociationDetail.groovy"/>
                            <set field="accessoryProductInfoBoxHeading" value="${uiLabelMap.AccessoryAssociationForHeading}: ${product.productId} - ${productDetailHeading}"/>
                            <set field="complementProductInfoBoxHeading" value="${uiLabelMap.ComplementAssociationForHeading}: ${product.productId} - ${productDetailHeading}"/>
                       </actions>
@@ -12464,7 +12466,7 @@
         <section>
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/product/productDetail.groovy"/>
                 <set field="detailFormName" value="productAssocForm"/>
             </actions>
             <widgets>
@@ -12575,7 +12577,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/sysConfigFileList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/sysConfigFileList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="sysConfigFileList" style="commonSearchList">
@@ -12619,7 +12621,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/sysConfigFileDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/admin/sysConfigFileDetail.groovy"/>
                           <set field="detailInfoBoxHeading" value="${sysConfigFileName}"/>
                       </actions>
                       <widgets>
@@ -12731,7 +12733,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/compareParametersResultList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/compareParametersResultList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="compareParametersResult" style="commonSearchList">
@@ -12836,7 +12838,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageDivSequence.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/manageDivSequence.groovy"/>
                             <set field="detailId" value="${parameters.screenType}"/>
                             <set field="warningText" value="${uiLabelMap.CacheResetHelperInfo}"/>
                             <set field="warningUrl" value="adminToolDetail?detailScreen=clearCacheDetail"/>
@@ -12922,7 +12924,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageCustomPartyAttributes.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/manageCustomPartyAttributes.groovy"/>
                       </actions>
                       <widgets>
                         <container id="manageCustomPartyAttributesDetail" style="commonSearchList">
@@ -13017,7 +13019,7 @@
                     <decorator-section name="body">
                      <section>
                           <actions>
-                                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/customPartyAttributeItemDetail.groovy"/>
+                                <script location="component://osafeadmin/groovyScripts/admin/customPartyAttributeItemDetail.groovy"/>
                           </actions>
                       <widgets>
                         <container id="customPartyAttributeItemDetail" style="customPartyAttributeItemDetail">
@@ -13075,7 +13077,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/paymentGatewayConfigList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/paymentGatewayConfigList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="paymentGatewayConfigList" style="commonList">
@@ -13447,7 +13449,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/pixelTrackingList.groovy"/>
+                                <script location="component://osafeadmin/groovyScripts/admin/pixelTrackingList.groovy"/>
                             </actions>
                             <widgets>
                                 <container id="pageTaggingList" style="commonList">
@@ -13505,7 +13507,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/pixelTrackingDetail.groovy"/>
+                                <script location="component://osafeadmin/groovyScripts/admin/pixelTrackingDetail.groovy"/>
                             </actions>
                             <widgets>
                                 <container id="pageTaggingDetail" style="commonDetail">
@@ -13576,7 +13578,7 @@
                     <decorator-section name="body">
                         <section>
                             <actions>
-                                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/pixelTrackingDetail.groovy"/>
+                                <script location="component://osafeadmin/groovyScripts/admin/pixelTrackingDetail.groovy"/>
                             </actions>
                             <widgets>
                                 <container id="pageTaggingDetail" style="commonDetail">
@@ -13702,7 +13704,7 @@
                     <decorator-section name="body">
                         <section>
                            <actions>
-                                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/paymentSettingDetail.groovy"/>
+                                <script location="component://osafeadmin/groovyScripts/admin/paymentSettingDetail.groovy"/>
                             </actions>
                             <widgets>
                                 <container id="paymentSettingDetail" style="commonDetail">
@@ -13811,7 +13813,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/compareDivSequencelFileResultList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/compareDivSequencelFileResultList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="compareDivSequenceFileResult" style="commonSearchList">
@@ -13979,7 +13981,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageDivSequence.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/manageDivSequence.groovy"/>
                             <set field="detailId" value="${parameters.screenType}"/>
                             <set field="helperText" value="${uiLabelMap.CacheResetHelperInfo}"/>
                       </actions>
@@ -14031,7 +14033,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageDivSequence.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/manageDivSequence.groovy"/>
                             <set field="detailId" value="${parameters.screenType}"/>
                             <set field="helperText" value="${uiLabelMap.CacheResetHelperInfo}"/>
                       </actions>
@@ -14424,7 +14426,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/sysHealthCheckList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/admin/sysHealthCheckList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="sysHealthCheckList" style="commonSearchList">
@@ -14486,7 +14488,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/entityRowSizeAnalysisDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/entityRowSizeAnalysisDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="entityRowSizeHealthCheckDetail" style="commonSearchList">
@@ -14565,7 +14567,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/scheduledJobsAnalysisDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/scheduledJobsAnalysisDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="scheduledJobsHealthCheckDetail" style="commonSearchList">
@@ -14637,7 +14639,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/loggingParamsAnalysisDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/loggingParamsAnalysisDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="loggingParamsHealthCheckDetail" style="commonDetail">
@@ -14791,7 +14793,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productCategoryMembershipDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productCategoryMembershipDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductCategoryMembershipHeading} ${product.productId}: ${productDetailHeading}"/>
                       </actions>
                       <widgets>
@@ -14933,7 +14935,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/taxList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/shipping/taxList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="taxList" style="commonSearchList">
@@ -14992,7 +14994,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/taxDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/shipping/taxDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.TaxDetailHeading}: ${taxAuthorityRateProduct.taxAuthGeoId}"/>
                         <set field="detailListBoxHeading" value="${uiLabelMap.AssociatedGeoItemsHeading}"/>
                       </actions>
@@ -15076,7 +15078,7 @@
 						<section>
 							<actions>
 								<script
-									location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/shipmentGatewayConfig.groovy" />
+									location="component://osafeadmin/groovyScripts/shipping/shipmentGatewayConfig.groovy" />
 							</actions>
 							<widgets>
 								<container id="shipmentGatewaysManagement" style="commonSearchList">
@@ -15137,7 +15139,7 @@
 				<set field="mode" value="edit" />
 				<set field="activeTopMenuItem" value="ShippingNav"/>
                 <set field="activeSubMenuItem" value="ShipmentGatewaysNav"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/shipping/shipmentGatewayConfigDetail.groovy" />
+                <script location="component://osafeadmin/groovyScripts/shipping/shipmentGatewayConfigDetail.groovy" />
             </actions>
 			<widgets>				                
 			<decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -15223,7 +15225,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/abandonedCartAnalysis.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/customer/abandonedCartAnalysis.groovy"/>
                       </actions>
                       <widgets>
                       <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -15313,7 +15315,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/abandonedCartList.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/customer/abandonedCartList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="abandonedCartList" style="commonSearchList">
@@ -15393,8 +15395,8 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/abandonedCartDetailList.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/customer/abandonedCartDetailList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="abandonedCartDetail" style="commonCustomerActivityDetail">
@@ -15455,7 +15457,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                          <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderPaymentDetail.groovy"/>
+                          <script location="component://osafeadmin/groovyScripts/order/orderPaymentDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="paymentDetail" style="commonPaymentDetail">
@@ -15516,7 +15518,7 @@
             <actions>
                 <property-map resource="OSafeAdminUiLabels" map-name="uiLabelMap" global="true" />
                 <set field="orderPaymentPreferenceId" from-field="orderPaymentPreferenceId"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderPaymentDetail.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/order/orderPaymentDetail.groovy"/>
                 <set field="detailInfoBoxHeading" value="&lt;span class=&quot;detailBoxDateHeading&quot;&gt; ${date} ${time} &lt;/span&gt; &lt;span class=&quot;detailBoxDescriptionHeading&quot; &gt;${description}&lt;/span&gt; 
                               &lt;span class=&quot;detailBoxMaxAmountHeading&quot;&gt;${maxAmount}&lt;/span&gt;&lt;span class=&quot;detailBoxStatusDescriptionHeading&quot;&gt; ${statusDescription}&lt;/span&gt;"/>
                 <set field="paymentMethodInfoHeading" value="${paymentMethodInfoHeading}"/>
@@ -15613,7 +15615,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/ratingReviewAnalysis.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/product/ratingReviewAnalysis.groovy"/>
                       </actions>
                       <widgets>
                         <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -15680,7 +15682,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/ratingReviewSummary.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/product/ratingReviewSummary.groovy"/>
                       </actions>
                       <widgets>
                         <include-screen name="PageMessages" location="component://osafeadmin/widget/CommonScreens.xml"/>
@@ -15776,7 +15778,7 @@
             <actions>
             	<property-map resource="OSafeUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="eCommerceIdMap" map-name="idMap" global="true" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/emailConfigTemplateActionList.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/admin/emailConfigTemplateActionList.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -15902,7 +15904,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerManagementList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/customer/customerManagementList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="lookupCustomerList" style="lookupList">
@@ -15969,9 +15971,9 @@
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/setup/AdminSetup.groovy" />
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/dashboard/dailySalesCounter.groovy"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/shippingLabelPDF.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/setup/AdminSetup.groovy" />
+                <script location="component://osafeadmin/groovyScripts/dashboard/dailySalesCounter.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/order/shippingLabelPDF.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -16005,7 +16007,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/manufacturerManagementList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/catalog/manufacturerManagementList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="manufacturerManagement" style="commonSearchList">
@@ -16099,7 +16101,7 @@
                 <set field="activeTopMenuItem" value="CatalogNav"/>
                 <set field="activeSubMenuItem" value="ManufacturerMgmntNav"/>
                 <entity-one value-field="postalAddress" entity-name="PostalAddress"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/adminCountry.groovy" />
+                <script location="component://osafeadmin/groovyScripts/common/adminCountry.groovy" />
             </actions>
             <widgets>
                 <include-screen name="commonManufacturerDetail" />
@@ -16129,7 +16131,7 @@
                 <set field="activeTopMenuItem" value="CatalogNav"/>
                 <set field="activeSubMenuItem" value="ManufacturerMgmntNav"/>
                 <entity-one value-field="postalAddress" entity-name="PostalAddress"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/common/adminCountry.groovy" />
+                <script location="component://osafeadmin/groovyScripts/common/adminCountry.groovy" />
             </actions>
             <widgets>
                 <include-screen name="commonManufacturerDetail" />
@@ -16146,7 +16148,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/manufacturerDetail.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/catalog/manufacturerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonManufacturerDetail" style="commonCustomerDetail">
@@ -16257,7 +16259,7 @@
                      <section>
                       <actions>
                         
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderApplyPaymentDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/order/orderApplyPaymentDetail.groovy"/>
                         <set field="argListNames[]" from-field="notesCount"/>
                         <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -16316,7 +16318,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageBigfishParameter.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/manageBigfishParameter.groovy"/>
                             <set field="fileToExport" from-field="parameterFileName"/>
                             <set field="detailId" value="${parameters.parameterFileName}"/>
                             <set field="warningText" value="${uiLabelMap.CacheResetHelperInfo}"/>
@@ -16441,7 +16443,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageBigfishParameter.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/manageBigfishParameter.groovy"/>
                             <set field="detailId" value="${parameters.screenType}"/>
                             <set field="helperText" value="${uiLabelMap.CacheResetHelperInfo}"/>
                       </actions>
@@ -16509,7 +16511,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/organizationManagementList.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/customer/organizationManagementList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="organizationManagement" style="commonSearchList">
@@ -16639,7 +16641,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                              <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
+                              <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="organizationAddressDetail" style="organizationAddressDetail">
@@ -16685,7 +16687,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                         <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
+                         <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonOrganizationDetail" style="commonOrganizationDetail">
@@ -16878,7 +16880,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                              <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/customerDetail.groovy"/>
+                              <script location="component://osafeadmin/groovyScripts/customer/customerDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="customerAddressDetail" style="commonCustomerDetail">
@@ -16920,7 +16922,7 @@
             <actions>
                 <set field="ExportToPdfAction" value ="AdminCustomer.pdf"/>
                 <set field="ExportToXMLAction" value ="exportCustomerXML"/>
-                <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/partyRelationshipList.groovy"/>
+                <script location="component://osafeadmin/groovyScripts/customer/partyRelationshipList.groovy"/>
             </actions>
             <widgets>
 	            <platform-specific>
@@ -17006,7 +17008,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/priceRuleList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/catalog/priceRuleList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="priceRule" style="commonSearchList">
@@ -17136,7 +17138,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/catalog/priceRuleDetail.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/catalog/priceRuleDetail.groovy"/>
                       </actions>
                       <widgets>
                         <container id="commonPriceRuleDetail" style="commonPromotionDetail">
@@ -17264,7 +17266,7 @@
                      <section>
                       <actions>
                         
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/order/orderNoteDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/order/orderNoteDetail.groovy"/>
                         <set field="argListNames[]" from-field="notesCount"/>
                         <property-to-field resource="OSafeAdminUiLabels" property="OrderNotesLabel" field="orderNotesTooltipText" arg-list-name="argListNames"/>
                       </actions>
@@ -17327,7 +17329,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                        <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productAttributeDetail.groovy"/>
+                        <script location="component://osafeadmin/groovyScripts/product/productAttributeDetail.groovy"/>
                         <set field="detailInfoBoxHeading" value="${uiLabelMap.ProductAttributeDetailHeading} ${product.productId}: ${productDetailHeading}"/>
                       </actions>
                       <widgets>
@@ -17397,7 +17399,7 @@
                     <decorator-section name="body">
                      <section>
                       <actions>
-                            <script location="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/manageUiLabelList.groovy"/>
+                            <script location="component://osafeadmin/groovyScripts/admin/manageUiLabelList.groovy"/>
                       </actions>
                       <widgets>
                         <container id="manageAdminUiLabelList" style="commonSearchList">

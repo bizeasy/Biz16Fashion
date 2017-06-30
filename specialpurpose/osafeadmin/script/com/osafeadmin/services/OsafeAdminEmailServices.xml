@@ -26,7 +26,7 @@
         <property-to-field field="delim" resource="osafeAdmin" property="email-address-separator"/>
         <set field="del" from-field="delim" default-value=","/>
         <if-not-empty field="parameters.ccAddress">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkMultiEmailAddress" ret-field="emailValid">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkMultiEmailAddress" ret-field="emailValid">
                 <field field="parameters.ccAddress"/>
                 <field field="del"  type="String"/>
             </call-class-method>
@@ -37,7 +37,7 @@
         </if-not-empty>
         
         <if-not-empty field="parameters.bccAddress">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="checkMultiEmailAddress" ret-field="emailValid">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="checkMultiEmailAddress" ret-field="emailValid">
                 <field field="parameters.bccAddress"/>
                 <field field="del"  type="String"/>
             </call-class-method>
@@ -304,7 +304,7 @@
                   <set field="productStoreId" from-field="parameters.productStoreId"/>
              </else>
         </if-empty>
-	    <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="preferredDateFormat">
+	    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="preferredDateFormat">
 	            <field field="productStoreId" type="String"/>
 	            <string value="FORMAT_DATE"/>
 	    </call-class-method>
@@ -312,11 +312,11 @@
 	    	<set field="preferredDateFormat" from-field="MM/dd/y"/>
 	    </if-empty>
 	    <now-timestamp field="nowTimeStamp"/>
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="parameters.nowDate">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="parameters.nowDate">
             <field field="nowTimeStamp" type="Timestamp"/>
             <field field="preferredDateFormat" type="String"/>
         </call-class-method>
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="parameters.nowTime">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="parameters.nowTime">
             <field field="nowTimeStamp" type="Timestamp"/>
             <string value="h:mma"/>
         </call-class-method>
@@ -358,7 +358,7 @@
     
     <simple-method method-name="sendTxtMessageTest" short-description="This Service Validates and sends a Txt Message">
 
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="msgMethod">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="msgMethod">
             <field field="parameters.productStoreId" type="String"/>
             <string value="TXT_MESSAGE_METHOD"/>
         </call-class-method>
@@ -445,7 +445,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankToCellError"/>
             <string-to-list string="${tempErrorMessage}" message-field="toCell" list="error_list"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isNumber" ret-field="isNumber">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isNumber" ret-field="isNumber">
                 <field field="parameters.toCell"/>
             </call-class-method>
             <if-compare field="isNumber" operator="equals"  value="false">

@@ -1,6 +1,6 @@
-<#assign monthBackStamp=Static["com.osafe.util.OsafeAdminUtil"].getMonthBackTimeStamp(1)>
+<#assign monthBackStamp=Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getMonthBackTimeStamp(1)>
 <#assign defaultTodate=Static["org.apache.ofbiz.base.util.UtilDateTime"].getMonthEnd(monthBackStamp,timeZone,locale)>
-<#assign monthBackStamp=Static["com.osafe.util.OsafeAdminUtil"].getMonthBackTimeStamp(3)>
+<#assign monthBackStamp=Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getMonthBackTimeStamp(3)>
 <#assign defaultFromdate=Static["org.apache.ofbiz.base.util.UtilDateTime"].getMonthStart(monthBackStamp,timeZone,locale)>
 <!-- start searchBox -->
 <div class="entryRow">

@@ -7,7 +7,7 @@
   <#assign curDateTime = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().toString()/>
 
       <#-- Product Video Image -->
-      <#assign videoUrlPathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PDP_VIDEO_URL")! />
+      <#assign videoUrlPathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PDP_VIDEO_URL")! />
       <#if productVideoUrl?has_content && productVideoUrl != "">
         <#assign productVideoUrlStr = productVideoUrl.toString() />
         <#if productVideoUrlStr?has_content && (productVideoUrlStr.lastIndexOf("/") > 0)>
@@ -49,7 +49,7 @@
        </div>
        
        <#assign urlReferenceVideoUrlExist = "false"/>
-       <#if (productVideoUrlStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productVideoUrlStr)>
+       <#if (productVideoUrlStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productVideoUrlStr)>
          <#assign urlReferenceVideoUrlExist = "true" />
        </#if>
        
@@ -123,7 +123,7 @@
        </div>
        
        <#-- Product Video 360 Image -->
-      <#assign video360UrlPathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PDP_VIDEO_360_URL")! />
+      <#assign video360UrlPathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PDP_VIDEO_360_URL")! />
       <#if productVideo360Url?has_content && productVideo360Url != "">
         <#assign productVideo360UrlStr = productVideo360Url.toString() />
         <#if productVideo360UrlStr?has_content && (productVideo360UrlStr.lastIndexOf("/") > 0)>
@@ -163,7 +163,7 @@
        </div>
        
        <#assign urlReferenceVideo360UrlExist = "false"/>
-       <#if (productVideo360UrlStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productVideo360UrlStr)>
+       <#if (productVideo360UrlStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productVideo360UrlStr)>
          <#assign urlReferenceVideo360UrlExist = "true" />
        </#if>
        

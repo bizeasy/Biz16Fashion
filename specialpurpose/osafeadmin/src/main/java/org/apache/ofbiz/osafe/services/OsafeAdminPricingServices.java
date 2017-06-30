@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.sql.Timestamp;
 
@@ -40,7 +40,7 @@ import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
 import org.apache.ofbiz.service.ServiceUtil;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import java.math.BigDecimal;
 import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.base.util.MessageString;

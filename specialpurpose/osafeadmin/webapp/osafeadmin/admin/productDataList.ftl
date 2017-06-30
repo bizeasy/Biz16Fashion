@@ -193,7 +193,7 @@
         <td class="descCol">${product.productName!""}</td>
         <td class="nameCol">${product.salesPitch!""}</td>
         <td class="descCol">
-          <#assign longDescription = Static["com.osafe.util.OsafeAdminUtil"].formatSimpleText('${product.longDescription!""}')/>
+          <#assign longDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatSimpleText('${product.longDescription!""}')/>
           <#if longDescription !="">
             <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${longDescription!}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
           </#if>

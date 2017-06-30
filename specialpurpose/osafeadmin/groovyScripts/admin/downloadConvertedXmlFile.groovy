@@ -3,7 +3,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.FileInputStream;
 import org.apache.commons.io.FileUtils;
-import com.osafe.services.OsafeAdminFeedServices;
+import org.apache.ofbiz.osafe.services.OsafeAdminFeedServices;
 
 convertedFilePath = OsafeAdminFeedServices.getConvertedBigfishXMLFilePath();
 if(UtilValidate.isNotEmpty(convertedFilePath) && UtilValidate.isNotEmpty(parameters.convertedFileName))

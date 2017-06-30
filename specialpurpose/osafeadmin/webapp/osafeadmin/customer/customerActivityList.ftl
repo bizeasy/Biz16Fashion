@@ -10,8 +10,8 @@
     <#list resultList as customerActivity>
       <#assign hasNext = customerActivity_has_next>
       <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
-        <td class="idCol <#if !customerActivity_has_next?if_exists>lastRow</#if> firstCol">${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(customerActivity.activityDate, preferredDateFormat).toLowerCase())!"N/A"}</td>
-        <td class="dateCol <#if !customerActivity_has_next?if_exists>lastRow</#if>">${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(customerActivity.activityDate, preferredTimeFormat).toLowerCase())!"N/A"}</td>
+        <td class="idCol <#if !customerActivity_has_next?if_exists>lastRow</#if> firstCol">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(customerActivity.activityDate, preferredDateFormat).toLowerCase())!"N/A"}</td>
+        <td class="dateCol <#if !customerActivity_has_next?if_exists>lastRow</#if>">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(customerActivity.activityDate, preferredTimeFormat).toLowerCase())!"N/A"}</td>
         <td class="nameCol <#if !customerActivity_has_next?if_exists>lastRow</#if>">
         <#if customerActivity.activityLink !=''>
           <a href="<@ofbizUrl>${customerActivity.activityLink}</@ofbizUrl>">${customerActivity.activity}</a>

@@ -9,7 +9,7 @@
 	            <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductListPriceError"/>
 	            <string-to-list string="${tempErrorMessage}" message-field="listPrice" list="error_list"/>
 	        <else>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isFloat" ret-field="checkFloatResult">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isFloat" ret-field="checkFloatResult">
 	                <field field="parameters.listPrice"/>
 	            </call-class-method>
 	            <if-compare field="checkFloatResult" operator="equals" value="false" type="Boolean">
@@ -22,7 +22,7 @@
 	            <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidProductDefaultPriceError"/>
 	            <string-to-list string="${tempErrorMessage}" message-field="defaultPrice" list="error_list"/>
 	        <else>
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isFloat" ret-field="checkFloatResult">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isFloat" ret-field="checkFloatResult">
 	                <field field="parameters.defaultPrice"/>
 	            </call-class-method>
 	            <if-compare field="checkFloatResult" operator="equals" value="false" type="Boolean">
@@ -32,7 +32,7 @@
 	        </else>
 	        </if-empty>
 	        <if-not-empty field="parameters.recurringPrice">
-	            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isFloat" ret-field="checkFloatResult">
+	            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isFloat" ret-field="checkFloatResult">
 	                <field field="parameters.recurringPrice"/>
 	            </call-class-method>
 	            <if-compare field="checkFloatResult" operator="equals" value="false" type="Boolean">

@@ -1294,8 +1294,8 @@
         <#assign shoppingCartItemSize = shoppingCart.items().size()! />
       </#if>
       var cartItemsNo = ${shoppingCartItemSize!"0"};
-      <#assign PDP_QTY_MIN = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MIN")!"1"/>
-      <#assign PDP_QTY_MAX = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MAX")!"99"/> 
+      <#assign PDP_QTY_MIN = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MIN")!"1"/>
+      <#assign PDP_QTY_MAX = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MAX")!"99"/> 
       var lowerLimit = ${PDP_QTY_MIN!"1"};
       var upperLimit = ${PDP_QTY_MAX!"99"};
       var zeroQty = false;

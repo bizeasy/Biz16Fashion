@@ -29,7 +29,7 @@
       <label>${uiLabelMap.VisitDateTime}</label>
      </div>
      <div class="infoValue">
-       ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(visitDateTime!, preferredDateTimeFormat))!"N/A"}
+       ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(visitDateTime!, preferredDateTimeFormat))!"N/A"}
      </div>
    </div>
 </div>

@@ -158,7 +158,7 @@
 
         <!--  VALIDATE THE SHIP DATE -->
         <if-not-empty field="parameters.estimatedShipDate">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isDateTime" ret-field="checkDateValidResult">
                 <field field="parameters.estimatedShipDate"/>
                 <field field="parameters.entryDateTimeFormat"/>
             </call-class-method>
@@ -166,7 +166,7 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ValidShipDateError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="estimatedShipDate"  list="error_list"/>
                 <else>
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="estimatedShipDateTs">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="estimatedShipDateTs">
                         <field field="parameters.estimatedShipDate"/>
                         <field field="parameters.entryDateTimeFormat"/>
                     </call-class-method>
@@ -184,7 +184,7 @@
                          <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ShipDateBeforeOrderDateError"/>
                          <string-to-list string="${tempErrorMessage}" message-field="estimatedShipDate" list="error_list"/>
                          <else>
-                             <call-class-method class-name="com.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.estimatedShipDate">
+                             <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="toTimestamp" ret-field="parameters.estimatedShipDate">
                                  <field field="parameters.estimatedShipDate"/>
                                  <field field="parameters.entryDateTimeFormat"/>
                              </call-class-method>
@@ -522,11 +522,11 @@
         <!--   CREATE ORDER NOTE -->
         <set field="enteredNote" from-field="parameters.note"/>
         <now-timestamp field="nowTimestamp"/>
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="updatedDate">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="updatedDate">
             <field field="nowTimestamp" type="Timestamp"/>
             <field field="parameters.preferredDateFormat" type="String"/>
         </call-class-method>
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="updatedTime">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="updatedTime">
             <field field="nowTimestamp" type="Timestamp"/>
             <string value="h:mma"/>
         </call-class-method>
@@ -952,11 +952,11 @@
 		          </if-compare> 
 		          
 		          <if-not-empty field="parameters.estimatedShipDate">
-		              <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="fromShipDate">
+		              <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="fromShipDate">
 		                  <field field="existingOrderItemShipGroup.estimatedShipDate" type="Timestamp"/>
 		                  <field field="parameters.entryDateTimeFormat" type="String"/>
 		              </call-class-method>
-		              <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="newShipDate">
+		              <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="convertDateTimeFormat" ret-field="newShipDate">
 		                  <field field="parameters.estimatedShipDate" type="Timestamp"/>
 		                  <field field="parameters.entryDateTimeFormat" type="String"/>
 		              </call-class-method>
@@ -977,7 +977,7 @@
 	                  java.math.BigDecimal quantityBD = new java.math.BigDecimal(quantity);
 	                  parameters.put("quantityBD", quantityBD);
 	          ]]></call-bsh>
-	          <call-class-method class-name="com.osafe.services.InventoryServices" method-name="setProductInventoryLevel" >
+	          <call-class-method class-name="org.apache.ofbiz.osafe.services.InventoryServices" method-name="setProductInventoryLevel" >
 	              <field field="orderItem.productId"/>
 	              <field field="parameters.productStoreId"/>
 	              <field field="parameters.quantityBD" type="BigDecimal"/>
@@ -1111,11 +1111,11 @@
       
       
       
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="reviewSendEmail">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="reviewSendEmail">
             <field field="parameters.productStoreId" type="String"/>
             <string value="REVIEW_SEND_EMAIL"/>
         </call-class-method>
-        <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="isProductStoreParmTrue" ret-field="isReviewSendEmailActive">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="isProductStoreParmTrue" ret-field="isReviewSendEmailActive">
             <field field="reviewSendEmail"/>
         </call-class-method>
         <if>
@@ -1126,7 +1126,7 @@
                 </and>
             </condition>
             <then>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="reviewShipDays">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="getProductStoreParm" ret-field="reviewShipDays">
                     <field field="parameters.productStoreId" type="String"/>
                     <string value="EMAIL_REVIEW_SHP_DYS"/>
                 </call-class-method>

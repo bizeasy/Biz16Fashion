@@ -140,7 +140,7 @@
   </#if>
   <#if showCartLink == 'true'>
     <#if (product.productTypeId?if_exists == 'FINISHED_GOOD') && (product.isVirtual?if_exists == 'N')>
-      <#assign inventoryMethod = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"INVENTORY_METHOD")!/>
+      <#assign inventoryMethod = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"INVENTORY_METHOD")!/>
       <#assign notIntroduced = false />
       <#if product.introductionDate?has_content>
         <#assign introDate = product.introductionDate! />
@@ -162,7 +162,7 @@
       <#else>
         <!-- If inventory method is BigFish then check how many items are in stock -->
         <#if inventoryMethod?has_content && inventoryMethod.toUpperCase() == "BIGFISH" >
-          <#assign inventoryOutOfStockTo = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"INVENTORY_OUT_OF_STOCK_TO")!/>
+          <#assign inventoryOutOfStockTo = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"INVENTORY_OUT_OF_STOCK_TO")!/>
           <#assign bfProductAllAttributes = product.getRelated("ProductAttribute") />
           <#if bfProductAllAttributes?has_content>
             <#assign bfTotalInventoryProductAttributes = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(bfProductAllAttributes,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap('attrName','BF_INVENTORY_TOT'))/> 
@@ -173,7 +173,7 @@
             <#assign bfTotalInventory = bfTotalInventoryProductAttribute.attrValue!>
           </#if>
           <#if bfTotalInventory?has_content && inventoryOutOfStockTo?has_content && (bfTotalInventory?number > inventoryOutOfStockTo?number)>
-            <#assign pdpMaxQty = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MAX")!"99"/>
+            <#assign pdpMaxQty = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MAX")!"99"/>
             <#assign pdpMaxQtyNum = pdpMaxQty?number />
             <#assign qtyInCart = 0?number />
             <#if shoppingCart?has_content>
@@ -192,7 +192,7 @@
             <a href="javascript:void(0);javascript:alert('${uiLabelMap.OutOfStockAddToCartError}');" onMouseover="showTooltip(event,'${uiLabelMap.AddToCartTooltip}');" onMouseout="hideTooltip()"><span class="adminAddCartIcon"></span></a>
           </#if>
         <#else>
-          <#assign pdpMaxQty = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MAX")!"99"/>
+          <#assign pdpMaxQty = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request,"PDP_QTY_MAX")!"99"/>
           <#assign pdpMaxQtyNum = pdpMaxQty?number />
           <#assign qtyInCart = 0?number />
           <#if shoppingCart?has_content>

@@ -12,7 +12,7 @@
   <input type="hidden" name="productContentTypeId" id="productContentTypeId" value="${parameters.productContentTypeId!}"/>
       
       <#-- Product Large Image -->
-      <#assign largeImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("LARGE_IMAGE_URL")! />
+      <#assign largeImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("LARGE_IMAGE_URL")! />
       <#if productLargeImage?has_content && productLargeImage != "">
         <#assign productLargeImageStr = productLargeImage.toString() />
         <#if productLargeImageStr?has_content && (productLargeImageStr.lastIndexOf("/") > 0)>
@@ -50,7 +50,7 @@
        </div>
        
        <#assign urlReferenceLargeImageExist = "false"/>
-       <#if (productLargeImageStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productLargeImageStr)>
+       <#if (productLargeImageStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productLargeImageStr)>
          <#assign urlReferenceLargeImageExist = "true"/>
        </#if>
        
@@ -121,7 +121,7 @@
        </div>
        
        <#-- Product Thumbnail Image -->
-       <#assign thumbnailImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("THUMBNAIL_IMAGE_URL")! />
+       <#assign thumbnailImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("THUMBNAIL_IMAGE_URL")! />
        <#if productThumbnailImage?has_content && productThumbnailImage != "">
         <#assign productThumbnailImageStr = productThumbnailImage.toString() />
         <#if productThumbnailImageStr?has_content && (productThumbnailImageStr.lastIndexOf("/") > 0)>
@@ -162,7 +162,7 @@
        </div>
        
        <#assign urlReferenceThumbnailImageExist = "false"/>
-       <#if (productThumbnailImageStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productThumbnailImageStr)>
+       <#if (productThumbnailImageStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productThumbnailImageStr)>
          <#assign urlReferenceThumbnailImageExist = "true"/>
        </#if>
        
@@ -233,7 +233,7 @@
        </div>
       
        <#-- Product Popup Detail Image -->
-       <#assign detailImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("DETAIL_IMAGE_URL")! />
+       <#assign detailImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("DETAIL_IMAGE_URL")! />
        <#if productDetailImage?has_content && productDetailImage != "">
          <#assign productDetailImageStr = productDetailImage.toString() />
          <#if productDetailImageStr?has_content && (productDetailImageStr.lastIndexOf("/") > 0)>
@@ -275,7 +275,7 @@
        </div>
        
        <#assign urlReferenceDetailImageExist = "false"/>
-       <#if (productDetailImageStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productDetailImageStr)>
+       <#if (productDetailImageStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productDetailImageStr)>
          <#assign urlReferenceDetailImageExist = "true"/>
        </#if>
        
@@ -346,7 +346,7 @@
        </div>
      
        <#-- Product Small Image -->
-      <#assign smallImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("LARGE_IMAGE_URL")! />
+      <#assign smallImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("LARGE_IMAGE_URL")! />
       <#if productSmallImage?has_content && productSmallImage != "">
         <#assign productSmallImageStr = productSmallImage.toString() />
         <#if productSmallImageStr?has_content && (productSmallImageStr.lastIndexOf("/") > 0)>
@@ -385,7 +385,7 @@
        </div>
        
        <#assign urlReferenceSmallImageExist = "false"/>
-       <#if (productSmallImageStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productSmallImageStr)>
+       <#if (productSmallImageStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productSmallImageStr)>
          <#assign urlReferenceSmallImageExist = "true"/>
        </#if>
        
@@ -471,7 +471,7 @@
        </div>
        
        <#-- Product Small Alt Image -->
-      <#assign smallAltImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("SMALL_IMAGE_ALT_URL")! />
+      <#assign smallAltImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("SMALL_IMAGE_ALT_URL")! />
       <#if productSmallAltImage?has_content && productSmallAltImage != "">
         <#assign productSmallAltImageStr = productSmallAltImage.toString() />
         <#if productSmallAltImageStr?has_content && (productSmallAltImageStr.lastIndexOf("/") > 0)>
@@ -512,7 +512,7 @@
        </div>
        
        <#assign urlReferenceSmallAltImageExist = "false"/>
-       <#if (productSmallAltImageStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(productSmallAltImageStr)>
+       <#if (productSmallAltImageStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(productSmallAltImageStr)>
          <#assign urlReferenceSmallAltImageExist = "true"/>
        </#if>
        

@@ -1,4 +1,4 @@
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -510,7 +510,9 @@ public class OsafeManageXml
         List<Map<Object, Object>> listMaps = new LinkedList<Map<Object, Object>>();
         try
         {
+        	Debug.log("XmlFilePath ==========="+XmlFilePath);
             URL xmlFileUrl = UtilURL.fromFilename(XmlFilePath);
+            Debug.log("xmlFileUrl ==========="+xmlFileUrl);
             listMaps = urlCache.get(xmlFileUrl.toString());
             if (listMaps == null)
             {

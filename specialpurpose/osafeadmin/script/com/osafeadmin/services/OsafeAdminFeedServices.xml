@@ -354,7 +354,7 @@
         </if-not-empty>
         
         <set field="exportedOrderStatusList" type="List"/>
-        <call-class-method class-name="com.osafe.util.Util" method-name="getProductStoreParm" ret-field="includeExportOrderStatus">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="getProductStoreParm" ret-field="includeExportOrderStatus">
             <field field="parameters.productStoreId"/>
             <string value="ORDER_STATUS_INC_EXPORT"/>
         </call-class-method>

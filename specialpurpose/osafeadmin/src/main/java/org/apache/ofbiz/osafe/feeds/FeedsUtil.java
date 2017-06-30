@@ -1,4 +1,4 @@
-package com.osafe.feeds;
+package org.apache.ofbiz.osafe.feeds;
 
 import java.io.File;
 import java.util.List;
@@ -16,12 +16,12 @@ import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 
 
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
-import com.osafe.feeds.osafefeeds.BillingAddressType;
-import com.osafe.feeds.osafefeeds.CustomerType;
-import com.osafe.feeds.osafefeeds.ObjectFactory;
-import com.osafe.feeds.osafefeeds.ShippingAddressType;
+import org.apache.ofbiz.osafe.feeds.osafefeeds.BillingAddressType;
+import org.apache.ofbiz.osafe.feeds.osafefeeds.CustomerType;
+import org.apache.ofbiz.osafe.feeds.osafefeeds.ObjectFactory;
+import org.apache.ofbiz.osafe.feeds.osafefeeds.ShippingAddressType;
 
 public class FeedsUtil {
 	public static final String module = FeedsUtil.class.getName();
@@ -29,7 +29,7 @@ public class FeedsUtil {
 	
 	public static void marshalObject(Object obj, File file) {
 	    try {
-	        JAXBContext jaxbContext = JAXBContext.newInstance("com.osafe.feeds.osafefeeds");
+	        JAXBContext jaxbContext = JAXBContext.newInstance("org.apache.ofbiz.osafe.feeds.osafefeeds");
 	  	    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 	  	    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 	  	    //jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "Unicode");

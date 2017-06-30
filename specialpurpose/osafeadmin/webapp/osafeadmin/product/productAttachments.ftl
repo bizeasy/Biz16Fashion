@@ -28,7 +28,7 @@
     <#assign curDateTime = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().toString()/>
     
       <#-- Product Alt Large Image -->
-      <#assign attachmentPathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("ATTACH_URL_0${attachNo}")! />
+      <#assign attachmentPathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("ATTACH_URL_0${attachNo}")! />
       <#if attachment?has_content && attachment != "">
         <#assign attachmentStr = attachment.toString() />
         <#if attachmentStr?has_content && (attachmentStr.lastIndexOf("/") > 0)>
@@ -54,7 +54,7 @@
        </div>
      
       <#assign urlReferenceAttachmentExist = "false"/>
-       <#if (attachmentStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(attachmentStr)>
+       <#if (attachmentStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(attachmentStr)>
          <#assign urlReferenceAttachmentExist = "true"/>
        </#if>
        

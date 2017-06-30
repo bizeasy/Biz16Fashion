@@ -182,7 +182,7 @@ under the License.
       <#if partyHomePhoneDetails?has_content>
         <#assign partyHomePhoneDetails = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(partyHomePhoneDetails?if_exists) />
         <#assign partyHomePhoneDetail = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyHomePhoneDetails?if_exists) />
-        <#assign formattedHomePhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(partyHomePhoneDetail.areaCode?if_exists, partyHomePhoneDetail.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+        <#assign formattedHomePhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(partyHomePhoneDetail.areaCode?if_exists, partyHomePhoneDetail.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
       </#if>
       
         <#-- Work Phone -->
@@ -192,7 +192,7 @@ under the License.
       <#if partyWorkPhoneDetails?has_content>
         <#assign partyWorkPhoneDetails = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(partyWorkPhoneDetails?if_exists) />
         <#assign partyWorkPhoneDetail = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyWorkPhoneDetails?if_exists) />
-        <#assign formattedWorkPhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(partyWorkPhoneDetail.areaCode?if_exists, partyWorkPhoneDetail.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+        <#assign formattedWorkPhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(partyWorkPhoneDetail.areaCode?if_exists, partyWorkPhoneDetail.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
         <#if partyWorkPhoneDetail?has_content>
           <#assign partyWorkPhoneExt = partyWorkPhoneDetail.extension!/> 
         </#if>
@@ -205,7 +205,7 @@ under the License.
       <#if partyCellPhoneDetails?has_content>
         <#assign partyCellPhoneDetails = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(partyCellPhoneDetails?if_exists) />
         <#assign partyCellPhoneDetail = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyCellPhoneDetails?if_exists) />
-        <#assign formattedCellPhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(partyCellPhoneDetail.areaCode?if_exists, partyCellPhoneDetail.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+        <#assign formattedCellPhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(partyCellPhoneDetail.areaCode?if_exists, partyCellPhoneDetail.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
       </#if>
       
       <#-- Personal info --> 
@@ -852,7 +852,7 @@ under the License.
                       </fo:table-cell>
                       <fo:table-cell>
                         <fo:block text-align="center">
-                          <#assign noteDateTime = (Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime, preferredDateTimeFormat).toLowerCase())!"N/A"/>
+                          <#assign noteDateTime = (Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime, preferredDateTimeFormat).toLowerCase())!"N/A"/>
                           <#assign noteDateTime = noteDateTime?split(" ")/>
                           <#assign noteDate=noteDateTime[0]!"" />
                           <#assign noteTime=noteDateTime[1]!"" />

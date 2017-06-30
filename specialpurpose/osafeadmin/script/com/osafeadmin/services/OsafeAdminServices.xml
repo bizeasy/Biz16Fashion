@@ -11,7 +11,7 @@
                 <set field="idLength" value="60" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parmKey">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parmKey">
                     <field field="parameters.parmKey" type="String"/>
                     <field field="idLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -26,7 +26,7 @@
                             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ParamKeyExistError"/>
                             <string-to-list string="${tempErrorMessage}" message-field="parmKey" list="error_list"/>
                             <else>
-                                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                                     <field field="parameters.parmKey"/>
                                 </call-class-method>
                                 <if-compare field="isValidId" operator="equals" value="false">
@@ -50,15 +50,15 @@
             <string-to-list string="${tempErrorMessage}" message-field="parmCategory" list="error_list"/>
         </if-empty>
         <if-not-empty field="parameters.parmValue">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countLessThan">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countLessThan">
                    <field field="parameters.parmValue" type="String"/>
                    <string value="&lt;"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countGreaterThan">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countGreaterThan">
                    <field field="parameters.parmValue" type="String"/>
                    <string value="&gt;"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countNewLine">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countNewLine">
                    <field field="parameters.parmValue" type="String"/>
                    <string value="${sys:getProperty('line.separator')}"/>
             </call-class-method>
@@ -115,15 +115,15 @@
             <string-to-list string="${tempErrorMessage}" message-field="parmCategory" list="error_list"/>
         </if-empty>
         <if-not-empty field="parameters.parmValue">
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countLessThan">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countLessThan">
                    <field field="parameters.parmValue" type="String"/>
                    <string value="&lt;"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countGreaterThan">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countGreaterThan">
                    <field field="parameters.parmValue" type="String"/>
                    <string value="&gt;"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countNewLine">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countNewLine">
                    <field field="parameters.parmValue" type="String"/>
                    <string value="${sys:getProperty('line.separator')}"/>
             </call-class-method>
@@ -168,23 +168,23 @@
        </if-empty> 
        <if-not-empty field="parameters.value">
        		<set field="flag" value="0" />
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countLessThan">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countLessThan">
                    <field field="parameters.value" type="String"/>
                    <string value="&lt;"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countGreaterThan">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countGreaterThan">
                    <field field="parameters.value" type="String"/>
                    <string value="&gt;"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countNewLine">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countNewLine">
                    <field field="parameters.value" type="String"/>
                    <string value="${sys:getProperty('line.separator')}"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countBackSlash">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countBackSlash">
                    <field field="parameters.value" type="String"/>
                    <string value="\\"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="checkEvenNumber" ret-field="checkCount">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="checkEvenNumber" ret-field="checkCount">
                    <field field="countBackSlash" type="int"/>
             </call-class-method>
            
@@ -198,7 +198,7 @@
             			<set field="flag" value="1"/>
             		</then>
             		<else>
-			            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countDoubleBackSlash">
+			            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countDoubleBackSlash">
 			                   <field field="parameters.value" type="String"/>
 			                   <string value="\\\\"/>
 			            </call-class-method>
@@ -237,7 +237,7 @@
             <string-to-list string="${tempErrorMessage}" message-field="key" list="error_list"/>
         <else>
         
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                     <field field="parameters.key"/>
             </call-class-method>
             <if-compare field="isValidId" operator="equals" value="false">
@@ -247,7 +247,7 @@
                     <else>
                         <set field="spaceReplacement" value=" " type="String"/>
                         <set field="makeUpCase" value="false" type="Boolean"/>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parameters.key">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parameters.key">
                             <field field="parameters.key" type="String"/>
                             <string value="${spaceReplacement}"/>
                             <field field="makeUpCase" type="boolean"/>
@@ -261,7 +261,7 @@
                                     <string value="ecommerce-UiLabel-xml-file"/>
                                 </call-class-method>
                                 <set field="XmlFilePath" value="${groovy: org.apache.ofbiz.base.util.string.FlexibleStringExpander.expandString(XmlFileStr, context)}" type="String"/>
-                                <call-class-method class-name="com.osafe.services.OsafeManageXml" method-name="findByKeyFromXmlFile" ret-field="uiLabelEntry">
+                                <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeManageXml" method-name="findByKeyFromXmlFile" ret-field="uiLabelEntry">
                                     <field field="XmlFilePath" type="String"/>
                                     <string value="key"/>
                                     <field field="parameters.key" type="String"/>
@@ -286,15 +286,15 @@
         </if-empty>
         <if-not-empty field="parameters.value">
         	<set field="flag" value="0"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countLessThan">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countLessThan">
                    <field field="parameters.value" type="String"/>
                    <string value="&lt;"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countGreaterThan">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countGreaterThan">
                    <field field="parameters.value" type="String"/>
                    <string value="&gt;"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countNewLine">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countNewLine">
                    <field field="parameters.value" type="String"/>
                    <string value="${sys:getProperty('line.separator')}"/>
             </call-class-method>
@@ -306,11 +306,11 @@
                 <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BadValueNewLineError"/>
                 <string-to-list string="${tempErrorMessage}" message-field="value" list="error_list"/>
             </if-compare>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countBackSlash">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countBackSlash">
                    <field field="parameters.value" type="String"/>
                    <string value="\\"/>
             </call-class-method>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="checkEvenNumber" ret-field="checkCount">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="checkEvenNumber" ret-field="checkCount">
                    <field field="countBackSlash" type="int"/>
             </call-class-method>
             <if>
@@ -323,7 +323,7 @@
             			<set field="flag" value="1"/>
             		</then>
             		<else>
-			            <call-class-method class-name="com.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countDoubleBackSlash">
+			            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" method-name="countOccurrences" ret-field="countDoubleBackSlash">
 			                   <field field="parameters.value" type="String"/>
 			                   <string value="\\\\"/>
 			            </call-class-method>
@@ -439,7 +439,7 @@
             <set field="IdLength" value="20" type="Integer"/>
             <set field="spaceReplacement" value=" " type="String"/>
             <set field="makeUpCase" value="true" type="Boolean"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
                 <field field="parameters.enumId" type="String"/>
                 <field field="IdLength" type="Integer"/>
                 <field field="spaceReplacement" type="String"/>
@@ -454,7 +454,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ContactUsReasonIdExistError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="enumId" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="parameters.enumId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="false">
@@ -574,7 +574,7 @@
             <set field="IdLength" value="20" type="Integer"/>
             <set field="spaceReplacement" value=" " type="String"/>
             <set field="makeUpCase" value="true" type="Boolean"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
                 <field field="parameters.enumId" type="String"/>
                 <field field="IdLength" type="Integer"/>
                 <field field="spaceReplacement" type="String"/>
@@ -589,7 +589,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="CreditCardTypeIdExistError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="enumId" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="parameters.enumId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="false">
@@ -718,7 +718,7 @@
             <set field="IdLength" value="20" type="Integer"/>
             <set field="spaceReplacement" value=" " type="String"/>
             <set field="makeUpCase" value="true" type="Boolean"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
                 <field field="parameters.enumId" type="String"/>
                 <field field="IdLength" type="Integer"/>
                 <field field="spaceReplacement" type="String"/>
@@ -733,7 +733,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="PersonTitleIdExistError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="enumId" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="parameters.enumId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="false">
@@ -853,7 +853,7 @@
             <set field="IdLength" value="20" type="Integer"/>
             <set field="spaceReplacement" value=" " type="String"/>
             <set field="makeUpCase" value="true" type="Boolean"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
                 <field field="parameters.enumId" type="String"/>
                 <field field="IdLength" type="Integer"/>
                 <field field="spaceReplacement" type="String"/>
@@ -868,7 +868,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ReviewAgesIdExistError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="enumId" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="parameters.enumId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="false">
@@ -989,7 +989,7 @@
             <set field="IdLength" value="20" type="Integer"/>
             <set field="spaceReplacement" value=" " type="String"/>
             <set field="makeUpCase" value="true" type="Boolean"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
                 <field field="parameters.enumId" type="String"/>
                 <field field="IdLength" type="Integer"/>
                 <field field="spaceReplacement" type="String"/>
@@ -1004,7 +1004,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="RecurrenceFreqTypeIdExistError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="enumId" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="parameters.enumId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="false">
@@ -1204,7 +1204,7 @@
             <set field="IdLength" value="20" type="Integer"/>
             <set field="spaceReplacement" value=" " type="String"/>
             <set field="makeUpCase" value="true" type="Boolean"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
                 <field field="parameters.enumId" type="String"/>
                 <field field="IdLength" type="Integer"/>
                 <field field="spaceReplacement" type="String"/>
@@ -1219,7 +1219,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="ReviewCustomAttributeIdExistError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="enumId" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="parameters.enumId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="false">
@@ -1687,7 +1687,7 @@
 					<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankDivSeqKeyError"/>
 					<string-to-list string="${tempErrorMessage}" message-field="style" list="error_list"/>
 					<else>
-						<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+						<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 			                    <field field="parameters.key"/>
 			            </call-class-method>
 			            <if-compare field="isValidId" operator="equals" value="false">
@@ -1697,7 +1697,7 @@
 			                    <else>
 			                        <set field="spaceReplacement" value=" " type="String"/>
 			                        <set field="makeUpCase" value="false" type="Boolean"/>
-			                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parameters.key">
+			                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parameters.key">
 			                            <field field="parameters.key" type="String"/>
 			                            <string value="${spaceReplacement}"/>
 			                            <field field="makeUpCase" type="boolean"/>
@@ -1711,10 +1711,10 @@
 			                                    <string value="osafe-uiSequence-xml-file"/>
 			                                </call-class-method>
 			                                <set field="XmlFilePath" value="${groovy: org.apache.ofbiz.base.util.string.FlexibleStringExpander.expandString(XmlFileStr, context)}" type="String"/>
-			                                <call-class-method class-name="com.osafe.services.OsafeManageXml" method-name="getListMapsFromXmlFile" ret-field="listMaps">
+			                                <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeManageXml" method-name="getListMapsFromXmlFile" ret-field="listMaps">
 			                                    <field field="XmlFilePath" type="String"/>
 			                                </call-class-method>
-			                                <call-class-method class-name="com.osafe.services.OsafeManageXml" method-name="findByKeyAndScreenFromListMaps" ret-field="uiDivEntry">
+			                                <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeManageXml" method-name="findByKeyAndScreenFromListMaps" ret-field="uiDivEntry">
 			                                    <field field="listMaps" type="java.util.List"/>
 			                                    <string value="key"/>
 			                                    <field field="parameters.key" type="String"/>
@@ -1879,7 +1879,7 @@
 												<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankStyleError"/>
 												<string-to-list string="${tempErrorMessage}" message-field="style" list="error_list"/>
 												<else>
-													<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
+													<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
 										                    <field field="styleValue"/>
 										            </call-class-method>
 										            <if-compare field="isValidDesc" operator="equals" value="false">
@@ -1947,19 +1947,19 @@
         <if-compare field="useGrouping" operator="equals" value="N">
         	<!-- sort the sequence map and make mutiple-->
             <set field="seqMultiple" value="10" type="Integer"/>
-            <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.values">
+            <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.values">
                 <field field="parameters.values" type="java.util.Map"/>
                 <field field="seqMultiple" type="Integer"/>
             </call-class-method>
         <else>
         	<if-not-empty field="parameters.groups">
 	            <!-- sort the group map and make mutiple-->
-	            <call-class-method method-name="setSequenceMap" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.groups">
+	            <call-class-method method-name="setSequenceMap" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.groups">
 	                <field field="parameters.groups" type="java.util.Map"/>
 	            </call-class-method>
 	            <!-- sort the sequence map and make mutiple-->
 	            <set field="seqMultiple" value="10" type="Integer"/>
-	            <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.values">
+	            <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.values">
                     <field field="parameters.values" type="java.util.Map"/>
 	                <field field="parameters.groups" type="java.util.Map"/>
 	                <field field="seqMultiple" type="Integer"/>
@@ -2131,7 +2131,7 @@
 					<property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankDivSeqKeyError"/>
 					<string-to-list string="${tempErrorMessage}" message-field="style" list="error_list"/>
 				<else>
-				    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+				    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 			            <field field="parameters.key"/>
 			        </call-class-method>
 			        <if-compare field="isValidId" operator="equals" value="false">
@@ -2141,7 +2141,7 @@
 			        <else>
 			            <set field="spaceReplacement" value=" " type="String"/>
 			            <set field="makeUpCase" value="false" type="Boolean"/>
-			            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parameters.key">
+			            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parameters.key">
 			                <field field="parameters.key" type="String"/>
 			                <string value="${spaceReplacement}"/>
 			                <field field="makeUpCase" type="boolean"/>
@@ -2155,10 +2155,10 @@
 			                    <string value="osafe-uiSequence-xml-file"/>
 			                </call-class-method>
 			                <set field="XmlFilePath" value="${groovy: org.apache.ofbiz.base.util.string.FlexibleStringExpander.expandString(XmlFileStr, context)}" type="String"/>
-			                <call-class-method class-name="com.osafe.services.OsafeManageXml" method-name="getListMapsFromXmlFile" ret-field="listMaps">
+			                <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeManageXml" method-name="getListMapsFromXmlFile" ret-field="listMaps">
 			                    <field field="XmlFilePath" type="String"/>
 			                </call-class-method>
-			                <call-class-method class-name="com.osafe.services.OsafeManageXml" method-name="findByKeyAndScreenFromListMaps" ret-field="uiDivEntry">
+			                <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeManageXml" method-name="findByKeyAndScreenFromListMaps" ret-field="uiDivEntry">
 			                    <field field="listMaps" type="java.util.List"/>
 			                    <string value="key"/>
 			                    <field field="parameters.key" type="String"/>
@@ -2302,7 +2302,7 @@
 						     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankStyleError"/>
 						     <string-to-list string="${tempErrorMessage}" message-field="style" list="error_list"/>
 						 <else>
-						     <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
+						     <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidDesc" ret-field="isValidDesc">
 							     <field field="styleValue"/>
 							 </call-class-method>
 							 <if-compare field="isValidDesc" operator="equals" value="false">
@@ -2458,7 +2458,7 @@
                 <set field="idLength" value="20" type="Integer"/>
                 <set field="spaceReplacement" value=" " type="String"/>
                 <set field="makeUpCase" value="true" type="Boolean"/>
-                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="pixId">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="pixId">
                     <field field="parameters.pixelId" type="String"/>
                     <field field="idLength" type="Integer"/>
                     <field field="spaceReplacement" type="String"/>
@@ -2468,7 +2468,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="PixelIdLengthError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="pixelId" list="error_list"/>
                     <else>
-                    	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                    	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="parameters.pixelId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="true">
@@ -2750,7 +2750,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankAttrNameError"/>
             <string-to-list string="${tempErrorMessage}" message-field="attrName" list="error_list"/>
         <else>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                 <field field="parameters.attrName"/>
             </call-class-method>
             <if-compare field="isValidId" operator="equals" value="false">
@@ -2864,7 +2864,7 @@
         </iterate>
         
         <set field="seqMultiple" value="10" type="Integer"/>
-        <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="customPartyAttributeSeqMap">
+        <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="customPartyAttributeSeqMap">
             <field field="customPartyAttributeSeqMap" type="java.util.Map"/>
             <field field="seqMultiple" type="Integer"/>
         </call-class-method>
@@ -2990,7 +2990,7 @@
         </iterate>
         
         <set field="seqMultiple" value="10" type="Integer"/>
-        <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="customPartyAttributeSeqMap">
+        <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="customPartyAttributeSeqMap">
             <field field="customPartyAttributeSeqMap" type="java.util.Map"/>
             <field field="seqMultiple" type="Integer"/>
         </call-class-method>
@@ -3041,7 +3041,7 @@
         <if-not-empty field="parameters.sequenceNum">
             <!-- sort the sequence map and make mutiple-->
             <set field="seqMultiple" value="10" type="Integer"/>
-            <call-class-method method-name="setSequenceMapByMultiple" class-name="com.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
+            <call-class-method method-name="setSequenceMapByMultiple" class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil" ret-field="parameters.sequenceNum">
                 <field field="parameters.sequenceNum" type="java.util.Map"/>
                 <field field="seqMultiple" type="Integer"/>
             </call-class-method>
@@ -3122,7 +3122,7 @@
             <set field="IdLength" value="20" type="Integer"/>
             <set field="spaceReplacement" value=" " type="String"/>
             <set field="makeUpCase" value="true" type="Boolean"/>
-            <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
+            <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="enumId">
                 <field field="parameters.enumId" type="String"/>
                 <field field="IdLength" type="Integer"/>
                 <field field="spaceReplacement" type="String"/>
@@ -3137,7 +3137,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="GiftMessageIdExistError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="enumId" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                             <field field="parameters.enumId"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="false">
@@ -3295,7 +3295,7 @@
                     <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankBigfishParameterKeyError"/>
                     <string-to-list string="${tempErrorMessage}" message-field="style" list="error_list"/>
                     <else>
-                        <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+                        <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
                                 <field field="parameters.key"/>
                         </call-class-method>
                         <if-compare field="isValidId" operator="equals" value="false">
@@ -3305,7 +3305,7 @@
                                 <else>
                                     <set field="spaceReplacement" value=" " type="String"/>
                                     <set field="makeUpCase" value="false" type="Boolean"/>
-                                    <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parameters.key">
+                                    <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="parameters.key">
                                         <field field="parameters.key" type="String"/>
                                         <string value="${spaceReplacement}"/>
                                         <field field="makeUpCase" type="boolean"/>
@@ -3324,7 +3324,7 @@
 							                    <field field="parameters.parameterFileName" type="String"/>
 							                </create-object>
 							                <call-object-method method-name="getAbsolutePath" obj-field="XmlFile" ret-field="XmlFilePath"/>
-                                            <call-class-method class-name="com.osafe.services.OsafeManageXml" method-name="findByKeyFromXmlFile" ret-field="bigfishParameterEntry">
+                                            <call-class-method class-name="org.apache.ofbiz.osafe.services.OsafeManageXml" method-name="findByKeyFromXmlFile" ret-field="bigfishParameterEntry">
                                                 <field field="XmlFilePath" type="String"/>
                                                 <string value="key"/>
                                                 <field field="parameters.key" type="String"/>

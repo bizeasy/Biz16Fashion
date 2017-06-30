@@ -11,10 +11,10 @@
     http://htmldog.com/articles/suckerfish/dropdowns/
     -->
     
-<#assign superMegaMenuContentXrefs = delegator.findByAndCache("XContentXref", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productStoreId" , productStoreId, "bfContentId", "SI_SUPER_MEGA_MENU")) />
+<#assign superMegaMenuContentXrefs = EntityQuery.use(delegator).from("XContentXref").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productStoreId" , productStoreId, "bfContentId", "SI_SUPER_MEGA_MENU")).cache().queryList()/>
 <#if superMegaMenuContentXrefs?has_content>
 	<#assign superMegaMenuContentXref = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(superMegaMenuContentXrefs) />
-	<#assign superMegaMenuContents= delegator.findByAndCache("Content", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId" , superMegaMenuContentXref.contentId)) />
+	<#assign superMegaMenuContents= EntityQuery.use(delegator).from("Content").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId" , superMegaMenuContentXref.contentId)).cache().queryList()/>
 	<#if superMegaMenuContents?has_content>
 		<#assign superMegaMenuContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(superMegaMenuContents) />
 		<#assign superMegaMenuContentStatusId = superMegaMenuContent.statusId!/>
@@ -45,7 +45,7 @@
   		<#assign parentIdx=1/>
 	    <#assign listSize=topLevelList.size()/>
 	    <#list topLevelList as category>
-	        <#assign categoryRollups = delegator.findByAndCache("ProductCategoryRollup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , category.productCategoryId, "parentProductCategoryId", topCategoryId?if_exists)) />
+	        <#assign categoryRollups = EntityQuery.use(delegator).from("ProductCategoryRollup").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , category.productCategoryId, "parentProductCategoryId", topCategoryId?if_exists)).cache().queryList()/>
 	        <#assign categoryRollups = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(categoryRollups)/>
 	        <#if categoryRollups?has_content>
 	          <#assign categoryRollup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(categoryRollups) />

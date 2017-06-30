@@ -3,7 +3,7 @@ import java.util.Map;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.StringUtil;
 import org.apache.ofbiz.base.util.UtilValidate;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
  // set the page parameters
 if(UtilValidate.isNotEmpty(pagingListSize) && UtilValidate.isNotEmpty(pagingList))

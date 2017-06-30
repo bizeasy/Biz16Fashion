@@ -64,7 +64,7 @@
           ${address1!} ${city!} ${state!}
         </td>
         <td class="dateCol">
-          ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(reqCatalog.createdDate, preferredDateFormat).toLowerCase())!"N/A"}
+          ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(reqCatalog.createdDate, preferredDateFormat).toLowerCase())!"N/A"}
         </td>
         <td class="statusCol">
           <#if exported == 'Y'>
@@ -75,7 +75,7 @@
         </td>
         <td class="actionCol">
           <#if comment != ''>
-            <#assign comment = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(comment, ADM_TOOLTIP_MAX_CHAR!)/>
+            <#assign comment = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(comment, ADM_TOOLTIP_MAX_CHAR!)/>
             <a href="javascript:void(0);" onMouseover="showTooltip(event,'${comment!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
           </#if>
         </td>

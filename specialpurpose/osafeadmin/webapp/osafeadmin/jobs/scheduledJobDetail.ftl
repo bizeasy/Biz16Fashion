@@ -173,7 +173,7 @@
 	        	<#if statusId == "PENDING">
 	        		<input class="dateEntry" type="text" id="SERVICE_DATE" name="SERVICE_DATE" value="${parameters.SERVICE_DATE!runDate!""}"/>
 	        	<#else>
-		        	${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(schedJob.runTime, preferredDateTimeFormat))!"N/A"}
+		        	${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(schedJob.runTime, preferredDateTimeFormat))!"N/A"}
 			    </#if>  
 	      </div>  
 	    </div>
@@ -187,7 +187,7 @@
 	      </div>
 	      <div class="infoValue ">
 	        <div class="entryInput ">
-				  ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(schedJob.startDateTime, preferredDateTimeFormat))!"N/A"}
+				  ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(schedJob.startDateTime, preferredDateTimeFormat))!"N/A"}
 	        </div>
 	      </div>
 	    </div>
@@ -199,7 +199,7 @@
 	      </div>
 	      <div class="infoValue">
 	        <div class="entryInput ">
-				   ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(schedJob.finishDateTime, preferredDateTimeFormat))!"N/A"} 
+				   ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(schedJob.finishDateTime, preferredDateTimeFormat))!"N/A"} 
 	        </div>
 	      </div>
 	    </div>
@@ -211,7 +211,7 @@
 	      </div>
 	      <div class="infoValue">
 	        <div class="entryInput ">
-				  ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(schedJob.cancelDateTime, preferredDateTimeFormat))!"N/A"}
+				  ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(schedJob.cancelDateTime, preferredDateTimeFormat))!"N/A"}
 	        </div>
 	      </div>  
 	    </div>

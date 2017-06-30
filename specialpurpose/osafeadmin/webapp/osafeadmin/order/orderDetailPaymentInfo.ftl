@@ -22,7 +22,7 @@
                             <#assign oppStatusItem = orderPaymentPreference.getRelatedOne("StatusItem")>
                             <#assign paymentMethod = orderPaymentPreference.getRelatedOne("PaymentMethod")?if_exists>
                             <#assign paymentMethodType = orderPaymentPreference.getRelatedOne("PaymentMethodType")?if_exists>
-                            <td class="dateCol firstCol">${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderPaymentPreference.createdDate, preferredDateTimeFormat).toLowerCase())!"N/A"}</td>
+                            <td class="dateCol firstCol">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderPaymentPreference.createdDate, preferredDateTimeFormat).toLowerCase())!"N/A"}</td>
                             <#if ((paymentMethod?has_content) && (paymentMethod.paymentMethodTypeId == "CREDIT_CARD"))>
                                 <#assign creditCard = orderPaymentPreference.getRelatedOne("PaymentMethod").getRelatedOne("CreditCard")>
                                 <#assign cardNumber = creditCard.get("cardNumber")>
@@ -60,7 +60,7 @@
                                     <#assign paymentStatusItem = payment.getRelatedOne("StatusItem")>
                                     <#assign paymentType = payment.getRelatedOne("PaymentType")>
                                     <#assign paymentMethodType = payment.getRelatedOne("PaymentMethodType")?if_exists>
-                                    <td class="dateCol firstCol">${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(payment.effectiveDate, preferredDateTimeFormat).toLowerCase())!"N/A"}</td>
+                                    <td class="dateCol firstCol">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(payment.effectiveDate, preferredDateTimeFormat).toLowerCase())!"N/A"}</td>
                                     <td class="nameCol">${paymentType.description?if_exists} (${paymentMethodType.description?if_exists}<#if payment.paymentRefNum?has_content> ${payment.paymentRefNum!}</#if>)</td>
                                     <td class="dollarCol"><@ofbizCurrency amount=payment.amount?default(0.00) isoCode=currencyUomId rounding=globalContext.currencyRounding/></td>
                                     <td class="statusCol lastCol">${paymentStatusItem.get("description","OSafeAdminUiLabels",locale)}</td>

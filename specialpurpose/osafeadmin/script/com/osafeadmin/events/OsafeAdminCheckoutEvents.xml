@@ -367,7 +367,7 @@
 	            <string value="GIFT_CARD_REMAINING_BAL"/>
 	        </call-object-method>
 	
-	        <call-class-method class-name="com.osafe.events.ShoppingCartEvents" method-name="formatGiftMessageOrderItemAttribute" ret-field="result">
+	        <call-class-method class-name="org.apache.ofbiz.osafe.events.ShoppingCartEvents" method-name="formatGiftMessageOrderItemAttribute" ret-field="result">
 	             <field field="request" type="javax.servlet.http.HttpServletRequest"/>
 	             <field field="response" type="javax.servlet.http.HttpServletResponse"/>
 	         </call-class-method>
@@ -535,11 +535,11 @@
                                     <string-to-list string="${tempErrorMessage}" message-field="productPromoCodeId" list="error_list"/>
                                 </then>
                             <else>
-                                <call-class-method class-name="com.osafe.util.Util" method-name="getProductStoreParm" ret-field="useOnlyOnePromoCode">
+                                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="getProductStoreParm" ret-field="useOnlyOnePromoCode">
                                     <field field="request" type="javax.servlet.ServletRequest"/>
                                     <string value="CHECKOUT_PROMO_MANUAL_ONE_ONLY"/>
                                 </call-class-method>
-                                <call-class-method class-name="com.osafe.util.Util" method-name="isProductStoreParmTrue" ret-field="isTrue">
+                                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="isProductStoreParmTrue" ret-field="isTrue">
                                     <field field="useOnlyOnePromoCode"/>
                                 </call-class-method>
                                 <if-compare field="isTrue" operator="equals" value="true">
@@ -642,7 +642,7 @@
                 
             <if-not-empty field="shoppingCartItems">
                 <iterate entry="shoppingCartItem" list="shoppingCartItems">
-                    <call-class-method class-name="com.osafe.services.InventoryServices" method-name="setProductInventoryLevel" >
+                    <call-class-method class-name="org.apache.ofbiz.osafe.services.InventoryServices" method-name="setProductInventoryLevel" >
                         <field field="shoppingCartItem.productId"/>
                         <field field="productStoreId"/>
                         <field field="shoppingCartItem.quantity" type="BigDecimal"/>
@@ -717,7 +717,7 @@
 	            <field field="response" type="javax.servlet.http.HttpServletResponse"/>
 	        </call-class-method>
 	        <session-to-field field="shoppingCart"/>
-	        <call-class-method method-name="setProductFeaturesOnCart" class-name="com.osafe.events.ShoppingCartEvents">
+	        <call-class-method method-name="setProductFeaturesOnCart" class-name="org.apache.ofbiz.osafe.events.ShoppingCartEvents">
 	            <field field="shoppingCart" type="org.apache.ofbiz.order.shoppingcart.ShoppingCart"/>
 	            <field field="parameters.add_product_id"/>
 	        </call-class-method>
@@ -755,7 +755,7 @@
 
         <session-to-field field="shoppingCart"/>
         <!-- Check that a "Gift Card Number" has been entered -->
-        <call-class-method class-name="com.osafe.util.Util" method-name="getProductStoreParm" ret-field="giftCardMethod">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="getProductStoreParm" ret-field="giftCardMethod">
             <field field="request" type="javax.servlet.ServletRequest"/>
             <string value="CHECKOUT_GIFTCARD_METHOD"/>
         </call-class-method>
@@ -798,7 +798,7 @@
                 <if-compare operator="equals" value="TEST" field="giftCardMethodUpperCase"/>
             </condition>
             <then>
-                <call-class-method class-name="com.osafe.util.Util" method-name="isNumber" ret-field="isNumber">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="isNumber" ret-field="isNumber">
 	                <field field="parameters.gcNumber" type="String"/>
 	            </call-class-method>
 	            <if-compare field="isNumber" operator="equals" value="false">
@@ -839,11 +839,11 @@
         <check-errors/>
 
         <!-- Remove all existing gift card payment if CHECKOUT_GIFTCARD_ONE_ONLY is true-->
-        <call-class-method class-name="com.osafe.util.Util" method-name="getProductStoreParm" ret-field="useOnlyOneGiftCard">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="getProductStoreParm" ret-field="useOnlyOneGiftCard">
             <field field="request" type="javax.servlet.ServletRequest"/>
             <string value="CHECKOUT_GIFTCARD_ONE_ONLY "/>
         </call-class-method>
-        <call-class-method class-name="com.osafe.util.Util" method-name="isProductStoreParmTrue" ret-field="isTrue">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="isProductStoreParmTrue" ret-field="isTrue">
             <field field="useOnlyOneGiftCard"/>
         </call-class-method>
         <if-compare field="isTrue" operator="equals" value="true">
@@ -975,7 +975,7 @@
 
         <session-to-field field="shoppingCart"/>
 
-        <call-class-method class-name="com.osafe.util.Util" method-name="getProductStoreParm" ret-field="giftCardMethod">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="getProductStoreParm" ret-field="giftCardMethod">
             <field field="request" type="javax.servlet.ServletRequest"/>
             <string value="CHECKOUT_GIFTCARD_METHOD"/>
         </call-class-method>
@@ -1092,7 +1092,7 @@
     	<call-class-method class-name="org.apache.ofbiz.product.store.ProductStoreWorker" method-name="getProductStoreId" ret-field="productStoreId">
            <field field="request" type="javax.servlet.ServletRequest"/>
         </call-class-method>
-        <call-class-method class-name="com.osafe.util.Util" method-name="getProductStoreParm" ret-field="checkoutLoyaltyMethod">
+        <call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="getProductStoreParm" ret-field="checkoutLoyaltyMethod">
                <field field="request" type="javax.servlet.ServletRequest"/>
                <string value="CHECKOUT_LOYALTY_METHOD"/>
         </call-class-method>
@@ -1123,7 +1123,7 @@
 		                <else>
 		                	<!-- Verify that the balance is greater than 0 -->
 		                	<if-compare operator="equals" value="TEST" field="checkoutLoyaltyMethod">
-		                		<call-class-method class-name="com.osafe.util.Util" method-name="isNumber" ret-field="isNumber">
+		                		<call-class-method class-name="org.apache.ofbiz.osafe.util.Util" method-name="isNumber" ret-field="isNumber">
 					                <field field="parameters.loyaltyPointsId" type="String"/>
 					            </call-class-method>
 					            <if-compare field="isNumber" operator="equals" value="false">
@@ -1214,7 +1214,7 @@
 	        <if-compare operator="not-equals" field="DO_CART_LOYALTY" value="N">
 		        <session-to-field field="orderAdjustmentAttributeList"/>
 		        <if-not-empty field="orderAdjustmentAttributeList">
-			        <call-class-method class-name="com.osafe.events.ShoppingCartEvents" method-name="modifyLoyaltyPoints" ret-field="modifyLoyaltyPointsResult">
+			        <call-class-method class-name="org.apache.ofbiz.osafe.events.ShoppingCartEvents" method-name="modifyLoyaltyPoints" ret-field="modifyLoyaltyPointsResult">
 			            <field field="request" type="javax.servlet.http.HttpServletRequest"/>
 			            <field field="response" type="javax.servlet.http.HttpServletResponse"/>
 			        </call-class-method>
@@ -1222,7 +1222,7 @@
 	        </if-compare>
 	        
 	        <!-- UPDATE TAXES: (Tax the new Total before applying any Payments) -->
-	        <call-class-method method-name="calculateTax" class-name="com.osafe.events.CheckOutEvents">
+	        <call-class-method method-name="calculateTax" class-name="org.apache.ofbiz.osafe.events.CheckOutEvents">
 	            <field field="request" type="javax.servlet.http.HttpServletRequest"/>
 	            <field field="response" type="javax.servlet.http.HttpServletResponse"/>
 	        </call-class-method>
@@ -1521,7 +1521,7 @@
            <call-object-method obj-field="shoppingCart" method-name="items" ret-field="shoppingCartItems"/>
             <if-not-empty field="shoppingCartItems">
                 <iterate entry="shoppingCartItem" list="shoppingCartItems">
-                    <call-class-method class-name="com.osafe.services.InventoryServices" method-name="checkProductInventoryLevel" ret-field="checkInventoyMap" >
+                    <call-class-method class-name="org.apache.ofbiz.osafe.services.InventoryServices" method-name="checkProductInventoryLevel" ret-field="checkInventoyMap" >
                         <field field="shoppingCartItem.productId"/>
                         <field field="shoppingCartItem.quantity" type="BigDecimal"/>
                         <field field="request" type="javax.servlet.ServletRequest"/>

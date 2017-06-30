@@ -5,7 +5,7 @@
     <p>${uiLabelMap.RelatedEmailTemplatesHelpInfo!}</p>
         <ul>
         	<#list templates as template>
-		        <li>${Static["com.osafe.util.Util"].getFormattedText(template)}</li>
+		        <li>${Static["org.apache.ofbiz.osafe.util.Util"].getFormattedText(template)}</li>
 	        </#list>
         </ul>
    </div>

@@ -14,7 +14,7 @@
       <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
         <td class="idCol <#if !note_has_next?if_exists>lastRow</#if> firstCol" ><a href="<@ofbizUrl>customerNoteDetail?noteId=${note.noteId?if_exists}&partyId=${party.partyId!}</@ofbizUrl>">${note.noteId?if_exists}</a></td>
         <td class="nameCol <#if !note_has_next?if_exists>lastRow</#if>">${note.noteParty?if_exists}</td>
-        <#assign noteDateTime = (Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime!, preferredDateTimeFormat).toLowerCase())!"N/A"/>
+        <#assign noteDateTime = (Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime!, preferredDateTimeFormat).toLowerCase())!"N/A"/>
         <#assign noteDateTime = noteDateTime?split(" ")/>
         <#assign noteDate=noteDateTime[0] />
         <#assign noteTime=noteDateTime[1] />

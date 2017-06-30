@@ -1,4 +1,4 @@
-package com.osafe.util;
+package org.apache.ofbiz.osafe.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -66,7 +66,7 @@ import org.w3c.tidy.Tidy;
 import com.ibm.icu.text.NumberFormat;
 import com.ibm.icu.util.Calendar;
 import com.ibm.icu.util.Currency;
-import com.osafe.services.OsafeManageXml;
+import org.apache.ofbiz.osafe.services.OsafeManageXml;
 
 public class OsafeAdminUtil {
 

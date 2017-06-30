@@ -1,4 +1,4 @@
-package com.osafe.events;
+package org.apache.ofbiz.osafe.events;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -32,9 +32,9 @@ import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
 import org.apache.ofbiz.service.ServiceUtil;
 
-import com.osafe.services.OsafeAdminCatalogServices;
-import com.osafe.services.OsafeAdminScheduledJobServices;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices;
+import org.apache.ofbiz.osafe.services.OsafeAdminScheduledJobServices;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 
 public class OsafeAdminEvent {

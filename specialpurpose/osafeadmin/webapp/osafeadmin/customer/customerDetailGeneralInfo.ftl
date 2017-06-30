@@ -11,7 +11,7 @@
             <div class="infoValue">
                 <#if (method?has_content && method == "add")>
                     <#if !parameters.partyId?has_content>
-                        <#assign partySeqId = Static["com.osafe.util.OsafeAdminUtil"].getNextSeqId(delegator, "Party", "Party", "partyId")!""/>
+                        <#assign partySeqId = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getNextSeqId(delegator, "Party", "Party", "partyId")!""/>
                     </#if>
                     <input type="text" name="partyId" id="partyId" maxlength="20" value="${parameters.partyId!partySeqId!""}"/>
                 <#else>

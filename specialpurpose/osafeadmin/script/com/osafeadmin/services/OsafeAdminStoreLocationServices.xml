@@ -9,7 +9,7 @@
             <property-to-field field="tempErrorMessage" resource="OSafeAdminUiLabels" property="BlankStoreCodeError"/>
             <string-to-list string="${tempErrorMessage}" message-field="groupNameLocal"  list="error_list"/>
             <else>
-            	<call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
+            	<call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="isValidId" ret-field="isValidId">
 					<field field="parameters.groupNameLocal"/>
 				</call-class-method>
 				<if-compare field="isValidId" operator="equals" value="false">
@@ -20,7 +20,7 @@
 							<set field="maxLength" value="100" type="Integer"/>
 			                <set field="spaceReplacement" value=" " type="String"/>
 			                <set field="makeUpCase" value="false" type="Boolean"/>
-			                <call-class-method class-name="com.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="groupNameLocal">
+			                <call-class-method class-name="org.apache.ofbiz.osafe.util.OsafeAdminUtil"  method-name="makeValidId" ret-field="groupNameLocal">
 			                    <field field="parameters.groupNameLocal" type="String"/>
 			                    <field field="maxLength" type="Integer"/>
 			                    <field field="spaceReplacement" type="String"/>
@@ -76,7 +76,7 @@
             <string-to-list string="${tempErrorMessage}" message-field="postalCode"  list="error_list"/>
             <else>
                 <if-compare value="USA" operator="equals" field="parameters.countryGeoId">
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
                         <field field="parameters.postalCode"/>
                     </call-class-method>
                 </if-compare>
@@ -107,7 +107,7 @@
                             <process field="contactNumber"><copy to-field="phoneContactNumber"/></process>
                     </simple-map-processor>
                 </call-map-processor>
-                <call-class-method class-name="com.osafe.util.Util"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
                     <field field="parameters.areaCode"/>
                     <field field="contactNumberMap.phoneContactNumber"/>
                     <string value="true"/>
@@ -150,7 +150,7 @@
         </if-not-empty>
         <check-errors/>
 
-        <call-class-method class-name="com.osafe.geo.OsafeGeo"  method-name="fromAddress" ret-field="osafeGeo">
+        <call-class-method class-name="org.apache.ofbiz.osafe.geo.OsafeGeo"  method-name="fromAddress" ret-field="osafeGeo">
             <field field="address"/>
             <field field="parameters.productStoreId"/>
         </call-class-method>
@@ -296,7 +296,7 @@
             <string-to-list string="${tempErrorMessage}" message-field="postalCode"  list="error_list"/>
             <else>
                 <if-compare value="USA" operator="equals" field="parameters.countryGeoId">
-                    <call-class-method class-name="com.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
+                    <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="isZipCode" ret-field="isZipCode">
                         <field field="parameters.postalCode"/>
                     </call-class-method>
                 </if-compare>
@@ -327,7 +327,7 @@
                             <process field="contactNumber"><copy to-field="phoneContactNumber"/></process>
                     </simple-map-processor>
                 </call-map-processor>
-                <call-class-method class-name="com.osafe.util.Util"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
+                <call-class-method class-name="org.apache.ofbiz.osafe.util.Util"  method-name="checkTelecomNumber" ret-field="checkTelecomNumberResult">
                     <field field="parameters.areaCode"/>
                     <field field="contactNumberMap.phoneContactNumber"/>
                     <string value="true"/>
@@ -370,7 +370,7 @@
         </if-not-empty>
         <check-errors/>
 
-        <call-class-method class-name="com.osafe.geo.OsafeGeo"  method-name="fromAddress" ret-field="osafeGeo">
+        <call-class-method class-name="org.apache.ofbiz.osafe.geo.OsafeGeo"  method-name="fromAddress" ret-field="osafeGeo">
             <field field="address"/>
             <field field="parameters.productStoreId"/>
         </call-class-method>

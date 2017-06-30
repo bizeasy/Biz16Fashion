@@ -1,4 +1,4 @@
-package com.osafe.events;
+package org.apache.ofbiz.osafe.events;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ import org.apache.ofbiz.service.ModelService;
 import org.apache.ofbiz.service.ServiceUtil;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartHelper;
 import org.apache.commons.lang.StringUtils;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 public class OsafeAdminCheckoutEvents {
 	

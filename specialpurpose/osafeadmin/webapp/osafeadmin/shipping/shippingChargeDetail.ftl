@@ -299,7 +299,7 @@
       </div>
     </div>
   </div>
- <#if Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(COUNTRY_MULTI!"")> 
+ <#if Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(COUNTRY_MULTI!"")> 
    <div class="infoRow">
      <div class="infoEntry">
        <div class="infoCaption">
@@ -309,7 +309,7 @@
           <#if (mode?has_content) >
           		<select name="includeGeoId" id="includeGeoId" class="small">          		
           		  <option value="">${uiLabelMap.SelectOneLabel}</option>
-		             <#assign countryList = Static["com.osafe.util.OsafeAdminUtil"].getCountryList(request)/>		           
+		             <#assign countryList = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getCountryList(request)/>		           
 	                    <#if countryList?has_content>
                             <#list countryList as country>
                             <option value='${country.geoId}' <#if selectedIncCountryType = country.geoId >selected=selected</#if>>${country.get("geoName")}</option>
@@ -330,7 +330,7 @@
           <#if (mode?has_content) >
           		<select name="excludeGeoId" id="excludeGeoId" class="small">
           		  <option value="">${uiLabelMap.SelectOneLabel}</option>
-          		  <#assign countryList = Static["com.osafe.util.OsafeAdminUtil"].getCountryList(request)/>		           
+          		  <#assign countryList = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getCountryList(request)/>		           
 	                    <#if countryList?has_content>
                             <#list countryList as country>
                             <option value='${country.geoId}' <#if selectedExcCountryType = country.geoId >selected=selected</#if>>${country.get("geoName")}</option>

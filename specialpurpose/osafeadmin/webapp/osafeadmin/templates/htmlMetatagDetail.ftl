@@ -11,7 +11,7 @@
     <#assign productContentName = productContentWrapper.get("PRODUCT_NAME")!""/>
     <#if productContentName?has_content>
     	<#assign productName = productContentName.toString()/>
-    	<#assign productFriendlyName = Static["com.osafe.services.SiteMapServices"].makeCharsFriendly(productName, '')/>
+    	<#assign productFriendlyName = Static["org.apache.ofbiz.osafe.services.SiteMapServices"].makeCharsFriendly(productName, '')/>
     	<#assign friendlyUrlDefault = productFriendlyName.toLowerCase()/>
     </#if>
     
@@ -30,7 +30,7 @@
     <#assign categoryContentName = currentProductCategoryContentWrapper.get("CATEGORY_NAME")!""/>
     <#if categoryContentName?has_content>
     	<#assign categoryName = categoryContentName.toString()/>
-    	<#assign categoryFriendlyName = Static["com.osafe.services.SiteMapServices"].makeCharsFriendly(categoryName, '')/>
+    	<#assign categoryFriendlyName = Static["org.apache.ofbiz.osafe.services.SiteMapServices"].makeCharsFriendly(categoryName, '')/>
     	<#assign friendlyUrlDefault = categoryFriendlyName.toLowerCase()/>
     </#if>
     
@@ -44,7 +44,7 @@
        <label>${uiLabelMap.FriendlyUrlDefaultCaption}</label>
     </div>
     <div class="infoValue">
-       ${StringUtil.wrapString(Static["com.osafe.util.Util"].stripHTMLInLength(friendlyUrlDefault!)!"")} 
+       ${StringUtil.wrapString(Static["org.apache.ofbiz.osafe.util.Util"].stripHTMLInLength(friendlyUrlDefault!)!"")} 
     </div>
   </div>
 </div>
@@ -67,7 +67,7 @@
                    <label>${uiLabelMap.TitleBFDefaultCaption}</label>
                </div>
                <div class="infoValue">
-                   ${StringUtil.wrapString(Static["com.osafe.util.Util"].stripHTMLInLength(defaultTitle!productStore.title!"")!"")} 
+                   ${StringUtil.wrapString(Static["org.apache.ofbiz.osafe.util.Util"].stripHTMLInLength(defaultTitle!productStore.title!"")!"")} 
                </div>
            </div>
        </div>
@@ -88,7 +88,7 @@
                    <label>${uiLabelMap.MetaDescBFDefaultCaption}</label>
                </div>
                <div class="infoValue">
-                   ${StringUtil.wrapString(Static["com.osafe.util.Util"].stripHTMLInLength(defaultMetaDescription!productStore.subtitle!"", SEO_META_DESC_LEN!"")!"")}
+                   ${StringUtil.wrapString(Static["org.apache.ofbiz.osafe.util.Util"].stripHTMLInLength(defaultMetaDescription!productStore.subtitle!"", SEO_META_DESC_LEN!"")!"")}
                </div>
            </div>
        </div>
@@ -109,7 +109,7 @@
                    <label>${uiLabelMap.MetaKeyBFDefaultCaption}</label>
                </div>
                <div class="infoValue">
-                   ${StringUtil.wrapString(Static["com.osafe.util.Util"].stripHTMLInLength(defaultMetaKeywords!productStore.subtitle!"",SEO_META_KEY_LEN!"")!"")}
+                   ${StringUtil.wrapString(Static["org.apache.ofbiz.osafe.util.Util"].stripHTMLInLength(defaultMetaKeywords!productStore.subtitle!"",SEO_META_KEY_LEN!"")!"")}
                </div>
            </div>
        </div>

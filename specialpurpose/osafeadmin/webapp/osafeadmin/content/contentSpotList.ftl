@@ -74,7 +74,7 @@
                       <#if dataResource?exists>
                         <#assign electronicText = dataResource.getRelatedOne("ElectronicText")>
                         <#assign eText = electronicText.textData!/>
-                        <#assign eText = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(eText, ADM_TOOLTIP_MAX_CHAR!, false)/>
+                        <#assign eText = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(eText, ADM_TOOLTIP_MAX_CHAR!, false)/>
                       </#if>
                     </#if>
                       <td class="actionCol <#if !hasNext>lastRow</#if> lastCol">

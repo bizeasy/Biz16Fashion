@@ -1,4 +1,4 @@
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.io.BufferedWriter;
 
@@ -53,9 +53,9 @@ import org.apache.ofbiz.service.calendar.RecurrenceInfo;
 import org.apache.ofbiz.service.job.JobManager;
 import org.apache.ofbiz.service.job.JobPoller;
 
-import com.osafe.feeds.FeedsUtil;
-import com.osafe.feeds.osafefeeds.*;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.feeds.FeedsUtil;
+import org.apache.ofbiz.osafe.feeds.osafefeeds.*;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.base.util.MessageString;
 
 public class OsafeAdminFeedServices 

@@ -99,7 +99,7 @@
           <td class="actionCol <#if !hasNext?if_exists>lastRow</#if>">
             <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION")!""/>
             <#if productLongDescription?has_content && productLongDescription !="">
-               <#assign productLongDescription = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
+               <#assign productLongDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
                <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${productLongDescription!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
             </#if>
             <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL")!"">
@@ -133,7 +133,7 @@
           <td class="dollarCol total <#if !hasNext>lastRow</#if>"><@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() rounding=globalContext.currencyRounding isoCode=currencyUom/></td>
           <#-- display gift message option? -->
           <#assign showGiftMessageLink = false/>
-          <#assign checkoutGiftMessage = Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(request, "CHECKOUT_GIFT_MESSAGE")!"" />  
+          <#assign checkoutGiftMessage = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(request, "CHECKOUT_GIFT_MESSAGE")!"" />  
           <#assign pdpGiftMessageAttributeValue = ""/>
           <#if product?has_content>
             <#assign pdpGiftMessageAttribute = delegator.findOne("ProductAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", product.productId,"attrName","CHECKOUT_GIFT_MESSAGE"), false)!/>
@@ -247,8 +247,8 @@
                   </#list>
                 </#if>
                 <#assign taxAmount = shoppingCart.getTotalSalesTax()/>
-                <#if (!Static["com.osafe.util.Util"].isProductStoreParmTrue(request,"CHECKOUT_SUPPRESS_TAX_IF_ZERO") || (orderTaxTotal?has_content && (orderTaxTotal &gt; 0)))>
-				  <#if !Static["com.osafe.util.Util"].isProductStoreParmTrue(request,"CHECKOUT_SHOW_SALES_TAX_MULTI")>
+                <#if (!Static["org.apache.ofbiz.osafe.util.Util"].isProductStoreParmTrue(request,"CHECKOUT_SUPPRESS_TAX_IF_ZERO") || (orderTaxTotal?has_content && (orderTaxTotal &gt; 0)))>
+				  <#if !Static["org.apache.ofbiz.osafe.util.Util"].isProductStoreParmTrue(request,"CHECKOUT_SHOW_SALES_TAX_MULTI")>
 				    <tr>
 				      <#assign taxInfoStringMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("taxPercent", totalTaxPercent)>
 				      <#assign salesTaxCaption = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels","SummarySalesTaxCaption",taxInfoStringMap, locale ) />

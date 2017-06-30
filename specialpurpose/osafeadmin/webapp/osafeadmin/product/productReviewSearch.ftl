@@ -1,6 +1,6 @@
 <!-- start promotionsSearch.ftl -->
     <#assign nowTimestamp=Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
-    <#assign defaultFromDate=Static["com.osafe.util.OsafeAdminUtil"].getMonthBackTimeStamp(1)>
+    <#assign defaultFromDate=Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getMonthBackTimeStamp(1)>
     <div class="entryRow">
       <div class="entry">
         <label>${uiLabelMap.FromDateCaption}</label>

@@ -22,7 +22,7 @@
       <div class="infoValue">
           <#if (mode?has_content && mode == "add")>
             <#if !parameters.productPriceRuleId?has_content>
-               <#assign productPriceRuleSeqId = Static["com.osafe.util.OsafeAdminUtil"].getNextSeqId(delegator, "ProductPriceRule", "ProductPriceRule", "productPriceRuleId")!""/>
+               <#assign productPriceRuleSeqId = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getNextSeqId(delegator, "ProductPriceRule", "ProductPriceRule", "productPriceRuleId")!""/>
             </#if>
             <input type="hidden" name="productPriceRuleId" id="productPriceRuleId" maxlength="20" value="${parameters.productPriceRuleId!productPriceRuleSeqId!""}"/>${parameters.productPriceRuleId!productPriceRuleSeqId!""}
           <#elseif mode?has_content && mode == "edit">

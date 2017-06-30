@@ -6,7 +6,7 @@
     <#list orderNotes as note>
       <#assign hasNext = note_has_next>
       <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
-        <td class="noteCol <#if !hasNext?if_exists>lastRow</#if>">${Static["com.osafe.util.Util"].getFormattedText(note.noteInfo!"")}</td>
+        <td class="noteCol <#if !hasNext?if_exists>lastRow</#if>">${Static["org.apache.ofbiz.osafe.util.Util"].getFormattedText(note.noteInfo!"")}</td>
       </tr>
       <#if rowClass == "2">
         <#assign rowClass = "1">

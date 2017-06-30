@@ -13,7 +13,7 @@
       <#assign curDateTime = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().toString()/>
       
       <#-- Product PLP Swatch Image -->
-      <#assign plpSwatchImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PLP_SWATCH_IMAGE_URL")! />
+      <#assign plpSwatchImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PLP_SWATCH_IMAGE_URL")! />
       <#if plpSwatchImageURL?has_content && plpSwatchImageURL != "">
         <#assign plpSwatchImageURLStr = plpSwatchImageURL.toString() />
         <#if plpSwatchImageURLStr?has_content && (plpSwatchImageURLStr.lastIndexOf("/") > 0)>
@@ -50,7 +50,7 @@
        </div>
        
        <#assign urlReferencePlpSwatchImageExist = "false"/>
-       <#if (plpSwatchImageURLStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(plpSwatchImageURLStr)>
+       <#if (plpSwatchImageURLStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(plpSwatchImageURLStr)>
          <#assign urlReferencePlpSwatchImageExist = "true"/>
        </#if>
        
@@ -121,7 +121,7 @@
        </div>
       
       <#-- Product PDP Swatch Image -->
-      <#assign pdpSwatchImagePathOsafe = Static["com.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PDP_SWATCH_IMAGE_URL")! />
+      <#assign pdpSwatchImagePathOsafe = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].buildProductImagePathExt("PDP_SWATCH_IMAGE_URL")! />
       <#if pdpSwatchImageURL?has_content && pdpSwatchImageURL != "">
         <#assign pdpSwatchImageURLStr = pdpSwatchImageURL.toString() />
         <#if pdpSwatchImageURLStr?has_content && (pdpSwatchImageURLStr.lastIndexOf("/") > 0)>
@@ -157,7 +157,7 @@
        </div>
        
        <#assign urlReferencePdpSwatchImageExist = "false"/>
-       <#if (pdpSwatchImageURLStr?has_content) && Static["com.osafe.util.OsafeAdminUtil"].isValidURL(pdpSwatchImageURLStr)>
+       <#if (pdpSwatchImageURLStr?has_content) && Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isValidURL(pdpSwatchImageURLStr)>
          <#assign urlReferencePdpSwatchImageExist = "true"/>
        </#if>
        

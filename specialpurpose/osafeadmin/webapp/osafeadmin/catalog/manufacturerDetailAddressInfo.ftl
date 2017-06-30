@@ -53,7 +53,7 @@
     <input type="hidden" name="contactMechId" id="contactMechId" value="${parameters.contactMechId!contactMechId!""}"/>
 </#if>
 <!-- address country entry -->
-<#if Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(COUNTRY_MULTI!"")>
+<#if Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(COUNTRY_MULTI!"")>
     <div class="infoRow">
         <div class="infoEntry">
             <div class="infoCaption">

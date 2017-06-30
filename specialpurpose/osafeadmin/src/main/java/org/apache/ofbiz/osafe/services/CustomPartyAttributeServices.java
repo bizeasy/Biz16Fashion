@@ -1,4 +1,4 @@
-package com.osafe.services;
+package org.apache.ofbiz.osafe.services;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import org.apache.ofbiz.service.DispatchContext;
 
-import com.osafe.services.OsafeManageXml;
+import org.apache.ofbiz.osafe.services.OsafeManageXml;
 
 public class CustomPartyAttributeServices {
 
@@ -24,7 +24,7 @@ public class CustomPartyAttributeServices {
     	{
     		useCache = "true";
     	}
-    	String customPartyAttributeFilePath = FlexibleStringExpander.expandString(System.getProperty("ofbiz.home") + "/hot-deploy/osafe/import/data/xml/CustomPartyAttributes.xml", null);
+    	String customPartyAttributeFilePath = FlexibleStringExpander.expandString(System.getProperty("ofbiz.home") + "/specialpurpose/osafe/import/data/xml/CustomPartyAttributes.xml", null);
     	
     	List<Map<Object, Object>> customPartyAttributeList =  new LinkedList<Map<Object, Object>>();
     	

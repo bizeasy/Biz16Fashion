@@ -57,8 +57,8 @@ under the License.
     <#if partyGroup?has_content>
       <#assign companyName = partyGroup.groupName>
     </#if>
-    <#assign logoImageUrl = Static["com.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_LOGO")/>
-    <#assign HTTP_HOST = Static["com.osafe.util.Util"].getProductStoreParm(request, "HTTP_HOST")/>
+    <#assign logoImageUrl = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_LOGO")/>
+    <#assign HTTP_HOST = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request, "HTTP_HOST")/>
     
      <#-- Company Address -->
     <#assign companyAddresses = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId, "contactMechPurposeTypeId","GENERAL_LOCATION"))/>
@@ -123,7 +123,7 @@ under the License.
         	<#assign partyPurposePhone = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyPurposeHomePhones)/>
         	<#assign telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber")/>
             <#assign phoneHomeTelecomNumber =telecomNumber/>
-            <#assign formattedHomePhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneHomeTelecomNumber.areaCode?if_exists, phoneHomeTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+            <#assign formattedHomePhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneHomeTelecomNumber.areaCode?if_exists, phoneHomeTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
         </#if>
 
         <#assign partyPurposeWorkPhones = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(partyContactMechPurpose, Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechPurposeTypeId", "PHONE_WORK"))/>
@@ -134,7 +134,7 @@ under the License.
         	<#assign partyPurposePhone = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyPurposeWorkPhones)/>
         	<#assign telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber")/>
             <#assign phoneWorkTelecomNumber =telecomNumber/>
-	        <#assign formattedWorkPhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneWorkTelecomNumber.areaCode?if_exists, phoneWorkTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+	        <#assign formattedWorkPhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneWorkTelecomNumber.areaCode?if_exists, phoneWorkTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
 	        <#if partyPurposePhone.extension?has_content>
 	          <#assign partyWorkPhoneExt = partyPurposePhone.extension!/> 
 	        </#if>
@@ -148,7 +148,7 @@ under the License.
         	<#assign partyPurposePhone = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(partyPurposeMobilePhones)/>
         	<#assign telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber")/>
             <#assign phoneMobileTelecomNumber =telecomNumber/>
-            <#assign formattedCellPhone = Static["com.osafe.util.OsafeAdminUtil"].formatTelephone(phoneMobileTelecomNumber.areaCode?if_exists, phoneMobileTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
+            <#assign formattedCellPhone = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatTelephone(phoneMobileTelecomNumber.areaCode?if_exists, phoneMobileTelecomNumber.contactNumber?if_exists, globalContext.FORMAT_TELEPHONE_NO!)/>
         </#if>
 
      </#if>
@@ -261,7 +261,7 @@ under the License.
                      <fo:table-row >
                       <fo:table-cell text-align="end"><fo:block font-weight="bold">${uiLabelMap.OrderDateCaption}</fo:block></fo:table-cell>
                       <#assign dateFormat = Static["java.text.DateFormat"].LONG>
-                      <#assign orderDate = (Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderHeader.orderDate, preferredDateTimeFormat).toLowerCase())?default("N/A")>
+                      <#assign orderDate = (Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderHeader.orderDate, preferredDateTimeFormat).toLowerCase())?default("N/A")>
                       <fo:table-cell><fo:block start-indent="10pt">${orderDate}</fo:block></fo:table-cell>
                     </fo:table-row>
                     
@@ -341,7 +341,7 @@ under the License.
                   <fo:table-cell text-align="start" number-columns-spanned="1">
                         <fo:block font-size="8pt" start-indent="10pt">
                         <#if orderHeader?has_content>
-				            ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderHeader.orderDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
+				            ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderHeader.orderDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
 				        </#if>
                         </fo:block>
                   </fo:table-cell>
@@ -678,7 +678,7 @@ under the License.
                     <fo:table-row>
                         <fo:table-cell>
                             <fo:block>
-                                ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderPaymentPreference.createdDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
+                                ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(orderPaymentPreference.createdDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
                             </fo:block>
                         </fo:table-cell>
                         <#if ((paymentMethod?has_content) && (paymentMethod.paymentMethodTypeId == "CREDIT_CARD"))>
@@ -745,7 +745,7 @@ under the License.
                             <fo:table-row>
                                 <fo:table-cell>
                                     <fo:block>
-                                        ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(payment.effectiveDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
+                                        ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(payment.effectiveDate, preferredDateTimeFormat).toLowerCase())!"N/A"}
                                     </fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell>
@@ -836,7 +836,7 @@ under the License.
                         </fo:table-cell>
                         <fo:table-cell>
                             <fo:block>
-                                ${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(shipGroup.estimatedShipDate, preferredDateFormat).toLowerCase())!"N/A"}
+                                ${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(shipGroup.estimatedShipDate, preferredDateFormat).toLowerCase())!"N/A"}
                             </fo:block>
                         </fo:table-cell>
                         <fo:table-cell>
@@ -1328,7 +1328,7 @@ under the License.
                       </fo:table-cell>
                       <fo:table-cell>
                         <fo:block text-align="center">
-                          <#assign noteDateTime = (Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime, preferredDateTimeFormat).toLowerCase())!"N/A"/>
+                          <#assign noteDateTime = (Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime, preferredDateTimeFormat).toLowerCase())!"N/A"/>
                           <#assign noteDateTime = noteDateTime?split(" ")/>
                           <#assign noteDate=noteDateTime[0]!"" />
                           <#assign noteTime=noteDateTime[1]!""/>
@@ -1386,7 +1386,7 @@ under the License.
                     <#list attributeList as attribute>
                     	<#if attribute.attrName = "DATETIME_DOWNLOADED">
 				      		<#assign exportedDateTs = Static["java.sql.Timestamp"].valueOf(attribute.attrValue)/>
-				      		<#assign attributeValue = (Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(exportedDateTs, preferredDateTimeFormat)) />
+				      		<#assign attributeValue = (Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(exportedDateTs, preferredDateTimeFormat)) />
 				        <#else>
 				      		<#assign attributeValue = attribute.attrValue!/>
 				        </#if>

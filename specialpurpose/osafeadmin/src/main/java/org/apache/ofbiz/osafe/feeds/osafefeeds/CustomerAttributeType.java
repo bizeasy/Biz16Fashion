@@ -6,7 +6,7 @@
 //
 
 
-package com.osafe.feeds.osafefeeds;
+package org.apache.ofbiz.osafe.feeds.osafefeeds;
 
 import java.util.ArrayList;
 import java.util.List;

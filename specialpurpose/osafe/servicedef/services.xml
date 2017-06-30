@@ -118,7 +118,7 @@
         location="org.apache.ofbiz.osafe.services.EmailServices" invoke="sendMailFromScreen">
         <description>Send E-Mail From Screen Widget Service</description>
         <implements service="sendMailInterface"/>
-        <attribute name="bodyText" type="String" mode="IN" optional="true" allow-html="safe"/>
+        <attribute name="bodyText" type="String" mode="IN" optional="true" allow-html="any"/>
         <attribute name="bodyScreenUri" type="String" mode="IN" optional="true"/>
         <attribute name="xslfoAttachScreenLocation" type="String" mode="IN" optional="true"/>
         <attribute name="attachmentName" type="String" mode="IN" optional="true"/>
@@ -135,7 +135,7 @@
     <service name="sendTxtMessage" max-retry="0" engine="java"
         location="org.apache.ofbiz.osafe.services.TxtMessageServices" invoke="sendTxtMessage">
         <description>Send Txt Message Service</description>
-        <attribute name="textMessage" type="String" mode="IN" optional="true" allow-html="safe"/>
+        <attribute name="textMessage" type="String" mode="IN" optional="true" allow-html="any"/>
         <attribute name="toCell" type="String" mode="IN" optional="true"/>
         <attribute name="sendFrom" type="String" mode="IN" optional="true"/>
         <attribute name="communicationEventId" type="String" mode="INOUT" optional="true"/>
@@ -148,7 +148,7 @@
     <service name="sendTxtMessageFromTemplate" max-retry="0" engine="java"
         location="org.apache.ofbiz.osafe.services.TxtMessageServices" invoke="sendTxtMessageFromTemplate">
         <description>Send Txt Message Service</description>
-        <attribute name="textMessage" type="String" mode="IN" optional="true" allow-html="safe"/>
+        <attribute name="textMessage" type="String" mode="IN" optional="true" allow-html="any"/>
         <attribute name="toCell" type="String" mode="IN" optional="true"/>
         <attribute name="communicationEventId" type="String" mode="INOUT" optional="true"/>
         <attribute name="templateId" type="String" mode="IN" optional="true"/>

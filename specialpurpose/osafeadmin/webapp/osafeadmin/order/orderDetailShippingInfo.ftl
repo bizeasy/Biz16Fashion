@@ -15,7 +15,7 @@
                         <td class="nameCol firstCol">
                             <a href="<@ofbizUrl>orderShippingDetail?orderId=${parameters.orderId}</@ofbizUrl>">${shipGroup.shipGroupSeqId!""}
                         </td>
-                        <td class="dateCol firstCol">${(Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(shipGroup.estimatedShipDate, preferredDateFormat).toLowerCase())!"N/A"}</td>
+                        <td class="dateCol firstCol">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(shipGroup.estimatedShipDate, preferredDateFormat).toLowerCase())!"N/A"}</td>
                         <td class="descCol">
                             <#if shipGroup.carrierPartyId?has_content>
                                 <#assign carrier =  delegator.findByPrimaryKey("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId))?if_exists />

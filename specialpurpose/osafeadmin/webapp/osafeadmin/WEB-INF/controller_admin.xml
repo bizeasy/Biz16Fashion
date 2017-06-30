@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://www.ofbiz.org/dtds/site-conf.xsd">
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Site-Conf" xsi:schemaLocation="http://ofbiz.apache.org/Site-Conf http://ofbiz.apache.org/dtds/site-conf.xsd">
 
     <include location="component://order/webapp/ordermgr/WEB-INF/controller.xml"/>
     <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
@@ -10,7 +9,7 @@
 
     <!-- event handlers -->
     <handler name="service-multi" type="request" class="org.apache.ofbiz.webapp.event.ServiceMultiEventHandler"/>
-    <handler name="bsf" type="request" class="org.apache.ofbiz.webapp.event.BsfEventHandler"/>
+    <!-- <handler name="bsf" type="request" class="org.apache.ofbiz.webapp.event.BsfEventHandler"/> -->
 
 
     <!-- request mappings -->
@@ -231,7 +230,7 @@
     </request-map>
     <request-map uri="adminProcessAppliedPayment">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminCheckoutEvents" invoke="processPayment"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminCheckoutEvents" invoke="processPayment"/>
         <response name="success" type="request-redirect" value="orderDetail"><redirect-parameter name="orderId"/></response>
         <response name="error" type="request" value="addPaymentDetail"/>
     </request-map>    
@@ -432,7 +431,7 @@
     </request-map>
     <request-map uri="createScheduledJob">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.services.OsafeAdminScheduledJobServices" invoke="scheduleService"/> 
+        <event type="java" path="org.apache.ofbiz.osafe.services.OsafeAdminScheduledJobServices" invoke="scheduleService"/> 
         <response name="success" type="request-redirect" value="searchScheduledJob"/>
         <response name="error" type="view" value="addScheduledJob"/>
     </request-map>
@@ -1476,7 +1475,7 @@
     </request-map>
     <request-map uri="productVariantsGroup">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/product/productVariantGroup.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/product/productVariantGroup.groovy"/>
         <response name="success" type="view" value="productVariantsGroup"/>
 		<response name="error" type="request" value="productVariants"/>
     </request-map>
@@ -2015,7 +2014,7 @@
     </request-map>
     <request-map uri="createMediaContent">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminEvent" invoke="validateMediaContent"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminEvent" invoke="validateMediaContent"/>
         <response name="success" type="request-redirect" value="addMediaContentGroup"/>
         <response name="error" type="view" value="addMediaContent"/>
     </request-map>
@@ -2039,7 +2038,7 @@
     </request-map>
     <request-map uri="genSiteMap">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/siteMapDetail.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/siteMapDetail.groovy"/>
         <response name="success" type="none"/>
     </request-map>
 
@@ -2090,7 +2089,7 @@
     </request-map>
     <request-map uri="requestCatalog.csv">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/custRequestCSVName.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/customer/custRequestCSVName.groovy"/>
         <response name="success" type="request" value="custRequestCatalogCSV"/>
     </request-map>
     <request-map uri="custRequestCatalogCSV">
@@ -2099,7 +2098,7 @@
     </request-map>
     <request-map uri="contactUs.csv">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/custRequestCSVName.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/customer/custRequestCSVName.groovy"/>
         <response name="success" type="request" value="custRequestContactUsCSV"/>
     </request-map>
     <request-map uri="custRequestContactUsCSV">
@@ -2300,7 +2299,7 @@
     
     <request-map uri="downloadConvertedXmlFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/downloadConvertedXmlFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/downloadConvertedXmlFile.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     
@@ -2378,13 +2377,13 @@
     </request-map>
     <request-map uri="downloadExportedFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/downloadExportedFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/downloadExportedFile.groovy"/>
         <response name="success" type="none"/>
         <response name="notDownload" type="view" value="feedsList"/>
     </request-map>
     <request-map uri="downloadFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/downloadFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/downloadFile.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     
@@ -2413,7 +2412,7 @@
     </request-map>
     <request-map uri="checkFileInSession">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminEvent" invoke="checkProductFileInSession"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminEvent" invoke="checkProductFileInSession"/>
         <response name="success" type="view" value="xlsLoaderPreview"/>
         <response name="error" type="request-redirect" value="bigFishXlsLoader"/>
     </request-map>
@@ -2431,7 +2430,7 @@
     </request-map>
     <request-map uri="downloadBigFishSampleXls">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/sampleProductFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/sampleProductFile.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     
@@ -2443,13 +2442,13 @@
     </request-map>
     <request-map uri="downloadBigFishSampleXml">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/sampleProductFileXml.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/sampleProductFileXml.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     
     <request-map uri="exportCustRequestXML">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/exportCustRequestXML.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/customer/exportCustRequestXML.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     
@@ -2466,7 +2465,7 @@
     </request-map>
     <request-map uri="downloadClientProductFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/clientProductFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/clientProductFile.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     <request-map uri="buildClientProductXmlFile">
@@ -2477,7 +2476,7 @@
     </request-map>
     <request-map uri="downloadClientProductXmlFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/clientProductXmlFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/clientProductXmlFile.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     <!-- Big Fish XLS from eBay -->
@@ -2493,7 +2492,7 @@
     </request-map>
     <request-map uri="downloadClientProductEbayFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/clientProductEbayFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/clientProductEbayFile.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     <request-map uri="imageLocationPreferencesDetail">
@@ -2845,7 +2844,7 @@
     </request-map>
     <request-map uri="exportBigfishContent">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/content/exportBigfishContent.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/content/exportBigfishContent.groovy"/>
         <response name="success" type="none"/>
     </request-map>
     <!--System Health check screens -->
@@ -2877,7 +2876,7 @@
     </request-map>
     <request-map uri="catalogAssetCheck">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminEvent" invoke="catalogAssetChecker"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminEvent" invoke="catalogAssetChecker"/>
         <response name="assetMissing" type="view" value="assetCheckResultList"/>
         <response name="success" type="view" value="catalogAssetCheckDetail"/>
     </request-map>
@@ -2897,7 +2896,7 @@
     
     <request-map uri="downloadCustomerExportedFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/downloadExportedFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/downloadExportedFile.groovy"/>
         <response name="success" type="none"/>
         <response name="notDownload" type="request-redirect" value="customerManagement"/>
     </request-map>
@@ -2916,7 +2915,7 @@
     
     <request-map uri="downloadOrderExportedFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/downloadExportedFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/downloadExportedFile.groovy"/>
         <response name="success" type="none"/>
         <response name="notDownload" type="request-redirect" value="orderManagement"/>
     </request-map>
@@ -2935,7 +2934,7 @@
     
     <request-map uri="downloadContactUsExportedFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/downloadExportedFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/downloadExportedFile.groovy"/>
         <response name="success" type="none"/>
         <response name="notDownload" type="request-redirect" value="custRequestContactUsList"/>
     </request-map>
@@ -2955,7 +2954,7 @@
     
     <request-map uri="downloadRequestCatalogExportedFile">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/admin/downloadExportedFile.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/admin/downloadExportedFile.groovy"/>
         <response name="success" type="none"/>
         <response name="notDownload" type="request-redirect" value="custRequestCatalogList"/>
     </request-map>
@@ -2989,7 +2988,7 @@
     </request-map>
     <request-map uri="resetPaymentMethod">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.ShoppingCartEvents" invoke="resetPaymentMethod"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.ShoppingCartEvents" invoke="resetPaymentMethod"/>
         <response name="success" type="request" value="adminCheckout"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>
@@ -3114,14 +3113,14 @@
     
     <request-map uri="adminAddOrderAdjustment">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminCheckoutEvents" invoke="addOrderAdjustment"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminCheckoutEvents" invoke="addOrderAdjustment"/>
         <response name="success" type="request" value="adminCheckout"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>
     
     <request-map uri="adminRemoveOrderAdjustment">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminCheckoutEvents" invoke="removeOrderAdjustment"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminCheckoutEvents" invoke="removeOrderAdjustment"/>
         <response name="success" type="request" value="adminCheckout"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>
@@ -3135,14 +3134,14 @@
     
     <request-map uri="adminAddLoyaltyPoints">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminCheckoutEvents" invoke="addLoyaltyPoints"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminCheckoutEvents" invoke="addLoyaltyPoints"/>
         <response name="success" type="request" value="adminCheckout"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>
     
     <request-map uri="adminRemoveLoyaltyPoints">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminCheckoutEvents" invoke="removeLoyaltyPoints"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminCheckoutEvents" invoke="removeLoyaltyPoints"/>
         <response name="success" type="request" value="adminCheckout"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>
@@ -3156,7 +3155,7 @@
     
     <request-map uri="adminUpdateLoyaltyPoints">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.OsafeAdminCheckoutEvents" invoke="updateLoyaltyPoints"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.OsafeAdminCheckoutEvents" invoke="updateLoyaltyPoints"/>
         <response name="success" type="request" value="adminCheckout"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>    
@@ -3198,7 +3197,7 @@
     
     <request-map uri="adminCalculateTax">
         <security direct-request="false"/>
-        <event type="java" path="com.osafe.events.CheckOutEvents" invoke="calculateTax"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.CheckOutEvents" invoke="calculateTax"/>
         <response name="success" type="request" value="processCartAttribute"/>
         <response name="error" type="request" value="adminCheckout"/>
     </request-map>
@@ -3252,14 +3251,14 @@
     
     <request-map uri="adminProcessOrderAdjustmentAttributes">
         <security direct-request="false"/>
-        <event type="java" path="com.osafe.events.CheckOutEvents" invoke="processOrderAdjustmentAttributes"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.CheckOutEvents" invoke="processOrderAdjustmentAttributes"/>
         <response name="success" type="request" value="adminRedeemMemberLoyaltyPoints"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>
     
     <request-map uri="adminRedeemMemberLoyaltyPoints">
         <security direct-request="false"/>
-        <event type="java" path="com.osafe.events.CheckOutEvents" invoke="redeemMemberLoyaltyPoints"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.CheckOutEvents" invoke="redeemMemberLoyaltyPoints"/>
         <response name="success" type="request" value="adminClearcartfororder"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>
@@ -3267,7 +3266,7 @@
     
     <request-map uri="adminClearcartfororder">
         <security direct-request="false"/>
-        <event type="java" path="com.osafe.events.ShoppingCartEvents" invoke="clearShoppingCart"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.ShoppingCartEvents" invoke="clearShoppingCart"/>
         <response name="success" type="request" value="adminCheckExternalPayment"/>
         <response name="error" type="view" value="adminCheckout"/>
     </request-map>
@@ -3283,7 +3282,7 @@
     </request-map>
     <request-map uri="adminAutoCapturePayments">
         <security https="true" direct-request="false"/>
-        <event type="java" path="com.osafe.events.CheckOutEvents" invoke="autoCaptureAuthPayments"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.CheckOutEvents" invoke="autoCaptureAuthPayments"/>
         <response name="success" type="request" value="adminEmailorder"/>
     </request-map>
     <request-map uri="adminEmailorder">
@@ -3308,7 +3307,7 @@
     </request-map> 
     <request-map uri="adminSetGiftMessage">
         <security https="true" auth="true"/>
-        <event type="java" path="com.osafe.events.ShoppingCartEvents" invoke="setGiftMessage"/>
+        <event type="java" path="org.apache.ofbiz.osafe.events.ShoppingCartEvents" invoke="setGiftMessage"/>
         <response name="success" type="request-redirect" value="adminCheckout"/>
         <response name="error" type="view" value="adminGiftMessageDetail"/>
     </request-map>   
@@ -3417,7 +3416,7 @@
     </request-map>
     <request-map uri="requestQuote.csv">
         <security https="true" auth="true"/>
-        <event type="groovy" path="component://osafeadmin/webapp/osafeadmin/WEB-INF/actions/customer/custRequestCSVName.groovy"/>
+        <event type="groovy" path="component://osafeadmin/groovyScripts/customer/custRequestCSVName.groovy"/>
         <response name="success" type="request" value="custRequestQuoteCSV"/>
     </request-map>
     <request-map uri="custRequestQuoteCSV">

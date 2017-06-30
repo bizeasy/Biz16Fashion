@@ -143,7 +143,7 @@
                         <@ofbizCurrency amount=totalShipAmount isoCode=currencyUomId rounding=globalContext.currencyRounding/>
                       </td>
                     </tr>
-                    <#if (!Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(request,"CHECKOUT_SUPPRESS_TAX_IF_ZERO")) || (totalTaxAmount?has_content && (totalTaxAmount &gt; 0))>
+                    <#if (!Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(request,"CHECKOUT_SUPPRESS_TAX_IF_ZERO")) || (totalTaxAmount?has_content && (totalTaxAmount &gt; 0))>
                       <tr>
                         <td class="totalCaption total"><label>${uiLabelMap.TaxTotalDollarCaption}</label></td>
                         <td class="totalValue total">

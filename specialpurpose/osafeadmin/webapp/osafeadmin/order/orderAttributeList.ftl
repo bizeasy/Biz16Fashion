@@ -11,7 +11,7 @@
       <!-- format dates -->
       <#if attribute.attrName = "DATETIME_DOWNLOADED">
       	<#assign exportedDateTs = Static["java.sql.Timestamp"].valueOf(attribute.attrValue)/>
-      	<#assign attributeValue = (Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(exportedDateTs, preferredDateTimeFormat)) />
+      	<#assign attributeValue = (Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(exportedDateTs, preferredDateTimeFormat)) />
       <#else>
       	<#assign attributeValue = attribute.attrValue!/>
       </#if>

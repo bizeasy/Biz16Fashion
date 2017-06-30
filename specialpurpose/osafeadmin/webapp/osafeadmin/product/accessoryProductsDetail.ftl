@@ -46,7 +46,7 @@
            <td class="actionCol">
              <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION")!""/>
              <#if productLongDescription?has_content && productLongDescription !="">
-               <#assign productLongDescription = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
+               <#assign productLongDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
                <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${productLongDescription!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
              </#if>
              <a href="javascript:void(0);" onMouseover="<#if productLargeImageUrl?has_content>showTooltipImage(event,'','${productLargeImageUrl}?${nowTimestamp!}');<#else>showTooltip(event,'${uiLabelMap.ProductImagesTooltip}');</#if>" onMouseout="hideTooltip()"><span class="imageIcon"></span></a>
@@ -54,7 +54,7 @@
            <td class="seqCol">
              <input type="text" class="infoValue small textAlignCenter" name="accessSequenceNum_${rowNo}" id="accessSequenceNum" value="${relatedProduct.sequenceNum!}" maxlength="9"/>
            </td>
-           <#assign productName = Static["com.osafe.util.OsafeAdminUtil"].formatSimpleText('${productContentWrapper.get("PRODUCT_NAME")!""}')/>
+           <#assign productName = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatSimpleText('${productContentWrapper.get("PRODUCT_NAME")!""}')/>
            <td class="actionCol">
              <a href="javascript:setRowNo('${rowNo}','access');javascript:deletTableRow('${relatedProduct.productIdTo?if_exists}','${productName!""}', 'accessoryProducts', 'access');" onMouseover="javascript:showTooltip(event,'${uiLabelMap.DeleteProductAssociationTooltip}');" onMouseout="hideTooltip()"><span class="crossIcon"></span></a>
              <a href="javascript:setRowNo('${rowNo}','access');javascript:openLookup(document.${detailFormName!}.accessAddProductId,document.${detailFormName!}.accessAddProductName,'lookupProduct','500','700','center','true');" onMouseover="javascript:showTooltip(event,'${uiLabelMap.InsertBeforeNewRowTooltip}');" onMouseout="hideTooltip()"><span class="insertBeforeIcon"></span></a>
@@ -94,7 +94,7 @@
            <td class="actionCol">
              <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION")!""/>
              <#if productLongDescription?has_content && productLongDescription !="">
-               <#assign productLongDescription = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
+               <#assign productLongDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
                <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${productLongDescription!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
              </#if>
              <a href="javascript:void(0);" onMouseover="<#if productLargeImageUrl?has_content>showTooltipImage(event,'','${productLargeImageUrl}?${nowTimestamp!}');<#else>showTooltip(event,'${uiLabelMap.ProductImagesTooltip}');</#if>" onMouseout="hideTooltip()"><span class="imageIcon"></span></a>
@@ -103,7 +103,7 @@
              <#assign sequenceNum = request.getParameter("accessSequenceNum_${x}")!/>
              <input type="text" class="infoValue small textAlignCenter" name="accessSequenceNum_${x}" id="accessSequenceNum" value="${sequenceNum!}" maxlength="9"/>
            </td>
-           <#assign productName = Static["com.osafe.util.OsafeAdminUtil"].formatSimpleText('${productContentWrapper.get("PRODUCT_NAME")!""}')/>
+           <#assign productName = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatSimpleText('${productContentWrapper.get("PRODUCT_NAME")!""}')/>
            <td class="actionCol">
              <a href="javascript:setRowNo('${x}','access');javascript:deletTableRow('${relatedProdDetail.productIdTo?if_exists}','${productName!}', 'accessoryProducts', 'access');" onMouseover="javascript:showTooltip(event,'${uiLabelMap.DeleteProductAssociationTooltip}');" onMouseout="hideTooltip()"><span class="crossIcon"></span></a>
              <a href="javascript:setRowNo('${x}','access');javascript:openLookup(document.${detailFormName!}.accessAddProductId,document.${detailFormName!}.accessAddProductName,'lookupProduct','500','700','center','true');" onMouseover="javascript:showTooltip(event,'${uiLabelMap.InsertBeforeNewRowTooltip}');" onMouseout="hideTooltip()"><span class="insertBeforeIcon"></span></a>

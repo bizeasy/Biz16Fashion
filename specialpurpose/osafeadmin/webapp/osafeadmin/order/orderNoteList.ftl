@@ -15,13 +15,13 @@
       <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
         <td class="idCol <#if !hasNext?if_exists>lastRow</#if> firstCol" ><a href="<@ofbizUrl>orderNoteDetail?noteId=${note.noteId?if_exists}&orderId=${orderHeader.orderId!}</@ofbizUrl>">${note.noteId?if_exists}</a></td>
         <td class="nameCol <#if !hasNext?if_exists>lastRow</#if>">${note.noteParty?if_exists}</td>
-        <#assign noteDateTime = (Static["com.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime!, preferredDateTimeFormat).toLowerCase())!"N/A"/>
+        <#assign noteDateTime = (Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime!, preferredDateTimeFormat).toLowerCase())!"N/A"/>
         <#assign noteDateTime = noteDateTime?split(" ")/>
         <#assign noteDate=noteDateTime[0] />
         <#assign noteTime=noteDateTime[1] />
         <td class="dateCol <#if !hasNext?if_exists>lastRow</#if>">${noteDate!}</td>
         <td class="dateCol <#if !hasNext?if_exists>lastRow</#if>">${noteTime!}</td>
-        <td class="noteCol <#if !hasNext?if_exists>lastRow</#if>">${Static["com.osafe.util.Util"].getFormattedText(note.noteInfo!"")}</td>
+        <td class="noteCol <#if !hasNext?if_exists>lastRow</#if>">${Static["org.apache.ofbiz.osafe.util.Util"].getFormattedText(note.noteInfo!"")}</td>
       </tr>
       <#if rowClass == "2">
         <#assign rowClass = "1">

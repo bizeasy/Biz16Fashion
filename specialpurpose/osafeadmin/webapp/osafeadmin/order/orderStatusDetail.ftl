@@ -169,7 +169,7 @@
         </div>
         <div class="infoValue">
         	<input type="text" class="small" name="packageWeight" value="${parameters.packageWeight!packageWeight!""}" />
-        	<#assign weightUomId = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "WEIGHT_UOM_DEFAULT")!"" />
+        	<#assign weightUomId = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "WEIGHT_UOM_DEFAULT")!"" />
         	<#if weightUomId?has_content>
         	  <#assign weightUomId = "WT_"+weightUomId?lower_case />
         	  <#assign weightUom = delegator.findByPrimaryKey('Uom', {"uomId" : weightUomId})!"" />
@@ -182,7 +182,7 @@
     </div>
 </div>
 
-<#assign lengthUomId = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "LENGTH_UOM_DEFAULT")!"" />
+<#assign lengthUomId = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "LENGTH_UOM_DEFAULT")!"" />
 <#if lengthUomId?has_content>
   <#assign lengthUomId = "LEN_"+lengthUomId?lower_case />
   <#assign lengthUom = delegator.findByPrimaryKey('Uom', {"uomId" : lengthUomId})!"" />

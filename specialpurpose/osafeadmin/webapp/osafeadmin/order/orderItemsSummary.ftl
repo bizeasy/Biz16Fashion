@@ -30,8 +30,8 @@
           <td class="totalCaption"><label>${uiLabelMap.ShipHandleCaption}</label></td>
           <td class="totalValue"><@ofbizCurrency amount=shippingAmount rounding=globalContext.currencyRounding isoCode=currencyUomId/></td>
         </tr>
-        <#if (!Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(request,"CHECKOUT_SUPPRESS_TAX_IF_ZERO")) || (taxAmount?has_content && (taxAmount &gt; 0))>
-          <#if !Static["com.osafe.util.Util"].isProductStoreParmTrue(request,"CHECKOUT_SHOW_SALES_TAX_MULTI")>
+        <#if (!Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(request,"CHECKOUT_SUPPRESS_TAX_IF_ZERO")) || (taxAmount?has_content && (taxAmount &gt; 0))>
+          <#if !Static["org.apache.ofbiz.osafe.util.Util"].isProductStoreParmTrue(request,"CHECKOUT_SHOW_SALES_TAX_MULTI")>
             <tr>
 	      	  <#assign taxInfoStringMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("taxPercent", totalTaxPercent)>
 	          <#assign salesTaxCaption = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("OSafeAdminUiLabels","SummarySalesTaxCaption",taxInfoStringMap, locale ) />

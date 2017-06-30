@@ -21,7 +21,7 @@
 	    <#assign orderAdjustment_includeInTax = ""/>
 	    <#assign orderAdjustment_includeInShipping = ""/>
 	    <#-- Get currency -->
-	    <#assign CURRENCY_UOM_DEFAULT = Static["com.osafe.util.Util"].getProductStoreParm(request,"CURRENCY_UOM_DEFAULT")!""/>  
+	    <#assign CURRENCY_UOM_DEFAULT = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request,"CURRENCY_UOM_DEFAULT")!""/>  
 	    <#assign currencyUom = shoppingCart.getCurrency()!""/>
 	    <#if !currencyUom?has_content>
 	      <#assign currencyUom = CURRENCY_UOM_DEFAULT!""/>

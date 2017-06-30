@@ -1,5 +1,5 @@
 <!-- start displayBox -->
-<#if Static["com.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(CHECKOUT_STORE_PICKUP!"")>
+<#if Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].isProductStoreParmTrue(CHECKOUT_STORE_PICKUP!"")>
 <div class="displayBox dashboardSummary">
     <div class="header"><h2>${uiLabelMap.DashboardStorePickupHeading}</h2></div>
     <div class="boxBody">
@@ -17,7 +17,7 @@
                     <#if (storePickupOrderCount!0) != 0>
                     
                         <#assign defaultStatusList = "">
-                        <#assign orderStatusIncDashboard = Static["com.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "ORDER_STATUS_INC_DASHBOARD")!"" />
+                        <#assign orderStatusIncDashboard = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "ORDER_STATUS_INC_DASHBOARD")!"" />
 	                    <#if orderStatusIncDashboard?has_content>
 	                      <#assign orderStatusIncDashboardList = Static["org.apache.ofbiz.base.util.StringUtil"].split(orderStatusIncDashboard, ",")/>
 	                      <#if orderStatusIncDashboardList?has_content>

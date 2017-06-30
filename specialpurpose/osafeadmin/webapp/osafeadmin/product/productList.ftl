@@ -41,7 +41,7 @@
         <td class="actionCol">
         <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION")!""/>
         <#if productLongDescription?has_content && productLongDescription !="">
-          <#assign productLongDescription = Static["com.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
+          <#assign productLongDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
           <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${productLongDescription!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>
         </#if>
         </td>
@@ -49,13 +49,13 @@
         <td class="statusCol <#if !hasNext?if_exists>lastRow</#if>">${product.isVariant!}</td>
         <td class="dateCol <#if !hasNext?if_exists>lastRow</#if>">${(product.introductionDate?string(preferredDateFormat))!""}</td>
         <td class="dateCol <#if !hasNext?if_exists>lastRow</#if>">${(product.salesDiscontinuationDate?string(preferredDateFormat))!""}</td>
-        <#assign productListPrice = Static["com.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "LIST_PRICE")!/>
+        <#assign productListPrice = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "LIST_PRICE")!/>
         <td class="dollarCol <#if !hasNext?if_exists>lastRow</#if>">
         <#if productListPrice?has_content>
           <@ofbizCurrency amount=productListPrice.price isoCode=productListPrice.currencyUomId rounding=globalContext.currencyRounding/>
         </#if>
         </td>
-        <#assign productDefaultPrice = Static["com.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "DEFAULT_PRICE")!/>
+        <#assign productDefaultPrice = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "DEFAULT_PRICE")!/>
         <td class="dollarCol <#if !hasNext?if_exists>lastRow</#if>">
           <#if productDefaultPrice?has_content>
             <@ofbizCurrency amount=productDefaultPrice.price isoCode=productDefaultPrice.currencyUomId rounding=globalContext.currencyRounding/>
@@ -108,7 +108,7 @@
                   </#if>
                   <li><a href="<@ofbizUrl>productVideo?productId=${product.productId?if_exists}</@ofbizUrl>"><span class="videoIcon"></span>${uiLabelMap.ManageProductVideoTooltip}</a></li>          
                   <#if (product.productTypeId?if_exists == 'FINISHED_GOOD') && (product.isVirtual?if_exists == 'N')>
-                    <#assign inventoryMethod = Static["com.osafe.util.Util"].getProductStoreParm(request,"INVENTORY_METHOD")!/>
+                    <#assign inventoryMethod = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request,"INVENTORY_METHOD")!/>
                     <#assign notIntroduced = false />
                     <#if product.introductionDate?has_content>
                       <#assign introDate = product.introductionDate! />
@@ -132,7 +132,7 @@
                       <!-- If inventory method is BigFish then check how many items are in stock -->
                     <#else>
                       <#if inventoryMethod?has_content && inventoryMethod.toUpperCase() == "BIGFISH" >
-                        <#assign inventoryOutOfStockTo = Static["com.osafe.util.Util"].getProductStoreParm(request,"INVENTORY_OUT_OF_STOCK_TO")!/>
+                        <#assign inventoryOutOfStockTo = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request,"INVENTORY_OUT_OF_STOCK_TO")!/>
                         <#assign bfProductAllAttributes = product.getRelated("ProductAttribute") />
                         <#if bfProductAllAttributes?has_content>
                           <#assign bfTotalInventoryProductAttributes = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(bfProductAllAttributes,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap('attrName','BF_INVENTORY_TOT'))/> 
