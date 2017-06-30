@@ -87,7 +87,7 @@
 	                            <#assign shippingMethod = carrierMethod.shipmentMethodTypeId + "@" + carrierMethod.partyId/>
 	                        </#if>
 	                        <#assign findCarrierShipmentMethodMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", carrierMethod.shipmentMethodTypeId!"", "partyId", carrierMethod.partyId!"","roleTypeId" ,"CARRIER")>
-	                        <#assign carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap)>
+	                        <#assign carrierShipmentMethod = delegator.findOne("CarrierShipmentMethod", findCarrierShipmentMethodMap)>
 	                        <#assign carrierPartyGroupName = ""/>
 	                        <#if carrierMethod.partyId != "_NA_">
 	                            <#assign carrierParty = carrierShipmentMethod.getRelatedOne("Party")/>

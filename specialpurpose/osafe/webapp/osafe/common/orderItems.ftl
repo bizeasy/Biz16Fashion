@@ -52,7 +52,7 @@
                                       <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType", true)?if_exists>
                                       <#assign carrierPartyId = shipGroup.carrierPartyId?if_exists>
                                       <#if shipmentMethodType?has_content>
-                                        <#assign carrier =  delegator.findByPrimaryKeyCache("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId))?if_exists />
+                                        <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId), true)?if_exists />
                                         <#if carrier?has_content >
                                           <#assign chosenShippingMethodDescription = carrier.groupName?default(carrier.partyId) + " " + shipmentMethodType.description >
                                         </#if>
@@ -77,7 +77,7 @@
                                       <#assign promoCodeText = ""/>
                                       <#if productPromo?has_content>
                                          <#assign promoText = productPromo.promoText?if_exists/>
-                                         <#assign productPromoCode = productPromo.getRelatedCache("ProductPromoCode")>
+                                         <#assign productPromoCode = productPromo.getRelated("ProductPromoCode", null, null, true)>
                                          <#assign promoCodesEntered = localOrderReadHelper.getProductPromoCodesEntered()!""/>
                                          <#if promoCodesEntered?has_content>
                                             <#list promoCodesEntered as promoCodeEntered>
@@ -142,7 +142,7 @@
                   <#assign shipGroup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(EntityQuery.use(delegator).from("OrderItemShipGroup").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId": orderItem.orderId, "shipGroupSeqId": shipGroupAssoc.shipGroupSeqId)).cache().queryList())/>
                   <#if shipGroup?has_content>
                       <#assign shipDate = ""/>
-                      <#assign orderHeader = delegator.findByPrimaryKeyCache("OrderHeader", {"orderId": orderItem.orderId})/>
+                      <#assign orderHeader = delegator.findOne("OrderHeader", {"orderId": orderItem.orderId}, true)/>
                       <#if orderHeader?has_content && (orderHeader.statusId == "ORDER_COMPLETED" || orderItem.statusId == "ITEM_COMPLETED") >
                           <#assign shipDate = shipGroup.estimatedShipDate!""/>
                           <#if shipDate?has_content>
@@ -151,7 +151,7 @@
                       </#if>
                       <#assign trackingNumber = shipGroup.trackingNumber!""/>
                       <#assign findCarrierShipmentMethodMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", shipGroup.shipmentMethodTypeId, "partyId", shipGroup.carrierPartyId,"roleTypeId" ,"CARRIER")>
-                      <#assign carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap)>
+                      <#assign carrierShipmentMethod = delegator.findOne("CarrierShipmentMethod", findCarrierShipmentMethodMap, true)>
                       <#assign shipmentMethodType = carrierShipmentMethod.getRelatedOne("ShipmentMethodType", true)/>
                       <#assign description = shipmentMethodType.description!""/>
                       <#assign carrierPartyGroupName = ""/>
@@ -244,7 +244,7 @@
                             <dd class="description">
                               <a href="${productFriendlyUrl}">${StringUtil.wrapString(productName!)}</a>
                             </dd>
-			                 <#assign productFeatureAndAppls = product.getRelatedCache("ProductFeatureAndAppl") />
+			                 <#assign productFeatureAndAppls = product.getRelated("ProductFeatureAndAppl", null, null, true) />
 			                 <#assign productFeatureAndAppls = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productFeatureAndAppls,true)/>
 			                 <#assign productFeatureAndAppls = Static["org.apache.ofbiz.entity.util.EntityUtil"].orderBy(productFeatureAndAppls,Static["org.apache.ofbiz.base.util.UtilMisc"].toList('sequenceNum'))/>
                             <#if productFeatureAndAppls?has_content>

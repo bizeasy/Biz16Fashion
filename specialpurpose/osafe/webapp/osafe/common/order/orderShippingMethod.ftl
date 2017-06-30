@@ -11,7 +11,7 @@
 		          <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType", true)?if_exists>
 		          <#assign carrierPartyId = shipGroup.carrierPartyId?if_exists>
 		          <#if shipmentMethodType?has_content>
-		            <#assign carrier =  delegator.findByPrimaryKeyCache("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId))?if_exists />
+		            <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId), true)?if_exists />
 		            <#if carrier?has_content >
 		              <#assign chosenShippingMethodDescription = carrier.groupName?default(carrier.partyId) + " " + shipmentMethodType.description >
 		            </#if>

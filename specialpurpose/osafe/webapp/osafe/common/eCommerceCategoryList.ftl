@@ -6,7 +6,7 @@
   <#assign longDescription = currentProductCategory.longDescription!""> 
   <#assign categoryImageUrl = currentProductCategory.categoryImageUrl!"">
   <#assign categoryId = currentProductCategory.productCategoryId!"">
-  <#assign categoryContentList = currentProductCategory.getRelatedCache("ProductCategoryContent")/>
+  <#assign categoryContentList = currentProductCategory.getRelated("ProductCategoryContent", null, null, true)/>
   <#assign categoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(categoryContentList,true) />
   <#if categoryContentList?has_content>
     <#assign pageTopCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(categoryContentList,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("prodCatContentTypeId","PLP_ESPOT_PAGE_TOP")) />

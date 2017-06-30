@@ -250,7 +250,7 @@
           <#assign idx=1/>
           <#assign subListSize=subCatList.size()/>
           <#list subCatList as subCat>
-            <#assign subCategoryRollups = subCat.getRelatedCache("CurrentProductCategoryRollup")/>
+            <#assign subCategoryRollups = subCat.getRelated("CurrentProductCategoryRollup", null, null, true)/>
             <#assign subCategoryRollups = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(subCategoryRollups)/>
             <#if subCategoryRollups?has_content>
                <#assign subCategoryRollup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(subCategoryRollups) />
@@ -288,7 +288,7 @@
 </#macro>
 
 <#macro renderCrumb category>
-      <#assign productCategoryMembers = category.getRelatedCache("ProductCategoryMember")!"" />
+      <#assign productCategoryMembers = category.getRelated("ProductCategoryMember", null, null, true)!"" />
       <#assign productCategoryMembers = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryMembers)/>
       <#if (productCategoryMembers?size > 0)>
         <#assign categoryUrl = "eCommerceProductList"/>

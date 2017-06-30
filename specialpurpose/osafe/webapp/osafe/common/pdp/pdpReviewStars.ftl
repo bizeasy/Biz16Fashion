@@ -8,7 +8,7 @@
         <#assign productId = currentProduct.productId!"">
       </#if>
       <#assign reevooSku = "">
-      <#assign skuProduct = delegator.findByPrimaryKeyCache("GoodIdentification", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", productId!"", "goodIdentificationTypeId", "SKU"))?if_exists />
+      <#assign skuProduct = delegator.findOne("GoodIdentification", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", productId!"", "goodIdentificationTypeId", "SKU"), true)?if_exists />
       <#if skuProduct?has_content>
         <#assign reevooSku = skuProduct.idValue!"">
       <#else>

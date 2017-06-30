@@ -12,7 +12,6 @@ import org.apache.ofbiz.base.util.Debug;
 
 osafeProperties = UtilProperties.getResourceBundleMap("OsafeProperties.xml", locale);
 XmlFilePath = FlexibleStringExpander.expandString(osafeProperties.ecommerceUiSequenceXmlFile, context);
-Debug.log("XmlFilePath ============== div seq groovy ============="+XmlFilePath);
 searchRestrictionMap = HashMap.newInstance();
 searchRestrictionMap.put("screen", "Y");
 uiSequenceSearchList =  OsafeManageXml.getSearchListFromXmlFile(XmlFilePath, searchRestrictionMap, uiSequenceScreen,true, false, true);

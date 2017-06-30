@@ -3,7 +3,7 @@
 		  <div>
 		    <#if shippingAddress?has_content && ((!isStorePickUp?exists) || isStorePickUp=="N")>
 	            <label>${uiLabelMap.ShippingToLabel}</label>
-			    <#assign contactMech = delegator.findByPrimaryKeyCache("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", shipGroup.contactMechId))?if_exists />
+			    <#assign contactMech = delegator.findOne("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", shipGroup.contactMechId), true)?if_exists />
 			    <#if contactMech?has_content>
 			        <#assign postalAddress = contactMech.getRelatedOne("PostalAddress", true)?if_exists />
 					${setRequestAttribute("PostalAddress", postalAddress)}

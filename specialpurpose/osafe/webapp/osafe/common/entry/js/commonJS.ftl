@@ -973,7 +973,7 @@ function __highlight(s, t)
                 <#if !PDP_QTY_MAX?has_content || !(Static["org.apache.ofbiz.osafe.util.Util"].isNumber(PDP_QTY_MAX))>
                   <#assign PDP_QTY_MAX = "99"/>
                 </#if>
-                <#assign productAttributes = product.getRelatedCache("ProductAttribute")!"" />  
+                <#assign productAttributes = product.getRelated("ProductAttribute", null, null, true)!"" />  
                 <#if productAttributes?has_content>
                   <#assign productAttrPdpQtyMin = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(productAttributes,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", productId, "attrName", "PDP_QTY_MIN"))?if_exists /> 
                   <#assign productAttrPdpQtyMax = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(productAttributes,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", productId, "attrName", "PDP_QTY_MAX"))?if_exists />

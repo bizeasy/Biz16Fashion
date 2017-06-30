@@ -9,7 +9,7 @@
 		      
 		      <h4>${uiLabelMap.ShippingGroupHeading} ${groupIndex} of ${orderItemShipGroups.size()}</h4>
 		       <#assign shipGroupIndex=0?int/>
-		       <#assign orderItemShipGroupAssoc =cartShipInfo.getRelatedCache("OrderItemShipGroupAssoc")!""/>
+		       <#assign orderItemShipGroupAssoc =cartShipInfo.getRelated("OrderItemShipGroupAssoc", null, null, true)!""/>
     		   <#if orderItemShipGroupAssoc?has_content>
 				   <div class="boxList cartList">
 				  	 <#assign lineIndex=0?number/>
@@ -41,12 +41,12 @@
 						      
 						      <#assign alreadyProcessedOrderItemAttributes = Static["javolution.util.FastList"].newInstance()/>
 						      
-						      <#assign orderItemAttributes = orderItem.getRelatedCache("OrderItemAttribute")!""/>
+						      <#assign orderItemAttributes = orderItem.getRelated("OrderItemAttribute", null, null, true)!""/>
 						      <#assign product = orderItem.getRelatedOne("Product", true)!""/>
 						      <#assign pdpGiftMessageAttributeValue = ""/>
 						      <#assign showGiftMessage = "false"/>
 						      <#if product?has_content>
-						          <#assign productAttributes = product.getRelatedCache("ProductAttribute")!""/>
+						          <#assign productAttributes = product.getRelated("ProductAttribute", null, null, true)!""/>
 						          <#if productAttributes?has_content>
 						              <#assign pdpGiftMessageAttributes = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(productAttributes,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", product.productId, "attrName", "CHECKOUT_GIFT_MESSAGE"))?if_exists />
 						              <#if pdpGiftMessageAttributes?has_content>

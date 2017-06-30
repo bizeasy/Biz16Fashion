@@ -7,7 +7,7 @@
 			        <#assign reevooBadgeurl = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request,"REEVOO_BADGE_URL")!""/>
 			        <#assign reevooTrkref = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request,"REEVOO_TRKREF")!""/>
 			        <#assign reevooSku = "">
-			        <#assign skuProduct = delegator.findByPrimaryKeyCache("GoodIdentification", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", plpProductId!"", "goodIdentificationTypeId", "SKU"))?if_exists />
+			        <#assign skuProduct = delegator.findOne("GoodIdentification", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", plpProductId!"", "goodIdentificationTypeId", "SKU"), true)?if_exists />
 			        <#if skuProduct?has_content>
 			            <#assign reevooSku = skuProduct.idValue!"">
 			        <#else>

@@ -168,7 +168,7 @@ under the License.
                                                     <#assign carrierPartyId = cart.getCarrierPartyId(groupIdx)?if_exists>
                                                   </#if>
                                                   <#if carrierPartyId?exists>
-                                                     <#assign carrier =  delegator.findByPrimaryKeyCache("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", carrierPartyId))?if_exists />
+                                                     <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", carrierPartyId), true)?if_exists />
                                                      <#if carrier?has_content>${carrier.groupName?default(carrier.partyId)}</#if>
                                                   </#if>
                                                   ${(shipmentMethodType.description)?default("N/A")}
@@ -188,7 +188,7 @@ under the License.
                                                         Code: ${orderShipmentInfoSummary.trackingCode?default("[Not Yet Known]")}
                                                         <#if orderShipmentInfoSummary.boxNumber?has_content>${uiLabelMap.OrderBoxNumber}${orderShipmentInfoSummary.boxNumber}</#if>
                                                         <#if orderShipmentInfoSummary.carrierPartyId?has_content>
-                                                          <#assign carrier =  delegator.findByPrimaryKeyCache("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", orderShipmentInfoSummary.carrierPartyId))?if_exists />
+                                                          <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", orderShipmentInfoSummary.carrierPartyId), true)?if_exists />
                                                           <#if carrier?has_content>(${uiLabelMap.ProductCarrier}: ${carrier.groupName?default(carrier.carrierPartyId)})</#if>
                                                         </#if>
                                                       </#list>

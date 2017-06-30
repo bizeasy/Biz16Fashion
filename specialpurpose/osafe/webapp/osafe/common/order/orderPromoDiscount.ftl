@@ -5,7 +5,7 @@
       <#assign promoCodeText = ""/>
       <#if productPromo?has_content>
          <#assign promoText = productPromo.promoText?if_exists/>
-         <#assign productPromoCode = productPromo.getRelatedCache("ProductPromoCode")>
+         <#assign productPromoCode = productPromo.getRelated("ProductPromoCode", null, null, true)>
          <#assign promoCodesEntered = localOrderReadHelper.getProductPromoCodesEntered()!""/>
          <#if promoCodesEntered?has_content>
             <#list promoCodesEntered as promoCodeEntered>

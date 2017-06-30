@@ -14,7 +14,7 @@
 	          <#list carrierShipmentMethodList as carrierMethod>
 	            <#assign shippingMethod = carrierMethod.shipmentMethodTypeId + "@" + carrierMethod.partyId />
 	            <#assign findCarrierShipmentMethodMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", carrierMethod.shipmentMethodTypeId, "partyId", carrierMethod.partyId,"roleTypeId" ,"CARRIER") />
-	            <#assign carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap)!"" />
+	            <#assign carrierShipmentMethod = delegator.findOne("CarrierShipmentMethod", findCarrierShipmentMethodMap, true)!"" />
 	            <div>
 	              <div class="entry radioOption">
 	                <label class="radioOptionLabel"><input type="radio" class="js_shipping_method js_shippingMethodRadioButton" name="<#if !userLogin?has_content || userLogin.userLoginId == "anonymous">shipMethod<#else>shipping_method</#if>" value="${shippingMethod}" <#if (StringUtil.wrapString(shippingMethod) == StringUtil.wrapString(chosenShippingMethod!""))>checked="checked" </#if> onclick="setShippingMethod('${shippingMethod?if_exists}', 'N');" />

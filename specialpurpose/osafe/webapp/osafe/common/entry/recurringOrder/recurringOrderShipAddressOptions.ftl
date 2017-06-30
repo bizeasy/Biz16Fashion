@@ -12,7 +12,7 @@
   <div class="entryField">
     <select name="shippingContactMech" id="shippingContactMech" class="shippingContactMech">
      <#if selectedContactMechId?has_content>
-       <#assign postalAddress = delegator.findByPrimaryKeyCache("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", selectedContactMechId))?if_exists /> 
+       <#assign postalAddress = delegator.findOne("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", selectedContactMechId), true)?if_exists /> 
        <#if postalAddress?has_content>
        	<option value="${postalAddress.contactMechId!}" selected=selected>${postalAddress.address1!}</option>
        </#if>

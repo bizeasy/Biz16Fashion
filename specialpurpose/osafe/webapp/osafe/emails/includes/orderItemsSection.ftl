@@ -73,7 +73,7 @@ under the License.
                         </td>
                     </tr>
                    <#assign features = "">
-                   <#assign standardFeatureList = product.getRelatedCache("ProductFeatureAndAppl")/>
+                   <#assign standardFeatureList = product.getRelated("ProductFeatureAndAppl", null, null, true)/>
                    <#assign standardFeatureList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(standardFeatureList,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productFeatureApplTypeId","STANDARD_FEATURE"))![]>
                    <#if standardFeatureList?has_content>
                        <#assign features = standardFeatureList>

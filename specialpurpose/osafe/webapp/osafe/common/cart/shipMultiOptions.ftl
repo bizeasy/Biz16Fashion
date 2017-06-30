@@ -5,7 +5,7 @@
   <div class="displayBox">
 	   <#list shoppingCart.getShipGroups() as cartShipInfo>
 	      <h4>${uiLabelMap.ShippingGroupHeading} ${groupIndex} of ${shoppingCart.getShipGroupSize()}</h4>
-	      <#assign contactMech = delegator.findByPrimaryKeyCache("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", cartShipInfo.contactMechId))?if_exists />
+	      <#assign contactMech = delegator.findOne("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", cartShipInfo.contactMechId), true)?if_exists />
 	      <#if contactMech?has_content>
 	          <#assign postalAddress = contactMech.getRelatedOne("PostalAddress", true)?if_exists />
 			    ${setRequestAttribute("PostalAddress", postalAddress)}

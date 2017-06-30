@@ -3,7 +3,7 @@
 		  <div>
 		    <#if shippingAddress?has_content && ((!isStorePickUp?exists) || isStorePickUp=="N")>
 	          <label>${uiLabelMap.ShippingToLabel}</label>
-		      <#assign contactMech = delegator.findByPrimaryKeyCache("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", cartShipInfo.contactMechId))?if_exists />
+		      <#assign contactMech = delegator.findOne("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", cartShipInfo.contactMechId), true)?if_exists />
 		      <#if contactMech?has_content>
 		          <#assign postalAddress = contactMech.getRelatedOne("PostalAddress", true)?if_exists />
 				    ${setRequestAttribute("PostalAddress", postalAddress)}
@@ -27,13 +27,13 @@
 		        <#if shippingAddress?has_content && ((!isStorePickUp?exists) || isStorePickUp=="N")>
 	            <#assign carrierGroupName =""/>
 	            <#assign carrierPartyId = cartShipInfo.getCarrierPartyId()!""/>
-			    <#assign carrierPartyGroup =  delegator.findByPrimaryKeyCache("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", carrierPartyId))?if_exists />
+			    <#assign carrierPartyGroup =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", carrierPartyId), true)?if_exists />
 	            <#if carrierPartyGroup?has_content>
 	                <#assign carrierGroupName =carrierPartyGroup.groupName!""/>
 	            </#if>
 	            <#assign shipMethodTypeDescription =""/>
 		        <#assign shipMethodTypeId = cartShipInfo.getShipmentMethodTypeId()!""/>
-			    <#assign shipMethodType =  delegator.findByPrimaryKeyCache("ShipmentMethodType", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", shipMethodTypeId))?if_exists />
+			    <#assign shipMethodType =  delegator.findOne("ShipmentMethodType", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", shipMethodTypeId), true)?if_exists />
 	   	        <#if shipMethodType?has_content>
 	               <#assign shipMethodTypeDescription =shipMethodType.description!""/>
 	   	        </#if>
