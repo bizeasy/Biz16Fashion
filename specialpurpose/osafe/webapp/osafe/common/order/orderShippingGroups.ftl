@@ -18,7 +18,7 @@
                        <div class="shippingGroupCartItem grouping grouping1">
 				           <#list orderItemShipGroupAssoc as shipGroupAssoc>
                              <div class="shippingGroupCartItem groupRow">
-	            		      <#assign orderItem = shipGroupAssoc.getRelatedOneCache("OrderItem")!""/>
+	            		      <#assign orderItem = shipGroupAssoc.getRelatedOne("OrderItem", true)!""/>
 					          ${setRequestAttribute("shipGroup", cartShipInfo)}
 					          ${setRequestAttribute("shipGroupIndex", shipGroupIndex)}
 					          ${setRequestAttribute("shipGroupAssoc", shipGroupAssoc)}
@@ -42,7 +42,7 @@
 						      <#assign alreadyProcessedOrderItemAttributes = Static["javolution.util.FastList"].newInstance()/>
 						      
 						      <#assign orderItemAttributes = orderItem.getRelatedCache("OrderItemAttribute")!""/>
-						      <#assign product = orderItem.getRelatedOneCache("Product")!""/>
+						      <#assign product = orderItem.getRelatedOne("Product", true)!""/>
 						      <#assign pdpGiftMessageAttributeValue = ""/>
 						      <#assign showGiftMessage = "false"/>
 						      <#if product?has_content>

@@ -97,7 +97,7 @@ under the License.
                                             <#if "CREDIT_CARD" == paymentMethod.paymentMethodTypeId && creditCard?has_content>
                                                 <#if outputted?default(false)>
                                                 </#if>
-                                                <#assign pmBillingAddress = creditCard.getRelatedOneCache("PostalAddress")?if_exists>
+                                                <#assign pmBillingAddress = creditCard.getRelatedOne("PostalAddress", true)?if_exists>
                                             <tr>
                                                 <td style="width: 150px; text-align: left; vertical-align: top;">${uiLabelMap.CreditCardCaption}</td>
                                                 <td>
@@ -136,7 +136,7 @@ under the License.
                                         <#assign groupIdx = 0>
                                         <#list orderItemShipGroups as shipGroup>
                                           <#if orderHeader?has_content>
-                                            <#assign shippingAddress = shipGroup.getRelatedOneCache("PostalAddress")?if_exists>
+                                            <#assign shippingAddress = shipGroup.getRelatedOne("PostalAddress", true)?if_exists>
                                             <#assign groupNumber = shipGroup.shipGroupSeqId?if_exists>
                                           <#else>
                                             <#assign shippingAddress = cart.getShippingAddress(groupIdx)?if_exists>
@@ -161,7 +161,7 @@ under the License.
                                                 <td  style="padding-top: 10px;">${uiLabelMap.ShippingMethodCaption}</td>
                                                 <td  style="padding-top: 10px;">
                                                   <#if orderHeader?has_content>
-                                                    <#assign shipmentMethodType = shipGroup.getRelatedOneCache("ShipmentMethodType")?if_exists>
+                                                    <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType", true)?if_exists>
                                                     <#assign carrierPartyId = shipGroup.carrierPartyId?if_exists>
                                                   <#else>
                                                     <#assign shipmentMethodType = cart.getShipmentMethodType(groupIdx)?if_exists>

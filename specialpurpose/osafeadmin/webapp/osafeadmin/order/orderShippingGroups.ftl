@@ -31,7 +31,7 @@
             <div class="infoValue">
                     <#assign shipmentMethodType = orderItemShipGroup.getRelatedOne("ShipmentMethodType")?if_exists>
                     <#if orderItemShipGroup.carrierPartyId?has_content>
-		                <#assign carrier =  delegator.findByPrimaryKey("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", orderItemShipGroup.carrierPartyId))?if_exists />
+		                <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", orderItemShipGroup.carrierPartyId), false)?if_exists />
 		                <#if carrier?has_content>${carrier.groupName?default(carrier.partyId)!}&nbsp;</#if>
 		            </#if>
 		            <#if shipmentMethodType?has_content>
@@ -82,9 +82,9 @@
                 <label>${uiLabelMap.AddressCaption}</label>
             </div>
             <div class="infoValue">
-	      <#assign contactMech = delegator.findByPrimaryKey("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", orderItemShipGroup.contactMechId))?if_exists />
+	      <#assign contactMech = delegator.findOne("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", orderItemShipGroup.contactMechId), false)?if_exists />
 	      <#if contactMech?has_content>
-	          <#assign postalAddress = contactMech.getRelatedOneCache("PostalAddress")?if_exists />
+	          <#assign postalAddress = contactMech.getRelatedOne("PostalAddress", true)?if_exists />
 			    ${setRequestAttribute("PostalAddress", postalAddress)}
 			    ${setRequestAttribute("DISPLAY_FORMAT", "SINGLE_LINE_FULL_ADDRESS")}
 			    ${screens.render("component://osafeadmin/widget/CommonScreens.xml#displayPostalAddress")}

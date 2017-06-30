@@ -3,8 +3,8 @@
         <#assign userLoginId = "">
         <input type="hidden" name="organizationEmployeeId" id="organizationEmployeeId" value="${parameters.organizationCustomerPartyId!}"/>
         <td class="idCol firstCol" ><a href="<@ofbizUrl>${detailAction!}?partyId=${parameters.organizationCustomerPartyId}</@ofbizUrl>">${parameters.organizationCustomerPartyId}</a></td>
-        <#assign person = delegator.findByPrimaryKey("Person", {"partyId", parameters.organizationCustomerPartyId})/>
-        <#assign party = delegator.findByPrimaryKey("Party", {"partyId", parameters.organizationCustomerPartyId})/>
+        <#assign person = delegator.findOne("Person", {"partyId", parameters.organizationCustomerPartyId}, false)/>
+        <#assign party = delegator.findOne("Party", {"partyId", parameters.organizationCustomerPartyId}, false)/>
         <#assign downloadStatus = "">
         <#assign partyAttribute = delegator.findOne("PartyAttribute", {"partyId" : parameters.organizationCustomerPartyId, "attrName" : "IS_DOWNLOADED"}, false)!"" />
         <#if partyAttribute?has_content>
@@ -85,7 +85,7 @@
 	              
         <td class="typeCol">
             <#if partyRoleTypeId?has_content>
-                <#assign roleType = delegator.findByPrimaryKey("RoleType", {"roleTypeId", partyRoleTypeId})/>
+                <#assign roleType = delegator.findOne("RoleType", {"roleTypeId", partyRoleTypeId}, false)/>
             </#if>
             ${roleType.description?if_exists}
         </td>

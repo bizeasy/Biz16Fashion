@@ -28,7 +28,7 @@
       </#if>
     </#list>
     <#list productPromoCodesEntered.iterator() as productPromoCodeEntered>
-      <#assign productPromoCode = delegator.findByPrimaryKey("ProductPromoCode", {"productPromoCodeId" : productPromoCodeEntered})/>
+      <#assign productPromoCode = delegator.findOne("ProductPromoCode", {"productPromoCodeId" : productPromoCodeEntered}, false)/>
       <#assign productPromoUseMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productPromoCodeId", productPromoCodeEntered, "productPromoId", productPromoCode.productPromoId!, "totalDiscountAmount", 0, "quantityLeftInActions", null)/>
       <#assign changed = productPromoUseInfoList.add(productPromoUseMap)/>
     </#list>
@@ -40,7 +40,7 @@
             <#if productPromoUseInfo.productPromoCodeId?has_content>
               ${productPromoUseInfo.productPromoCodeId!""}
             <#elseif productPromoUseInfo.productPromoId?has_content>
-              <#assign productPromo = delegator.findByPrimaryKey("ProductPromo", {"productPromoId" : productPromoUseInfo.productPromoId})/>
+              <#assign productPromo = delegator.findOne("ProductPromo", {"productPromoId" : productPromoUseInfo.productPromoId}, false)/>
               <#if productPromo?has_content>
                 ${productPromo.promoName!""}
               </#if>
@@ -48,7 +48,7 @@
           </td>
           <td class="descCol">
             <#if productPromoUseInfo.productPromoId?has_content>
-              <#assign productPromo = delegator.findByPrimaryKey("ProductPromo", {"productPromoId" : productPromoUseInfo.productPromoId})/>
+              <#assign productPromo = delegator.findOne("ProductPromo", {"productPromoId" : productPromoUseInfo.productPromoId}, false)/>
                 <#if productPromo?has_content>
                   ${productPromo.promoText!""}
                 </#if>

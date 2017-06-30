@@ -27,7 +27,7 @@
                 <#assign orHeader = Static["org.apache.ofbiz.order.order.OrderReadHelper"].getOrderHeader(delegator,orderHeader.orderId)>
                 <#assign orh = Static["org.apache.ofbiz.order.order.OrderReadHelper"].getHelper(orHeader)>
                 <#assign displayParty = orh.getPlacingParty()?if_exists>
-                <#assign statusItem = orHeader.getRelatedOneCache("StatusItem")>
+                <#assign statusItem = orHeader.getRelatedOne("StatusItem", true)>
                 <#assign downloadStatus = "N">
                 <#assign orderDownloadAttribute = delegator.findOne("OrderAttribute", {"orderId" : orderHeader.orderId, "attrName" : "IS_DOWNLOADED"}, false)!"" />
                 <#if orderDownloadAttribute?has_content>

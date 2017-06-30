@@ -14,7 +14,7 @@
         <td class="idCol <#if !result_has_next?if_exists>lastRow</#if>">${rowNo}</td>
         <#assign rowNo = rowNo + 1 />
         <#if result.productId?has_content >
-         	<#assign product = delegator.findByPrimaryKey("Product", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", result.productId!))/>
+         	<#assign product = delegator.findOne("Product", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", result.productId!), false)/>
          	<#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product,request)>
          	<#assign productName = productContentWrapper.get("PRODUCT_NAME")!itemProduct.productName!"">
         </#if>

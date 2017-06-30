@@ -18,7 +18,7 @@
                       </#if>
                     </select>
                 <#elseif mode?has_content && mode == "edit">
-                    <#assign paymentServiceTypeEnum = delegator.findByPrimaryKey("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumId", parameters.paymentServiceTypeEnumId!productStorePaymentSetting.paymentServiceTypeEnumId!""))?if_exists />
+                    <#assign paymentServiceTypeEnum = delegator.findOne("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumId", parameters.paymentServiceTypeEnumId!productStorePaymentSetting.paymentServiceTypeEnumId!""), false)?if_exists />
                     <input type="hidden" name="paymentServiceTypeEnumId" value="${parameters.paymentServiceTypeEnumId!paymentServiceTypeEnum.enumId!""}" />${paymentServiceTypeEnum.description!paymentServiceTypeEnum.enumId!""}
                 </#if>
             </div>
@@ -48,7 +48,7 @@
                             </#list>
                         </#if>
                 <#elseif mode?has_content && mode == "edit">
-                    <#assign paymentMethodType = delegator.findByPrimaryKey("PaymentMethodType", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("paymentMethodTypeId", parameters.paymentMethodTypeId!productStorePaymentSetting.paymentMethodTypeId!""))?if_exists />
+                    <#assign paymentMethodType = delegator.findOne("PaymentMethodType", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("paymentMethodTypeId", parameters.paymentMethodTypeId!productStorePaymentSetting.paymentMethodTypeId!""), false)?if_exists />
                     <input type="hidden" name="paymentMethodTypeId" value="${parameters.paymentMethodTypeId!paymentMethodType.paymentMethodTypeId!""}" />${paymentMethodType.description!paymentMethodType.paymentMethodTypeId!""}
                 </#if>
                 </select>

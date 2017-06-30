@@ -19,7 +19,7 @@
              <td class="dateCol <#if !hasNext>lastRow</#if>">${lastUpdatedDate!}</td>
              <td class="nameCol <#if !hasNext>lastRow</#if>"><a href="customerDetail?partyId=${cart.partyId!}">${cart.partyId!}</a></td>
              <#if cart.partyId?has_content >
-             	<#assign party = delegator.findByPrimaryKey("Party", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", cart.partyId!))/>
+             	<#assign party = delegator.findOne("Party", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", cart.partyId!), false)/>
              </#if>
              <#if party?has_content>
              	<#assign partyName = Static["org.apache.ofbiz.party.party.PartyHelper"].getPartyName(party)>

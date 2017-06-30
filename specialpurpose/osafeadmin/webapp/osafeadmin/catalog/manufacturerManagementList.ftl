@@ -13,7 +13,7 @@
             <#assign rowClass = "1">
             <#list resultList as partyRow>
                   <#assign hasNext = partyRow_has_next/>
-                  <#assign party = delegator.findByPrimaryKey("Party", {"partyId", partyRow.partyId})/>
+                  <#assign party = delegator.findOne("Party", {"partyId", partyRow.partyId}, false)/>
                   <#-- get contact mech Id -->
                   <#assign contactMechs = Static["org.apache.ofbiz.party.contact.ContactHelper"].getContactMechByType(party, "POSTAL_ADDRESS", false)!""/>                    
                   <#assign contactMech = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(contactMechs)!""/>

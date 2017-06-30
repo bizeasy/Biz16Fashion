@@ -1,7 +1,7 @@
 <div id="productCategoryFetureDetail">
 <#if parameters.productCategoryId?has_content>
     <#if parameters.productId?has_content>
-        <#assign product = delegator.findByPrimaryKey("Product", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", parameters.productId))?if_exists>
+        <#assign product = delegator.findOne("Product", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", parameters.productId), false)?if_exists>
     </#if>
     <#assign productCategoryMembers = delegator.findByAnd("ProductCategoryMember", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", parameters.productId))?if_exists>
     <#assign productCategoryMembers = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productCategoryMembers!)/>

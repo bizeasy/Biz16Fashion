@@ -53,7 +53,7 @@ under the License.
     <#assign orderReadHelper = Static["org.apache.ofbiz.order.order.OrderReadHelper"].getHelper(orderHeader)>
     <#assign productStore = orderReadHelper.getProductStoreFromOrder(delegator,orderId)/>
     <#assign payToPartyId = productStore.payToPartyId>
-    <#assign partyGroup =   delegator.findByPrimaryKey("PartyGroup",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId))/>
+    <#assign partyGroup =   delegator.findOne("PartyGroup",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId), false)/>
     <#if partyGroup?has_content>
       <#assign companyName = partyGroup.groupName>
     </#if>
@@ -64,14 +64,14 @@ under the License.
     <#assign companyAddresses = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId, "contactMechPurposeTypeId","GENERAL_LOCATION"))/>
     <#assign selAddresses = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(companyAddresses, nowTimestamp, "fromDate", "thruDate", true)/>
     <#if selAddresses?has_content>
-     <#assign companyAddress = delegator.findByPrimaryKey("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selAddresses[0].contactMechId))/>
+     <#assign companyAddress = delegator.findOne("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selAddresses[0].contactMechId), false)/>
     </#if>
     
      <#-- Company Phone-->
     <#assign phones = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_PHONE"))/>
      <#if selPhones?has_content>
         <#assign selPhones = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(phones, nowTimestamp, "fromDate", "thruDate", true)/>
-        <#assign companyPhone = delegator.findByPrimaryKey("TelecomNumber", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selPhones[0].contactMechId))/>
+        <#assign companyPhone = delegator.findOne("TelecomNumber", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selPhones[0].contactMechId), false)/>
      </#if>
      <#assign faxNumbers = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","FAX_NUMBER"))/>
      <#if faxNumbers?has_content>  
@@ -82,7 +82,7 @@ under the License.
      <#assign emails = delegator.findByAnd("PartyContactMechPurpose",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_EMAIL"))/>
      <#if selEmails?has_content>
        <#assign selEmails = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(emails, nowTimestamp, "fromDate", "thruDate", true)/>
-       <#assign companyEmail = delegator.findByPrimaryKey("ContactMech",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selEmails[0].contactMechId))/>
+       <#assign companyEmail = delegator.findOne("ContactMech",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selEmails[0].contactMechId), false)/>
      </#if>
 
      <#-- Company Website -->
@@ -549,7 +549,7 @@ under the License.
                                    <#assign shipGroup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(shipGroups)/>
                                     <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType")?if_exists>
                                     <#if shipGroup.carrierPartyId?has_content>
-                                        <#assign carrier =  delegator.findByPrimaryKey("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId))?if_exists />
+                                        <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId), false)?if_exists />
                                         <#if carrier?has_content>${carrier.groupName?default(carrier.partyId)!}</#if>
                                     </#if>
                                     <#if shipmentMethodType?has_content>
@@ -843,7 +843,7 @@ under the License.
                             <fo:block>
                                 <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType")?if_exists>
                                 <#if shipGroup.carrierPartyId?has_content>
-                                    <#assign carrier =  delegator.findByPrimaryKey("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId))?if_exists />
+                                    <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId), false)?if_exists />
                                     <#if carrier?has_content>${carrier.groupName?default(carrier.partyId)!}</#if>
                                 </#if>
                                 <#if shipmentMethodType?has_content>

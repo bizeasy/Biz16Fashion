@@ -23,8 +23,8 @@
                 <input type="radio" name="shipping_method_${shipGroupIndex}" value="${shippingMethod}" <#if (StringUtil.wrapString(shippingMethod) == StringUtil.wrapString(chosenShippingMethod!""))>checked="checked" </#if>/>
                 <span class="radioOptionText">
                   <#if carrierMethod.partyId != "_NA_" && carrierShipmentMethod?has_content>
-                    <#assign carrierParty = carrierShipmentMethod.getRelatedOneCache("Party")/>
-                    <#assign carrierPartyGroup = carrierParty.getRelatedOneCache("PartyGroup")/>
+                    <#assign carrierParty = carrierShipmentMethod.getRelatedOne("Party", true)/>
+                    <#assign carrierPartyGroup = carrierParty.getRelatedOne("PartyGroup", true)/>
                     ${carrierPartyGroup.groupName?if_exists}&nbsp;
                   </#if>
                   ${carrierMethod.description?if_exists}<#if carrierShipmentMethod.optionalMessage?has_content> - ${carrierShipmentMethod.optionalMessage}</#if>

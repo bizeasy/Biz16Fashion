@@ -172,7 +172,7 @@
         	<#assign weightUomId = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "WEIGHT_UOM_DEFAULT")!"" />
         	<#if weightUomId?has_content>
         	  <#assign weightUomId = "WT_"+weightUomId?lower_case />
-        	  <#assign weightUom = delegator.findByPrimaryKey('Uom', {"uomId" : weightUomId})!"" />
+        	  <#assign weightUom = delegator.findOne('Uom', {"uomId" : weightUomId}, false)!"" />
         	</#if>
         	<input type="hidden" name="weightUomId" value="${parameters.weightUomId!weightUomId!""}" />
         	<#if weightUom?has_content>
@@ -185,7 +185,7 @@
 <#assign lengthUomId = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductStoreParm(request, "LENGTH_UOM_DEFAULT")!"" />
 <#if lengthUomId?has_content>
   <#assign lengthUomId = "LEN_"+lengthUomId?lower_case />
-  <#assign lengthUom = delegator.findByPrimaryKey('Uom', {"uomId" : lengthUomId})!"" />
+  <#assign lengthUom = delegator.findOne('Uom', {"uomId" : lengthUomId}, false)!"" />
 </#if>
 <input type="hidden" name="lengthUomId" value="${parameters.lengthUomId!lengthUomId!""}" />
         	

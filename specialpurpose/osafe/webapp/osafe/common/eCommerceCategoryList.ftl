@@ -12,7 +12,7 @@
     <#assign pageTopCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(categoryContentList,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("prodCatContentTypeId","PLP_ESPOT_PAGE_TOP")) />
     <#if pageTopCategoryContentList?has_content>
       <#assign pageTopCategoryContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(pageTopCategoryContentList) />
-      <#assign pageTopContent = pageTopCategoryContent.getRelatedOneCache("Content")/>
+      <#assign pageTopContent = pageTopCategoryContent.getRelatedOne("Content", true)/>
       <#if pageTopContent.statusId?has_content>
         <#if (pageTopContent.statusId == "CTNT_PUBLISHED")>
           <#assign pageTopContentId = pageTopContent.contentId/>
@@ -22,7 +22,7 @@
     <#assign pageEndCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(categoryContentList,Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("prodCatContentTypeId","PLP_ESPOT_PAGE_END")) />
     <#if pageEndCategoryContentList?has_content>
       <#assign pageEndCategoryContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(pageEndCategoryContentList) />
-      <#assign pageEndContent = pageEndCategoryContent.getRelatedOneCache("Content")/>
+      <#assign pageEndContent = pageEndCategoryContent.getRelatedOne("Content", true)/>
       <#if pageEndContent.statusId?has_content>
         <#if (pageEndContent.statusId == "CTNT_PUBLISHED")>
           <#assign pageEndContentId = pageEndContent.contentId/>

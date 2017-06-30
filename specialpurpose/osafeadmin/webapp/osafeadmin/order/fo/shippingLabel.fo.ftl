@@ -25,11 +25,11 @@ under the License.
     <#assign companyPhone = Static["org.apache.ofbiz.osafe.util.Util"].getProductStoreParm(request, "EMAIL_CLNT_TEL_NO")/>
     
     <#assign orderId=shipment.primaryOrderId!>
-    <#assign orderHeader = delegator.findByPrimaryKey("OrderHeader",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderId))/>
+    <#assign orderHeader = delegator.findOne("OrderHeader",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderId), false)/>
     <#assign orderReadHelper = Static["org.apache.ofbiz.order.order.OrderReadHelper"].getHelper(orderHeader)>
     <#assign productStore = orderReadHelper.getProductStoreFromOrder(delegator,orderId)/>
     <#assign payToPartyId = productStore.payToPartyId>
-    <#assign partyGroup =   delegator.findByPrimaryKey("PartyGroup",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId))/>
+    <#assign partyGroup =   delegator.findOne("PartyGroup",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId), false)/>
     <#if partyGroup?has_content>
       <#assign companyName = partyGroup.groupName>
     </#if>
@@ -38,7 +38,7 @@ under the License.
     <#assign companyAddresses = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId, "contactMechPurposeTypeId","GENERAL_LOCATION"))/>
     <#assign selAddresses = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(companyAddresses, nowTimestamp, "fromDate", "thruDate", true)/>
     <#if selAddresses?has_content>
-     <#assign companyAddress = delegator.findByPrimaryKey("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selAddresses[0].contactMechId))/>
+     <#assign companyAddress = delegator.findOne("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selAddresses[0].contactMechId), false)/>
      <#assign country = companyAddress.getRelatedOne("CountryGeo")/>
      <#if country?has_content>
        <#assign countryName = country.get("geoName", locale)/>
@@ -167,7 +167,7 @@ under the License.
 		</#list>
     </#if>
     <#if invoiceId?has_content>
-        <#assign invoice = delegator.findByPrimaryKey('Invoice', {"invoiceId" : invoiceId})!"" />
+        <#assign invoice = delegator.findOne('Invoice', {"invoiceId" : invoiceId}, false)!"" />
     </#if>
     <fo:page-sequence master-reference="${pageLayoutName?default("main-page")}">
         <fo:static-content flow-name="xsl-region-before">
@@ -410,7 +410,7 @@ under the License.
                                  <fo:table-cell >
                                     <fo:block font-size="10pt" text-indent="1mm">
 									    ${shipmentPackage.weight!}
-                                        <#assign weightUom = delegator.findByPrimaryKey('Uom', {"uomId" : shipmentPackage.weightUomId!})!"" />
+                                        <#assign weightUom = delegator.findOne('Uom', {"uomId" : shipmentPackage.weightUomId!}, false)!"" />
                                         <#if weightUom?has_content>
                                           (${weightUom.abbreviation!})
                                         </#if>
@@ -421,7 +421,7 @@ under the License.
                                 <fo:table-cell >
                     			</fo:table-cell >
                                 <fo:table-cell >
-								   <#assign dimensionUom = delegator.findByPrimaryKey('Uom', {"uomId" : shipmentPackage.dimensionUomId!})!"" />
+								   <#assign dimensionUom = delegator.findOne('Uom', {"uomId" : shipmentPackage.dimensionUomId!}, false)!"" />
                                    <fo:block font-size="10pt" text-align="right" font-weight="bold">${uiLabelMap.DimensionsCaption}<#if dimensionUom?has_content>(${dimensionUom.abbreviation!})</#if>:</fo:block>
                                 </fo:table-cell >
                                 <fo:table-cell >
@@ -521,7 +521,7 @@ under the License.
 	                          <#assign orderItemBillings = delegator.findByAnd('OrderItemBilling', {"orderId" : orderHeader.orderId,"orderItemSeqId", orderShipment.orderItemSeqId!, "invoiceId",invoiceId!})!"" />
 	                          <#if orderItemBillings?has_content>
 	                              <#assign orderItemBilling =  Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(orderItemBillings) />
-	                              <#assign invoiceItem = delegator.findByPrimaryKey('InvoiceItem', {"invoiceId" : invoiceId,"invoiceItemSeqId", orderItemBilling.invoiceItemSeqId!})!"" />
+	                              <#assign invoiceItem = delegator.findOne('InvoiceItem', {"invoiceId" : invoiceId,"invoiceItemSeqId", orderItemBilling.invoiceItemSeqId!}, false)!"" />
 	                          </#if>
 	                        </#if>
 	                        <#assign amount = 0.00?number/>

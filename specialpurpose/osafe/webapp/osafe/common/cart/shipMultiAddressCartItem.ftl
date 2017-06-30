@@ -84,7 +84,7 @@
                 <#assign index=0/>
                 <#assign defaultInList="false">
   	            <#list shippingContactMechList as shippingContactMech>
-    		      <#assign postalAddress = shippingContactMech.getRelatedOneCache("PostalAddress")>
+    		      <#assign postalAddress = shippingContactMech.getRelatedOne("PostalAddress", true)>
 	  	          <#if index==0>
 		                <#assign firstContactMechId= postalAddress.contactMechId/>
 	  	          </#if>

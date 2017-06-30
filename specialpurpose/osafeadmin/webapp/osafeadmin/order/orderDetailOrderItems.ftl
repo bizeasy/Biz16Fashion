@@ -93,7 +93,7 @@
                     <#if shipGroupAssoc?exists && shipGroupAssoc?has_content>
                         <#assign shipGroup = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(delegator.findByAnd("OrderItemShipGroup", {"orderId": orderItem.orderId, "shipGroupSeqId": shipGroupAssoc.shipGroupSeqId}))/> 
                         <#if shipGroup?has_content>
-                          <#assign orderHeader = delegator.findByPrimaryKey("OrderHeader", {"orderId": orderItem.orderId})/>
+                          <#assign orderHeader = delegator.findOne("OrderHeader", {"orderId": orderItem.orderId}, false)/>
                           <#if orderHeader?has_content && (orderHeader.statusId == "ORDER_COMPLETED" || orderItem.statusId == "ITEM_COMPLETED") >
                               <#assign trackingNumber = shipGroup.trackingNumber!""/>
                               <#if (shipGroup.carrierPartyId?has_content && shipGroup.carrierPartyId != "_NA_")>

@@ -1,7 +1,7 @@
 <#if orderAdjustmentsPromotion?has_content>  
  <#list orderAdjustmentsPromotion as orderAdjustment>
-      <#assign adjustmentType = orderAdjustment.getRelatedOneCache("OrderAdjustmentType")>
-      <#assign productPromo = orderAdjustment.getRelatedOneCache("ProductPromo")!"">
+      <#assign adjustmentType = orderAdjustment.getRelatedOne("OrderAdjustmentType", true)>
+      <#assign productPromo = orderAdjustment.getRelatedOne("ProductPromo", true)!"">
       <#assign promoCodeText = ""/>
       <#if productPromo?has_content>
          <#assign promoText = productPromo.promoText?if_exists/>

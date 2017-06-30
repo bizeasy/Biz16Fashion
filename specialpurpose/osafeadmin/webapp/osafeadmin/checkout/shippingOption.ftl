@@ -2,7 +2,7 @@
 <#if (shoppingCart?has_content) && (shoppingCart.getShipmentMethodTypeId()?has_content)>
   <#assign selectedStoreId = shoppingCart.getOrderAttribute("STORE_LOCATION")?if_exists />
   <#if !selectedStoreId?has_content && shoppingCart.getShipmentMethodTypeId()?has_content && shoppingCart.getCarrierPartyId()?has_content>
-    <#assign carrier = delegator.findByPrimaryKey("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shoppingCart.getCarrierPartyId()))?if_exists /> 
+    <#assign carrier = delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shoppingCart.getCarrierPartyId()), false)?if_exists /> 
     <#if carrier.groupName?has_content && carrier.partyId?has_content>
       <#assign currentCartShipMeth = shoppingCart.getShipmentMethodType(0).shipmentMethodTypeId + "@" + carrier.partyId  />
     </#if>    
@@ -28,7 +28,7 @@
   <#list carrierShipmentMethodList as carrierMethod>
     <#assign shippingMethod = carrierMethod.shipmentMethodTypeId + "@" + carrierMethod.partyId />
     <#assign findCarrierShipmentMethodMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", carrierMethod.shipmentMethodTypeId, "partyId", carrierMethod.partyId,"roleTypeId" ,"CARRIER") />
-    <#assign carrierShipmentMethod = delegator.findByPrimaryKey("CarrierShipmentMethod", findCarrierShipmentMethodMap) />
+    <#assign carrierShipmentMethod = delegator.findOne("CarrierShipmentMethod", findCarrierShipmentMethodMap, false) />
     <div class="infoRow row">
       <div class="infoEntry long">
         <div class="infoCaption">

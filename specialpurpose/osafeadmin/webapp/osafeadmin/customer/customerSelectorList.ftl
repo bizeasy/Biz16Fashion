@@ -13,7 +13,7 @@
 <#if resultList?exists && resultList?has_content>
   <#assign rowClass = "1">
   <#list resultList as partyRow>
-    <#assign person = delegator.findByPrimaryKey("Person", {"partyId", partyRow.partyId})/>
+    <#assign person = delegator.findOne("Person", {"partyId", partyRow.partyId}, false)/>
     <#assign productStoreRoles = delegator.findByAnd("ProductStoreRole", {"partyId", partyRow.partyId, "roleTypeId", "CUSTOMER"})/>
     <#if productStoreRoles?has_content >
       <#assign productStoreRole = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(productStoreRoles) /> 

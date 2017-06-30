@@ -13,7 +13,7 @@
     <input type="hidden" name="CONTACT_US_COUNTRY" id="CONTACT_US_COUNTRY" value="${COUNTRY_DEFAULT!}"/>
     <#if userLogin?has_content>
        <#assign emailLogin=userLogin.userLoginId>
-       <#assign person = userLogin.getRelatedOneCache("Person")!"" >
+       <#assign person = userLogin.getRelatedOne("Person", true)!"" >
        <#if person?has_content>
          <#assign firstName=person.firstName>
          <#assign lastName=person.lastName>

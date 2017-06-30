@@ -38,7 +38,7 @@ under the License.
 
             <#-- Body Rows -->
             <#list orderItems as orderItem>
-                <#assign product = orderItem.getRelatedOneCache("Product")?if_exists/> <#-- should always exist because of FK constraint, but just in case -->
+                <#assign product = orderItem.getRelatedOne("Product", true)?if_exists/> <#-- should always exist because of FK constraint, but just in case -->
                 <#assign urlProductId = product.productId>
                 <#if product.isVariant?if_exists?upper_case == "Y">
                     <#assign virtualProduct = Static["org.apache.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
@@ -80,7 +80,7 @@ under the License.
                    </#if>
                    <#if features?has_content>
                      <#list features as feature>
-                        <#assign productFeatureType = feature.getRelatedOneCache("ProductFeatureType")>
+                        <#assign productFeatureType = feature.getRelatedOne("ProductFeatureType", true)>
                         <tr>
                             <td>${productFeatureType.description!""}: ${feature.description?default("")}</td>
                         </tr>

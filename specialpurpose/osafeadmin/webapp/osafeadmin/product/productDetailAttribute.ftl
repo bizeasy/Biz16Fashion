@@ -42,12 +42,12 @@
 <#assign lengthUomId = LENGTH_UOM_DEFAULT!"" /> 
 <#if lengthUomId?has_content>
   <#assign lengthUomId = "LEN_"+lengthUomId?lower_case />
-  <#assign lengthUom = delegator.findByPrimaryKey('Uom', {"uomId" : lengthUomId})!"" />
+  <#assign lengthUom = delegator.findOne('Uom', {"uomId" : lengthUomId}, false)!"" />
 </#if>
 <#assign weightUomId = WEIGHT_UOM_DEFAULT!"" />
 <#if weightUomId?has_content>
   <#assign weightUomId = "WT_"+weightUomId?lower_case />
-  <#assign weightUom = delegator.findByPrimaryKey('Uom', {"uomId" : weightUomId})!"" />
+  <#assign weightUom = delegator.findOne('Uom', {"uomId" : weightUomId}, false)!"" />
 </#if>
 
    <#if (mode?has_content && mode =='edit' && isVariant != 'Y') || (mode?has_content && mode =='add' && !virtualProduct?has_content)>

@@ -14,8 +14,8 @@
                   <tr class="dataRow <#if rowClass == "2">even<#else>odd</#if>">
                   	<#assign userLoginId = "">
                     <td class="idCol <#if !partyRow_has_next>lastRow</#if> firstCol" ><a href="<@ofbizUrl>organizationDetail?partyId=${partyRow.partyId}</@ofbizUrl>">${partyRow.partyId}</a></td>
-                   <#assign partyGroup = delegator.findByPrimaryKey("PartyGroup", {"partyId", partyRow.partyId})/>
-                   <#assign party = delegator.findByPrimaryKey("Party", {"partyId", partyRow.partyId})/>
+                   <#assign partyGroup = delegator.findOne("PartyGroup", {"partyId", partyRow.partyId}, false)/>
+                   <#assign party = delegator.findOne("Party", {"partyId", partyRow.partyId}, false)/>
                     
                     <td class="nameCol <#if !partyRow_has_next>lastRow</#if>"><#if partyGroup?has_content>${partyGroup.groupName!""}</#if></td>
                     

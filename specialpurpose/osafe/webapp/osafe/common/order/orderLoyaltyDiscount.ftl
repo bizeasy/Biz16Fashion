@@ -1,6 +1,6 @@
 <#if orderAdjustmentsLoyalty?has_content>  
  <#list orderAdjustmentsLoyalty as orderAdjustment>
-      <#assign adjustmentType = orderAdjustment.getRelatedOneCache("OrderAdjustmentType")>
+      <#assign adjustmentType = orderAdjustment.getRelatedOne("OrderAdjustmentType", true)>
       <#assign adjustmentTypeDesc = adjustmentType.get("description",locale)!"">
        <li class="${request.getAttribute("attributeClass")!}">
        <div>

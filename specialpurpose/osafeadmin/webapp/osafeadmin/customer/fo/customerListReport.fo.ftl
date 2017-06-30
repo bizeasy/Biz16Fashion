@@ -49,7 +49,7 @@ under the License.
   <#if customerList?has_content>
    <#list customerList as partyrow>
     <#assign partyId=partyrow.get("partyId")>
-    <#assign party =   delegator.findByPrimaryKey("Party",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId))/>
+    <#assign party =   delegator.findOne("Party",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId), false)/>
     <#assign partyName= Static["org.apache.ofbiz.party.party.PartyHelper"].getPartyName(delegator,partyId, true)!"">
     <#assign partyRoles = delegator.findByAnd("ProductStoreRole", {"partyId", partyId})>
      <#if partyRoles?has_content>
@@ -79,7 +79,7 @@ under the License.
         </#if>
     </#if>
     <#-- Personal info --> 
-    <#assign emailPreference = delegator.findByPrimaryKey("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","PARTY_EMAIL_PREFERENCE"))!""/>
+    <#assign emailPreference = delegator.findOne("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","PARTY_EMAIL_PREFERENCE"), false)!""/>
     <#if emailPreference?has_content>
         <#assign emailPreference = emailPreference.attrValue!"" >
     <#else>
@@ -127,7 +127,7 @@ under the License.
     <#if typeId?has_content && typeId=="PERSON">
       <#assign currentStatus=partyrow.get("statusId")>
       <#assign payToPartyId = productStore.payToPartyId>
-      <#assign partyGroup =   delegator.findByPrimaryKey("PartyGroup",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId))/>
+      <#assign partyGroup =   delegator.findOne("PartyGroup",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId), false)/>
       <#if partyGroup?has_content>
         <#assign logoImageUrl = partyGroup.logoImageUrl/>
         <#assign companyName = partyGroup.groupName>
@@ -136,7 +136,7 @@ under the License.
       <#assign companyAddresses = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId, "contactMechPurposeTypeId","GENERAL_LOCATION"))/>
       <#assign selAddresses = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(companyAddresses, nowTimestamp, "fromDate", "thruDate", true)/>
       <#if selAddresses?has_content>
-        <#assign companyAddress = delegator.findByPrimaryKey("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selAddresses[0].contactMechId))/>
+        <#assign companyAddress = delegator.findOne("PostalAddress", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selAddresses[0].contactMechId), false)/>
         <#assign country = companyAddress.getRelatedOne("CountryGeo")/>
         <#if country?has_content>
           <#assign countryName = country.get("geoName", locale)/>
@@ -150,7 +150,7 @@ under the License.
       <#assign phones = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_PHONE"))/>
       <#if selPhones?has_content>
         <#assign selPhones = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(phones, nowTimestamp, "fromDate", "thruDate", true)/>
-        <#assign companyPhone = delegator.findByPrimaryKey("TelecomNumber", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selPhones[0].contactMechId))/>
+        <#assign companyPhone = delegator.findOne("TelecomNumber", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selPhones[0].contactMechId), false)/>
       </#if>
       <#assign faxNumbers = delegator.findByAnd("PartyContactMechPurpose", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","FAX_NUMBER"))/>
       <#if faxNumbers?has_content>  
@@ -161,7 +161,7 @@ under the License.
       <#assign emails = delegator.findByAnd("PartyContactMechPurpose",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_EMAIL"))/>
       <#if selEmails?has_content>
         <#assign selEmails = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(emails, nowTimestamp, "fromDate", "thruDate", true)/>
-        <#assign companyEmail = delegator.findByPrimaryKey("ContactMech",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selEmails[0].contactMechId))/>
+        <#assign companyEmail = delegator.findOne("ContactMech",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId",selEmails[0].contactMechId), false)/>
       </#if>
       <#-- Company Website -->
       <#assign websiteUrls = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(delegator.findByAnd("PartyContactMechPurpose",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",payToPartyId,"contactMechPurposeTypeId","PRIMARY_WEB_URL")))/>
@@ -209,32 +209,32 @@ under the License.
       </#if>
       
       <#-- Personal info --> 
-      <#assign title = delegator.findByPrimaryKey("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","TITLE"))!""/>
+      <#assign title = delegator.findOne("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","TITLE"), false)!""/>
       <#if title?has_content>
           <#assign title = title.attrValue!"" >
       </#if>
 
-      <#assign gender = delegator.findByPrimaryKey("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","GENDER"))!""/>
+      <#assign gender = delegator.findOne("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","GENDER"), false)!""/>
       <#if gender?has_content>
 			  <#assign gender = gender.attrValue!"" >
 	  </#if>
 	  
-	  <#assign dob_MMDD = delegator.findByPrimaryKey("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","DOB_MMDD"))!""/>
+	  <#assign dob_MMDD = delegator.findOne("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","DOB_MMDD"), false)!""/>
 	  <#if dob_MMDD?has_content>
 			  <#assign dob_MMDD = dob_MMDD.attrValue!"" >
 	  </#if>
 	  
-	  <#assign dob_MMDDYYYY = delegator.findByPrimaryKey("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","DOB_MMDDYYYY"))!""/>
+	  <#assign dob_MMDDYYYY = delegator.findOne("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","DOB_MMDDYYYY"), false)!""/>
 	  <#if dob_MMDDYYYY?has_content>
 			  <#assign dob_MMDDYYYY = dob_MMDDYYYY.attrValue!"" >
 	  </#if>
 
-      <#assign dob_DDMM = delegator.findByPrimaryKey("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","DOB_DDMM"))!""/>
+      <#assign dob_DDMM = delegator.findOne("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","DOB_DDMM"), false)!""/>
       <#if dob_DDMM?has_content>
               <#assign dob_DDMM = dob_DDMM.attrValue!"" >
       </#if>
       
-      <#assign dob_DDMMYYYY = delegator.findByPrimaryKey("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","DOB_DDMMYYYY"))!""/>
+      <#assign dob_DDMMYYYY = delegator.findOne("PartyAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId",partyId,"attrName","DOB_DDMMYYYY"), false)!""/>
       <#if dob_DDMMYYYY?has_content>
               <#assign dob_DDMMYYYY = dob_DDMMYYYY.attrValue!"" >
       </#if>

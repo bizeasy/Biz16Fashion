@@ -223,7 +223,7 @@
                     <select name="organizationPartyId">
                     	<option value="" <#if !organizationId?has_content>selected=selected</#if>>${uiLabelMap.NALabel}</option>
                         <#list organizationList as organization>
-                            <#assign partyGroup = delegator.findByPrimaryKey("PartyGroup", {"partyId", organization.partyId})/>
+                            <#assign partyGroup = delegator.findOne("PartyGroup", {"partyId", organization.partyId}, false)/>
                             <option value="${organization.partyId}" <#if organizationId?has_content && organizationId == organization.partyId>selected=selected</#if>>${partyGroup.groupName!}</option>
                         </#list>
                     </select>

@@ -18,7 +18,7 @@
                         <td class="dateCol firstCol">${(Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(shipGroup.estimatedShipDate, preferredDateFormat).toLowerCase())!"N/A"}</td>
                         <td class="descCol">
                             <#if shipGroup.carrierPartyId?has_content>
-                                <#assign carrier =  delegator.findByPrimaryKey("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId))?if_exists />
+                                <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId), false)?if_exists />
                                 <#if carrier?has_content>${carrier.groupName?default(carrier.partyId)!}&nbsp;</#if>
                             </#if>
                             <#if shipmentMethodType?has_content>

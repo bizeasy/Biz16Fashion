@@ -31,7 +31,7 @@
 	            </#if>    
 	            
 	            <!-- get the CarrierShipmentMethod Info -->
-	            <#assign carrierShipmentMethod = delegator.findByPrimaryKey("CarrierShipmentMethod", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", shipCharge.shipmentMethodTypeId!, "partyId", shipCharge.partyId!, "roleTypeId", "CARRIER"))/>             
+	            <#assign carrierShipmentMethod = delegator.findOne("CarrierShipmentMethod", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", shipCharge.shipmentMethodTypeId!, "partyId", shipCharge.partyId!, "roleTypeId", "CARRIER"), false)/>             
 
                     <td class="idCol <#if !hasNext>lastRow</#if> firstCol" ><a href="<@ofbizUrl>shippingChargeDetail?productStoreShipMethId=${shipCharge.productStoreShipMethId}</@ofbizUrl>">${shipCharge.productStoreShipMethId}</a></td>
                     <td class="seqCol <#if !hasNext>lastRow</#if>">${shipCharge.sequenceNumber!""}</td>

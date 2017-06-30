@@ -55,8 +55,8 @@
 					</#if>
                     <#assign shipmentPackages = shipment.getRelated("ShipmentPackage")!""/>
                     <#list shipmentPackages as shipmentPackage>
-			            <#assign dimensionUom = delegator.findByPrimaryKey('Uom', {"uomId" : shipmentPackage.dimensionUomId!})!"" />
-			            <#assign weightUom = delegator.findByPrimaryKey('Uom', {"uomId" : shipmentPackage.weightUomId!})!"" />
+			            <#assign dimensionUom = delegator.findOne('Uom', {"uomId" : shipmentPackage.dimensionUomId!}, false)!"" />
+			            <#assign weightUom = delegator.findOne('Uom', {"uomId" : shipmentPackage.weightUomId!}, false)!"" />
 						    <div class="heading">${uiLabelMap.OrderShippingPackageInfoHeading!}</div>
 						    <div class="infoRow column">
 						        <div class="infoEntry">

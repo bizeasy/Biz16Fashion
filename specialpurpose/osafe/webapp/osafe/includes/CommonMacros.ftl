@@ -202,7 +202,7 @@
 	  <#if megaMenuProductCategoryContentList?has_content>
 	   <#assign megaMenuProductCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(megaMenuProductCategoryContentList,true) />
 	   <#assign prodCategoryContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(megaMenuProductCategoryContentList) />
-	   <#assign megaMenuContent = prodCategoryContent.getRelatedOneCache("Content")/>
+	   <#assign megaMenuContent = prodCategoryContent.getRelatedOne("Content", true)/>
 	   <#if megaMenuContent.statusId?has_content>
 		   <#if (megaMenuContent.statusId == "CTNT_PUBLISHED")>
 		        <#assign megaMenuContentId = megaMenuContent.contentId/>

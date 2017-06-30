@@ -17,7 +17,7 @@
 	      </#if>
            <select name="${addressSelectionInputName!""}">
 	         <#list contactMechList as contactMech>
-		        <#assign postalAddress = contactMech.getRelatedOneCache("PostalAddress")>
+		        <#assign postalAddress = contactMech.getRelatedOne("PostalAddress", true)>
 		        <#if selectedAddress?has_content>
 	                <#assign chosenShippingContactMechId= selectedAddress/>
 	            <#else>
@@ -41,7 +41,7 @@
 	          </#if>
 	          <#list contactMechList as contactMech>
 	              <#if contactMech.contactMechTypeId?if_exists = "POSTAL_ADDRESS">
-	                  <#assign postalAddress=contactMech.getRelatedOneCache("PostalAddress")!"">
+	                  <#assign postalAddress=contactMech.getRelatedOne("PostalAddress", true)!"">
 				      <#if selectedAddress?has_content>
 			                <#assign chosenShippingContactMechId= selectedAddress/>
 			            <#else>

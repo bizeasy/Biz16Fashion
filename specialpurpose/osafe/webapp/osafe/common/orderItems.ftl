@@ -49,7 +49,7 @@
                                       <#assign selectedStoreId = (orderAttrPickupStore.attrValue)?if_exists />
                                     </#if>
                                     <#if !selectedStoreId?has_content >
-                                      <#assign shipmentMethodType = shipGroup.getRelatedOneCache("ShipmentMethodType")?if_exists>
+                                      <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType", true)?if_exists>
                                       <#assign carrierPartyId = shipGroup.carrierPartyId?if_exists>
                                       <#if shipmentMethodType?has_content>
                                         <#assign carrier =  delegator.findByPrimaryKeyCache("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId))?if_exists />
@@ -72,8 +72,8 @@
                               </tr>
                             </#if>
                             <#list headerAdjustmentsToShow as orderHeaderAdjustment>
-                                      <#assign adjustmentType = orderHeaderAdjustment.getRelatedOneCache("OrderAdjustmentType")>
-                                      <#assign productPromo = orderHeaderAdjustment.getRelatedOneCache("ProductPromo")!"">
+                                      <#assign adjustmentType = orderHeaderAdjustment.getRelatedOne("OrderAdjustmentType", true)>
+                                      <#assign productPromo = orderHeaderAdjustment.getRelatedOne("ProductPromo", true)!"">
                                       <#assign promoCodeText = ""/>
                                       <#if productPromo?has_content>
                                          <#assign promoText = productPromo.promoText?if_exists/>
@@ -129,7 +129,7 @@
             </tfoot>
             <tbody>
             <#list orderItems as orderItem>
-              <#assign product = orderItem.getRelatedOneCache("Product")?if_exists/>
+              <#assign product = orderItem.getRelatedOne("Product", true)?if_exists/>
               <#assign urlProductId = product.productId>
               <#assign productCategoryId = product.primaryProductCategoryId!""/>
               <#assign productCategoryId = orderItem.productCategoryId!""/>
@@ -152,22 +152,22 @@
                       <#assign trackingNumber = shipGroup.trackingNumber!""/>
                       <#assign findCarrierShipmentMethodMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", shipGroup.shipmentMethodTypeId, "partyId", shipGroup.carrierPartyId,"roleTypeId" ,"CARRIER")>
                       <#assign carrierShipmentMethod = delegator.findByPrimaryKeyCache("CarrierShipmentMethod", findCarrierShipmentMethodMap)>
-                      <#assign shipmentMethodType = carrierShipmentMethod.getRelatedOneCache("ShipmentMethodType")/>
+                      <#assign shipmentMethodType = carrierShipmentMethod.getRelatedOne("ShipmentMethodType", true)/>
                       <#assign description = shipmentMethodType.description!""/>
                       <#assign carrierPartyGroupName = ""/>
                       <#if shipGroup.carrierPartyId != "_NA_">
-                          <#assign carrierParty = carrierShipmentMethod.getRelatedOneCache("Party")/>
-                          <#assign carrierPartyGroup = carrierParty.getRelatedOneCache("PartyGroup")/>
+                          <#assign carrierParty = carrierShipmentMethod.getRelatedOne("Party", true)/>
+                          <#assign carrierPartyGroup = carrierParty.getRelatedOne("PartyGroup", true)/>
                           <#assign carrierPartyGroupName = carrierPartyGroup.groupName/>
                           <#assign trackingURLPartyContents = EntityQuery.use(delegator).from("PartyContent").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL")).cache().queryList()/>
                           <#if trackingURLPartyContents?has_content>
                               <#assign trackingURLPartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(trackingURLPartyContents)/>
                               <#if trackingURLPartyContent?has_content>
-                                  <#assign content = trackingURLPartyContent.getRelatedOneCache("Content")/>
+                                  <#assign content = trackingURLPartyContent.getRelatedOne("Content", true)/>
                                   <#if content?has_content>
-                                      <#assign dataResource = content.getRelatedOneCache("DataResource")!""/>
+                                      <#assign dataResource = content.getRelatedOne("DataResource", true)!""/>
                                       <#if dataResource?has_content>
-                                          <#assign electronicText = dataResource.getRelatedOneCache("ElectronicText")!""/>
+                                          <#assign electronicText = dataResource.getRelatedOne("ElectronicText", true)!""/>
                                           <#assign trackingURL = electronicText.textData!""/>
                                           <#if trackingURL?has_content>
                                               <#assign trackingURL = Static["org.apache.ofbiz.base.util.string.FlexibleStringExpander"].expandString(trackingURL, {"TRACKING_NUMBER":trackingNumber})/>
@@ -259,7 +259,7 @@
                         </dl>
                     </td>
                     <#if orderHeader?has_content>
-                      <#assign status = orderHeader.getRelatedOneCache("StatusItem") />
+                      <#assign status = orderHeader.getRelatedOne("StatusItem", true) />
                       <td class="statusCol <#if !orderItem_has_next>lastRow</#if>">${status.get("description",locale)}</td>
                     </#if>
                     <td class="shipDateCol <#if !orderItem_has_next>lastRow</#if>">${shipDate!}</td>

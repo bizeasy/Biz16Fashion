@@ -1,5 +1,5 @@
 <#if parameters.noteId?exists && parameters.noteId?has_content>
-  <#assign note = delegator.findByPrimaryKey("PartyNoteView", {"targetPartyId" : party.partyId!, "noteId", parameters.noteId!})/>
+  <#assign note = delegator.findOne("PartyNoteView", {"targetPartyId" : party.partyId!, "noteId", parameters.noteId!}, false)/>
   <#assign noteDateTime = (Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].convertDateTimeFormat(note.noteDateTime!, preferredDateTimeFormat).toLowerCase())!"N/A"/>
   <#assign noteDateTime = noteDateTime?split(" ")/>
   <#assign noteDate=noteDateTime[0] />

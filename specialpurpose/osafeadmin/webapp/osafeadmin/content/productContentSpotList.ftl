@@ -14,7 +14,7 @@
             
     <#assign rowClass = "1">          
     <#list resultList as content>
-        <#assign thisContent  = delegator.findByPrimaryKey("Content",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId",content.contentId))/>
+        <#assign thisContent  = delegator.findOne("Content",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId",content.contentId), false)/>
         <#assign hasNext = content_has_next>
     	<#assign statusId = thisContent.statusId!"CTNT_DEACTIVATED" /> 			
            

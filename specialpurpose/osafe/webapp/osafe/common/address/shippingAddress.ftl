@@ -3,7 +3,7 @@
     <#-- shipping address -->
     <#assign groupIdx = 0>
     <#list orderItemShipGroups as shipGroup>
-        <#assign shippingAddress = shipGroup.getRelatedOneCache("PostalAddress")?if_exists>
+        <#assign shippingAddress = shipGroup.getRelatedOne("PostalAddress", true)?if_exists>
         <#assign groupNumber = shipGroup.shipGroupSeqId?if_exists>
         <#if shippingAddress?has_content>
           <div class="displayBox">

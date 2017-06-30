@@ -19,7 +19,7 @@
 			       <label for="${fieldPurpose?if_exists}_ADDRESSES">${uiLabelMap.SelectAddressCaption}</label>
 	               <select name="${fieldPurpose?if_exists}_SELECT_ADDRESS" onchange="javascript:getPostalAddress(this.options[this.selectedIndex].value,'${fieldPurpose?if_exists}');">
 			         <#list contactMechList as contactMech>
-				        <#assign postalAddress = contactMech.getRelatedOneCache("PostalAddress")>
+				        <#assign postalAddress = contactMech.getRelatedOne("PostalAddress", true)>
 				        <#if selectedAddress?has_content>
 			                <#assign chosenShippingContactMechId= selectedAddress/>
 			            <#else>
@@ -40,7 +40,7 @@
 			          <#assign shoppingCart = Static["org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents"].getCartObject(request) />
 			          <#list contactMechList as contactMech>
 			              <#if contactMech.contactMechTypeId?if_exists = "POSTAL_ADDRESS">
-			                  <#assign postalAddress=contactMech.getRelatedOneCache("PostalAddress")!"">
+			                  <#assign postalAddress=contactMech.getRelatedOne("PostalAddress", true)!"">
 			                  <#if postalAddress?has_content>
 			                      <label class="radioOptionLabel">
 			                      <input type="radio" id="js_${fieldPurpose?if_exists}_SELECT_ADDRESS" class="${fieldPurpose?if_exists}_SELECT_ADDRESS" name="${fieldPurpose?if_exists}_SELECT_ADDRESS" value="${postalAddress.contactMechId!}" onchange="javascript:getPostalAddress('${postalAddress.contactMechId!}', '${fieldPurpose?if_exists}');"<#if selectedAddress == postalAddress.contactMechId >checked="checked"</#if>/>

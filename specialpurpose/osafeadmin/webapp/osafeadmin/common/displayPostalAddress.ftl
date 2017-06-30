@@ -37,7 +37,7 @@
                 <#if postalAddress.stateProvinceGeoId?has_content && postalAddress.stateProvinceGeoId != '_NA_'>
                     <span>
                         <#if STATE?has_content && STATE == 'LONG'>
-                            <#assign stateProvince = delegator.findByPrimaryKey("Geo", {"geoId" : postalAddress.stateProvinceGeoId})?if_exists>
+                            <#assign stateProvince = delegator.findOne("Geo", {"geoId" : postalAddress.stateProvinceGeoId}, true)?if_exists>
                             ${stateProvince.geoName!stateProvince.geoId!""}
                         <#else>
                             ${postalAddress.stateProvinceGeoId}
@@ -63,7 +63,7 @@
                 <div>
                     <span>
                         <#if COUNTRY?has_content && COUNTRY == 'LONG'>
-                            <#assign country = delegator.findByPrimaryKey("Geo", {"geoId" : postalAddress.countryGeoId})?if_exists>
+                            <#assign country = delegator.findOne("Geo", {"geoId" : postalAddress.countryGeoId}, true)?if_exists>
                             ${country.geoName!country.geoId!""}
                         <#else>
                            ${postalAddress.countryGeoId}
@@ -95,7 +95,7 @@
         <#if postalAddress.stateProvinceGeoId?has_content && postalAddress.stateProvinceGeoId != '_NA_'>
             <span>
                 <#if STATE?has_content && STATE == 'LONG'>
-                    <#assign stateProvince = delegator.findByPrimaryKey("Geo", {"geoId" : postalAddress.stateProvinceGeoId})?if_exists>
+                    <#assign stateProvince = delegator.findOne("Geo", {"geoId" : postalAddress.stateProvinceGeoId}, true)?if_exists>
                     ${stateProvince.geoName!stateProvince.geoId!""}
                 <#else>
                     ${postalAddress.stateProvinceGeoId}
@@ -117,7 +117,7 @@
         <#if postalAddress.countryGeoId?has_content>
             <span>
                 <#if COUNTRY?has_content && COUNTRY == 'LONG'>
-                    <#assign country = delegator.findByPrimaryKey("Geo", {"geoId" : postalAddress.countryGeoId})?if_exists>
+                    <#assign country = delegator.findOne("Geo", {"geoId" : postalAddress.countryGeoId}, true)?if_exists>
                     ${country.geoName!country.geoId!""}
                 <#else>
                    ${postalAddress.countryGeoId}
@@ -151,7 +151,7 @@
                 <#if postalAddress.stateProvinceGeoId?has_content && postalAddress.stateProvinceGeoId != '_NA_'>
                     <span>
                         <#if STATE?has_content && STATE == 'LONG'>
-                            <#assign stateProvince = delegator.findByPrimaryKey("Geo", {"geoId" : postalAddress.stateProvinceGeoId})?if_exists>
+                            <#assign stateProvince = delegator.findOne("Geo", {"geoId" : postalAddress.stateProvinceGeoId}, false)?if_exists>
                             ${stateProvince.geoName!stateProvince.geoId!""}
                         <#else>
                             ${postalAddress.stateProvinceGeoId}
@@ -177,7 +177,7 @@
         <#if postalAddress.stateProvinceGeoId?has_content && postalAddress.stateProvinceGeoId != '_NA_'>
             <span>
                 <#if STATE?has_content && STATE == 'LONG'>
-                    <#assign stateProvince = delegator.findByPrimaryKey("Geo", {"geoId" : postalAddress.stateProvinceGeoId})?if_exists>
+                    <#assign stateProvince = delegator.findOne("Geo", {"geoId" : postalAddress.stateProvinceGeoId}, false)?if_exists>
                     ${stateProvince.geoName!stateProvince.geoId!""}
                 <#else>
                     ${postalAddress.stateProvinceGeoId}
@@ -250,7 +250,7 @@
             <#if postalAddress.stateProvinceGeoId?has_content && postalAddress.stateProvinceGeoId != '_NA_'>
                 <span>
                     <#if STATE?has_content && STATE == 'LONG'>
-                        <#assign stateProvince = delegator.findByPrimaryKey("Geo", {"geoId" : postalAddress.stateProvinceGeoId})?if_exists>
+                        <#assign stateProvince = delegator.findOne("Geo", {"geoId" : postalAddress.stateProvinceGeoId}, false)?if_exists>
                         ${stateProvince.geoName!stateProvince.geoId!""}
                     <#else>
                         ${postalAddress.stateProvinceGeoId}

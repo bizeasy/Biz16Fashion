@@ -7,7 +7,7 @@
 	      <h4>${uiLabelMap.ShippingGroupHeading} ${groupIndex} of ${shoppingCart.getShipGroupSize()}</h4>
 	      <#assign contactMech = delegator.findByPrimaryKeyCache("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", cartShipInfo.contactMechId))?if_exists />
 	      <#if contactMech?has_content>
-	          <#assign postalAddress = contactMech.getRelatedOneCache("PostalAddress")?if_exists />
+	          <#assign postalAddress = contactMech.getRelatedOne("PostalAddress", true)?if_exists />
 			    ${setRequestAttribute("PostalAddress", postalAddress)}
 			    ${setRequestAttribute("DISPLAY_FORMAT", "SINGLE_LINE_FULL_ADDRESS")}
 			    ${screens.render("component://osafe/widget/CommonScreens.xml#displayPostalAddress")}

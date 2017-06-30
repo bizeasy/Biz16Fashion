@@ -17,7 +17,7 @@
        </#if>
        <#assign statusItem = delegator.findOne("StatusItem", {"statusId" : statusId}, false)>
       <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
-        <#assign emailTypeEnum = delegator.findByPrimaryKey("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumId", email.emailType!""))?if_exists />
+        <#assign emailTypeEnum = delegator.findOne("Enumeration", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("enumId", email.emailType!""), false)?if_exists />
         <td class="idCol <#if !email_has_next?if_exists>lastRow</#if> firstCol" ><a href="<@ofbizUrl>emailConfigDetail?emailType=${email.emailType!""}</@ofbizUrl>">${email.emailType!""}</a></td>
         <td class="statusCol <#if !email_has_next>lastRow</#if>">${statusItem.description!statusItem.get("description",locale)!statusItem.statusId}</td>
         <td class="descCol <#if !email_has_next?if_exists>lastRow</#if>" ><a href="<@ofbizUrl>emailConfigDetail?emailType=${email.emailType!""}</@ofbizUrl>">${emailTypeEnum.description!""}</a></td>

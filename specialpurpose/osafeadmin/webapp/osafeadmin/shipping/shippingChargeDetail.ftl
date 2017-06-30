@@ -175,7 +175,7 @@
   
   <#if mode="edit">
   		<!-- get the CarrierShipmentMethod Info -->
-	    <#assign carrierShipmentMethod = delegator.findByPrimaryKey("CarrierShipmentMethod", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", shipCharge.shipmentMethodTypeId!, "partyId", shipCharge.partyId!, "roleTypeId", "CARRIER"))/> 
+	    <#assign carrierShipmentMethod = delegator.findOne("CarrierShipmentMethod", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", shipCharge.shipmentMethodTypeId!, "partyId", shipCharge.partyId!, "roleTypeId", "CARRIER"), false)/> 
   </#if>
   
   <div class="infoRow">

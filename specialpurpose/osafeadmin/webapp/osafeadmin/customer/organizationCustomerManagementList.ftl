@@ -32,8 +32,8 @@
                     <td class="idCol <#if !partyRow_has_next>lastRow</#if> firstCol" ><a href="<@ofbizUrl>${detailAction!}?partyId=${partyRow.partyId}</@ofbizUrl>">${partyRow.partyId}</a></td>
                     <input type="hidden" name="organizationEmployeeId_${rowNo}" id="organizationEmployeeId" value="${partyRow.partyId!}"/>
                     
-                   <#assign person = delegator.findByPrimaryKey("Person", {"partyId", partyRow.partyId})/>
-                   <#assign party = delegator.findByPrimaryKey("Party", {"partyId", partyRow.partyId})/>
+                   <#assign person = delegator.findOne("Person", {"partyId", partyRow.partyId}, false)/>
+                   <#assign party = delegator.findOne("Party", {"partyId", partyRow.partyId}, false)/>
                     <#assign downloadStatus = "">
                     <#assign partyAttribute = delegator.findOne("PartyAttribute", {"partyId" : partyRow.partyId, "attrName" : "IS_DOWNLOADED"}, false)!"" />
                     <#if partyAttribute?has_content>
@@ -113,7 +113,7 @@
 			        </#if> 
 			        <td class="typeCol">
 			            <#if partyRoleTypeId?has_content>
-			                <#assign roleType = delegator.findByPrimaryKey("RoleType", {"roleTypeId", partyRoleTypeId})/>
+			                <#assign roleType = delegator.findOne("RoleType", {"roleTypeId", partyRoleTypeId}, false)/>
 			            </#if>
 			            <#if roleType?has_content>
 			                ${roleType.description?if_exists}
@@ -155,8 +155,8 @@
                     <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
                         <#assign userLoginId = "">
 				        <td class="idCol firstCol" ><a href="<@ofbizUrl>${detailAction!}?partyId=${organizationEmployeeId}</@ofbizUrl>">${organizationEmployeeId}</a></td>
-				        <#assign person = delegator.findByPrimaryKey("Person", {"partyId", organizationEmployeeId})/>
-				        <#assign party = delegator.findByPrimaryKey("Party", {"partyId", organizationEmployeeId})/>
+				        <#assign person = delegator.findOne("Person", {"partyId", organizationEmployeeId}, false)/>
+				        <#assign party = delegator.findOne("Party", {"partyId", organizationEmployeeId}, false)/>
 				        <#assign downloadStatus = "">
 				        <#assign partyAttribute = delegator.findOne("PartyAttribute", {"partyId" : organizationEmployeeId, "attrName" : "IS_DOWNLOADED"}, false)!"" />
 				        <#if partyAttribute?has_content>
@@ -237,7 +237,7 @@
 					              
 				        <td class="typeCol">
 				            <#if partyRoleTypeId?has_content>
-				                <#assign roleType = delegator.findByPrimaryKey("RoleType", {"roleTypeId", partyRoleTypeId})/>
+				                <#assign roleType = delegator.findOne("RoleType", {"roleTypeId", partyRoleTypeId}, false)/>
 				            </#if>
 				            ${roleType.description?if_exists}
 				        </td>

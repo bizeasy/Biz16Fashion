@@ -1,6 +1,6 @@
 <#if billingContactMechAddress?has_content>
    <#-- Billing addresses -->
-  <#assign billingAddress = billingContactMechAddress.getRelatedOneCache("PostalAddress")>
+  <#assign billingAddress = billingContactMechAddress.getRelatedOne("PostalAddress", true)>
   <#if billingAddress?has_content>
     <div class="displayBox">
       <h3>${uiLabelMap.BillingAddressTitle}</h3>

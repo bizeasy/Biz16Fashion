@@ -131,7 +131,7 @@
                          <#if orderHeader?has_content && orderHeader.statusId != "ORDER_CANCELLED" && orderHeader.statusId != "ORDER_REJECTED">
                              <p>
                                  <#if shipGroup.carrierPartyId?has_content>
-                                     <#assign carrier =  delegator.findByPrimaryKey("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId))?if_exists />
+                                     <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", shipGroup.carrierPartyId), false)?if_exists />
                                      <#if carrier?has_content>
                                      ${carrier.groupName?default(carrier.partyId)!}&nbsp;
                                      <#else>

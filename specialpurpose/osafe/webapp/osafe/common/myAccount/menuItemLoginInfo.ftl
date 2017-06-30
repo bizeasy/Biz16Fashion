@@ -1,4 +1,4 @@
-<#assign party = userLogin.getRelatedOneCache("Party")>
+<#assign party = userLogin.getRelatedOne("Party")>
 <#assign fbPartyAttribute = delegator.findOne("PartyAttribute", {"partyId" : party.partyId, "attrName" : "FACEBOOK_USER"}, true)?if_exists />  
 <#if fbPartyAttribute?has_content>
 	<#assign fbPartyAttributeVal = fbPartyAttribute.attrValue! />

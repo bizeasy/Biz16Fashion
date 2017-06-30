@@ -19,8 +19,8 @@
                   <tr class="dataRow <#if rowClass == "2">even<#else>odd</#if>">
                   	<#assign userLoginId = "">
                     <td class="idCol <#if !partyRow_has_next>lastRow</#if> firstCol" ><a href="<@ofbizUrl>${detailAction!}?partyId=${partyRow.partyId}</@ofbizUrl>">${partyRow.partyId}</a></td>
-                   <#assign person = delegator.findByPrimaryKey("Person", {"partyId", partyRow.partyId})/>
-                   <#assign party = delegator.findByPrimaryKey("Party", {"partyId", partyRow.partyId})/>
+                   <#assign person = delegator.findOne("Person", {"partyId", partyRow.partyId}, false)/>
+                   <#assign party = delegator.findOne("Party", {"partyId", partyRow.partyId}, false)/>
                     <#assign downloadStatus = "">
                     <#assign partyAttribute = delegator.findOne("PartyAttribute", {"partyId" : partyRow.partyId, "attrName" : "IS_DOWNLOADED"}, false)!"" />
                     <#if partyAttribute?has_content>

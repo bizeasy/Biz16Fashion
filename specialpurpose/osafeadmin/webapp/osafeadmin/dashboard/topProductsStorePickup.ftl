@@ -19,7 +19,7 @@
             <#list storePickupTopProductsList as product>
 
                 <#assign productId = product.productId!"">
-                <#assign topProduct = delegator.findByPrimaryKey("Product", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", productId))?if_exists>
+                <#assign topProduct = delegator.findOne("Product", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId", productId), false)?if_exists>
                 <#assign internalName = topProduct.internalName!"">
                 <#assign quantityOrdered = product.quantityOrdered!"">
                 <#assign unitPrice = product.unitPrice!"">

@@ -18,7 +18,7 @@
        </#if>
      </#if>
      <#list partyShippingLocations as partyShippingLocation>
-     	<#assign address = partyShippingLocation.getRelatedOneCache("PostalAddress")/>
+     	<#assign address = partyShippingLocation.getRelatedOne("PostalAddress", true)/>
         <option value="${address.contactMechId!}">${address.address1!}</option>
      </#list>
     </select>
