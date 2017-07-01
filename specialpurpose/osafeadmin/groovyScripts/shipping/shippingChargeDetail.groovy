@@ -66,16 +66,16 @@ productStoreShipMethId = StringUtils.trimToEmpty(parameters.productStoreShipMeth
 context.productStoreShipMethId = productStoreShipMethId;
 if (UtilValidate.isNotEmpty(productStoreShipMethId))
 {
-    shipCharge = delegator.findByAnd("ProductStoreShipmentMeth", [productStoreShipMethId : productStoreShipMethId]);
+    shipCharge = delegator.findByAnd("ProductStoreShipmentMeth", [productStoreShipMethId : productStoreShipMethId], null, false);
     shipCharge = EntityUtil.getFirst(shipCharge);
     context.shipCharge = shipCharge;
-    shipCostEst = delegator.findByAnd("ShipmentCostEstimate", [productStoreShipMethId : productStoreShipMethId]);
+    shipCostEst = delegator.findByAnd("ShipmentCostEstimate", [productStoreShipMethId : productStoreShipMethId], null, false);
     shipCostEst = EntityUtil.getFirst(shipCostEst);
     context.shipCostEst = shipCostEst;
 }
 
 //get Shipment Custom Methods
-shipmentCustomMethods = delegator.findByAnd("CustomMethod", [customMethodTypeId : "SHIP_CHARGE_AVAIL"]);
+shipmentCustomMethods = delegator.findByAnd("CustomMethod", [customMethodTypeId : "SHIP_CHARGE_AVAIL"], null, false);
 if (UtilValidate.isNotEmpty(shipmentCustomMethods))
 {
 	context.shipmentCustomMethods =shipmentCustomMethods;

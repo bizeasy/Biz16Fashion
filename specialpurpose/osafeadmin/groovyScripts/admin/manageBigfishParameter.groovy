@@ -10,7 +10,7 @@ import org.apache.ofbiz.base.util.UtilProperties
 import org.apache.ofbiz.base.util.UtilValidate
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander
 
-import com.osafe.services.OsafeManageXml
+import org.apache.ofbiz.osafe.services.OsafeManageXml
 
 currentMode=context.mode;
 

@@ -97,9 +97,9 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
 					 Map manufacturerProductItems = HashMap.newInstance();
 					 manufacturerProductItems.put("productId",product.productId);
 					 manufacturerProductItems.put("primaryProductCategoryId",product.primaryProductCategoryId);
-					 manufacturerProductItems.put("name",productContentWrapper.get("PRODUCT_NAME").toString());
-					 manufacturerProductItems.put("productImageSmallUrl",productContentWrapper.get("PRODUCT_NAME"));
-					 manufacturerProductItems.productImageSmallUrl = productContentWrapper.get("SMALL_IMAGE_URL");
+					 manufacturerProductItems.put("name",productContentWrapper.get("PRODUCT_NAME", "string").toString());
+					 manufacturerProductItems.put("productImageSmallUrl",productContentWrapper.get("PRODUCT_NAME", "string"));
+					 manufacturerProductItems.productImageSmallUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url");
 					 //set default and list price
 					 virtualProductPrices = EntityQuery.use(delegator).from("ProductPrice").where("productId", product.productId, "currencyUomId", cart.getCurrency(), "productStoreGroupId", "_NA_").orderBy(UtilMisc.toList("-fromDate")).cache().queryList();
 					 virtualProductPrices = EntityUtil.filterByDate(virtualProductPrices, true);
@@ -122,8 +122,8 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
 					 }
 					 
 					 manufacturerProductItems.put("internalName",product.internalName);
-					 manufacturerProductItems.put("productImageSmallAlt",productContentWrapper.get("SMALL_IMAGE_ALT_URL"));
-					 manufacturerProductItems.put("productImageSmallAltUrl",productContentWrapper.get("SMALL_IMAGE_ALT_URL"));
+					 manufacturerProductItems.put("productImageSmallAlt",productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url"));
+					 manufacturerProductItems.put("productImageSmallAltUrl",productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url"));
                      productList.add(manufacturerProductItems);
                      
                   }

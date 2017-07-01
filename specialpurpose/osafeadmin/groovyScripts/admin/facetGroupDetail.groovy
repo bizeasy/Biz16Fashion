@@ -49,7 +49,7 @@ if(UtilValidate.isNotEmpty(productCategoryId))
     createProductFeatureCatGrpApplCtx.put("productCategoryId", productCategoryId);
     createProductFeatureCatGrpApplCtx.put("userLogin", userLogin);
 
-    facetCatGroupCategory = delegator.findByAnd("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", productCategoryId, "productFeatureGroupId","FACET_GROUP_CATEGORY"));
+    facetCatGroupCategory = delegator.findByAnd("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", productCategoryId, "productFeatureGroupId","FACET_GROUP_CATEGORY"), null, false);
     if(UtilValidate.isEmpty(facetCatGroupCategory))
     {
         rearrangeSeq = true
@@ -58,7 +58,7 @@ if(UtilValidate.isNotEmpty(productCategoryId))
         createProductFeatureCatGrpApplRes = dispatcher.runSync("createProductFeatureCatGrpAppl", createProductFeatureCatGrpApplCtx);
     }
 
-    facetCatGroupPrice = delegator.findByAnd("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", productCategoryId, "productFeatureGroupId","FACET_GROUP_PRICE"));
+    facetCatGroupPrice = delegator.findByAnd("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", productCategoryId, "productFeatureGroupId","FACET_GROUP_PRICE"), null, false);
     if(UtilValidate.isEmpty(facetCatGroupPrice))
     {
         rearrangeSeq = true
@@ -67,7 +67,7 @@ if(UtilValidate.isNotEmpty(productCategoryId))
         createProductFeatureCatGrpApplRes = dispatcher.runSync("createProductFeatureCatGrpAppl", createProductFeatureCatGrpApplCtx);
     }
 
-    facetCatGroupRating = delegator.findByAnd("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", productCategoryId, "productFeatureGroupId","FACET_GROUP_RATINGS"));
+    facetCatGroupRating = delegator.findByAnd("ProductFeatureCatGrpAppl", UtilMisc.toMap("productCategoryId", productCategoryId, "productFeatureGroupId","FACET_GROUP_RATINGS"), null, false);
     if(UtilValidate.isEmpty(facetCatGroupRating))
     {
         rearrangeSeq = true

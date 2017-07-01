@@ -33,8 +33,8 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.base.util.UtilMisc;
 import com.ibm.icu.util.Calendar;
-import com.osafe.util.OsafeAdminUtil;
-import com.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.Util;
 
 import org.apache.ofbiz.base.util.ObjectType;
 

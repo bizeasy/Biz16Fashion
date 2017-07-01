@@ -18,7 +18,7 @@ if (UtilValidate.isNotEmpty(parameters.productId) && UtilValidate.isNotEmpty(par
         String productDetailHeading = "";
         if(productContentWrapper)
         {
-            productDetailHeading = productContentWrapper.get("PRODUCT_NAME");
+            productDetailHeading = productContentWrapper.get("PRODUCT_NAME", "string");
             if (UtilValidate.isEmpty(productDetailHeading)) 
             {
                 productDetailHeading = product.get("productName");
@@ -30,6 +30,6 @@ if (UtilValidate.isNotEmpty(parameters.productId) && UtilValidate.isNotEmpty(par
             context.productDetailHeading = productDetailHeading;
             context.productContentWrapper = productContentWrapper;
         }
-        context.productFeatureAndAppls = delegator.findByAnd("ProductFeatureAndAppl", [productId : parameters.productId, productFeatureTypeId : parameters.productFeatureTypeId], UtilMisc.toList("sequenceNum","productFeatureId"));
+        context.productFeatureAndAppls = delegator.findByAnd("ProductFeatureAndAppl", [productId : parameters.productId, productFeatureTypeId : parameters.productFeatureTypeId], UtilMisc.toList("sequenceNum","productFeatureId"), false);
      }
 }

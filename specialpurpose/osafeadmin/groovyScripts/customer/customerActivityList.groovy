@@ -57,7 +57,7 @@ if(UtilValidate.isNotEmpty(userLogins))
     activityList.add(activityMap);
 }
 
-communicationEventList = delegator.findByAnd("CommunicationEvent", [partyIdTo : partyId]);
+communicationEventList = delegator.findByAnd("CommunicationEvent", [partyIdTo : partyId], null, false);
 if(UtilValidate.isNotEmpty(userLogins))
 {
     for(GenericValue communicationEvent : communicationEventList)
@@ -74,7 +74,7 @@ if(UtilValidate.isNotEmpty(userLogins))
     } 
 }
 
-shoppingListList = delegator.findByAnd("ShoppingList", [partyId : partyId, shoppingListTypeId : "SLT_SPEC_PURP"]);
+shoppingListList = delegator.findByAnd("ShoppingList", [partyId : partyId, shoppingListTypeId : "SLT_SPEC_PURP"], null, false);
 if(UtilValidate.isNotEmpty(shoppingListList))
 {
     for(GenericValue shoppingList : shoppingListList)
@@ -118,7 +118,7 @@ if(UtilValidate.isNotEmpty(custRequestContactUsList))
     } 
 }
 
-custRequestCatalogList = delegator.findByAnd("CustRequest", [fromPartyId : partyId, custRequestTypeId : "RF_CATALOG"]);
+custRequestCatalogList = delegator.findByAnd("CustRequest", [fromPartyId : partyId, custRequestTypeId : "RF_CATALOG"], null, false);
 if(UtilValidate.isNotEmpty(custRequestCatalogList))
 {
     for(GenericValue custRequestCatalog : custRequestCatalogList)
@@ -144,7 +144,7 @@ if(UtilValidate.isNotEmpty(custRequestCatalogList))
     } 
 }
 
-orderHeaderAndRoleList = delegator.findByAnd("OrderHeaderAndRoles", [partyId : partyId, roleTypeId : "PLACING_CUSTOMER"]);
+orderHeaderAndRoleList = delegator.findByAnd("OrderHeaderAndRoles", [partyId : partyId, roleTypeId : "PLACING_CUSTOMER"], null, false);
 if(UtilValidate.isNotEmpty(orderHeaderAndRoleList))
 {
     for(GenericValue orderHeaderAndRole : orderHeaderAndRoleList)
@@ -163,7 +163,7 @@ if(UtilValidate.isNotEmpty(orderHeaderAndRoleList))
 }
 if(UtilValidate.isNotEmpty(userLoginId))
 {
-    productReviewList = delegator.findByAnd("ProductReview", [userLoginId : userLoginId]);
+    productReviewList = delegator.findByAnd("ProductReview", [userLoginId : userLoginId], null, false);
     if(UtilValidate.isNotEmpty(productReviewList))
     {
         for(GenericValue productReview : productReviewList)
@@ -196,7 +196,7 @@ if(UtilValidate.isNotEmpty(userLoginId))
 
 if(UtilValidate.isNotEmpty(partyId))
 {
-    visitList = delegator.findByAnd("Visit", [partyId : partyId]);
+    visitList = delegator.findByAnd("Visit", [partyId : partyId], null, false);
     if(UtilValidate.isNotEmpty(visitList))
     {
         for(GenericValue visit : visitList)

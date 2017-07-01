@@ -22,7 +22,7 @@ import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.product.category.CategoryWorker;
 import com.ibm.icu.util.Calendar;
 import org.apache.ofbiz.order.order.OrderReadHelper;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 orderStatusIncDashboard = globalContext.get("ORDER_STATUS_INC_DASHBOARD");
 List includedOrderStatusList = LinkedList.newInstance();
@@ -848,7 +848,7 @@ if(UtilValidate.isNotEmpty(periodFromTs) && UtilValidate.isNotEmpty(periodToTs))
         for (GenericValue orderReportProduct : topOrderSalesProductList) 
         {
             GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), false);
-            orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")));
+            orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), null, false);
             orderItemListItr = orderItemList.iterator();
             GenericValue orderItemGv = null;
             while (orderItemListItr.hasNext())
@@ -952,7 +952,7 @@ if(UtilValidate.isNotEmpty(periodFromTs) && UtilValidate.isNotEmpty(periodToTs))
         for (GenericValue orderReportProduct : topOrderSalesProductList) 
         {
             GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), false);
-            orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")));
+            orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), null, false);
             orderItemListItr = orderItemList.iterator();
             GenericValue orderItemGv = null;
             while (orderItemListItr.hasNext())

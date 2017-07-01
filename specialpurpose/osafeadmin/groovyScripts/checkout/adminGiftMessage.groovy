@@ -12,15 +12,15 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.product.ProductWorker;
-import com.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.StringUtil;
 import org.apache.ofbiz.entity.Delegator;
-import com.osafe.services.InventoryServices;
+import org.apache.ofbiz.osafe.services.InventoryServices;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCart;
 import org.apache.ofbiz.order.shoppingcart.ShoppingCartItem;
 import org.apache.commons.lang.StringUtils;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.base.util.Debug;
 
 int cartLineIndex = 0;
@@ -88,10 +88,10 @@ if(UtilValidate.isNotEmpty(product.isVariant) && "Y".equals(product.isVariant))
 }
 
 //Product Image URL
-productImageUrl = ProductContentWrapper.getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher);
+productImageUrl = ProductContentWrapper.getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher, "url");
 if(UtilValidate.isEmpty(productImageUrl) && UtilValidate.isNotEmpty(virtualProduct))
 {
-	productImageUrl = ProductContentWrapper.getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher);
+	productImageUrl = ProductContentWrapper.getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "url");
 }
 //If the string is a literal "null" make it an "" empty string then all normal logic can stay the same
 if(UtilValidate.isNotEmpty(productImageUrl) && "null".equals(productImageUrl))
@@ -99,10 +99,10 @@ if(UtilValidate.isNotEmpty(productImageUrl) && "null".equals(productImageUrl))
 	productImageUrl = "";
 }
 //Product Alt Image URL
-productImageAltUrl = ProductContentWrapper.getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_ALT_URL", locale, dispatcher);
+productImageAltUrl = ProductContentWrapper.getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_ALT_URL", locale, dispatcher, "url");
 if(UtilValidate.isEmpty(productImageAltUrl) && UtilValidate.isNotEmpty(virtualProduct))
 {
-	productImageAltUrl = ProductContentWrapper.getProductContentAsText(virtualProduct, "SMALL_IMAGE_ALT_URL", locale, dispatcher);
+	productImageAltUrl = ProductContentWrapper.getProductContentAsText(virtualProduct, "SMALL_IMAGE_ALT_URL", locale, dispatcher, "url");
 }
 //If the string is a literal "null" make it an "" empty string then all normal logic can stay the same
 if(UtilValidate.isNotEmpty(productImageAltUrl) && "null".equals(productImageAltUrl))
@@ -111,10 +111,10 @@ if(UtilValidate.isNotEmpty(productImageAltUrl) && "null".equals(productImageAltU
 }
 
 //Product Name
-productName = ProductContentWrapper.getProductContentAsText(cartLine.getProduct(), "PRODUCT_NAME", locale, dispatcher);
+productName = ProductContentWrapper.getProductContentAsText(cartLine.getProduct(), "PRODUCT_NAME", locale, dispatcher, "string");
 if(UtilValidate.isEmpty(productName) && UtilValidate.isNotEmpty(virtualProduct))
 {
-	productName = ProductContentWrapper.getProductContentAsText(virtualProduct, "PRODUCT_NAME", locale, dispatcher);
+	productName = ProductContentWrapper.getProductContentAsText(virtualProduct, "PRODUCT_NAME", locale, dispatcher, "string");
 }
 
 price = cartLine.getBasePrice();

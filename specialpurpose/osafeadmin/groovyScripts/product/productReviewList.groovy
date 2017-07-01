@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.LinkedList;
 import java.util.HashMap;
 
-import com.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.Util;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.base.util.UtilGenerics;
@@ -35,7 +35,7 @@ import com.ibm.icu.util.Calendar;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.util.*;
 import java.sql.Date;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 String entryDateFormat = entryDateTimeFormat;
 String srchProductId = StringUtils.trimToEmpty(parameters.srchProductId);

@@ -2,7 +2,7 @@ package common;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import com.osafe.services.OsafeManageXml;
+import org.apache.ofbiz.osafe.services.OsafeManageXml;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilMisc;

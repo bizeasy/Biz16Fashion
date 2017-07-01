@@ -258,7 +258,7 @@ if(UtilValidate.isNotEmpty(orderItem))
 	trackingURLPartyContents = null;
 	if(UtilValidate.isNotEmpty(shipGroup))
 	{
-		trackingURLPartyContents = delegator.findByAnd("PartyContent", UtilMisc.toMap("partyId",shipGroup.carrierPartyId,"partyContentTypeId", "TRACKING_URL"));
+		trackingURLPartyContents = delegator.findByAnd("PartyContent", UtilMisc.toMap("partyId",shipGroup.carrierPartyId,"partyContentTypeId", "TRACKING_URL"), null, false);
 	}
 	if(UtilValidate.isNotEmpty(trackingURLPartyContents))
     {

@@ -25,8 +25,8 @@ import org.apache.ofbiz.service.ServiceUtil;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.ObjectType;
 import org.apache.ofbiz.base.util.UtilMisc;
-import com.osafe.util.Util;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 orderId = StringUtils.trimToEmpty(parameters.orderId);
 orderDateFrom = StringUtils.trimToEmpty(parameters.orderDateFrom);
@@ -235,7 +235,7 @@ List orderContactMechIds = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(orderEmail)) 
 {
     context.orderEmail = orderEmail;
-    contactMechs = delegator.findByAnd("PartyContactWithPurpose", [infoString : orderEmail, contactMechTypeId : "EMAIL_ADDRESS", contactMechPurposeTypeId : "PRIMARY_EMAIL"]);
+    contactMechs = delegator.findByAnd("PartyContactWithPurpose", [infoString : orderEmail, contactMechTypeId : "EMAIL_ADDRESS", contactMechPurposeTypeId : "PRIMARY_EMAIL"], null, false);
     if (UtilValidate.isNotEmpty(contactMechs)) 
     {
         for(GenericValue contactMech : contactMechs)

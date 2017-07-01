@@ -17,8 +17,8 @@ import org.apache.ofbiz.order.shoppingcart.*;
 import org.apache.ofbiz.webapp.control.*;
 import org.apache.ofbiz.webapp.website.WebSiteWorker;
 import org.apache.ofbiz.order.order.OrderReadHelper;
-import com.osafe.util.OsafeAdminUtil;
-import com.osafe.services.OsafeAdminCatalogServices;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.services.OsafeAdminCatalogServices;
 import java.util.HashMap;
 import java.util.LinkedList;
 import org.apache.commons.lang.StringUtils;
@@ -76,7 +76,7 @@ if (UtilValidate.isNotEmpty(selectedProductStoreId))
 	 
 	 if(UtilValidate.isNotEmpty(productStoreId))
 	 {
-		 webSites =delegator.findByAnd("WebSite", UtilMisc.toMap("productStoreId", productStoreId));
+		 webSites =delegator.findByAnd("WebSite", UtilMisc.toMap("productStoreId", productStoreId), null, false);
 		 webSite = EntityUtil.getFirst(webSites);
 		 if (UtilValidate.isNotEmpty(webSite))
 		 {
@@ -109,7 +109,7 @@ if (UtilValidate.isEmpty(selectedStore))
 
 if (retrieveProductStoreData && UtilValidate.isNotEmpty(productStore))
 {
-	 webSites =delegator.findByAnd("WebSite", UtilMisc.toMap("productStoreId", productStore.productStoreId));
+	 webSites =delegator.findByAnd("WebSite", UtilMisc.toMap("productStoreId", productStore.productStoreId), null, false);
 	 webSite = EntityUtil.getFirst(webSites);
      if (UtilValidate.isNotEmpty(webSite))
 	 {
@@ -120,7 +120,7 @@ if (retrieveProductStoreData && UtilValidate.isNotEmpty(productStore))
 	 }
 	 
 	 //PRODUCT STORE CATALOG
-	 storeCatalogs = delegator.findByAnd("ProductStoreCatalog", UtilMisc.toMap("productStoreId", productStore.productStoreId), UtilMisc.toList("sequenceNum", "prodCatalogId"));
+	 storeCatalogs = delegator.findByAnd("ProductStoreCatalog", UtilMisc.toMap("productStoreId", productStore.productStoreId), UtilMisc.toList("sequenceNum", "prodCatalogId"), false);
 	 storeCatalogs = EntityUtil.filterByDate(storeCatalogs, true);
 	 currentCatalog= EntityUtil.getFirst(storeCatalogs);
 	 if (UtilValidate.isNotEmpty(currentCatalog))
@@ -130,7 +130,7 @@ if (retrieveProductStoreData && UtilValidate.isNotEmpty(productStore))
     	 globalContext.prodCatalogName = prodCatalog.catalogName;
 	     session.setAttribute("selectedProdCatalog",prodCatalog);
     	 
-         prodCatalogCategories = delegator.findByAnd("ProdCatalogCategory",UtilMisc.toMap("prodCatalogId", currentCatalog.prodCatalogId,"prodCatalogCategoryTypeId","PCCT_BROWSE_ROOT"),UtilMisc.toList("sequenceNum", "productCategoryId"));
+         prodCatalogCategories = delegator.findByAnd("ProdCatalogCategory",UtilMisc.toMap("prodCatalogId", currentCatalog.prodCatalogId,"prodCatalogCategoryTypeId","PCCT_BROWSE_ROOT"),UtilMisc.toList("sequenceNum", "productCategoryId"), false);
          prodCatalogCategories = EntityUtil.filterByDate(prodCatalogCategories, true);
          if (UtilValidate.isNotEmpty(prodCatalogCategories))
          {
@@ -196,7 +196,7 @@ else
 
 if (UtilValidate.isNotEmpty(globalContext.productStoreId))
 {
-	productStoreParmList = delegator.findByAnd("XProductStoreParm",UtilMisc.toMap("productStoreId",globalContext.productStoreId));
+	productStoreParmList = delegator.findByAnd("XProductStoreParm",UtilMisc.toMap("productStoreId",globalContext.productStoreId), null, false);
 	if (UtilValidate.isNotEmpty(productStoreParmList))
 	{
 	   parmIter = productStoreParmList.iterator();

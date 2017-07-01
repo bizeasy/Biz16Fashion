@@ -4,7 +4,7 @@ package customer;
 import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.base.util.UtilValidate;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import java.util.LinkedList;
 import java.util.HashMap;
 

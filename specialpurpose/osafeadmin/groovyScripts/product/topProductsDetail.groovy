@@ -148,7 +148,7 @@ if(isValidDate)
                 GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), false);
                 
                 /*get the unit price of a product and multiply it with the quantity ordered */
-                orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")));
+                orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), null, false);
                 orderItemListItr = orderItemList.iterator();
                 GenericValue orderItemGv = null;
                 while (orderItemListItr.hasNext())
@@ -257,7 +257,7 @@ if(isValidDate)
                 GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), false);
                 
                 /*get the unit price of a product and multiply it with the quantity ordered */
-                orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")));
+                orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), null, false);
                 orderItemListItr = orderItemList.iterator();
                 GenericValue orderItemGv = null;
                 while (orderItemListItr.hasNext())
@@ -367,7 +367,7 @@ if(isValidDate)
                 GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), false);
                 
                 /*get the unit price of a product and multiply it with the quantity ordered */
-                orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")));
+                orderItemList = delegator.findByAnd("OrderItem", UtilMisc.toMap("productId", orderReportProduct.getString("productId")), null, false);
                 orderItemListItr = orderItemList.iterator();
                 GenericValue orderItemGv = null;
                 while (orderItemListItr.hasNext())

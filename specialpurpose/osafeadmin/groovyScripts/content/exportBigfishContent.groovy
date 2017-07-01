@@ -29,7 +29,7 @@ import org.apache.ofbiz.entity.model.*;
 import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.entity.transaction.*;
 import org.apache.ofbiz.entity.condition.*;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.commons.lang.StringUtils;
 import java.util.LinkedList;
 
@@ -180,7 +180,7 @@ if (UtilValidate.isNotEmpty(exportFile))
                 contentType.writeXmlText(writer, "");
                 numberWritten++;
                 findXContentXrefMap = ["productStoreId" : productStoreId, "contentTypeId" : contentTypeId];
-                xContentXrefList = delegator.findByAnd("XContentXref", findXContentXrefMap);
+                xContentXrefList = delegator.findByAnd("XContentXref", findXContentXrefMap, null, false);
                 for(xContentXref in xContentXrefList) 
                 {
                     content = xContentXref.getRelatedOne("Content");
@@ -241,7 +241,7 @@ if (UtilValidate.isNotEmpty(exportFile))
                 //contentType.writeXmlText(writer, "");
                 numberWritten++;
                 findProductCategoryContentMap = ["prodCatContentTypeId" : prodCatContentTypeId];
-                productCategoryContentList = delegator.findByAnd("ProductCategoryContent", findProductCategoryContentMap);
+                productCategoryContentList = delegator.findByAnd("ProductCategoryContent", findProductCategoryContentMap, null, false);
                 for(productCategoryContent in productCategoryContentList) 
                 {
                     content = productCategoryContent.getRelatedOne("Content");
@@ -291,7 +291,7 @@ if (UtilValidate.isNotEmpty(exportFile))
         try 
         {
             TransactionUtil.commit(beganTransaction);
-            List<GenericValue> pixelTrackingList = delegator.findByAnd("XPixelTracking", UtilMisc.toMap());
+            List<GenericValue> pixelTrackingList = delegator.findByAnd("XPixelTracking", UtilMisc.toMap(), null, false);
             for(GenericValue pixelTracking : pixelTrackingList)
             {
                 content = pixelTracking.getRelatedOne("Content");
@@ -339,7 +339,7 @@ if (UtilValidate.isNotEmpty(exportFile))
         beganTransaction = TransactionUtil.begin(3600);
         try {
             TransactionUtil.commit(beganTransaction);
-            List<GenericValue> paymentGatewayConfigs = delegator.findByAnd("PaymentGatewayConfig", UtilMisc.toMap());
+            List<GenericValue> paymentGatewayConfigs = delegator.findByAnd("PaymentGatewayConfig", UtilMisc.toMap(), null, false);
             for(GenericValue paymentGatewayConfig : paymentGatewayConfigs)
             {
                 numberWritten++;
@@ -418,7 +418,7 @@ if (UtilValidate.isNotEmpty(exportFile))
                     numberWritten++;
                 }
             }
-            List<GenericValue> productStorePaymentSettings = delegator.findByAnd("ProductStorePaymentSetting", UtilMisc.toMap("productStoreId", productStoreId));
+            List<GenericValue> productStorePaymentSettings = delegator.findByAnd("ProductStorePaymentSetting", UtilMisc.toMap("productStoreId", productStoreId), null, false);
             if(UtilValidate.isNotEmpty(productStorePaymentSettings))
             {
                 for(GenericValue productStorePaymentSetting : productStorePaymentSettings)
@@ -449,7 +449,7 @@ if (UtilValidate.isNotEmpty(exportFile))
         beganTransaction = TransactionUtil.begin(3600);
         try {
             TransactionUtil.commit(beganTransaction);
-            List<GenericValue> partyRoles = delegator.findByAnd("PartyRole", UtilMisc.toMap("roleTypeId", "CARRIER"));
+            List<GenericValue> partyRoles = delegator.findByAnd("PartyRole", UtilMisc.toMap("roleTypeId", "CARRIER"), null, false);
             if(UtilValidate.isNotEmpty(partyRoles))
             {
                 for(GenericValue partyRole : partyRoles)
@@ -472,7 +472,7 @@ if (UtilValidate.isNotEmpty(exportFile))
                 }  
             }
             
-            List<GenericValue> shipmentMethodTypes = delegator.findByAnd("ShipmentMethodType", UtilMisc.toMap());
+            List<GenericValue> shipmentMethodTypes = delegator.findByAnd("ShipmentMethodType", UtilMisc.toMap(), null, false);
             if(UtilValidate.isNotEmpty(shipmentMethodTypes))
             {
                 for(GenericValue shipmentMethodType : shipmentMethodTypes)
@@ -491,7 +491,7 @@ if (UtilValidate.isNotEmpty(exportFile))
                 }
             }
             
-            List<GenericValue> productStoreShipmentMeths = delegator.findByAnd("ProductStoreShipmentMeth", UtilMisc.toMap("productStoreId",productStoreId));
+            List<GenericValue> productStoreShipmentMeths = delegator.findByAnd("ProductStoreShipmentMeth", UtilMisc.toMap("productStoreId",productStoreId), null, false);
             if(UtilValidate.isNotEmpty(productStoreShipmentMeths))
             {
                 for(GenericValue productStoreShipmentMeth : productStoreShipmentMeths)
@@ -544,7 +544,7 @@ if (UtilValidate.isNotEmpty(exportFile))
                     numberWritten++;
                 }
             }
-            List<GenericValue> shipmentCostEstimates = delegator.findByAnd("ShipmentCostEstimate", UtilMisc.toMap("productStoreId",productStoreId));
+            List<GenericValue> shipmentCostEstimates = delegator.findByAnd("ShipmentCostEstimate", UtilMisc.toMap("productStoreId",productStoreId), null, false);
             if(UtilValidate.isNotEmpty(shipmentCostEstimates))
             {
                 for(GenericValue shipmentCostEstimate : shipmentCostEstimates)
@@ -572,7 +572,7 @@ if (UtilValidate.isNotEmpty(exportFile))
         try 
         {
             TransactionUtil.commit(beganTransaction);
-            List<GenericValue> partyRoles = delegator.findByAnd("PartyRole", UtilMisc.toMap("roleTypeId", "TAX_AUTHORITY"));
+            List<GenericValue> partyRoles = delegator.findByAnd("PartyRole", UtilMisc.toMap("roleTypeId", "TAX_AUTHORITY"), null, false);
             if(UtilValidate.isNotEmpty(partyRoles))
             {
                 for(GenericValue partyRole : partyRoles)
@@ -680,7 +680,7 @@ if (UtilValidate.isNotEmpty(exportFile))
         try 
         {
             TransactionUtil.commit(beganTransaction);
-            List<GenericValue> productStoreRoles = delegator.findByAnd("ProductStoreRole", UtilMisc.toMap("productStoreId", productStoreId, "roleTypeId", "STORE_LOCATION"));
+            List<GenericValue> productStoreRoles = delegator.findByAnd("ProductStoreRole", UtilMisc.toMap("productStoreId", productStoreId, "roleTypeId", "STORE_LOCATION"), null, false);
             if(UtilValidate.isNotEmpty(productStoreRoles))
             {
                 for(GenericValue productStoreRole : productStoreRoles)
@@ -817,7 +817,7 @@ if (UtilValidate.isNotEmpty(exportFile))
         try 
         {
             TransactionUtil.commit(beganTransaction);
-            List<GenericValue> productStorePromoAppls = delegator.findByAnd("ProductStorePromoAppl", UtilMisc.toMap("productStoreId", productStoreId));
+            List<GenericValue> productStorePromoAppls = delegator.findByAnd("ProductStorePromoAppl", UtilMisc.toMap("productStoreId", productStoreId), null, false);
             if(UtilValidate.isNotEmpty(productStorePromoAppls))
             {
                 for(GenericValue productStorePromoAppl : productStorePromoAppls)

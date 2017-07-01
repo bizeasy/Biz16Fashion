@@ -25,7 +25,7 @@ import org.apache.ofbiz.product.product.ProductWorker;
 import com.ibm.icu.util.Calendar;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.RegularExpression.Context;
 
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 nowTs = UtilDateTime.nowTimestamp();
 

@@ -33,21 +33,21 @@ if(UtilValidate.isNotEmpty(productId))
 	createProductTextContentCtx.put("productId", parameters.productId);
 	createProductTextContentCtx.put("userLogin", userLogin);
 	
-	productSpecificContentListFirst = delegator.findByAnd("ProductContent", UtilMisc.toMap("productId", productId, "productContentTypeId","PDP_SPC_CONTENT_01"));
+	productSpecificContentListFirst = delegator.findByAnd("ProductContent", UtilMisc.toMap("productId", productId, "productContentTypeId","PDP_SPC_CONTENT_01"), null, false);
 	if(UtilValidate.isEmpty(productSpecificContentListFirst))
 	{
 	    createProductTextContentCtx.put("productContentTypeId", "PDP_SPC_CONTENT_01");
 	    createProductTextContentRes = dispatcher.runSync("createProductTextContent", createProductTextContentCtx);
 	}
 	
-	productSpecificContentListSecond = delegator.findByAnd("ProductContent", UtilMisc.toMap("productId", productId, "productContentTypeId","PDP_SPC_CONTENT_02"));
+	productSpecificContentListSecond = delegator.findByAnd("ProductContent", UtilMisc.toMap("productId", productId, "productContentTypeId","PDP_SPC_CONTENT_02"), null, false);
 	if(UtilValidate.isEmpty(productSpecificContentListSecond))
 	{
 		createProductTextContentCtx.put("productContentTypeId", "PDP_SPC_CONTENT_02");
 		createProductTextContentRes = dispatcher.runSync("createProductTextContent", createProductTextContentCtx);
 	}
 	
-	productSpecificContentListThird = delegator.findByAnd("ProductContent", UtilMisc.toMap("productId", productId, "productContentTypeId","PDP_SPC_CONTENT_03"));
+	productSpecificContentListThird = delegator.findByAnd("ProductContent", UtilMisc.toMap("productId", productId, "productContentTypeId","PDP_SPC_CONTENT_03"), null, false);
 	if(UtilValidate.isEmpty(productSpecificContentListThird))
 	{
 		createProductTextContentCtx.put("productContentTypeId", "PDP_SPC_CONTENT_03");
@@ -74,7 +74,7 @@ if(UtilValidate.isNotEmpty(productId))
     String productDetailHeading = "";
     if (UtilValidate.isNotEmpty(productContentWrapper))
     {
-        productDetailHeading = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME").toString());
+        productDetailHeading = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME", "string").toString());
         if (UtilValidate.isEmpty(productDetailHeading)) 
         {
             productDetailHeading = product.get("productName");

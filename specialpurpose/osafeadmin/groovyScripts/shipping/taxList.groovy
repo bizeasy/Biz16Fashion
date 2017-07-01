@@ -9,7 +9,7 @@ import org.apache.ofbiz.base.util.UtilValidate;
 String taxAuthPartyId = StringUtils.trimToEmpty(parameters.taxAuthPartyId);
 String productStoreId = StringUtils.trimToEmpty(parameters.productStoreId);
 
-taxAuthorityRateProductList = delegator.findByAnd("TaxAuthorityRateProduct", UtilMisc.toMap("taxAuthPartyId", taxAuthPartyId, "productStoreId", productStoreId));
+taxAuthorityRateProductList = delegator.findByAnd("TaxAuthorityRateProduct", UtilMisc.toMap("taxAuthPartyId", taxAuthPartyId, "productStoreId", productStoreId), null, false);
  
 pagingListSize=taxAuthorityRateProductList.size();
 context.pagingListSize=pagingListSize;

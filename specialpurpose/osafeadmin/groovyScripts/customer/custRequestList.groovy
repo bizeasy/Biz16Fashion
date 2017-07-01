@@ -12,12 +12,12 @@ import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.condition.EntityFunction;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.util.EntityUtil;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import java.sql.Timestamp;
 import org.apache.ofbiz.base.util.ObjectType;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.GenericValue;
-import com.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.Util;
 
 
 String partyId = StringUtils.trimToEmpty(parameters.partyId);

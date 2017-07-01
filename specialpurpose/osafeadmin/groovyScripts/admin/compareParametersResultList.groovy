@@ -1,6 +1,6 @@
 package admin;
 
-import com.osafe.services.OsafeManageXml;
+import org.apache.ofbiz.osafe.services.OsafeManageXml;
 import java.util.Map;
 import java.util.List;
 import java.util.LinkedList;

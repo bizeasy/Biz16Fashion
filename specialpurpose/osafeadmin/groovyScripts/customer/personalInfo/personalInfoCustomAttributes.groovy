@@ -5,7 +5,7 @@ import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.UtilHttp;
 import org.apache.ofbiz.base.util.UtilMisc;
-import com.osafe.services.OsafeManageXml;
+import org.apache.ofbiz.osafe.services.OsafeManageXml;
 import java.util.HashMap;
 
 customPartyAttributeList = null;

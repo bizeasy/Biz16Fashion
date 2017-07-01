@@ -7,7 +7,7 @@ import org.apache.ofbiz.entity.util.EntityQuery;
 
 if (UtilValidate.isNotEmpty(context.enumTypeId)) 
 {
-    enumTypeList = EntityQuery.use(delegator).from("Enumeration").where("enumTypeId", context.enumTypeId).orderBy(UtilMisc.toList("sequenceId")).cache().queryList();
+    enumTypeList = EntityQuery.use(delegator).from("Enumeration").where("enumTypeId", context.enumTypeId).orderBy(["sequenceId"]).cache().queryList();
     if(UtilValidate.isNotEmpty(enumTypeList))
     {
         processEnumTypes = LinkedList.newInstance();

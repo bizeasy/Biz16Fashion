@@ -19,7 +19,7 @@ import org.apache.ofbiz.entity.condition.*;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.product.product.ProductWorker;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 import com.ibm.icu.util.Calendar;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.RegularExpression.Context;

@@ -29,7 +29,7 @@ if (UtilValidate.isNotEmpty(partyId))
     context.carrier = carrier;
     
 }
-partyContent = EntityUtil.getFirst(delegator.findByAnd("PartyContent", [partyId : partyId, 	partyContentTypeId : "TRACKING_URL"]));
+partyContent = EntityUtil.getFirst(delegator.findByAnd("PartyContent", [partyId : partyId, 	partyContentTypeId : "TRACKING_URL"], null, false));
 if (UtilValidate.isNotEmpty(partyContent)) 
 {
 	content = partyContent.getRelatedOne("Content");

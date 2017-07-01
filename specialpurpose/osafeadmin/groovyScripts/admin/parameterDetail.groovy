@@ -10,7 +10,7 @@ import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.FileUtil;
 
-import com.osafe.services.OsafeManageXml;
+import org.apache.ofbiz.osafe.services.OsafeManageXml;
 
 productStore = globalContext.productStore;
 productStoreId=globalContext.productStoreId;

@@ -18,7 +18,7 @@ import org.apache.ofbiz.order.shoppingcart.ShoppingCart.CartShipInfo.CartShipIte
 import java.util.HashMap;
 import org.apache.ofbiz.base.util.Debug;
 import java.util.LinkedList;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import java.math.BigDecimal;

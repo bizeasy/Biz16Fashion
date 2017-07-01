@@ -3,7 +3,7 @@ package admin;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import org.apache.ofbiz.base.util.UtilProperties;
-import com.osafe.services.OsafeManageXml;
+import org.apache.ofbiz.osafe.services.OsafeManageXml;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.ofbiz.base.util.FileUtil;

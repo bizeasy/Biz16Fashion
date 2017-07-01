@@ -16,7 +16,7 @@ import org.apache.ofbiz.order.shoppingcart.*;
 import org.apache.ofbiz.webapp.control.*;
 import org.apache.ofbiz.webapp.website.WebSiteWorker;
 import org.apache.ofbiz.order.order.OrderReadHelper;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 BigDecimal calcItemTotal(List headers) 
 {

@@ -8,7 +8,7 @@ if (UtilValidate.isNotEmpty(parameters.contentId))
     content = delegator.findOne("Content",["contentId": contentId], false);
     
     //HTML title, metatags, metakeywords
-    contentAttrList = delegator.findByAnd("ContentAttribute",["contentId":contentId]);
+    contentAttrList = delegator.findByAnd("ContentAttribute",["contentId":contentId], null, false);
     for(GenericValue contentAttr : contentAttrList)
     {
         if(contentAttr.attrName == 'HTML_PAGE_TITLE')

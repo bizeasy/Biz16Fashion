@@ -6,7 +6,7 @@ import org.apache.ofbiz.entity.GenericValue;
 
 if (UtilValidate.isNotEmpty(context.enumTypeId)) 
 {
-    enumTypeList = delegator.findByAnd("Enumeration", [enumTypeId : context.enumTypeId], ["sequenceId"]);
+    enumTypeList = delegator.findByAnd("Enumeration", [enumTypeId : context.enumTypeId], ["sequenceId"], false);
 	processEnumTypes = LinkedList.newInstance();
     if(UtilValidate.isNotEmpty(enumTypeList))
     {

@@ -4,7 +4,7 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.base.util.UtilValidate;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import java.util.HashMap;
 import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilMisc;
@@ -51,7 +51,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
          }
          
        // get QUANTITY price break rules for virtual
-	    virtualProductPriceCondListAll = delegator.findByAnd("ProductPriceCond", [inputParamEnumId: "PRIP_PRODUCT_ID", condValue: parent.productId],["productPriceRuleId ASC"]);
+	    virtualProductPriceCondListAll = delegator.findByAnd("ProductPriceCond", [inputParamEnumId: "PRIP_PRODUCT_ID", condValue: parent.productId],["productPriceRuleId ASC"], false);
 	    
 	    if (UtilValidate.isNotEmpty(virtualProductPriceCondListAll))
 	    {
@@ -65,7 +65,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
 	            if (UtilValidate.isNotEmpty(prdQtyBreakIdCondList)) 
 	            {
 	              //Check for Active Price Rule
-	                List<GenericValue> productPriceRuleList = delegator.findByAnd("ProductPriceRule", UtilMisc.toMap("productPriceRuleId",priceRule.productPriceRuleId));
+	                List<GenericValue> productPriceRuleList = delegator.findByAnd("ProductPriceRule", UtilMisc.toMap("productPriceRuleId",priceRule.productPriceRuleId), null, false);
 	                productPriceRuleList = EntityUtil.filterByDate(productPriceRuleList);
 	                if(UtilValidate.isNotEmpty(productPriceRuleList)) 
 	                {
@@ -87,7 +87,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
     String productDetailHeading = "";
     if (UtilValidate.isNotEmpty(productContentWrapper))
     {
-        productDetailHeading = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME").toString());
+        productDetailHeading = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME", "string").toString());
         if (UtilValidate.isEmpty(productDetailHeading)) 
         {
             productDetailHeading = product.get("productName");
@@ -116,7 +116,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
     }
     
    // get QUANTITY price break rules to show
-    productPriceCondListAll = delegator.findByAnd("ProductPriceCond", [inputParamEnumId: "PRIP_PRODUCT_ID", condValue: product.productId],["productPriceRuleId ASC"]);
+    productPriceCondListAll = delegator.findByAnd("ProductPriceCond", [inputParamEnumId: "PRIP_PRODUCT_ID", condValue: product.productId],["productPriceRuleId ASC"], false);
     productPriceCondList = LinkedList.newInstance();
     int productPriceCondListSize = 0;
     if (UtilValidate.isNotEmpty(productPriceCondListAll))
@@ -131,7 +131,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
             if (UtilValidate.isNotEmpty(prdQtyBreakIdCondList)) 
             {
               //Check for Active Price Rule
-                List<GenericValue> productPriceRuleList = delegator.findByAnd("ProductPriceRule", UtilMisc.toMap("productPriceRuleId",priceRule.productPriceRuleId));
+                List<GenericValue> productPriceRuleList = delegator.findByAnd("ProductPriceRule", UtilMisc.toMap("productPriceRuleId",priceRule.productPriceRuleId), null, false);
                 productPriceRuleList = EntityUtil.filterByDate(productPriceRuleList);
                 if(UtilValidate.isNotEmpty(productPriceRuleList)) 
                 {

@@ -12,10 +12,10 @@ if (UtilValidate.isNotEmpty(priceRuleId))
    context.productPriceRule = delegator.findOne("ProductPriceRule", [productPriceRuleId : priceRuleId], false);
 
    findProductPriceCondMap = ["productPriceRuleId" : priceRuleId];
-   context.productPriceCondList = delegator.findByAnd("ProductPriceCond", findProductPriceCondMap, ["productPriceCondSeqId"]);
+   context.productPriceCondList = delegator.findByAnd("ProductPriceCond", findProductPriceCondMap, ["productPriceCondSeqId"], false);
 
    findProductPriceActionMap = ["productPriceRuleId" : priceRuleId];
-   productPriceActionList = delegator.findByAnd("ProductPriceAction", findProductPriceActionMap, ["productPriceActionSeqId"]);
+   productPriceActionList = delegator.findByAnd("ProductPriceAction", findProductPriceActionMap, ["productPriceActionSeqId"], false);
    if (UtilValidate.isNotEmpty(productPriceActionList))
    {
        context.productPriceAction = EntityUtil.getFirst(productPriceActionList);

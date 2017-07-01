@@ -11,7 +11,7 @@ orderBy = ["emailType"];
 if (UtilValidate.isNotEmpty(productStore))
 {
 	productStoreId = productStore.productStoreId;
-	emailConfigs = delegator.findByAnd("ProductStoreEmailSetting",["productStoreId":productStoreId],orderBy);
+	emailConfigs = delegator.findByAnd("ProductStoreEmailSetting",["productStoreId":productStoreId],orderBy,false);
 	if(emailConfigs)
 	{
 	    context.resultList = emailConfigs;

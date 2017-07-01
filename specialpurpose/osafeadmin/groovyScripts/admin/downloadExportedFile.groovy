@@ -14,7 +14,7 @@ import java.util.HashMap;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.base.util.UtilDateTime;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
     /*Send Customer XML for browser.*/
     if(parameters.allowSaveAfterExport == 'Y')

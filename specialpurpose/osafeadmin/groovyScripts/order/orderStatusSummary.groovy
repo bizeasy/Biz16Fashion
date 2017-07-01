@@ -39,7 +39,7 @@ svcCtx.put("userLogin", userLogin);
 
 //ORDERS REQUIRING WORK
 orderBy = ["sequenceId"];
-statusItems = delegator.findByAnd("StatusItem", UtilMisc.toMap("statusTypeId", "ORDER_STATUS"), orderBy);
+statusItems = delegator.findByAnd("StatusItem", UtilMisc.toMap("statusTypeId", "ORDER_STATUS"), orderBy, false);
 
 
 // For each status, count the number of orders

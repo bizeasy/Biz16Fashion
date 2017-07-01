@@ -1,16 +1,16 @@
 <#if product?has_content>
   <#if productContentWrapper?exists>
-    <#assign altLargeImage = productContentWrapper.get("XTRA_IMG_${altImgNo}_LARGE")!""/>
-    <#assign altThumbnailImage = productContentWrapper.get("ADDITIONAL_IMAGE_${altImgNo}")!""/>
-    <#assign altDetailImage = productContentWrapper.get("XTRA_IMG_${altImgNo}_DETAIL")!""/>
+    <#assign altLargeImage = productContentWrapper.get("XTRA_IMG_${altImgNo}_LARGE", "url")!""/>
+    <#assign altThumbnailImage = productContentWrapper.get("ADDITIONAL_IMAGE_${altImgNo}", "url")!""/>
+    <#assign altDetailImage = productContentWrapper.get("XTRA_IMG_${altImgNo}_DETAIL", "url")!""/>
   </#if>
   <#if altImgNo?number == 1 || altLargeImage !='' || altThumbnailImage != '' || altDetailImage != ''>
     <#assign imageExists = 'true'>
   <#else>
     <#assign prevAltImageNo = altImgNo?number - 1/>
-    <#assign prevAltLargeImage = productContentWrapper.get("XTRA_IMG_${prevAltImageNo}_LARGE")!""/>
-    <#assign prevAltThumbnailImage = productContentWrapper.get("ADDITIONAL_IMAGE_${prevAltImageNo}")!""/>
-    <#assign prevAltDetailImage = productContentWrapper.get("XTRA_IMG_${prevAltImageNo}_DETAIL")!""/>
+    <#assign prevAltLargeImage = productContentWrapper.get("XTRA_IMG_${prevAltImageNo}_LARGE", "url")!""/>
+    <#assign prevAltThumbnailImage = productContentWrapper.get("ADDITIONAL_IMAGE_${prevAltImageNo}", "url")!""/>
+    <#assign prevAltDetailImage = productContentWrapper.get("XTRA_IMG_${prevAltImageNo}_DETAIL", "url")!""/>
     
     <#if prevAltLargeImage !='' || prevAltThumbnailImage != '' || prevAltDetailImage != ''>
       <#assign imageExists = 'true'>

@@ -19,7 +19,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
         String productDetailHeading = "";
         if (UtilValidate.isNotEmpty(productContentWrapper))
         {
-            productDetailHeading = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME").toString());
+            productDetailHeading = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME", "string").toString());
             if (UtilValidate.isEmpty(productDetailHeading)) 
             {
                 productDetailHeading = product.get("productName");
@@ -31,7 +31,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
             context.productDetailHeading = productDetailHeading;
             context.productContentWrapper = productContentWrapper;
         }
-        productFeatureAndAppls = delegator.findByAnd("ProductFeatureAndAppl", [productId : parameters.productId]);
+        productFeatureAndAppls = delegator.findByAnd("ProductFeatureAndAppl", [productId : parameters.productId], null, false);
         if (UtilValidate.isNotEmpty(productFeatureAndAppls)) 
         {
             productFeatureTypeIds = EntityUtil.getFieldListFromEntityList(productFeatureAndAppls, "productFeatureTypeId", true);

@@ -201,7 +201,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	    }
 	    context.customerPoNumber = customerPoNumber;
 	
-	    statusChange = delegator.findByAnd("StatusValidChange", [statusId : orderHeader.statusId]);
+	    statusChange = delegator.findByAnd("StatusValidChange", [statusId : orderHeader.statusId], null, false);
 	    context.statusChange = statusChange;
 	
 	    currentStatus = orderHeader.getRelatedOne("StatusItem");
@@ -234,13 +234,13 @@ if (UtilValidate.isNotEmpty(orderId))
 	    cmvm = ContactMechWorker.getOrderContactMechValueMaps(delegator, orderId);
 	    context.orderContactMechValueMaps = cmvm;
 	
-	    orderItemChangeReasons = delegator.findByAnd("Enumeration", [enumTypeId : "ODR_ITM_CH_REASON"], ["sequenceId"]);
+	    orderItemChangeReasons = delegator.findByAnd("Enumeration", [enumTypeId : "ODR_ITM_CH_REASON"], ["sequenceId"], false);
 	    context.orderItemChangeReasons = orderItemChangeReasons;
 		
 		// Fetching the carrier tracking URL
 		if(UtilValidate.isNotEmpty(shipGroupsSize) && shipGroupsSize == 1)
 		{
-		    trackingURLPartyContents = delegator.findByAnd("PartyContent", UtilMisc.toMap("partyId",carrierPartyId,"partyContentTypeId", "TRACKING_URL"));
+		    trackingURLPartyContents = delegator.findByAnd("PartyContent", UtilMisc.toMap("partyId",carrierPartyId,"partyContentTypeId", "TRACKING_URL"), null, false);
 		    if(UtilValidate.isNotEmpty(trackingURLPartyContents))
 		    {
 		        trackingURLPartyContent = EntityUtil.getFirst(trackingURLPartyContents);

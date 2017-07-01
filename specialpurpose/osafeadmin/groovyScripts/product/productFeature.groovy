@@ -18,7 +18,7 @@ productFeatureList = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(parameters.featureTypeId)) 
 {
 	featureTypeId = StringUtils.trimToEmpty(parameters.featureTypeId);
-	productFeatureList = delegator.findByAnd("ProductFeature", UtilMisc.toMap("productFeatureTypeId", featureTypeId), UtilMisc.toList("description"));
+	productFeatureList = delegator.findByAnd("ProductFeature", UtilMisc.toMap("productFeatureTypeId", featureTypeId), UtilMisc.toList("description"), false);
 	
 	productFeatureType = EntityQuery.use(delegator).from("ProductFeatureType").where("productFeatureTypeId", featureTypeId).queryOne();
 	

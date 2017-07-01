@@ -14,8 +14,8 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import java.sql.Date;
 import java.sql.Timestamp;
 import org.apache.commons.lang.StringUtils;
-import com.osafe.util.Util;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -140,7 +140,7 @@ if(UtilValidate.isNotEmpty(preRetrieved) && preRetrieved != "N")
             String productDetailHeading = "";
             if (UtilValidate.isNotEmpty(productContentWrapper))
             {
-                productInternalName = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME").toString());
+                productInternalName = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME", "string").toString());
                 if (UtilValidate.isEmpty(productInternalName)) 
                 {
                     productInternalName = product.get("productName");

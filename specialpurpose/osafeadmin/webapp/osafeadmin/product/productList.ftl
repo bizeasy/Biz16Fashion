@@ -21,7 +21,7 @@
       <#assign product = delegator.findOne("Product", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productId",result.productId), false)/>
       <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)!""/>
       <#assign productInStoreOnlyAttribute = delegator.findOne("ProductAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("attrName" , "PDP_IN_STORE_ONLY", "productId" , result.productId!),false)?if_exists/>
-      <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL")!"">
+      <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!"">
       <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
         <td class="idCol <#if !hasNext?if_exists>lastRow</#if> firstCol" >
           <#if product.isVirtual == 'Y'>
@@ -36,10 +36,10 @@
         </td>
         <td class="nameCol <#if !hasNext?if_exists>lastRow</#if>">${product.internalName?if_exists}</td>
         <td class="nameCol">
-          ${productContentWrapper.get("PRODUCT_NAME")!""}
+          ${productContentWrapper.get("PRODUCT_NAME", "string")!""}
         </td>
         <td class="actionCol">
-        <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION")!""/>
+        <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION", "string")!""/>
         <#if productLongDescription?has_content && productLongDescription !="">
           <#assign productLongDescription = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].formatToolTipText(productLongDescription, ADM_TOOLTIP_MAX_CHAR!)/>
           <a href="javascript:void(0);" onMouseover="javascript:showTooltip(event,'${productLongDescription!""}');" onMouseout="hideTooltip()"><span class="descIcon"></span></a>

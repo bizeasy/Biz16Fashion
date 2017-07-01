@@ -14,7 +14,7 @@ import org.apache.ofbiz.entity.condition.EntityFunction;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilDateTime;
-import com.osafe.events.SolrEvents;
+import org.apache.ofbiz.osafe.events.SolrEvents;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.product.product.ProductWorker;
@@ -51,13 +51,13 @@ if (UtilValidate.isNotEmpty(add_product_id) && UtilValidate.isNotEmpty(prod_type
    if(prod_type.equals("Variant"))
    {
 	   GenericValue add_virtual_product = ProductWorker.getParentProduct(add_product_id, delegator);
-	   add_product_name = ProductContentWrapper.getProductContentAsText(add_virtual_product, 'PRODUCT_NAME', request);
+	   add_product_name = ProductContentWrapper.getProductContentAsText(add_virtual_product, 'PRODUCT_NAME', request, "string");
    }
    else if(prod_type.equals("FinishedGood"))
    {
 	   GenericValue finished_good = EntityQuery.use(delegator).from("Product").where("productId", add_product_id).queryOne();
 	   
-	   add_product_name = ProductContentWrapper.getProductContentAsText(finished_good, 'PRODUCT_NAME', request);
+	   add_product_name = ProductContentWrapper.getProductContentAsText(finished_good, 'PRODUCT_NAME', request, "string");
    }
    messageMap.put("add_product_name", add_product_name);
    context.showSuccessMessage = UtilProperties.getMessage("OSafeAdminUiLabels","CheckoutAddProductSuccess",messageMap, locale )
@@ -140,7 +140,7 @@ else
 	}
 	if (UtilValidate.isNotEmpty(description))
 	{
-		prodLongDescList = delegator.findByAnd("ProductContentAndText", [productContentTypeId : "LONG_DESCRIPTION"]);
+		prodLongDescList = delegator.findByAnd("ProductContentAndText", [productContentTypeId : "LONG_DESCRIPTION"], null, false);
 		productIdListDesc = LinkedList.newInstance();
 		if (UtilValidate.isNotEmpty(prodLongDescList))
 		{
@@ -158,7 +158,7 @@ else
 	}
 	if (UtilValidate.isNotEmpty(productName))
 	{
-		prodNameList = delegator.findByAnd("ProductContentAndText", [productContentTypeId : "PRODUCT_NAME"]);
+		prodNameList = delegator.findByAnd("ProductContentAndText", [productContentTypeId : "PRODUCT_NAME"], null, false);
 		productIdListName = LinkedList.newInstance();
 		if (UtilValidate.isNotEmpty(prodNameList))
 		{

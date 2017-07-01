@@ -25,7 +25,7 @@ if (UtilValidate.isNotEmpty(visitId))
 	if (UtilValidate.isNotEmpty(visit))
 	{
 		partyId = visit.partyId;
-		party = delegator.findByAnd("ProductStoreRole", UtilMisc.toMap("partyId", partyId, "roleTypeId", "CUSTOMER"));
+		party = delegator.findByAnd("ProductStoreRole", UtilMisc.toMap("partyId", partyId, "roleTypeId", "CUSTOMER"), null, false);
 		party = EntityUtil.getFirst(party);
 		if (UtilValidate.isNotEmpty(party))
 		{

@@ -675,27 +675,27 @@ if(UtilValidate.isNotEmpty(productId))
 		productContentId = productContentIdMap.get("PRODUCT_NAME");
         if (UtilValidate.isNotEmpty(productContentId))
         {
-    	    productName = productContentWrapper.get("PRODUCT_NAME");
+    	    productName = productContentWrapper.get("PRODUCT_NAME", "string");
         }
 	    productContentId = productContentIdMap.get("SMALL_IMAGE_URL");
         if (UtilValidate.isNotEmpty(productContentId))
         {
-        	productImageUrl = productContentWrapper.get("SMALL_IMAGE_URL");
+        	productImageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url");
         }
 	    productContentId = productContentIdMap.get("SMALL_IMAGE_ALT_URL");
         if (UtilValidate.isNotEmpty(productContentId))
         {
-        	productImageAltUrl = productContentWrapper.get("SMALL_IMAGE_ALT_URL");
+        	productImageAltUrl = productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url");
         }
         productContentId = productContentIdMap.get("PLP_LABEL");
         if (UtilValidate.isNotEmpty(productContentId))
         {
-        	plpLabel = productContentWrapper.get("PLP_LABEL");
+        	plpLabel = productContentWrapper.get("PLP_LABEL", "string");
         }
         productContentId = productContentIdMap.get("LONG_DESCRIPTION");
         if (UtilValidate.isNotEmpty(productContentId))
         {
-        	productLongDesc = productContentWrapper.get("LONG_DESCRIPTION");
+        	productLongDesc = productContentWrapper.get("LONG_DESCRIPTION", "string");
         	productLongDesc = StringEscapeUtils.unescapeHtml(productLongDesc.toString());
      	    productLongDesc = productLongDesc;
         }
@@ -812,7 +812,7 @@ if(UtilValidate.isNotEmpty(productId))
     plpLabelContent = productContentIdMap.get("PLP_LABEL");
 	if (UtilValidate.isNotEmpty(plpLabelContent))
 	{
-	    	plpLabel = productContentWrapper.get("PLP_LABEL");
+	    	plpLabel = productContentWrapper.get("PLP_LABEL", "string");
 	}
 	
 

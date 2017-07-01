@@ -16,7 +16,7 @@ import org.apache.ofbiz.service.ServiceUtil;
 import java.io.File;
 import java.util.List;
 
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import java.awt.*;
 import java.awt.image.PixelGrabber;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;

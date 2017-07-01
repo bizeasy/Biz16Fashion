@@ -2,13 +2,13 @@
 <#assign friendlyUrlDefault = ""/>
 <#if product?has_content>
   <#if productContentWrapper?exists>
-  	<#assign seoUrl = productContentWrapper.get("SEO_PAGE_URL")!""/>
-    <#assign metaTitle = productContentWrapper.get("HTML_PAGE_TITLE")!""/>
-    <#assign metaDesc = productContentWrapper.get("HTML_PAGE_META_DESC")!""/>
-    <#assign metaKeyword = productContentWrapper.get("HTML_PAGE_META_KEY")!""/>
-    <#assign canonicalUrl = productContentWrapper.get("CANONICAL_URL")!""/>
+  	<#assign seoUrl = productContentWrapper.get("SEO_PAGE_URL", "url")!""/>
+    <#assign metaTitle = productContentWrapper.get("HTML_PAGE_TITLE", "string")!""/>
+    <#assign metaDesc = productContentWrapper.get("HTML_PAGE_META_DESC", "string")!""/>
+    <#assign metaKeyword = productContentWrapper.get("HTML_PAGE_META_KEY", "string")!""/>
+    <#assign canonicalUrl = productContentWrapper.get("CANONICAL_URL", "url")!""/>
     
-    <#assign productContentName = productContentWrapper.get("PRODUCT_NAME")!""/>
+    <#assign productContentName = productContentWrapper.get("PRODUCT_NAME", "string")!""/>
     <#if productContentName?has_content>
     	<#assign productName = productContentName.toString()/>
     	<#assign productFriendlyName = Static["org.apache.ofbiz.osafe.services.SiteMapServices"].makeCharsFriendly(productName, '')/>

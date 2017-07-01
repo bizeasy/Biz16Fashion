@@ -132,7 +132,7 @@ context.packages = packages;
 
 //get a list of all invoices
 allInvoices = new HashSet();
-orderBilling = delegator.findByAnd("OrderItemBilling", [orderId : order.orderId], ["invoiceId"]);
+orderBilling = delegator.findByAnd("OrderItemBilling", [orderId : order.orderId], ["invoiceId"], false);
 orderBilling.each { billingGv ->
     allInvoices.add(billingGv.invoiceId);
 }

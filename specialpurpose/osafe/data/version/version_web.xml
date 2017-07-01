@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app>
+<web-app version="3.0">
     <display-name>Open For Business - OSafe Component</display-name>
     <description>OSafe Component of the Open For Business Project</description>
 

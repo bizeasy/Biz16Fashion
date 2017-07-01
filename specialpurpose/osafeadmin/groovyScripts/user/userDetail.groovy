@@ -2,7 +2,7 @@ package user;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.base.util.UtilDateTime;  
 
 //get entity for UserLogin --> userInfo

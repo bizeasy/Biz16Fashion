@@ -14,8 +14,8 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import java.sql.Date;
 import java.sql.Timestamp;
 import org.apache.commons.lang.StringUtils;
-import com.osafe.util.Util;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 fromDateShort = StringUtils.trimToEmpty(parameters.dateFrom);
 toDateShort = StringUtils.trimToEmpty(parameters.dateTo);

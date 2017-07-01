@@ -15,7 +15,7 @@ import org.apache.ofbiz.product.catalog.CatalogWorker;
 import org.apache.ofbiz.accounting.payment.*;
 import java.util.HashMap;
 import org.apache.ofbiz.base.util.UtilDateTime;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilNumber;
 

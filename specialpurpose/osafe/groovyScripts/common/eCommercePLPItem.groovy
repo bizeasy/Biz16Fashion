@@ -766,14 +766,14 @@ if(UtilValidate.isNotEmpty(productId))
     plpLabelContent = productContentIdMap.get("PLP_LABEL");
 	if (UtilValidate.isNotEmpty(plpLabelContent))
 	{
-	    plpLabel = productContentWrapper.get("PLP_LABEL");
+	    plpLabel = productContentWrapper.get("PLP_LABEL", "string");
 	}
    
     //SET PRODUCT LONG DESCRIPTION
     productContentId = productContentIdMap.get("LONG_DESCRIPTION");
     if (UtilValidate.isNotEmpty(productContentId))
     {
-    	productLongDesc = productContentWrapper.get("LONG_DESCRIPTION");
+    	productLongDesc = productContentWrapper.get("LONG_DESCRIPTION", "string");
     	productLongDesc = StringEscapeUtils.unescapeHtml(productLongDesc.toString());
  	    productLongDesc = productLongDesc;
     }

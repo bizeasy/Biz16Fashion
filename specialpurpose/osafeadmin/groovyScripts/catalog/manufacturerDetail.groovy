@@ -10,7 +10,7 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.party.party.PartyHelper;
 import org.apache.ofbiz.party.content.PartyContentWrapper;
-import com.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.Util;
 
 partyId = StringUtils.trimToEmpty(parameters.manufacturerPartyId);
 context.manufacturerPartyId=partyId;

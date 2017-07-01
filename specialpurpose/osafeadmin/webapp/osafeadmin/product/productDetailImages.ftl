@@ -1,11 +1,11 @@
 <#if product?has_content>
   <#if productContentWrapper?exists>
-    <#assign productLargeImage = productContentWrapper.get("LARGE_IMAGE_URL")!""/>
-    <#assign productThumbnailImage = productContentWrapper.get("THUMBNAIL_IMAGE_URL")!""/>
-    <#assign productDetailImage = productContentWrapper.get("DETAIL_IMAGE_URL")!""/>
-    <#assign productSmallImage = productContentWrapper.get("SMALL_IMAGE_URL")!""/>
-    <#assign productSmallAltImage = productContentWrapper.get("SMALL_IMAGE_ALT_URL")!""/>
-    <#assign plpTitleText = productContentWrapper.get("SMALL_IMAGE_ALT")!""/>
+    <#assign productLargeImage = productContentWrapper.get("LARGE_IMAGE_URL", "url")!""/>
+    <#assign productThumbnailImage = productContentWrapper.get("THUMBNAIL_IMAGE_URL", "url")!""/>
+    <#assign productDetailImage = productContentWrapper.get("DETAIL_IMAGE_URL", "url")!""/>
+    <#assign productSmallImage = productContentWrapper.get("SMALL_IMAGE_URL", "url")!""/>
+    <#assign productSmallAltImage = productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url")!""/>
+    <#assign plpTitleText = productContentWrapper.get("SMALL_IMAGE_ALT", "url")!""/>
   </#if>
   <#assign curDateTime = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().toString()/>
   <input type="hidden" name="productId" value="${product.productId!}"/>

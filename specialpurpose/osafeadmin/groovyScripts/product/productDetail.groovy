@@ -101,7 +101,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
             varaintProductId = context.passedVariantProductIds.first();
         }
 		GenericValue parent = ProductWorker.getParentProduct(varaintProductId, delegator);
-        productContentList = delegator.findByAnd("ProductContent", UtilMisc.toMap("productId" ,varaintProductId));
+        productContentList = delegator.findByAnd("ProductContent", UtilMisc.toMap("productId" ,varaintProductId), null, false);
         productContentList = EntityUtil.filterByDate(productContentList,true);
  		virtualProductContentList = parent.getRelated("ProductContent");
  		virtualProductContentList = EntityUtil.filterByDate(virtualProductContentList,true);
@@ -134,7 +134,7 @@ if (UtilValidate.isNotEmpty(parameters.productId))
     if (UtilValidate.isNotEmpty(productContentWrapper))
     {
        context.productContentWrapper = productContentWrapper;
-       productDetailHeading = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME").toString());
+       productDetailHeading = StringEscapeUtils.unescapeHtml(productContentWrapper.get("PRODUCT_NAME", "string").toString());
     }
     if (UtilValidate.isNotEmpty(product))
     {

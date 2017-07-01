@@ -5,5 +5,5 @@ import org.apache.ofbiz.base.util.*
 import java.util.List;
 import java.util.Map;
 
-PaymentGatewayConfig = delegator.findByAnd("PaymentGatewayConfig",UtilMisc.toMap());
+PaymentGatewayConfig = delegator.findByAnd("PaymentGatewayConfig",UtilMisc.toMap(), null, false);
 context.resultList = PaymentGatewayConfig;

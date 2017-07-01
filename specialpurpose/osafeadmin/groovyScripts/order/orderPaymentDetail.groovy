@@ -7,7 +7,7 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.order.order.OrderReadHelper;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.entity.GenericValue;
 import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilFormatOut;

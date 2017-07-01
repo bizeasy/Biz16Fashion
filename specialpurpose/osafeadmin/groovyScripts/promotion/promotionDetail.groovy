@@ -30,7 +30,7 @@ if (UtilValidate.isNotEmpty(globalContext.productStore))
 // list to find all the shipmentMethods from the view named "ProductStoreShipmentMethView".
 if (UtilValidate.isNotEmpty(context.productStoreId)) 
 {
-    context.productStoreShipmentMethList = delegator.findByAnd('ProductStoreShipmentMethView', [productStoreId: context.productStoreId], ['sequenceNumber']);
+    context.productStoreShipmentMethList = delegator.findByAnd('ProductStoreShipmentMethView', [productStoreId: context.productStoreId], ['sequenceNumber'], false);
 }
 conditions = LinkedList.newInstance();
 conditions.add(EntityCondition.makeCondition("enumTypeId", EntityOperator.EQUALS, "PROD_PROMO_PCAPPL"));
@@ -84,17 +84,17 @@ if (UtilValidate.isNotEmpty(productPromoCodeId))
 
     context.productPromoCodeId = productPromoCodeId;
 
-    productPromoCode = delegator.findByAnd("ProductPromoCode", [productPromoCodeId : productPromoCodeId]);
+    productPromoCode = delegator.findByAnd("ProductPromoCode", [productPromoCodeId : productPromoCodeId], null, false);
     if (UtilValidate.isNotEmpty(productPromoCode))
     {
         context.productPromoCode = EntityUtil.getFirst(productPromoCode);
 
-        productPromo = delegator.findByAnd("ProductPromo", [productPromoId : productPromoCode.productPromoId]);
+        productPromo = delegator.findByAnd("ProductPromo", [productPromoId : productPromoCode.productPromoId], null, false);
         if (UtilValidate.isNotEmpty(productPromo))
         {
             context.productPromo = EntityUtil.getFirst(productPromo);
 
-            productStorePromoApplList = delegator.findByAnd("ProductStorePromoAppl", [productPromoId : productPromo.productPromoId]);
+            productStorePromoApplList = delegator.findByAnd("ProductStorePromoAppl", [productPromoId : productPromo.productPromoId], null, false);
             if (UtilValidate.isNotEmpty(productStorePromoApplList))
             {
                 productStorePromoAppl = EntityUtil.getFirst(productStorePromoApplList);
@@ -118,7 +118,7 @@ if (UtilValidate.isNotEmpty(productPromotionId))
     
     context.productPromo = productPromo;
  
-    productStorePromoApplList = delegator.findByAnd("ProductStorePromoAppl", [productPromoId : productPromotionId, productStoreId : context.productStoreId]);
+    productStorePromoApplList = delegator.findByAnd("ProductStorePromoAppl", [productPromoId : productPromotionId, productStoreId : context.productStoreId], null, false);
     if (UtilValidate.isNotEmpty(productStorePromoApplList))
     {
         productStorePromoAppl = EntityUtil.getFirst(productStorePromoApplList);
@@ -140,7 +140,7 @@ if (UtilValidate.isNotEmpty(productPromoId))
     
     context.productPromo = productPromo;
  
-    productStorePromoApplList = delegator.findByAnd("ProductStorePromoAppl", [productPromoId : productPromoId, productStoreId : context.productStoreId]);
+    productStorePromoApplList = delegator.findByAnd("ProductStorePromoAppl", [productPromoId : productPromoId, productStoreId : context.productStoreId], null, false);
     if (UtilValidate.isNotEmpty(productStorePromoApplList))
     {
         productStorePromoAppl = EntityUtil.getFirst(productStorePromoApplList);
@@ -148,28 +148,28 @@ if (UtilValidate.isNotEmpty(productPromoId))
         context.productStoreId = productStorePromoAppl.productStoreId;
     }
 
-    productPromoRuleList = delegator.findByAnd("ProductPromoRule", [productPromoId : productPromoId]);
+    productPromoRuleList = delegator.findByAnd("ProductPromoRule", [productPromoId : productPromoId], null, false);
     if (UtilValidate.isNotEmpty(productPromoRuleList))
     {
         productPromoRule = EntityUtil.getFirst(productPromoRuleList);
         context.productPromoRule = productPromoRule;
 
         findProductPromoCondMap = ["productPromoId" : productPromoId, "productPromoRuleId" : productPromoRule.productPromoRuleId];
-        productPromoCondList = delegator.findByAnd("ProductPromoCond", findProductPromoCondMap);
+        productPromoCondList = delegator.findByAnd("ProductPromoCond", findProductPromoCondMap, null, false);
         if (UtilValidate.isNotEmpty(productPromoCondList))
         {
             productPromoCond = EntityUtil.getFirst(productPromoCondList);
             context.productPromoCond = productPromoCond;
 
             findProductPromoCondCategoryMap =  ["productPromoId" : productPromoId, "productPromoRuleId" : productPromoRule.productPromoRuleId, "productPromoCondSeqId" : productPromoCond.productPromoCondSeqId];
-            productPromoCondCategoryList = delegator.findByAnd("ProductPromoCategory", findProductPromoCondCategoryMap);
+            productPromoCondCategoryList = delegator.findByAnd("ProductPromoCategory", findProductPromoCondCategoryMap, null, false);
             if (UtilValidate.isNotEmpty(productPromoCondCategoryList))
             {
                 context.productPromoCondCategoryList = productPromoCondCategoryList;
              }
 
              findProductPromoCondProductMap =  ["productPromoId" : productPromoId, "productPromoRuleId" : productPromoRule.productPromoRuleId, "productPromoCondSeqId" : productPromoCond.productPromoCondSeqId];
-             productPromoCondProductList = delegator.findByAnd("ProductPromoProduct", findProductPromoCondProductMap);
+             productPromoCondProductList = delegator.findByAnd("ProductPromoProduct", findProductPromoCondProductMap, null, false);
              if (UtilValidate.isNotEmpty(productPromoCondProductList))
              {
                  context.productPromoCondProductList = productPromoCondProductList;
@@ -178,21 +178,21 @@ if (UtilValidate.isNotEmpty(productPromoId))
          }
 
          findProductPromoActionMap = ["productPromoId" : productPromoId, "productPromoRuleId" : productPromoRule.productPromoRuleId];
-         productPromoActionList = delegator.findByAnd("ProductPromoAction", findProductPromoActionMap);
+         productPromoActionList = delegator.findByAnd("ProductPromoAction", findProductPromoActionMap, null, false);
          if (UtilValidate.isNotEmpty(productPromoActionList))
          {
              productPromoAction = EntityUtil.getFirst(productPromoActionList);
              context.productPromoAction = productPromoAction;
 
              findProductPromoActionCategoryMap =  ["productPromoId" : productPromoId, "productPromoRuleId" : productPromoRule.productPromoRuleId, "productPromoActionSeqId" : productPromoAction.productPromoActionSeqId];
-             productPromoActionCategoryList = delegator.findByAnd("ProductPromoCategory", findProductPromoActionCategoryMap);
+             productPromoActionCategoryList = delegator.findByAnd("ProductPromoCategory", findProductPromoActionCategoryMap, null, false);
              if (UtilValidate.isNotEmpty(productPromoActionCategoryList))
              {
                  context.productPromoActionCategoryList = productPromoActionCategoryList;
              }
 
              findProductPromoActionProductMap =  ["productPromoId" : productPromoId, "productPromoRuleId" : productPromoRule.productPromoRuleId, "productPromoActionSeqId" : productPromoAction.productPromoActionSeqId];
-             productPromoActionProductList = delegator.findByAnd("ProductPromoProduct", findProductPromoActionProductMap);
+             productPromoActionProductList = delegator.findByAnd("ProductPromoProduct", findProductPromoActionProductMap, null, false);
              if (UtilValidate.isNotEmpty(productPromoActionProductList))
              {
                  context.productPromoActionProductList = productPromoActionProductList;

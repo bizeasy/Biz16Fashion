@@ -56,7 +56,7 @@ context.partyPrimaryPhoneContactMechValueMap = partyPrimaryPhoneContactMechValue
 context.partyPrimaryEmailContactMechValueMap = partyPrimaryEmailContactMechValueMap;
 
 
-partyContent = EntityUtil.getFirst(delegator.findByAnd("PartyContent", [partyId : partyId, 	partyContentTypeId : "STORE_HOURS"]));
+partyContent = EntityUtil.getFirst(delegator.findByAnd("PartyContent", [partyId : partyId, 	partyContentTypeId : "STORE_HOURS"], null, false));
 if (UtilValidate.isNotEmpty(partyContent)) 
 {
     content = partyContent.getRelatedOne("Content");
@@ -71,7 +71,7 @@ if (UtilValidate.isNotEmpty(partyContent))
     }
 }
 
-partyContent = EntityUtil.getFirst(delegator.findByAnd("PartyContent", [partyId : partyId, 	partyContentTypeId : "STORE_NOTICE"]));
+partyContent = EntityUtil.getFirst(delegator.findByAnd("PartyContent", [partyId : partyId, 	partyContentTypeId : "STORE_NOTICE"], null, false));
 if (UtilValidate.isNotEmpty(partyContent)) 
 {
     content = partyContent.getRelatedOne("Content");
@@ -86,7 +86,7 @@ if (UtilValidate.isNotEmpty(partyContent))
     }
 }
 
-partyContent = EntityUtil.getFirst(delegator.findByAnd("PartyContent", [partyId : partyId, 	partyContentTypeId : "STORE_CONTENT_SPOT"]));
+partyContent = EntityUtil.getFirst(delegator.findByAnd("PartyContent", [partyId : partyId, 	partyContentTypeId : "STORE_CONTENT_SPOT"], null, false));
 if (UtilValidate.isNotEmpty(partyContent)) 
 {
 	content = partyContent.getRelatedOne("Content");
@@ -101,7 +101,7 @@ if (UtilValidate.isNotEmpty(partyContent))
 	}
 }
 
-partyGeoPoint = EntityUtil.getFirst(delegator.findByAnd("PartyGeoPoint", [partyId : partyId]))
+partyGeoPoint = EntityUtil.getFirst(delegator.findByAnd("PartyGeoPoint", [partyId : partyId], null, false))
 if (UtilValidate.isNotEmpty(partyGeoPoint)) 
 {
     geoPoint = partyGeoPoint.getRelatedOne("GeoPoint");

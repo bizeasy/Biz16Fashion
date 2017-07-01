@@ -51,7 +51,7 @@ if(UtilValidate.isNotEmpty(party))
 }
 
 Map roleTypesDescMap = HashMap.newInstance();
-List<GenericValue> roleTypesDesc = delegator.findByAnd("RoleType", UtilMisc.toMap());
+List<GenericValue> roleTypesDesc = delegator.findByAnd("RoleType", UtilMisc.toMap(), null, false);
 for(GenericValue roleTypeDesc : roleTypesDesc)
 {
 	roleTypesDescMap.put(roleTypeDesc.getString("roleTypeId"), roleTypeDesc.getString("description"));

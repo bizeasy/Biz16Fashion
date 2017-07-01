@@ -134,7 +134,7 @@ if (UtilValidate.isNotEmpty(orderHeader))
 				//Calculate Return Adjustments
 				if(!processedReturnIds.contains(returnOrderItem.returnId))
 				{
-					List<GenericValue> returnAdjustmets = delegator.findByAnd("ReturnAdjustment", UtilMisc.toMap("returnId", returnOrderItem.returnId));
+					List<GenericValue> returnAdjustmets = delegator.findByAnd("ReturnAdjustment", UtilMisc.toMap("returnId", returnOrderItem.returnId), null, false);
 					if(UtilValidate.isNotEmpty(returnAdjustmets))
 					{
 						//Shipping Adjustments
@@ -275,7 +275,7 @@ recalcOrderPromoAmountRes = dispatcher.runSync("recalcOrderPromoAmount", svcProm
 adjustmentAmountTotalPromo = recalcOrderPromoAmountRes.get("adjustmentAmountTotal");
 
 typeMap = [:];
-returnItemTypeMap = delegator.findByAnd("ReturnItemTypeMap", [returnHeaderTypeId : "CUSTOMER_RETURN"]);
+returnItemTypeMap = delegator.findByAnd("ReturnItemTypeMap", [returnHeaderTypeId : "CUSTOMER_RETURN"], null, false);
 returnItemTypeMap.each { value ->
     typeMap[value.returnItemMapKey] = value.returnItemTypeId;
 }

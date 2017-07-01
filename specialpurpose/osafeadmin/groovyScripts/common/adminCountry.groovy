@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 import org.apache.ofbiz.base.util.StringUtil;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.common.CommonWorkers;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.base.util.Debug

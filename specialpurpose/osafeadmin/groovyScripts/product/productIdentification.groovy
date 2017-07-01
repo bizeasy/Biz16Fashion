@@ -2,7 +2,7 @@ package product;
 
 import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilValidate;
-import com.osafe.util.Util;
+import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.base.util.StringUtil;
 
 List goodIdentificationTypesList = LinkedList.newInstance();

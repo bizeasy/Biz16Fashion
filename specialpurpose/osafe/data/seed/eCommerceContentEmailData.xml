@@ -1171,7 +1171,7 @@
 	                </tr>
                 </#if>
                 <#if shipGroup.trackingNumber?has_content>
-                      <#assign trackingURLPartyContents = delegator.findByAnd("PartyContent", {"partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"})/>
+                      <#assign trackingURLPartyContents = delegator.findByAnd("PartyContent", {"partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"}, null, false)/>
                       <#if trackingURLPartyContents?has_content>
                           <#assign trackingURLPartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(trackingURLPartyContents)/>
                           <#if trackingURLPartyContent?has_content>
@@ -1226,9 +1226,9 @@
                                       <#assign virtualProduct = Static["org.apache.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
                                       <#assign urlProductId=virtualProduct.productId>
                                   </#if>
-                                  <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
+                                  <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists>
                                   <#if (!productImageUrl?has_content && !(productImageUrl == "null")) && virtualProduct?has_content>
-                                      <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
+                                      <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists>
                                   </#if>
                                   <!-- If the string is a literal "null" make it an "" empty string then all normal logic can stay the same -->
                                   <#if (productImageUrl?string?has_content && (productImageUrl == "null"))>
@@ -1239,7 +1239,7 @@
                                   </#if>
                                   <!-- ITEM STATUS -->
                                   <#assign itemStatus = orderItem.getRelatedOne("StatusItem")/>
-                                  <#assign itemOrderStatus = delegator.findByAnd("OrderStatus", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId,"statusId",orderItem.statusId,"orderItemSeqId",orderItem.orderItemSeqId))/>
+                                  <#assign itemOrderStatus = delegator.findByAnd("OrderStatus", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId,"statusId",orderItem.statusId,"orderItemSeqId",orderItem.orderItemSeqId), null, false)/>
                                   <#assign itemOrderStatus = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(itemOrderStatus)/>
                                   <tr style="${TABULAR_DATA!""}">
                                       <td class="span image product">
@@ -1388,10 +1388,10 @@
                     <#assign virtualProduct = Static["org.apache.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
                     <#assign urlProductId=virtualProduct.productId>
                </#if>
-               <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
+               <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists>
                
                <#if (!productImageUrl?has_content && !(productImageUrl == "null")) && virtualProduct?has_content>
-                    <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
+                    <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists>
                </#if>
                
                <!-- If the string is a literal "null" make it an "" empty string then all normal logic can stay the same -->
@@ -1406,7 +1406,7 @@
                <!-- ITEM STATUS -->
 
                <#assign itemStatus = orderItem.getRelatedOne("StatusItem")/>
-               <#assign itemOrderStatus = delegator.findByAnd("OrderStatus", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId,"statusId",orderItem.statusId,"orderItemSeqId",orderItem.orderItemSeqId))/>
+               <#assign itemOrderStatus = delegator.findByAnd("OrderStatus", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId,"statusId",orderItem.statusId,"orderItemSeqId",orderItem.orderItemSeqId), null, false)/>
                <#assign itemOrderStatus = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(itemOrderStatus)/>
                <tr style="${TABULAR_DATA!""}">
                     <td>
@@ -1569,9 +1569,9 @@
 						                        <#assign virtualProduct = Static["org.apache.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
 						                        <#assign urlProductId=virtualProduct.productId>
 						                   </#if>
-						                   <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
+						                   <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists>
 						                   <#if (!productImageUrl?has_content && !(productImageUrl == "null")) && virtualProduct?has_content>
-						                       <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
+						                       <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists>
 						                   </#if>
 						                   <!-- If the string is a literal "null" make it an "" empty string then all normal logic can stay the same -->
 						                   <#if (productImageUrl?string?has_content && (productImageUrl == "null"))>

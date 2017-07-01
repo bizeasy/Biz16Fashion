@@ -17,7 +17,7 @@ import org.apache.ofbiz.order.shoppingcart.ShoppingCart.CartShipInfo.CartShipIte
 import java.util.HashMap;
 import org.apache.ofbiz.base.util.Debug;
 import java.util.LinkedList;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import java.math.BigDecimal;
@@ -385,7 +385,7 @@ if (UtilValidate.isNotEmpty(adminContext))
 				shippingAddress = shopCart.getShippingAddress();
 				if (chosenShippingMethod.equals("NO_SHIPPING@_NA_") || (UtilValidate.isNotEmpty(shippingAddress) && (UtilValidate.isNotEmpty(shippingAddress.get("countryGeoId")) || UtilValidate.isNotEmpty(shippingAddress.get("stateProvinceGeoId")) || UtilValidate.isNotEmpty(shippingAddress.get("postalCodeGeoId")))))
 				{
-					com.osafe.events.CheckOutEvents.calculateTax(request, response);
+					org.apache.ofbiz.osafe.events.CheckOutEvents.calculateTax(request, response);
 				}
 			}
 			catch(Exception e)

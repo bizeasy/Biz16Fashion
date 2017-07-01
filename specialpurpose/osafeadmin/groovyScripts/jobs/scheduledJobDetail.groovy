@@ -17,7 +17,7 @@ import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.entity.model.DynamicViewEntity;
 import org.apache.ofbiz.entity.model.ModelKeyMap;
 import org.apache.ofbiz.entity.util.EntityFindOptions;
-import com.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 
 productStoreId=globalContext.productStoreId;
 jobId=parameters.jobId;
@@ -49,14 +49,14 @@ if (UtilValidate.isNotEmpty(jobId))
     //get recurrence info
     if (UtilValidate.isNotEmpty(schedJob.recurrenceInfoId))
     {
-        recurrenceInfo = delegator.findByAnd("RecurrenceInfo", [recurrenceInfoId : schedJob.recurrenceInfoId]);
+        recurrenceInfo = delegator.findByAnd("RecurrenceInfo", [recurrenceInfoId : schedJob.recurrenceInfoId], null, false);
         recurrenceInfo = EntityUtil.getFirst(recurrenceInfo);
         context.recurrenceInfo = recurrenceInfo;
         
         //get recurrence rule
         if (UtilValidate.isNotEmpty(recurrenceInfo.recurrenceRuleId))
         {
-            recurrenceRule = delegator.findByAnd("RecurrenceRule", [recurrenceRuleId : recurrenceInfo.recurrenceRuleId]);
+            recurrenceRule = delegator.findByAnd("RecurrenceRule", [recurrenceRuleId : recurrenceInfo.recurrenceRuleId], null, false);
             recurrenceRule = EntityUtil.getFirst(recurrenceRule);
             context.recurrenceRule = recurrenceRule;
         }

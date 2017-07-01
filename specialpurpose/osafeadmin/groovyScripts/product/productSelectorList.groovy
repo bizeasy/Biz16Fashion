@@ -72,7 +72,7 @@ if (UtilValidate.isNotEmpty(productId))
 }
 if (UtilValidate.isNotEmpty(productName))
 {
-    prodNameList = delegator.findByAnd("ProductContentAndText", [productContentTypeId : "PRODUCT_NAME"]);
+    prodNameList = delegator.findByAnd("ProductContentAndText", [productContentTypeId : "PRODUCT_NAME"], null, false);
     productIdListName = LinkedList.newInstance();
     if (UtilValidate.isNotEmpty(prodNameList))
     {
