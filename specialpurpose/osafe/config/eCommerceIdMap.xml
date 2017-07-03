@@ -5,7 +5,7 @@
         Then where you use the message in ftl use the following ${StringUtil.wrapString([message])}
     -->
 
-<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
 
     <!-- *** ECOMMERCE CONTENT *************************************** -->
     <property key="SITE_INFO_HEADER_CONTENT">
