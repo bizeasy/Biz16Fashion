@@ -103,7 +103,7 @@ if (!userLogin) {
             extOfflineModeExists = false;
             
             // Handled the case of OFFLINE payment method.
-            orderPaymentPreferences = orderHeader.getRelatedCache("OrderPaymentPreference", UtilMisc.toList("orderPaymentPreferenceId"));
+            orderPaymentPreferences = orderHeader.getRelated("OrderPaymentPreference", UtilMisc.toList("orderPaymentPreferenceId"), null, true);
             filteredOrderPaymentPreferences = EntityUtil.filterByCondition(orderPaymentPreferences, EntityCondition.makeCondition("paymentMethodTypeId", EntityOperator.IN, ["EXT_OFFLINE"]));
             if (filteredOrderPaymentPreferences) {
                 extOfflineModeExists = true;
@@ -197,7 +197,7 @@ if (orderHeader) {
 
     billingAccount = orderHeader.getRelatedOne("BillingAccount",true);
 
-    orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelatedCache("OrderPaymentPreference"), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
+    orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelated("OrderPaymentPreference"), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")], null, true);
     paymentMethods = [];
     orderPaymentPreferences.each { opp ->
         paymentMethod = opp.getRelatedOne("PaymentMethod",true);

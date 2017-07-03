@@ -106,7 +106,7 @@ if (UtilValidate.isEmpty(userLogin))
             extOfflineModeExists = false;
             
             // Handled the case of OFFLINE payment method.
-            orderPaymentPreferences = orderHeader.getRelatedCache("OrderPaymentPreference", UtilMisc.toList("orderPaymentPreferenceId"));
+            orderPaymentPreferences = orderHeader.getRelated("OrderPaymentPreference", UtilMisc.toList("orderPaymentPreferenceId"), null, true);
             filteredOrderPaymentPreferences = EntityUtil.filterByCondition(orderPaymentPreferences, EntityCondition.makeCondition("paymentMethodTypeId", EntityOperator.IN, ["EXT_OFFLINE"]));
             if (UtilValidate.isNotEmpty(filteredOrderPaymentPreferences))
             {
@@ -335,7 +335,7 @@ if (UtilValidate.isNotEmpty(orderId))
 							partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 	
 							partyGeneralLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"));
-							partyGeneralLocations = EntityUtil.getRelatedCache("PartyContactMech", partyGeneralLocations);
+							partyGeneralLocations = EntityUtil.getRelated("PartyContactMech", partyGeneralLocations, null, true);
 							partyGeneralLocations = EntityUtil.filterByDate(partyGeneralLocations,true);
 							partyGeneralLocations = EntityUtil.orderBy(partyGeneralLocations, UtilMisc.toList("fromDate DESC"));
 							if (UtilValidate.isNotEmpty(partyGeneralLocations))
@@ -345,7 +345,7 @@ if (UtilValidate.isNotEmpty(orderId))
 							}
 	
 							partyPrimaryPhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_PHONE"));
-							partyPrimaryPhones = EntityUtil.getRelatedCache("PartyContactMech", partyPrimaryPhones);
+							partyPrimaryPhones = EntityUtil.getRelated("PartyContactMech", partyPrimaryPhones, null, true);
 							partyPrimaryPhones = EntityUtil.filterByDate(partyPrimaryPhones,true);
 							partyPrimaryPhones = EntityUtil.orderBy(partyPrimaryPhones, UtilMisc.toList("fromDate DESC"));
 							if (UtilValidate.isNotEmpty(partyPrimaryPhones))

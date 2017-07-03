@@ -67,7 +67,7 @@ if (UtilValidate.isNotEmpty(userLogin))
     
     
     partyPurposeEmails = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_EMAIL"));
-    partyPurposeEmails = EntityUtil.getRelatedCache("PartyContactMech", partyPurposeEmails);
+    partyPurposeEmails = EntityUtil.getRelated("PartyContactMech", partyPurposeEmails, null, true);
     partyPurposeEmails = EntityUtil.filterByDate(partyPurposeEmails,true);
     partyPurposeEmails = EntityUtil.orderBy(partyPurposeEmails, UtilMisc.toList("fromDate DESC"));
     if (UtilValidate.isNotEmpty(partyPurposeEmails)) 
@@ -82,7 +82,7 @@ if (UtilValidate.isNotEmpty(userLogin))
     
     
     partyBillingLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "BILLING_LOCATION"));
-    partyBillingLocations = EntityUtil.getRelatedCache("PartyContactMech", partyBillingLocations);
+    partyBillingLocations = EntityUtil.getRelated("PartyContactMech", partyBillingLocations, null, true);
     partyBillingLocations = EntityUtil.filterByDate(partyBillingLocations,true);
     partyBillingLocations = EntityUtil.orderBy(partyBillingLocations, UtilMisc.toList("fromDate DESC"));
     if (UtilValidate.isNotEmpty(partyBillingLocations))
@@ -124,7 +124,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	            contactMech = EntityQuery.use(delegator).from("ContactMech").where([contactMechId : contactMechIdTo]).cache().queryOne();
 	            if(UtilValidate.isNotEmpty(contactMech)) 
 	            {
-	                phonePurposeList  = contactMech.getRelatedCache("PartyContactMechPurpose");
+	                phonePurposeList  = contactMech.getRelated("PartyContactMechPurpose", null, null, true);
 	                phonePurposeList  = EntityUtil.filterByDate(phonePurposeList, true);
 	                if(UtilValidate.isNotEmpty(phonePurposeList)) 
 	                {

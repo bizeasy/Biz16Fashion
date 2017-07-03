@@ -55,14 +55,14 @@ if (UtilValidate.isNotEmpty(partyId))
         partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 
         partyBillingLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "BILLING_LOCATION"));
-        partyBillingLocations = EntityUtil.getRelatedCache("PartyContactMech", partyBillingLocations);
+        partyBillingLocations = EntityUtil.getRelated("PartyContactMech", partyBillingLocations, null, true);
         partyBillingLocations = EntityUtil.filterByDate(partyBillingLocations,true);
         partyBillingLocations = EntityUtil.orderBy(partyBillingLocations, UtilMisc.toList("fromDate DESC"));
         if (UtilValidate.isNotEmpty(partyBillingLocations)) 
         {
         	partyBillingLocation = EntityUtil.getFirst(partyBillingLocations);
         	billingPostalAddress = partyBillingLocation.getRelatedOne("PostalAddress",true);
-            billingContactMechList = EntityUtil.getRelated("ContactMech",partyBillingLocations);
+            billingContactMechList = EntityUtil.getRelated("ContactMech",partyBillingLocations, null, false);
 
             context.BILLINGPostalAddress = billingPostalAddress;
             context.billingContactMechId = billingPostalAddress.contactMechId;
@@ -73,7 +73,7 @@ if (UtilValidate.isNotEmpty(partyId))
         }
         
         partyShippingLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "SHIPPING_LOCATION"));
-        partyShippingLocations = EntityUtil.getRelatedCache("PartyContactMech", partyShippingLocations);
+        partyShippingLocations = EntityUtil.getRelated("PartyContactMech", partyShippingLocations, null, true);
         partyShippingLocations = EntityUtil.filterByDate(partyShippingLocations,true);
         partyShippingLocations = EntityUtil.orderBy(partyShippingLocations, UtilMisc.toList("fromDate DESC"));
         if (UtilValidate.isNotEmpty(partyShippingLocations)) 
@@ -89,21 +89,21 @@ if (UtilValidate.isNotEmpty(partyId))
 			}
             partyShippingLocation = EntityUtil.getFirst(tempPartyShippingLocations);
             shippingPostalAddress = partyShippingLocation.getRelatedOne("PostalAddress",true);
-            shippingContactMechList=EntityUtil.getRelated("ContactMech",partyShippingLocations);
+            shippingContactMechList=EntityUtil.getRelated("ContactMech",partyShippingLocations, null, false);
 
             context.SHIPPINGPostalAddress = shippingPostalAddress;
             context.SHIPPINGContactMechList = shippingContactMechList;
         }
         
         partyPurposeEmails = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_EMAIL"));
-        partyPurposeEmails = EntityUtil.getRelatedCache("PartyContactMech", partyPurposeEmails);
+        partyPurposeEmails = EntityUtil.getRelated("PartyContactMech", partyPurposeEmails, null, true);
         partyPurposeEmails = EntityUtil.filterByDate(partyPurposeEmails,true);
         partyPurposeEmails = EntityUtil.orderBy(partyPurposeEmails, UtilMisc.toList("fromDate DESC"));
         if (UtilValidate.isNotEmpty(partyPurposeEmails)) 
         {
         	partyPurposeEmail = EntityUtil.getFirst(partyPurposeEmails);
             contactMech = partyPurposeEmail.getRelatedOne("ContactMech",true);
-            userEmailContactMechList= EntityUtil.getRelated("ContactMech",partyPurposeEmails);
+            userEmailContactMechList= EntityUtil.getRelated("ContactMech",partyPurposeEmails, null, false);
 
             context.userEmailContactMech = contactMech;
             context.userEmailAddress = contactMech.infoString;

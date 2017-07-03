@@ -25,7 +25,7 @@ if (UtilValidate.isNotEmpty(userLogin))
 	partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 	
 	partyPurposeEmails = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_EMAIL"));
-	partyPurposeEmails = EntityUtil.getRelatedCache("PartyContactMech", partyPurposeEmails);
+	partyPurposeEmails = EntityUtil.getRelated("PartyContactMech", partyPurposeEmails, null, true);
 	partyPurposeEmails = EntityUtil.filterByDate(partyPurposeEmails,true);
 	partyPurposeEmails = EntityUtil.orderBy(partyPurposeEmails, UtilMisc.toList("fromDate DESC"));
 	if (UtilValidate.isNotEmpty(partyPurposeEmails))

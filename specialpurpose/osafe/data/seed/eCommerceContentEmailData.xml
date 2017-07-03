@@ -1270,7 +1270,7 @@
 	                                  <#assign shipGroupAssocQty = shipGroupAssoc.quantity!1/>
 								      <#assign shipGroupSeqId = shipGroupAssoc.shipGroupSeqId!/>
 								      <!-- filter the OrderItem attributes which are in the same shipgroup -->
-						              <#assign orderItemAttributes = orderItem.getRelatedCache("OrderItemAttribute")!""/>
+						              <#assign orderItemAttributes = orderItem.getRelated("OrderItemAttribute", null, null, true)!""/>
 								      <#assign alreadyProcessedOrderItemAttributes = Static["javolution.util.FastList"].newInstance()/>
 								      <#assign orderItemAttributesChanged = Static["javolution.util.FastList"].newInstance()/>
 								      <#list orderItemAttributes as orderItemAttribute>

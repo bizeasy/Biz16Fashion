@@ -254,7 +254,7 @@ if (UtilValidate.isNotEmpty(shoppingList))
 							partyContactMechPurpose = EntityUtil.orderBy(partyContactMechPurpose,UtilMisc.toList("-fromDate"));
 				
 							partyShippingLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "SHIPPING_LOCATION"));
-							partyShippingLocations = EntityUtil.getRelatedCache("PartyContactMech", partyShippingLocations);
+							partyShippingLocations = EntityUtil.getRelated("PartyContactMech", partyShippingLocations, null, true);
 							partyShippingLocations = EntityUtil.filterByDate(partyShippingLocations,true);
 							partyShippingLocations = EntityUtil.orderBy(partyShippingLocations, UtilMisc.toList("fromDate DESC"));
 						}

@@ -102,14 +102,14 @@ if (UtilValidate.isNotEmpty(partyId))
 		}
 		partyShippingLocations = party.getRelated("PartyContactMech",null,null,true);
 		partyShippingLocations = EntityUtil.filterByDate(partyShippingLocations,UtilDateTime.getDayEnd(UtilDateTime.nowTimestamp()),"fromDate","thruDate",true);
-        partyShippingLocations = EntityUtil.getRelatedCache("PartyContactMechPurpose", partyShippingLocations);
+        partyShippingLocations = EntityUtil.getRelated("PartyContactMechPurpose", partyShippingLocations, null, true);
 		partyShippingLocations = EntityUtil.filterByDate(partyShippingLocations,UtilDateTime.getDayEnd(UtilDateTime.nowTimestamp()),"fromDate","thruDate",true);
         partyShippingLocations = EntityUtil.orderBy(partyShippingLocations, UtilMisc.toList("fromDate DESC"));
 
         partyShippingLocations = EntityUtil.filterByAnd(partyShippingLocations, UtilMisc.toMap("contactMechPurposeTypeId", "SHIPPING_LOCATION"));
         if (UtilValidate.isNotEmpty(partyShippingLocations)) 
         {
-            shippingContactMechList=EntityUtil.getRelatedCache("ContactMech",partyShippingLocations);
+            shippingContactMechList=EntityUtil.getRelated("ContactMech",partyShippingLocations, null, true);
         }
         
     }
