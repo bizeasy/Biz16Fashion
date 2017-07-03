@@ -61,10 +61,10 @@
                 <#assign rangeListperiodRec = Static["org.apache.ofbiz.base.util.StringUtil"].split(periodRecTrendRange,"to")/>
               </#if>
                 <#if periodFromRecTrendTs?has_content>
-                  <#assign periodFrom = periodFromRecTrendTs?string(entryDateTimeFormat)/>
+                  <#assign periodFrom = periodFromRecTrendTs?if_exists/>
                 </#if>
                 <#if periodToRecTrendTs?has_content>
-                  <#assign periodTo = periodToRecTrendTs?string(entryDateTimeFormat)/>
+                  <#assign periodTo = periodToRecTrendTs?if_exists/>
                 </#if>
                 <td class="boxCaption firstCol">${uiLabelMap.RecentTrendCaption}<span class="trendRange">
                    <#if periodRecTrendRange?exists>
@@ -93,10 +93,10 @@
                 <#assign rangeListperiodPrior = Static["org.apache.ofbiz.base.util.StringUtil"].split(periodPriorTrendRange,"to")/>
               </#if>
                 <#if periodFromPriorTrendTs?has_content>
-                  <#assign periodFrom = periodFromPriorTrendTs?string(entryDateTimeFormat)/>
+                  <#assign periodFrom = periodFromPriorTrendTs?if_exists/>
                 </#if>
                 <#if periodToPriorTrendTs?has_content>
-                  <#assign periodTo = periodToPriorTrendTs?string(entryDateTimeFormat)/>
+                  <#assign periodTo = periodToPriorTrendTs?if_exists/>
                 </#if>
                 <td class="boxCaption firstCol">${uiLabelMap.PriorTrendCaption}<span class="trendRange">
                    <#if periodPriorTrendRange?exists>

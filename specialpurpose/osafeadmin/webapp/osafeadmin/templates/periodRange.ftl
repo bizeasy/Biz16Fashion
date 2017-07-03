@@ -58,14 +58,14 @@
                 </#if>
             </div>
 	            <div class="dateSelectButtons">
-	            	<input type="button" class="standardBtn dateSelect" name="SubtractDayBtn" value="${uiLabelMap.SubtractDayBtn}" <#if periodFromTs?exists && periodFromTs?has_content && periodToTs?exists && periodToTs?has_content > onClick="setDateRange('${subtractFromDay?if_exists?string(entryDateTimeFormat)}','${subtractToDay?if_exists?string(entryDateTimeFormat)}');" </#if>/>
-	            	<input type="button" class="standardBtn dateSelect" name="AddDayBtn" value="${uiLabelMap.AddDayBtn}" <#if periodFromTs?exists && periodFromTs?has_content && periodToTs?exists && periodToTs?has_content > onClick="setDateRange('${addFromDay?if_exists?string(entryDateTimeFormat)}','${addToDay?if_exists?string(entryDateTimeFormat)}');" </#if>/>
-	                <input type="button" class="standardBtn dateSelect" name="TodayBtn" value="${uiLabelMap.TodayBtn}" onClick="setDateRange('${todayStart?string(entryDateTimeFormat)}','${nowTimestamp?string(entryDateTimeFormat)}');"/>
-	                <input type="button" class="standardBtn dateSelect" name="YesterdayBtn" value="${uiLabelMap.YesterdayBtn}" onClick="setDateRange('${yesterdayStart?string(entryDateTimeFormat)}','${yesterdayEnd?string(entryDateTimeFormat)}');"/>
-					<input type="button" class="standardBtn dateSelect" name="ThisWeekBtn" value="${uiLabelMap.ThisWeekBtn}" onClick="setDateRange('${weekStart?string(entryDateTimeFormat)}','${nowTimestamp?string(entryDateTimeFormat)}');"/>
-	                <input type="button" class="standardBtn dateSelect" name="MonthToDateBtn" value="${uiLabelMap.MonthToDateBtn}" onClick="setDateRange('${monthStart?string(entryDateTimeFormat)}','${nowTimestamp?string(entryDateTimeFormat)}');"/>
-	                <input type="button" class="standardBtn dateSelect" name="YearToDateBtn" value="${uiLabelMap.YearToDateBtn}" onClick="setDateRange('${yearStart?string(entryDateTimeFormat)}','${nowTimestamp?string(entryDateTimeFormat)}');"/>
-	                <input type="button" class="standardBtn dateSelect" name="DateAllBtn" value="${uiLabelMap.DateAllBtn}" onClick="setDateRange('${productDateStart?string(entryDateTimeFormat)}','${nowTimestamp?string(entryDateTimeFormat)}');"/>
+	            	<input type="button" class="standardBtn dateSelect" name="SubtractDayBtn" value="${uiLabelMap.SubtractDayBtn}" <#if periodFromTs?exists && periodFromTs?has_content && periodToTs?exists && periodToTs?has_content > onClick="setDateRange('${subtractFromDay?if_exists?if_exists}','${subtractToDay?if_exists?if_exists}');" </#if>/>
+	            	<input type="button" class="standardBtn dateSelect" name="AddDayBtn" value="${uiLabelMap.AddDayBtn}" <#if periodFromTs?exists && periodFromTs?has_content && periodToTs?exists && periodToTs?has_content > onClick="setDateRange('${addFromDay?if_exists?if_exists}','${addToDay?if_exists?if_exists}');" </#if>/>
+	                <input type="button" class="standardBtn dateSelect" name="TodayBtn" value="${uiLabelMap.TodayBtn}" onClick="setDateRange('${todayStart?if_exists}','${nowTimestamp?if_exists}');"/>
+	                <input type="button" class="standardBtn dateSelect" name="YesterdayBtn" value="${uiLabelMap.YesterdayBtn}" onClick="setDateRange('${yesterdayStart?if_exists}','${yesterdayEnd?if_exists}');"/>
+					<input type="button" class="standardBtn dateSelect" name="ThisWeekBtn" value="${uiLabelMap.ThisWeekBtn}" onClick="setDateRange('${weekStart?if_exists}','${nowTimestamp?if_exists}');"/>
+	                <input type="button" class="standardBtn dateSelect" name="MonthToDateBtn" value="${uiLabelMap.MonthToDateBtn}" onClick="setDateRange('${monthStart?if_exists}','${nowTimestamp?if_exists}');"/>
+	                <input type="button" class="standardBtn dateSelect" name="YearToDateBtn" value="${uiLabelMap.YearToDateBtn}" onClick="setDateRange('${yearStart?if_exists}','${nowTimestamp?if_exists}');"/>
+	                <input type="button" class="standardBtn dateSelect" name="DateAllBtn" value="${uiLabelMap.DateAllBtn}" onClick="setDateRange('${productDateStart?if_exists}','${nowTimestamp?if_exists}');"/>
 	            </div>
         <#if showDeliveryOption?has_content && showDeliveryOption =="Y">
              <div class="entryRow">
