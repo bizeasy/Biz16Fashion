@@ -33,9 +33,9 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
           PartyContentWrapper partyContentWrapper = new PartyContentWrapper(gvParty, request);
           context.partyContentWrapper = partyContentWrapper;
 		  
-		  context.description = partyContentWrapper.get("LONG_DESCRIPTION");
-		  context.profileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL");
-		  context.profileName = partyContentWrapper.get("PROFILE_NAME");
+		  context.description = partyContentWrapper.get("LONG_DESCRIPTION", "string");
+		  context.profileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "url");
+		  context.profileName = partyContentWrapper.get("PROFILE_NAME", "string");
 		  context.IMG_SIZE_PROF_MFG_H = Util.getProductStoreParm(request,"IMG_SIZE_PROF_MFG_H");
 		  context.IMG_SIZE_PROF_MFG_W = Util.getProductStoreParm(request,"IMG_SIZE_PROF_MFG_W");
 		  

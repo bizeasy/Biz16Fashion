@@ -1518,9 +1518,9 @@ if(UtilValidate.isNotEmpty(productId))
 	  context.plpManufacturerPartyId = partyManufacturer.partyId;
 	  PartyContentWrapper partyContentWrapper = new PartyContentWrapper(partyManufacturer, request);
 	  context.plpManufacturerPartyContentWrapper = partyContentWrapper;
-	  context.plpManufacturerDescription = partyContentWrapper.get("DESCRIPTION");
-	  context.plpManufacturerProfileName = partyContentWrapper.get("PROFILE_NAME");
-	  context.plpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL");
+	  context.plpManufacturerDescription = partyContentWrapper.get("DESCRIPTION", "string");
+	  context.plpManufacturerProfileName = partyContentWrapper.get("PROFILE_NAME", "string");
+	  context.plpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "url");
 	}
 	
 

@@ -36,16 +36,28 @@ String periodTo = request.getParameter("periodTo");
 Timestamp periodFromTs = null;
 Timestamp periodToTs = null;
 Boolean isValidDate = true;
+
+Debug.log("periodFromTs test ================");
 if(UtilValidate.isEmpty(periodFrom))
 {
+	Debug.log("periodFrom ================"+periodFrom);
     String periodFromSess = session.getAttribute("periodFrom");
+    Debug.log("periodFromSess ================"+periodFromSess);
     periodFrom = periodFromSess;
     if(UtilValidate.isEmpty(periodFrom))
     {
+    	Debug.log("periodFrom ================"+periodFrom);
         periodFromTs = UtilDateTime.getDayStart(nowTs);
-        periodFrom = UtilDateTime.timeStampToString(periodFromTs, entryDateTimeFormat, timeZone, locale);
+        Debug.log("periodFromTs ================"+periodFromTs);
+        Debug.log("entryDateTimeFormat ================"+entryDateTimeFormat);
+        Debug.log("timeZone ================"+timeZone);
+        Debug.log("locale ================"+locale);
+        periodFrom = UtilDateTime.timeStampToString(periodFromTs, "MM/dd/yy h:mm", timeZone, locale);
+        Debug.log("periodFrom ================"+periodFrom);
     }
 }
+
+Debug.log("periodFromTs ================"+periodFromTs);
 
 if(UtilValidate.isEmpty(periodTo))
 {

@@ -10,6 +10,7 @@ import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.ContactHelper;
+import org.apache.ofbiz.base.util.Debug;
 
 productStore = ProductStoreWorker.getProductStore(request);
 if (UtilValidate.isNotEmpty(productStore))
@@ -37,7 +38,9 @@ globalContext.productStore = productStore;
 globalContext.productStoreId = productStore.productStoreId;
 
 preferredDateFormat = Util.getProductStoreParm(request,"FORMAT_DATE");
+Debug.log("preferredDateFormat ================"+preferredDateFormat);
 preferredDateTimeFormat = Util.getProductStoreParm(request,"FORMAT_DATE_TIME");
+Debug.log("preferredDateTimeFormat ================"+preferredDateTimeFormat);
 
 currencyRounding=2;
 roundCurrency = Util.getProductStoreParm(request,"CURRENCY_UOM_ROUNDING");

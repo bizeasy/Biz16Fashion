@@ -655,9 +655,9 @@ if (UtilValidate.isNotEmpty(productId))
           context.manufacturerPartyId = partyManufacturer.partyId;
           PartyContentWrapper partyContentWrapper = new PartyContentWrapper(partyManufacturer, request);
           context.partyContentWrapper = partyContentWrapper;
-          context.pdpManufacturerDescription = partyContentWrapper.get("DESCRIPTION");
-          context.pdpManufacturerProfileName = partyContentWrapper.get("PROFILE_NAME");
-          context.pdpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL");
+          context.pdpManufacturerDescription = partyContentWrapper.get("DESCRIPTION", "string");
+          context.pdpManufacturerProfileName = partyContentWrapper.get("PROFILE_NAME", "string");
+          context.pdpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "url");
         }
         
      // first make sure this isn't a variant that has an associated virtual product, if it does show that instead of the variant
@@ -1063,7 +1063,7 @@ if (UtilValidate.isNotEmpty(productId))
         //GET QUANTITY PRICE BREAK RULES TO SHOW
         volumePricingRule = [];
         volumePricingRuleMap = HashMap.newInstance();
-        productIdConds = EntityQuery.use(delegator).from("PaymentMethod").where(fieldMap).orderBy(UtilMisc.toList("lastUpdatedStamp")).cache().queryList();
+        productIdConds = EntityQuery.use(delegator).from("ProductPriceCond").where([inputParamEnumId: "PRIP_PRODUCT_ID", condValue: gvProduct.productId]).orderBy(UtilMisc.toList("productPriceRuleId")).cache().queryList();
         if (UtilValidate.isNotEmpty(productIdConds))
         {
             for (GenericValue priceCond: productIdConds) 

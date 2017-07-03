@@ -41,7 +41,7 @@
            <td class="nameCol">${(relatedProdDetail.internalName)?if_exists}</td>
            <td class="longDescCol ">
            <input type="hidden" name="accessRelatedProductName_${rowNo}" id="accessRelatedProductName" value="${productContentWrapper.get("PRODUCT_NAME", "string")!""}"/>
-           ${productContentWrapper.get("PRODUCT_NAME")!""}
+           ${productContentWrapper.get("PRODUCT_NAME", "string")!""}
            </td>
            <td class="actionCol">
              <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION", "string")!""/>

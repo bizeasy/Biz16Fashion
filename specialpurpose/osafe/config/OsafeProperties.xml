@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!--
         To add HTML to a message escape all angle brackets < > in tags with  &lt; = < &gt = >
         Then where you use the message in ftl use the following ${StringUtil.wrapString([message])}
-    --><resource xmlns:xsi="http://www.w3.org/01/XMLSchema-instance">
+    --><resource xmlns:xsi="http://www.w3.org/01/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
 <!-- *************************************** -->
 <!-- Solr -->
 <!-- *************************************** -->
@@ -33,13 +33,13 @@
         <value xml:lang="en">L1</value>
     </property>
     <property key="storeWebSiteId">
-        <value xml:lang="en">L1_WEBSITE</value>
+        <value xml:lang="en">RNY_WEBSITE</value>
     </property>
     <property key="storeProductStoreId">
-        <value xml:lang="en">L1_STORE</value>
+        <value xml:lang="en">RNY_STORE</value>
     </property>
     <property key="storeProductCategoryRootId">
-        <value xml:lang="en">L1_CATEGORY_ROOT</value>
+        <value xml:lang="en">RNY_CATEGORY_ROOT</value>
     </property>
 <!-- *************************************** -->
 <!-- PDP -->

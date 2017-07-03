@@ -2,7 +2,7 @@
         To add HTML to a message escape all angle brackets < > in tags with  &lt; = < &gt = >
         Then where you use the message in ftl use the following ${StringUtil.wrapString([message])}
     -->
-    <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+    <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <!-- *** Caption *************************************** -->
     <property key="OsafeApplication">
         <value xml:lang="en">Osafe Application</value>
