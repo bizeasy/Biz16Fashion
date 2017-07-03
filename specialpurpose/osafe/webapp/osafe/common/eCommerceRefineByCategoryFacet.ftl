@@ -23,7 +23,7 @@
 
 <#assign facetTopProdCatContentTypeId = 'PLP_ESPOT_FACET_TOP'/>
 <#if facetTopProdCatContentTypeId?exists && facetTopProdCatContentTypeId?has_content>
-    <#assign facetTopProductCategoryContentList = EntityQuery.use(delegator).from("ProductCategoryContent").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , categoryId?string, "prodCatContentTypeId" , facetTopProdCatContentTypeId?if_exists)}).cache().queryList()/>
+    <#assign facetTopProductCategoryContentList = EntityQuery.use(delegator).from("ProductCategoryContent").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , categoryId?string, "prodCatContentTypeId" , facetTopProdCatContentTypeId?if_exists)).cache().queryList()/>
     <#if facetTopProductCategoryContentList?has_content>
         <#assign facetTopProductCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(facetTopProductCategoryContentList?if_exists) />
         <#assign facetTopProdCategoryContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(facetTopProductCategoryContentList) />
@@ -83,7 +83,7 @@
             <#assign facetMaxValue = ""/>
 
             <#if parameters.productCategoryId?has_content>
-                <#assign productFeatureCatGrpApplList = EntityQuery.use(delegator).from("ProductFeatureCatGrpAppl").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" : parameters.productCategoryId, "productFeatureGroupId" : facet.productFeatureGroupId!)).cache().queryList()/>
+                <#assign productFeatureCatGrpApplList = EntityQuery.use(delegator).from("ProductFeatureCatGrpAppl").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , parameters.productCategoryId, "productFeatureGroupId" , facet.productFeatureGroupId!)).cache().queryList()/>
                 <#assign productFeatureCatGrpAppls = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(productFeatureCatGrpApplList!)/>
             </#if>
             <#if productFeatureCatGrpAppls?has_content>
@@ -500,7 +500,7 @@
 
 <#assign facetEndProdCatContentTypeId = 'PLP_ESPOT_FACET_END'/>
 <#if facetEndProdCatContentTypeId?exists && facetEndProdCatContentTypeId?has_content>
-    <#assign facetEndProductCategoryContentList = EntityQuery.use(delegator).from("ProductCategoryContent").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , categoryId?string, "prodCatContentTypeId" , facetEndProdCatContentTypeId?if_exists)}).cache().queryList()/>
+    <#assign facetEndProductCategoryContentList = EntityQuery.use(delegator).from("ProductCategoryContent").where(Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId" , categoryId?string, "prodCatContentTypeId" , facetEndProdCatContentTypeId?if_exists)).cache().queryList()/>
     <#if facetEndProductCategoryContentList?has_content>
         <#assign facetEndProductCategoryContentList = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(facetEndProductCategoryContentList?if_exists) />
         <#assign facetEndProdCategoryContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(facetEndProductCategoryContentList) />
