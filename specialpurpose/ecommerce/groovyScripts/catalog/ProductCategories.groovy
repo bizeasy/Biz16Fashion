@@ -34,7 +34,7 @@ List fillTree(rootCat ,CatLvl, parentCategoryId) {
         def listTree = []
         for(root in rootCat) {
             preCatChilds = from("ProductCategoryRollup").where("parentProductCategoryId", root.productCategoryId).queryList()
-            catChilds = EntityUtil.getFirst(preCatChilds).getRelated("CurrentProductCategory",null,null,false)
+            catChilds = EntityUtil.getRelated("CurrentProductCategory",null,preCatChilds,false)
             def childList = []
             
             // CatLvl uses for identify the Category level for display different css class

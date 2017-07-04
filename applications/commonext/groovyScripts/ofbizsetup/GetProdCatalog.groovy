@@ -18,7 +18,6 @@
  */
  import org.apache.ofbiz.base.util.UtilValidate
  import org.apache.ofbiz.entity.util.EntityUtil
- import org.apache.ofbiz.entity.util.EntityQuery ;
  import org.apache.ofbiz.product.catalog.CatalogWorker
  
  prodCatalog = null
@@ -26,8 +25,7 @@
  showScreen = "origin"
  List errMsgList = []
  
- productStore = EntityQuery.use(delegator).from("ProductStore").where("payToPartyId", partyId).queryList();
- 
+ productStore = EntityUtil.getFirst(delegator.findByAnd("ProductStore", [payToPartyId: partyId], null, false))
  if(productStore){
      context.productStoreId = productStore.productStoreId
  }
@@ -36,8 +34,7 @@
      showScreen = "message"
  } else {
      facility = delegator.findOne("Facility", [facilityId : productStore.inventoryFacilityId], false)
-     webSite = EntityQuery.use(delegator).from("WebSite").where("productStoreId", productStore.productStoreId).queryList();
-     
+     webSite = EntityUtil.getFirst(delegator.findByAnd("WebSite", [productStoreId: productStore.productStoreId], null, false))
      
      if(UtilValidate.isEmpty(facility)){
          errMsgList.add("Facility not set!")
@@ -53,7 +50,7 @@
     return
  }
  
- productStoreCatalog = EntityQuery.use(delegator).from("ProductStoreCatalog").where("productStoreId", productStore.productStoreId).queryList();
+ productStoreCatalog = EntityUtil.getFirst(delegator.findByAnd("ProductStoreCatalog", [productStoreId: productStore.productStoreId], null, false))
  if(productStoreCatalog){
      prodCatalog = productStoreCatalog.getRelatedOne("ProdCatalog", false)
      prodCatalogId = prodCatalog.prodCatalogId
@@ -72,9 +69,9 @@
          showErrorMsg = "Y"
      }
      
-     prodCatalogCategory  = EntityQuery.use(delegator).from("ProdCatalogCategory").where("prodCatalogId", prodCatalogId).queryList();
+     prodCatalogCategory  = EntityUtil.getFirst(delegator.findByAnd("ProdCatalogCategory", [prodCatalogId: prodCatalogId, sequenceNum: new Long(1)], null, false))
      if(prodCatalogCategory){
-         productCategory = EntityUtil.getFirst(EntityQuery.use(delegator).from("ProductCategory").where("primaryParentCategoryId",prodCatalogCategory.productCategoryId).queryList())
+         productCategory = EntityUtil.getFirst(delegator.findByAnd("ProductCategory", [primaryParentCategoryId : prodCatalogCategory.productCategoryId], null, false))
          if(productCategory){
              productCategoryId = productCategory.productCategoryId
          }
@@ -91,14 +88,12 @@
              showErrorMsg = "Y"
          }
          /**************** get product from ProductCategory ******************/
-         productCategoryMember  = EntityUtil.getFirst(EntityQuery.use(delegator).from("ProductCategoryMember").where("primaryParentCategoryId",productCategoryId).queryList())
-         
+         productCategoryMember  = EntityUtil.getFirst(delegator.findByAnd("ProductCategoryMember", [productCategoryId: productCategoryId], null, false))
          if(productCategoryMember){
              product = productCategoryMember.getRelatedOne("Product", false)
              productId = product.productId
              // Average cost
-             averageCostValues = EntityQuery.use(delegator).from("ProductPrice").where("productId" , productId,"productPricePurposeId","PURCHASE", "productPriceTypeId","AVERAGE_COST"]).queryList()
-             
+             averageCostValues = delegator.findByAnd("ProductPrice", [productId : productId, productPricePurposeId : "PURCHASE", productPriceTypeId : "AVERAGE_COST"], null, false)
              if(averageCostValues){
                  averageCostValue = EntityUtil.getFirst(EntityUtil.filterByDate(averageCostValues))
                  if (averageCostValue?.price != null) {
@@ -106,8 +101,7 @@
                  }
              }
              //    Default cost
-             defaultPriceValues = EntityQuery.use(delegator).from("ProductPrice").where("productId" , productId,"productPricePurposeId","PURCHASE", "productPriceTypeId","DEFAULT_PRICE").queryList()
-             
+             defaultPriceValues = delegator.findByAnd("ProductPrice", [productId : productId, productPricePurposeId : "PURCHASE", productPriceTypeId : "DEFAULT_PRICE"], null, false)
              if(defaultPriceValues){
                  defaultPrice = EntityUtil.getFirst(EntityUtil.filterByDate(defaultPriceValues))
                  if (defaultPrice?.price != null) {

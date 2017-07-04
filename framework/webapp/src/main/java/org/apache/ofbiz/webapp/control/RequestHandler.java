@@ -138,13 +138,12 @@ public class RequestHandler {
         if (UtilValidate.isEmpty(statusCodeString)) {
             statusCodeString = defaultStatusCodeString;
         }
-        Debug.log("statusCodeString ========="+statusCodeString);
+
         // workaround if we are in the root webapp
         String cname = UtilHttp.getApplicationName(request);
-        Debug.log("cname ========="+cname);
+
         // Grab data from request object to process
         String defaultRequestUri = RequestHandler.getRequestUri(request.getPathInfo());
-        Debug.log("defaultRequestUri ========="+defaultRequestUri);
         if (request.getAttribute("targetRequestUri") == null) {
             if (request.getSession().getAttribute("_PREVIOUS_REQUEST_") != null) {
                 request.setAttribute("targetRequestUri", request.getSession().getAttribute("_PREVIOUS_REQUEST_"));
@@ -154,7 +153,7 @@ public class RequestHandler {
         }
 
         String overrideViewUri = RequestHandler.getOverrideViewUri(request.getPathInfo());
-        Debug.log("overrideViewUri ========="+overrideViewUri);
+
         String requestMissingErrorMessage = "Unknown request [" + defaultRequestUri + "]; this request does not exist or cannot be called directly.";
         ConfigXMLReader.RequestMap requestMap = null;
         if (defaultRequestUri != null) {
@@ -173,7 +172,7 @@ public class RequestHandler {
                 requestMap = requestMapMap.get(defaultRequest);
             }
         }
-        Debug.log("requestMap ========="+requestMap);
+
         // check for override view
         if (overrideViewUri != null) {
             ConfigXMLReader.ViewMap viewMap;

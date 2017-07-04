@@ -77,9 +77,11 @@ public class CmsEvents {
                 return "error";
             }
         }
+
         // is this a default request or called from a defined request mapping
         String targetRequest = (String) request.getAttribute("targetRequestUri");
         String actualRequest = (String) request.getAttribute("thisRequestUri");
+
         if (targetRequest != null) {
             targetRequest = targetRequest.replaceAll("\\W", "");
         } else {
@@ -133,6 +135,7 @@ public class CmsEvents {
                 }
             } // if called through the default request, there is no request in pathinfo
         }
+
         // if path info is null or path info is / (i.e application mounted on root); check for a default content
         if (pathInfo == null || "/".equals(pathInfo)) {
             GenericValue defaultContent = null;
@@ -147,6 +150,7 @@ public class CmsEvents {
                 pathInfo = defaultContent.getString("contentId");
             }
         }
+
         // check for path alias first
         if (pathInfo != null) {
             // clean up the pathinfo for parsing
@@ -202,6 +206,7 @@ public class CmsEvents {
             // verify the request content is associated with the current website
             int statusCode = -1;
             boolean hasErrorPage = false;
+
             if (contentId != null) {
                 try {
                     statusCode = verifyContentToWebSite(delegator, webSiteId, contentId);
@@ -212,6 +217,7 @@ public class CmsEvents {
             } else {
                 statusCode = HttpServletResponse.SC_NOT_FOUND;
             }
+
             // We try to find a specific Error page for this website concerning the status code
             if (statusCode != HttpServletResponse.SC_OK) {
                 GenericValue errorContainer = null;
@@ -265,6 +271,7 @@ public class CmsEvents {
                 }
 
             }
+
             if (statusCode == HttpServletResponse.SC_OK || hasErrorPage) {
                 // create the template map
                 MapStack<String> templateMap = MapStack.create();

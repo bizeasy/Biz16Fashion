@@ -20,8 +20,7 @@
 import org.apache.ofbiz.entity.*
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.entity.condition.*
-import org.apache.ofbiz.entity.util.EntityUtil;
-import org.apache.ofbiz.entity.util.EntityQuery;
+import org.apache.ofbiz.entity.util.EntityUtil
 
 // executes only on startup when only the basic parameters.portalPageId (from commonscreens.xml) is available
 if (userLogin && parameters.parentPortalPageId && !parameters.portalPageId) {
@@ -44,7 +43,7 @@ if (userLogin && parameters.parentPortalPageId && !parameters.portalPageId) {
     if (portalMainPages) {
         portalPageId = portalMainPages.get(0).portalPageId
         // check if overridden with a privat page
-        privatMainPages = EntityQuery.use(delegator).from("WorkEffortPartyAssignment").where("originalPortalPageId" , portalPageId, "ownerUserLoginId",userLogin.userLoginId).queryList();
+        privatMainPages = delegator.findByAnd("PortalPage", [originalPortalPageId : portalPageId, ownerUserLoginId : userLogin.userLoginId], null, false)
         if (privatMainPages) {
             context.parameters.portalPageId = privatMainPages.get(0).portalPageId
         } else {

@@ -25,8 +25,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.LinkedList;
-import javolution.util.FastMap;
 
 import org.apache.ofbiz.base.conversion.Converter;
 import org.apache.ofbiz.base.conversion.ConverterLoader;
