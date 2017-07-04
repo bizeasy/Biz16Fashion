@@ -82,7 +82,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		
 					partyBillingLocation = "";
 					partyBillingLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "BILLING_LOCATION"));
-					partyBillingLocations = EntityUtil.getRelated("PartyContactMech", partyBillingLocations);
+					partyBillingLocations = EntityUtil.getFirst(partyBillingLocations).getRelated("PartyContactMech", null, null, false);
 					partyBillingLocations = EntityUtil.filterByDate(partyBillingLocations,true);
 					partyBillingLocations = EntityUtil.orderBy(partyBillingLocations, UtilMisc.toList("fromDate DESC"));
 					if (UtilValidate.isNotEmpty(partyBillingLocations))

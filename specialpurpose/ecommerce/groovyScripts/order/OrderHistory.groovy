@@ -27,7 +27,7 @@ if (partyRole) {
     if ("SUPPLIER".equals(partyRole.roleTypeId)) {
         /** drop shipper or supplier **/
         porderRoleCollection = from("OrderRole").where("partyId", userLogin.partyId, "roleTypeId", "SUPPLIER_AGENT").queryList()
-        porderHeaderList = EntityUtil.orderBy(EntityUtil.filterByAnd(EntityUtil.getRelated("OrderHeader", null, porderRoleCollection, false),
+        porderHeaderList = EntityUtil.orderBy(EntityUtil.filterByAnd(EntityUtil.getFirst(porderRoleCollection).getRelated("OrderHeader", null, null, false),
                 [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "ORDER_REJECTED"),
                  EntityCondition.makeCondition("orderTypeId", EntityOperator.EQUALS, "PURCHASE_ORDER")]),
                  ["orderDate DESC"])
@@ -35,7 +35,7 @@ if (partyRole) {
     }
 }
 orderRoleCollection = from("OrderRole").where("partyId", userLogin.partyId, "roleTypeId", "PLACING_CUSTOMER").queryList()
-orderHeaderList = EntityUtil.orderBy(EntityUtil.filterByAnd(EntityUtil.getRelated("OrderHeader", null, orderRoleCollection, false),
+orderHeaderList = EntityUtil.orderBy(EntityUtil.filterByAnd(EntityUtil.getFirst(orderRoleCollection).getRelated("OrderHeader", null, null, false),
         [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "ORDER_REJECTED")]), ["orderDate DESC"])
 context.orderHeaderList = orderHeaderList
 

@@ -11,6 +11,7 @@ import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.entity.util.EntityQuery;
 
 storeId = parameters.storeId;
+Debug.log("storeId ============"+storeId);
 shoppingCart = session.getAttribute("shoppingCart");
 if (UtilValidate.isEmpty(storeId)) 
 {
@@ -45,7 +46,7 @@ if (UtilValidate.isEmpty(storeId))
 productStore = ProductStoreWorker.getProductStore(request);
 productStoreId=productStore.getString("productStoreId");
 openStores = LinkedList.newInstance();
-allStores = EntityQuery.use(delegator).from("ProductStoreRole").where("productStoreId", productStoreId, "roleTypeId", STORE_LOCATION).cache().queryList();
+allStores = EntityQuery.use(delegator).from("ProductStoreRole").where("productStoreId", productStoreId, "roleTypeId", "STORE_LOCATION").cache().queryList();
 if (UtilValidate.isNotEmpty(allStores))
 {
 	for(GenericValue store : allStores)
@@ -84,7 +85,7 @@ if (UtilValidate.isNotEmpty(storeId))
         partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 
         partyGeneralLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"));
-        partyGeneralLocations = EntityUtil.getRelated("PartyContactMech", partyGeneralLocations, null, true);
+        partyGeneralLocations = EntityUtil.getFirst(partyGeneralLocations).getRelated("PartyContactMech", null, null, true);
         partyGeneralLocations = EntityUtil.filterByDate(partyGeneralLocations,true);
         partyGeneralLocations = EntityUtil.orderBy(partyGeneralLocations, UtilMisc.toList("fromDate DESC"));
         if (UtilValidate.isNotEmpty(partyGeneralLocations)) 
@@ -94,7 +95,7 @@ if (UtilValidate.isNotEmpty(storeId))
         }
 
         partyPrimaryPhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_PHONE"));
-        partyPrimaryPhones = EntityUtil.getRelated("PartyContactMech", partyPrimaryPhones, null, true);
+        partyPrimaryPhones = EntityUtil.getFirst(partyPrimaryPhones).getRelated("PartyContactMech", null, null, true);
         partyPrimaryPhones = EntityUtil.filterByDate(partyPrimaryPhones,true);
         partyPrimaryPhones = EntityUtil.orderBy(partyPrimaryPhones, UtilMisc.toList("fromDate DESC"));
         if (UtilValidate.isNotEmpty(partyPrimaryPhones)) 

@@ -563,7 +563,7 @@ public class TxtMessageServices {
         {
             List<GenericValue> partyContactMechPurpose = party.getRelated("PartyContactMechPurpose", null, null, true);
             List<GenericValue> partyPurposeMobilePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_MOBILE"));
-            partyPurposeMobilePhones = EntityUtil.getRelated("PartyContactMech", partyPurposeMobilePhones);
+            partyPurposeMobilePhones = EntityUtil.getFirst(partyPurposeMobilePhones).getRelated("PartyContactMech", null, null, false);
             partyPurposeMobilePhones = EntityUtil.filterByDate(partyPurposeMobilePhones,true);
             partyPurposeMobilePhones = EntityUtil.orderBy(partyPurposeMobilePhones, UtilMisc.toList("fromDate DESC"));
             if (UtilValidate.isNotEmpty(partyPurposeMobilePhones)) 
@@ -574,7 +574,7 @@ public class TxtMessageServices {
                 if(UtilValidate.isEmpty(countryTeleCode))
                 {
                     List<GenericValue> partyPurposeGeneralLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"));
-                    partyPurposeGeneralLocations = EntityUtil.getRelated("PartyContactMech", partyPurposeGeneralLocations);
+                    partyPurposeGeneralLocations = EntityUtil.getFirst(partyPurposeGeneralLocations).getRelated("PartyContactMech", null, null, false);
                     partyPurposeGeneralLocations = EntityUtil.filterByDate(partyPurposeGeneralLocations,true);
                     partyPurposeGeneralLocations = EntityUtil.orderBy(partyPurposeGeneralLocations, UtilMisc.toList("fromDate DESC"));
                     if (UtilValidate.isNotEmpty(partyPurposeGeneralLocations)) 

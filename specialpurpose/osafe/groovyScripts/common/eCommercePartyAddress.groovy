@@ -23,7 +23,7 @@ if (UtilValidate.isNotEmpty(party))
 	
 	partyLocations = party.getRelated("PartyContactMech",null,null,true);
 	partyLocations = EntityUtil.filterByDate(partyLocations,UtilDateTime.getDayEnd(UtilDateTime.nowTimestamp()),"fromDate","thruDate",true);
-	partyLocations = EntityUtil.getRelated("PartyContactMechPurpose", partyLocations, null, true);
+	partyLocations = EntityUtil.getFirst(partyLocations).getRelated("PartyContactMechPurpose", null, null, true);
 	partyLocations = EntityUtil.filterByDate(partyLocations,UtilDateTime.getDayEnd(UtilDateTime.nowTimestamp()),"fromDate","thruDate",true);
 	partyLocations = EntityUtil.orderBy(partyLocations, UtilMisc.toList("fromDate DESC"));
 	
@@ -32,7 +32,7 @@ if (UtilValidate.isNotEmpty(party))
 	partyBillingLocations = EntityUtil.filterByAnd(partyLocations, UtilMisc.toMap("contactMechPurposeTypeId", "BILLING_LOCATION"));
     if (UtilValidate.isNotEmpty(partyBillingLocations)) 
     {
-        billingContactMechList = EntityUtil.getRelated("ContactMech",partyBillingLocations, null, true);
+        billingContactMechList = EntityUtil.getFirst(partyBillingLocations).getRelated("ContactMech",null, null, true);
         addressContactMechList.addAll(billingContactMechList);
         billingAddressContactMech = EntityUtil.getFirst(billingContactMechList);
         if (UtilValidate.isNotEmpty(billingAddressContactMech)) 
@@ -47,7 +47,7 @@ if (UtilValidate.isNotEmpty(party))
     partyShippingLocations = EntityUtil.filterByAnd(partyLocations, UtilMisc.toMap("contactMechPurposeTypeId", "SHIPPING_LOCATION"));
     if (UtilValidate.isNotEmpty(partyShippingLocations)) 
     {
-        shippingContactMechList=EntityUtil.getRelated("ContactMech",partyShippingLocations, null, true);
+        shippingContactMechList=EntityUtil.getFirst(partyShippingLocations).getRelated("ContactMech",null, null, true);
         addressContactMechList.addAll(shippingContactMechList);
         shippingAddressContactMech = EntityUtil.getFirst(shippingContactMechList);
         if (UtilValidate.isNotEmpty(shippingAddressContactMech)) 

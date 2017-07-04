@@ -218,7 +218,7 @@ if(UtilValidate.isNotEmpty(storePartyList))
                     partyContactMechPurpose = EntityUtil.orderBy(partyContactMechPurpose,UtilMisc.toList("-fromDate"));
                     
                     storeLocationLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"));
-                    storeLocationLocations = EntityUtil.getRelated("PartyContactMech", storeLocationLocations, null, true);
+                    storeLocationLocations = (EntityUtil.getFirst(storeLocationLocations)).getRelated("PartyContactMech", null, null, true);
                     storeLocationLocations = EntityUtil.filterByDate(storeLocationLocations,true);
                     storeLocationLocations = EntityUtil.orderBy(storeLocationLocations, UtilMisc.toList("fromDate DESC"));
                     if (UtilValidate.isNotEmpty(storeLocationLocations)) 
@@ -241,7 +241,7 @@ if(UtilValidate.isNotEmpty(storePartyList))
                     }
                     
                     storeTelephoneLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_PHONE"));
-                    storeTelephoneLocations = EntityUtil.getRelated("PartyContactMech", storeTelephoneLocations, null, true);
+                    storeTelephoneLocations = (EntityUtil.getFirst(storeTelephoneLocations)).getRelated("PartyContactMech", null, null, true);
                     storeTelephoneLocations = EntityUtil.filterByDate(storeTelephoneLocations,true);
                     storeTelephoneLocations = EntityUtil.orderBy(storeTelephoneLocations, UtilMisc.toList("fromDate DESC"));
                     if (UtilValidate.isNotEmpty(storeTelephoneLocations)) 

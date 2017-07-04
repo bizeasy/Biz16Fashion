@@ -252,7 +252,7 @@ public class SolrServices {
 		                                    {
 		                                    	List<GenericValue> productAssocVariantList = product.getRelated("MainProductAssoc");
 		                                    	productAssocVariantList = EntityUtil.filterByAnd(productAssocVariantList, UtilMisc.toMap("productAssocTypeId", "PRODUCT_VARIANT")); 
-		                                    	List<GenericValue> assocProductVariantList = EntityUtil.getRelated("AssocProduct", productAssocVariantList);
+		                                    	List<GenericValue> assocProductVariantList = EntityUtil.getFirst(productAssocVariantList).getRelated("AssocProduct", null, null, false);
 		                                    	assocProductVariantList = EntityUtil.orderBy(assocProductVariantList, UtilMisc.toList("salesDiscontinuationDate ASC"));
 		                                    	for(GenericValue productVariant : assocProductVariantList)
 		                                    	{
@@ -1262,9 +1262,9 @@ public class SolrServices {
                 String isVirtual = product.getString("isVirtual");
                 if ("Y".equals(isVirtual)) 
                 {
-                	List<GenericValue> productAssocVariantList = product.getRelated("MainProductAssoc");
+                	List<GenericValue> productAssocVariantList = product.getRelated("MainProductAssoc", null, null, false);
                 	productAssocVariantList = EntityUtil.filterByAnd(productAssocVariantList, UtilMisc.toMap("productAssocTypeId", "PRODUCT_VARIANT")); 
-                	List<GenericValue> assocProductVariantList = EntityUtil.getRelated("AssocProduct", productAssocVariantList);
+                	List<GenericValue> assocProductVariantList = EntityUtil.getFirst(productAssocVariantList).getRelated("AssocProduct", null, null, false);
                 	assocProductVariantList = EntityUtil.orderBy(assocProductVariantList, UtilMisc.toList("salesDiscontinuationDate ASC"));
                 	for(GenericValue productVariant : assocProductVariantList)
                 	{

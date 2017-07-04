@@ -7371,31 +7371,31 @@ public class ImportServices {
         	        partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
         	
         	        List<GenericValue> partyBillingLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "BILLING_LOCATION"));
-        	        partyBillingLocations = EntityUtil.getRelated("PartyContactMech", partyBillingLocations);
+        	        partyBillingLocations = EntityUtil.getFirst(partyBillingLocations).getRelated("PartyContactMech", null, null, false);
         	        partyBillingLocations = EntityUtil.filterByDate(partyBillingLocations,true);
         	        partyBillingLocations = EntityUtil.orderBy(partyBillingLocations, UtilMisc.toList("fromDate DESC"));
         	        if (UtilValidate.isNotEmpty(partyBillingLocations)) 
         	        {
         	        	GenericValue partyBillingLocation = EntityUtil.getFirst(partyBillingLocations);
-        	            billingContactMechList = EntityUtil.getRelated("ContactMech",partyBillingLocations);
+        	            billingContactMechList = EntityUtil.getFirst(partyBillingLocations).getRelated("ContactMech",null, null, false);
         	            //context.billingContactMechList = billingContactMechList;
         	        }
         	
         	        
         	        List<GenericValue> partyShippingLocations = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "SHIPPING_LOCATION"));
-        	        partyShippingLocations = EntityUtil.getRelated("PartyContactMech", partyShippingLocations);
+        	        partyShippingLocations = EntityUtil.getFirst(partyShippingLocations).getRelated("PartyContactMech", null, null, false);
         	        partyShippingLocations = EntityUtil.filterByDate(partyShippingLocations,true);
         	        partyShippingLocations = EntityUtil.orderBy(partyShippingLocations, UtilMisc.toList("fromDate DESC"));
         	        if (UtilValidate.isNotEmpty(partyShippingLocations)) 
         	        {
         	        	GenericValue partyShippingLocation = EntityUtil.getFirst(partyShippingLocations);
-        	            shippingContactMechList = EntityUtil.getRelated("ContactMech",partyShippingLocations);
+        	            shippingContactMechList = EntityUtil.getFirst(partyShippingLocations).getRelated("ContactMech",null, null, false);
         	        }
             	}
                 List billingAddressList = null;
             	for(GenericValue billingContactMech : billingContactMechList) 
     	        {
-    				GenericValue postalAddress = billingContactMech.getRelatedOne("PostalAddress");
+    				GenericValue postalAddress = billingContactMech.getRelatedOne("PostalAddress", false);
     				BillingAddressType billingAddress = factory.createBillingAddressType();
     				billingAddressList = customer.getBillingAddress();
     		    	    

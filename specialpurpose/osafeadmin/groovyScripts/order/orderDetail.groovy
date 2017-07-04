@@ -87,7 +87,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	        partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 	
 	        partyPurposeEmails = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_EMAIL"));
-	        partyPurposeEmails = EntityUtil.getRelated("PartyContactMech", partyPurposeEmails);
+	        partyPurposeEmails = EntityUtil.getFirst(partyPurposeEmails).getRelated("PartyContactMech", null, null, false);
 	        partyPurposeEmails = EntityUtil.filterByDate(partyPurposeEmails,true);
 	        partyPurposeEmails = EntityUtil.orderBy(partyPurposeEmails, UtilMisc.toList("fromDate DESC"));
 	        if (UtilValidate.isNotEmpty(partyPurposeEmails)) 
@@ -97,13 +97,13 @@ if (UtilValidate.isNotEmpty(orderId))
 	            context.userEmailContactMech = contactMech;
 	            context.userEmailAddress = contactMech.infoString;
 	            context.userEmailAllowSolicitation= partyPurposeEmail.allowSolicitation;
-	            userEmailContactMechList= EntityUtil.getRelated("ContactMech",partyPurposeEmails);
+	            userEmailContactMechList= EntityUtil.getFirst(partyPurposeEmails).getRelated("ContactMech",null, null, false);
 	            context.userEmailContactMechList = userEmailContactMechList;
 	            
 	        }
 	
 	        partyPurposeHomePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_HOME"));
-	        partyPurposeHomePhones = EntityUtil.getRelated("PartyContactMech", partyPurposeHomePhones);
+	        partyPurposeHomePhones = EntityUtil.getFirst(partyPurposeHomePhones).getRelated("PartyContactMech", null, null, false);
 	        partyPurposeHomePhones = EntityUtil.filterByDate(partyPurposeHomePhones,true);
 	        partyPurposeHomePhones = EntityUtil.orderBy(partyPurposeHomePhones, UtilMisc.toList("fromDate DESC"));
 	        if (UtilValidate.isNotEmpty(partyPurposeHomePhones)) 
@@ -117,7 +117,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	        }
 	        
 	        partyPurposeWorkPhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_WORK"));
-	        partyPurposeWorkPhones = EntityUtil.getRelated("PartyContactMech", partyPurposeWorkPhones);
+	        partyPurposeWorkPhones = EntityUtil.getFirst(partyPurposeWorkPhones).getRelated("PartyContactMech", null, null, false);
 	        partyPurposeWorkPhones = EntityUtil.filterByDate(partyPurposeWorkPhones,true);
 	        partyPurposeWorkPhones = EntityUtil.orderBy(partyPurposeWorkPhones, UtilMisc.toList("fromDate DESC"));
 	        if (UtilValidate.isNotEmpty(partyPurposeWorkPhones)) 
@@ -132,7 +132,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	        }
 	
 	        partyPurposeMobilePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_MOBILE"));
-	        partyPurposeMobilePhones = EntityUtil.getRelated("PartyContactMech", partyPurposeMobilePhones);
+	        partyPurposeMobilePhones = EntityUtil.getFirst(partyPurposeMobilePhones).getRelated("PartyContactMech", null, null, false);
 	        partyPurposeMobilePhones = EntityUtil.filterByDate(partyPurposeMobilePhones,true);
 	        partyPurposeMobilePhones = EntityUtil.orderBy(partyPurposeMobilePhones, UtilMisc.toList("fromDate DESC"));
 	        if (UtilValidate.isNotEmpty(partyPurposeMobilePhones)) 
