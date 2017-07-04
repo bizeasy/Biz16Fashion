@@ -31,7 +31,7 @@ if (UtilValidate.isNotEmpty(orderId))
 
 if (UtilValidate.isNotEmpty(orderHeader)) 
 {
-	notes = orderHeader.getRelatedOrderBy("OrderHeaderNoteView", ["-noteDateTime"]);
+	notes = orderHeader.getRelated("OrderHeaderNoteView",null, ["-noteDateTime"],false);
 	context.orderNotes = notes;
 	orderNotes = notes;
 	

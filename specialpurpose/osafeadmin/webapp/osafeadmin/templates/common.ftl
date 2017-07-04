@@ -79,7 +79,7 @@
                      ${sections.render('messages')}
                     </#if>
                      ${sections.render('commonJquery')}
-                     ${sections.render('body')}
+                     ${sections.render('body')} 
                 </div>
             </div>
         </div>

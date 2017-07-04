@@ -37,7 +37,7 @@ if (UtilValidate.isNotEmpty(orderId))
 
 if (UtilValidate.isNotEmpty(orderHeader))
 {
-	contentList = orderHeader.getRelatedOrderBy("OrderStatus", ["orderStatusId"]);
+	contentList = orderHeader.getRelated("OrderStatus",null, ["orderStatusId"],false);
 	
 	notes = orderHeader.getRelated("OrderHeaderNoteView");
 	context.notesCount = notes.size();

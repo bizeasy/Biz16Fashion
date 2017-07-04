@@ -7,6 +7,7 @@ import org.apache.ofbiz.party.contact.ContactHelper;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.ContactMechWorker;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.UtilMisc;
@@ -36,6 +37,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	orderHeader = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderId).queryOne();
 	if (UtilValidate.isNotEmpty(orderHeader)) 
 	{
+		Debug.log("====================orderProductStore================================");
 		orderProductStore = orderHeader.getRelatedOne("ProductStore");
 		if (UtilValidate.isNotEmpty(orderProductStore.storeName))
 		{
@@ -81,20 +83,27 @@ if (UtilValidate.isNotEmpty(orderId))
 	        context.displayParty = displayParty;
 	        context.partyId = partyId;
 	
-	        
+			Debug.log("displayParty========="+displayParty);
 	        //Get PRIMARY EMAIL, TELEPHONE LOCATIONS
 	        partyContactMechPurpose = displayParty.getRelated("PartyContactMechPurpose");
+			Debug.log("partyContactMechPurpose========="+partyContactMechPurpose);
 	        partyContactMechPurpose = EntityUtil.filterByDate(partyContactMechPurpose,true);
 	
 	        partyPurposeEmails = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_EMAIL"));
+			Debug.log("partyPurposeEmails====11====="+partyPurposeEmails);
 	        partyPurposeEmails = EntityUtil.getFirst(partyPurposeEmails).getRelated("PartyContactMech", null, null, false);
+			Debug.log("partyPurposeEmails=====22===="+partyPurposeEmails);
 	        partyPurposeEmails = EntityUtil.filterByDate(partyPurposeEmails,true);
+			Debug.log("partyPurposeEmails=====33===="+partyPurposeEmails);
 	        partyPurposeEmails = EntityUtil.orderBy(partyPurposeEmails, UtilMisc.toList("fromDate DESC"));
+			Debug.log("partyPurposeEmails=======44=="+partyPurposeEmails);
 	        if (UtilValidate.isNotEmpty(partyPurposeEmails)) 
 	        {
 	            partyPurposeEmail = EntityUtil.getFirst(partyPurposeEmails);
+				Debug.log("partyPurposeEmails=====55==="+partyPurposeEmails);
 	            contactMech = partyPurposeEmail.getRelatedOne("ContactMech");
-	            context.userEmailContactMech = contactMech;
+	            Debug.log("contactMech========"+contactMech);
+				context.userEmailContactMech = contactMech;
 	            context.userEmailAddress = contactMech.infoString;
 	            context.userEmailAllowSolicitation= partyPurposeEmail.allowSolicitation;
 	            userEmailContactMechList= EntityUtil.getFirst(partyPurposeEmails).getRelated("ContactMech",null, null, false);
@@ -109,7 +118,9 @@ if (UtilValidate.isNotEmpty(orderId))
 	        if (UtilValidate.isNotEmpty(partyPurposeHomePhones)) 
 	        {
 	            partyPurposePhone = EntityUtil.getFirst(partyPurposeHomePhones);
+				Debug.log("partyPurposePhone======"+partyPurposePhone);
 	            telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
+				Debug.log("telecomNumber==rrr===="+telecomNumber);
 	            context.phoneHomeTelecomNumber =telecomNumber;
 	            context.phoneHomeAreaCode =telecomNumber.areaCode;
 	            context.phoneHomeContactNumber =telecomNumber.contactNumber;
@@ -117,13 +128,17 @@ if (UtilValidate.isNotEmpty(orderId))
 	        }
 	        
 	        partyPurposeWorkPhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_WORK"));
-	        partyPurposeWorkPhones = EntityUtil.getFirst(partyPurposeWorkPhones).getRelated("PartyContactMech", null, null, false);
-	        partyPurposeWorkPhones = EntityUtil.filterByDate(partyPurposeWorkPhones,true);
-	        partyPurposeWorkPhones = EntityUtil.orderBy(partyPurposeWorkPhones, UtilMisc.toList("fromDate DESC"));
-	        if (UtilValidate.isNotEmpty(partyPurposeWorkPhones)) 
+			if(UtilValidate.isNotEmpty(partyPurposeWorkPhones)){
+		        partyPurposeWorkPhones = EntityUtil.getFirst(partyPurposeWorkPhones).getRelated("PartyContactMech", null, null, false);
+		        partyPurposeWorkPhones = EntityUtil.filterByDate(partyPurposeWorkPhones,true);
+		        partyPurposeWorkPhones = EntityUtil.orderBy(partyPurposeWorkPhones, UtilMisc.toList("fromDate DESC"));
+			}
+			if (UtilValidate.isNotEmpty(partyPurposeWorkPhones)) 
 	        {
 	            partyPurposePhone = EntityUtil.getFirst(partyPurposeWorkPhones);
+				Debug.log("partyPurposePhone33======"+partyPurposePhone);
 	            telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
+				Debug.log("telecomNumber======"+telecomNumber);
 		        context.partyPurposeWorkPhone =partyPurposePhone;
 	            context.phoneWorkTelecomNumber =telecomNumber;
 	            context.phoneWorkAreaCode =telecomNumber.areaCode;
@@ -132,12 +147,17 @@ if (UtilValidate.isNotEmpty(orderId))
 	        }
 	
 	        partyPurposeMobilePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_MOBILE"));
-	        partyPurposeMobilePhones = EntityUtil.getFirst(partyPurposeMobilePhones).getRelated("PartyContactMech", null, null, false);
-	        partyPurposeMobilePhones = EntityUtil.filterByDate(partyPurposeMobilePhones,true);
-	        partyPurposeMobilePhones = EntityUtil.orderBy(partyPurposeMobilePhones, UtilMisc.toList("fromDate DESC"));
-	        if (UtilValidate.isNotEmpty(partyPurposeMobilePhones)) 
+			if (UtilValidate.isNotEmpty(partyPurposeWorkPhones)){
+		        partyPurposeMobilePhones = EntityUtil.getFirst(partyPurposeMobilePhones).getRelated("PartyContactMech", null, null, false);
+		        partyPurposeMobilePhones = EntityUtil.filterByDate(partyPurposeMobilePhones,true);
+		        partyPurposeMobilePhones = EntityUtil.orderBy(partyPurposeMobilePhones, UtilMisc.toList("fromDate DESC"));
+			}
+	        Debug.log("==============partyPurposeMobilePhones-==========================");
+			if (UtilValidate.isNotEmpty(partyPurposeMobilePhones)) 
 	        {
-	            partyPurposePhone = EntityUtil.getFirst(partyPurposeMobilePhones);
+	          
+				  partyPurposePhone = EntityUtil.getFirst(partyPurposeMobilePhones);
+				  Debug.log("==============partyPurposePhone-==========================");
 	            telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
 	            context.phoneMobileTelecomNumber =telecomNumber;
 	            context.phoneMobileAreaCode =telecomNumber.areaCode;
@@ -183,7 +203,8 @@ if (UtilValidate.isNotEmpty(orderId))
 	    context.orderPaymentPreferences = orderPaymentPreferences;
 	
 	    // ship groups
-	    shipGroups = orderHeader.getRelatedOrderBy("OrderItemShipGroup", ["-shipGroupSeqId"]);
+		
+	    shipGroups = orderHeader.getRelated("OrderItemShipGroup",null, ["-shipGroupSeqId"],false);
 	    context.shipGroups = shipGroups;
 	    shipGroupsSize = shipGroups.size();
 	    context.shipGroupsSize = shipGroupsSize;
@@ -203,7 +224,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	
 	    statusChange = delegator.findByAnd("StatusValidChange", [statusId : orderHeader.statusId], null, false);
 	    context.statusChange = statusChange;
-	
+		Debug.log("====================================================");
 	    currentStatus = orderHeader.getRelatedOne("StatusItem");
 	    context.currentStatus = currentStatus;
 	
@@ -213,7 +234,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	    adjustmentTypes = delegator.findList("OrderAdjustmentType", null, null, ["description"], null, false);
 	    context.orderAdjustmentTypes = adjustmentTypes;
 	
-	    notes = orderHeader.getRelatedOrderBy("OrderHeaderNoteView", ["-noteDateTime"]);
+	    notes = orderHeader.getRelated("OrderHeaderNoteView",null, ["-noteDateTime"],false);
 	    context.orderNotes = notes;
 	    orderNotes = notes;
 	    
@@ -246,12 +267,15 @@ if (UtilValidate.isNotEmpty(orderId))
 		        trackingURLPartyContent = EntityUtil.getFirst(trackingURLPartyContents);
 		        if(UtilValidate.isNotEmpty(trackingURLPartyContent))
 		        {
+					Debug.log("====================content================================");
 		            content = trackingURLPartyContent.getRelatedOne("Content");
 		            if(UtilValidate.isNotEmpty(content))
 		            {
+						Debug.log("====================DataResource================================");
 		                dataResource = content.getRelatedOne("DataResource");
 		                if(UtilValidate.isNotEmpty(dataResource))
 		                {
+							Debug.log("====================electronicText================================");
 		                    electronicText = dataResource.getRelatedOne("ElectronicText");
 		                    trackingURL = electronicText.textData;
 		                    if(UtilValidate.isNotEmpty(trackingURL))
@@ -291,20 +315,23 @@ if (UtilValidate.isNotEmpty(orderId))
 			}
 		
 			storeId = "";
-			orderDeliveryOptionAttr = orderHeader.getRelatedByAnd("OrderAttribute", [attrName : "DELIVERY_OPTION"]);
+			Debug.log("sdddddddddddddddddddddddddddd");
+			orderDeliveryOptionAttr = orderHeader.getRelated("OrderAttribute", [attrName : "DELIVERY_OPTION"],null,false);
+			Debug.log("NNNNNNNNNNNN");
 			orderDeliveryOptionAttr = EntityUtil.getFirst(orderDeliveryOptionAttr);
 			
 			if (UtilValidate.isNotEmpty(orderDeliveryOptionAttr) && orderDeliveryOptionAttr.attrValue == "STORE_PICKUP")
 			{
 				context.isStorePickup = "Y";
-				orderStoreLocationAttr = orderHeader.getRelatedByAnd("OrderAttribute", [attrName : "STORE_LOCATION"]);
+				Debug.log("MMMM")
+				orderStoreLocationAttr = orderHeader.getRelated("OrderAttribute", [attrName : "STORE_LOCATION"],null,false);
 				orderStoreLocationAttr = EntityUtil.getFirst(orderStoreLocationAttr);
 				if (UtilValidate.isNotEmpty(orderStoreLocationAttr))
 				{
 					storeId = orderStoreLocationAttr.attrValue;
 				}
 			}
-		
+		Debug.log("storeId=================="+storeId);
 			if (UtilValidate.isNotEmpty(storeId))
 			{
 				context.storeId = storeId;
@@ -312,6 +339,7 @@ if (UtilValidate.isNotEmpty(orderId))
 				context.store = store;
 				if (UtilValidate.isNotEmpty(store))
 				{
+					Debug.log("====================storeInfo================================");
 					storeInfo = store.getRelatedOne("PartyGroup");
 					if (UtilValidate.isNotEmpty(storeInfo))
 					{
