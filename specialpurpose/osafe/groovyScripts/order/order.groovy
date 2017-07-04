@@ -18,7 +18,7 @@ import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 
 orderHeader = request.getAttribute("orderHeader");
 status = orderHeader.getRelatedOne("StatusItem",true);
-orderItemShipGroups =  orderHeader.getRelated("OrderItemShipGroup", UtilMisc.toList("shipGroupSeqId"), null, true);
+orderItemShipGroups =  orderHeader.getRelated("OrderItemShipGroup", null, null, true);
 orderItemShipGroupSize = orderItemShipGroups.size();
 rowClass = request.getAttribute("rowClass");
 lineIndex = request.getAttribute("lineIndex");

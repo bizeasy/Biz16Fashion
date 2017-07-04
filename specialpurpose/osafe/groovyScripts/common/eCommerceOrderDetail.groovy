@@ -181,7 +181,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	    // any anonymous order when the allowAnonymousView security flag (see above) is not set to Y, to prevent peeking
 	    if (UtilValidate.isNotEmpty(orderHeader) && (!"anonymous".equals(orderHeader.createdBy) || ("anonymous".equals(orderHeader.createdBy) && !"Y".equals(allowAnonymousView)))) 
 	    {
-	        orderRole = EntityUtil.getFirst(EntityQuery.use(delegator).from("OrderRole").where("orderId",orderId,"partyId" , partyId, "roleTypeId", roleTypeId).cache().queryList(););
+	        orderRole = EntityUtil.getFirst(EntityQuery.use(delegator).from("OrderRole").where("orderId",orderId,"partyId" , partyId, "roleTypeId", roleTypeId).cache().queryList());
 	        if (UtilValidate.isEmpty(userLogin) || UtilValidate.isEmpty(orderRole)) 
 	        {
 	            context.remove("orderHeader");
@@ -221,7 +221,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		placingCustomerOrderRoles = EntityQuery.use(delegator).from("OrderRole").where("orderId",orderId, "roleTypeId", roleTypeId).cache().queryList();
 		placingCustomerOrderRole = EntityUtil.getFirst(placingCustomerOrderRoles);
 		//placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne();
-		placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId :placingCustomerOrderRole.partyId]).cache().queryOne());
+		placingCustomerPerson = EntityQuery.use(delegator).from("Person").where([partyId :placingCustomerOrderRole.partyId]).cache().queryOne();
 		billingAccount = orderHeader.getRelatedOne("BillingAccount",true);
 	
 		orderPaymentPreferences = EntityUtil.filterByAnd(orderHeader.getRelated("OrderPaymentPreference",null,null,true), [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
@@ -487,7 +487,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		context.orderShipmentInfoSummaryList = orderShipmentInfoSummaryList;
 		context.customerPoNumberSet = customerPoNumberSet;
 	
-		orderItemChangeReasons = EntityQuery.use(delegator).from("Enumeration").where("enumTypeId",ODR_ITM_CH_REASON").orderBy(UtilMisc.toList("sequenceId")).cache().queryList();
+		orderItemChangeReasons = EntityQuery.use(delegator).from("Enumeration").where("enumTypeId","ODR_ITM_CH_REASON").orderBy("sequenceId").cache().queryList();
 		context.orderItemChangeReasons = orderItemChangeReasons;
 		
 		context.shippingApplies = shippingApplies;
