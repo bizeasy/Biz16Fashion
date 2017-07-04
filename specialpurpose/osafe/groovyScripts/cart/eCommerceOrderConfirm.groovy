@@ -68,7 +68,7 @@ if (UtilValidate.isNotEmpty(orderId))
    orderHeader = delegator.findOne("OrderHeader", [orderId : orderId], true);
    if (UtilValidate.isNotEmpty(orderHeader))
    {
-	   productStore = userLogin.getRelatedOne("ProductStore",true);
+	   productStore = orderHeader.getRelatedOne("ProductStore",true);
 	   orderReadHelper = new OrderReadHelper(orderHeader);
 	   orderItems = orderReadHelper.getOrderItems();
 	   orderItemsTotalQty = orderReadHelper.getTotalOrderItemsQuantity();
@@ -84,7 +84,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	   orderShippingTotal = orderShippingTotal.add(OrderReadHelper.calcOrderAdjustments(orderHeaderAdjustments, orderSubTotal, false, false, true));
 
 	   orderGrandTotal = OrderReadHelper.getOrderGrandTotal(orderItems, orderAdjustments);
-	   orderPaymentPreferences = orderHeader.getRelated("OrderPaymentPreference", UtilMisc.toList("orderPaymentPreferenceId",null,null,true));
+	   orderPaymentPreferences = orderHeader.getRelated("OrderPaymentPreference", null,null,true);
 	   if (UtilValidate.isEmpty(userLogin))
 	   {
 		   userLogin = parameters.temporaryAnonymousUserLogin;
@@ -135,8 +135,8 @@ if (UtilValidate.isNotEmpty(orderId))
 	   placingCustomerOrderRoles = EntityQuery.use(delegator).from("OrderRole").where("orderId" , orderId, "roleTypeId" , roleTypeId).cache().queryList();
 	   placingCustomerOrderRole = EntityUtil.getFirst(placingCustomerOrderRoles);
 	   //placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne();
-	   placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne());
-   carrierShipmentMethod = ;
+	   placingCustomerPerson = placingCustomerOrderRole == null ? null : EntityQuery.use(delegator).from("Person").where([partyId : placingCustomerOrderRole.partyId]).cache().queryOne();
+   //carrierShipmentMethod = ;
 	   billingAccount = orderHeader.getRelatedOne("BillingAccount",true);
    
 	   cancelOrderPaymentPreferences = EntityUtil.filterByAnd(orderPaymentPreferences, [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "PAYMENT_CANCELLED")]);
@@ -302,7 +302,8 @@ if (UtilValidate.isNotEmpty(orderId))
 			   shippingInstructions = shipGroup.shippingInstructions;
 			   if(UtilValidate.isNotEmpty(orderHeader))
 			   {
-				   orderAttrPickupStoreList = orderHeader.getRelatedByAndCache("OrderAttribute", UtilMisc.toMap("attrName", "STORE_LOCATION"));
+				   //orderAttrPickupStoreList = orderHeader.getRelatedByAndCache("OrderAttribute", UtilMisc.toMap("attrName", "STORE_LOCATION"));
+				   orderAttrPickupStoreList = EntityQuery.use(delegator).from("OrderAttribute").where(UtilMisc.toMap("attrName", "STORE_LOCATION","orderId",orderHeader.getString("orderId"))).cache().queryList()
 				   if(UtilValidate.isNotEmpty(orderAttrPickupStoreList))
 				   {
 					   orderAttrPickupStore = EntityUtil.getFirst(orderAttrPickupStoreList);

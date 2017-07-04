@@ -291,7 +291,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	      trackingNumber = shipGroup.trackingNumber;
 	      findCarrierShipmentMethodMap = UtilMisc.toMap("shipmentMethodTypeId", shipGroup.shipmentMethodTypeId, "partyId", shipGroup.carrierPartyId,"roleTypeId" ,"CARRIER");
 	     // carrierShipmentMethod = EntityQuery.use(delegator).from("CarrierShipmentMethod").where(findCarrierShipmentMethodMap).cache().queryOne();
-	      carrierShipmentMethod = EntityQuery.use(delegator).from("findCarrierShipmentMethodMap").where(findCarrierShipmentMethodMap).cache().queryOne();
+	      carrierShipmentMethod = EntityQuery.use(delegator).from("CarrierShipmentMethod").where(UtilMisc.toMap("shipmentMethodTypeId", shipGroup.shipmentMethodTypeId, "partyId", shipGroup.carrierPartyId,"roleTypeId" ,"CARRIER")).cache().queryOne();
 		  if (UtilValidate.isNotEmpty(carrierShipmentMethod))
 		  {
 			  shipmentMethodType = carrierShipmentMethod.getRelatedOne("ShipmentMethodType",true);
@@ -358,7 +358,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	context.quantityOrdered = rowOrderItem.quantity;
 	context.lineIndex = lineIndex;
 	context.rowClass = rowClass;
-	context.orderDate = rowOrderItem.orderDate;
+	context.orderDate = orderHeader.orderDate;
 	context.priceMap = priceMap;
 	context.price = price;
 	context.offerPrice = offerPrice;
