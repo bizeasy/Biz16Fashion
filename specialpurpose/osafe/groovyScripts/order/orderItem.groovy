@@ -21,7 +21,7 @@ import org.apache.ofbiz.osafe.services.CategoryServices;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.ofbiz.order.order.*;
-
+import org.apache.ofbiz.base.util.Debug;
 shoppingCart = session.getAttribute("shoppingCart");
 rowOrderItem = request.getAttribute("orderItem");
 localOrderReadHelper = request.getAttribute("localOrderReadHelper");
@@ -67,10 +67,9 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	}
 
 	orderStatus = orderHeader.getRelatedOne("StatusItem",true);
-	if (UtilValidate.isNotEmpty(rowOrderItem.statusId))
+	if (UtilValidate.isNotEmpty(rowOrderItem.itemStatusId))
 	{
-		orderItemStatus = delegator.findOne("StatusItem",[statusId : rowOrderItem.statusId],true);
-		
+		orderItemStatus = delegator.findOne("StatusItem",[statusId : rowOrderItem.itemStatusId],true);
 	}
 	
 
@@ -82,7 +81,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 		topCategoryId = CatalogWorker.getCatalogTopCategoryId(request, prodCatalogId);
 	}
 	
-	productCategoryId = rowOrderItem.productCategoryId;
+	productCategoryId = "";
 	if(UtilValidate.isEmpty(productCategoryId))
 	{
 		productCategoryId = product.primaryProductCategoryId;
@@ -284,7 +283,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	  if (UtilValidate.isNotEmpty(shipGroup))
 	  {
 	      shipDate = "";
-	      if(UtilValidate.isNotEmpty(orderHeader) && (orderHeader.statusId == "ORDER_COMPLETED" || rowOrderItem.statusId == "ITEM_COMPLETED"))
+	      if(UtilValidate.isNotEmpty(orderHeader) && (orderHeader.statusId == "ORDER_COMPLETED" || rowOrderItem.itemStatusId == "ITEM_COMPLETED"))
 	      {
 	          shipDate = shipGroup.estimatedShipDate;
 	      }
@@ -358,7 +357,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	context.quantityOrdered = rowOrderItem.quantity;
 	context.lineIndex = lineIndex;
 	context.rowClass = rowClass;
-	context.orderDate = orderHeader.orderDate;
+	context.orderDate = rowOrderItem.orderDate;
 	context.priceMap = priceMap;
 	context.price = price;
 	context.offerPrice = offerPrice;

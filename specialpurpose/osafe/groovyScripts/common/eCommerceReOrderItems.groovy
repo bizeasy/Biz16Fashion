@@ -3,13 +3,14 @@ import org.apache.ofbiz.entity.*;
 import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.entity.condition.*;
 import java.sql.Timestamp;
-
+import org.apache.ofbiz.base.util.Debug;
 import java.util.*;
 import org.apache.ofbiz.product.store.*;
 import java.util.LinkedList;
 import java.util.HashMap;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.commons.lang.StringUtils;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 productStoreId = ProductStoreWorker.getProductStoreId(request);
 String orderId = StringUtils.trimToEmpty(parameters.orderId);
@@ -42,9 +43,9 @@ else
 List orderedItemsList = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(paramsExpr))
 {
-	mainCond = EntityCondition.makeCondition(paramsExpr, EntityOperator.AND);
-	orderedItemsList = delegator.findList("OrderHeaderAndItems", mainCond, null, UtilMisc.toList("-orderDate"), null, true);
+	//mainCond = EntityCondition.makeCondition(paramsExpr, EntityOperator.AND);
+	//orderedItemsList = delegator.findList("OrderHeaderAndItems", mainCond, null, UtilMisc.toList("-orderDate"), null, true);
+	orderedItemsList=EntityQuery.use(delegator).from("OrderHeaderAndItems").where(paramsExpr).orderBy("-orderDate").queryList();
 }
-                                 
 context.orderedItemsList = orderedItemsList;
 
