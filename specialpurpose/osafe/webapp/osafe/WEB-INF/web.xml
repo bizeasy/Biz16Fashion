@@ -79,7 +79,17 @@
     <listener><listener-class>org.apache.ofbiz.order.shoppingcart.CartEventListener</listener-class></listener>
     <!-- this listener will clean up info -->
     <listener><listener-class>org.apache.ofbiz.webapp.control.LoginEventListener</listener-class></listener>
-
+	
+	<servlet>
+        <description>Main Control Servlet</description>
+        <display-name>ControlServlet</display-name>
+        <servlet-name>ControlServlet</servlet-name>
+        <servlet-class>org.apache.ofbiz.webapp.control.ControlServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping><servlet-name>ControlServlet</servlet-name><url-pattern>/control/*</url-pattern></servlet-mapping>
+	
+	
     <servlet>
         <servlet-name>SeoUrlControlServlet</servlet-name>
         <display-name>SeoUrlControlServlet</display-name>
@@ -87,6 +97,7 @@
         <servlet-class>org.apache.ofbiz.osafe.control.SeoUrlControlServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    
 
     <servlet-mapping><servlet-name>SeoUrlControlServlet</servlet-name>
         <url-pattern>/*</url-pattern>

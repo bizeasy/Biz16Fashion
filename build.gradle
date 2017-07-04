@@ -129,6 +129,12 @@ dependencies {
     compile 'org.zapodot:jackson-databind-java-optional:2.4.2'
     compile 'oro:oro:2.0.8'
     compile 'wsdl4j:wsdl4j:1.6.2'
+<<<<<<< HEAD
+=======
+	compile 'mysql:mysql-connector-java:5.1.+'
+	compile 'org.apache.solr:solr-solrj:3.6.2'
+	compile 'bsf:bsf:2.4.0'
+>>>>>>> 88df361dcbe6695021e62c848b80d54af01abb23
 
     // ofbiz unit-test compile libs
     testCompile 'org.mockito:mockito-core:1.+'
@@ -146,7 +152,8 @@ dependencies {
     runtime 'org.apache.logging.log4j:log4j-jul:2.6.2' // for external jars using the java.util.logging: routes logging to log4j 2
     runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.6.2' // for external jars using slf4j: routes logging to log4j 2
     runtime 'org.codeartisans.thirdparties.swing:batik-all:1.8pre-r1084380'
-
+	runtime 'org.apache.solr:solr-solrj:3.6.2'
+	
     /* TODO We suspect that all the below dependencies are not needed and can be
      * deleted from this file. They used to be compile time dependencies and we
      * converted them to runtime and OFBiz seems to operate normally without them.
