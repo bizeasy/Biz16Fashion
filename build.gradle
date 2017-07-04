@@ -129,9 +129,7 @@ dependencies {
     compile 'org.zapodot:jackson-databind-java-optional:2.4.2'
     compile 'oro:oro:2.0.8'
     compile 'wsdl4j:wsdl4j:1.6.2'
-	compile 'mysql:mysql-connector-java:5.1.+'
-	compile 'org.apache.solr:solr-solrj:3.6.2'
-	compile 'bsf:bsf:2.4.0'
+
     // ofbiz unit-test compile libs
     testCompile 'org.mockito:mockito-core:1.+'
 
@@ -164,7 +162,7 @@ dependencies {
     runtime 'org.apache.tomcat.extras:tomcat-extras-juli-adapters:8.0.42'
     runtime 'org.apache.xalan:com.springsource.org.apache.xml.serializer:2.7.1'
     runtime 'ws-commons-java5:ws-commons-java5:1.0.1'
-	runtime 'org.apache.solr:solr-solrj:3.6.2'
+
     // plugin libs
     subprojects.each { subProject ->
         compile project(path: subProject.path, configuration: 'pluginLibsCompile')

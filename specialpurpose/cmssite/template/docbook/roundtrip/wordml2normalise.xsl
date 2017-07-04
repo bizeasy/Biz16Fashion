@@ -20,7 +20,7 @@
   <xsl:output method='xml' indent="yes"/>
 
   <!-- ********************************************************************
-       $Id: wordml2normalise.xsl 1395307 2012-10-07 14:02:53Z jleroux $
+       $Id$
        ********************************************************************
 
        This file is part of the XSL DocBook Stylesheet distribution.

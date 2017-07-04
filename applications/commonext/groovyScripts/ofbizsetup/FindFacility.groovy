@@ -17,10 +17,8 @@
  * under the License.
  */
  import org.apache.ofbiz.entity.util.EntityUtil
- import org.apache.ofbiz.entity.util.EntityQuery ;
 
-findResult = EntityQuery.use(delegator).from("Facility").where("ownerPartyId", partyId).queryList();
-
+findResult = delegator.findByAnd("Facility", [ownerPartyId: partyId], null, false)
 findResultSize = findResult.size()
 if (findResultSize == 1) {
     context.showScreen = "one"
@@ -34,7 +32,7 @@ if ((findResultSize > 1 ) && (findResultSize <= 10)) {
     context.showScreen = "more"
 }
 
-listPartyPostalAddress = EntityQuery.use(delegator).from("PartyAndPostalAddress").where("partyId", partyId).queryList();
+listPartyPostalAddress = delegator.findByAnd("PartyAndPostalAddress", [partyId: partyId], null, false)
 partyPostalAddress = EntityUtil.getFirst(EntityUtil.filterByDate(listPartyPostalAddress))
 context.partyPostalAddress = partyPostalAddress
 
