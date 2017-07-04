@@ -5,6 +5,7 @@ import org.apache.ofbiz.entity.util.*;
 import org.apache.ofbiz.party.contact.*;
 import org.apache.ofbiz.product.store.*;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.entity.condition.*;
 import java.util.LinkedList;
 import java.util.HashMap;

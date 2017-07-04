@@ -41,7 +41,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		}
 		context.productStoreName = productStoreName;
 		
-		notes = orderHeader.getRelatedOrderBy("OrderHeaderNoteView", ["-noteDateTime"]);
+		notes = orderHeader.getRelated("OrderHeaderNoteView",null, ["-noteDateTime"],false);
 		if(UtilValidate.isNotEmpty(notes))
 		{
 			context.orderNotes = notes;
@@ -171,7 +171,7 @@ if (UtilValidate.isNotEmpty(orderId))
 	    context.returnReasons = returnReasons;
 
 	    // ship groups
-	    shipGroups = orderHeader.getRelatedOrderBy("OrderItemShipGroup", ["shipGroupSeqId"]);
+	    shipGroups = orderHeader.getRelated("OrderItemShipGroup",null, ["shipGroupSeqId"],false);
 	    context.orderHeader = orderHeader;
 	}
 	context.orderId = orderId;

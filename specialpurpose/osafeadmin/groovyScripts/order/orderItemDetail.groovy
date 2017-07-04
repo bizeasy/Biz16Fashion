@@ -102,7 +102,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		
 		grandTotal = orderReadHelper.getOrderGrandTotal();
 		currencyUomId = orderReadHelper.getCurrency();
-		notes = orderHeader.getRelatedOrderBy("OrderHeaderNoteView", ["-noteDateTime"]);
+		notes = orderHeader.getRelated("OrderHeaderNoteView",null, ["-noteDateTime"],false);
 		notesCount = notes.size();
 		
 		//get Adjustment Info

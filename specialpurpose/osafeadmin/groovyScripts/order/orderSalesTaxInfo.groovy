@@ -3,6 +3,7 @@ package order;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.GenericValue;
@@ -23,7 +24,7 @@ if (UtilValidate.isNotEmpty(orderId))
 		orderAdjustments = orderReadHelper.getAdjustments();
 		
 	    // ship groups
-	    shipGroups = orderHeader.getRelatedOrderBy("OrderItemShipGroup", ["-shipGroupSeqId"]);
+	    shipGroups = orderHeader.getRelated("OrderItemShipGroup",null, ["-shipGroupSeqId"],false);
 	    context.shipGroups = shipGroups;
 	    shipGroupsSize = shipGroups.size();
 	    
