@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><urlset xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>http://www.client.com</loc>
+    </url>
+    <url>
+        <loc>http://www.client.com/osafe/control/aboutus</loc>
+    </url>
+    <url>
+        <loc>http://www.client.com/osafe/control/eCommerceContent?contentId=SP_CONTACT_US</loc>
+    </url>
+    <url>
+        <loc>http://www.client.com/osafe/control/errorpage</loc>
+    </url>
+    <url>
+        <loc>http://www.client.com/osafe/control/privacypolicy</loc>
+    </url>
+    <url>
+        <loc>http://www.client.com/osafe/control/returnpolicy</loc>
+    </url>
+    <url>
+        <loc>http://www.client.com/osafe/control/reviewgudlines</loc>
+    </url>
+    <url>
+        <loc>http://www.client.com/osafe/control/eCommerceContent?contentId=SP_TERMS_CONDITIONS</loc>
+    </url>
+</urlset>

@@ -16,15 +16,21 @@
     </div>
   </div>
 </div>
+<#assign test1 = "yyyy/MM/dd">
+<#assign test = nowTimestamp?string(test1)>
+===============${test}============
+
+
+
 <div class="entryRow">
   <div class="entry daterange">
     <label>${uiLabelMap.FromDateCaption}</label>
     <div class="entryInput from">
-      <input class="dateEntry" type="text" name="contactUsDateFrom" maxlength="40" value="${parameters.contactUsDateFrom!periodFrom!nowTimestamp?string("'"+entryDateTimeFormat+"'")!""}"/>
+      <input class="dateEntry" type="text" name="contactUsDateFrom" maxlength="40" value="${test}"/>
     </div>
     <label class="tolabel">${uiLabelMap.ToCaption}</label>
     <div class="entryInput to">
-      <input class="dateEntry" type="text" name="contactUsDateTo" maxlength="40" value="${parameters.contactUsDateTo!periodTo!nowTimestamp?string("'"+entryDateTimeFormat+"'")!""}"/>
+      <input class="dateEntry" type="text" name="contactUsDateTo" maxlength="40" value="${parameters.contactUsDateTo!periodTo!nowTimestamp?string(entryDateTimeFormat)!""}"/>
     </div>
   </div>
 </div>
