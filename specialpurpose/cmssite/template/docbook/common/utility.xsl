@@ -8,7 +8,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: utility.xsl 1395307 2012-10-07 14:02:53Z jleroux $
+     $Id$
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -20,7 +20,7 @@
   <info>
     <title>Common » Utility Template Reference</title>
     <releaseinfo role="meta">
-      $Id: utility.xsl 1395307 2012-10-07 14:02:53Z jleroux $
+      $Id$
     </releaseinfo>
   </info>
   <!-- * yes, partintro is a valid child of a reference... -->

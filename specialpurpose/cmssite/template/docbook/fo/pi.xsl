@@ -8,7 +8,7 @@
   version='1.0'>
 
 <!-- ********************************************************************
-     $Id: pi.xsl 1395307 2012-10-07 14:02:53Z jleroux $
+     $Id$
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -19,7 +19,7 @@
 
 <doc:reference xmlns=""><info><title>FO Processing Instruction Reference</title>
     <releaseinfo role="meta">
-      $Id: pi.xsl 1395307 2012-10-07 14:02:53Z jleroux $
+      $Id$
     </releaseinfo>
   </info>
 
