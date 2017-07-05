@@ -116,46 +116,49 @@ if (UtilValidate.isNotEmpty(partyId))
 	        }
 	        
 	        partyPurposeHomePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_HOME"));
-	        partyPurposeHomePhones = EntityUtil.getFirst(partyPurposeHomePhones).getRelated("PartyContactMech", null, null, false);
-	        partyPurposeHomePhones = EntityUtil.filterByDate(partyPurposeHomePhones,true);
-	        partyPurposeHomePhones = EntityUtil.orderBy(partyPurposeHomePhones, UtilMisc.toList("fromDate DESC"));
-	        if (UtilValidate.isNotEmpty(partyPurposeHomePhones)) 
-	        {
-	        	partyPurposePhone = EntityUtil.getFirst(partyPurposeHomePhones);
-	        	telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
-	            context.phoneHomeTelecomNumber =telecomNumber;
-	            context.phoneHomeAreaCode =telecomNumber.areaCode;
-	            context.phoneHomeContactNumber =telecomNumber.contactNumber;
-	            context.partyPurposeHomePhones =partyPurposeHomePhones;
+	        if(UtilValidate.isNotEmpty(partyPurposeHomePhones)){
+		        partyPurposeHomePhones = EntityUtil.getFirst(partyPurposeHomePhones).getRelated("PartyContactMech",null,null,false);
+		        partyPurposeHomePhones = EntityUtil.filterByDate(partyPurposeHomePhones,true);
+		        partyPurposeHomePhones = EntityUtil.orderBy(partyPurposeHomePhones, UtilMisc.toList("fromDate DESC"));
+		        if (UtilValidate.isNotEmpty(partyPurposeHomePhones)){
+		        	partyPurposePhone = EntityUtil.getFirst(partyPurposeHomePhones);
+		        	telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
+		            context.phoneHomeTelecomNumber =telecomNumber;
+		            context.phoneHomeAreaCode =telecomNumber.areaCode;
+		            context.phoneHomeContactNumber =telecomNumber.contactNumber;
+		            context.partyPurposeHomePhones =partyPurposeHomePhones;
+		        }
 	        }
 	        
 	        partyPurposeWorkPhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_WORK"));
-	        partyPurposeWorkPhones = EntityUtil.getFirst(partyPurposeWorkPhones).getRelated("PartyContactMech", null, null, false);
-	        partyPurposeWorkPhones = EntityUtil.filterByDate(partyPurposeWorkPhones,true);
-	        partyPurposeWorkPhones = EntityUtil.orderBy(partyPurposeWorkPhones, UtilMisc.toList("fromDate DESC"));
-	        if (UtilValidate.isNotEmpty(partyPurposeWorkPhones)) 
-	        {
-	        	partyPurposePhone = EntityUtil.getFirst(partyPurposeWorkPhones);
-	        	telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
-	            context.partyPurposeWorkPhone =partyPurposePhone;
-	            context.phoneWorkTelecomNumber =telecomNumber;
-	            context.phoneWorkAreaCode =telecomNumber.areaCode;
-	            context.phoneWorkContactNumber =telecomNumber.contactNumber;
-	            context.partyPurposeWorkPhones =partyPurposeWorkPhones;
+	        if(UtilValidate.isNotEmpty(partyPurposeWorkPhones)){
+		        partyPurposeWorkPhones = EntityUtil.getFirst(partyPurposeWorkPhones).getRelated("PartyContactMech", null, null, false);
+		        partyPurposeWorkPhones = EntityUtil.filterByDate(partyPurposeWorkPhones,true);
+		        partyPurposeWorkPhones = EntityUtil.orderBy(partyPurposeWorkPhones, UtilMisc.toList("fromDate DESC"));
+		        if (UtilValidate.isNotEmpty(partyPurposeWorkPhones)){
+		        	partyPurposePhone = EntityUtil.getFirst(partyPurposeWorkPhones);
+		        	telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
+		            context.partyPurposeWorkPhone =partyPurposePhone;
+		            context.phoneWorkTelecomNumber =telecomNumber;
+		            context.phoneWorkAreaCode =telecomNumber.areaCode;
+		            context.phoneWorkContactNumber =telecomNumber.contactNumber;
+		            context.partyPurposeWorkPhones =partyPurposeWorkPhones;
+		        }
 	        }
 	
 	        partyPurposeMobilePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_MOBILE"));
-	        partyPurposeMobilePhones = EntityUtil.getFirst(partyPurposeMobilePhones).getRelated("PartyContactMech", null, null, false);
-	        partyPurposeMobilePhones = EntityUtil.filterByDate(partyPurposeMobilePhones,true);
-	        partyPurposeMobilePhones = EntityUtil.orderBy(partyPurposeMobilePhones, UtilMisc.toList("fromDate DESC"));
-	        if (UtilValidate.isNotEmpty(partyPurposeMobilePhones)) 
-	        {
-	        	partyPurposePhone = EntityUtil.getFirst(partyPurposeMobilePhones);
-	        	telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
-	            context.phoneMobileTelecomNumber =telecomNumber;
-	            context.phoneMobileAreaCode =telecomNumber.areaCode;
-	            context.phoneMobileContactNumber =telecomNumber.contactNumber;
-	            context.partyPurposeMobilePhones =partyPurposeMobilePhones;
+	        if(UtilValidate.isNotEmpty(partyPurposeMobilePhones)){
+		        partyPurposeMobilePhones = EntityUtil.getFirst(partyPurposeMobilePhones).getRelated("PartyContactMech", null, null, false);
+		        partyPurposeMobilePhones = EntityUtil.filterByDate(partyPurposeMobilePhones,true);
+		        partyPurposeMobilePhones = EntityUtil.orderBy(partyPurposeMobilePhones, UtilMisc.toList("fromDate DESC"));
+		        if (UtilValidate.isNotEmpty(partyPurposeMobilePhones)){
+		        	partyPurposePhone = EntityUtil.getFirst(partyPurposeMobilePhones);
+		        	telecomNumber = partyPurposePhone.getRelatedOne("TelecomNumber");
+		            context.phoneMobileTelecomNumber =telecomNumber;
+		            context.phoneMobileAreaCode =telecomNumber.areaCode;
+		            context.phoneMobileContactNumber =telecomNumber.contactNumber;
+		            context.partyPurposeMobilePhones =partyPurposeMobilePhones;
+		        }
 	        }
     	}
 		//Get PARTY ATTRIBUTES
