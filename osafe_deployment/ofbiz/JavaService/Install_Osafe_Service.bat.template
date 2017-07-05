@@ -19,7 +19,7 @@ if not exist "%JAVA_HOME%\jre" goto no_java
 
 set OFBIZ_HOME=@ofbiz.home@
 set LOGS_DIR=%OFBIZ_HOME%\runtime\logs
-set SOLR_PARMS=-Dsolr.solr.home=%OFBIZ_HOME%/hot-deploy/solr -Dsolr.data.dir=%OFBIZ_HOME%/hot-deploy/solr/data
+set SOLR_PARMS=-Dsolr.solr.home=%OFBIZ_HOME%/specialpurpose/solr -Dsolr.data.dir=%OFBIZ_HOME%/specialpurpose/solr/data
 
 javaservice -install "@service.name@" %JAVA_HOME%\jre\bin\server\jvm.dll -Xms@Xms@ -Xmx@Xmx@ %SOLR_PARMS% -Djava.class.path=%JAVA_HOME%\lib\tools.jar;%OFBIZ_HOME%\ofbiz.jar -start org.ofbiz.base.start.Start -out %LOGS_DIR%\serviceLog.txt -err %LOGS_DIR%\serviceErr.txt -current %OFBIZ_HOME% -manual
 

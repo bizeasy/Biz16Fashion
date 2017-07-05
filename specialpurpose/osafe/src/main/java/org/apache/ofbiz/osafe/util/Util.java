@@ -534,7 +534,6 @@ public class Util {
 
     public static String getProductStoreParm(Delegator delegator, String productStoreId, String parmKey)
     {
-    	Debug.log("productStoreId =========="+productStoreId);
         if (UtilValidate.isEmpty(productStoreId) || UtilValidate.isEmpty(parmKey)) 
         {
             return null;
@@ -544,7 +543,6 @@ public class Util {
         try 
         {
             xProductStoreParam = delegator.findOne("XProductStoreParm", UtilMisc.toMap("productStoreId", productStoreId, "parmKey", parmKey), true);
-            Debug.log("xProductStoreParam =========="+xProductStoreParam);
             if (UtilValidate.isNotEmpty(xProductStoreParam)) 
             {
                 parmValue = xProductStoreParam.getString("parmValue");
@@ -562,7 +560,6 @@ public class Util {
         {
             Debug.logError(e, e.getMessage(), module);
         }
-        Debug.log("parmValue =========="+parmValue);
         return parmValue;
     }
 
