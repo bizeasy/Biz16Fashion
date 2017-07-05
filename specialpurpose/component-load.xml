@@ -20,14 +20,9 @@ under the License.
 
 <component-loader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/component-loader.xsd">
-    <load-component component-location="lucene"/>
-    <load-component component-location="solr"/>
     <load-component component-location="ecommerce"/>
-<<<<<<< HEAD
-=======
     <load-component component-location="osafe"/>
     <load-component component-location="osafeadmin"/>
->>>>>>> 88df361dcbe6695021e62c848b80d54af01abb23
     <load-component component-location="hhfacility"/>
     <load-component component-location="assetmaint"/>
     <load-component component-location="cmssite"/>
