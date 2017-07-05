@@ -3,6 +3,7 @@ package catalog;
 import org.apache.ofbiz.product.category.CategoryContentWrapper;
 import java.util.HashMap;
 import java.util.LinkedList;
+import org.apache.ofbiz.entity.util.EntityQuery
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.commons.lang.StringUtils;

@@ -1,6 +1,7 @@
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.entity.condition.EntityFunction;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import java.util.LinkedList;

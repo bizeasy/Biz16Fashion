@@ -9,6 +9,7 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.content.content.ContentWorker;
 import org.apache.ofbiz.party.party.PartyHelper;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.*;
 
 userLogin = session.getAttribute("userLogin");

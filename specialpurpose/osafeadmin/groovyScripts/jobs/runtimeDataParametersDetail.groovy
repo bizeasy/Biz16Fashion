@@ -8,6 +8,7 @@ import org.apache.ofbiz.base.util.string.*;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.lang.StringUtils;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 Map<String, Object> svcCtx = HashMap.newInstance();
 userLogin = session.getAttribute("userLogin");
