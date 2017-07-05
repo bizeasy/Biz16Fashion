@@ -8,7 +8,11 @@
           <p>${uiLabelMap.ProductStoreCaption}
 		    <select id="selectProductStore" name="selectedProductStoreId" onchange="submit()">
 		      <#list stores as productStore>
+		      <#if globalContext.productStoreId?has_content>
 		        <option value='${productStore.productStoreId}'<#if productStore.productStoreId == globalContext.productStoreId> selected</#if>>${productStore.storeName!""}</option>
+		      <#else>
+		      	<option value='${productStore.productStoreId}'>${productStore.storeName!""}</option>
+		      </#if>  
 		      </#list>
 		    </select>
 		 </p>
