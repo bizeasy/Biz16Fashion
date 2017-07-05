@@ -254,7 +254,7 @@ if (UtilValidate.isNotEmpty(orderId))
 				   loyaltyPointsInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
 				   appliedLoyaltyPointsList.add(loyaltyPointsInfo);
 			   }
-			   productPromo = cartAdjustment.getRelatedOne("ProductPromo".true);
+			   productPromo = cartAdjustment.getRelatedOne("ProductPromo",true);
 			   if(UtilValidate.isNotEmpty(productPromo))
 			   {
 				   promoInfo.put("adjustmentTypeDesc", adjustmentTypeDesc);
