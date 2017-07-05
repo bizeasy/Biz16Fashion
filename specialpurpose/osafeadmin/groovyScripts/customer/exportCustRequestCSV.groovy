@@ -7,6 +7,7 @@ import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.entity.GenericValue;
 import java.util.HashMap;
 import java.util.LinkedList;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 userLogin = session.getAttribute("userLogin");
 custRequestList=LinkedList.newInstance();

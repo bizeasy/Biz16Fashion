@@ -10,6 +10,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.UtilProperties;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 if (UtilValidate.isNotEmpty(parameters.productId)) 
 {

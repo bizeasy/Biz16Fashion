@@ -23,6 +23,7 @@ import org.apache.ofbiz.entity.util.EntityFindOptions;
 import org.apache.ofbiz.entity.model.DynamicViewEntity;
 import org.apache.ofbiz.entity.model.ModelKeyMap;
 import org.apache.ofbiz.entity.GenericEntityException;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 
 //import org.apache.ofbiz.base.util.Debug;

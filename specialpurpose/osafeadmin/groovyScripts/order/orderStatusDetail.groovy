@@ -6,6 +6,7 @@ import org.apache.ofbiz.order.order.OrderReadHelper;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.product.store.ProductStoreWorker;

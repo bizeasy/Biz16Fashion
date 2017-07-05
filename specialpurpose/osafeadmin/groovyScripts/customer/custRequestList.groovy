@@ -12,6 +12,7 @@ import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.condition.EntityFunction;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import java.sql.Timestamp;
 import org.apache.ofbiz.base.util.ObjectType;

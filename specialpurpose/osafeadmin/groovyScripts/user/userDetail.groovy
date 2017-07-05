@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.base.util.UtilDateTime;  
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 //get entity for UserLogin --> userInfo
 userLoginId = StringUtils.trimToEmpty(parameters.userLoginId);

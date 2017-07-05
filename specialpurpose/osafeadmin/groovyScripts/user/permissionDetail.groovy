@@ -2,6 +2,7 @@ package user;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilValidate;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 permissionId = StringUtils.trimToEmpty(parameters.permissionId);
 context.permissionId = permissionId;

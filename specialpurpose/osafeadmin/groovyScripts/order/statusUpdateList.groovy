@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 // Paging variables
 viewIndex = Integer.valueOf(parameters.viewIndex  ?: 1);

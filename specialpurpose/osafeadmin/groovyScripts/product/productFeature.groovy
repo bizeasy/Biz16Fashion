@@ -13,6 +13,7 @@ import org.apache.ofbiz.entity.model.ModelKeyMap
 import org.apache.ofbiz.entity.util.EntityFindOptions
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.commons.lang.StringUtils;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 productFeatureList = LinkedList.newInstance();
 if (UtilValidate.isNotEmpty(parameters.featureTypeId)) 

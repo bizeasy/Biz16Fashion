@@ -5,6 +5,7 @@ import org.apache.ofbiz.party.contact.ContactMechWorker;
 import org.apache.ofbiz.base.util.UtilHttp;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.util.EntityUtil;
+import org.apache.ofbiz.entity.util.EntityQuery
 import org.apache.ofbiz.base.util.UtilValidate;
 
 contactMechPurposeTypeId = ""

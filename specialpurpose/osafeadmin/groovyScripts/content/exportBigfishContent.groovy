@@ -23,6 +23,7 @@ import java.net.*;
 import org.w3c.dom.*;
 import org.apache.ofbiz.security.*;
 import org.apache.ofbiz.entity.*;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.webapp.pseudotag.*;
 import org.apache.ofbiz.entity.model.*;

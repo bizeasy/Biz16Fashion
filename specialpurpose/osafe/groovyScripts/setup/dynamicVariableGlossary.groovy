@@ -12,6 +12,7 @@ import org.apache.ofbiz.osafe.util.Util;
 import org.apache.ofbiz.order.order.*;
 import org.apache.ofbiz.entity.condition.*;
 import org.apache.ofbiz.entity.util.*;
+import org.apache.ofbiz.entity.util.EntityQuery
 import java.math.BigDecimal;
 import org.apache.ofbiz.base.util.UtilNumber;
 

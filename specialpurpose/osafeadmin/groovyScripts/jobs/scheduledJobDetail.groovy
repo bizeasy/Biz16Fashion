@@ -2,7 +2,7 @@ package jobs;
 
 import java.util.List;
 import java.util.Map;
-
+import org.apache.ofbiz.entity.util.EntityQuery;
 import java.util.LinkedList;
 import java.util.HashMap;
 

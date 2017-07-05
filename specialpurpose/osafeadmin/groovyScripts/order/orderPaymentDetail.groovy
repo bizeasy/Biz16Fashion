@@ -11,6 +11,7 @@ import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
 import org.apache.ofbiz.entity.GenericValue;
 import java.util.LinkedList;
 import org.apache.ofbiz.base.util.UtilFormatOut;
+import org.apache.ofbiz.entity.util.EntityQuery;
 
 userLogin = session.getAttribute("userLogin");
 orderId = StringUtils.trimToEmpty(parameters.orderId);
