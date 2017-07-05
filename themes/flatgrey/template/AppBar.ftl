@@ -35,13 +35,8 @@ under the License.
         <#if thisApp == contextPath || contextPath + "/" == thisApp>
           <#assign selected = true>
         </#if>
-<<<<<<< HEAD
-        <#assign servletPath = Static["org.apache.ofbiz.webapp.WebAppUtil"].getControlServletPath(display)>
-        <#assign thisURL = StringUtil.wrapString(servletPath)>
-=======
 		<#assign servletPath = Static["org.apache.ofbiz.webapp.WebAppUtil"].getControlServletPath(display)>
         <#assign thisURL = StringUtil.wrapString(servletPath)?if_exists>
->>>>>>> 88df361dcbe6695021e62c848b80d54af01abb23
         <#if thisApp != "/">
           <#assign thisURL = thisURL + "main">
         </#if>
