@@ -45,8 +45,8 @@
         </td>
         <td class="idCol <#if !variantProduct_has_next?if_exists>lastRow</#if>" ><a href="<@ofbizUrl>variantProductDetail?productId=${variantProduct.productIdTo?if_exists}</@ofbizUrl>">${(variantProduct.productIdTo)?if_exists}</a></td>
         <td class="nameCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">${(variantProdDetail.internalName)?if_exists}</td>
-        <td class="dateCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">${(variantProdDetail.introductionDate?string(preferredDateFormat))!""}</td>
-        <td class="dateCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">${(variantProdDetail.salesDiscontinuationDate?string(preferredDateFormat))!""}</td>
+        <td class="dateCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">${(variantProdDetail.introductionDate?string("'"+preferredDateFormat+"'"))!""}</td>
+        <td class="dateCol <#if !variantProduct_has_next?if_exists>lastRow</#if>">${(variantProdDetail.salesDiscontinuationDate?string("'"+preferredDateFormat+"'"))!""}</td>
         <#assign variantProductPriceInfo = "">
         <#assign productVariantListPrice =  Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductPrice(request, variantProdDetail.productId, "LIST_PRICE")!>
         <#if productVariantListPrice?has_content>

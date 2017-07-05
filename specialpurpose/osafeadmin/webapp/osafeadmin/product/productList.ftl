@@ -47,8 +47,8 @@
         </td>
         <td class="statusCol <#if !hasNext?if_exists>lastRow</#if>">${product.isVirtual!}</td>
         <td class="statusCol <#if !hasNext?if_exists>lastRow</#if>">${product.isVariant!}</td>
-        <td class="dateCol <#if !hasNext?if_exists>lastRow</#if>">${(product.introductionDate?string(preferredDateFormat))!""}</td>
-        <td class="dateCol <#if !hasNext?if_exists>lastRow</#if>">${(product.salesDiscontinuationDate?string(preferredDateFormat))!""}</td>
+        <td class="dateCol <#if !hasNext?if_exists>lastRow</#if>">${(product.introductionDate?string("'"+preferredDateFormat+"'"))!""}</td>
+        <td class="dateCol <#if !hasNext?if_exists>lastRow</#if>">${(product.salesDiscontinuationDate?string("'"+preferredDateFormat+"'"))!""}</td>
         <#assign productListPrice = Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getProductPrice(request, product.productId, "LIST_PRICE")!/>
         <td class="dollarCol <#if !hasNext?if_exists>lastRow</#if>">
         <#if productListPrice?has_content>
@@ -112,13 +112,13 @@
                     <#assign notIntroduced = false />
                     <#if product.introductionDate?has_content>
                       <#assign introDate = product.introductionDate! />
-                      <#assign introductionDate = (introDate)?string(preferredDateFormat)>
+                      <#assign introductionDate = (introDate)?string("'"+preferredDateFormat+"'")>
                       <#if nowTimestamp.before(introDate)><#assign notIntroduced = true /></#if>
                     </#if>
                     <#assign hasExpired = false />
                     <#if product.salesDiscontinuationDate?has_content>
                       <#assign discDate = product.salesDiscontinuationDate! />
-                      <#assign salesDiscontinuationDate = (discDate)?string(preferredDateFormat)>
+                      <#assign salesDiscontinuationDate = (discDate)?string("'"+preferredDateFormat+"'")>
                       <#if nowTimestamp.after(discDate)><#assign hasExpired = true /></#if>
                     </#if>
                     <#if notIntroduced == true || hasExpired == true>

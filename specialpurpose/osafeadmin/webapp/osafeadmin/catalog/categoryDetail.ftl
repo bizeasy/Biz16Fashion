@@ -8,10 +8,10 @@
     <input type="hidden" name="activeFromDate" id="activeFromDate" value="${productCategoryRollupAndChild.fromDate?if_exists}" />
     
     <#if productCategoryRollupAndChild.fromDate?has_content>
-        <#assign fromDate = (productCategoryRollupAndChild.fromDate)?string(entryDateTimeFormat)>
+        <#assign fromDate = (productCategoryRollupAndChild.fromDate)?string("'"+entryDateTimeFormat+"'")>
     </#if>
     <#if productCategoryRollupAndChild.thruDate?has_content>
-        <#assign thruDate = (productCategoryRollupAndChild.thruDate)?string(entryDateTimeFormat)>
+        <#assign thruDate = (productCategoryRollupAndChild.thruDate)?string("'"+entryDateTimeFormat+"'")>
     </#if>
     <#assign productCategoryId = productCategoryRollupAndChild.productCategoryId!>
     <#assign parentProductCategoryId = productCategoryRollupAndChild.parentProductCategoryId!>

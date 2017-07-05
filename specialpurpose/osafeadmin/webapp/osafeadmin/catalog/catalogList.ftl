@@ -41,8 +41,8 @@
 	    <td class="descCol"><a class="${levelClass}" href="<@ofbizUrl>categoryDetail?productCategoryId=${category.productCategoryId}&amp;parentProductCategoryId=${category.parentProductCategoryId?if_exists}&amp;activeFromDate=${category.fromDate?if_exists}</@ofbizUrl>"><#if categoryName?has_content>${categoryName}<#else>${categoryDescription?default("")}</#if></a></td>
 	    <td class="seqCol">&nbsp;</td>
 	    <td class="descCol" colspan="0">&nbsp;</td>
-        <td class="dateCol">${(category.fromDate?string(preferredDateFormat))!""}</td>
-        <td class="dateCol">${(category.thruDate?string(preferredDateFormat))!""}</td>
+        <td class="dateCol">${(category.fromDate?string("'"+preferredDateFormat+"'"))!""}</td>
+        <td class="dateCol">${(category.thruDate?string("'"+preferredDateFormat+"'"))!""}</td>
         <td class="actionCol">
 	          <div class="actionIconMenu">
 	            <a class="toolIcon" href="javascript:void(o);"></a>
@@ -74,8 +74,8 @@
 	    <td class="descCol">&nbsp;</td>
 	    <td class="seqCol">${category.sequenceNum?if_exists}</td>
 	    <td class="descCol" colspan="0"><a class="${levelClass}" href="<@ofbizUrl>categoryDetail?productCategoryId=${category.productCategoryId}&amp;parentProductCategoryId=${category.parentProductCategoryId?if_exists}&amp;activeFromDate=${category.fromDate?if_exists}</@ofbizUrl>"><#if categoryName?has_content>${categoryName}<#else>${categoryDescription?default("")}</#if></a></td>
-        <td class="dateCol">${(category.fromDate?string(preferredDateFormat))!""}</td>
-        <td class="dateCol">${(category.thruDate?string(preferredDateFormat))!""}</td>
+        <td class="dateCol">${(category.fromDate?string("'"+preferredDateFormat+"'"))!""}</td>
+        <td class="dateCol">${(category.thruDate?string("'"+preferredDateFormat+"'"))!""}</td>
         <td class="actionCol">
 	          <div class="actionIconMenu">
 	            <a class="toolIcon" href="javascript:void(o);"></a>

@@ -17,7 +17,7 @@
             </div>
             <div class="infoValue">
                 <#if orderItemShipGroup.estimatedShipDate?has_content>
-                    ${(orderItemShipGroup.estimatedShipDate?string(preferredDateFormat))!""}
+                    ${(orderItemShipGroup.estimatedShipDate?string("'"+preferredDateFormat+"'"))!""}
                 </#if>
             </div>
         </div>

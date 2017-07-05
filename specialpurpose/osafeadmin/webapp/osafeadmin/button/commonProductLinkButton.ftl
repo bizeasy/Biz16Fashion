@@ -144,13 +144,13 @@
       <#assign notIntroduced = false />
       <#if product.introductionDate?has_content>
         <#assign introDate = product.introductionDate! />
-        <#assign introductionDate = (introDate)?string(entryDateTimeFormat)>
+        <#assign introductionDate = (introDate)?string("'"+entryDateTimeFormat+"'")>
         <#if nowTimestamp.before(introDate)><#assign notIntroduced = true /></#if>
       </#if>
       <#assign hasExpired = false />
       <#if product.salesDiscontinuationDate?has_content>
         <#assign discDate = product.salesDiscontinuationDate! />
-        <#assign salesDiscontinuationDate = (discDate)?string(entryDateTimeFormat)>
+        <#assign salesDiscontinuationDate = (discDate)?string("'"+entryDateTimeFormat+"'")>
         <#if nowTimestamp.after(discDate)><#assign hasExpired = true /></#if>
       </#if>
       <#if notIntroduced == true || hasExpired == true>

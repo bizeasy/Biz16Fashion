@@ -63,7 +63,7 @@ under the License.
                                             <#if orderHeader?has_content>
                                             <tr>
                                                 <td>${uiLabelMap.OrderDateCaption}</td>
-                                                <td>${orderHeader.orderDate?string("yyyy-MM-dd")}</td>
+                                                <td>${orderHeader.orderDate?string("'"+preferredDateFormat+"'")}</td>
                                             </tr>
                                             </#if>
                                         </table>

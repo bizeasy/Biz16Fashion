@@ -6,10 +6,10 @@
     <#assign description = productPriceRule.description!"" />
 
     <#if productPriceRule.fromDate?has_content>
-        <#assign fromDate = (productPriceRule.fromDate)?string(entryDateTimeFormat)>
+        <#assign fromDate = (productPriceRule.fromDate)?string("'"+entryDateTimeFormat+"'")>
     </#if>
     <#if productPriceRule.thruDate?has_content>
-        <#assign thruDate = (productPriceRule.thruDate)?string(entryDateTimeFormat)>
+        <#assign thruDate = (productPriceRule.thruDate)?string("'"+entryDateTimeFormat+"'")>
     </#if>
 
   </#if>
@@ -61,7 +61,7 @@
           </div>
           <div class="infoValue small">
             <div class="entryInput from">
-                <input class="dateEntry" type="text" id="fromDate" name="fromDate" maxlength="40" value="${parameters.fromDate!fromDate!nowTimestamp?string(entryDateTimeFormat)!""}"/>
+                <input class="dateEntry" type="text" id="fromDate" name="fromDate" maxlength="40" value="${parameters.fromDate!fromDate!nowTimestamp?string("'"+entryDateTimeFormat+"'")!""}"/>
             </div>
           </div>
     </div>
