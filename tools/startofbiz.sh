@@ -32,4 +32,5 @@ rm -f $OFBIZ_LOG
 # JLR post Gradle comment, not sure this is still true...
 
 # start ofbiz
-(cd "$OFBIZ_HOME" && exec gradlew ofbiz)
+#(cd "$OFBIZ_HOME" && exec gradlew ofbiz)
+(cd "$OFBIZ_HOME" && exec java -Dsolr.solr.home=specialpurpose/solr -Dsolr.data.dir=specialpurpose/solr/data -jar build/libs/ofbiz.jar)

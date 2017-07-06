@@ -33,7 +33,7 @@ ext.os = System.getProperty('os.name').toLowerCase()
 ext.pluginsDir = "${rootDir}/specialpurpose"
 
 // java settings
-def jvmArguments = ['-Xms128M', '-Xmx1024M']
+def jvmArguments = ['-Xms128M', '-Xmx1024M', '-Dsolr.solr.home=/home/vikram/workspace/apache-ofbiz-16.11.03/specialpurpose/solr', '-Dsolr.solr.data.dir=/home/vikram/workspace/apache-ofbiz-16.11.03/specialpurpose/solr/data']
 ext.ofbizMainClass = 'org.apache.ofbiz.base.start.Start'
 javadoc.failOnError = false
 sourceCompatibility = '1.8'

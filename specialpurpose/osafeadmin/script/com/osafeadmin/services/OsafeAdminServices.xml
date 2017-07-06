@@ -412,9 +412,11 @@
 
     <simple-method method-name="solrReIndex" short-description="Re-Index solr">
        <set-service-fields service-name="genProductsIndex" map="parameters" to-map="genProductsIndexCtx"/>
+       <log message="genProductsIndexCtx ============${genProductsIndexCtx}" level="info"/>
        <call-service service-name="genProductsIndex" in-map-name="genProductsIndexCtx">
            <result-to-result result-name="documentListCount"/>
        </call-service>
+       <log message="documentListCount ============${documentListCount}" level="info"/>
        <property-to-field resource="OSafeAdminUiLabels" property="solrReIndexSuccess" field="solrReIndexSuccess"/>
        <string-to-list string="${solrReIndexSuccess}" list="successMessageList"/>
     </simple-method>

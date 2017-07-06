@@ -642,11 +642,12 @@ public class SolrServices {
                 Debug.log("solrServer=" + solrServer, module);
 
                 // Delete previous index using Http Client
-                String deleteAllUrl = solrServer + "/update?stream.body=<delete><query>*:*</query></delete>&commit=true";
+                /*String deleteAllUrl = solrServer + "/update?stream.body=<delete><query>*:*</query></delete>&commit=true";
+                Debug.log("deleteAllUrl=" + deleteAllUrl, module);
                 HttpClient hc = new HttpClient(deleteAllUrl);
                 String deleteResponse = hc.get();
-                Debug.log(deleteResponse, module);
-
+                Debug.log("deleteResponse=" + deleteResponse, module);*/
+                	
                 // Import CSV file using Http Client
                 int index = prodFeatureColNames.size();
                 for (String prodFeatureType : prodFeatureColNames) 
@@ -655,8 +656,8 @@ public class SolrServices {
                     index--;
                 }
                 String importUrl = solrServer + "/update/csv?stream.file=" + filename + "&stream.contentType=text/plain;charset=utf-8&header=false&commit=true&fieldnames=" + StringUtils.join(columnNames, ",");
-                Debug.log(importUrl, module);
-                hc = new HttpClient(importUrl);
+                Debug.log("importUrl === "+importUrl, module);
+                HttpClient hc = new HttpClient(importUrl);
                 String importResponse = hc.get();
                 Debug.log(importResponse, module);
             }
