@@ -800,7 +800,7 @@ if(UtilValidate.isNotEmpty(productId))
 	if(UtilValidate.isNotEmpty(categoryId))
 	{
 		//sorted list of groups
-		productFeatureCatGrpAppls = EntityQuery.use(delegator).from("ProductFeatureAndAppl").where("productCategoryId", categoryId).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
+		productFeatureCatGrpAppls = EntityQuery.use(delegator).from("ProductFeatureCatGrpAppl").where("productCategoryId", categoryId).orderBy(UtilMisc.toList("sequenceNum")).cache().queryList();
 		// Using findByAndCache Call since the ProductService(Service getProductVariantTree call) will make the same findByAndCache Call.
 		//Issue 38934, 38916 - Check for duplicate feature descriptions
 	    productDistinguishingFeatures = LinkedList.newInstance();

@@ -2470,7 +2470,7 @@
 		        <!--  if shipping applies and there is no shipping option selected and no store selected then return error -->
 		        <if-compare operator="equals" value="true" field="shippingApplies">
 		            <if-empty field="parameters.shipMethod">
-		                <property-to-field field="" resource="OSafeUiLabels" property="NoShippingMethodError"/>
+		                <property-to-field field="tempErrorMessage" resource="OSafeUiLabels" property="NoShippingMethodError"/>
 		                <string-to-list string="${tempErrorMessage}" message-field="NO_SHIPPING_METHOD" list="error_list"/>
 		            <else>
 		                <!--  Validation for store pickup -->
@@ -2505,7 +2505,7 @@
             shippingMethod = parameters.get("shipMethod");
             shipmentMethodTypeId = "";
             carrierPartyId = "";
-            if(shippingMethod != null && shippingMethod != "") 
+            if(shippingMethod != null &amp;&amp; shippingMethod != "") 
             {
                 if (shippingMethod.indexOf("@") != -1) 
                 {
