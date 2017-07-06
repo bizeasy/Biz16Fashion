@@ -24,6 +24,21 @@ import org.apache.ofbiz.order.order.*;
 import org.apache.ofbiz.base.util.Debug;
 shoppingCart = session.getAttribute("shoppingCart");
 rowOrderItem = request.getAttribute("orderItem");
+rowOrderItemStatusId = "";
+rowOrderItemKeysList = [];
+Set<String> rowOrderItemKeys = rowOrderItem.keySet();
+rowOrderItemKeysList.addAll(rowOrderItemKeys);
+if(rowOrderItemKeysList.contains("statusId")){
+	if(UtilValidate.isNotEmpty(rowOrderItem) && UtilValidate.isNotEmpty(rowOrderItem.get("statusId"))){
+		rowOrderItemStatusId = rowOrderItem.get("statusId") ;
+	}
+}
+if(rowOrderItemKeysList.contains("itemStatusId")){
+	if(UtilValidate.isNotEmpty(rowOrderItem) && UtilValidate.isNotEmpty(rowOrderItem.get("itemStatusId"))){
+		rowOrderItemStatusId = rowOrderItem.get("itemStatusId") ;
+	}
+}
+
 localOrderReadHelper = request.getAttribute("localOrderReadHelper");
 orderHeader = request.getAttribute("orderHeader");
 rowClass = request.getAttribute("rowClass");
@@ -67,11 +82,10 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	}
 
 	orderStatus = orderHeader.getRelatedOne("StatusItem",true);
-	if (UtilValidate.isNotEmpty(rowOrderItem.itemStatusId))
+	if (UtilValidate.isNotEmpty(rowOrderItemStatusId))
 	{
-		orderItemStatus = delegator.findOne("StatusItem",[statusId : rowOrderItem.itemStatusId],true);
+		orderItemStatus = delegator.findOne("StatusItem",[statusId : rowOrderItemStatusId],true);
 	}
-	
 
 	if (UtilValidate.isNotEmpty(productStoreCatalogList))
 	{
@@ -283,7 +297,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	  if (UtilValidate.isNotEmpty(shipGroup))
 	  {
 	      shipDate = "";
-	      if(UtilValidate.isNotEmpty(orderHeader) && (orderHeader.statusId == "ORDER_COMPLETED" || rowOrderItem.itemStatusId == "ITEM_COMPLETED"))
+	      if(UtilValidate.isNotEmpty(orderHeader) && (orderHeader.statusId == "ORDER_COMPLETED" || rowOrderItemStatusId == "ITEM_COMPLETED"))
 	      {
 	          shipDate = shipGroup.estimatedShipDate;
 	      }
@@ -357,7 +371,7 @@ if (UtilValidate.isNotEmpty(rowOrderItem))
 	context.quantityOrdered = rowOrderItem.quantity;
 	context.lineIndex = lineIndex;
 	context.rowClass = rowClass;
-	context.orderDate = rowOrderItem.orderDate;
+	context.orderDate = orderHeader.orderDate;
 	context.priceMap = priceMap;
 	context.price = price;
 	context.offerPrice = offerPrice;
