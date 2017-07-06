@@ -44,7 +44,7 @@ under the License.
       <#assign titleText = productCategoryLink.titleText?default(
           linkCategoryContentWrapper.get("CATEGORY_NAME", "html"))!/>
       <#assign imageUrl = productCategoryLink.imageUrl?default(
-          linkCategoryContentWrapper.get("CATEGORY_IMAGE_URL", "url"))!/>
+          linkCategoryContentWrapper.get("CATEGORY_IMAGE_URL", "string"))!/>
       <#assign detailText = productCategoryLink.detailText?default(
           linkCategoryContentWrapper.get("DESCRIPTION", "html"))!/>
     </#if>

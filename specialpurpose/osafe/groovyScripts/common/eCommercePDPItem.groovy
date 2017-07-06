@@ -680,12 +680,12 @@ if(UtilValidate.isNotEmpty(productId))
 	    productContentId = productContentIdMap.get("SMALL_IMAGE_URL");
         if (UtilValidate.isNotEmpty(productContentId))
         {
-        	productImageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url");
+        	productImageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "string");
         }
 	    productContentId = productContentIdMap.get("SMALL_IMAGE_ALT_URL");
         if (UtilValidate.isNotEmpty(productContentId))
         {
-        	productImageAltUrl = productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url");
+        	productImageAltUrl = productContentWrapper.get("SMALL_IMAGE_ALT_URL", "string");
         }
         productContentId = productContentIdMap.get("PLP_LABEL");
         if (UtilValidate.isNotEmpty(productContentId))
@@ -1520,7 +1520,7 @@ if(UtilValidate.isNotEmpty(productId))
 	  context.plpManufacturerPartyContentWrapper = partyContentWrapper;
 	  context.plpManufacturerDescription = partyContentWrapper.get("DESCRIPTION", "string");
 	  context.plpManufacturerProfileName = partyContentWrapper.get("PROFILE_NAME", "string");
-	  context.plpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "url");
+	  context.plpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "string");
 	}
 	
 

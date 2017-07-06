@@ -1,7 +1,7 @@
     <#if product?has_content>
       <#if productContentWrapper?exists>
         <#assign productName = productContentWrapper.get("PRODUCT_NAME", "string")!""/>
-        <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!""/>
+        <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string")!""/>
         <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION", "string")!""/>
       </#if>
          <tr class="dataRow">

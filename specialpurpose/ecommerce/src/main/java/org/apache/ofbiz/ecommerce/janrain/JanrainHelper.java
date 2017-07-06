@@ -204,7 +204,7 @@ public class JanrainHelper {
             String identifier = UtilXml.elementValue(UtilXml.firstChildElement(profileElement, "identifier"));
             String preferredUsername = UtilXml.elementValue(UtilXml.firstChildElement(profileElement, "preferredUsername"));
             String providerName = UtilXml.elementValue(UtilXml.firstChildElement(profileElement, "providerName"));
-            String url = UtilXml.elementValue(UtilXml.firstChildElement(profileElement, "url"));
+            String url = UtilXml.elementValue(UtilXml.firstChildElement(profileElement, "string"));
             
             // name element
             String givenName = UtilXml.elementValue(UtilXml.firstChildElement(nameElement, "givenName"));

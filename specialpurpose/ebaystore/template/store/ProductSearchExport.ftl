@@ -263,7 +263,7 @@ under the License.
                     <#if contentList?has_content>
                       <#list contentList as content>
                         <#if content.product.productId! == item.getSKU()!>
-                          <#assign smallImageUrl = content.productContentWrapper.get("SMALL_IMAGE_URL", "url")!>
+                          <#assign smallImageUrl = content.productContentWrapper.get("SMALL_IMAGE_URL", "string")!>
                         </#if>
                       </#list>
                     </#if>

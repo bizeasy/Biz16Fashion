@@ -251,7 +251,7 @@ under the License.
                       </#if>
                       <#assign smallImageUrl =
                           Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(
-                          cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher, "url")! />
+                          cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher, "string")! />
                       <#if !smallImageUrl?string?has_content>
                         <#assign smallImageUrl = "/images/defaultImage.jpg" />
                       </#if>

@@ -54,7 +54,7 @@
   </#if>
   
   <#if productContentWrapper?exists>
-      <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!"">
+      <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string")!"">
   </#if>
   
   <#if showImageLink == 'true'>

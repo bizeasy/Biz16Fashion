@@ -7,7 +7,7 @@
   </#if>
   <#if ATTACH_URL_03?exists && ATTACH_URL_03?has_content>
     <#if productContentWrapper?exists>
-        <#assign attachUrl03 = productContentWrapper.get("ATTACH_URL_03", "url")?if_exists/>
+        <#assign attachUrl03 = productContentWrapper.get("ATTACH_URL_03", "string")?if_exists/>
     </#if>
   </#if>
     <div class="pdpAttach03" id="js_pdpAttach03">

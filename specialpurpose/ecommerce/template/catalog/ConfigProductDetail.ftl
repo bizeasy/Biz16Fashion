@@ -186,7 +186,7 @@ ${virtualJavaScript!}
 <#-- Product image/name/price -->
   <tr>
     <td valign="top" width="0">
-    <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!>
+    <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string")!>
     <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
     <#if firstLargeImage?has_content>
       <#assign productLargeImageUrl = firstLargeImage>
@@ -438,9 +438,9 @@ ${virtualJavaScript!}
             <#if swatchProduct?has_content && indexer < maxIndex>
               <#assign imageUrl =
               Static["org.apache.ofbiz.product.product.ProductContentWrapper"]
-              .getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request, "url")!>
+              .getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request, "string")!>
               <#if !imageUrl?string?has_content>
-                <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")!>
+                <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "string")!>
               </#if>
               <#if !imageUrl?string?has_content>
                 <#assign imageUrl = "/images/defaultImage.jpg">
@@ -511,7 +511,7 @@ ${virtualJavaScript!}
                   <a href="javascript:showErrorAlert("${uiLabelMap.CommonErrorMessage2}","${instructions}");"
                   class="buttontext">Instructions</a>
                 </#if>
-                <#assign image = question.content.get("IMAGE_URL", "url")!>
+                <#assign image = question.content.get("IMAGE_URL", "string")!>
                 <#if image?string?has_content>
                   <img src='<@ofbizContentUrl>${contentPathPrefix!}${image!}</@ofbizContentUrl>'
                        vspace='5' hspace='5' class='cssImgXLarge' align='left' alt=""/>

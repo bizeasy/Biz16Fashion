@@ -112,7 +112,7 @@ function setRowNo(rowNo, assocType) {
       <#list compProductAssoc as relatedProduct>
         <#assign relatedProdDetail = relatedProduct.getRelatedOne("AssocProduct")>
         <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(relatedProdDetail, request)!""/>
-         <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!"">
+         <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string")!"">
          <tr class="dataRow <#if rowClass?if_exists == "2">even<#else>odd</#if>">
          
            <input type="hidden" name="compRelatedProductId_${rowNo}" id="compRelatedProductId" value="${relatedProdDetail.productId!}"/>
@@ -165,7 +165,7 @@ function setRowNo(rowNo, assocType) {
            <input type="hidden" name="compRelatedProductId_${x}" id="compRelatedProductId" value="${relatedProductId!}"/>
            <#assign relatedProdDetail = delegator.findOne("Product", {"productId" : relatedProductId}, false) />
            <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(relatedProdDetail, request)!""/>
-           <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!"">
+           <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string")!"">
            <td class="idCol firstCol" >
              <#if relatedProdDetail?has_content && relatedProdDetail.isVirtual == 'Y'>
                <a href="<@ofbizUrl>virtualProductDetail?productId=${relatedProdDetail.productId!}</@ofbizUrl>">${relatedProdDetail.productId!}</a>

@@ -335,10 +335,10 @@ $(function(){
 </#macro>
 
 <div id="productdetail">
-  <#assign productAdditionalImage1 = productContentWrapper.get("ADDITIONAL_IMAGE_1", "url")! />
-  <#assign productAdditionalImage2 = productContentWrapper.get("ADDITIONAL_IMAGE_2", "url")! />
-  <#assign productAdditionalImage3 = productContentWrapper.get("ADDITIONAL_IMAGE_3", "url")! />
-  <#assign productAdditionalImage4 = productContentWrapper.get("ADDITIONAL_IMAGE_4", "url")! />
+  <#assign productAdditionalImage1 = productContentWrapper.get("ADDITIONAL_IMAGE_1", "string")! />
+  <#assign productAdditionalImage2 = productContentWrapper.get("ADDITIONAL_IMAGE_2", "string")! />
+  <#assign productAdditionalImage3 = productContentWrapper.get("ADDITIONAL_IMAGE_3", "string")! />
+  <#assign productAdditionalImage4 = productContentWrapper.get("ADDITIONAL_IMAGE_4", "string")! />
 
   <#-- Category next/previous -->
   <#if category??>
@@ -361,7 +361,7 @@ $(function(){
     <#if productImageList?has_content>
       <#-- Product image/name/price -->
       <div id="detailImageBox">
-        <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")! />
+        <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string")! />
         <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
         <#if firstLargeImage?has_content>
           <#assign productLargeImageUrl = firstLargeImage />
@@ -395,7 +395,7 @@ $(function(){
     <#else>
       <#-- Product image/name/price -->
       <div id="detailImageBox">
-        <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")! />
+        <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string")! />
         <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
         <#if firstLargeImage?has_content>
           <#assign productLargeImageUrl = firstLargeImage />
@@ -895,9 +895,9 @@ $(function(){
       <#list imageKeys as key>
         <#assign swatchProduct = imageMap.get(key) />
         <#if swatchProduct?has_content && indexer &lt; maxIndex>
-          <#assign imageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request, "url")! />
+          <#assign imageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request, "string")! />
           <#if !imageUrl?string?has_content>
-            <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")! />
+            <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "string")! />
           </#if>
           <#if !imageUrl?string?has_content>
             <#assign imageUrl = "/images/defaultImage.jpg" />

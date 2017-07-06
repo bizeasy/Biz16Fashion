@@ -24,7 +24,7 @@ under the License.
   <#list productCategoryMembers as productCategoryMember>
   <#assign product = productCategoryMember.getRelatedOne("Product", false)!>
   <#if product?? && product?has_content>
-    <#assign smallImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "url")! />
+    <#assign smallImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "string")! />
     <#if !smallImageUrl?string?has_content>
       <#assign smallImageUrl = "/images/defaultImage.jpg">
     </#if>

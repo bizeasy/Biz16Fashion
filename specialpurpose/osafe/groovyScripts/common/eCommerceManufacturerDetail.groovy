@@ -34,7 +34,7 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
           context.partyContentWrapper = partyContentWrapper;
 		  
 		  context.description = partyContentWrapper.get("LONG_DESCRIPTION", "string");
-		  context.profileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "url");
+		  context.profileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "string");
 		  context.profileName = partyContentWrapper.get("PROFILE_NAME", "string");
 		  context.IMG_SIZE_PROF_MFG_H = Util.getProductStoreParm(request,"IMG_SIZE_PROF_MFG_H");
 		  context.IMG_SIZE_PROF_MFG_W = Util.getProductStoreParm(request,"IMG_SIZE_PROF_MFG_W");
@@ -99,7 +99,7 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
 					 manufacturerProductItems.put("primaryProductCategoryId",product.primaryProductCategoryId);
 					 manufacturerProductItems.put("name",productContentWrapper.get("PRODUCT_NAME", "string").toString());
 					 manufacturerProductItems.put("productImageSmallUrl",productContentWrapper.get("PRODUCT_NAME", "string"));
-					 manufacturerProductItems.productImageSmallUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url");
+					 manufacturerProductItems.productImageSmallUrl = productContentWrapper.get("SMALL_IMAGE_URL", "string");
 					 //set default and list price
 					 virtualProductPrices = EntityQuery.use(delegator).from("ProductPrice").where("productId", product.productId, "currencyUomId", cart.getCurrency(), "productStoreGroupId", "_NA_").orderBy(UtilMisc.toList("-fromDate")).cache().queryList();
 					 virtualProductPrices = EntityUtil.filterByDate(virtualProductPrices, true);
@@ -122,8 +122,8 @@ if (UtilValidate.isNotEmpty(manufacturerPartyId))
 					 }
 					 
 					 manufacturerProductItems.put("internalName",product.internalName);
-					 manufacturerProductItems.put("productImageSmallAlt",productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url"));
-					 manufacturerProductItems.put("productImageSmallAltUrl",productContentWrapper.get("SMALL_IMAGE_ALT_URL", "url"));
+					 manufacturerProductItems.put("productImageSmallAlt",productContentWrapper.get("SMALL_IMAGE_ALT_URL", "string"));
+					 manufacturerProductItems.put("productImageSmallAltUrl",productContentWrapper.get("SMALL_IMAGE_ALT_URL", "string"));
                      productList.add(manufacturerProductItems);
                      
                   }

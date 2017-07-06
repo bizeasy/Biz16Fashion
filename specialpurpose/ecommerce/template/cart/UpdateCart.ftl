@@ -80,7 +80,7 @@ under the License.
               <#assign parentProductId = cartLine.getProductId() />
             </#if>
             <#assign smallImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"]
-                .getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher, "url")! />
+                .getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher, "string")! />
             <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "" /></#if>
           </#if>
           <tr id="cartItemDisplayRow_${cartLine_index}">
@@ -174,7 +174,7 @@ under the License.
                     </#if>
                     <#assign smallImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"]
                         .getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_URL",
-                        locale, dispatcher, "url")! />
+                        locale, dispatcher, "string")! />
                     <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "" /></#if>
                     <#if smallImageUrl?string?has_content>
                       <img src="<@ofbizContentUrl>${requestAttributes.contentPathPrefix!}${smallImageUrl}</@ofbizContentUrl>"

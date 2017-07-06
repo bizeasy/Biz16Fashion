@@ -657,7 +657,7 @@ if (UtilValidate.isNotEmpty(productId))
           context.partyContentWrapper = partyContentWrapper;
           context.pdpManufacturerDescription = partyContentWrapper.get("DESCRIPTION", "string");
           context.pdpManufacturerProfileName = partyContentWrapper.get("PROFILE_NAME", "string");
-          context.pdpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "url");
+          context.pdpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "string");
         }
         
      // first make sure this isn't a variant that has an associated virtual product, if it does show that instead of the variant
@@ -818,7 +818,7 @@ if (UtilValidate.isNotEmpty(productId))
         productContentId = productContentIdMap.get("CANONICAL_URL");
         if(UtilValidate.isNotEmpty(productContentId)) 
         {
-            canonicalUrl = productContentWrapper.get("CANONICAL_URL", "url");
+            canonicalUrl = productContentWrapper.get("CANONICAL_URL", "string");
         } 
         else
         {
@@ -853,7 +853,7 @@ if (UtilValidate.isNotEmpty(productId))
         productContentId = productContentIdMap.get("ADDTOCART_IMAGE");
         if(UtilValidate.isNotEmpty(productContentId)) 
         {
-          imageUrl = productContentWrapper.get("ADDTOCART_IMAGE", "url");
+          imageUrl = productContentWrapper.get("ADDTOCART_IMAGE", "string");
           context.addToCartImageUrl = contentPathPrefix + imageUrl;
         }
         else
@@ -864,7 +864,7 @@ if (UtilValidate.isNotEmpty(productId))
         productContentId = productContentIdMap.get("LARGE_IMAGE_URL");
         if(UtilValidate.isNotEmpty(productContentId)) 
         {
-           imageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url");
+           imageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string");
           context.productLargeImageUrl = contentPathPrefix + imageUrl;
           request.setAttribute("largeImageUrl",contentPathPrefix + imageUrl);
         }
@@ -876,7 +876,7 @@ if (UtilValidate.isNotEmpty(productId))
         productContentId = productContentIdMap.get("DETAIL_IMAGE_URL");
         if(UtilValidate.isNotEmpty(productContentId)) 
         {
-           imageUrl = productContentWrapper.get("DETAIL_IMAGE_URL", "url");
+           imageUrl = productContentWrapper.get("DETAIL_IMAGE_URL", "string");
           context.productDetailImageUrl = contentPathPrefix + imageUrl;
           request.setAttribute("detailImageUrl",contentPathPrefix + imageUrl);
         }
@@ -884,7 +884,7 @@ if (UtilValidate.isNotEmpty(productId))
         productContentId = productContentIdMap.get("THUMBNAIL_IMAGE_URL");
         if(UtilValidate.isNotEmpty(productContentId)) 
         {
-           imageUrl = productContentWrapper.get("THUMBNAIL_IMAGE_URL", "url");
+           imageUrl = productContentWrapper.get("THUMBNAIL_IMAGE_URL", "string");
           context.productThumbImageUrl = contentPathPrefix + imageUrl;
         }
         else
@@ -908,7 +908,7 @@ if (UtilValidate.isNotEmpty(productId))
             if(UtilValidate.isNotEmpty(productContentId)) 
             {
               
-               imageUrl = productContentWrapper.get("ADDITIONAL_IMAGE_" + i, "url");
+               imageUrl = productContentWrapper.get("ADDITIONAL_IMAGE_" + i, "string");
                context.put("productAddImageUrl" + i,contentPathPrefix + imageUrl);
             }
             else
@@ -923,7 +923,7 @@ if (UtilValidate.isNotEmpty(productId))
             productContentId = productContentIdMap.get("XTRA_IMG_" + i + "_LARGE");
             if(UtilValidate.isNotEmpty(productContentId)) 
             {
-               imageUrl = productContentWrapper.get("XTRA_IMG_" + i + "_LARGE", "url");
+               imageUrl = productContentWrapper.get("XTRA_IMG_" + i + "_LARGE", "string");
                context.put("productXtraAddLargeImageUrl" + i,contentPathPrefix + imageUrl);
             }
             else
@@ -939,7 +939,7 @@ if (UtilValidate.isNotEmpty(productId))
             if(UtilValidate.isNotEmpty(productContentId)) 
             {
               
-               imageUrl = productContentWrapper.get("XTRA_IMG_" + i + "_DETAIL", "url");
+               imageUrl = productContentWrapper.get("XTRA_IMG_" + i + "_DETAIL", "string");
                context.put("productXtraAddImageUrl" + i,contentPathPrefix + imageUrl);
             }
             else
@@ -951,7 +951,7 @@ if (UtilValidate.isNotEmpty(productId))
         productContentId = productContentIdMap.get("PDP_VIDEO_URL");
         if(UtilValidate.isNotEmpty(productContentId)) 
         {
-           imageUrl = productContentWrapper.get("PDP_VIDEO_URL", "url");
+           imageUrl = productContentWrapper.get("PDP_VIDEO_URL", "string");
           context.pdpVideoUrl = imageUrl;
         }
         else
@@ -962,7 +962,7 @@ if (UtilValidate.isNotEmpty(productId))
         productContentId = productContentIdMap.get("PDP_VIDEO_360_URL");
         if(UtilValidate.isNotEmpty(productContentId)) 
         {
-           imageUrl = productContentWrapper.get("PDP_VIDEO_360_URL", "url");
+           imageUrl = productContentWrapper.get("PDP_VIDEO_360_URL", "string");
           context.pdpVideo360Url = imageUrl;
         }
         else

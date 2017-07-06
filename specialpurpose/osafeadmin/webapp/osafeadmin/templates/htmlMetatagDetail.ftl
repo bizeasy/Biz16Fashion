@@ -2,11 +2,11 @@
 <#assign friendlyUrlDefault = ""/>
 <#if product?has_content>
   <#if productContentWrapper?exists>
-  	<#assign seoUrl = productContentWrapper.get("SEO_PAGE_URL", "url")!""/>
+  	<#assign seoUrl = productContentWrapper.get("SEO_PAGE_URL", "string")!""/>
     <#assign metaTitle = productContentWrapper.get("HTML_PAGE_TITLE", "string")!""/>
     <#assign metaDesc = productContentWrapper.get("HTML_PAGE_META_DESC", "string")!""/>
     <#assign metaKeyword = productContentWrapper.get("HTML_PAGE_META_KEY", "string")!""/>
-    <#assign canonicalUrl = productContentWrapper.get("CANONICAL_URL", "url")!""/>
+    <#assign canonicalUrl = productContentWrapper.get("CANONICAL_URL", "string")!""/>
     
     <#assign productContentName = productContentWrapper.get("PRODUCT_NAME", "string")!""/>
     <#if productContentName?has_content>

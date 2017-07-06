@@ -44,9 +44,9 @@ under the License.
                     <#assign virtualProduct = Static["org.apache.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
                     <#assign urlProductId=virtualProduct.productId>
                 </#if>
-                <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists>
+                <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "string")?if_exists>
                 <#if (!productImageUrl?has_content && !(productImageUrl == "null")) && virtualProduct?has_content>
-                    <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists>
+                    <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "string")?if_exists>
                 </#if>
                 <#-- If the string is a literal "null" make it an "" empty string then all normal logic can stay the same -->
                 <#if (productImageUrl?string?has_content && (productImageUrl == "null"))>

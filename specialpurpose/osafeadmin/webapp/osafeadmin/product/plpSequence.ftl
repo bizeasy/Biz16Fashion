@@ -19,7 +19,7 @@
           <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)!""/>
           <#if productContentWrapper?exists>
             <#assign productName = productContentWrapper.get("PRODUCT_NAME", "string")!""/>
-            <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!""/>
+            <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "string")!""/>
             <#assign productLongDescription = productContentWrapper.get("LONG_DESCRIPTION", "string")!""/>
           </#if>
           <input type="hidden" name="fromDate_${productCategoryMember_index}" value="${productCategoryMember.fromDate!}"/>

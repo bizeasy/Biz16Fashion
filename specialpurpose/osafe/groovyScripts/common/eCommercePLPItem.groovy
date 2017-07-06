@@ -1537,7 +1537,7 @@ if(UtilValidate.isNotEmpty(productId))
 	  context.plpManufacturerPartyContentWrapper = partyContentWrapper;
 	  context.plpManufacturerDescription = partyContentWrapper.get("DESCRIPTION", "string");
 	  context.plpManufacturerProfileName = partyContentWrapper.get("PROFILE_NAME", "string");
-	  context.plpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "url");
+	  context.plpManufacturerProfileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", "string");
 	}
 
     context.plpProductName = productName;

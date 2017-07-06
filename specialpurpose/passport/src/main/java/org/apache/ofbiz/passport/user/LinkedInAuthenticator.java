@@ -418,7 +418,7 @@ public class LinkedInAuthenticator implements Authenticator {
             return null;
         }
         Element standardProfileRequest = UtilXml.firstChildElement((Element) persons.item(0), "site-standard-profile-request");
-        Element url = UtilXml.firstChildElement(standardProfileRequest, "url");
+        Element url = UtilXml.firstChildElement(standardProfileRequest, "string");
         if (UtilValidate.isNotEmpty(url)) {
             String urlContent = url.getTextContent();
             if (UtilValidate.isNotEmpty(urlContent)) {
@@ -439,7 +439,7 @@ public class LinkedInAuthenticator implements Authenticator {
         }
         Element person = (Element) persons.item(0);
         Element standardProfileRequest = UtilXml.firstChildElement(person, "site-standard-profile-request");
-        Element url = UtilXml.firstChildElement(standardProfileRequest, "url");
+        Element url = UtilXml.firstChildElement(standardProfileRequest, "string");
         if (UtilValidate.isNotEmpty(url)) {
             String urlContent = url.getTextContent();
             if (UtilValidate.isNotEmpty(urlContent)) {
