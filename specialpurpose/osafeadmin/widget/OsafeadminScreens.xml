@@ -16,5 +16,14 @@
             </widgets>
         </section>
     </screen>
-
+<screen name="dateTimeIssue">
+        <section>
+            <actions>
+            <script location="component://osafeadmin/groovyScripts/dashboard/dateTimeIssue.groovy" />
+            </actions>
+            <widgets>
+                   
+            </widgets>
+        </section>
+    </screen>
 </screens>

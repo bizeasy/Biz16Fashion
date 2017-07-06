@@ -2,6 +2,7 @@
 <#assign defaultTodate=Static["org.apache.ofbiz.base.util.UtilDateTime"].getMonthEnd(monthBackStamp,timeZone,locale)>
 <#assign monthBackStamp=Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getMonthBackTimeStamp(3)>
 <#assign defaultFromdate=Static["org.apache.ofbiz.base.util.UtilDateTime"].getMonthStart(monthBackStamp,timeZone,locale)>
+${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIssue")}
 <!-- start searchBox -->
 <div class="entryRow">
   <div class="entry daterange">

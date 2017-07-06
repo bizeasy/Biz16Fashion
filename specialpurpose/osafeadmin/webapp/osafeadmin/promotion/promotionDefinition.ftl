@@ -1,4 +1,5 @@
 <#if mode?has_content>
+${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIssue")}
   <#if productPromo?has_content>
 
     <#assign productPromoId = productPromo.productPromoId!"" />
