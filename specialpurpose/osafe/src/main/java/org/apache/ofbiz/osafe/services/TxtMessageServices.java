@@ -562,7 +562,7 @@ public class TxtMessageServices {
         try
         {
             List<GenericValue> partyContactMechPurpose = party.getRelated("PartyContactMechPurpose", null, null, true);
-            List<GenericValue> partyPurposeMobilePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PHONE_MOBILE"));
+            List<GenericValue> partyPurposeMobilePhones = EntityUtil.filterByAnd(partyContactMechPurpose, UtilMisc.toMap("contactMechPurposeTypeId", "PRIMARY_PHONE"));
             partyPurposeMobilePhones = EntityUtil.getFirst(partyPurposeMobilePhones).getRelated("PartyContactMech", null, null, false);
             partyPurposeMobilePhones = EntityUtil.filterByDate(partyPurposeMobilePhones,true);
             partyPurposeMobilePhones = EntityUtil.orderBy(partyPurposeMobilePhones, UtilMisc.toList("fromDate DESC"));

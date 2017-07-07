@@ -275,7 +275,7 @@ public class LoginEvents {
         serviceContext.put("sendTo", emails.toString());
         serviceContext.put("partyId", party.getString("partyId"));
         serviceContext.put("emailType", "PRDS_PWD_RETRIEVE");
-        serviceContext.put("productStoreId", productStoreId);
+        //serviceContext.put("productStoreId", productStoreId);
 
         try {
             Map<String, Object> result = dispatcher.runSync("sendMailFromScreen", serviceContext);

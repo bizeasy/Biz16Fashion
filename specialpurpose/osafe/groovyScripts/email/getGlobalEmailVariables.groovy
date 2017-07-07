@@ -11,7 +11,7 @@ import org.apache.ofbiz.product.product.ProductWorker;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.osafe.control.SeoUrlHelper;
 
-emailParameters = UtilProperties.getResourceBundleMap("parameters_email_styles.xml", locale);
+emailParameters = UtilProperties.getResourceBundleMap("Parameters_email_styles", locale);
 if (UtilValidate.isNotEmpty(emailParameters))
 {
     for (Map.Entry emailParameterEntry : emailParameters.entrySet()) 
