@@ -53,7 +53,7 @@
 	       <li class="string promoSummary">
 	        <div>
                 <label>${uiLabelMap.MessageCaption}</label>
-		        <#if (productPromoUseInfo.quantityLeftInActions?string == null) || (productPromoUseInfo.quantityLeftInActions?double > 0)>
+		        <#if (!productPromoUseInfo.quantityLeftInActions?has_content) || (productPromoUseInfo.quantityLeftInActions?double > 0)>
 		             <span>${uiLabelMap.PromoCodeAddedOnlyInfo}</span>
 		        <#else>
 		             <span>${uiLabelMap.PromoCodeAppliedInfo}</span>

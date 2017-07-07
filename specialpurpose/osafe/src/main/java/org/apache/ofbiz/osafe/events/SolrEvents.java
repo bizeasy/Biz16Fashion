@@ -1635,7 +1635,7 @@ public class SolrEvents
             try 
             {
                 List orderBy = UtilMisc.toList("sequenceNum");
-                productFeatureCatGrpApplList = EntityQuery.use(delegator).from("ProductFeatureCatGrpAppl").where("productCategoryId", productCategoryId).cache().queryList();
+                productFeatureCatGrpApplList = EntityQuery.use(delegator).from("ProductFeatureCatGrpAppl").where("productCategoryId", productCategoryId).queryList();
                 List<GenericValue> filteredProductFeatureCatGrpApplList = EntityUtil.filterByCondition(productFeatureCatGrpApplList, EntityCondition.makeCondition("productFeatureGroupId", EntityOperator.IN, UtilMisc.toList("FACET_GROUP_CATEGORY", "FACET_GROUP_PRICE", "FACET_GROUP_RATINGS")));
                 if(UtilValidate.isEmpty(filteredProductFeatureCatGrpApplList))
                 {
