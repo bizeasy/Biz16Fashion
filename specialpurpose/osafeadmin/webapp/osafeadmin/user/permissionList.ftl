@@ -12,12 +12,12 @@
             <#list resultList as userRow>
             	<#if groupId?exists && groupId?has_content>
             	<!-- TODO: userRow does not have thruDate .. fix this -->
-	            	<#if userRow.thruDate?exists && userRow.thruDate?has_content >
+	            	<#--<#if userRow.thruDate?exists && userRow.thruDate?has_content >
 	            		<#assign nowTimeStamp = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp() />
 	            		<#if nowTimeStamp.after(userRow.thruDate)>
 	            			<#assign securityGroupExpired = "true">
 	            		</#if>
-	            	</#if>
+	            	</#if>-->
             	</#if>
             	<#if securityGroupExpired="false">
             		<!-- TODO: build string with all security groups to be used as toolTip text in action column -->
