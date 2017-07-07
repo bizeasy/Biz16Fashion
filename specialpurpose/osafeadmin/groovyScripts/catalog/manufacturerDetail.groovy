@@ -54,9 +54,9 @@ if (UtilValidate.isNotEmpty(partyId))
 		PartyContentWrapper partyContentWrapper = new PartyContentWrapper(party, request);
 		context.partyContentWrapper = partyContentWrapper;
 		
-		context.description = partyContentWrapper.get("DESCRIPTION", false);
-		context.longDescription = partyContentWrapper.get("LONG_DESCRIPTION", false);
-		profileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", false);
+		context.description = partyContentWrapper.get("DESCRIPTION", false,"html");
+		context.longDescription = partyContentWrapper.get("LONG_DESCRIPTION", false,"html");
+		profileImageUrl = partyContentWrapper.get("PROFILE_IMAGE_URL", false,"html");
 		context.profileImageUrl = "";
 		context.profileImageUrlStr = "";
 		context.profileImagePath = "";
@@ -68,7 +68,7 @@ if (UtilValidate.isNotEmpty(partyId))
 			context.profileImagePath = profileImageUrl.toString().substring(0, profileImageUrl.toString().lastIndexOf("/")+1);
 			context.profileImageName = profileImageUrl.toString().substring(profileImageUrl.toString().lastIndexOf("/")+1);
 		}
-		context.profileName = partyContentWrapper.get("PROFILE_NAME", false);
+		context.profileName = partyContentWrapper.get("PROFILE_NAME", false,"html");
 		context.IMG_SIZE_PROF_MFG_H = Util.getProductStoreParm(request,"IMG_SIZE_PROF_MFG_H");
 		context.IMG_SIZE_PROF_MFG_W = Util.getProductStoreParm(request,"IMG_SIZE_PROF_MFG_W");		
 	}
