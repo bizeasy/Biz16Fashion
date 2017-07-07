@@ -2,6 +2,8 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.condition.EntityConditionBuilder;
 import org.apache.ofbiz.base.util.ObjectType;
 import java.util.Date;
+import java.sql.Timestamp;
+
 productCategoryRollupAndChild = null;
 
 if(parameters.currentPrimaryParentCategoryId)
