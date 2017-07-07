@@ -28,7 +28,7 @@
                     <td class="nameCol <#if !hasNext>lastRow</#if>">${productName!}</td>
                     <td class="numberCol <#if !hasNext>lastRow</#if>">${review.productId!""}</td>
                     <#-- td class="idCol <#if !hasNext>lastRow</#if>"><#if product.productId?has_content>${product.internalName}<#else>${review.productId!""}</#if></td -->
-                    <td class="dateCol <#if !hasNext>lastRow</#if>">${review.postedDateTime?string("'"+preferredDateFormat+"'"!)}</td>
+                    <td class="dateCol <#if !hasNext>lastRow</#if>"><#--${review.postedDateTime?string("'"+preferredDateFormat+"'"!)}-->${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(review.postedDateTime,preferredDateFormat)}</td>
                     <td class="nameCol <#if !hasNext>lastRow</#if>">${review.reviewNickName!}</td>
                     <td class="nameCol <#if !hasNext>lastRow</#if>"><div class="rating_bar"><div style="width:${ratePercentage}%"></div></div></td>
                     <td class="nameCol <#if !hasNext>lastRow</#if>">

@@ -8,7 +8,8 @@
     <#if currentStatus?has_content && currentStatus.statusId == "ORDER_COMPLETED">
         <#assign shipDate = shipGroup.estimatedShipDate!""/>
         <#if shipDate?has_content>
-            <#assign estimatedShipDate = shipDate?string("'"+entryDateTimeFormat+"'")!""/>
+            <#--<#assign estimatedShipDate = shipDate?string("'"+entryDateTimeFormat+"'")!""/>-->
+            <#assign estimatedShipDate = Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(shipDate,entryDateTimeFormat)/>
         </#if>
     </#if>
 </#if>

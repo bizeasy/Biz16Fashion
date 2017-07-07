@@ -52,7 +52,7 @@
                 <label>${uiLabelMap.DatePostedCaption}</label>
             </div>
             <div class="infoValue">
-                ${review.postedDateTime?string("'"+preferredDateFormat+"'")}
+                <#--${review.postedDateTime?string("'"+preferredDateFormat+"'")}-->${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(review.postedDateTime,preferredDateFormat)}
             </div>
         </div>
     </div>

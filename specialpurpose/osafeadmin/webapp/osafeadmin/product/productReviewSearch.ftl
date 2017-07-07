@@ -1,18 +1,18 @@
 <!-- start promotionsSearch.ftl -->
     <#assign nowTimestamp=Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
     <#assign defaultFromDate=Static["org.apache.ofbiz.osafe.util.OsafeAdminUtil"].getMonthBackTimeStamp(1)>
-    ${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIssue")}
+    <#--${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIssue")}-->
     <div class="entryRow">
       <div class="entry">
         <label>${uiLabelMap.FromDateCaption}</label>
         <div class="entryInput from">
-          <input class="dateEntry" type="text" name="from" maxlength="40" value="${parameters.from!from!defaultFromDate?string("'"+entryDateTimeFormat+"'")!""}"/>
+          <input class="dateEntry" type="text" name="from" maxlength="40" value="${parameters.from!from!Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(defaultFromDate,entryDateTimeFormat)!""}"/>
         </div>
       </div> 
       <div class="entry medium">
         <label>${uiLabelMap.ToCaption}</label>
         <div class="entryInput to">
-          <input class="dateEntry" type="text" name="to" maxlength="40" value="${parameters.to!to!nowTimestamp?string("'"+entryDateTimeFormat+"'")!""}"/>
+          <input class="dateEntry" type="text" name="to" maxlength="40" value="${parameters.to!to!Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(nowTimestamp,entryDateTimeFormat)!""}"/>
         </div>
       </div> 
     </div>

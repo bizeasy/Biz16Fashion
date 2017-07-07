@@ -146,7 +146,8 @@
                       <#if orderHeader?has_content && (orderHeader.statusId == "ORDER_COMPLETED" || orderItem.statusId == "ITEM_COMPLETED") >
                           <#assign shipDate = shipGroup.estimatedShipDate!""/>
                           <#if shipDate?has_content>
-                              <#assign shipDate = shipDate?string("'"+preferredDateFormat+"'")!""/>
+                              <#--<#assign shipDate = shipDate?string("'"+preferredDateFormat+"'")!""/>-->
+                              <#assign shipDate = Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(shipDate,preferredDateFormat)!""/>
                           </#if>
                       </#if>
                       <#assign trackingNumber = shipGroup.trackingNumber!""/>

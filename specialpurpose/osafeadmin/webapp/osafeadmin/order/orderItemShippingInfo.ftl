@@ -25,7 +25,8 @@
 	      <label>${uiLabelMap.ShipDateCaption}</label>
 	     </div>
 	     <#if orderItemShipDate?has_content>
-	          <#assign orderItemShipDate = orderItemShipDate?string("'"+preferredDateFormat+"'")!""/>
+	          <#--<#assign orderItemShipDate = orderItemShipDate?string("'"+preferredDateFormat+"'")!""/>-->
+	          <#assign orderItemShipDate = Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(orderItemShipDate,preferredDateFormat)!""/>
 	      </#if>
 	     <div class="infoValue medium">
 	       <#if orderItemShipDate?has_content>${orderItemShipDate!""}</#if>

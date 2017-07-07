@@ -84,7 +84,7 @@
         <label>${uiLabelMap.FromDateCaption}</label>
       </div>
       <div class="infoValue">
-        ${(taxAuthorityRateProduct.fromDate?string("'"+preferredDateFormat+"'"))!""}
+        <#--${(taxAuthorityRateProduct.fromDate?string("'"+preferredDateFormat+"'"))!""}-->${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(taxAuthorityRateProduct.fromDate,preferredDateFormat)!""}
       </div>
     </div>
   </div>
@@ -95,7 +95,7 @@
         <label>${uiLabelMap.ThruDateCaption}</label>
       </div>
       <div class="infoValue">
-        ${(taxAuthorityRateProduct.thruDate?string("'"+preferredDateFormat+"'"))!""}
+        <#--${(taxAuthorityRateProduct.thruDate?string("'"+preferredDateFormat+"'"))!""}-->${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(taxAuthorityRateProduct.thruDate,preferredDateFormat)!""}
       </div>
     </div>
   </div>

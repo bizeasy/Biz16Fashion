@@ -63,10 +63,12 @@
                 <#assign rangeListperiodRec = Static["org.apache.ofbiz.base.util.StringUtil"].split(periodRecTrendRange,"to")/>
               </#if>
                 <#if periodFromRecTrendTs?has_content>
-                  <#assign periodFrom = periodFromRecTrendTs?string("'"+entryDateTimeFormat+"'")/>
+                  <#--<#assign periodFrom = periodFromRecTrendTs?string("'"+entryDateTimeFormat+"'")/>-->
+                  <#assign periodFrom =Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(periodFromRecTrendTs,entryDateTimeFormat)/>
                 </#if>
                 <#if periodToRecTrendTs?has_content>
-                  <#assign periodTo = periodToRecTrendTs?string("'"+entryDateTimeFormat+"'")/>
+                  <#--<#assign periodTo = periodToRecTrendTs?string("'"+entryDateTimeFormat+"'")/>-->
+                  <#assign periodFrom =Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(periodToRecTrendTs,entryDateTimeFormat)>
                 </#if>
                 <td class="boxCaption firstCol">${uiLabelMap.RecentTrendCaption}<span class="trendRange">
                    <#if periodRecTrendRange?exists>
@@ -95,10 +97,12 @@
                 <#assign rangeListperiodPrior = Static["org.apache.ofbiz.base.util.StringUtil"].split(periodPriorTrendRange,"to")/>
               </#if>
                 <#if periodFromPriorTrendTs?has_content>
-                  <#assign periodFrom = periodFromPriorTrendTs?string("'"+entryDateTimeFormat+"'")/>
+                  <#--<#assign periodFrom = periodFromPriorTrendTs?string("'"+entryDateTimeFormat+"'")/>-->
+                  <#assign periodFrom =Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(periodFromPriorTrendTs,entryDateTimeFormat)/>
                 </#if>
                 <#if periodToPriorTrendTs?has_content>
-                  <#assign periodTo = periodToPriorTrendTs?string("'"+entryDateTimeFormat+"'")/>
+                  <#--<#assign periodTo = periodToPriorTrendTs?string("'"+entryDateTimeFormat+"'")/>-->
+                  <#assign periodTo =Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(periodToPriorTrendTs,entryDateTimeFormat)/>
                 </#if>
                 <td class="boxCaption firstCol">${uiLabelMap.PriorTrendCaption}<span class="trendRange">
                    <#if periodPriorTrendRange?exists>

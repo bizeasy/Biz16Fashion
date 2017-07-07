@@ -1,5 +1,5 @@
 <#if mode?has_content>
-${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIssue")}
+<#--${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIssue")}-->
   <#if productPromo?has_content>
 
     <#assign productPromoId = productPromo.productPromoId!"" />
@@ -15,10 +15,12 @@ ${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIs
     <#if productStorePromoAppl?has_content>
       <#if productStorePromoAppl.fromDate?has_content>
         <#assign productStorePromoApplFromDate = productStorePromoAppl.fromDate>
-        <#assign fromDate = (productStorePromoAppl.fromDate)?string("'"+entryDateTimeFormat+"'")>
+        <#--<#assign fromDate = (productStorePromoAppl.fromDate)?string("'"+entryDateTimeFormat+"'")>-->
+        <#assign fromDate = Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(productStorePromoAppl.fromDate,entryDateTimeFormat)>
       </#if>
       <#if productStorePromoAppl.thruDate?has_content>
-        <#assign thruDate = (productStorePromoAppl.thruDate)?string("'"+entryDateTimeFormat+"'")>
+        <#--<#assign thruDate = (productStorePromoAppl.thruDate)?string("'"+entryDateTimeFormat+"'")>-->
+        <#assign thruDate = Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(productStorePromoAppl.thruDate,entryDateTimeFormat)>
       </#if>
     </#if>
 
@@ -190,7 +192,7 @@ ${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIs
 	      <div class="infoValue small">
 	        <div class="entryInput from">
 	          <#if isPromotionDetail>
-	            <input class="dateEntry" type="text" id="fromDate" name="fromDate" maxlength="40" value="${parameters.fromDate!fromDate!nowTimestamp?string("'"+entryDateTimeFormat+"'")!""}"/>
+	            <input class="dateEntry" type="text" id="fromDate" name="fromDate" maxlength="40" value="${parameters.fromDate!fromDate!Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(nowTimestamp,entryDateTimeFormat)!""}"/>
 	            <#else>
 	              ${fromDate!""}
 	          </#if>

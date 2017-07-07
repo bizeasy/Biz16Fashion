@@ -29,10 +29,12 @@
              </#if>
              <td class="seqCol <#if !hasNext>lastRow</#if>">${thisEnum.sequenceId?if_exists}</td>
             <td class="dateCol <#if !hasNext>lastRow</#if>">
-                ${(thisEnum.createdStamp?string("'"+preferredDateFormat+"'"))!""}
+                <#--${(thisEnum.createdStamp?string("'"+preferredDateFormat+"'"))!""}-->
+                ${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(thisEnum.createdStamp,preferredDateFormat)!""}
             </td>
             <td class="dateCol <#if !hasNext>lastRow</#if> lastCol">
-                ${(thisEnum.lastUpdatedStamp?string("'"+preferredDateFormat+"'"))!""}
+                <#--${(thisEnum.lastUpdatedStamp?string("'"+preferredDateFormat+"'"))!""}-->
+                ${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(thisEnum.lastUpdatedStamp,preferredDateFormat)!""}
             </td>
         </tr>
         <#-- toggle the row color -->
