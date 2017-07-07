@@ -87,14 +87,15 @@
                     	<#if statusId == "CTNT_PUBLISHED" >
                     		<#assign lastModifiedDate = "" />
               				<#if thisContent.lastModifiedDate?has_content>
-                                ${thisContent.lastModifiedDate?string("'"+preferredDateFormat+"'")}
+                                <#--${thisContent.lastModifiedDate?string("'"+preferredDateFormat+"'")}-->
+                                ${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(thisContent.lastModifiedDate,preferredDateFormat)}
               				</#if>
                     	</#if>
                     	
                     </td>
                     
                     <td class="dateCol <#if !hasNext>lastRow</#if> lastCol">
-                        ${(thisContent.createdDate?string("'"+preferredDateFormat+"'"))!""}
+                        <#--${(thisContent.createdDate?string("'"+preferredDateFormat+"'"))!""}-->${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(thisContent.createdDate,preferredDateFormat)}
                     </td>
                     <td class="actionCol <#if !hasNext>lastRow</#if> lastCol">
                      <#if (contentTypeId?exists && staticPageContentTypeId?exists) || (previewAction?exists && previewAction?has_content)>

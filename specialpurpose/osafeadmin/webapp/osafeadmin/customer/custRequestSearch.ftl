@@ -1,5 +1,5 @@
 <#assign nowTimestamp=Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
-${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIssue")}
+<#--${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIssue")}-->
 <!-- start searchBox -->
 <div class="entryRow">
   <div class="entry short">
@@ -21,11 +21,11 @@ ${screens.render("component://osafeadmin/widget/OsafeadminScreens.xml#dateTimeIs
   <div class="entry daterange">
     <label>${uiLabelMap.FromDateCaption}</label>
     <div class="entryInput from">
-      <input class="dateEntry" type="text" name="contactUsDateFrom" maxlength="40" value="${parameters.contactUsDateFrom!periodFrom!nowTimestamp?string(entryDateTimeFormat)!""}"/>
+      <input class="dateEntry" type="text" name="contactUsDateFrom" maxlength="40" value="${parameters.contactUsDateFrom!periodFrom!Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(nowTimestamp,entryDateTimeFormat)!""}"/>
     </div>
     <label class="tolabel">${uiLabelMap.ToCaption}</label>
     <div class="entryInput to">
-      <input class="dateEntry" type="text" name="contactUsDateTo" maxlength="40" value="${parameters.contactUsDateTo!periodTo!nowTimestamp?string(entryDateTimeFormat)!""}"/>
+      <input class="dateEntry" type="text" name="contactUsDateTo" maxlength="40" value="${parameters.contactUsDateTo!periodTo!Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(nowTimestamp,entryDateTimeFormat)!""}"/>
     </div>
   </div>
 </div>

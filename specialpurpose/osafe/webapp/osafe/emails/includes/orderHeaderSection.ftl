@@ -63,7 +63,9 @@ under the License.
                                             <#if orderHeader?has_content>
                                             <tr>
                                                 <td>${uiLabelMap.OrderDateCaption}</td>
-                                                <td>${orderHeader.orderDate?string("'"+preferredDateFormat+"'")}</td>
+                                                <td><#--${orderHeader.orderDate?string("'"+preferredDateFormat+"'")}-->
+                                                	${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(orderHeader.orderDate,preferredDateFormat)}
+                                                </td>
                                             </tr>
                                             </#if>
                                         </table>

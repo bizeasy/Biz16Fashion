@@ -20,10 +20,12 @@
   </#if>
   
   <#if currentProduct.introductionDate?has_content>
-    <#assign introductionDate = (currentProduct.introductionDate)?string("'"+entryDateTimeFormat+"'")>
+    <#--<#assign introductionDate = (currentProduct.introductionDate)?string("'"+entryDateTimeFormat+"'")>-->
+    <#assign introductionDate = Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(currentProduct.introductionDate,entryDateTimeFormat)>
   </#if>
   <#if currentProduct.salesDiscontinuationDate?has_content>
-    <#assign salesDiscontinuationDate = (currentProduct.salesDiscontinuationDate)?string("'"+entryDateTimeFormat+"'")>
+    <#--<#assign salesDiscontinuationDate = (currentProduct.salesDiscontinuationDate)?string("'"+entryDateTimeFormat+"'")>-->
+    <#assign salesDiscontinuationDate = Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(currentProduct.salesDiscontinuationDate,entryDateTimeFormat)>
   </#if>
   
   <#if currentProduct.productHeight?has_content>

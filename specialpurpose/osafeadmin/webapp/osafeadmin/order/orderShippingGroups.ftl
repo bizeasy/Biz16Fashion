@@ -17,7 +17,7 @@
             </div>
             <div class="infoValue">
                 <#if orderItemShipGroup.estimatedShipDate?has_content>
-                    ${(orderItemShipGroup.estimatedShipDate?string("'"+preferredDateFormat+"'"))!""}
+                    <#--${(orderItemShipGroup.estimatedShipDate?string("'"+preferredDateFormat+"'"))!""}-->${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(orderItemShipGroup.estimatedShipDate,preferredDateFormat)}
                 </#if>
             </div>
         </div>
