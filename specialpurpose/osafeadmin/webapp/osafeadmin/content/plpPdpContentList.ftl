@@ -2,16 +2,16 @@
 
 <#-- looping macro -->
 <#macro categories parentCategory category levelUrl levelValue listIndex listSize rowClass>
-  <#if catContentWrappers?exists && catContentWrappers[category.productCategoryId]?exists && catContentWrappers[category.productCategoryId].get("CATEGORY_NAME")?exists>
+  <#if catContentWrappers?exists && catContentWrappers[category.productCategoryId]?exists && catContentWrappers[category.productCategoryId].get("CATEGORY_NAME","html")?exists>
     <#-- Value is from the related Content record -->
-    <#assign categoryName = catContentWrappers[category.productCategoryId].get("CATEGORY_NAME")>
+    <#assign categoryName = catContentWrappers[category.productCategoryId].get("CATEGORY_NAME","html")>
   <#else>
     <#-- Value is from the Product Category entity-->
     <#assign categoryName = category.categoryName?if_exists>
   </#if>
-  <#if catContentWrappers?exists && catContentWrappers[category.productCategoryId]?exists && catContentWrappers[category.productCategoryId].get("DESCRIPTION")?exists>
+  <#if catContentWrappers?exists && catContentWrappers[category.productCategoryId]?exists && catContentWrappers[category.productCategoryId].get("DESCRIPTION","html")?exists>
     <#-- Value is from the related Content record -->
-    <#assign categoryDescription = catContentWrappers[category.productCategoryId].get("DESCRIPTION")>
+    <#assign categoryDescription = catContentWrappers[category.productCategoryId].get("DESCRIPTION","html")>
   <#else>
     <#-- Value is from the Product Category entity-->
     <#assign categoryDescription = category.description?if_exists>
