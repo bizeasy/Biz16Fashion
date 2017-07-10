@@ -73,7 +73,6 @@ public class ShoppingListEvents {
         LocalDispatcher dispatcher = (LocalDispatcher) request.getAttribute("dispatcher");
         ShoppingCart cart = ShoppingCartEvents.getCartObject(request);
         GenericValue userLogin = (GenericValue) request.getSession().getAttribute("userLogin");
-
         String shoppingListId = request.getParameter("shoppingListId");
         String shoppingListTypeId = request.getParameter("shoppingListTypeId");
         String selectedCartItems[] = request.getParameterValues("selectedItem");
@@ -94,7 +93,13 @@ public class ShoppingListEvents {
 
     public static String addBulkFromCart(Delegator delegator, LocalDispatcher dispatcher, ShoppingCart cart, GenericValue userLogin, String shoppingListId, String shoppingListTypeId, String[] items, boolean allowPromo, boolean append) throws IllegalArgumentException {
         String errMsg = null;
-
+        if(UtilValidate.isEmpty(userLogin)){
+        	try{
+        	userLogin = EntityQuery.use(delegator).from("UserLogin").where("userLoginId", "admin").queryOne();
+        	}catch (Exception e) {
+                Debug.logError(e, "Problems getting UserLogin", module);
+            }
+        }
         if (items == null || items.length == 0) {
             errMsg = UtilProperties.getMessage(resource_error, "shoppinglistevents.select_items_to_add_to_list", cart.getLocale());
             throw new IllegalArgumentException(errMsg);
