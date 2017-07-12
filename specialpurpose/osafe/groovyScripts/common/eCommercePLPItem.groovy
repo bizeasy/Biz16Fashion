@@ -1193,7 +1193,7 @@ if(UtilValidate.isNotEmpty(productId))
     		  	    productContentId = productContent.contentId;
     		        if (UtilValidate.isNotEmpty(productContentId))
     		        {
-    			        productVariantSelectSmallURL = productVariantSelectContentWrapper.get("SMALL_IMAGE_URL");
+    			        productVariantSelectSmallURL = productVariantSelectContentWrapper.get("SMALL_IMAGE_URL", "string");
 
     		            productContentList = EntityQuery.use(delegator).from("ProductContent").where("productId",productFeatureSelectVariantId, "productContentTypeId", "SMALL_IMAGE_ALT_URL").cache().queryList();
     		            productContentList = EntityUtil.filterByDate(productContentList,true);
@@ -1203,7 +1203,7 @@ if(UtilValidate.isNotEmpty(productId))
             		  	    productContentId = productContent.contentId;
         			        if (UtilValidate.isNotEmpty(productContentId))
         			        {
-             			        productVariantSelectSmallAltURL = productVariantSelectContentWrapper.get("SMALL_IMAGE_ALT_URL");
+             			        productVariantSelectSmallAltURL = productVariantSelectContentWrapper.get("SMALL_IMAGE_ALT_URL", "string");
         			        }
     	        			
     	        		}

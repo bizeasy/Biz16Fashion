@@ -12,6 +12,15 @@ import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.ContactHelper;
 import org.apache.ofbiz.base.util.Debug;
 
+productStoresList = delegator.findByAnd("ProductStoreGroupMember", [productStoreGroupId: "HONGKONG_STORES"], null, false)
+
+globalProductStoreId = parameters.globalProductStoreId ;
+if (UtilValidate.isNotEmpty(globalProductStoreId)){
+	// override productStore
+	//productStore = from("ProductStore").where("productStoreId", globalProductStoreId).cache(true).queryOne()
+	session.setAttribute("productStoreId", globalProductStoreId);
+}
+
 productStore = ProductStoreWorker.getProductStore(request);
 if (UtilValidate.isNotEmpty(productStore))
 {
@@ -36,11 +45,10 @@ if (UtilValidate.isNotEmpty(productStore))
 
 globalContext.productStore = productStore;
 globalContext.productStoreId = productStore.productStoreId;
+globalContext.productStoresList = productStoresList;
 
 preferredDateFormat = Util.getProductStoreParm(request,"FORMAT_DATE");
-Debug.log("preferredDateFormat ================"+preferredDateFormat);
 preferredDateTimeFormat = Util.getProductStoreParm(request,"FORMAT_DATE_TIME");
-Debug.log("preferredDateTimeFormat ================"+preferredDateTimeFormat);
 
 currencyRounding=2;
 roundCurrency = Util.getProductStoreParm(request,"CURRENCY_UOM_ROUNDING");
