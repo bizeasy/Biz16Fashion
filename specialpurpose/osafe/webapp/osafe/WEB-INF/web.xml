@@ -38,7 +38,7 @@
     </context-param>
     <context-param>
         <param-name>widgetVerbose</param-name>
-        <param-value>false</param-value>
+        <param-value>true</param-value>
         <description>Enable widget boundary comments. See org.apache.ofbiz.widget.ModelWidget.widgetBoundaryCommentsEnabled().</description>
     </context-param>
     <context-param>

@@ -37,7 +37,7 @@ under the License.
     <context-param>
         <description>Enable widget boundary comments. See org.apache.ofbiz.widget.model.ModelWidget.widgetBoundaryCommentsEnabled().</description>
         <param-name>widgetVerbose</param-name>
-        <param-value>false</param-value>
+        <param-value>true</param-value>
     </context-param>
     <context-param>
         <description>Remove unnecessary whitespace from HTML output.</description>
