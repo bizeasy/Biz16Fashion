@@ -4,7 +4,7 @@
 			<div class="content links siteHeaderLinks">
 				<div id="siteHeaderLinks">
 					<ul>
-						Product Store: 
+						${uiLabelMap.ProductStore} 
 						<select name ="globalProductStoreId" id="globalProductStoreId" onchange="javascript:setGlobalProductStore();">
 							<#list productStoresList as productStore >
 							  <#if globalContext.productStoreId?has_content>
@@ -15,6 +15,27 @@
 							</#list>
 						</select>
 					</ul>  
+				</div>
+			</div>
+		</td>
+		<td>
+		<#assign availableLocales = Static["org.apache.ofbiz.base.util.UtilMisc"].availableLocales()/>
+			<div class="content links siteHeaderLinks">
+				<div id="siteHeaderLinks">
+					
+						${uiLabelMap.Language}
+						<select name ="globalLocaleId" id="globalLocaleId" onchange="setSessionLocale();">
+							<#list availableLocales as availableLocale>
+							<#if availableLocale.toString()=="en" || availableLocale.toString()=="en_US" || availableLocale.toString()=="tr_TR">
+						      <#assign langAttr = availableLocale.toString()?replace("_", "-")>
+						      <#if session.getAttribute("locale")?has_content>
+							    <option value='${availableLocale.toString()}'<#if availableLocale == session.getAttribute("locale")> selected</#if>>${availableLocale.getDisplayName(availableLocale)}&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp; [${langAttr}]</option>
+							  <#else>
+							  	<option value='${availableLocale.toString()}'>${availableLocale.getDisplayName(availableLocale)}&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp; [${langAttr}]</option>
+							  </#if> 
+						      </#if>
+						    </#list>
+						</select>
 				</div>
 			</div>
 		</td>
@@ -37,6 +58,22 @@
 		}
 		url = url + "?globalProductStoreId="+ document.getElementById("globalProductStoreId").value;
 		window.location.replace(url);
+	}
+	function setSessionLocale() {
+		var id = jQuery("#globalLocaleId").val();
+		var url= '<@ofbizUrl>/setSessionLocale?newLocale='+id+'</@ofbizUrl>';
+         jQuery.ajax({
+            url: url,
+            type: 'POST',
+            async: false,
+            error: function(msg) {
+                alert("Error While Setting Locale");
+            },
+            success: function(msg) {
+                window.location.reload();
+            }
+        });
+		
 	}
 
 

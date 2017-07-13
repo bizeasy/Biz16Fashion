@@ -13,6 +13,7 @@
 		      <li>
 			     <div>
 		              <label for="password">${uiLabelMap.PasswordCaption}</label>
+		              <input type="hidden" name="JavaScriptEnabled" value="Y"/>
 		              <input id="password" name="PASSWORD" type="password" class="password" value="" maxlength="50" />
                       <input type="submit" class="standardBtn action" name="signInBtn" value="${uiLabelMap.SignInBtn}"/>
                  </div>
