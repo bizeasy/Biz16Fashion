@@ -6,7 +6,7 @@ ${sections.render('checkoutJS')?if_exists}
         <#assign partyId = userLogin.partyId!"">
     </#if>
     <input type="hidden" name="partyId" value="${partyId!""}"/>
-    <input type="hidden" name="productStoreId" value="${productStore.productStoreId}" />
+    <input type="hidden" name="productStoreId" value="${parameters.productStoreId?if_exists}" />
     ${sections.render('pageMessages')?if_exists}
     ${sections.render('pageTopContent')?if_exists}
     ${sections.render('cartBody')?if_exists}

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
 import org.apache.ofbiz.product.product.ProductContentWrapper;
 import org.apache.ofbiz.base.util.UtilMisc;
+import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.base.util.UtilNumber;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.StringUtil;
@@ -567,9 +568,13 @@ productStoreId = productStore.get("productStoreId");
 priceContext = [:];
 if (cart.isSalesOrder()) 
 {
+	String defaultCurrencyUomId = cart.getCurrency()
+	if(UtilValidate.isNotEmpty(session.getAttribute("defaultCurrencyUomId"))){
+		defaultCurrencyUomId = session.getAttribute("defaultCurrencyUomId") ;
+	}
     // sales order: run the "calculateProductPrice" service
     priceContext = [prodCatalogId : currentCatalogId,
-                currencyUomId : cart.getCurrency(), autoUserLogin : autoUserLogin];
+                currencyUomId : defaultCurrencyUomId, autoUserLogin : autoUserLogin];
     priceContext.webSiteId = webSiteId;
     priceContext.productStoreId = productStoreId;
     priceContext.checkIncludeVat = "Y";

@@ -59,7 +59,15 @@ if(UtilValidate.isEmpty(currencyUom))
 {
 	currencyUom = shoppingCart.getCurrency();
 }
-
+if(UtilValidate.isNotEmpty(session.getAttribute("defaultCurrencyUomId"))){
+	currencyUom =session.getAttribute("defaultCurrencyUomId");
+}
+if(UtilValidate.isNotEmpty(parameters.get("defaultCurrencyUomId"))){
+	currencyUom =parameters.get("defaultCurrencyUomId");
+}
+if(UtilValidate.isNotEmpty(globalContext.get("defaultCurrencyUomId"))){
+	currencyUom =globalContext.get("defaultCurrencyUomId");
+}
 cartLineIndex = shoppingCart.getItemIndex(cartLine);
 product = cartLine.getProduct();
 urlProductId = cartLine.getProductId();
@@ -134,7 +142,7 @@ recurrencePrice = cartLine.getRecurringDisplayPrice();
 
 //Change Product Price Purpose and check for Recurring Pricing
 priceContext = [product : cartLine.getProduct(), prodCatalogId : currentCatalogId,
-                currencyUomId : shoppingCart.getCurrency(), autoUserLogin : autoUserLogin];
+                currencyUomId : session.getAttribute("defaultCurrencyUomId")/*shoppingCart.getCurrency()*/, autoUserLogin : autoUserLogin];
 priceContext.webSiteId = webSiteId;
 priceContext.productStoreId = productStoreId;
 priceContext.checkIncludeVat = "Y";
@@ -142,6 +150,8 @@ priceContext.agreementId = shoppingCart.getAgreementId();
 priceContext.productPricePurposeId = "RECURRING_CHARGE";
 priceContext.partyId = shoppingCart.getPartyId();  
 recurrencePriceMap = dispatcher.runSync("calculateProductPrice", priceContext);
+
+
 context.recurrencePriceMap = recurrencePriceMap;
 
 //If the item was added to the Shopping Cart as a Recurrence Item

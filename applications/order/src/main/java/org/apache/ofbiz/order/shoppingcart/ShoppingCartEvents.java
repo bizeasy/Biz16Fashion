@@ -174,6 +174,7 @@ public class ShoppingCartEvents {
     public static String addToCart(HttpServletRequest request, HttpServletResponse response) {
         Delegator delegator = (Delegator) request.getAttribute("delegator");
         LocalDispatcher dispatcher = (LocalDispatcher) request.getAttribute("dispatcher");
+        HttpSession session = request.getSession();
         ShoppingCart cart = getCartObject(request);
         ShoppingCartHelper cartHelper = new ShoppingCartHelper(delegator, dispatcher, cart);
         String controlDirective = null;
@@ -211,7 +212,18 @@ public class ShoppingCartEvents {
         Map<String, Object> paramMap = UtilHttp.getCombinedMap(request);
 
         String itemGroupNumber = (String) paramMap.get("itemGroupNumber");
-
+        // review these two statements(setting currency and productStoreId) later
+        if(UtilValidate.isNotEmpty(session.getAttribute("productStoreId"))){
+        	cart.setProductStoreId((String)session.getAttribute("productStoreId"));
+        }
+        if(UtilValidate.isNotEmpty(session.getAttribute("defaultCurrencyUomId"))){
+        	try {
+                cart.setCurrency(dispatcher, (String)session.getAttribute("defaultCurrencyUomId"));
+            } catch (CartItemModifyException e) {
+                Debug.logError(e, "Unable to modify currency in cart", module);
+            }
+        }
+        
         // Get shoppingList info if passed
         String shoppingListId = (String) paramMap.get("shoppingListId");
         String shoppingListItemSeqId = (String) paramMap.get("shoppingListItemSeqId");

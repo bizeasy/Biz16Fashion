@@ -5056,5 +5056,18 @@
         <category>MULTI_USE</category>
         <description>UploadFileInformation</description>
     </property>
-    
+    <property key="ProductStore">
+        <value xml:lang="en">Product Store</value>
+        <value xml:lang="en-US">Product Store(en-US)</value>
+        <value xml:lang="tr-TR">Product Store(tr-TR)</value>
+        <category>MULTI_USE</category>
+        <description>UploadFileInformation</description>
+    </property>
+    <property key="Language">
+        <value xml:lang="en">Language :</value>
+        <value xml:lang="en-US">Language(en-US) :</value>
+        <value xml:lang="tr-TR">Language(tr-TR) :</value>
+        <category>MULTI_USE</category>
+        <description>UploadFileInformation</description>
+    </property>
 </resource>

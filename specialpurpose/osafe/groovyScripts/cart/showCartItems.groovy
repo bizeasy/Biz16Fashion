@@ -60,6 +60,15 @@ shoppingCart = ShoppingCartEvents.getCartObject(request);
 //Get currency
 CURRENCY_UOM_DEFAULT = Util.getProductStoreParm(request,"CURRENCY_UOM_DEFAULT");
 currencyUom = CURRENCY_UOM_DEFAULT;
+if(UtilValidate.isNotEmpty(session.getAttribute("defaultCurrencyUomId"))){
+	currencyUom  = session.getAttribute("defaultCurrencyUomId");
+}
+if(UtilValidate.isNotEmpty(parameters.get("defaultCurrencyUomId"))){
+	currencyUom  = parameters.get("defaultCurrencyUomId");
+}
+if(UtilValidate.isNotEmpty(globalContext.get("defaultCurrencyUomId"))){
+	currencyUom  = globalContext.get("defaultCurrencyUomId");
+}
 
 checkoutGiftMessage = Util.isProductStoreParmTrue(request,"CHECKOUT_GIFT_MESSAGE");
 int totalQuantityWithGiftMess = 0;
@@ -80,6 +89,15 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 	if(UtilValidate.isEmpty(currencyUom))
 	{
 		currencyUom = shoppingCart.getCurrency();
+	}
+	if(UtilValidate.isNotEmpty(session.getAttribute("defaultCurrencyUomId"))){
+		currencyUom  = session.getAttribute("defaultCurrencyUomId");
+	}
+	if(UtilValidate.isNotEmpty(parameters.get("defaultCurrencyUomId"))){
+		currencyUom  = parameters.get("defaultCurrencyUomId");
+	}
+	if(UtilValidate.isNotEmpty(globalContext.get("defaultCurrencyUomId"))){
+		currencyUom  = globalContext.get("defaultCurrencyUomId");
 	}
 	shoppingCartSize = shoppingCart.getTotalQuantity();
 	shoppingCartItems = shoppingCart.items();
@@ -205,7 +223,7 @@ if(UtilValidate.isNotEmpty(shoppingCart))
 						delegator.create(postalAddress);
 
 						//Set the new Contsact Mech to the cart
-						shoppingCart.setShippingContactMechId(contactMechId);
+						shoppingCart.setShippingContactMechId(""+contactMechId);
 					}
 					catch(Exception e)
 					{

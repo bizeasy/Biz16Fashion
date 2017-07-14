@@ -55,18 +55,18 @@ addToCartRedirect = Util.getProductStoreParm(request,"ADD_TO_CART_REDIRECT");
 productCategoryMemberList = LinkedList.newInstance();
 pdpSelectMultiVariant = "";
 isPdpInStoreOnly = "N";
-
 imagePlaceHolder="/osafe_theme/images/user_content/images/NotFoundImage.jpg";
 imageLargePlaceHolder="/osafe_theme/images/user_content/images/NotFoundImagePDPLarge.jpg";
 
 inventoryMethod = Util.getProductStoreParm(request,"INVENTORY_METHOD");
-
+if(UtilValidate.isNotEmpty(session.getAttribute("defaultCurrencyUomId"))){
+	currencyUomId = session.getAttribute("defaultCurrencyUomId") ;
+}
 if(UtilValidate.isEmpty(currencyUomId))
 {
     currencyUomId = UtilProperties.getPropertyValue("general.properties", "currency.uom.id.default", "USD"); 
 }
 selectOne = UtilProperties.getMessage("OSafeUiLabels", "SelectOneLabel", locale);
-
 //BUILD JS TO CREATE DROPDOWN FOR ALL SELECTABLE FEATURE EXCEPT FIRST ONE
 String buildNext(Map map, List order, String current, String prefix) 
 {
@@ -1041,7 +1041,7 @@ if (UtilValidate.isNotEmpty(productId))
         {
             // sales order: run the "calculateProductPrice" service
             priceContext = [product : gvProduct, prodCatalogId : currentCatalogId,
-                        currencyUomId : cart.getCurrency(), autoUserLogin : autoUserLogin];
+                        currencyUomId : session.getAttribute("defaultCurrencyUomId")/*cart.getCurrency()*/, autoUserLogin : autoUserLogin];
             priceContext.webSiteId = webSiteId;
             priceContext.productStoreId = productStoreId;
             priceContext.checkIncludeVat = "Y";

@@ -11,6 +11,8 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.party.contact.ContactHelper;
 import org.apache.ofbiz.base.util.Debug;
+import org.apache.ofbiz.osafe.util.OsafeAdminUtil;
+import org.apache.ofbiz.base.util.UtilProperties;
 
 productStoresList = delegator.findByAnd("ProductStoreGroupMember", [productStoreGroupId: "HONGKONG_STORES"], null, false)
 
@@ -19,12 +21,27 @@ if (UtilValidate.isNotEmpty(globalProductStoreId)){
 	// override productStore
 	//productStore = from("ProductStore").where("productStoreId", globalProductStoreId).cache(true).queryOne()
 	session.setAttribute("productStoreId", globalProductStoreId);
+	parameters.productStoreId = globalProductStoreId ;
+	globalContext.productStoreId = globalProductStoreId;
 }
-
 productStore = ProductStoreWorker.getProductStore(request);
 if (UtilValidate.isNotEmpty(productStore))
 {
   String companyName = productStore.companyName;
+  String defaultCurrencyUomId = productStore.defaultCurrencyUomId ;
+  // need to set currency symbol based on store
+  currencySymbol = OsafeAdminUtil.showCurrency(defaultCurrencyUomId, locale);
+  parameters.productStoreId = productStore.productStoreId ;
+  globalContext.currencySymbol = currencySymbol;
+  globalContext.productStoreId = productStore.productStoreId ;
+  session.setAttribute("productStoreId",productStore.productStoreId);
+  if(UtilValidate.isNotEmpty(defaultCurrencyUomId)){
+	  session.setAttribute("defaultCurrencyUomId", defaultCurrencyUomId);
+	  parameters.defaultCurrencyUomId = defaultCurrencyUomId ;
+	  globalContext.defaultCurrencyUomId = defaultCurrencyUomId;
+  }
+  currencySymbolGen = UtilProperties.getPropertyValue("general.properties", "currency.sym."+defaultCurrencyUomId)
+  globalContext.currencySymbol = currencySymbolGen;
   if (UtilValidate.isEmpty(companyName))
   {
      companyName=productStore.storeName;
