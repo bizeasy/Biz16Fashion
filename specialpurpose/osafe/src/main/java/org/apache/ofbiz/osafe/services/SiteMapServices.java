@@ -309,6 +309,7 @@ public class SiteMapServices {
                 if ("CATALOG_CATEGORY".equals(workingCategory.getString("productCategoryTypeId"))) 
                 {
                     String productCategoryId = (String) workingCategory.getString("productCategoryId");
+                    Debug.log("productCategoryId ==========="+productCategoryId);
                     String parentCategoryId = (String) workingCategory.getString("primaryParentCategoryId");
                     if (UtilValidate.isNotEmpty(parentCategoryId) && parentCategoryId.equals(browseRootProductCategoryId))
                     {
@@ -519,7 +520,11 @@ public class SiteMapServices {
         			parentCategoryName = parentCategoryContentWrapper.get("CATEGORY_NAME", "string").toString();
         		}
         	}
-
+        	
+        	
+        	Debug.log("SEO_PAGE_URL ==========="+categoryContentWrapper.get("SEO_PAGE_URL", "string"));
+        	Debug.log("CATEGORY_NAME ==========="+categoryContentWrapper.get("CATEGORY_NAME", "string"));
+        	
         	if (categoryContentWrapper !=null)
         	{
         		if (UtilValidate.isNotEmpty(categoryContentWrapper.get("SEO_PAGE_URL", "string")))
@@ -531,6 +536,8 @@ public class SiteMapServices {
         			categoryName = categoryContentWrapper.get("CATEGORY_NAME", "string").toString();
         		}
         	}
+        	
+        	
         	
         	if (UtilValidate.isNotEmpty(parentCategoryName))
         	{
@@ -554,7 +561,10 @@ public class SiteMapServices {
         	{
         		friendlyKeyValue.append(contentSeoFriendlyName);
         	}
+        	Debug.log("friendlyKeyValue ==========="+friendlyKeyValue);
         	friendlyValue=makeCharsFriendly(friendlyKeyValue.toString(), contentSeoFriendlyName);
+        	Debug.log("friendlyValue ==========="+friendlyValue);
+        	
         	
         	Element newElement = document.createElement("property");
             newElement.setAttribute("key", friendlyKey);

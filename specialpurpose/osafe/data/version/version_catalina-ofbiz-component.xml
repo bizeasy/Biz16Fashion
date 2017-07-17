@@ -27,7 +27,7 @@ under the License.
     <classpath type="dir" location="config"/>
     <entity-resource type="model" reader-name="main" loader="main" location="entitydef/entitymodel.xml"/>
 
-    <container name="catalina-container" loaders="main" class="org.apache.ofbiz.catalina.container.CatalinaContainer">
+    <container name="catalina-container" loaders="main" class="org.ofbiz.catalina.container.CatalinaContainer">
         <!-- static configuration for tomcat -->
         <property name="delegator-name" value="default"/>
         <property name="use-naming" value="false"/>
@@ -172,7 +172,7 @@ under the License.
             <property name="tcpNoDelay" value="true"/>
             <property name="threadPriority" value="java.lang.Thread#NORM_PRIORITY"/>
             <!-- SSL connector attributes -->
-            <property name="sSLImplementation" value="org.apache.ofbiz.catalina.container.SSLImpl"/>
+            <property name="sSLImplementation" value="org.ofbiz.catalina.container.SSLImpl"/>
             <property name="algorithm" value="SunX509"/>
             <!-- the clientAuth to "want" in order to receive certs from the client;
                 note that this isn't set this way by default because with certain browsers
@@ -186,7 +186,7 @@ under the License.
             <property name="ciphers" value=""/>
         </property>
     </container>
-    <container name="catalina-container-test" loaders="test" class="org.apache.ofbiz.catalina.container.CatalinaContainer">
+    <container name="catalina-container-test" loaders="test" class="org.ofbiz.catalina.container.CatalinaContainer">
         <!-- static configuration for tomcat -->
         <property name="delegator-name" value="default"/>
         <property name="use-naming" value="false"/>
@@ -331,7 +331,7 @@ under the License.
             <property name="tcpNoDelay" value="true"/>
             <property name="threadPriority" value="java.lang.Thread#NORM_PRIORITY"/>
             <!-- SSL connector attributes -->
-            <property name="sSLImplementation" value="org.apache.ofbiz.catalina.container.SSLImpl"/>
+            <property name="sSLImplementation" value="org.ofbiz.catalina.container.SSLImpl"/>
             <property name="algorithm" value="SunX509"/>
             <property name="clientAuth" value="want"/>
             <property name="keystoreFile" value="framework/base/config/ofbizssl.jks"/>

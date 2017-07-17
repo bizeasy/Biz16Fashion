@@ -18137,7 +18137,7 @@
 		<description>ProdPricingSolrReIndexHelperInfo</description>
 	</property>
 	<property key="ManageBigfishParameterHelperInfo">
-		<value xml:lang="en">Includes all files matching the pattern Parameters_*.xml located in the \\specialpurpose\\osafe\\config\\ directory. Matching will honor case.</value>
+		<value xml:lang="en">Includes all files matching the pattern Parameters_*.xml located in the \\hot-deploy\\osafe\\config\\ directory. Matching will honor case.</value>
 		<category>ADMIN</category>
 		<description>ManageBigfishParameterHelperInfo</description>
 	</property>

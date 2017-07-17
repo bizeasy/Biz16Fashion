@@ -886,7 +886,7 @@
 	                                      <#assign statusDescription = statusItem.get("description",locale)!statusItem.statusId />
 	                                    </#if>
 	                                    <!-- PICKUP IN STORE -->
-                                        <#assign orderAttrPickupStore = ORDER.getRelatedByAnd("OrderAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("attrName", "STORE_LOCATION"))!""/>
+                                        <#assign orderAttrPickupStore = ORDER.getRelatedByAnd("OrderAttribute", Static["org.ofbiz.base.util.UtilMisc"].toMap("attrName", "STORE_LOCATION"))!""/>
 									    <#if orderAttrPickupStore?has_content>
 									       <#assign pickupInStore="Y"/>
 									    </#if>
@@ -952,7 +952,7 @@
 			<#if !userLogin?exists || !userLogin?has_content>
 				<#assign userLogin = USER_LOGIN! />
 			</#if>
-			<#assign displayPartyNameResult = dispatcher.runSync("getPartyNameForDate", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", displayParty.partyId, "compareDate", ORDER.orderDate, "userLogin", userLogin))/>
+			<#assign displayPartyNameResult = dispatcher.runSync("getPartyNameForDate", Static["org.ofbiz.base.util.UtilMisc"].toMap("partyId", displayParty.partyId, "compareDate", ORDER.orderDate, "userLogin", userLogin))/>
 		</#if>
     </#if>
     
@@ -985,7 +985,7 @@
   <textData><![CDATA[
 <#if ORDER_PAYMENTS?has_content || ORDER_PAYMENT_TYPE?has_content>
       <#assign payInStore="N"/>
-      <#assign orderAttrPickupStore = ORDER.getRelatedByAnd("OrderAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("attrName", "STORE_LOCATION"))/>
+      <#assign orderAttrPickupStore = ORDER.getRelatedByAnd("OrderAttribute", Static["org.ofbiz.base.util.UtilMisc"].toMap("attrName", "STORE_LOCATION"))/>
     
       <#if orderAttrPickupStore?has_content>
            <#assign payInStore="Y"/>
@@ -1068,25 +1068,25 @@
             <#list ORDER_ITEM_SHIP_GROUP as shipGroup>
                 <#assign storeGroup = "">
                 <#assign pickupInStore = "N">
-				<#assign orderAttrPickupStore = ORDER.getRelatedByAnd("OrderAttribute", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("attrName", "STORE_LOCATION"))/>
+				<#assign orderAttrPickupStore = ORDER.getRelatedByAnd("OrderAttribute", Static["org.ofbiz.base.util.UtilMisc"].toMap("attrName", "STORE_LOCATION"))/>
 				<#if orderAttrPickupStore?has_content>
-				    <#assign orderAttribute= Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(orderAttrPickupStore)/>
+				    <#assign orderAttribute= Static["org.ofbiz.entity.util.EntityUtil"].getFirst(orderAttrPickupStore)/>
 				    <#assign storeId=orderAttribute.attrValue!/>
 				    <#assign storeParty= delegator.findOne("Party", {"partyId", storeId}, false)!""/>
                     <#assign pickupInStore = "Y">
 				    <#if storeParty?has_content>
 				        <#assign storePartyContactPurpose= storeParty.getRelated("PartyContactMechPurpose")/>
-				        <#assign storePartyContactPurpose= Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(storePartyContactPurpose,true)/>
-				        <#assign storePartyContactPurpose= Static["org.apache.ofbiz.entity.util.EntityUtil"].orderBy(storePartyContactPurpose,Static["org.apache.ofbiz.base.util.UtilMisc"].toList("-fromDate"))/>
+				        <#assign storePartyContactPurpose= Static["org.ofbiz.entity.util.EntityUtil"].filterByDate(storePartyContactPurpose,true)/>
+				        <#assign storePartyContactPurpose= Static["org.ofbiz.entity.util.EntityUtil"].orderBy(storePartyContactPurpose,Static["org.ofbiz.base.util.UtilMisc"].toList("-fromDate"))/>
 				                   
-				        <#assign storeLocations = Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByAnd(storePartyContactPurpose, Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"))/>
-				        <#assign storeLocations= Static["org.apache.ofbiz.entity.util.EntityUtil"].getRelated("PartyContactMech", storeLocations)/>
-				        <#assign storeLocations= Static["org.apache.ofbiz.entity.util.EntityUtil"].filterByDate(storeLocations,true)/>
-				        <#assign storeLocations = Static["org.apache.ofbiz.entity.util.EntityUtil"].orderBy(storeLocations,Static["org.apache.ofbiz.base.util.UtilMisc"].toList("fromDate DESC"))/>
+				        <#assign storeLocations = Static["org.ofbiz.entity.util.EntityUtil"].filterByAnd(storePartyContactPurpose, Static["org.ofbiz.base.util.UtilMisc"].toMap("contactMechPurposeTypeId", "GENERAL_LOCATION"))/>
+				        <#assign storeLocations= Static["org.ofbiz.entity.util.EntityUtil"].getRelated("PartyContactMech", storeLocations)/>
+				        <#assign storeLocations= Static["org.ofbiz.entity.util.EntityUtil"].filterByDate(storeLocations,true)/>
+				        <#assign storeLocations = Static["org.ofbiz.entity.util.EntityUtil"].orderBy(storeLocations,Static["org.ofbiz.base.util.UtilMisc"].toList("fromDate DESC"))/>
 				
 				        <#if storeLocations?has_content>
 				
-				            <#assign storeLocation = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(storeLocations)/>
+				            <#assign storeLocation = Static["org.ofbiz.entity.util.EntityUtil"].getFirst(storeLocations)/>
 				            <#assign shippingAddress= storeLocation.getRelatedOne("PostalAddress")/>
 				            <#assign storeGroup= delegator.findOne("PartyGroup", {"partyId", storeId}, false)!""/>
 				       </#if>
@@ -1171,9 +1171,9 @@
 	                </tr>
                 </#if>
                 <#if shipGroup.trackingNumber?has_content>
-                      <#assign trackingURLPartyContents = delegator.findByAnd("PartyContent", {"partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"}, null, false)/>
+                      <#assign trackingURLPartyContents = delegator.findByAnd("PartyContent", {"partyId": shipGroup.carrierPartyId, "partyContentTypeId": "TRACKING_URL"})/>
                       <#if trackingURLPartyContents?has_content>
-                          <#assign trackingURLPartyContent = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(trackingURLPartyContents)/>
+                          <#assign trackingURLPartyContent = Static["org.ofbiz.entity.util.EntityUtil"].getFirst(trackingURLPartyContents)/>
                           <#if trackingURLPartyContent?has_content>
                               <#assign content = trackingURLPartyContent.getRelatedOne("Content")/>
                               <#if content?has_content>
@@ -1182,7 +1182,7 @@
                                       <#assign electronicText = dataResource.getRelatedOne("ElectronicText")!""/>
                                       <#assign trackingURL = electronicText.textData!""/>
                                       <#if trackingURL?has_content>
-                                          <#assign trackingURL = Static["org.apache.ofbiz.base.util.string.FlexibleStringExpander"].expandString(trackingURL, {"TRACKING_NUMBER":shipGroup.trackingNumber})/>
+                                          <#assign trackingURL = Static["org.ofbiz.base.util.string.FlexibleStringExpander"].expandString(trackingURL, {"TRACKING_NUMBER":shipGroup.trackingNumber})/>
                                       </#if>
                                   </#if>
                               </#if>
@@ -1223,12 +1223,12 @@
                                   <#assign product = orderItem.getRelatedOne("Product")?if_exists/> <!-- should always exist because of FK constraint, but just in case -->
                                   <#assign urlProductId = product.productId>
                                   <#if product.isVariant?if_exists?upper_case == "Y">
-                                      <#assign virtualProduct = Static["org.apache.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
+                                      <#assign virtualProduct = Static["org.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
                                       <#assign urlProductId=virtualProduct.productId>
                                   </#if>
-                                  <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "string")?if_exists>
+                                  <#assign productImageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
                                   <#if (!productImageUrl?has_content && !(productImageUrl == "null")) && virtualProduct?has_content>
-                                      <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "string")?if_exists>
+                                      <#assign productImageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
                                   </#if>
                                   <!-- If the string is a literal "null" make it an "" empty string then all normal logic can stay the same -->
                                   <#if (productImageUrl?string?has_content && (productImageUrl == "null"))>
@@ -1239,8 +1239,8 @@
                                   </#if>
                                   <!-- ITEM STATUS -->
                                   <#assign itemStatus = orderItem.getRelatedOne("StatusItem")/>
-                                  <#assign itemOrderStatus = delegator.findByAnd("OrderStatus", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId,"statusId",orderItem.statusId,"orderItemSeqId",orderItem.orderItemSeqId), null, false)/>
-                                  <#assign itemOrderStatus = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(itemOrderStatus)/>
+                                  <#assign itemOrderStatus = delegator.findByAnd("OrderStatus", Static["org.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId,"statusId",orderItem.statusId,"orderItemSeqId",orderItem.orderItemSeqId))/>
+                                  <#assign itemOrderStatus = Static["org.ofbiz.entity.util.EntityUtil"].getFirst(itemOrderStatus)/>
                                   <tr style="${TABULAR_DATA!""}">
                                       <td class="span image product">
                                             <a href="${HTTP_HOST}/eCommerceProductDetail?productId=${urlProductId}" id="image_${urlProductId}">
@@ -1270,7 +1270,7 @@
 	                                  <#assign shipGroupAssocQty = shipGroupAssoc.quantity!1/>
 								      <#assign shipGroupSeqId = shipGroupAssoc.shipGroupSeqId!/>
 								      <!-- filter the OrderItem attributes which are in the same shipgroup -->
-						              <#assign orderItemAttributes = orderItem.getRelated("OrderItemAttribute", null, null, true)!""/>
+						              <#assign orderItemAttributes = orderItem.getRelatedCache("OrderItemAttribute")!""/>
 								      <#assign alreadyProcessedOrderItemAttributes = Static["javolution.util.FastList"].newInstance()/>
 								      <#assign orderItemAttributesChanged = Static["javolution.util.FastList"].newInstance()/>
 								      <#list orderItemAttributes as orderItemAttribute>
@@ -1385,13 +1385,13 @@
                <#assign product = orderItem.getRelatedOne("Product")?if_exists/> <!-- should always exist because of FK constraint, but just in case -->
                <#assign urlProductId = product.productId>
                <#if product.isVariant?if_exists?upper_case == "Y">
-                    <#assign virtualProduct = Static["org.apache.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
+                    <#assign virtualProduct = Static["org.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
                     <#assign urlProductId=virtualProduct.productId>
                </#if>
-               <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "string")?if_exists>
+               <#assign productImageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
                
                <#if (!productImageUrl?has_content && !(productImageUrl == "null")) && virtualProduct?has_content>
-                    <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "string")?if_exists>
+                    <#assign productImageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
                </#if>
                
                <!-- If the string is a literal "null" make it an "" empty string then all normal logic can stay the same -->
@@ -1406,8 +1406,8 @@
                <!-- ITEM STATUS -->
 
                <#assign itemStatus = orderItem.getRelatedOne("StatusItem")/>
-               <#assign itemOrderStatus = delegator.findByAnd("OrderStatus", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId,"statusId",orderItem.statusId,"orderItemSeqId",orderItem.orderItemSeqId), null, false)/>
-               <#assign itemOrderStatus = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(itemOrderStatus)/>
+               <#assign itemOrderStatus = delegator.findByAnd("OrderStatus", Static["org.ofbiz.base.util.UtilMisc"].toMap("orderId",orderItem.orderId,"statusId",orderItem.statusId,"orderItemSeqId",orderItem.orderItemSeqId))/>
+               <#assign itemOrderStatus = Static["org.ofbiz.entity.util.EntityUtil"].getFirst(itemOrderStatus)/>
                <tr style="${TABULAR_DATA!""}">
                     <td>
                          <a href="${HTTP_HOST}/eCommerceProductDetail?productId=${urlProductId}" id="image_${urlProductId}">
@@ -1492,7 +1492,7 @@
                <td style="${E_LABEL!""}">${uiLabelMap.ShippingAndHandlingLabel}</td>
                <td style="${PRICE!""}"><@ofbizCurrency amount=ORDER_SHIP_TOTAL isoCode=ORDER_CURRENCY rounding=CURRENCY_UOM_ROUNDING/></td>
           </tr>
-          <#if (!Static["org.apache.ofbiz.osafe.util.Util"].isProductStoreParmTrue(CHECKOUT_SUPPRESS_TAX_IF_ZERO!"")) || (ORDER_TAX_TOTAL?has_content && (ORDER_TAX_TOTAL &gt; 0))>
+          <#if (!Static["com.osafe.util.Util"].isProductStoreParmTrue(CHECKOUT_SUPPRESS_TAX_IF_ZERO!"")) || (ORDER_TAX_TOTAL?has_content && (ORDER_TAX_TOTAL &gt; 0))>
           <tr>
                <td style="${E_LABEL!""}">${uiLabelMap.TaxLabel}</td>
                <td style="${PRICE!""}"><@ofbizCurrency amount=ORDER_TAX_TOTAL isoCode=ORDER_CURRENCY rounding=CURRENCY_UOM_ROUNDING/></td>
@@ -1566,12 +1566,12 @@
 						                   <#assign product = orderItem.getRelatedOne("Product")?if_exists/> <!-- should always exist because of FK constraint, but just in case -->
 						                    <#assign urlProductId = product.productId>
 						                    <#if product.isVariant?if_exists?upper_case == "Y">
-						                        <#assign virtualProduct = Static["org.apache.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
+						                        <#assign virtualProduct = Static["org.ofbiz.product.product.ProductWorker"].getParentProduct(product.productId, delegator)?if_exists>
 						                        <#assign urlProductId=virtualProduct.productId>
 						                   </#if>
-						                   <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher, "string")?if_exists>
+						                   <#assign productImageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
 						                   <#if (!productImageUrl?has_content && !(productImageUrl == "null")) && virtualProduct?has_content>
-						                       <#assign productImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher, "string")?if_exists>
+						                       <#assign productImageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(virtualProduct, "SMALL_IMAGE_URL", locale, dispatcher)?if_exists>
 						                   </#if>
 						                   <!-- If the string is a literal "null" make it an "" empty string then all normal logic can stay the same -->
 						                   <#if (productImageUrl?string?has_content && (productImageUrl == "null"))>

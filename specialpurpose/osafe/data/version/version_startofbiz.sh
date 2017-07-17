@@ -40,8 +40,8 @@ ADMIN="-Dofbiz.admin.port=$ADMIN_PORT -Dofbiz.admin.key=$ADMIN_KEY"
 MEMIF="-Xms@Xms@ -Xmx@Xmx@ -XX:MaxPermSize=@MaxPermSize@"
 #JMX="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=33333 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
 #MISC="-Duser.language=en"
-SOLRDATA="-Dsolr.data.dir=@ofbiz.home@/specialpurpose/solr/data"
-SOLRPARMS="-Dsolr.solr.home=@ofbiz.home@/specialpurpose/solr $SOLRDATA"
+SOLRDATA="-Dsolr.data.dir=@ofbiz.home@/hot-deploy/solr/data"
+SOLRPARMS="-Dsolr.solr.home=@ofbiz.home@/hot-deploy/solr $SOLRDATA"
 VMARGS="$MEMIF $MISC $JMX $DEBUG $RMIIF $ADMIN"
 
 # Worldpay Config

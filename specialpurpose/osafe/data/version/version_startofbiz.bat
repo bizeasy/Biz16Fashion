@@ -52,7 +52,7 @@ rem "%JAVA_HOME%\bin\java" -Xms@Xms@ -Xmx@Xmx@ -XX:MaxPermSize=@MaxPermSize@ -Xd
 rem ### Simple easy to read line
 echo on
 title @service.name@
-set SOLR_PARMS=-Dsolr.solr.home=@ofbiz.home@/specialpurpose/solr -Dsolr.data.dir=@ofbiz.home@/specialpurpose/solr/data
+set SOLR_PARMS=-Dsolr.solr.home=@ofbiz.home@/hot-deploy/solr -Dsolr.data.dir=@ofbiz.home@/hot-deploy/solr/data
 "%JAVA_HOME%\bin\java" -Xms@Xms@ -Xmx@Xmx@ -XX:MaxPermSize=@MaxPermSize@ %SOLR_PARMS% -jar ofbiz.jar
 
 echo off
