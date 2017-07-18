@@ -343,7 +343,7 @@ access. For a detailed description see the core/docs/entityconfig.html file.
         <read-data reader-name="ext-demo"/>
         <inline-jdbc
                 jdbc-driver="com.mysql.jdbc.Driver"
-                jdbc-uri="jdbc:mysql://127.0.0.1/bigfishtest1?autoReconnect=true"
+                jdbc-uri="jdbc:mysql://127.0.0.1/bfloadtest?autoReconnect=true"
                 jdbc-username="bigfish"
                 jdbc-password="bigfish"
                 isolation-level="ReadCommitted"
@@ -376,7 +376,7 @@ access. For a detailed description see the core/docs/entityconfig.html file.
         <read-data reader-name="ext-demo"/>
         <inline-jdbc
                 jdbc-driver="com.mysql.jdbc.Driver"
-                jdbc-uri="jdbc:mysql://127.0.0.1/bigfisholap?autoReconnect=true"
+                jdbc-uri="jdbc:mysql://127.0.0.1/ofbizolap?autoReconnect=true"
                 jdbc-username="ofbiz"
                 jdbc-password="ofbiz"
                 isolation-level="ReadCommitted"
@@ -409,7 +409,7 @@ access. For a detailed description see the core/docs/entityconfig.html file.
         <read-data reader-name="ext-demo"/>
         <inline-jdbc
                 jdbc-driver="com.mysql.jdbc.Driver"
-                jdbc-uri="jdbc:mysql://127.0.0.1/bigfishtenant?autoReconnect=true"
+                jdbc-uri="jdbc:mysql://127.0.0.1/ofbiztenant?autoReconnect=true"
                 jdbc-username="ofbiz"
                 jdbc-password="ofbiz"
                 isolation-level="ReadCommitted"

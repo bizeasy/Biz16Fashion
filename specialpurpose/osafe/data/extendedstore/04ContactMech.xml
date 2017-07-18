@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+<ContactMech contactMechId="TK_1003" contactMechTypeId="POSTAL_ADDRESS"/>
+<ContactMech contactMechId="TK_1004" contactMechTypeId="TELECOM_NUMBER"/>
+<ContactMech contactMechId="TK_1005" contactMechTypeId="EMAIL_ADDRESS" infoString="bigfishWarehouse@solveda.com"/>
+<PostalAddress contactMechId="TK_1003" toName="RNY_COMPANY Warehouse" attnName="TK_COMPANY Warehouse" address1="2003 Warehouse Blvd" city="TK_COMPANY City" postalCode="11530" countryGeoId="USA" stateProvinceGeoId="NY"/>
+<TelecomNumber contactMechId="TK_1004" areaCode="516" contactNumber="742-7888"/>
+</entity-engine-xml>

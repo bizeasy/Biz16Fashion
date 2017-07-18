@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+<ProductStoreGroup productStoreGroupId="HONGKONG_STORES" productStoreGroupName="Hongkong Stores" description="Hongkong Stores"></ProductStoreGroup>
+<ProductStoreGroupMember productStoreGroupId="HONGKONG_STORES" productStoreId="RNY_STORE" fromDate="2017-01-01 00:00:00"></ProductStoreGroupMember>
+<ProductStoreGroupMember productStoreGroupId="HONGKONG_STORES" productStoreId="TURKEY_STORE" fromDate="2017-01-01 00:00:00"></ProductStoreGroupMember>
+</entity-engine-xml>
