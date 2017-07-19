@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 <entity-engine-xml>
 <ProductPrice productId="100017" productPriceTypeId="LIST_PRICE" productPricePurposeId="PURCHASE" currencyUomId="INR" productStoreGroupId="_NA_" price="450.00" fromDate="2013-02-12 12:00:34" />
 <ProductPrice productId="100017" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="INR" productStoreGroupId="_NA_" price="290.00" fromDate="2013-02-12 12:00:34" />
