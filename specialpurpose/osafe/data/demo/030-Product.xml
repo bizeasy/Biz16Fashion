@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-engine-xml>
+<ProductStoreGroup productStoreGroupId="HONGKONG_STORES" productStoreGroupName="Hongkong Stores" description="Hongkong Stores"></ProductStoreGroup>
 <Product productId="100017" productTypeId="FINISHED_GOOD" primaryProductCategoryId="ACTIVE" manufacturerPartyId="DONATELLI" internalName="L2061" brandName="" introductionDate="2011-10-12 00:00:00" productName="" salesDiscontinuationDate="" requireInventory="N" returnable="Y" taxable="N" chargeShipping="Y" isVirtual="Y" isVariant="N" />
 <ProductCategoryMember productCategoryId="ACTIVE" productId="100017" fromDate="2013-02-12 12:00:34" comments="" sequenceNum="10" quantity="" />
 <ProductCategoryMember productCategoryId="DONATELLI" productId="100017" fromDate="2013-02-12 12:00:34" comments="" sequenceNum="10" quantity="" />

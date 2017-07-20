@@ -349,6 +349,8 @@ task loadBigFishDefault(group: ofbizServer) {
 	logger.info('completed extendedstore' )
 	dependsOn 'ofbiz --load-data readers=bfcontentexport'
 	logger.info('completed bfcontentexport')
+	dependsOn 'ofbiz --load-data readers=bfProductPrices'
+	logger.info('completed bfProductPrices')
 	description 'Loading product stores extended data'
 }
 
