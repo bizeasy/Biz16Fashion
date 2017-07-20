@@ -905,6 +905,10 @@ if(what.value == '') what.value = what.defaultValue;
                 <a href="<@ofbizUrl>eCommerceShowcart</@ofbizUrl>" id="siteShoppingCartSize" class=" showLightBoxCart">
                      <span>${CART_ITEMS_QTY!}</span>
                           <#if  CART_ITEMS_QTY?has_content && ((CART_ITEMS_QTY gt 1) || (CART_ITEMS_QTY == 0))>Items<#else>Item</#if></a>
+                          <#assign defaultCurrencyUom = session.getAttribute("defaultCurrencyUomId")>
+						  <#if defaultCurrencyUom?has_content>
+						  	<#assign CURRENCY_UOM_DEFAULT = defaultCurrencyUom>
+						  </#if>
                 <#if  CART_ITEMS_QTY?has_content && (CART_ITEMS_QTY gt 0)>
                      <a href="<@ofbizUrl>eCommerceShowcart</@ofbizUrl>" class="price"><@ofbizCurrency amount=CART.getGrandTotal()   isoCode=CURRENCY_UOM_DEFAULT!CART.getCurrency()/></a>
                           <#else><a href="<@ofbizUrl>eCommerceShowcart</@ofbizUrl>" class="price"><@ofbizCurrency isoCode=CURRENCY_UOM_DEFAULT!CART.getCurrency()/></a>
