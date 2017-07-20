@@ -412,15 +412,7 @@
 <Content contentId="10124" contentTypeId="DOCUMENT" dataResourceId="10124" statusId="CTNT_PUBLISHED" contentName="longDescription" />
 <ProductContent productId="100006" contentId="10124" productContentTypeId="LONG_DESCRIPTION" fromDate="2013-02-12 12:00:36" thruDate="null" />
 <DataResource dataResourceId="10125" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_PUBLISHED" dataResourceName="specialInstructions" mimeTypeId="application/octet-stream" objectInfo="" isPublic="Y" />
-<ElectronicText dataResourceId="10125" textData="
-
-<p>Cleaning and washing silk is surprisingly easy if certain precautions are observed.</p>
-
-<p>Our silk hand painting techniques produce garments whose colors will not run or fade under normal circumstances. Cleaning and washing silk fabric, in case of our garments, is definitely simple and convenient. So relax and enjoy your silk art!</p>
-
-<p>All garments are appropriately labeled to include silk washing instructions. We recommend hand washing silk, unless the garment carries an explicitly Dry Clean Only instruction.</p>
-
-<p>Optimal silk care will ensure longer and lustrous life of the garment. We, therefore, recommend hand washing silk even for items that are labeled for machine washing.</p>" />
+<ElectronicText dataResourceId="10125" textData="<p>Cleaning and washing silk is surprisingly easy if certain precautions are observed.</p><p>Our silk hand painting techniques produce garments whose colors will not run or fade under normal circumstances. Cleaning and washing silk fabric, in case of our garments, is definitely simple and convenient. So relax and enjoy your silk art!</p><p>All garments are appropriately labeled to include silk washing instructions. We recommend hand washing silk, unless the garment carries an explicitly Dry Clean Only instruction.</p><p>Optimal silk care will ensure longer and lustrous life of the garment. We, therefore, recommend hand washing silk even for items that are labeled for machine washing.</p>" />
 <Content contentId="10125" contentTypeId="DOCUMENT" dataResourceId="10125" statusId="CTNT_PUBLISHED" contentName="specialInstructions" />
 <ProductContent productId="100006" contentId="10125" productContentTypeId="SPECIALINSTRUCTIONS" fromDate="2013-02-12 12:00:36" thruDate="null" />
 <DataResource dataResourceId="10126" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_PUBLISHED" dataResourceName="plpLabel" mimeTypeId="application/octet-stream" objectInfo="" isPublic="Y" />

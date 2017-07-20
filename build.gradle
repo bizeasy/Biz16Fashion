@@ -324,6 +324,33 @@ task loadDefault(group: ofbizServer) {
     dependsOn 'ofbiz --load-data'
     description 'Load default data; meant for OFBiz development, testing, and demo purposes'
 }
+task loadBigFishDefault(group: ofbizServer) {
+	dependsOn loadDefault
+	logger.info('completed load default')
+	dependsOn 'ofbiz --load-data readers=demodata'
+	logger.info('completed demodata ')
+	dependsOn 'ofbiz --load-data readers=proddata'
+	logger.info('completed proddata ')
+	dependsOn 'ofbiz --load-data readers=customshipmentmethods'
+	logger.info('completed customshipmentmethods' )
+	dependsOn 'ofbiz --load-data readers=custompaymentmethods'
+	logger.info('completed custompaymentmethods' )
+	dependsOn 'ofbiz --load-data readers=parameters'
+	logger.info('completed parameters' )
+	dependsOn 'ofbiz --load-data readers=contentmenu'
+	logger.info('completed contentmenu' )
+	dependsOn 'ofbiz --load-data readers=bigfishtypes'
+	logger.info('completed bigfishtypes' )
+	dependsOn 'ofbiz --load-data readers=version'
+	logger.info('completed version ')
+	dependsOn 'ofbiz --load-data readers=schedulers'
+	logger.info('completed schedulers' )
+	dependsOn 'ofbiz --load-data readers=extendedstore'
+	logger.info('completed extendedstore' )
+	dependsOn 'ofbiz --load-data readers=bfcontentexport'
+	logger.info('completed bfcontentexport')
+	description 'Loading product stores extended data'
+}
 
 task testIntegration(group: ofbizServer) {
     dependsOn 'ofbiz --test'

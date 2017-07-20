@@ -74,6 +74,7 @@
     <entity-resource type="data" reader-name="proddata" loader="main" location="data/demo/065-ProductFeatureImage.xml"/>
     <entity-resource type="data" reader-name="proddata" loader="main" location="data/demo/070-ProductAssoc.xml"/>
     <entity-resource type="data" reader-name="proddata" loader="main" location="data/demo/075-ProductAttribute.xml"/>
+    
 
     <!-- Custom Method Readers -->
     <!-- Shipment -->
@@ -107,7 +108,8 @@
     <entity-resource type="data" reader-name="extendedstore" loader="main" location="data/extendedstore/06TurkyStoreXProductStoreParm.xml"/>
     <entity-resource type="data" reader-name="extendedstore" loader="main" location="data/extendedstore/05xProductStoreParm.xml"/>
     <entity-resource type="data" reader-name="extendedstore" loader="main" location="data/extendedstore/07ProductStoreGroupInfo.xml"/>
-    
+    <entity-resource type="data" reader-name="extendedstore" loader="main" location="data/extendedstore/08-ProductPrice.xml"/>
+    <entity-resource type="data" reader-name="extendedstore" loader="main" location="data/extendedstore/09-ProductVariantPrice.xml"/>
     
     
     <entity-resource type="data" reader-name="bfcontentexport" loader="main" location="data/bigfish-content-export.xml"/>
