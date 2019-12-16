@@ -173,6 +173,40 @@ if (UtilValidate.isNotEmpty(productStore))
                             
                         }
                         
+                        
+                        paramsExpr = LinkedList.newInstance();
+		                paramsExpr.add(EntityCondition.makeCondition("parentProductCategoryId", EntityOperator.EQUALS, productCategoryId));
+		                paramCond = null;
+		                mainCond = null;
+		                if (UtilValidate.isNotEmpty(paramsExpr)) 
+		                {
+		                    paramCond = EntityCondition.makeCondition(paramsExpr, EntityOperator.AND);
+		                    mainCond = paramCond;
+		                }
+		                if (dateCond) 
+		                {
+		                    mainCond = EntityCondition.makeCondition([paramCond, dateCond], EntityOperator.AND);
+		                }
+		                List subCatRollupListLevel2 = delegator.findList("ProductCategoryRollupAndChild", mainCond, null, orderBy, null, false);
+		                Debug.log("subCatRollupListLevel2==============="+subCatRollupListLevel2);
+                        if(UtilValidate.isNotEmpty(subCatRollupListLevel2)) 
+		                {
+		                    subCatRollUpMapLevel2.put(productCategoryId, subCatRollupListLevel2);
+		                    context.subCatRollUpMapLevel2 = subCatRollUpMapLevel2;
+		                    for (GenericValue subCategoryRollUpLevel2 : subCatRollUpMapLevel2)
+		                    {
+		                        String productCategoryId=subCategoryRollUpLevel2.productCategoryId;
+		                        if (!catContentWrappers.containsKey(productCategoryId)) 
+		                        {
+		                            gvProductCategory = EntityQuery.use(delegator).from("ProductCategory").where("productCategoryId", productCategoryId).queryOne();
+		                            
+		                            CategoryContentWrapper productCategoryContentWrapper = new CategoryContentWrapper(gvProductCategory, request);
+		                            catContentWrappers.put(productCategoryId,productCategoryContentWrapper);
+		                            currentCategories.add(gvProductCategory);
+		                            
+		                        }
+                        	}
+                        }
                     }
                     
                 }

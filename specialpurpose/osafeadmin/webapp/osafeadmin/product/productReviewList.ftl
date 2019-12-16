@@ -13,9 +13,11 @@
                 <th class="numberCol lastCol">${uiLabelMap.DaysSincePostingLabel}</th>
             </tr>
           </thead>
-        <#if resultList?exists && resultList?has_content>
+          
+          ======${productReviews}=========
+        <#if productReviews?exists && productReviews?has_content>
             <#assign rowClass = "1">
-            <#list resultList as review>
+            <#list productReviews as review>
               <#assign hasNext = review_has_next>
               <#assign product = review.getRelatedOne("Product")>
               <#assign statusItem = review.getRelatedOne("StatusItem")>

@@ -343,7 +343,7 @@ access. For a detailed description see the core/docs/entityconfig.html file.
         <read-data reader-name="ext-demo"/>
         <inline-jdbc
                 jdbc-driver="com.mysql.jdbc.Driver"
-                jdbc-uri="jdbc:mysql://127.0.0.1/bigfishtest2?autoReconnect=true"
+                jdbc-uri="jdbc:mysql://127.0.0.1/bigfishtest4?autoReconnect=true"
                 jdbc-username="bigfish"
                 jdbc-password="bigfish"
                 isolation-level="ReadCommitted"

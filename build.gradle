@@ -327,6 +327,8 @@ task loadDefault(group: ofbizServer) {
 task loadBigFishDefault(group: ofbizServer) {
 	dependsOn loadDefault
 	logger.info('completed load default')
+	dependsOn 'ofbiz --load-data readers=seed'
+	logger.info('completed demodata ')
 	dependsOn 'ofbiz --load-data readers=demodata'
 	logger.info('completed demodata ')
 	dependsOn 'ofbiz --load-data readers=proddata'
